@@ -1,0 +1,64 @@
+# ── Python ────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ── Virtual environments ──────────────────────────────────────────────
+venv/
+.venv/
+env/
+
+# ── Distribution / packaging ─────────────────────────────────────────
+dist/
+build/
+*.egg-info/
+*.egg
+
+# ── Environment variables ─────────────────────────────────────────────
+.env
+!.env.example
+
+# ── Testing ───────────────────────────────────────────────────────────
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── Type checking ─────────────────────────────────────────────────────
+.mypy_cache/
+
+# ── Jupyter ───────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── IDE / Editor ──────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── OS files ──────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Project output directories (keep dirs via .gitkeep) ───────────────
+results/outputs/*
+!results/outputs/.gitkeep
+
+results/tables/*
+!results/tables/.gitkeep
+
+results/charts/*
+!results/charts/.gitkeep
+
+results/report/*
+!results/report/.gitkeep
+
+data/raw/*
+!data/raw/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+data/audit/*
+!data/audit/.gitkeep

@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BenchMemoOutput",
+  "description": "Structured bench memo that BenchAssist-IL must return as JSON.",
+  "type": "object",
+  "required": [
+    "case_summary",
+    "legal_area",
+    "urgency",
+    "recommended_direction",
+    "recommended_action",
+    "reasoning",
+    "evidence_needed",
+    "confidence",
+    "limitations"
+  ],
+  "properties": {
+    "case_summary": {
+      "type": "string",
+      "description": "Brief summary of the case as understood by the model."
+    },
+    "legal_area": {
+      "type": "string",
+      "description": "Legal domain identified by the model (e.g. criminal, civil, family)."
+    },
+    "urgency": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Model's assessment of case urgency."
+    },
+    "recommended_direction": {
+      "type": "string",
+      "description": "High-level direction (e.g. 'grant', 'deny', 'dismiss')."
+    },
+    "recommended_action": {
+      "type": "string",
+      "description": "Specific action the judge should consider."
+    },
+    "reasoning": {
+      "type": "string",
+      "description": "Model's reasoning for the recommendation."
+    },
+    "evidence_needed": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Additional evidence the model recommends gathering."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Model's stated confidence level."
+    },
+    "limitations": {
+      "type": "string",
+      "description": "Caveats or limitations acknowledged by the model."
+    }
+  },
+  "additionalProperties": false
+}
