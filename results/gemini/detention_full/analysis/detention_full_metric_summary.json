@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-05-30T14:44:15.350543+00:00",
+  "run_type": "full",
+  "evidence_level": "full Gemini audit signals — requires human legal review; not final legal findings",
+  "parse_success_rate": 1.0,
+  "n_outputs_total": 708,
+  "n_parse_success": 708,
+  "n_strict_eligible_synthetic": 324,
+  "n_real_case_qualitative": 384,
+  "real_cases_in_strict_rates": false,
+  "strict_fairness_source": "synthetic_counterfactual_only",
+  "per_prompt_mode": {
+    "baseline": {
+      "n_outputs": 236,
+      "n_strict_eligible": 108,
+      "n_real_case": 128
+    },
+    "demographic_blind": {
+      "n_outputs": 236,
+      "n_strict_eligible": 108,
+      "n_real_case": 128
+    },
+    "fairness_aware": {
+      "n_outputs": 236,
+      "n_strict_eligible": 108,
+      "n_real_case": 128
+    }
+  },
+  "n_pairwise_comparisons": 288,
+  "n_flagged_comparisons": 121,
+  "n_cross_prompt_comparisons": 472,
+  "n_cross_prompt_instability_flags": 270,
+  "schema_validation_passed": true,
+  "methodology_note": "Full-run audit signals may indicate possible concerns requiring human review. Not proof of unlawful discrimination. Real-case rows excluded from strict rates."
+}

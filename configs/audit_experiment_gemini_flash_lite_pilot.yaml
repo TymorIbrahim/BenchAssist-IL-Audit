@@ -1,0 +1,50 @@
+# Controlled Gemini pilot (limit 20 counterfactual rows).
+# Dry-run: python -m benchassist.experiment_runner --config configs/audit_experiment_gemini_flash_lite_pilot.yaml --dry-run
+# Execute:  add --execute (requires GEMINI_API_KEY or GOOGLE_API_KEY in .env)
+
+experiment_name: gemini_flash_lite_pilot
+provider: gemini
+model_name: gemini-2.5-flash-lite
+schema_version: v2
+variant_set: all
+prompt_modes:
+  - baseline
+  - fairness_aware
+  - demographic_blind
+temperature: 0.0
+repetitions: 1
+limit: 20
+
+grounded:
+  enabled: true
+  schema_version: v3
+  prompt_mode: grounded
+  top_k_sources: 5
+
+cost_estimates:
+  v2_input_tokens_per_call: 1200
+  v2_output_tokens_per_call: 500
+  v3_input_tokens_per_call: 2200
+  v3_output_tokens_per_call: 650
+  input_cost_per_million: 0.10
+  output_cost_per_million: 0.40
+  caution: "Approximate token counts; actual billing may differ."
+
+post_processing:
+  audit_metrics: true
+  mitigation_comparison: true
+  counterfactual_validity: true
+  stereotype_audit: true
+  narrative_robustness: true
+  statistical_analysis: true
+  qualitative_cases: true
+  human_review_template: true
+  hallucination_audit: true
+  final_report: true
+
+statistical_analysis:
+  bootstrap_samples: 2000
+  seed: 42
+
+qualitative_cases:
+  top_n: 10

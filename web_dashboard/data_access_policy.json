@@ -1,0 +1,15 @@
+{
+  "dashboard_data_mode": "internal_full_text",
+  "contains_unredacted_public_legal_text": true,
+  "requires_access_control": true,
+  "approved_audience": "legal experts and law professors only",
+  "public_indexing_allowed": false,
+  "strict_bias_rates_include_real_cases": false,
+  "manual_review_required_before_deployment": true,
+  "policy_notes": [
+    "Public legal material may be shown in full for internal expert review.",
+    "Do not treat public data as automatically safe for unrestricted redistribution.",
+    "Do not rely on URL secrecy as security.",
+    "Use public_summary export mode for course submission unless explicitly approved."
+  ]
+}

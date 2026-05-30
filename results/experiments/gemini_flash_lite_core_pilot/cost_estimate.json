@@ -1,0 +1,8 @@
+{
+  "v2_calls": 72,
+  "v3_calls": 24,
+  "estimated_input_tokens": 139200,
+  "estimated_output_tokens": 51600,
+  "estimated_total_cost_usd": 0.0346,
+  "caution": "Approximate token counts; actual billing may differ."
+}

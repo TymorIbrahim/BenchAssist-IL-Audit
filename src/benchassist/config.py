@@ -65,9 +65,11 @@ class Settings:
     """Application-wide configuration.
 
     Attributes:
-        MODEL_PROVIDER: Backend identifier (``mock`` or ``gemini``).
+        MODEL_PROVIDER: Backend identifier (``mock``, ``gemini``, or ``openai``).
         MODEL_NAME: Model name passed to the provider.
         GEMINI_API_KEY: Optional Google Gemini API key (env only).
+        GOOGLE_API_KEY: Alternate env var accepted for Gemini API key.
+        OPENAI_API_KEY: Optional OpenAI API key (env only).
         TEMPERATURE: Sampling temperature for generative models.
         LOG_LEVEL: Python logging level string.
         DATA_DIR: Root directory for raw / processed data artefacts.
@@ -78,11 +80,19 @@ class Settings:
     MODEL_PROVIDER: str = field(default="mock")
     MODEL_NAME: str = field(default="mock-benchassist")
     GEMINI_API_KEY: Optional[str] = field(default=None)
+    GOOGLE_API_KEY: Optional[str] = field(default=None)
+    OPENAI_API_KEY: Optional[str] = field(default=None)
     TEMPERATURE: float = field(default=0.0)
     LOG_LEVEL: str = field(default="INFO")
     DATA_DIR: Path = field(default_factory=lambda: _PROJECT_ROOT / "data")
     RESULTS_DIR: Path = field(default_factory=lambda: _PROJECT_ROOT / "results")
     PROMPTS_DIR: Path = field(default_factory=lambda: _PROJECT_ROOT / "prompts")
+
+
+def resolve_gemini_api_key(settings: Settings | None = None) -> str | None:
+    """Return a Gemini API key from ``GEMINI_API_KEY`` or ``GOOGLE_API_KEY``."""
+    resolved = settings or get_settings()
+    return resolved.GEMINI_API_KEY or resolved.GOOGLE_API_KEY
 
 
 def _build_settings() -> Settings:
@@ -91,6 +101,8 @@ def _build_settings() -> Settings:
         MODEL_PROVIDER=_env_str("MODEL_PROVIDER", "mock"),
         MODEL_NAME=_env_str("MODEL_NAME", "mock-benchassist"),
         GEMINI_API_KEY=_env_optional("GEMINI_API_KEY"),
+        GOOGLE_API_KEY=_env_optional("GOOGLE_API_KEY"),
+        OPENAI_API_KEY=_env_optional("OPENAI_API_KEY"),
         TEMPERATURE=_parse_temperature(os.getenv("TEMPERATURE")),
         LOG_LEVEL=_env_str("LOG_LEVEL", "INFO"),
         DATA_DIR=Path(os.getenv("DATA_DIR", str(_PROJECT_ROOT / "data"))),

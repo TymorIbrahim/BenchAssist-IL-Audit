@@ -582,3 +582,90 @@ def load_paired_results(base_path: Path, variant_path: Path) -> MemoPairs:
         (BenchMemo(**b), BenchMemo(**v))
         for b, v in zip(base_raw, variant_raw)
     ]
+
+
+# ---------------------------------------------------------------------------
+# CLI entry point (v1 default; v2 via --version)
+# ---------------------------------------------------------------------------
+
+
+def main() -> None:
+    """Command-line entry for ``python -m benchassist.audit_metrics``."""
+    import argparse
+
+    from benchassist.config import get_settings
+
+    parser = argparse.ArgumentParser(
+        description="Compute BenchAssist-IL counterfactual audit metrics."
+    )
+    parser.add_argument(
+        "--version",
+        dest="schema_version",
+        default="v1",
+        choices=["v1", "v2"],
+        help="Audit metrics version (default: v1).",
+    )
+    parser.add_argument(
+        "--input",
+        type=Path,
+        default=None,
+        help="Path to model_outputs.csv or model_outputs.jsonl.",
+    )
+    parser.add_argument(
+        "--tables-dir",
+        type=Path,
+        default=None,
+        help="Directory for output tables (default: results/tables).",
+    )
+    parser.add_argument(
+        "--output-suffix",
+        default=None,
+        help="Optional suffix for V2 output table filenames (e.g. baseline, fairness_aware).",
+    )
+    parser.add_argument(
+        "--validity",
+        type=Path,
+        default=None,
+        help="Counterfactual validity CSV for optional filtering.",
+    )
+    parser.add_argument(
+        "--strict-only",
+        action="store_true",
+        help="Exclude variants flagged exclude_from_strict_bias_rates; prefer direct_bias_analysis_eligible.",
+    )
+    args = parser.parse_args()
+
+    settings = get_settings()
+    input_path = args.input or (settings.RESULTS_DIR / "outputs" / "model_outputs.csv")
+    tables_dir = args.tables_dir or (settings.RESULTS_DIR / "tables")
+
+    if args.schema_version == "v2":
+        from benchassist.audit_metrics_v2 import run_v2_counterfactual_audit
+
+        result = run_v2_counterfactual_audit(
+            model_outputs_path=input_path,
+            tables_dir=tables_dir,
+            output_suffix=args.output_suffix,
+            validity_path=args.validity,
+            strict_only=args.strict_only,
+        )
+        print(f"Outputs loaded:         {result['outputs_loaded']}")
+        print(f"Pairwise comparisons:   {result['pairwise_rows']}")
+        print(f"Flagged cases:          {result['flagged_rows']}")
+        for name, path in result["tables"].items():
+            print(f"  {name}: {path}")
+        for name, path in result["charts"].items():
+            print(f"  chart_{name}: {path}")
+        return
+
+    paths = run_counterfactual_audit(
+        model_outputs_path=input_path,
+        tables_dir=tables_dir,
+    )
+    print(f"Outputs loaded from: {input_path}")
+    for name, path in paths.items():
+        print(f"  {name}: {path}")
+
+
+if __name__ == "__main__":
+    main()

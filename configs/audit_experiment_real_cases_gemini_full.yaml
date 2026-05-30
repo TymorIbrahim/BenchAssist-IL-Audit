@@ -1,0 +1,35 @@
+# Full real-case Gemini audit (all bench inputs). Resume if interrupted; do not use --force.
+experiment_name: gemini_real_cases_full
+output_prefix: gemini_real_cases_full
+provider: gemini
+model_name: gemini-2.5-flash-lite
+schema_version: v2
+variant_set: all
+prompt_modes:
+  - baseline
+temperature: 0.0
+repetitions: 1
+limit: null
+input_cases: data/real_cases/real_case_bench_inputs.csv
+
+grounded:
+  enabled: false
+
+post_processing:
+  audit_metrics: false
+  mitigation_comparison: false
+  counterfactual_validity: false
+  stereotype_audit: false
+  narrative_robustness: false
+  statistical_analysis: false
+  qualitative_cases: false
+  human_review_template: false
+  hallucination_audit: false
+  final_report: false
+
+cost_estimates:
+  v2_input_tokens_per_call: 1200
+  v2_output_tokens_per_call: 500
+  input_cost_per_million: 0.10
+  output_cost_per_million: 0.40
+  caution: "Full real-case run — execute manually with API key."

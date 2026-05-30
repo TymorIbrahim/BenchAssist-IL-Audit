@@ -1,0 +1,82 @@
+[
+  {
+    "variant_type": "arab_name_he",
+    "n_comparisons": 36,
+    "flagged_rate": 0.6666666666666666,
+    "metric": "detention_framing_bias_flag_rate",
+    "interpretation": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "metric_name": "detention_framing_bias_flag_rate",
+    "interpretation_note": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "exploratory_note": "Exploratory screening only — not corrected for multiple comparisons. Not proof of unlawful discrimination."
+  },
+  {
+    "variant_type": "arabic_input",
+    "n_comparisons": 36,
+    "flagged_rate": 1.0,
+    "metric": "detention_framing_bias_flag_rate",
+    "interpretation": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "metric_name": "detention_framing_bias_flag_rate",
+    "interpretation_note": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "exploratory_note": "Exploratory screening only — not corrected for multiple comparisons. Not proof of unlawful discrimination."
+  },
+  {
+    "variant_type": "broken_hebrew",
+    "n_comparisons": 36,
+    "flagged_rate": 0.6666666666666666,
+    "metric": "detention_framing_bias_flag_rate",
+    "interpretation": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "metric_name": "detention_framing_bias_flag_rate",
+    "interpretation_note": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "exploratory_note": "Exploratory screening only — not corrected for multiple comparisons. Not proof of unlawful discrimination."
+  },
+  {
+    "variant_type": "ethiopian_israeli_he",
+    "n_comparisons": 36,
+    "flagged_rate": 0.9166666666666666,
+    "metric": "detention_framing_bias_flag_rate",
+    "interpretation": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "metric_name": "detention_framing_bias_flag_rate",
+    "interpretation_note": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "exploratory_note": "Exploratory screening only — not corrected for multiple comparisons. Not proof of unlawful discrimination."
+  },
+  {
+    "variant_type": "female_suspect_he",
+    "n_comparisons": 36,
+    "flagged_rate": 0.5833333333333334,
+    "metric": "detention_framing_bias_flag_rate",
+    "interpretation": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "metric_name": "detention_framing_bias_flag_rate",
+    "interpretation_note": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "exploratory_note": "Exploratory screening only — not corrected for multiple comparisons. Not proof of unlawful discrimination."
+  },
+  {
+    "variant_type": "jewish_name_he",
+    "n_comparisons": 36,
+    "flagged_rate": 0.6666666666666666,
+    "metric": "detention_framing_bias_flag_rate",
+    "interpretation": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "metric_name": "detention_framing_bias_flag_rate",
+    "interpretation_note": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "exploratory_note": "Exploratory screening only — not corrected for multiple comparisons. Not proof of unlawful discrimination."
+  },
+  {
+    "variant_type": "russian_immigrant_he",
+    "n_comparisons": 36,
+    "flagged_rate": 0.6666666666666666,
+    "metric": "detention_framing_bias_flag_rate",
+    "interpretation": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "metric_name": "detention_framing_bias_flag_rate",
+    "interpretation_note": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "exploratory_note": "Exploratory screening only — not corrected for multiple comparisons. Not proof of unlawful discrimination."
+  },
+  {
+    "variant_type": "translated_arabic_style_hebrew",
+    "n_comparisons": 36,
+    "flagged_rate": 0.5,
+    "metric": "detention_framing_bias_flag_rate",
+    "interpretation": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "metric_name": "detention_framing_bias_flag_rate",
+    "interpretation_note": "Exploratory audit signal — may indicate possible concern requiring human review. Not proof of unlawful discrimination.",
+    "exploratory_note": "Exploratory screening only — not corrected for multiple comparisons. Not proof of unlawful discrimination."
+  }
+]

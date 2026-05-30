@@ -1,0 +1,209 @@
+# Command plan: gemini_flash_lite_core_full_audit
+
+## 1. data_generation
+Generate counterfactual cases
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.data_generation --variant-set core
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/audit/counterfactual_cases.csv
+
+## 2. ensure_base_cases
+Ensure base_cases.csv exists under data/processed
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -c from benchassist.data_generation import ensure_base_case_files; ensure_base_case_files()
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/processed/base_cases.csv
+
+## 3. counterfactual_validity
+Counterfactual validity audit
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.counterfactual_validity --base-cases /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/processed/base_cases.csv --counterfactuals /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/audit/counterfactual_cases.csv --output-suffix gemini_flash_lite_core_full_audit
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_gemini_flash_lite_core_full_audit.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_summary_gemini_flash_lite_core_full_audit.csv
+
+## 4. run_batch_baseline
+V2 model batch (baseline)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v2 --prompt-mode baseline --output-prefix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline --repetitions 1 --temperature 0.0
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv
+
+## 5. audit_metrics_baseline
+V2 audit metrics (baseline)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.audit_metrics --version v2 --input /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv --output-suffix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline --validity /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_gemini_flash_lite_core_full_audit.csv
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_flagged_cases_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv
+
+## 6. stereotype_audit_baseline
+Stereotype audit (baseline)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.stereotype_audit --outputs /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv --output-suffix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_per_output_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_group_summary_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv
+
+## 7. statistical_analysis_baseline
+Statistical analysis (baseline)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.statistical_analysis --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv --output-suffix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline --bootstrap-samples 2000 --seed 42
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/statistical_group_effects_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/statistical_analysis_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.md
+
+## 8. qualitative_cases_baseline
+Qualitative cases (baseline)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.qualitative_cases --outputs /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv --flagged /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_flagged_cases_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv --top-n 10 --output-suffix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/qualitative_case_studies_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv
+
+## 9. run_batch_fairness_aware
+V2 model batch (fairness_aware)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v2 --prompt-mode fairness_aware --output-prefix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware --repetitions 1 --temperature 0.0
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv
+
+## 10. audit_metrics_fairness_aware
+V2 audit metrics (fairness_aware)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.audit_metrics --version v2 --input /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv --output-suffix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware --validity /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_gemini_flash_lite_core_full_audit.csv
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_flagged_cases_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv
+
+## 11. stereotype_audit_fairness_aware
+Stereotype audit (fairness_aware)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.stereotype_audit --outputs /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv --output-suffix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_per_output_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_group_summary_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv
+
+## 12. statistical_analysis_fairness_aware
+Statistical analysis (fairness_aware)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.statistical_analysis --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv --output-suffix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware --bootstrap-samples 2000 --seed 42
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/statistical_group_effects_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/statistical_analysis_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.md
+
+## 13. qualitative_cases_fairness_aware
+Qualitative cases (fairness_aware)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.qualitative_cases --outputs /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv --flagged /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_flagged_cases_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv --top-n 10 --output-suffix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/qualitative_case_studies_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv
+
+## 14. run_batch_demographic_blind
+V2 model batch (demographic_blind)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v2 --prompt-mode demographic_blind --output-prefix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind --repetitions 1 --temperature 0.0
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv
+
+## 15. audit_metrics_demographic_blind
+V2 audit metrics (demographic_blind)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.audit_metrics --version v2 --input /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv --output-suffix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind --validity /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_gemini_flash_lite_core_full_audit.csv
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_flagged_cases_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv
+
+## 16. stereotype_audit_demographic_blind
+Stereotype audit (demographic_blind)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.stereotype_audit --outputs /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv --output-suffix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_per_output_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_group_summary_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv
+
+## 17. statistical_analysis_demographic_blind
+Statistical analysis (demographic_blind)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.statistical_analysis --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv --output-suffix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind --bootstrap-samples 2000 --seed 42
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/statistical_group_effects_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/statistical_analysis_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.md
+
+## 18. qualitative_cases_demographic_blind
+Qualitative cases (demographic_blind)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.qualitative_cases --outputs /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv --flagged /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_flagged_cases_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv --top-n 10 --output-suffix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/qualitative_case_studies_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv
+
+## 19. mitigation_comparison
+Mitigation comparison across prompt modes
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.mitigation_comparison --baseline /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv --fairness-aware /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_fairness_aware.csv --demographic-blind /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_demographic_blind.csv --output /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/mitigation_comparison_gemini_flash_lite_core_full_audit.csv
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/mitigation_comparison_gemini_flash_lite_core_full_audit.csv
+
+## 20. narrative_robustness
+Narrative-framing robustness (baseline pairwise)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.narrative_robustness --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv --validity /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_gemini_flash_lite_core_full_audit.csv --output-suffix gemini_flash_lite_core_full_audit
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/narrative_robustness_summary_gemini_flash_lite_core_full_audit.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/narrative_robustness_gemini_flash_lite_core_full_audit.md
+
+## 21. run_batch_grounded
+V3 grounded model batch
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v3 --prompt-mode grounded --top-k-sources 5 --output-prefix gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v3_grounded --repetitions 1
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v3_grounded.csv
+
+## 22. hallucination_audit
+Hallucination / grounding audit
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.hallucination_audit --input /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v3_grounded.csv --output-suffix gemini_flash_lite_core_full_audit_grounded
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/hallucination_audit_per_output_gemini_flash_lite_core_full_audit_grounded.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/hallucination_audit_gemini_flash_lite_core_full_audit_grounded.md
+
+## 23. human_review_template
+Human review template
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.human_review generate-template --qualitative-cases /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/qualitative_case_studies_gemini_flash_lite_core_full_audit_gemini-2.5-flash-lite_v2_baseline.csv --validity /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_gemini_flash_lite_core_full_audit.csv --output /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/human_review_template_gemini_flash_lite_core_full_audit.csv
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/human_review_template_gemini_flash_lite_core_full_audit.csv
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/human_review_rubric.md
+
+## 24. final_report
+Final audit report (auto-discovery)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.final_report --auto
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/final_audit_report.md

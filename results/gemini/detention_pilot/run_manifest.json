@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-05-30T12:24:52.777734+00:00",
+  "config_path": "configs/gemini_detention_pilot.yaml",
+  "dry_run_manifest": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_pilot/dry_run_manifest.json",
+  "model": "gemini-2.5-flash-lite",
+  "prompt_modes": [
+    "baseline",
+    "fairness_aware",
+    "demographic_blind"
+  ],
+  "stats": {
+    "started_at": "2026-05-30T12:20:07.649103+00:00",
+    "total_planned": 33,
+    "completed": 33,
+    "skipped_resume": 0,
+    "parse_success": 32,
+    "parse_errors": 1,
+    "finished_at": "2026-05-30T12:24:52.777709+00:00",
+    "parse_success_rate": 0.9696969696969697
+  },
+  "outputs": {
+    "parsed_outputs": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_pilot/parsed_outputs.jsonl",
+    "raw_responses": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_pilot/raw_responses.jsonl",
+    "parse_errors": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_pilot/parse_errors.jsonl",
+    "request_log_safe": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_pilot/request_log_safe.jsonl"
+  },
+  "caution": "Pilot audit signals only — not proof of unlawful discrimination. Requires human legal review."
+}

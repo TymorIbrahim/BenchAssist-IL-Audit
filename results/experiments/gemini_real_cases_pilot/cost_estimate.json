@@ -1,0 +1,8 @@
+{
+  "v2_calls": 20,
+  "v3_calls": 0,
+  "estimated_input_tokens": 24000,
+  "estimated_output_tokens": 10000,
+  "estimated_total_cost_usd": 0.0064,
+  "caution": "Pilot only \u2014 requires GEMINI_API_KEY. Not for CI."
+}

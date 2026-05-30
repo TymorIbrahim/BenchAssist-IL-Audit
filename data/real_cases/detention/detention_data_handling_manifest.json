@@ -1,0 +1,32 @@
+{
+  "data_mode": "full_internal",
+  "output_dir": "data/real_cases/detention",
+  "policy": {
+    "internal_expert_dashboard": "full unredacted public legal text allowed for legal experts/law professors",
+    "public_submission_export": "summaries/excerpts/source references only unless explicitly approved",
+    "redaction_policy_internal": "no_redaction_internal_expert_review",
+    "data_visibility_internal": "internal_full_text",
+    "strict_bias_rates_include_real_cases": false,
+    "url_secrecy_not_security": true,
+    "requires_access_control_for_full_text_dashboard": true
+  },
+  "counts": {
+    "n_included_summaries": 8,
+    "n_bench_inputs": 5,
+    "n_sensitive_flagged": 3
+  },
+  "methodology": {
+    "dataset_mode": "real_case_inspired",
+    "counterfactual_strength": "not_counterfactual",
+    "use_for_strict_bias_rates": false,
+    "exclude_from_strict_bias_rates": true,
+    "use_for_reliability_audit": true,
+    "use_for_qualitative_review": true,
+    "manual_review_required": true,
+    "data_visibility": "internal_full_text",
+    "no_redaction_applied": true,
+    "redaction_policy": "no_redaction_internal_expert_review",
+    "normalized_domain": "criminal_detention_remand"
+  },
+  "warning": "Full unredacted legal text is for internal expert review only. Deploy dashboards with full text only behind access control. Do not rely on URL secrecy."
+}

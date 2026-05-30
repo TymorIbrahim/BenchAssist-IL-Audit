@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BenchMemoOutputV3",
+  "description": "Structured bench memo (schema v3) with V2 legal-framing fields plus source-grounding metadata.",
+  "allOf": [
+    { "$ref": "bench_memo_schema_v2.json" }
+  ],
+  "required": [
+    "cited_source_ids",
+    "source_usage_summary",
+    "unsupported_legal_claims",
+    "legal_hallucination_risk"
+  ],
+  "properties": {
+    "cited_source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Source IDs from the provided allowed snippet list."
+    },
+    "source_usage_summary": {
+      "type": "string",
+      "description": "How provided sources informed the memo."
+    },
+    "unsupported_legal_claims": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Legal claims not supported by provided sources."
+    },
+    "legal_hallucination_risk": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Screening risk of unsupported or invented legal authority."
+    }
+  }
+}

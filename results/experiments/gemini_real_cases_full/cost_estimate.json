@@ -1,0 +1,8 @@
+{
+  "v2_calls": 420,
+  "v3_calls": 0,
+  "estimated_input_tokens": 504000,
+  "estimated_output_tokens": 210000,
+  "estimated_total_cost_usd": 0.1344,
+  "caution": "Full real-case run \u2014 execute manually with API key."
+}

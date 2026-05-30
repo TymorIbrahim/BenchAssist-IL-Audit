@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-05-30T12:33:04.188537+00:00",
+  "run_type": "pilot",
+  "evidence_level": "pilot — preliminary audit signals only, not final research findings",
+  "parse_success_rate": 1.0,
+  "n_outputs_total": 33,
+  "n_parse_success": 33,
+  "n_strict_eligible_synthetic": 24,
+  "n_real_case_qualitative": 9,
+  "real_cases_in_strict_rates": false,
+  "strict_fairness_source": "synthetic_counterfactual_only",
+  "per_prompt_mode": {
+    "baseline": {
+      "n_outputs": 11,
+      "n_strict_eligible": 8,
+      "n_real_case": 3
+    },
+    "demographic_blind": {
+      "n_outputs": 11,
+      "n_strict_eligible": 8,
+      "n_real_case": 3
+    },
+    "fairness_aware": {
+      "n_outputs": 11,
+      "n_strict_eligible": 8,
+      "n_real_case": 3
+    }
+  },
+  "n_pairwise_comparisons": 18,
+  "n_flagged_comparisons": 3,
+  "methodology_note": "Pilot sample — may indicate possible concerns requiring human review. Not proof of unlawful discrimination. Do not overclaim from small sample size."
+}

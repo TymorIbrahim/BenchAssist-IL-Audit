@@ -1,0 +1,80 @@
+[
+  {
+    "normalized_domain": "accessibility_disability_rights",
+    "n_outputs": 2,
+    "avg_confidence_score": 2.0,
+    "urgency_distribution": "unknown:1; high:1",
+    "recommended_action_distribution": "unknown:1; urgent_hearing:1",
+    "remedy_strength_avg": 3.0,
+    "evidence_burden_distribution": "unknown:1; low:1",
+    "credibility_framing_distribution": "unknown:1; supportive:1",
+    "rights_orientation_distribution": "unknown:1; high:1",
+    "parse_error_rate": 0.5,
+    "limitation_mentions_rate": 0.5
+  },
+  {
+    "normalized_domain": "consumer_small_claims",
+    "n_outputs": 2,
+    "avg_confidence_score": 2.0,
+    "urgency_distribution": "low:2",
+    "recommended_action_distribution": "regular_hearing:1; request_more_evidence:1",
+    "remedy_strength_avg": 1.5,
+    "evidence_burden_distribution": "low:1; high:1",
+    "credibility_framing_distribution": "neutral:2",
+    "rights_orientation_distribution": "low:2",
+    "parse_error_rate": 0.0,
+    "limitation_mentions_rate": 1.0
+  },
+  {
+    "normalized_domain": "housing",
+    "n_outputs": 4,
+    "avg_confidence_score": 1.75,
+    "urgency_distribution": "high:3; low:1",
+    "recommended_action_distribution": "urgent_hearing:2; immediate_protection:1; request_more_evidence:1",
+    "remedy_strength_avg": 3.0,
+    "evidence_burden_distribution": "medium:2; low:1; high:1",
+    "credibility_framing_distribution": "neutral:3; supportive:1",
+    "rights_orientation_distribution": "high:3; low:1",
+    "parse_error_rate": 0.0,
+    "limitation_mentions_rate": 1.0
+  },
+  {
+    "normalized_domain": "immigration_status",
+    "n_outputs": 2,
+    "avg_confidence_score": 1.5,
+    "urgency_distribution": "medium:2",
+    "recommended_action_distribution": "regular_hearing:1; request_more_evidence:1",
+    "remedy_strength_avg": 1.5,
+    "evidence_burden_distribution": "medium:1; high:1",
+    "credibility_framing_distribution": "neutral:2",
+    "rights_orientation_distribution": "medium:1; low:1",
+    "parse_error_rate": 0.0,
+    "limitation_mentions_rate": 1.0
+  },
+  {
+    "normalized_domain": "labor_employment",
+    "n_outputs": 4,
+    "avg_confidence_score": 2.0,
+    "urgency_distribution": "low:2; medium:1; high:1",
+    "recommended_action_distribution": "regular_hearing:3; temporary_relief:1",
+    "remedy_strength_avg": 2.5,
+    "evidence_burden_distribution": "medium:2; low:2",
+    "credibility_framing_distribution": "neutral:3; supportive:1",
+    "rights_orientation_distribution": "low:2; medium:1; high:1",
+    "parse_error_rate": 0.0,
+    "limitation_mentions_rate": 1.0
+  },
+  {
+    "normalized_domain": "social_benefits_welfare",
+    "n_outputs": 2,
+    "avg_confidence_score": 1.0,
+    "urgency_distribution": "medium:2",
+    "recommended_action_distribution": "request_more_evidence:2",
+    "remedy_strength_avg": 1.0,
+    "evidence_burden_distribution": "high:2",
+    "credibility_framing_distribution": "neutral:2",
+    "rights_orientation_distribution": "medium:2",
+    "parse_error_rate": 0.0,
+    "limitation_mentions_rate": 1.0
+  }
+]

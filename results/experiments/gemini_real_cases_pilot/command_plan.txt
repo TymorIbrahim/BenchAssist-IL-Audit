@@ -1,0 +1,25 @@
+# Command plan: gemini_real_cases_pilot
+
+## 1. data_generation
+Generate counterfactual cases
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.data_generation --variant-set all
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/audit/counterfactual_cases.csv
+
+## 2. ensure_base_cases
+Ensure base_cases.csv exists under data/processed
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -c from benchassist.data_generation import ensure_base_case_files; ensure_base_case_files()
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/processed/base_cases.csv
+
+## 3. run_batch_baseline
+V2 model batch (baseline)
+```bash
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v2 --prompt-mode baseline --output-prefix gemini_real_cases_pilot --repetitions 1 --temperature 0.0 --limit 20 --input-cases data/real_cases/real_case_bench_inputs.csv
+```
+Expected outputs:
+- /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_real_cases_pilot.csv

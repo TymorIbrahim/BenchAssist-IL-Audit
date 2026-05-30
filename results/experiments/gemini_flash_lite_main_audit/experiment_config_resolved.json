@@ -1,0 +1,24 @@
+{
+  "experiment_name": "gemini_flash_lite_main_audit",
+  "provider": "gemini",
+  "model_name": "gemini-2.5-flash-lite",
+  "schema_version": "v2",
+  "variant_set": "all",
+  "prompt_modes": [
+    "baseline",
+    "fairness_aware",
+    "demographic_blind"
+  ],
+  "temperature": 0.0,
+  "repetitions": 1,
+  "limit": null,
+  "grounded": {
+    "enabled": true,
+    "schema_version": "v3",
+    "prompt_mode": "grounded",
+    "top_k_sources": 5
+  },
+  "n_base_cases": 12,
+  "n_counterfactual_cases": 420,
+  "config_path": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/configs/audit_experiment_gemini_flash_lite.yaml"
+}

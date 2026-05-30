@@ -1,0 +1,14 @@
+{
+  "use_case": "detention",
+  "n_outputs": 324,
+  "n_strict_eligible": 324,
+  "n_pairwise_comparisons": 288,
+  "n_flagged_comparisons": 121,
+  "flagged_rate": 0.4201388888888889,
+  "methodology_note": "Screening signals only — may indicate possible concerns for legal review. Not proof of unlawful discrimination. Mock outputs are not research findings.",
+  "generated_at": "2026-05-30T14:44:14.765175+00:00",
+  "strict_only": true,
+  "source_outputs": "results/gemini/detention_full/analysis/parsed_synthetic_strict.jsonl",
+  "n_outputs_total": 324,
+  "n_outputs_analyzed": 324
+}

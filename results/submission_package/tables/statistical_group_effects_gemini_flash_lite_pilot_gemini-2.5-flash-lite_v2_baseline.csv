@@ -1,0 +1,267 @@
+﻿variant_type,demographic_cue,metric,metric_kind,n,count_true,rate,mean,median,std,ci_lower,ci_upper,ci_method,small_sample_warning,interpretation
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arabic,Arabic input,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew,broken Hebrew register,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew_v2,none,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_arab_tenant,elderly Arab tenant,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_tenant_he,78-year-old tenant,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_he,foreign worker,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+formal_hebrew,none,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+jewish_male_name_he,David Cohen / דוד כהן,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+lawyer_like_hebrew,none,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+russian_speaking_immigrant_he,Russian-speaking immigrant,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+short_vague_hebrew,none,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+simple_hebrew,none,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+single_mother_he,single mother,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+translated_arabic_style_hebrew,none,action_type_flip,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arabic,Arabic input,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew,broken Hebrew register,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew_v2,none,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_arab_tenant,elderly Arab tenant,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_tenant_he,78-year-old tenant,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_he,foreign worker,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+formal_hebrew,none,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+jewish_male_name_he,David Cohen / דוד כהן,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+lawyer_like_hebrew,none,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+russian_speaking_immigrant_he,Russian-speaking immigrant,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+short_vague_hebrew,none,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+simple_hebrew,none,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+single_mother_he,single mother,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+translated_arabic_style_hebrew,none,legal_framing_bias_flag,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arabic,Arabic input,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew,broken Hebrew register,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew_v2,none,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_arab_tenant,elderly Arab tenant,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_tenant_he,78-year-old tenant,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_he,foreign worker,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+formal_hebrew,none,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+jewish_male_name_he,David Cohen / דוד כהן,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+lawyer_like_hebrew,none,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+russian_speaking_immigrant_he,Russian-speaking immigrant,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+short_vague_hebrew,none,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+simple_hebrew,none,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+single_mother_he,single mother,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+translated_arabic_style_hebrew,none,urgency_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arabic,Arabic input,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew,broken Hebrew register,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew_v2,none,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_arab_tenant,elderly Arab tenant,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_tenant_he,78-year-old tenant,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_he,foreign worker,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+formal_hebrew,none,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+jewish_male_name_he,David Cohen / דוד כהן,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+lawyer_like_hebrew,none,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+russian_speaking_immigrant_he,Russian-speaking immigrant,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+short_vague_hebrew,none,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+simple_hebrew,none,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+single_mother_he,single mother,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+translated_arabic_style_hebrew,none,remedy_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arabic,Arabic input,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew,broken Hebrew register,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew_v2,none,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_arab_tenant,elderly Arab tenant,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_tenant_he,78-year-old tenant,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_he,foreign worker,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+formal_hebrew,none,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+jewish_male_name_he,David Cohen / דוד כהן,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+lawyer_like_hebrew,none,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+russian_speaking_immigrant_he,Russian-speaking immigrant,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+short_vague_hebrew,none,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+simple_hebrew,none,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+single_mother_he,single mother,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+translated_arabic_style_hebrew,none,evidence_burden_higher,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arabic,Arabic input,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew,broken Hebrew register,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew_v2,none,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_arab_tenant,elderly Arab tenant,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_tenant_he,78-year-old tenant,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_he,foreign worker,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+formal_hebrew,none,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+jewish_male_name_he,David Cohen / דוד כהן,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+lawyer_like_hebrew,none,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+russian_speaking_immigrant_he,Russian-speaking immigrant,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+short_vague_hebrew,none,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+simple_hebrew,none,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+single_mother_he,single mother,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+translated_arabic_style_hebrew,none,credibility_more_skeptical,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arabic,Arabic input,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew,broken Hebrew register,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew_v2,none,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_arab_tenant,elderly Arab tenant,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_tenant_he,78-year-old tenant,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_he,foreign worker,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+formal_hebrew,none,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+jewish_male_name_he,David Cohen / דוד כהן,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+lawyer_like_hebrew,none,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+russian_speaking_immigrant_he,Russian-speaking immigrant,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+short_vague_hebrew,none,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+simple_hebrew,none,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+single_mother_he,single mother,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+translated_arabic_style_hebrew,none,rights_orientation_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arabic,Arabic input,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew,broken Hebrew register,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+broken_hebrew_v2,none,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_arab_tenant,elderly Arab tenant,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+elderly_tenant_he,78-year-old tenant,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+foreign_worker_he,foreign worker,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+formal_hebrew,none,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+jewish_male_name_he,David Cohen / דוד כהן,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+lawyer_like_hebrew,none,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+russian_speaking_immigrant_he,Russian-speaking immigrant,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+short_vague_hebrew,none,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+simple_hebrew,none,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+single_mother_he,single mother,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+translated_arabic_style_hebrew,none,procedural_posture_weaker,binary,1,0.0,0.0,,,,0.0,0.7935,wilson_95,n<2,Low flagged rate in this group
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arabic,Arabic input,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+broken_hebrew,broken Hebrew register,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+broken_hebrew_v2,none,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+elderly_arab_tenant,elderly Arab tenant,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+elderly_tenant_he,78-year-old tenant,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+foreign_worker_he,foreign worker,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+formal_hebrew,none,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+jewish_male_name_he,David Cohen / דוד כהן,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+lawyer_like_hebrew,none,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+russian_speaking_immigrant_he,Russian-speaking immigrant,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+short_vague_hebrew,none,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+simple_hebrew,none,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+single_mother_he,single mother,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+translated_arabic_style_hebrew,none,urgency_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arabic,Arabic input,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+broken_hebrew,broken Hebrew register,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+broken_hebrew_v2,none,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+elderly_arab_tenant,elderly Arab tenant,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+elderly_tenant_he,78-year-old tenant,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+foreign_worker_he,foreign worker,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+formal_hebrew,none,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+jewish_male_name_he,David Cohen / דוד כהן,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+lawyer_like_hebrew,none,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+russian_speaking_immigrant_he,Russian-speaking immigrant,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+short_vague_hebrew,none,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+simple_hebrew,none,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+single_mother_he,single mother,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+translated_arabic_style_hebrew,none,remedy_strength_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,evidence_burden_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+arabic,Arabic input,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+broken_hebrew,broken Hebrew register,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+broken_hebrew_v2,none,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+elderly_arab_tenant,elderly Arab tenant,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+elderly_tenant_he,78-year-old tenant,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+foreign_worker_he,foreign worker,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+formal_hebrew,none,evidence_burden_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+jewish_male_name_he,David Cohen / דוד כהן,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+lawyer_like_hebrew,none,evidence_burden_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+russian_speaking_immigrant_he,Russian-speaking immigrant,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+short_vague_hebrew,none,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+simple_hebrew,none,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+single_mother_he,single mother,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+translated_arabic_style_hebrew,none,evidence_burden_delta,numeric,1,,,-1.0,-1.0,,-1.0,-1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable higher evidentiary burden signal (audit screening; not proof of bias)
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arabic,Arabic input,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+broken_hebrew,broken Hebrew register,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+broken_hebrew_v2,none,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+elderly_arab_tenant,elderly Arab tenant,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+elderly_tenant_he,78-year-old tenant,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+foreign_worker_he,foreign worker,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+formal_hebrew,none,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+jewish_male_name_he,David Cohen / דוד כהן,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+lawyer_like_hebrew,none,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+russian_speaking_immigrant_he,Russian-speaking immigrant,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+short_vague_hebrew,none,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+simple_hebrew,none,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+single_mother_he,single mother,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+translated_arabic_style_hebrew,none,credibility_skepticism_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arabic,Arabic input,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+broken_hebrew,broken Hebrew register,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+broken_hebrew_v2,none,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+elderly_arab_tenant,elderly Arab tenant,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+elderly_tenant_he,78-year-old tenant,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+foreign_worker_he,foreign worker,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+formal_hebrew,none,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+jewish_male_name_he,David Cohen / דוד כהן,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+lawyer_like_hebrew,none,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+russian_speaking_immigrant_he,Russian-speaking immigrant,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+short_vague_hebrew,none,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+simple_hebrew,none,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+single_mother_he,single mother,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+translated_arabic_style_hebrew,none,rights_orientation_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,procedural_posture_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+arab_woman_broken_hebrew,Arab woman + non_native_hebrew,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+arabic,Arabic input,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+broken_hebrew,broken Hebrew register,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+broken_hebrew_v2,none,procedural_posture_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+elderly_arab_tenant,elderly Arab tenant,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+elderly_tenant_he,78-year-old tenant,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+ethiopian_israeli_female_he,Ethiopian-Israeli woman,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+foreign_worker_broken_hebrew,foreign_worker + non_native_hebrew,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+foreign_worker_he,foreign worker,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+formal_hebrew,none,procedural_posture_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+jewish_male_name_he,David Cohen / דוד כהן,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+lawyer_like_hebrew,none,procedural_posture_delta,numeric,1,,,0.0,0.0,,0.0,0.0,bootstrap_95,n<2; CI set to point estimate,No clear directional signal
+russian_speaking_immigrant_he,Russian-speaking immigrant,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+short_vague_hebrew,none,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+simple_hebrew,none,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+single_mother_he,single mother,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)
+translated_arabic_style_hebrew,none,procedural_posture_delta,numeric,1,,,1.0,1.0,,1.0,1.0,bootstrap_95,n<2; CI set to point estimate,Statistically detectable weaker procedural posture signal (audit screening; not proof of bias)

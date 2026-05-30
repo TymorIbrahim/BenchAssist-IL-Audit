@@ -10,10 +10,12 @@ from benchassist.schemas import (
     BaseCase,
     BenchMemo,
     BenchMemoOutput,
+    BenchMemoOutputV2,
     CaseSummary,
     CounterfactualCase,
     CounterfactualPair,
     ModelRunRecord,
+    normalize_bench_memo_output,
 )
 
 
@@ -34,6 +36,28 @@ def _valid_bench_memo_output(**overrides) -> dict:
         "evidence_needed": ["lease agreement", "payment records"],
         "confidence": "high",
         "limitations": "Analysis based solely on provided summary.",
+    }
+    data.update(overrides)
+    return data
+
+
+def _valid_bench_memo_output_v2(**overrides) -> dict:
+    """Return a valid BenchMemoOutputV2 data dict with optional overrides."""
+    data = {
+        "case_summary": "Tenant reports unsafe mold and eviction threat.",
+        "legal_area": "housing",
+        "urgency": "high",
+        "recommended_action_type": "temporary_relief",
+        "remedy_strength_score": 4,
+        "evidence_burden_level": "medium",
+        "party_credibility_framing": "neutral",
+        "rights_orientation": "high",
+        "procedural_posture": "urgent_intervention",
+        "reasoning_text": "Facts suggest imminent housing harm; interim relief may be warranted.",
+        "evidence_needed": ["medical certificate", "repair requests"],
+        "risk_flags": ["possible_urgent_harm", "requires_human_review"],
+        "confidence": "medium",
+        "limitations": "Non-binding memo; human judicial review required.",
     }
     data.update(overrides)
     return data
@@ -99,6 +123,72 @@ class TestBenchMemoOutput:
         del data["evidence_needed"]
         memo = BenchMemoOutput(**data)
         assert memo.evidence_needed == []
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# BenchMemoOutputV2 tests
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+class TestBenchMemoOutputV2:
+    """Tests for the BenchMemoOutputV2 schema."""
+
+    def test_valid_output_parses(self) -> None:
+        memo = BenchMemoOutputV2(**_valid_bench_memo_output_v2())
+        assert memo.recommended_action_type == "temporary_relief"
+        assert memo.remedy_strength_score == 4
+        assert memo.procedural_posture == "urgent_intervention"
+
+    def test_invalid_recommended_action_type_fails(self) -> None:
+        with pytest.raises(ValidationError) as exc_info:
+            BenchMemoOutputV2(
+                **_valid_bench_memo_output_v2(recommended_action_type="grant_now")
+            )
+        assert "recommended_action_type" in str(exc_info.value)
+
+    def test_invalid_remedy_strength_score_fails(self) -> None:
+        with pytest.raises(ValidationError) as exc_info:
+            BenchMemoOutputV2(**_valid_bench_memo_output_v2(remedy_strength_score=6))
+        assert "remedy_strength_score" in str(exc_info.value)
+
+
+class TestNormalizeBenchMemoOutput:
+    """Tests for normalize_bench_memo_output backward compatibility."""
+
+    def test_normalizes_old_schema_dict(self) -> None:
+        normalized = normalize_bench_memo_output(_valid_bench_memo_output())
+        assert normalized["recommended_action_type"] in {
+            "reject",
+            "request_more_evidence",
+            "regular_hearing",
+            "urgent_hearing",
+            "temporary_relief",
+            "immediate_protection",
+        }
+        assert 0 <= normalized["remedy_strength_score"] <= 5
+        assert normalized["evidence_burden_level"] == "medium"
+        assert normalized["party_credibility_framing"] == "neutral"
+        assert normalized["reasoning_text"] == (
+            "Lease clause 7 was clearly violated by the defendant."
+        )
+
+    def test_normalizes_old_schema_model(self) -> None:
+        memo = BenchMemoOutput(**_valid_bench_memo_output())
+        normalized = normalize_bench_memo_output(memo)
+        assert normalized["urgency"] == "medium"
+        assert normalized["confidence"] == "high"
+
+    def test_normalizes_new_schema_dict(self) -> None:
+        normalized = normalize_bench_memo_output(_valid_bench_memo_output_v2())
+        assert normalized["recommended_action_type"] == "temporary_relief"
+        assert normalized["remedy_strength_score"] == 4
+        assert normalized["procedural_posture"] == "urgent_intervention"
+
+    def test_normalizes_new_schema_model(self) -> None:
+        memo = BenchMemoOutputV2(**_valid_bench_memo_output_v2())
+        normalized = normalize_bench_memo_output(memo)
+        assert normalized["rights_orientation"] == "high"
+        assert normalized["evidence_needed"] == ["medical certificate", "repair requests"]
 
 
 # ═══════════════════════════════════════════════════════════════════════════

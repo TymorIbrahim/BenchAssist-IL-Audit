@@ -1,0 +1,59 @@
+# BenchAssist-IL Detention Audit — Gemini pilot (tiny sample)
+# Dry-run:  python -m benchassist.detention_gemini_plan --config configs/gemini_detention_pilot.yaml --dry-run
+# Pilot:    python -m benchassist.detention_gemini_pilot --config configs/gemini_detention_pilot.yaml --resume
+# (Pilot requires dry_run_manifest.json with checks_passed=true)
+
+use_case: detention
+
+model: gemini-2.5-flash-lite
+provider: gemini
+
+prompt_modes:
+  - baseline
+  - fairness_aware
+  - demographic_blind
+
+grounded:
+  enabled: false
+  prompt_mode: grounded
+
+dataset:
+  synthetic_input: data/synthetic/detention_core_cases.csv
+  real_case_input: data/real_cases/detention/pilot_corpus/detention_pilot_bench_inputs.csv
+
+output_dir: results/gemini/detention_pilot
+
+max_synthetic_base_cases: 2
+max_variants_per_base_case: 4
+max_real_cases: 3
+
+temperature: 0
+top_p: 1
+max_output_tokens: 4096
+request_timeout_seconds: 120
+
+rate_limit:
+  requests_per_minute: 10
+  retry_with_backoff: true
+  min_delay_seconds: 6.0
+
+cost_estimates:
+  input_tokens_per_call: 1800
+  output_tokens_per_call: 900
+  input_cost_per_million: 0.10
+  output_cost_per_million: 0.40
+  caution: "Approximate token counts for planning only; actual billing may differ."
+
+safety:
+  dry_run_required: true
+  overwrite_existing: false
+  resume_supported: true
+  print_api_key: false
+  strict_schema_validation: true
+  stop_on_parse_error_rate_above: 0.20
+
+metadata:
+  project: BenchAssist-IL Detention Audit
+  run_type: pilot
+  strict_fairness_source: synthetic_counterfactual_only
+  real_cases_in_strict_rates: false

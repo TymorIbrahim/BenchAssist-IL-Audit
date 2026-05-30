@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-05-30T12:08:33.943487+00:00",
+  "config_path": "configs/gemini_detention_pilot.yaml",
+  "checks_passed": true,
+  "checks": [
+    {
+      "name": "use_case",
+      "ok": true,
+      "detail": "use_case=detention"
+    },
+    {
+      "name": "model",
+      "ok": true,
+      "detail": "model=gemini-2.5-flash-lite"
+    },
+    {
+      "name": "model_is_target",
+      "ok": true,
+      "detail": "Expected gemini-2.5-flash-lite; got gemini-2.5-flash-lite"
+    },
+    {
+      "name": "api_key",
+      "ok": true,
+      "detail": "API key verified in environment — value never logged or printed.",
+      "key_info": {
+        "api_key_present": true,
+        "api_key_source": "GEMINI_API_KEY",
+        "api_key_value": null,
+        "note": "API key verified in environment — value never logged or printed."
+      }
+    },
+    {
+      "name": "synthetic_input",
+      "ok": true,
+      "detail": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/synthetic/detention_core_cases.csv"
+    },
+    {
+      "name": "real_case_input",
+      "ok": true,
+      "detail": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/real_cases/detention/pilot_corpus/detention_pilot_bench_inputs.csv"
+    },
+    {
+      "name": "pilot_row_selection",
+      "ok": true,
+      "detail": "11 pilot rows selected"
+    },
+    {
+      "name": "strict_fairness_policy",
+      "ok": true,
+      "detail": "Real cases excluded from strict fairness rates by policy."
+    },
+    {
+      "name": "real_case_strict_exclusion",
+      "ok": true,
+      "detail": "3 real-case rows marked strict-excluded."
+    },
+    {
+      "name": "output_collision",
+      "ok": true,
+      "detail": "No blocking output collision (or resume allowed).",
+      "existing": []
+    },
+    {
+      "name": "overwrite_disabled",
+      "ok": true,
+      "detail": "overwrite_existing=false — existing results protected."
+    },
+    {
+      "name": "dry_run_required",
+      "ok": true,
+      "detail": "Pilot runner will require this manifest."
+    }
+  ],
+  "model": "gemini-2.5-flash-lite",
+  "provider": "gemini",
+  "prompt_modes": [
+    "baseline",
+    "fairness_aware",
+    "demographic_blind"
+  ],
+  "output_dir": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_pilot",
+  "row_counts": {
+    "pilot_total": 11,
+    "synthetic_selected": 8,
+    "real_case_selected": 3,
+    "strict_eligible": 8,
+    "strict_excluded": 3,
+    "per_prompt_mode": {
+      "baseline": 11,
+      "fairness_aware": 11,
+      "demographic_blind": 11
+    }
+  },
+  "request_plan": {
+    "total_requests": 33,
+    "estimated_input_tokens": 32427,
+    "estimated_output_tokens": 29700,
+    "estimated_cost_usd": 0.0151,
+    "cost_caution": "Approximate token counts for planning only; actual billing may differ."
+  },
+  "rate_limit": {
+    "requests_per_minute": 10,
+    "min_delay_seconds": 6.0,
+    "estimated_minutes": 3.3
+  },
+  "metadata": {
+    "project": "BenchAssist-IL Detention Audit",
+    "run_type": "pilot",
+    "strict_fairness_source": "synthetic_counterfactual_only",
+    "real_cases_in_strict_rates": false
+  },
+  "strict_fairness_source": "synthetic_counterfactual_only",
+  "real_cases_in_strict_rates": false,
+  "resume_supported": true,
+  "caution": "Dry-run only — no Gemini API calls made. Pilot results are preliminary audit signals, not proof of unlawful discrimination.",
+  "report_path": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/gemini_detention_pilot_dry_run_report.md"
+}

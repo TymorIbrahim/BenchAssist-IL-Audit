@@ -21,6 +21,10 @@ import typer
 from tqdm import tqdm
 
 from benchassist.config import get_settings
+from benchassist.output_naming import (
+    build_run_group_id,
+    resolve_model_output_basename,
+)
 from benchassist.schemas import CaseSummary, CounterfactualCase, CounterfactualPair
 
 app = typer.Typer(
@@ -32,7 +36,7 @@ app = typer.Typer(
 
 logger = logging.getLogger(__name__)
 
-_PARSED_OUTPUT_FIELDS = (
+_PARSED_OUTPUT_FIELDS_V1 = (
     "legal_area",
     "urgency",
     "recommended_direction",
@@ -42,6 +46,32 @@ _PARSED_OUTPUT_FIELDS = (
     "confidence",
     "limitations",
 )
+
+_PARSED_OUTPUT_FIELDS_V2 = (
+    "legal_area",
+    "urgency",
+    "recommended_action_type",
+    "remedy_strength_score",
+    "evidence_burden_level",
+    "party_credibility_framing",
+    "rights_orientation",
+    "procedural_posture",
+    "reasoning_text",
+    "evidence_needed",
+    "risk_flags",
+    "confidence",
+    "limitations",
+)
+
+_PARSED_OUTPUT_FIELDS_V3 = _PARSED_OUTPUT_FIELDS_V2 + (
+    "cited_source_ids",
+    "source_usage_summary",
+    "unsupported_legal_claims",
+    "legal_hallucination_risk",
+)
+
+# Backward-compatible alias
+_PARSED_OUTPUT_FIELDS = _PARSED_OUTPUT_FIELDS_V1
 
 
 def _setup_logging() -> None:
@@ -57,12 +87,15 @@ def _setup_logging() -> None:
 def _apply_cli_env_overrides(
     provider: str | None = None,
     temperature: float | None = None,
+    model_name: str | None = None,
 ) -> None:
     """Apply CLI overrides to environment variables and refresh settings cache."""
     if provider is not None:
         os.environ["MODEL_PROVIDER"] = provider
     if temperature is not None:
         os.environ["TEMPERATURE"] = str(temperature)
+    if model_name is not None:
+        os.environ["MODEL_NAME"] = model_name
     get_settings.cache_clear()
 
 
@@ -96,8 +129,20 @@ def _audit_dir() -> Path:
 # ---------------------------------------------------------------------------
 
 
-def _empty_parsed_fields() -> dict[str, None]:
-    return {field: None for field in _PARSED_OUTPUT_FIELDS}
+def _schema_fields(schema_version: str) -> tuple[str, ...]:
+    version = schema_version.strip().lower()
+    if version == "v3":
+        return _PARSED_OUTPUT_FIELDS_V3
+    if version == "v2":
+        return _PARSED_OUTPUT_FIELDS_V2
+    return _PARSED_OUTPUT_FIELDS_V1
+
+
+def _empty_parsed_fields(schema_version: str = "v1") -> dict[str, None]:
+    fields = _schema_fields(schema_version)
+    empty: dict[str, None] = {"case_summary": None}
+    empty.update({field: None for field in fields})
+    return empty
 
 
 def _build_run_record(
@@ -106,50 +151,123 @@ def _build_run_record(
     raw_output: str,
     parsed: Any,
     parse_error: str | None,
+    provider: str,
     model_name: str,
+    temperature: float,
+    run_group_id: str,
     timestamp: str,
+    schema_version: str = "v1",
+    prompt_mode: str = "baseline",
+    repetition_index: int = 1,
+    blinded_input_text: str = "",
+    blinding_metadata: dict | None = None,
+    retrieved_source_ids: list[str] | None = None,
 ) -> dict[str, Any]:
     """Flatten a model run into a serialisable output row."""
+    from benchassist.schemas import BenchMemoOutputV2, BenchMemoOutputV3
+
     record: dict[str, Any] = {
         "run_id": str(uuid.uuid4()),
+        "run_group_id": run_group_id,
         "case_id": case.case_id,
         "variant_id": case.variant_id,
         "variant_type": case.variant_type,
         "demographic_cue": case.demographic_cue,
         "language": case.language,
         "input_text": case.input_text,
+        "blinded_input_text": blinded_input_text or case.input_text,
+        "blinding_metadata": json.dumps(blinding_metadata or {}, ensure_ascii=False),
         "raw_output": raw_output,
         "parse_error": parse_error,
+        "provider": provider,
         "model_name": model_name,
+        "temperature": temperature,
         "timestamp": timestamp,
+        "schema_version": schema_version,
+        "prompt_mode": prompt_mode,
+        "repetition_index": repetition_index,
+        "retrieved_source_ids": json.dumps(
+            retrieved_source_ids or [], ensure_ascii=False
+        ),
     }
+    parsed_fields = _schema_fields(schema_version)
     if parsed is not None:
-        for field in _PARSED_OUTPUT_FIELDS:
-            record[field] = getattr(parsed, field)
+        record["case_summary"] = getattr(parsed, "case_summary", None)
+        for field in parsed_fields:
+            value = getattr(parsed, field, None)
+            if field in {"evidence_needed", "risk_flags", "cited_source_ids", "unsupported_legal_claims"}:
+                if isinstance(value, list):
+                    value = json.dumps(value, ensure_ascii=False)
+            record[field] = value
     else:
-        record.update(_empty_parsed_fields())
+        record.update(_empty_parsed_fields(schema_version))
+    if isinstance(parsed, (BenchMemoOutputV2, BenchMemoOutputV3)):
+        record["reasoning"] = parsed.reasoning_text
+        record["recommended_direction"] = parsed.recommended_action_type
+        record["recommended_action"] = parsed.recommended_action_type
+
+    # Dataset layer metadata (preserved for real-case-inspired runs)
+    meta_fields = (
+        "dataset_mode",
+        "source_type",
+        "source_dataset",
+        "source_id",
+        "source_domain",
+        "normalized_domain",
+        "source_license",
+        "is_synthetic",
+        "is_real_case_inspired",
+        "counterfactual_strength",
+        "use_for_strict_bias_rates",
+        "use_for_reliability_audit",
+        "legal_area",
+        "license_note",
+        "attribution_note",
+        "source_note",
+    )
+    for field in meta_fields:
+        if hasattr(case, field):
+            val = getattr(case, field)
+            if val in (None, ""):
+                continue
+            existing = record.get(field)
+            if existing not in (None, "") and field in parsed_fields:
+                continue
+            record[field] = val
     return record
 
 
-def _save_model_outputs(records: list[dict[str, Any]], output_dir: Path) -> tuple[Path, Path]:
+def _save_model_outputs(
+    records: list[dict[str, Any]],
+    output_dir: Path,
+    *,
+    basename: str = "model_outputs",
+) -> tuple[Path, Path]:
     """Write batch results to JSONL and CSV files."""
     output_dir.mkdir(parents=True, exist_ok=True)
-    jsonl_path = output_dir / "model_outputs.jsonl"
-    csv_path = output_dir / "model_outputs.csv"
+    jsonl_path = output_dir / f"{basename}.jsonl"
+    csv_path = output_dir / f"{basename}.csv"
 
     with open(jsonl_path, "w", encoding="utf-8") as fh:
         for record in records:
             fh.write(json.dumps(record, ensure_ascii=False) + "\n")
 
     df = pd.DataFrame(records)
-    if "evidence_needed" in df.columns:
-        df["evidence_needed"] = df["evidence_needed"].apply(
-            lambda value: (
-                json.dumps(value, ensure_ascii=False)
-                if isinstance(value, list)
-                else value
+    for list_column in (
+        "evidence_needed",
+        "risk_flags",
+        "cited_source_ids",
+        "unsupported_legal_claims",
+        "retrieved_source_ids",
+    ):
+        if list_column in df.columns:
+            df[list_column] = df[list_column].apply(
+                lambda value: (
+                    json.dumps(value, ensure_ascii=False)
+                    if isinstance(value, list)
+                    else value
+                )
             )
-        )
     df.to_csv(csv_path, index=False, encoding="utf-8-sig")
     return jsonl_path, csv_path
 
@@ -159,18 +277,33 @@ def run_model_batch(
     limit: int | None = None,
     output_dir: Path | None = None,
     temperature: float | None = None,
+    model_name: str | None = None,
+    schema_version: str = "v1",
+    prompt_mode: str = "baseline",
+    output_prefix: str | None = None,
+    repetitions: int = 1,
+    mock_unstable: bool = False,
+    top_k_sources: int = 5,
+    input_cases: Path | None = None,
 ) -> list[dict[str, Any]]:
     """Run counterfactual cases through the model and save structured outputs.
 
     Ensures base and counterfactual datasets exist, loads audit cases, invokes
-    the configured model client, parses responses, and writes
-    ``model_outputs.jsonl`` and ``model_outputs.csv``.
+    the configured model client, parses responses, and writes output CSV/JSONL.
 
     Args:
-        provider: ``mock`` or ``gemini``.
+        provider: ``mock``, ``gemini``, or ``openai``.
         limit: Optional cap on the number of cases processed.
         output_dir: Directory for output files (default: ``results/outputs``).
         temperature: Optional sampling temperature override.
+        model_name: Optional model name override for the provider.
+        schema_version: ``v1`` (default), ``v2``, or ``v3`` (requires grounded mode).
+        prompt_mode: ``baseline``, ``fairness_aware``, ``demographic_blind``, or ``grounded``.
+        top_k_sources: Sources to retrieve for grounded mode (default 5).
+        output_prefix: Optional basename override for output files.
+        repetitions: Number of repeated runs per input case (default 1).
+        mock_unstable: Simulate deterministic mock variation across repetitions.
+        input_cases: Optional CSV/JSONL of cases (synthetic or real-case-inspired).
 
     Returns:
         List of output row dicts written to disk.
@@ -178,51 +311,127 @@ def run_model_batch(
     from benchassist.data_generation import (
         ensure_base_case_files,
         ensure_counterfactual_case_files,
+        load_cases_from_path,
         load_counterfactual_cases,
     )
     from benchassist.model_client import generate_with_retry, get_model_client
-    from benchassist.prompt_builder import build_counterfactual_messages
+    from benchassist.prompt_builder import build_prompt_bundle
 
-    _apply_cli_env_overrides(provider=provider, temperature=temperature)
+    _apply_cli_env_overrides(
+        provider=provider,
+        temperature=temperature,
+        model_name=model_name,
+    )
     settings = get_settings()
 
-    ensure_base_case_files()
-    ensure_counterfactual_case_files()
-
-    cases = load_counterfactual_cases()
+    if input_cases is not None:
+        cases = load_cases_from_path(input_cases)
+    else:
+        ensure_base_case_files()
+        ensure_counterfactual_case_files()
+        cases = load_counterfactual_cases()
     if limit is not None:
         cases = cases[:limit]
 
-    client = get_model_client(provider=provider)
-    model_name = settings.MODEL_NAME
+    resolved_provider = provider.strip().lower()
+    resolved_schema = schema_version.strip().lower()
+    resolved_prompt_mode = prompt_mode.strip().lower()
+    run_repetitions = max(1, repetitions)
+    resolved_temperature = (
+        settings.TEMPERATURE if temperature is None else temperature
+    )
+    if resolved_provider == "mock":
+        resolved_model_name = model_name or "mock-benchassist"
+    elif resolved_provider == "gemini":
+        resolved_model_name = model_name or settings.MODEL_NAME
+        if resolved_model_name == "mock-benchassist":
+            resolved_model_name = "gemini-2.5-flash-lite"
+    elif resolved_provider == "openai":
+        resolved_model_name = model_name or settings.MODEL_NAME
+        if resolved_model_name == "mock-benchassist":
+            resolved_model_name = "gpt-4o-mini"
+    else:
+        resolved_model_name = model_name or settings.MODEL_NAME
+
+    client = get_model_client(
+        provider=resolved_provider,
+        model_name=resolved_model_name,
+        schema_version=resolved_schema,
+        prompt_mode=resolved_prompt_mode,
+        mock_unstable=mock_unstable,
+        temperature=resolved_temperature,
+    )
+    if hasattr(client, "model_name"):
+        resolved_model_name = client.model_name
+
+    run_started_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S")
+    run_group_id = build_run_group_id(
+        model_name=resolved_model_name,
+        schema_version=resolved_schema,
+        prompt_mode=resolved_prompt_mode,
+        timestamp=run_started_at,
+    )
+
     out_dir = output_dir or _outputs_dir()
+    basename = resolve_model_output_basename(
+        provider=resolved_provider,
+        model_name=resolved_model_name,
+        schema_version=resolved_schema,
+        prompt_mode=resolved_prompt_mode,
+        output_prefix=output_prefix,
+    )
 
     import time
 
     records: list[dict[str, Any]] = []
-    gemini_pacing_s = 4.0 if provider == "gemini" else 0.0
+    gemini_pacing_s = 4.0 if resolved_provider == "gemini" else 0.0
     for case in tqdm(cases, desc="Model batch"):
-        messages = build_counterfactual_messages(case)
-        try:
-            raw_output, parsed, parse_error = generate_with_retry(client, messages)
-        except Exception as exc:
-            logger.error("Model call failed for %s: %s", case.variant_id, exc)
-            raw_output, parsed, parse_error = "", None, str(exc)
-        timestamp = datetime.now(timezone.utc).isoformat()
-        records.append(
-            _build_run_record(
-                case,
-                raw_output=raw_output,
-                parsed=parsed,
-                parse_error=parse_error,
-                model_name=model_name,
-                timestamp=timestamp,
-            )
+        prompt_bundle = build_prompt_bundle(
+            case,
+            schema_version=resolved_schema,
+            prompt_mode=resolved_prompt_mode,
+            top_k_sources=top_k_sources,
         )
-        if gemini_pacing_s:
-            time.sleep(gemini_pacing_s)
+        messages = prompt_bundle.messages
+        for repetition_index in range(1, run_repetitions + 1):
+            if hasattr(client, "set_repetition_index"):
+                client.set_repetition_index(repetition_index)
+            try:
+                raw_output, parsed, parse_error = generate_with_retry(client, messages)
+            except Exception as exc:
+                logger.error(
+                    "Model call failed for %s (rep %d): %s",
+                    case.variant_id,
+                    repetition_index,
+                    exc,
+                )
+                raw_output, parsed, parse_error = "", None, str(exc)
+            timestamp = datetime.now(timezone.utc).isoformat()
+            records.append(
+                _build_run_record(
+                    case,
+                    raw_output=raw_output,
+                    parsed=parsed,
+                    parse_error=parse_error,
+                    provider=resolved_provider,
+                    model_name=resolved_model_name,
+                    temperature=resolved_temperature,
+                    run_group_id=run_group_id,
+                    timestamp=timestamp,
+                    schema_version=resolved_schema,
+                    prompt_mode=resolved_prompt_mode,
+                    repetition_index=repetition_index,
+                    blinded_input_text=prompt_bundle.blinded_input_text,
+                    blinding_metadata=prompt_bundle.blinding_metadata,
+                    retrieved_source_ids=list(prompt_bundle.retrieved_source_ids),
+                )
+            )
+            if gemini_pacing_s:
+                time.sleep(gemini_pacing_s)
 
-    jsonl_path, csv_path = _save_model_outputs(records, out_dir)
+    jsonl_path, csv_path = _save_model_outputs(
+        records, out_dir, basename=basename
+    )
     logger.info("Wrote %d records to %s and %s", len(records), jsonl_path, csv_path)
     return records
 
@@ -238,7 +447,12 @@ def main(
     provider: str = typer.Option(
         "mock",
         "--provider",
-        help="Model provider: mock or gemini.",
+        help="Model provider: mock, gemini, or openai.",
+    ),
+    model_name: Optional[str] = typer.Option(
+        None,
+        "--model-name",
+        help="Provider model name override (e.g. gemini-2.5-flash-lite).",
     ),
     limit: Optional[int] = typer.Option(
         None,
@@ -255,27 +469,104 @@ def main(
         "--temperature",
         help="Sampling temperature override for generative models.",
     ),
+    schema_version: str = typer.Option(
+        "v1",
+        "--schema-version",
+        help="Output schema version: v1 (default) or v2.",
+    ),
+    prompt_mode: str = typer.Option(
+        "baseline",
+        "--prompt-mode",
+        help="Prompt mode: baseline (default), fairness_aware, or demographic_blind (requires v2).",
+    ),
+    output_prefix: Optional[str] = typer.Option(
+        None,
+        "--output-prefix",
+        help="Override output file basename (default derives from schema/prompt mode).",
+    ),
+    repetitions: int = typer.Option(
+        1,
+        "--repetitions",
+        min=1,
+        help="Number of repeated model runs per input case (default: 1).",
+    ),
+    mock_unstable: bool = typer.Option(
+        False,
+        "--mock-unstable",
+        help="Simulate small deterministic mock output variation across repetitions.",
+    ),
+    top_k_sources: int = typer.Option(
+        5,
+        "--top-k-sources",
+        min=1,
+        help="Number of toy legal sources to retrieve for grounded mode.",
+    ),
+    input_cases: Optional[Path] = typer.Option(
+        None,
+        "--input-cases",
+        help="Optional CSV/JSONL input cases file (synthetic or real-case-inspired).",
+    ),
 ) -> None:
     """Run the counterfactual model batch (default when no sub-command is given)."""
     if ctx.invoked_subcommand is not None:
         return
 
     _setup_logging()
-    if provider not in {"mock", "gemini"}:
-        typer.echo(f"✗ Unknown provider {provider!r}. Use 'mock' or 'gemini'.", err=True)
+    allowed_providers = {"mock", "gemini", "openai"}
+    if provider not in allowed_providers:
+        typer.echo(
+            f"✗ Unknown provider {provider!r}. Use one of: "
+            f"{', '.join(sorted(allowed_providers))}.",
+            err=True,
+        )
         raise typer.Exit(code=1)
 
-    typer.echo(f"Running model batch (provider={provider}, limit={limit or 'all'}) …")
+    try:
+        from benchassist.prompt_builder import _resolve_schema_and_prompt
+
+        _resolve_schema_and_prompt(schema_version, prompt_mode)
+        basename = resolve_model_output_basename(
+            provider=provider,
+            model_name=(
+                model_name
+                if model_name
+                else (
+                    "mock-benchassist"
+                    if provider == "mock"
+                    else get_settings().MODEL_NAME
+                )
+            ),
+            schema_version=schema_version,
+            prompt_mode=prompt_mode,
+            output_prefix=output_prefix,
+        )
+    except ValueError as exc:
+        typer.echo(f"✗ {exc}", err=True)
+        raise typer.Exit(code=1) from exc
+
+    typer.echo(
+        f"Running model batch (provider={provider}, model={model_name or 'default'}, "
+        f"schema={schema_version}, prompt_mode={prompt_mode}, "
+        f"repetitions={repetitions}, limit={limit or 'all'}) …"
+    )
     records = run_model_batch(
         provider=provider,
         limit=limit,
         output_dir=output_dir,
         temperature=temperature,
+        model_name=model_name,
+        schema_version=schema_version,
+        prompt_mode=prompt_mode,
+        output_prefix=output_prefix,
+        repetitions=repetitions,
+        mock_unstable=mock_unstable,
+        top_k_sources=top_k_sources,
+        input_cases=input_cases,
     )
     resolved_out = output_dir or _outputs_dir()
     typer.echo(f"✓ {len(records)} records written:")
-    typer.echo(f"  → {resolved_out / 'model_outputs.jsonl'}")
-    typer.echo(f"  → {resolved_out / 'model_outputs.csv'}")
+    typer.echo(f"  → {resolved_out / f'{basename}.jsonl'}")
+    typer.echo(f"  → {resolved_out / f'{basename}.csv'}")
 
 
 # ---------------------------------------------------------------------------
@@ -441,6 +732,84 @@ def audit() -> None:
         raise typer.Exit(code=1)
 
     paths = run_counterfactual_audit(model_outputs_path=model_outputs)
+    typer.echo("✓ Audit tables saved:")
+    for name, path in paths.items():
+        typer.echo(f"  → {path}")
+
+    flagged = paths["flagged_cases"]
+    import pandas as pd
+
+    flagged_count = len(pd.read_csv(flagged))
+    typer.echo(f"\n  Flagged variant rows: {flagged_count}")
+
+
+@app.command("audit-metrics")
+def audit_metrics(
+    version: str = typer.Option(
+        "v1",
+        "--version",
+        "-V",
+        help="Audit metrics version: v1 (default) or v2.",
+    ),
+    input_path: Optional[Path] = typer.Option(
+        None,
+        "--input",
+        "-i",
+        help="Path to model_outputs.csv or model_outputs.jsonl.",
+    ),
+    tables_dir: Optional[Path] = typer.Option(
+        None,
+        "--tables-dir",
+        help="Directory for output tables (default: results/tables).",
+    ),
+    output_suffix: Optional[str] = typer.Option(
+        None,
+        "--output-suffix",
+        help="Optional suffix for V2 output table filenames (e.g. baseline, fairness_aware).",
+    ),
+) -> None:
+    """Compute counterfactual audit metrics (v1 or v2 legal-framing metrics)."""
+    _setup_logging()
+    settings = get_settings()
+    resolved_input = input_path or (_outputs_dir() / "model_outputs.csv")
+    resolved_tables = tables_dir or (_tables_dir())
+
+    if not resolved_input.exists():
+        typer.echo(f"✗ Model outputs not found: {resolved_input}", err=True)
+        raise typer.Exit(code=1)
+
+    version_normalized = version.strip().lower()
+    if version_normalized == "v2":
+        from benchassist.audit_metrics_v2 import run_v2_counterfactual_audit
+
+        result = run_v2_counterfactual_audit(
+            model_outputs_path=resolved_input,
+            tables_dir=resolved_tables,
+            output_suffix=output_suffix,
+        )
+        typer.echo("✓ V2 audit tables saved:")
+        for name, path in result["tables"].items():
+            typer.echo(f"  → {path}")
+        typer.echo("\n✓ V2 charts saved:")
+        for name, path in result["charts"].items():
+            typer.echo(f"  → {path}")
+        typer.echo(
+            f"\n  Outputs loaded:       {result['outputs_loaded']}\n"
+            f"  Pairwise comparisons: {result['pairwise_rows']}\n"
+            f"  Flagged cases:        {result['flagged_rows']}"
+        )
+        return
+
+    if version_normalized != "v1":
+        typer.echo(f"✗ Unknown version {version!r}. Use 'v1' or 'v2'.", err=True)
+        raise typer.Exit(code=1)
+
+    from benchassist.audit_metrics import run_counterfactual_audit
+
+    paths = run_counterfactual_audit(
+        model_outputs_path=resolved_input,
+        tables_dir=resolved_tables,
+    )
     typer.echo("✓ Audit tables saved:")
     for name, path in paths.items():
         typer.echo(f"  → {path}")

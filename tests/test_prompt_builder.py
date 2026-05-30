@@ -8,6 +8,7 @@ from benchassist.data_generation import create_base_cases, create_counterfactual
 from benchassist.prompt_builder import (
     build_counterfactual_messages,
     build_counterfactual_user_prompt,
+    build_prompt,
     load_system_prompt,
 )
 
@@ -82,3 +83,19 @@ class TestCounterfactualPrompts:
         system = messages[0]["content"]
         assert "non-binding" in system.lower()
         assert "must not claim to replace the judge" in system
+
+
+class TestSchemaVersionPrompts:
+    def test_build_prompt_v2_includes_v2_fields(self, sample_counterfactual) -> None:
+        messages = build_prompt(sample_counterfactual, schema_version="v2")
+        system = messages[0]["content"]
+        assert "BenchMemoOutputV2" in system
+        assert "recommended_action_type" in system
+        assert "remedy_strength_score" in system
+        assert "party_credibility_framing" in system
+        assert "procedural_posture" in system
+
+    def test_load_system_prompt_v2(self) -> None:
+        prompt = load_system_prompt(schema_version="v2")
+        assert "recommended_action_type" in prompt
+        assert "remedy_strength_score" in prompt

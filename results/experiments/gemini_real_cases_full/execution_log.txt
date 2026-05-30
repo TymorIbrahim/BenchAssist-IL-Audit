@@ -1,0 +1,7 @@
+# Execution log: gemini_real_cases_full
+Started: 2026-05-30T08:57:33.954481+00:00
+
+2026-05-30T08:57:33.954738+00:00 SKIPPED data_generation
+2026-05-30T08:57:33.954840+00:00 SKIPPED ensure_base_cases
+2026-05-30T08:57:33.954936+00:00 STARTED /Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v2 --prompt-mode baseline --output-prefix gemini_real_cases_full --repetitions 1 --temperature 0.0 --input-cases data/real_cases/real_case_bench_inputs.csv
+2026-05-30T08:59:38.999684+00:00 SUCCESS rc=0

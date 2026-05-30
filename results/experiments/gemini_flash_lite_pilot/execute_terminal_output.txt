@@ -1,0 +1,851 @@
+ERROR: Output files already exist. Use --resume to skip completed steps or --force to allow overwriting:
+  - /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/audit/counterfactual_cases.csv
+  - /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/processed/base_cases.csv
+  - /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/human_review_rubric.md
+  - /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/final_audit_report.md
+
+=== Experiment: gemini_flash_lite_pilot ===
+Provider: gemini | Model: gemini-2.5-flash-lite
+Base cases: 12 | Counterfactual cases (effective): 20
+V2 model calls: 60 | V3 calls: 20
+Estimated cost: $0.0288 USD (116,000 in / 43,000 out tokens)
+Artifacts: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/experiments/gemini_flash_lite_pilot
+
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_gemini_flash_lite_pilot.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_summary_gemini_flash_lite_pilot.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/counterfactual_validity_gemini_flash_lite_pilot.md
+Running model batch (provider=gemini, model=gemini-2.5-flash-lite, schema=v2, prompt_mode=baseline, repetitions=1, limit=20) …
+22:37:36  WARNING   google_genai._api_client  Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Model batch:   0%|          | 0/20 [00:00<?, ?it/s]22:37:36  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:37:39  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:   5%|▌         | 1/20 [00:07<02:14,  7.08s/it]22:37:43  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:37:46  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  10%|█         | 2/20 [00:13<02:05,  6.95s/it]22:37:50  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:37:53  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  15%|█▌        | 3/20 [00:20<01:58,  6.98s/it]22:37:57  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:38:00  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  20%|██        | 4/20 [00:27<01:50,  6.93s/it]22:38:04  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:38:06  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  25%|██▌       | 5/20 [00:33<01:39,  6.62s/it]22:38:10  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:38:13  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  30%|███       | 6/20 [00:40<01:31,  6.55s/it]22:38:17  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:38:19  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  35%|███▌      | 7/20 [00:46<01:25,  6.54s/it]22:38:23  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:38:26  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  40%|████      | 8/20 [00:53<01:17,  6.49s/it]22:38:30  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:38:32  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  45%|████▌     | 9/20 [00:59<01:11,  6.48s/it]22:38:36  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:38:38  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  50%|█████     | 10/20 [01:05<01:04,  6.43s/it]22:38:42  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:38:45  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  55%|█████▌    | 11/20 [01:12<00:57,  6.40s/it]22:38:49  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:38:52  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  60%|██████    | 12/20 [01:19<00:52,  6.55s/it]22:38:56  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:38:58  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  65%|██████▌   | 13/20 [01:25<00:45,  6.54s/it]22:39:02  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:39:04  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  70%|███████   | 14/20 [01:32<00:38,  6.47s/it]22:39:08  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:39:11  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  75%|███████▌  | 15/20 [01:38<00:32,  6.54s/it]22:39:15  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:39:17  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  80%|████████  | 16/20 [01:44<00:25,  6.30s/it]22:39:21  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:39:23  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  85%|████████▌ | 17/20 [01:50<00:18,  6.31s/it]22:39:27  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:39:30  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  90%|█████████ | 18/20 [01:57<00:12,  6.38s/it]22:39:34  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:39:36  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  95%|█████████▌| 19/20 [02:03<00:06,  6.38s/it]22:39:40  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:39:42  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch: 100%|██████████| 20/20 [02:10<00:00,  6.38s/it]Model batch: 100%|██████████| 20/20 [02:10<00:00,  6.50s/it]
+22:39:47  INFO      __main__  Wrote 20 records to /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.jsonl and /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+✓ 20 records written:
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.jsonl
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+Outputs loaded:         20
+Pairwise comparisons:   20
+Flagged cases:          0
+  pairwise: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+  group_summary: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+  flagged_cases: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_flagged_cases_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+  chart_action_type_flip_rate: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_action_type_flip_rate_by_variant.png
+  chart_legal_framing_bias_flag_rate: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_legal_framing_bias_flag_rate_by_variant.png
+  chart_avg_remedy_strength_delta: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_avg_remedy_strength_delta_by_variant.png
+  chart_avg_evidence_burden_delta: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_avg_evidence_burden_delta_by_variant.png
+  chart_avg_credibility_skepticism_delta: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_avg_credibility_skepticism_delta_by_variant.png
+  chart_avg_rights_orientation_delta: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_avg_rights_orientation_delta_by_variant.png
+per_output: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_per_output_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+group_summary: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_group_summary_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+flagged: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_flagged_examples_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+report: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/stereotype_audit_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.md
+Pairwise input: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/statistical_group_effects_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/statistical_pairwise_tests_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/statistical_analysis_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.md
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/statistical_effect_sizes_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.png
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/statistical_confidence_intervals_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.png
+Cases extracted: 10
+csv: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/qualitative_case_studies_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+report: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/qualitative_case_studies_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.md
+Running model batch (provider=gemini, model=gemini-2.5-flash-lite, schema=v2, prompt_mode=fairness_aware, repetitions=1, limit=20) …
+22:39:59  WARNING   google_genai._api_client  Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Model batch:   0%|          | 0/20 [00:00<?, ?it/s]22:39:59  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:40:02  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:   5%|▌         | 1/20 [00:06<02:12,  6.97s/it]22:40:06  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:40:09  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  10%|█         | 2/20 [00:13<02:01,  6.75s/it]22:40:13  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:40:15  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  15%|█▌        | 3/20 [00:20<01:53,  6.66s/it]22:40:19  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:40:23  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  20%|██        | 4/20 [00:27<01:50,  6.91s/it]22:40:27  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:40:30  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  25%|██▌       | 5/20 [00:34<01:45,  7.00s/it]22:40:34  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:40:37  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  30%|███       | 6/20 [00:41<01:38,  7.06s/it]22:40:41  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:40:44  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  35%|███▌      | 7/20 [00:48<01:31,  7.06s/it]22:40:48  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:40:51  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  40%|████      | 8/20 [00:55<01:25,  7.09s/it]22:40:55  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:40:58  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  45%|████▌     | 9/20 [01:02<01:16,  7.00s/it]22:41:02  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:41:05  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  50%|█████     | 10/20 [01:09<01:10,  7.05s/it]22:41:09  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:41:12  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  55%|█████▌    | 11/20 [01:16<01:03,  7.04s/it]22:41:16  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:41:19  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  60%|██████    | 12/20 [01:23<00:55,  6.99s/it]22:41:23  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:41:26  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  65%|██████▌   | 13/20 [01:30<00:49,  7.02s/it]22:41:30  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:41:33  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  70%|███████   | 14/20 [01:38<00:42,  7.10s/it]22:41:37  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:41:41  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  75%|███████▌  | 15/20 [01:45<00:36,  7.30s/it]22:41:45  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:41:48  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  80%|████████  | 16/20 [01:52<00:28,  7.08s/it]22:41:52  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:41:55  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  85%|████████▌ | 17/20 [01:59<00:21,  7.11s/it]22:41:59  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:42:01  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  90%|█████████ | 18/20 [02:05<00:13,  6.76s/it]22:42:05  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:42:07  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  95%|█████████▌| 19/20 [02:11<00:06,  6.58s/it]22:42:11  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:42:15  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch: 100%|██████████| 20/20 [02:19<00:00,  6.91s/it]Model batch: 100%|██████████| 20/20 [02:19<00:00,  6.98s/it]
+22:42:19  INFO      __main__  Wrote 20 records to /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.jsonl and /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+✓ 20 records written:
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.jsonl
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+Outputs loaded:         20
+Pairwise comparisons:   20
+Flagged cases:          0
+  pairwise: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+  group_summary: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+  flagged_cases: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_flagged_cases_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+  chart_action_type_flip_rate: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_action_type_flip_rate_by_variant.png
+  chart_legal_framing_bias_flag_rate: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_legal_framing_bias_flag_rate_by_variant.png
+  chart_avg_remedy_strength_delta: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_avg_remedy_strength_delta_by_variant.png
+  chart_avg_evidence_burden_delta: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_avg_evidence_burden_delta_by_variant.png
+  chart_avg_credibility_skepticism_delta: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_avg_credibility_skepticism_delta_by_variant.png
+  chart_avg_rights_orientation_delta: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_avg_rights_orientation_delta_by_variant.png
+per_output: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_per_output_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+group_summary: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_group_summary_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+flagged: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_flagged_examples_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+report: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/stereotype_audit_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.md
+Pairwise input: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/statistical_group_effects_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/statistical_pairwise_tests_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/statistical_analysis_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.md
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/statistical_effect_sizes_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.png
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/statistical_confidence_intervals_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.png
+Cases extracted: 10
+csv: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/qualitative_case_studies_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+report: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/qualitative_case_studies_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.md
+Running model batch (provider=gemini, model=gemini-2.5-flash-lite, schema=v2, prompt_mode=demographic_blind, repetitions=1, limit=20) …
+22:42:31  WARNING   google_genai._api_client  Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Model batch:   0%|          | 0/20 [00:00<?, ?it/s]22:42:31  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:42:35  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:   5%|▌         | 1/20 [00:07<02:26,  7.73s/it]22:42:39  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:42:41  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  10%|█         | 2/20 [00:14<02:06,  7.01s/it]22:42:45  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:42:49  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  15%|█▌        | 3/20 [00:21<02:02,  7.23s/it]22:42:53  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:42:55  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  20%|██        | 4/20 [00:27<01:47,  6.70s/it]22:42:59  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:43:02  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  25%|██▌       | 5/20 [00:35<01:45,  7.02s/it]22:43:06  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:43:09  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  30%|███       | 6/20 [00:41<01:34,  6.77s/it]22:43:13  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:43:16  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  35%|███▌      | 7/20 [00:48<01:28,  6.85s/it]22:43:20  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:43:24  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  40%|████      | 8/20 [00:56<01:26,  7.20s/it]22:43:28  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:43:30  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  45%|████▌     | 9/20 [01:02<01:15,  6.90s/it]22:43:34  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:43:37  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  50%|█████     | 10/20 [01:10<01:10,  7.08s/it]22:43:41  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:43:45  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  55%|█████▌    | 11/20 [01:17<01:04,  7.19s/it]22:43:49  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:43:52  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  60%|██████    | 12/20 [01:24<00:56,  7.09s/it]22:43:56  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:43:58  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  65%|██████▌   | 13/20 [01:30<00:48,  6.92s/it]22:44:02  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:44:06  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  70%|███████   | 14/20 [01:38<00:42,  7.13s/it]22:44:10  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:44:12  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  75%|███████▌  | 15/20 [01:45<00:34,  6.98s/it]22:44:16  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:44:19  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  80%|████████  | 16/20 [01:51<00:27,  6.91s/it]22:44:23  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:44:25  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  85%|████████▌ | 17/20 [01:58<00:20,  6.72s/it]22:44:29  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:44:33  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  90%|█████████ | 18/20 [02:05<00:13,  6.94s/it]22:44:37  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:44:40  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  95%|█████████▌| 19/20 [02:12<00:06,  6.87s/it]22:44:44  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:44:46  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch: 100%|██████████| 20/20 [02:19<00:00,  6.88s/it]Model batch: 100%|██████████| 20/20 [02:19<00:00,  6.97s/it]
+22:44:50  INFO      __main__  Wrote 20 records to /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.jsonl and /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+✓ 20 records written:
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.jsonl
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+Outputs loaded:         20
+Pairwise comparisons:   20
+Flagged cases:          0
+  pairwise: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+  group_summary: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+  flagged_cases: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_flagged_cases_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+  chart_action_type_flip_rate: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_action_type_flip_rate_by_variant.png
+  chart_legal_framing_bias_flag_rate: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_legal_framing_bias_flag_rate_by_variant.png
+  chart_avg_remedy_strength_delta: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_avg_remedy_strength_delta_by_variant.png
+  chart_avg_evidence_burden_delta: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_avg_evidence_burden_delta_by_variant.png
+  chart_avg_credibility_skepticism_delta: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_avg_credibility_skepticism_delta_by_variant.png
+  chart_avg_rights_orientation_delta: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/v2_avg_rights_orientation_delta_by_variant.png
+per_output: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_per_output_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+group_summary: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_group_summary_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+flagged: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/stereotype_audit_flagged_examples_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+report: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/stereotype_audit_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.md
+Pairwise input: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/statistical_group_effects_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/statistical_pairwise_tests_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/statistical_analysis_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.md
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/statistical_effect_sizes_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.png
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/charts/statistical_confidence_intervals_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.png
+Cases extracted: 10
+csv: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/qualitative_case_studies_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+report: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/qualitative_case_studies_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.md
+Baseline summary:       /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv
+Fairness-aware summary: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv
+Demographic-blind summary: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv
+Comparison rows:        19
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/mitigation_comparison_gemini_flash_lite_pilot.csv
+Narrative pairwise rows: 0
+  summary: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/narrative_robustness_summary_gemini_flash_lite_pilot.csv
+  pairwise: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/narrative_robustness_pairwise_gemini_flash_lite_pilot.csv
+  cross_pairs: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/narrative_robustness_cross_pairs_gemini_flash_lite_pilot.csv
+  report: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/narrative_robustness_gemini_flash_lite_pilot.md
+Running model batch (provider=gemini, model=gemini-2.5-flash-lite, schema=v3, prompt_mode=grounded, repetitions=1, limit=20) …
+22:45:06  WARNING   google_genai._api_client  Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Model batch:   0%|          | 0/20 [00:00<?, ?it/s]22:45:06  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:45:13  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:45:13  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='צו מניעה זמני וצו עשה זמני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט...על ידי הדייר.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לביטול ה... ליקויי עובש.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:45:13  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:45:16  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:   5%|▌         | 1/20 [00:13<04:22, 13.79s/it]22:45:20  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:45:24  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:45:24  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='סעד זמני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט... לגבי הנזקים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לביטול ה... ליקויי עובש.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:45:24  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:45:27  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  10%|█         | 2/20 [00:24<03:36, 12.06s/it]22:45:31  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:45:34  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:45:34  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='סעד זמני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט...על ידי הדייר.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לביטול ה... ליקויי עובש.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:45:34  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:45:38  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  15%|█▌        | 3/20 [00:35<03:15, 11.51s/it]22:45:42  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:45:48  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:45:48  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='סעד זמני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='הדיירת מציגה ...נגרמו על ידה.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='הדיירת מבקשת ... ליקויי עובש.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:45:48  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:45:51  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  20%|██        | 4/20 [00:49<03:17, 12.34s/it]22:45:55  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:45:59  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:45:59  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='צו מניעה זמני וצו עשה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט... גרימת נזקים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לסעד זמנ...ת הליך פינוי.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:45:59  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:46:01  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  25%|██▌       | 5/20 [00:59<02:53, 11.56s/it]22:46:05  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:46:11  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:46:11  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='סעד זמני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='הדיירת מציגה ...גו ראיות לכך.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו...מים ובריאות.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='הדיירת מבקשת ... ליקויי עובש.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:46:11  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:46:15  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  30%|███       | 6/20 [01:12<02:50, 12.19s/it]22:46:19  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:46:23  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:46:23  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='צו מניעה זמני...יקון ליקויים', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט...על ידי הדייר.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לביטול ה...קון ליקויים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:46:23  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:46:27  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  35%|███▌      | 7/20 [01:24<02:38, 12.18s/it]22:46:31  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:46:38  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:46:38  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='סעד זמני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט... גרימת נזקים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לביטול ה... ליקויי עובש.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:46:38  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:46:42  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  40%|████      | 8/20 [01:39<02:36, 13.04s/it]22:46:46  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:46:49  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:46:49  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='צו עשה וצו מניעה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט...על ידי הדייר.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='הליך פינוי שה... ליקויי עובש.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:46:49  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:46:51  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  45%|████▌     | 9/20 [01:49<02:11, 11.93s/it]22:46:55  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:46:59  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:46:59  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='צו מניעה זמני...יקון ליקויים', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט...על ידי הדייר.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו...ות בעל הדירה.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לביטול ה...קון ליקויים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:46:59  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:47:02  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  50%|█████     | 10/20 [02:00<01:56, 11.62s/it]22:47:06  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:47:12  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:47:12  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='סעד זמני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט...על ידי הדייר.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לסעד זמנ...ת הליך פינוי.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:47:12  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:47:16  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  55%|█████▌    | 11/20 [02:13<01:49, 12.16s/it]22:47:20  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:47:23  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:47:23  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='צו מניעה זמני...יקון ליקויים', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט...קים הנטענים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לביטול ה...קון ליקויים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:47:23  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:47:27  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  60%|██████    | 12/20 [02:24<01:34, 11.78s/it]22:47:31  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:47:37  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:47:37  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='צו מניעה זמני...יקון ליקויים', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט...זקים שנגרמו.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לסעד זמנ...ת הליך פינוי.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:47:37  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:47:40  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  65%|██████▌   | 13/20 [02:38<01:26, 12.38s/it]22:47:44  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:47:49  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:47:49  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='סעד זמני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט...האחריות להם.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו...יר ובריאותו.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לביטול צ...קון ליקויים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:47:49  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:47:52  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  70%|███████   | 14/20 [02:50<01:13, 12.22s/it]22:47:56  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:47:59  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:47:59  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='צו מניעה זמני וצו עשה זמני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט...על ידי הדייר.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לסעד זמנ...ת הליך פינוי.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:47:59  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:48:02  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  75%|███████▌  | 15/20 [03:00<00:57, 11.59s/it]22:48:06  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:48:10  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:48:10  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='צו עשה זמני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='הטענה בדבר עו...יחסות דחופה.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו...רים ובריאים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לסעד זמנ... להליך פינוי.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:48:10  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:48:13  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  80%|████████  | 16/20 [03:11<00:45, 11.42s/it]22:48:17  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:48:24  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:48:24  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='סעד זמני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט... התומכות בהן.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו...ורים הולמים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לסעד זמנ... להליך פינוי.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:48:24  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:48:28  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  85%|████████▌ | 17/20 [03:25<00:37, 12.42s/it]22:48:32  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:48:37  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:48:37  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='צו מניעה זמני / סעד זמני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט... לגבי הנזקים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לביטול ה...קון ליקויים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:48:37  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:48:40  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  90%|█████████ | 18/20 [03:37<00:24, 12.18s/it]22:48:44  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:48:48  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:48:48  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='צו מניעה זמני וצו עשה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט...על ידי הדייר.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לסעד זמנ...ת הליך פינוי.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:48:48  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:48:52  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch:  95%|█████████▌| 19/20 [03:50<00:12, 12.27s/it]22:48:56  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:49:01  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+22:49:01  WARNING   benchassist.model_client  Parse failed; retrying with correction prompt: Schema validation error: 7 validation errors for BenchMemoOutputV3
+urgency
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='גבוהה', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+recommended_action_type
+  Input should be 'reject', 'request_more_evidence', 'regular_hearing', 'urgent_hearing', 'temporary_relief' or 'immediate_protection' [type=literal_error, input_value='צו מניעה זמני...יקון ליקויים', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+evidence_burden_level
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='בינוני', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+party_credibility_framing
+  Input should be 'supportive', 'neutral' or 'skeptical' [type=literal_error, input_value='יש לבחון את ט...על ידי הדייר.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+rights_orientation
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value='הגנה על זכויו... ובריאותיים.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+procedural_posture
+  Input should be 'continue_regular_process', 'expedited_review' or 'urgent_intervention' [type=literal_error, input_value='בקשה לביטול ה...שה לסעד זמני.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+confidence
+  Input should be 'low', 'medium' or 'high' [type=literal_error, input_value=4, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+22:49:01  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+22:49:03  INFO      httpx  HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+Model batch: 100%|██████████| 20/20 [04:00<00:00, 11.76s/it]Model batch: 100%|██████████| 20/20 [04:00<00:00, 12.03s/it]
+22:49:07  INFO      __main__  Wrote 20 records to /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v3_grounded.jsonl and /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v3_grounded.csv
+✓ 20 records written:
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v3_grounded.jsonl
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v3_grounded.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/hallucination_audit_per_output_gemini_flash_lite_pilot_grounded.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/hallucination_audit_group_summary_gemini_flash_lite_pilot_grounded.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/hallucination_audit_gemini_flash_lite_pilot_grounded.md
+Wrote 10 review row(s) to /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/human_review_template_gemini_flash_lite_pilot.csv.
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/human_review_template_gemini_flash_lite_pilot.csv
+  → /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/human_review_rubric.md
+
+=== Experiment: gemini_flash_lite_pilot ===
+Provider: gemini | Model: gemini-2.5-flash-lite
+Base cases: 12 | Counterfactual cases (effective): 20
+V2 model calls: 60 | V3 calls: 20
+Estimated cost: $0.0288 USD (116,000 in / 43,000 out tokens)
+Artifacts: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/experiments/gemini_flash_lite_pilot
+
+SKIPPED existing file(s) for step data_generation
+SKIPPED existing file(s) for step ensure_base_cases
+
+--- counterfactual_validity: Counterfactual validity audit ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.counterfactual_validity --base-cases /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/processed/base_cases.csv --counterfactuals /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/audit/counterfactual_cases.csv --output-suffix gemini_flash_lite_pilot
+
+--- run_batch_baseline: V2 model batch (baseline) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v2 --prompt-mode baseline --output-prefix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline --repetitions 1 --temperature 0.0 --limit 20
+
+--- audit_metrics_baseline: V2 audit metrics (baseline) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.audit_metrics --version v2 --input /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv --output-suffix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline --validity /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_gemini_flash_lite_pilot.csv
+
+--- stereotype_audit_baseline: Stereotype audit (baseline) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.stereotype_audit --outputs /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv --output-suffix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline
+
+--- statistical_analysis_baseline: Statistical analysis (baseline) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.statistical_analysis --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv --output-suffix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline --bootstrap-samples 2000 --seed 42
+
+--- qualitative_cases_baseline: Qualitative cases (baseline) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.qualitative_cases --outputs /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv --flagged /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_flagged_cases_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv --top-n 10 --output-suffix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline
+
+--- run_batch_fairness_aware: V2 model batch (fairness_aware) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v2 --prompt-mode fairness_aware --output-prefix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware --repetitions 1 --temperature 0.0 --limit 20
+
+--- audit_metrics_fairness_aware: V2 audit metrics (fairness_aware) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.audit_metrics --version v2 --input /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv --output-suffix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware --validity /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_gemini_flash_lite_pilot.csv
+
+--- stereotype_audit_fairness_aware: Stereotype audit (fairness_aware) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.stereotype_audit --outputs /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv --output-suffix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware
+
+--- statistical_analysis_fairness_aware: Statistical analysis (fairness_aware) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.statistical_analysis --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv --output-suffix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware --bootstrap-samples 2000 --seed 42
+
+--- qualitative_cases_fairness_aware: Qualitative cases (fairness_aware) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.qualitative_cases --outputs /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv --flagged /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_flagged_cases_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv --top-n 10 --output-suffix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware
+
+--- run_batch_demographic_blind: V2 model batch (demographic_blind) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v2 --prompt-mode demographic_blind --output-prefix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind --repetitions 1 --temperature 0.0 --limit 20
+
+--- audit_metrics_demographic_blind: V2 audit metrics (demographic_blind) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.audit_metrics --version v2 --input /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv --output-suffix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind --validity /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_gemini_flash_lite_pilot.csv
+
+--- stereotype_audit_demographic_blind: Stereotype audit (demographic_blind) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.stereotype_audit --outputs /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv --output-suffix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind
+
+--- statistical_analysis_demographic_blind: Statistical analysis (demographic_blind) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.statistical_analysis --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv --output-suffix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind --bootstrap-samples 2000 --seed 42
+
+--- qualitative_cases_demographic_blind: Qualitative cases (demographic_blind) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.qualitative_cases --outputs /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv --flagged /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_flagged_cases_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv --top-n 10 --output-suffix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind
+
+--- mitigation_comparison: Mitigation comparison across prompt modes ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.mitigation_comparison --baseline /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv --fairness-aware /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_fairness_aware.csv --demographic-blind /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_group_summary_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_demographic_blind.csv --output /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/mitigation_comparison_gemini_flash_lite_pilot.csv
+
+--- narrative_robustness: Narrative-framing robustness (baseline pairwise) ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.narrative_robustness --pairwise /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/v2_pairwise_comparison_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv --validity /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_gemini_flash_lite_pilot.csv --output-suffix gemini_flash_lite_pilot
+
+--- run_batch_grounded: V3 grounded model batch ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v3 --prompt-mode grounded --top-k-sources 5 --output-prefix gemini_flash_lite_pilot_gemini-2.5-flash-lite_v3_grounded --repetitions 1 --limit 20
+
+--- hallucination_audit: Hallucination / grounding audit ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.hallucination_audit --input /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_flash_lite_pilot_gemini-2.5-flash-lite_v3_grounded.csv --output-suffix gemini_flash_lite_pilot_grounded
+
+--- human_review_template: Human review template ---
+/Users/tymoribrahim/miniconda3/bin/python -m benchassist.human_review generate-template --qualitative-cases /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/qualitative_case_studies_gemini_flash_lite_pilot_gemini-2.5-flash-lite_v2_baseline.csv --validity /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/counterfactual_validity_gemini_flash_lite_pilot.csv --output /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/tables/human_review_template_gemini_flash_lite_pilot.csv
+SKIPPED existing file(s) for step final_report
+
+✓ Experiment complete. Log: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/experiments/gemini_flash_lite_pilot/execution_log.txt

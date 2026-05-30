@@ -1,0 +1,18 @@
+[
+  {
+    "generated_at": "2026-05-30T11:40:51.257467+00:00",
+    "schema_validation_passed": true,
+    "runs": {
+      "baseline": {
+        "n_outputs": 156
+      },
+      "fairness_aware": {
+        "n_outputs": 156
+      },
+      "demographic_blind": {
+        "n_outputs": 156
+      }
+    },
+    "note": "Mock outputs for pipeline QA only — not research findings."
+  }
+]

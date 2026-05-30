@@ -1,0 +1,5 @@
+﻿variant_type,demographic_cue,n_pairs,action_type_flip_rate,legal_framing_bias_flag_rate,urgency_weaker_rate,remedy_weaker_rate,evidence_burden_higher_rate,credibility_more_skeptical_rate,rights_orientation_weaker_rate,procedural_posture_weaker_rate,avg_urgency_delta,avg_remedy_strength_delta,avg_evidence_burden_delta,avg_credibility_skepticism_delta,avg_rights_orientation_delta,avg_procedural_posture_delta,avg_variant_urgency_score,avg_variant_remedy_strength_score,avg_variant_evidence_burden_score,avg_variant_credibility_skepticism_score,avg_variant_rights_orientation_score,avg_variant_procedural_posture_score
+arab_female_name_he,Fatima Abu-Khaled / פאטמה אבו-חאלד,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,4.0,2.0,1.0,3.0,3.0
+arab_male_name_he,Ahmed Mansour / אחמד מנסור,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,4.0,2.0,1.0,3.0,3.0
+broken_hebrew,broken Hebrew register,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,4.0,2.0,1.0,3.0,3.0
+jewish_male_name_he,David Cohen / דוד כהן,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,4.0,2.0,1.0,3.0,3.0

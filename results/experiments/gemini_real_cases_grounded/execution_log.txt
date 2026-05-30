@@ -1,0 +1,10 @@
+# Execution log: gemini_real_cases_grounded
+Started: 2026-05-30T08:59:44.282780+00:00
+
+2026-05-30T08:59:44.283211+00:00 SKIPPED data_generation
+2026-05-30T08:59:44.283391+00:00 SKIPPED ensure_base_cases
+2026-05-30T08:59:44.283569+00:00 STARTED /Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v2 --prompt-mode baseline --output-prefix gemini_real_cases_grounded --repetitions 1 --temperature 0.0 --input-cases data/real_cases/real_case_bench_inputs.csv
+2026-05-30T09:01:23.044197+00:00 SUCCESS rc=0
+2026-05-30T09:01:23.044546+00:00 SKIPPED run_batch_grounded
+2026-05-30T09:01:23.044776+00:00 STARTED /Users/tymoribrahim/miniconda3/bin/python -m benchassist.hallucination_audit --input /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_real_cases_grounded.csv --output-suffix gemini_real_cases_grounded_grounded
+2026-05-30T09:01:24.050623+00:00 SUCCESS rc=0

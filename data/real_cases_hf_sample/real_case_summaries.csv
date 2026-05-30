@@ -1,0 +1,1813 @@
+﻿real_case_id,source_dataset,source_id,source_type,original_domain,normalized_domain,language,source_text_excerpt,legal_question_or_issue,normalized_case_summary,requested_remedy_or_issue,likely_legal_area,source_note,license_note,attribution_note,contains_possible_personal_data,pii_redaction_notes,use_for_counterfactual_audit,use_for_reliability_audit,use_for_qualitative_review,dataset_mode,assistant_excerpt
+RC0001,BrainboxAI/legal-training-il,src_593f26167fb1,public_licensed_training,,consumer_small_claims,en,"What are the key legal implications of this clause?
+[REDACTED_NAME] to this Agreement, at its own expense, shall have the right to inspect from time to time the operation and maintenance of any portion of the APCN 2 and to obtain copies of the maintenance records.
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in t","What are the key legal implications of this clause?
+[REDACTED_NAME] to this Agreement, at its own expense, shall have the right to inspect from time to time the operation and maintenance of any portion of the APCN 2 and to obtain copies of the maintenance records.","What are the key legal implications of this clause?
+[REDACTED_NAME] to this Agreement, at its own expense, shall have the right to inspect from time to time the operation and maintenance of any portion of the APCN 2 and to obtain copies of the maintenance records.
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","What are the key legal implications of this clause?
+[REDACTED_NAME] to this Agreement, at its own expense, shall have the right to inspect from time to time the operation and maintenance of any portion of the APCN 2 and to obtain copies of the maintenance records.",consumer_small_claims,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Audit Rights
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0002,BrainboxAI/legal-training-il,src_c9c6fae5f81f,public_licensed_training,,consumer_small_claims,en,"What are the key legal implications of this clause?
+In the event of the merger or consolidation of Company with any other entity, [REDACTED_NAME] shall have the right to terminate the[REDACTED_NAME] by so notifying Company in writing on or before sixty (60) days after[REDACTED_NAME] has received notice of such merger or consolidation.
+Answer: [REDACTED_NAME]: This clause should be carefully review","What are the key legal implications of this clause?
+In the event of the merger or consolidation of Company with any other entity, [REDACTED_NAME] shall have the right to terminate the[REDACTED_NAME] by so notifying Company in writing on or before sixty (60) days after[REDACTED_NAME] has received notice of such merger or consolidation.","What are the key legal implications of this clause?
+In the event of the merger or consolidation of Company with any other entity, [REDACTED_NAME] shall have the right to terminate the[REDACTED_NAME] by so notifying Company in writing on or before sixty (60) days after[REDACTED_NAME] has received notice of such merger or consolidation.
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","What are the key legal implications of this clause?
+In the event of the merger or consolidation of Company with any other entity, [REDACTED_NAME] shall have the right to terminate the[REDACTED_NAME] by so notifying Company in writing on or before sixty (60) days after[REDACTED_NAME] has received not",consumer_small_claims,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Change Of Control
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0003,BrainboxAI/legal-training-il,src_de16cc8604a1,public_licensed_training,,housing,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 1 (המשיב) מיום 24.1.2023, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ""[REDACTED_NAME]"" [REDACTED_NAME][REDACTED_NAME] המנוחה (האם) בחולון, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] משנת 1997[REDACTED_NAME][REDACTED_NAME] 2002 ([REDACTED_NAME]); ","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 1 (המשיב) מיום 24.1.2023, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ""[REDACTED_NAME]"" [REDACTED_NAME][REDACTED_NAME] המנוחה (האם) בחולון, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] משנת 1997[REDACTED_NAME][REDACTED_NAME] 2002 ([REDACTED_NAME]); [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הציבורי, התשנ""ח-1998 (הח","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 1 (המשיב) מיום 24.1.2023, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ""[REDACTED_NAME]"" [REDACTED_NAME][REDACTED_NAME] המנוחה (האם) בחולון, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] משנת 1997[REDACTED_NAME][REDACTED_NAME] 2002 ([REDACTED_NAME]); [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הציבורי, התשנ""ח-1998 (החוק). 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2017 ([REDACTED_NAME][REDACTED_NAME] עתירה). [REDACTED_NAME] כאן, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המשיב, [REDACTED_NAME] 2002, [REDACTED_NAME][REDACTED_NAME] לבדו כ""[REDACTED_NAME]"" [REDACTED_NAME]. לטענתו, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אחיו. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] שנים. [REDACTED_NAME] אפוא, [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME]
+
+לע","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 1 (המשיב) מיום 24.1.2023, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ""[REDACTED_NAME]"" [REDACTED_NAME][REDACTED_NAME] המנוחה (האם) בחולון, [REDACTED_",housing,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 6
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 6. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0004,BrainboxAI/legal-training-il,src_bb5bd497c6fb,public_licensed_training,,consumer_small_claims,en,"Analyze this contract clause and identify its type and risks:
+[REDACTED_NAME] will include the other Party and its Affiliates as additional insured parties on such Party's[REDACTED_NAME] insurance, as set forth in Section 12.3.2.3 for [***] after the later of termination of this Agreement or release of the last Subject from the[REDACTED_NAME].
+Answer: [REDACTED_NAME]: This clause should be careful","Analyze this contract clause and identify its type and risks:
+[REDACTED_NAME] will include the other Party and its Affiliates as additional insured parties on such Party's[REDACTED_NAME] insurance, as set forth in Section 12.3.2.3 for [***] after the later of termination of this Agreement or release of the last Subject from the[REDACTED_NAME].","Analyze this contract clause and identify its type and risks:
+[REDACTED_NAME] will include the other Party and its Affiliates as additional insured parties on such Party's[REDACTED_NAME] insurance, as set forth in Section 12.3.2.3 for [***] after the later of termination of this Agreement or release of the last Subject from the[REDACTED_NAME].
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","Analyze this contract clause and identify its type and risks:
+[REDACTED_NAME] will include the other Party and its Affiliates as additional insured parties on such Party's[REDACTED_NAME] insurance, as set forth in Section 12.3.2.3 for [***] after the later of termination of this Agreement or release",consumer_small_claims,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Insurance
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0005,BrainboxAI/legal-training-il,src_4bf50442a9a1,public_licensed_training,,consumer_small_claims,en,"Review the following contract provision:
+In consideration of the remuneration to be paid to Licensor pursuant hereto, Licensor grants to Company the right and license during the[REDACTED_NAME] to use the[REDACTED_NAME] solely in connection with the advertisement and promotion of Company's Products within the[REDACTED_NAME] as set forth herein.
+
+Question: What type of clause is this?
+Answer: [REDAC","Review the following contract provision:
+In consideration of the remuneration to be paid to Licensor pursuant hereto, Licensor grants to Company the right and license during the[REDACTED_NAME] to use the[REDACTED_NAME] solely in connection with the advertisement and promotion of Company's Products within the[REDACTED_NAME] as set forth herein.
+
+Question: What type of clause is this?","Review the following contract provision:
+In consideration of the remuneration to be paid to Licensor pursuant hereto, Licensor grants to Company the right and license during the[REDACTED_NAME] to use the[REDACTED_NAME] solely in connection with the advertisement and promotion of Company's Products within the[REDACTED_NAME] as set forth herein.
+
+Question: What type of clause is this?
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","Review the following contract provision:
+In consideration of the remuneration to be paid to Licensor pursuant hereto, Licensor grants to Company the right and license during the[REDACTED_NAME] to use the[REDACTED_NAME] solely in connection with the advertisement and promotion of Company's Products w",consumer_small_claims,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: License Grant
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0006,BrainboxAI/legal-training-il,src_5c1accad71ce,public_licensed_training,,immigration_status,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+  [REDACTED_NAME]' 5[REDACTED_NAME][REDACTED_NAME] 8.7.24[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אביב . [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] . [REDACTED","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+  [REDACTED_NAME]' 5[REDACTED_NAME][REDACTED_NAME] 8.7.24[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אביב . [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] . [REDACTED_NAME][REDACTED_NAME] , [REDACTED_NAME][REDACTED_NAME] . [REDACTED_NAME][REDACTED_NAME][REDACTED_NAM","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+  [REDACTED_NAME]' 5[REDACTED_NAME][REDACTED_NAME] 8.7.24[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אביב . [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] . [REDACTED_NAME][REDACTED_NAME] , [REDACTED_NAME][REDACTED_NAME] . [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הקטינה . [REDACTED_NAME][REDACTED_NAME] , [REDACTED_NAME][REDACTED_NAME] . [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] חודשים . 
+ביום 28.7.24[REDACTED_NAME] האב ,  [REDACTED_NAME][REDACTED_NAME] . [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לאלימות . [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] , [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] האב . ב""כ[REDACTED_NAME][REDACTED_NAME] ביום 15.5.24 , [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] . [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] . [R","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+  [REDACTED_NAME]' 5[REDACTED_NAME][REDACTED_NAME] 8.7.24[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אביב . [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][R",immigration_status,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 3
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0007,BrainboxAI/legal-training-il,src_fde781c67411,public_licensed_training,,consumer_small_claims,en,"What are the key legal implications of this clause?
+Without limiting the foregoing, but subject to the restrictions set forth in Section 2.5 hereof, Bank of America may: (x) sublicense its rights granted herein to its third party contractors for the purpose of their performing services for Bank of America and its Affiliates (which services may include, without limitation, altering, modifying, enha","What are the key legal implications of this clause?
+Without limiting the foregoing, but subject to the restrictions set forth in Section 2.5 hereof, Bank of America may: (x) sublicense its rights granted herein to its third party contractors for the purpose of their performing services for Bank of America and its Affiliates (which services may include, without limitation, altering, modifying, enhancing and improving the Software and creating derivatives to the Software), provided that such third","What are the key legal implications of this clause?
+Without limiting the foregoing, but subject to the restrictions set forth in Section 2.5 hereof, Bank of America may: (x) sublicense its rights granted herein to its third party contractors for the purpose of their performing services for Bank of America and its Affiliates (which services may include, without limitation, altering, modifying, enhancing and improving the Software and creating derivatives to the Software), provided that such third party contractors have entered into a written agreement containing commercially standard confidentiality provisions requiring them to maintain the[REDACTED_NAME] to the[REDACTED_NAME] securely and in confidence (subject to commercially standard exceptions), prior to having access to the[REDACTED_NAME] for the Software: (y) sublicense its rights in the Software excluding any rights in the[REDACTED_NAME], to its end user customers as necessary for Bank of America to provide services to such end user customers; and (z) host the Software on its systems (or allow a third party to host the Software on its behalf) and make the Software available for use by its end user customers through the intern","What are the key legal implications of this clause?
+Without limiting the foregoing, but subject to the restrictions set forth in Section 2.5 hereof, Bank of America may: (x) sublicense its rights granted herein to its third party contractors for the purpose of their performing services for Bank of A",consumer_small_claims,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Affiliate License-Licensee
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0008,BrainboxAI/legal-training-il,src_cbbc9fecff5a,public_licensed_training,,consumer_small_claims,en,"What are the key legal implications of this clause?
+During regular business hours but no more frequently than once a year, Bank of America may, at Its sole expense, perform a confidential audit of Supplier's operations as they pertain to the Products or services provided under this Agreement.
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope","What are the key legal implications of this clause?
+During regular business hours but no more frequently than once a year, Bank of America may, at Its sole expense, perform a confidential audit of Supplier's operations as they pertain to the Products or services provided under this Agreement.","What are the key legal implications of this clause?
+During regular business hours but no more frequently than once a year, Bank of America may, at Its sole expense, perform a confidential audit of Supplier's operations as they pertain to the Products or services provided under this Agreement.
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","What are the key legal implications of this clause?
+During regular business hours but no more frequently than once a year, Bank of America may, at Its sole expense, perform a confidential audit of Supplier's operations as they pertain to the Products or services provided under this Agreement.",consumer_small_claims,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Audit Rights
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0009,BrainboxAI/legal-training-il,src_5d8f6326c453,public_licensed_training,,consumer_small_claims,en,"Review the following contract provision:
+Upon request, CBC shall furnish MediWound certification of insurance (and/or true copies of policies) showing the above coverage, signed by an authorized agent of the insurance company, certifying that liability assumed under this Agreement is fully insured without exception, and providing for at least thirty (30) days prior written notice.
+
+Question: What ","Review the following contract provision:
+Upon request, CBC shall furnish MediWound certification of insurance (and/or true copies of policies) showing the above coverage, signed by an authorized agent of the insurance company, certifying that liability assumed under this Agreement is fully insured without exception, and providing for at least thirty (30) days prior written notice.
+
+Question: What type of clause is this?","Review the following contract provision:
+Upon request, CBC shall furnish MediWound certification of insurance (and/or true copies of policies) showing the above coverage, signed by an authorized agent of the insurance company, certifying that liability assumed under this Agreement is fully insured without exception, and providing for at least thirty (30) days prior written notice.
+
+Question: What type of clause is this?
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","Review the following contract provision:
+Upon request, CBC shall furnish MediWound certification of insurance (and/or true copies of policies) showing the above coverage, signed by an authorized agent of the insurance company, certifying that liability assumed under this Agreement is fully insured w",consumer_small_claims,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Insurance
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0010,BrainboxAI/legal-training-il,src_d78ae0727839,public_licensed_training,,consumer_small_claims,en,"Analyze this contract clause and identify its type and risks:
+Sponsor acknowledges and agrees that, notwithstanding the grant of exclusivity set forth in this Section 4, Team shall have the right to solicit and enter into sponsorships with other parties that are not known primarily or exclusively as suppliers or providers of any product or service within the Product and[REDACTED_NAME].
+Answer: [RE","Analyze this contract clause and identify its type and risks:
+Sponsor acknowledges and agrees that, notwithstanding the grant of exclusivity set forth in this Section 4, Team shall have the right to solicit and enter into sponsorships with other parties that are not known primarily or exclusively as suppliers or providers of any product or service within the Product and[REDACTED_NAME].","Analyze this contract clause and identify its type and risks:
+Sponsor acknowledges and agrees that, notwithstanding the grant of exclusivity set forth in this Section 4, Team shall have the right to solicit and enter into sponsorships with other parties that are not known primarily or exclusively as suppliers or providers of any product or service within the Product and[REDACTED_NAME].
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","Analyze this contract clause and identify its type and risks:
+Sponsor acknowledges and agrees that, notwithstanding the grant of exclusivity set forth in this Section 4, Team shall have the right to solicit and enter into sponsorships with other parties that are not known primarily or exclusively as",consumer_small_claims,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Competitive Restriction Exception
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0012,BrainboxAI/legal-training-il,src_de19d80aa51b,public_licensed_training,,consumer_small_claims,en,"Identify potential risks in this contract section:
+In no way should the Agent be liable for incidental or consequential damages.
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider appl","Identify potential risks in this contract section:
+In no way should the Agent be liable for incidental or consequential damages.","Identify potential risks in this contract section:
+In no way should the Agent be liable for incidental or consequential damages.
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","Identify potential risks in this contract section:
+In no way should the Agent be liable for incidental or consequential damages.",consumer_small_claims,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Cap On Liability
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0013,BrainboxAI/legal-training-il,src_d50ae53b9c0d,public_licensed_training,,labor_employment,en,"Review the following contract provision:
+Any and all liability of EKR to PPI howsoever arising in respect of this Agreement, the[REDACTED_NAME] and[REDACTED_NAME] or the[REDACTED_NAME] and their performance in contract tort or otherwise shall be limited (except for death or personal injury caused by the negligence of EKR or its employees while acting in the course of their employment, and except i","Review the following contract provision:
+Any and all liability of EKR to PPI howsoever arising in respect of this Agreement, the[REDACTED_NAME] and[REDACTED_NAME] or the[REDACTED_NAME] and their performance in contract tort or otherwise shall be limited (except for death or personal injury caused by the negligence of EKR or its employees while acting in the course of their employment, and except in relation to any specified payment, lump sum, milestone or royalty payment unpaid) to [**] US Dolla","Review the following contract provision:
+Any and all liability of EKR to PPI howsoever arising in respect of this Agreement, the[REDACTED_NAME] and[REDACTED_NAME] or the[REDACTED_NAME] and their performance in contract tort or otherwise shall be limited (except for death or personal injury caused by the negligence of EKR or its employees while acting in the course of their employment, and except in relation to any specified payment, lump sum, milestone or royalty payment unpaid) to [**] US Dollars ($[**]); provided however that such limitation shall not apply to the extent that PPI or any PPI[REDACTED_NAME] is required to pay in excess of such amount to a third party in respect of a final judgment or order obtained by the third party.
+
+Question: What type of clause is this?
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","Review the following contract provision:
+Any and all liability of EKR to PPI howsoever arising in respect of this Agreement, the[REDACTED_NAME] and[REDACTED_NAME] or the[REDACTED_NAME] and their performance in contract tort or otherwise shall be limited (except for death or personal injury caused by",labor_employment,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Uncapped Liability
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0014,BrainboxAI/legal-training-il,src_cce727f9c221,public_licensed_training,,consumer_small_claims,en,"Analyze this contract clause and identify its type and risks:
+Endorser also grants to MusclePharm and consents to MusclePharm's editorial use world-wide of Endorser's Name and Appearance in MusclePharm published materials approved by Endorser. For purposes of this Agreement, MusclePharm's editorial use of Endorser's Name and Appearance shall mean a use that does not directly promote, advertise or ","Analyze this contract clause and identify its type and risks:
+Endorser also grants to MusclePharm and consents to MusclePharm's editorial use world-wide of Endorser's Name and Appearance in MusclePharm published materials approved by Endorser. For purposes of this Agreement, MusclePharm's editorial use of Endorser's Name and Appearance shall mean a use that does not directly promote, advertise or endorse MusclePharm's business, its Products or[REDACTED_NAME]. Nothing in this Section 6(c) shall e","Analyze this contract clause and identify its type and risks:
+Endorser also grants to MusclePharm and consents to MusclePharm's editorial use world-wide of Endorser's Name and Appearance in MusclePharm published materials approved by Endorser. For purposes of this Agreement, MusclePharm's editorial use of Endorser's Name and Appearance shall mean a use that does not directly promote, advertise or endorse MusclePharm's business, its Products or[REDACTED_NAME]. Nothing in this Section 6(c) shall entitle MusclePharm to reduce Endorser's compensation pursuant to Section 7 and Section 8 of this Agreement (including, without limitation, with respect to any renewal Term, if any).
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","Analyze this contract clause and identify its type and risks:
+Endorser also grants to MusclePharm and consents to MusclePharm's editorial use world-wide of Endorser's Name and Appearance in MusclePharm published materials approved by Endorser. For purposes of this Agreement, MusclePharm's editorial ",consumer_small_claims,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: License Grant
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0015,BrainboxAI/legal-training-il,src_0f5327968af6,public_licensed_training,,housing,he,"[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] סמכות.
+
+[REDACTED_NAME] רלוונטיות :
+
+התובע (להלן: ""התובע"" או ""המשיב"") [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] הנתבע 1 (להלן: ""הנתבע 1"") אז[REDACTED_ADDRESS] בן כ- 87[REDACTED_NAME][REDACTED_NAME] 80[REDACTED_NAME][REDACTED_NAME] *** [REDACTED_NAME] מס' 4 (להלן: ""החברה"" או ""הנתבעת 4""). הנתבעי","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] סמכות.
+
+[REDACTED_NAME] רלוונטיות :
+
+התובע (להלן: ""התובע"" או ""המשיב"") [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] הנתבע 1 (להלן: ""הנתבע 1"") אז[REDACTED_ADDRESS] בן כ- 87[REDACTED_NAME][REDACTED_NAME] 80[REDACTED_NAME][REDACTED_NAME] *** [REDACTED_NAME] מס' 4 (להלן: ""החברה"" או ""הנתבעת 4""). הנתבעים 2-3[REDACTED_NAME][REDACTED_NAME] התובע 1[REDACTED_NAME], [REDACTED_NAME]  10[REDACTED_NAME][REDAC","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] סמכות.
+
+[REDACTED_NAME] רלוונטיות :
+
+התובע (להלן: ""התובע"" או ""המשיב"") [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] הנתבע 1 (להלן: ""הנתבע 1"") אז[REDACTED_ADDRESS] בן כ- 87[REDACTED_NAME][REDACTED_NAME] 80[REDACTED_NAME][REDACTED_NAME] *** [REDACTED_NAME] מס' 4 (להלן: ""החברה"" או ""הנתבעת 4""). הנתבעים 2-3[REDACTED_NAME][REDACTED_NAME] התובע 1[REDACTED_NAME], [REDACTED_NAME]  10[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הנתבעת 4. ([REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] ""[REDACTED_NAME] הנתבעים""). 
+
+[REDACTED_NAME] הצדדים, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כדלקמן:
+הנתבעת 4[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (***); 
+הנתבעת 4[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] החברה (***); 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הנתבעת 4[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]; 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]  (***) ([REDACTED_NAME] לבקשתו); 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] סמכות.
+
+[REDACTED_NAME] רלוונטיות :
+
+התובע (להלן: ""התובע"" או ""המשיב"") [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] הנתבע 1 (להלן: ""הנתבע 1"") אז[REDACTED_ADDRESS] בן כ- 87[REDACTED_NAME][REDACTED_NA",housing,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted address-like fragment(s).; Redacted possible Hebrew name(s).; Redacted address-like fragment(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 3
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0017,BrainboxAI/legal-training-il,src_baa01fa7c63d,public_licensed_training,,immigration_status,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+<#1#>
+נוכחים:
+המבקשת 1 התייצבה; המבקשת 2[REDACTED_NAME][REDACTED_NAME] המבקשות – [REDACTED_NAME][REDACTED_NAME] 
+ב""כ המשיבה – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לקטינה – [REDACTED_NAME] ויוי-[REDACTED_NAME]
+עו""ס[REDACTED_NAME] (עיריית ב""ב) – [REDACTED_NAME], עו""ס; [REDACTED_NAME], עו""ס[REDACTED_NAME]  
+ב""כ היועמ""ש – [REDACTED_NAME][REDACTED","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+<#1#>
+נוכחים:
+המבקשת 1 התייצבה; המבקשת 2[REDACTED_NAME][REDACTED_NAME] המבקשות – [REDACTED_NAME][REDACTED_NAME] 
+ב""כ המשיבה – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לקטינה – [REDACTED_NAME] ויוי-[REDACTED_NAME]
+עו""ס[REDACTED_NAME] (עיריית ב""ב) – [REDACTED_NAME], עו""ס; [REDACTED_NAME], עו""ס[REDACTED_NAME]  
+ב""כ היועמ""ש – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME]; [REDACTED_NAME]; [REDACTED_NAME] (עורך ""המקור""); [REDACTED_","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+<#1#>
+נוכחים:
+המבקשת 1 התייצבה; המבקשת 2[REDACTED_NAME][REDACTED_NAME] המבקשות – [REDACTED_NAME][REDACTED_NAME] 
+ב""כ המשיבה – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לקטינה – [REDACTED_NAME] ויוי-[REDACTED_NAME]
+עו""ס[REDACTED_NAME] (עיריית ב""ב) – [REDACTED_NAME], עו""ס; [REDACTED_NAME], עו""ס[REDACTED_NAME]  
+ב""כ היועמ""ש – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME]; [REDACTED_NAME]; [REDACTED_NAME] (עורך ""המקור""); [REDACTED_NAME] (תחקירנית ""המקור"")
+
+
+
+[REDACTED_NAME]
+([REDACTED_NAME] שבכותרת)
+
+
+ביום 31.05.2023[REDACTED_NAME] העבודה, [REDACTED_NAME][REDACTED_NAME] ([REDACTED_NAME] א. ז'יטניצקי-רקובר) [REDACTED_NAME] 10-06-23[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 13, [REDACTED_NAME][REDACTED_NAME] אסור. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (תמ""ש 4621-06-21). 
+
+[REDACTED_NAME] התורנית, א. ז'יטניצקי-[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACT","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+<#1#>
+נוכחים:
+המבקשת 1 התייצבה; המבקשת 2[REDACTED_NAME][REDACTED_NAME] המבקשות – [REDACTED_NAME][REDACTED_NAME] 
+ב""כ המשיבה – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לקטינה – [REDACTED_NAME] ויוי-[REDACTED_NAME]
+עו""ס[REDACTED_NAME] (עיריית ב""ב) – ",immigration_status,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0022,BrainboxAI/legal-training-il,src_af56516f4481,public_licensed_training,,social_benefits_welfare,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+1.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בקריות (כב' [REDACTED_NAME][REDACTED_NAME]), מיום 9.9.2023 בתלה""מ 17951-07-23 (להלן: ""[REDACTED_NAME]"" ו- ""[REDACTED_NAME]"", בהתאמה), [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] בן 14, [REDACTED_NAME][REDACTE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+1.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בקריות (כב' [REDACTED_NAME][REDACTED_NAME]), מיום 9.9.2023 בתלה""מ 17951-07-23 (להלן: ""[REDACTED_NAME]"" ו- ""[REDACTED_NAME]"", בהתאמה), [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] בן 14, [REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME] קמא
+2.	המבקש  ([REDACTED_NAME]: ""האב"") והמשיבה ([REDACTED_NAME]: ""האם"") [R","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+1.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בקריות (כב' [REDACTED_NAME][REDACTED_NAME]), מיום 9.9.2023 בתלה""מ 17951-07-23 (להלן: ""[REDACTED_NAME]"" ו- ""[REDACTED_NAME]"", בהתאמה), [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] בן 14, [REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME] קמא
+2.	המבקש  ([REDACTED_NAME]: ""האב"") והמשיבה ([REDACTED_NAME]: ""האם"") [REDACTED_NAME][REDACTED_NAME] 2008, [REDACTED_NAME][REDACTED_NAME] יליד .... (בן 14) (להלן: ""הקטין""). 
+	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] קודמים, [REDACTED_NAME] דת. 
+3.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] שהות (תמ""ש 19931-01-11) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מצדו. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הקטין. מנגד, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ([REDACTED_NAME] קמא).
+4.	ביום 10.2.15[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] האב. 
+5.	ביום 13.6.12[REDACTED_NAME][REDACTED_NAME]""ד[REDACTED_NAME], [RE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+1.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בקריות (כב' [REDACTED_NAME][REDACTED_NAME]), מיום 9.9.2023 בתלה""מ 17951-07-23 (להלן: ""[REDACTED_NAME]"" ו- ""[REDACTED_NAME]"", בהתאמה), [REDACTED_NAME][REDACTED_NAME][REDACTED_",social_benefits_welfare,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 4
+מחוז: 3
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0025,BrainboxAI/legal-training-il,src_57c871155a1a,public_licensed_training,,housing,en,"Analyze this contract clause and identify its type and risks:
+Thereafter, this agreement will renew automatically from year to year unless cancelled in writing by either Party giving the other written notice of such cancellation a minimum of 60 days before the end of the then current term.
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope an","Analyze this contract clause and identify its type and risks:
+Thereafter, this agreement will renew automatically from year to year unless cancelled in writing by either Party giving the other written notice of such cancellation a minimum of 60 days before the end of the then current term.","Analyze this contract clause and identify its type and risks:
+Thereafter, this agreement will renew automatically from year to year unless cancelled in writing by either Party giving the other written notice of such cancellation a minimum of 60 days before the end of the then current term.
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","Analyze this contract clause and identify its type and risks:
+Thereafter, this agreement will renew automatically from year to year unless cancelled in writing by either Party giving the other written notice of such cancellation a minimum of 60 days before the end of the then current term.",housing,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Renewal Term
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0027,BrainboxAI/legal-training-il,src_9a6d58fc7bd2,public_licensed_training,,labor_employment,en,"Review the following contract provision:
+[REDACTED_NAME] agrees that neither the Licensor, nor any of its respective affiliates, employees, officers, or agents, shall be liable for any loss, damage, cost or expense, (direct or indirect) except for direct damages arising from the gross negligence of willful misconduct of the Licensor.
+
+Question: What type of clause is this?
+Answer: [REDACTED_NAME]:","Review the following contract provision:
+[REDACTED_NAME] agrees that neither the Licensor, nor any of its respective affiliates, employees, officers, or agents, shall be liable for any loss, damage, cost or expense, (direct or indirect) except for direct damages arising from the gross negligence of willful misconduct of the Licensor.
+
+Question: What type of clause is this?","Review the following contract provision:
+[REDACTED_NAME] agrees that neither the Licensor, nor any of its respective affiliates, employees, officers, or agents, shall be liable for any loss, damage, cost or expense, (direct or indirect) except for direct damages arising from the gross negligence of willful misconduct of the Licensor.
+
+Question: What type of clause is this?
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","Review the following contract provision:
+[REDACTED_NAME] agrees that neither the Licensor, nor any of its respective affiliates, employees, officers, or agents, shall be liable for any loss, damage, cost or expense, (direct or indirect) except for direct damages arising from the gross negligence of ",labor_employment,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Cap On Liability
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0028,BrainboxAI/legal-training-il,src_d5ab36db7c64,public_licensed_training,,immigration_status,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+
+
+[REDACTED_NAME]
+המבקשת ([REDACTED_NAME]: ""[REDACTED_NAME]"") [REDACTED_NAME] 28.3.24[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] מס' 18152/00421[REDACTED_NAME] 500,000 ₪ (להלן: ""הערבות"") [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ([REDACTED_NAME]: ""פולדמיר"").
+[REDA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+
+
+[REDACTED_NAME]
+המבקשת ([REDACTED_NAME]: ""[REDACTED_NAME]"") [REDACTED_NAME] 28.3.24[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] מס' 18152/00421[REDACTED_NAME] 500,000 ₪ (להלן: ""הערבות"") [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ([REDACTED_NAME]: ""פולדמיר"").
+[REDACTED_NAME][REDACTED_NAME] בסך כ-13 מיליון ₪ [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ביום 26.12","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+
+
+[REDACTED_NAME]
+המבקשת ([REDACTED_NAME]: ""[REDACTED_NAME]"") [REDACTED_NAME] 28.3.24[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] מס' 18152/00421[REDACTED_NAME] 500,000 ₪ (להלן: ""הערבות"") [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ([REDACTED_NAME]: ""פולדמיר"").
+[REDACTED_NAME][REDACTED_NAME] בסך כ-13 מיליון ₪ [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ביום 26.12.23, [REDACTED_NAME][REDACTED_NAME] בע""מ (להלן: ""הנתבעות""), [REDACTED_NAME]-[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] רפאל, [REDACTED_NAME][REDACTED_NAME] ראשי. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME], [REDACTED_NAME], חיפוי, וצבע. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+ביום 27.3.24[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בסך כ-8.4 מיליון ₪, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+
+
+[REDACTED_NAME]
+המבקשת ([REDACTED_NAME]: ""[REDACTED_NAME]"") [REDACTED_NAME] 28.3.24[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] מס' 18152/00421[REDACTED_NAME] 500,000 ₪ (להלן: ""הערבו",immigration_status,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 3
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 3. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0029,BrainboxAI/legal-training-il,src_57de5f6ee3e0,public_licensed_training,,accessibility_disability_rights,he,"[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+1. 	[REDACTED_NAME] המבקש, [REDACTED_NAME] (להלן: ""המבקש""), [REDACTED_NAME] חדשות (להלן: ""הבקשה"").
+
+[REDACTED_NAME]:
+
+2. 	המבקש, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] דצמבר 2021[REDACTED_NAME][REDACTED_NAME] (להלן: ""[REDACTED_NAME]"") [REDACTED_NAME] משיבות – סוכנויות ו/[REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][RE","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+1. 	[REDACTED_NAME] המבקש, [REDACTED_NAME] (להלן: ""המבקש""), [REDACTED_NAME] חדשות (להלן: ""הבקשה"").
+
+[REDACTED_NAME]:
+
+2. 	המבקש, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] דצמבר 2021[REDACTED_NAME][REDACTED_NAME] (להלן: ""[REDACTED_NAME]"") [REDACTED_NAME] משיבות – סוכנויות ו/[REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_N","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+1. 	[REDACTED_NAME] המבקש, [REDACTED_NAME] (להלן: ""המבקש""), [REDACTED_NAME] חדשות (להלן: ""הבקשה"").
+
+[REDACTED_NAME]:
+
+2. 	המבקש, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] דצמבר 2021[REDACTED_NAME][REDACTED_NAME] (להלן: ""[REDACTED_NAME]"") [REDACTED_NAME] משיבות – סוכנויות ו/[REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מתאים, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מוגבלויות, התשנ""ח-1998[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ([REDACTED_NAME] לשירות), תשע""ג-2013 (להלן: ""[REDACTED_NAME]"").
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 35א[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] PDF[REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] והקבוצה.
+3. 	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המשיבה 1, [REDACTED_NAME]""מ (להלן: ""המשיבה""), [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] בהסתלקויות, [REDACTED_NAME][REDACTED_NAME] מטעמן.
+
+4. 	[R","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+1. 	[REDACTED_NAME] המבקש, [REDACTED_NAME] (להלן: ""המבקש""), [REDACTED_NAME] חדשות (להלן: ""הבקשה"").
+
+[REDACTED_NAME]:
+
+2. 	המבקש, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] דצמבר 2021[REDACTED_NAME][REDACTED_NAME] (להלן: ""[REDACTED_NAME]"") [REDACTED_NAME] מ",accessibility_disability_rights,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 3
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 3. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0033,BrainboxAI/legal-training-il,src_fe1a2aa2bdf8,public_licensed_training,,immigration_status,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המבקשת, בזכויותיה (בעלות, חזקה, שימוש, [REDACTED_NAME]) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] שב[REDACTED_ADDRESS]' [REDACTED_NAME] (להלן-""הדירה ב -B ) [REDACTED_","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המבקשת, בזכויותיה (בעלות, חזקה, שימוש, [REDACTED_NAME]) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] שב[REDACTED_ADDRESS]' [REDACTED_NAME] (להלן-""הדירה ב -B ) [REDACTED_NAME] שב[REDACTED_ADDRESS]' [REDACTED_NAME] (להלן-""הדירה ב- R"") [REDACTED_NAME] מנעולים, [REDACTED_N","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המבקשת, בזכויותיה (בעלות, חזקה, שימוש, [REDACTED_NAME]) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] שב[REDACTED_ADDRESS]' [REDACTED_NAME] (להלן-""הדירה ב -B ) [REDACTED_NAME] שב[REDACTED_ADDRESS]' [REDACTED_NAME] (להלן-""הדירה ב- R"") [REDACTED_NAME] מנעולים, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לגברת א. [REDACTED_NAME] מר א. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן-""הבקשה""). 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ביום 6.4.1981. 
+ביום 7.2.2018[REDACTED_NAME][REDACTED_NAME] סכסוך (י""ס 13452-02-18). 
+ביום 11.5.2018[REDACTED_NAME][REDACTED_NAME] להסכם.
+ביום 22.5.2018[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] דין, [REDACTED_NAME][REDACTED_NAME]. 
+ביום 9.9.2019[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (י""ס 20651-09-19).
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME],","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המבקשת, בזכויותיה (בעלות, חזקה, שימוש, [REDACTED_NAME]) [REDACTED_NAME",immigration_status,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted address-like fragment(s).; Redacted possible Hebrew name(s).; Redacted address-like fragment(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0034,BrainboxAI/legal-training-il,src_e13a0cd8bad0,public_licensed_training,,immigration_status,he,"[REDACTED_NAME][REDACTED_NAME] הבאה:
+בפניי : 	[REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME] המנוח : 		[REDACTED_NAME] : 			אלמונית
+ע""י ב""כ עו""ד[REDACTED_NAME]
+
+נ  ג  ד
+					
+המשיב : 			[REDACTED_NAME][REDACTED_NAME] והצפון
+ע""י ב""כ[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] צוואת ""[REDACTED_NAME]"" [REDACTED_NAME][REDACTED_NAME] סעיף 23[REDACTED_NAME], תשכ""ה-1965.
+","[REDACTED_NAME][REDACTED_NAME] הבאה:
+בפניי : 	[REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME] המנוח : 		[REDACTED_NAME] : 			אלמונית
+ע""י ב""כ עו""ד[REDACTED_NAME]
+
+נ  ג  ד
+					
+המשיב : 			[REDACTED_NAME][REDACTED_NAME] והצפון
+ע""י ב""כ[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] צוואת ""[REDACTED_NAME]"" [REDACTED_NAME][REDACTED_NAME] סעיף 23[REDACTED_NAME], תשכ""ה-1965.
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACT","[REDACTED_NAME][REDACTED_NAME] הבאה:
+בפניי : 	[REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME] המנוח : 		[REDACTED_NAME] : 			אלמונית
+ע""י ב""כ עו""ד[REDACTED_NAME]
+
+נ  ג  ד
+					
+המשיב : 			[REDACTED_NAME][REDACTED_NAME] והצפון
+ע""י ב""כ[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] צוואת ""[REDACTED_NAME]"" [REDACTED_NAME][REDACTED_NAME] סעיף 23[REDACTED_NAME], תשכ""ה-1965.
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] (להלן – ""הבן"").
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], גב' פלונית: מר ר' ומר ל' (להלן – ""ר'"" ו - ""ל'"" בהתאמה).
+ביום 22.8.23[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן – ""[REDACTED_NAME]""). 
+ביום 27.8.23[REDACTED_NAME] לעולמו.
+ביום 3.9.23[REDACTED_NAME] והבן ""[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]"" [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן – ""[REDACTED_NAME]"").
+ביום 6.9.23[RE","[REDACTED_NAME][REDACTED_NAME] הבאה:
+בפניי : 	[REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME] המנוח : 		[REDACTED_NAME] : 			אלמונית
+ע""י ב""כ עו""ד[REDACTED_NAME]
+
+נ  ג  ד
+					
+המשיב : 			[REDACTED_NAME][REDACTED_NAME] והצפון
+ע""י ב""כ[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACT",immigration_status,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 3
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0037,BrainboxAI/legal-training-il,src_17ad49cb6ecb,public_licensed_training,,labor_employment,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+
+ביום 9.2.2023[REDACTED_NAME][REDACTED_NAME] (להלן: ""התובעת""/""המבקשת"") [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן: ""הנתבע""/""המשיב"") [REDACTED_NAME][REDACTED_NAME] התובעת, [REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] השני. 
+
+[REDACTED_NAME][REDACTE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+
+ביום 9.2.2023[REDACTED_NAME][REDACTED_NAME] (להלן: ""התובעת""/""המבקשת"") [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן: ""הנתבע""/""המשיב"") [REDACTED_NAME][REDACTED_NAME] התובעת, [REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] השני. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] .... [REDACTED_NAME][REDACTED_NAME][REDACTED_NA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+
+ביום 9.2.2023[REDACTED_NAME][REDACTED_NAME] (להלן: ""התובעת""/""המבקשת"") [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן: ""הנתבע""/""המשיב"") [REDACTED_NAME][REDACTED_NAME] התובעת, [REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] השני. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] .... [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] (להלן: ""הקטינים"") [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME] התביעה. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אמם ב...... [REDACTED_NAME][REDACTED_NAME] הקטינים ל....... 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME]","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+
+ביום 9.2.2023[REDACTED_NAME][REDACTED_NAME] (להלן: ""התובעת""/""המבקשת"") [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן: ""הנתבע""/""המשיב"") [REDACTED_NAME][REDACTED_NAME] התובעת, [REDACTED_NAME].
+
+[REDACTED_NAME][REDACT",labor_employment,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0043,BrainboxAI/legal-training-il,src_5954ea932724,public_licensed_training,,labor_employment,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+ 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] במרמה (3 עבירות) [REDACTED_NAME] 415[REDACTED_NAME] העונשין, התשל""ז-1977 (להלן: החוק) [REDACTED_NAME][REDACTED_NAME] סעיף 428[REDACTED_NAME].
+
+א.	[REDACTED_NAME][REDACTED_NAME] הראשון
+
+1.	[REDACTED_NAME][REDACTED_NAME] בשנת 2008[","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+ 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] במרמה (3 עבירות) [REDACTED_NAME] 415[REDACTED_NAME] העונשין, התשל""ז-1977 (להלן: החוק) [REDACTED_NAME][REDACTED_NAME] סעיף 428[REDACTED_NAME].
+
+א.	[REDACTED_NAME][REDACTED_NAME] הראשון
+
+1.	[REDACTED_NAME][REDACTED_NAME] בשנת 2008[REDACTED_NAME] את י' [REDACTED_NAME] החרדית (להלן: המתלונן י')  באמצעות צ'[REDACTED_NAME][REDACTED_N","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+ 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] במרמה (3 עבירות) [REDACTED_NAME] 415[REDACTED_NAME] העונשין, התשל""ז-1977 (להלן: החוק) [REDACTED_NAME][REDACTED_NAME] סעיף 428[REDACTED_NAME].
+
+א.	[REDACTED_NAME][REDACTED_NAME] הראשון
+
+1.	[REDACTED_NAME][REDACTED_NAME] בשנת 2008[REDACTED_NAME] את י' [REDACTED_NAME] החרדית (להלן: המתלונן י')  באמצעות צ'[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן: הצ'אט). [REDACTED_NAME][REDACTED_NAME] למתלונן י' [REDACTED_NAME] למתלונן י' [REDACTED_NAME][REDACTED_NAME] שלה, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] י', [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 18[REDACTED_NAME] לוי. 
+
+2.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כ- 13[REDACTED_NAME][REDACTED_NAME] האישום, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] י' [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] י' [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בהרחבה. 
+
+3.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][RE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+ 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] במרמה (3 עבירות) [REDACTED_NAME] 415[REDACTED_NAME] העונשין, התשל""ז-1977 (להלן: החוק) [REDACTED_NAME][REDACTED_NAME] סעיף 428[RED",labor_employment,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted address-like fragment(s).; Redacted possible Hebrew name(s).; Redacted address-like fragment(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 3
+נושא: 2
+מחוז: 6
+
+ניתוח: פסק דין זה עוסק בתחום 2. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0049,BrainboxAI/legal-training-il,src_426391948e6e,public_licensed_training,,social_benefits_welfare,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+ 
+
+ 1. ביום 25.4.2022 מונה ד""ר א' ב' [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המנוח – א' ד' ז""ל, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] מיום 2016.**.** [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2010-2016[REDACTED_NAME][REDACTED_NAME].
+
+2. [REDAC","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+ 
+
+ 1. ביום 25.4.2022 מונה ד""ר א' ב' [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המנוח – א' ד' ז""ל, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] מיום 2016.**.** [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2010-2016[REDACTED_NAME][REDACTED_NAME].
+
+2. [REDACTED_NAME][REDACTED_NAME] ביום 22.5.2022[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME],","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+ 
+
+ 1. ביום 25.4.2022 מונה ד""ר א' ב' [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המנוח – א' ד' ז""ל, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] מיום 2016.**.** [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2010-2016[REDACTED_NAME][REDACTED_NAME].
+
+2. [REDACTED_NAME][REDACTED_NAME] ביום 22.5.2022[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הרפואיים, [REDACTED_NAME][REDACTED_NAME]:
+א. [REDACTED_NAME][REDACTED_NAME] עליה – עו""ד מ' א' – **.**.**
+ב. [REDACTED_NAME] פסיכיאטר – [REDACTED_NAME][REDACTED_NAME] – ד""ר א. פ' – **.**.**
+ג. [REDACTED_NAME]""ד[REDACTED_NAME][REDACTED_NAME] המתמשך – עו""ד א' מ' – **.**.** ([REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]). 
+ד. תצהיר פ' ע', [REDACTED_NAME][REDACTED_NAME] **.**.**
+ה. תצהיר ל' א' , [REDACTED_NAME] **.**.**
+ו. תצהיר כ' ד' – [REDACTED_NAME] **.**.**
+ז. תצהיר ח' י'– [REDACTED_NAME][REDACTED_NAME] מיום **.**.**.
+ח. תצהיר ר' מ' – [REDACTED_NAME] **.**.**
+ט. תצהיר מ' א' מיום **.**.**
+י. תצהיר א' ס' – [REDACTED_NAME][REDACTED_NA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+ 
+
+ 1. ביום 25.4.2022 מונה ד""ר א' ב' [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המנוח – א' ד' ז""ל, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] מיום 2016.**.** [REDACTED_NAME][REDACTED_NAME][REDACTED_NA",social_benefits_welfare,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 3
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0053,BrainboxAI/legal-training-il,src_16ae8e5212d4,public_licensed_training,,social_benefits_welfare,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הקטינה XXX[REDACTED_NAME][REDACTED_NAME]:
+
+תלה""מ 34814-01-21[REDACTED_NAME][REDACTED_NAME]- [REDACTED_NAME] ו - תלה""מ  539-05-21[REDACTED_NAME] למזונות ([REDACTED_NAME][REDACTED_NAME]  הליך י""ס והליך ה""ט[REDACTED_NAME][REDACTED_NAME]).
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][RE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הקטינה XXX[REDACTED_NAME][REDACTED_NAME]:
+
+תלה""מ 34814-01-21[REDACTED_NAME][REDACTED_NAME]- [REDACTED_NAME] ו - תלה""מ  539-05-21[REDACTED_NAME] למזונות ([REDACTED_NAME][REDACTED_NAME]  הליך י""ס והליך ה""ט[REDACTED_NAME][REDACTED_NAME]).
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAM","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הקטינה XXX[REDACTED_NAME][REDACTED_NAME]:
+
+תלה""מ 34814-01-21[REDACTED_NAME][REDACTED_NAME]- [REDACTED_NAME] ו - תלה""מ  539-05-21[REDACTED_NAME] למזונות ([REDACTED_NAME][REDACTED_NAME]  הליך י""ס והליך ה""ט[REDACTED_NAME][REDACTED_NAME]).
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]' XX[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ההורים. בנוסף, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] פה, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ביום  x/x/2017, [REDACTED_NAME][REDACTED_NAME] XXX ילידת x/x/2018 (כבת 5.5), [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+
+ [REDACTED_NAME] מעבודתם, האם xx[REDACTED_NAME] ב -X[REDACTED_NAME][REDACTED_NAME] כ X[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כ-X והשנייה כ-X
+
+בי","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הקטינה XXX[REDACTED_NAME][REDACTED_NAME]:
+
+תלה""מ 34814-01-21[REDACTED_NAME][REDACTED_NAME]- [REDACTED_NAME] ו - תלה""מ  539-05-21[REDACTED_NAME] למזונות ([REDACTED_NAME][REDACTED_NAME]  הל",social_benefits_welfare,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 5
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0064,BrainboxAI/legal-training-il,src_7f5db215054b,public_licensed_training,,labor_employment,he,"[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ב[REDACTED_ADDRESS] בעיר Y. 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2009.
+[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מ----- [REDACTED_N","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ב[REDACTED_ADDRESS] בעיר Y. 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2009.
+[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מ----- [REDACTED_NAME] בזנות, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAM","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ב[REDACTED_ADDRESS] בעיר Y. 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2009.
+[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מ----- [REDACTED_NAME] בזנות, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אילת. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. 
+בשנת 2009, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לציון. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ההסכם. 
+ביום ----, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME]. 
+בנוסף, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] וקידושין, [REDACTED_NAME][REDACTED_NAME] כדמו""י[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] התובעת.  
+[REDACTED_NAME][REDACTED_NAME].
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][R","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ב[REDACTED_ADDRESS] בעיר Y. 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 20",labor_employment,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted address-like fragment(s).; Redacted possible Hebrew name(s).; Redacted address-like fragment(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 5
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0065,BrainboxAI/legal-training-il,src_cbd122c350f2,public_licensed_training,,labor_employment,en,"Identify potential risks in this contract section:
+Except as may otherwise be required by the Act or the rules thereunder, neither the Adviser nor its directors, officers, employees, shareholders, agents, control persons or affiliates of any thereof (collectively, the ""[REDACTED_NAME]"") shall be subject to any liability for, or any damages, expenses or losses incurred by the Trust in connection wi","Identify potential risks in this contract section:
+Except as may otherwise be required by the Act or the rules thereunder, neither the Adviser nor its directors, officers, employees, shareholders, agents, control persons or affiliates of any thereof (collectively, the ""[REDACTED_NAME]"") shall be subject to any liability for, or any damages, expenses or losses incurred by the Trust in connection with any error of judgment, mistake of law, any act or omission in connection with or arising out of a","Identify potential risks in this contract section:
+Except as may otherwise be required by the Act or the rules thereunder, neither the Adviser nor its directors, officers, employees, shareholders, agents, control persons or affiliates of any thereof (collectively, the ""[REDACTED_NAME]"") shall be subject to any liability for, or any damages, expenses or losses incurred by the Trust in connection with any error of judgment, mistake of law, any act or omission in connection with or arising out of any services rendered under or payments made pursuant to this Agreement or any other matter to which this Agreement relates, except by reason of willful misfeasance, bad faith or gross negligence on the part of any such persons in the performance of the duties of the Adviser under this Agreement or by reason of reckless disregard by any of such persons of the obligations and duties of the Adviser under this Agreement. Any person, even though also a director, officer, employee, shareholder or agent of the Adviser, who may be or become a trustee, officer, employee or agent of the Trust, shall be deemed, when rendering services to the Trust or <omitted> acting on any business of the Trust (other","Identify potential risks in this contract section:
+Except as may otherwise be required by the Act or the rules thereunder, neither the Adviser nor its directors, officers, employees, shareholders, agents, control persons or affiliates of any thereof (collectively, the ""[REDACTED_NAME]"") shall be sub",labor_employment,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Cap On Liability
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0071,BrainboxAI/legal-training-il,src_74cd7e915207,public_licensed_training,,immigration_status,he,"[REDACTED_NAME][REDACTED_NAME] הבאה:
+ 
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 500,000 ₪. 
+
+המבקשת, [REDACTED_NAME] כ-26 שנים, [REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME]-[REDACTED_NAME] 500,000 ₪.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אחד, [REDACTED_NAME]","[REDACTED_NAME][REDACTED_NAME] הבאה:
+ 
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 500,000 ₪. 
+
+המבקשת, [REDACTED_NAME] כ-26 שנים, [REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME]-[REDACTED_NAME] 500,000 ₪.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אחד, [REDACTED_NAME][REDACTED_NAME] לדיון. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]","[REDACTED_NAME][REDACTED_NAME] הבאה:
+ 
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 500,000 ₪. 
+
+המבקשת, [REDACTED_NAME] כ-26 שנים, [REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME]-[REDACTED_NAME] 500,000 ₪.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אחד, [REDACTED_NAME][REDACTED_NAME] לדיון. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 94[REDACTED_NAME][REDACTED_NAME], תשע""ט-2018, כך: ""[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]-הדין"".
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] תקנה 95[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]; [REDACTED_NAME] הזמני, קרי, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]-הדין; [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]; תום-[REDACTED_NAME] הצדדים; [REDA","[REDACTED_NAME][REDACTED_NAME] הבאה:
+ 
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 500,000 ₪. 
+
+המבקשת, [REDACTED_NAME] כ-26 שנים, [REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME]-[REDACTED_NAME] 500,000 ₪.
+
+[REDACTED_NAME][REDACTED_NAM",immigration_status,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 5
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0073,BrainboxAI/legal-training-il,src_d5c09f6835f7,public_licensed_training,,housing,en,"What are the key legal implications of this clause?
+Licensee may sublicense its rights under Section 1.1 solely to a current or future wholly owned subsidiary of Licensee, and then only with the prior written consent of Licensor (which shall not be unreasonably withheld), provided that any such sublicense shall terminate automatically, with no need for written notice to the sublicensee, if (a) suc","What are the key legal implications of this clause?
+Licensee may sublicense its rights under Section 1.1 solely to a current or future wholly owned subsidiary of Licensee, and then only with the prior written consent of Licensor (which shall not be unreasonably withheld), provided that any such sublicense shall terminate automatically, with no need for written notice to the sublicensee, if (a) such entity ceases to be a wholly owned subsidiary of Licensee, (b) this Agreement terminates for any r","What are the key legal implications of this clause?
+Licensee may sublicense its rights under Section 1.1 solely to a current or future wholly owned subsidiary of Licensee, and then only with the prior written consent of Licensor (which shall not be unreasonably withheld), provided that any such sublicense shall terminate automatically, with no need for written notice to the sublicensee, if (a) such entity ceases to be a wholly owned subsidiary of Licensee, (b) this Agreement terminates for any reason or (c) such sublicensee materially breaches its sublicense in a manner that harms the Brand and does not cure the same within 15 days after notice from Licensor or Licensee.
+Answer: Non-[REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","What are the key legal implications of this clause?
+Licensee may sublicense its rights under Section 1.1 solely to a current or future wholly owned subsidiary of Licensee, and then only with the prior written consent of Licensor (which shall not be unreasonably withheld), provided that any such subl",housing,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Non-Transferable License
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0093,BrainboxAI/legal-training-il,src_8d6b4184bca2,public_licensed_training,,immigration_status,he,"[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בחדרה, כב' [REDACTED_NAME] גולדקורן (להלן: ""[REDACTED_NAME] קמא"") [REDACTED_NAME] ביום 10.04.2024 בא""פ 21018-11-22, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בדיון. [REDACTED_NAME]:
+""[REDACTE","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בחדרה, כב' [REDACTED_NAME] גולדקורן (להלן: ""[REDACTED_NAME] קמא"") [REDACTED_NAME] ביום 10.04.2024 בא""פ 21018-11-22, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בדיון. [REDACTED_NAME]:
+""[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] היועמ""ש[REDACTED_NAME] ב""כ המבקשת, [REDACTED_NAME] לבקשת ב""כ ה","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בחדרה, כב' [REDACTED_NAME] גולדקורן (להלן: ""[REDACTED_NAME] קמא"") [REDACTED_NAME] ביום 10.04.2024 בא""פ 21018-11-22, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בדיון. [REDACTED_NAME]:
+""[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] היועמ""ש[REDACTED_NAME] ב""כ המבקשת, [REDACTED_NAME] לבקשת ב""כ היועמ""ש, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+[REDACTED_NAME]' [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מו""מ[REDACTED_NAME][REDACTED_NAME] האשל""א בשכירות, [REDACTED_NAME] כן.""
+
+[REDACTED_NAME] הדיון:
+""[REDACTED_NAME] את ב""כ[REDACTED_NAME][REDACTED_NAME] היועמ""ש, [REDACTED_NAME] לב""כ[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] מהיום, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] באולם, [REDACTED_NAME][REDACTED_NAME] האשל""א[REDACTED_NAME] בקשה 51 ביום 4.4.24[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המשפט, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].""
+  (להלן: ""[REDACTED_NAME][REDACTED_NAME]"").
+
+[R","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בחדרה, כב' [REDACTED_NAME] גולדקורן (להלן: ""[REDACTED_NAME] קמא"") [REDACTED_NAME] ביום 10.04.2024 בא""פ 21018-11-22, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED",immigration_status,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 4
+מחוז: 3
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0096,BrainboxAI/legal-training-il,src_b79b68d79f96,public_licensed_training,,immigration_status,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ביום 12.6.23 עפ""י[REDACTED_NAME][REDACTED_NAME] במשפחה.
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בהחלטת ס. [REDACTED_NAME]' השופטת ר.ק.ע, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ביום 12.6.23 עפ""י[REDACTED_NAME][REDACTED_NAME] במשפחה.
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בהחלטת ס. [REDACTED_NAME]' השופטת ר.ק.ע, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ליום 15.6.23[REDACTED_NAME] בפניי.
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ביום 12.6.23 עפ""י[REDACTED_NAME][REDACTED_NAME] במשפחה.
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בהחלטת ס. [REDACTED_NAME]' השופטת ר.ק.ע, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ליום 15.6.23[REDACTED_NAME] בפניי.
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] נוספת ע""י[REDACTED_NAME][REDACTED_NAME] דחופה, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אליו.
+[REDACTED_NAME], [REDACTED_NAME] משלימה ע""י ס. הנשיא, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ביום 15.6.23.
+
+יצוין, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] דחייה. האחת ע""י ב""כ[REDACTED_NAME] המועד, והשנייה ע""י ב""כ[REDACTED_NAME][REDAC","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ביום 12.6.23 עפ""י[REDACTED_NAME][REDACTED_NAME] במשפחה.
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בהחלטת ס. [REDACTED_NAME]' השופטת ר.ק.ע, [REDACTED_NAM",immigration_status,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 7
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0098,BrainboxAI/legal-training-il,src_97b64e6d4c1e,public_licensed_training,,immigration_status,he,"[REDACTED_NAME][REDACTED_NAME] הבאה:
+                                                              
+26 בדצמבר 2023
+                                                                                                   י""ד[REDACTED_NAME]""ד
+4700-1039-2023-010262[REDACTED_NAME]-[REDACTED_NAME]""נ 
+ 
+ביהמ""ש[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED","[REDACTED_NAME][REDACTED_NAME] הבאה:
+                                                              
+26 בדצמבר 2023
+                                                                                                   י""ד[REDACTED_NAME]""ד
+4700-1039-2023-010262[REDACTED_NAME]-[REDACTED_NAME]""נ 
+ 
+ביהמ""ש[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][RED","[REDACTED_NAME][REDACTED_NAME] הבאה:
+                                                              
+26 בדצמבר 2023
+                                                                                                   י""ד[REDACTED_NAME]""ד
+4700-1039-2023-010262[REDACTED_NAME]-[REDACTED_NAME]""נ 
+ 
+ביהמ""ש[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] להליך. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מזהים. 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] יהודי, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].  [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] היום, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME]. [REDACTED_NAME], בפועל, [REDACTED_NAME] מידתית ([REDACTED_NAME][REDACTED_NAME]) [REDACTED_NAM","[REDACTED_NAME][REDACTED_NAME] הבאה:
+                                                              
+26 בדצמבר 2023
+                                                                                                   י""ד[REDACTED_NAME]""ד
+4700-1039-2023-010262[REDACTED_NAME]-[REDACTED_NAME]""נ 
+ 
+ביהמ""ש[",immigration_status,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 6
+מחוז: 3
+
+ניתוח: פסק דין זה עוסק בתחום 6. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0099,BrainboxAI/legal-training-il,src_06754529af86,public_licensed_training,,housing,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בנחלה/משק ב****.
+[REDACTED_NAME][REDACTED_NAME] ביום ***. 
+ביום *** [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]: רמ""י (להלן: ""הנתבעת 2""), [REDACTED_NAME] (להלן: ""הנתבעת 3""), ו*** (להלן: ""הנתבעת 4"").
+
+[REDACTED_NAME]:
+[REDACTED_N","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בנחלה/משק ב****.
+[REDACTED_NAME][REDACTED_NAME] ביום ***. 
+ביום *** [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]: רמ""י (להלן: ""הנתבעת 2""), [REDACTED_NAME] (להלן: ""הנתבעת 3""), ו*** (להלן: ""הנתבעת 4"").
+
+[REDACTED_NAME]:
+[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] ****, ו**** ז""ל (להלן: ""המנוחים"").
+[REDACTED_NAME], **** ז""ל[RE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בנחלה/משק ב****.
+[REDACTED_NAME][REDACTED_NAME] ביום ***. 
+ביום *** [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]: רמ""י (להלן: ""הנתבעת 2""), [REDACTED_NAME] (להלן: ""הנתבעת 3""), ו*** (להלן: ""הנתבעת 4"").
+
+[REDACTED_NAME]:
+[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] ****, ו**** ז""ל (להלן: ""המנוחים"").
+[REDACTED_NAME], **** ז""ל[REDACTED_NAME][REDACTED_NAME] בתימן: **** ז""ל (להלן: ""***"") ו*** ז""ל (להלן:"" ***"") - [REDACTED_NAME] הצדדים. 
+[REDACTED_NAME] 11[REDACTED_NAME] נשותיו: **** 6 ילדים, ו**** 5 ילדים.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] *** במושב *** [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] **** ([REDACTED_NAME] *** [REDACTED_NAME] ***, ***, *** וגוש **** [REDACTED_NAME] * [REDACTED_NAME] **** [REDACTED_NAME] כ- 12 דונם) (להלן: ""המשק""). 
+[REDACTED_NAME][REDACTED_NAME] הדיון, [REDACTED_NAME][REDACTED_NAME] שהושכרה ל**** [REDACTED_NAME] של ***** (להלן:"" המושב""), [REDACTED_NAME][REDACTED_NAME] צדדי, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המושב (להלן: ""[REDACTED_NAME]"") (ראה: סע' 10[REDACTED_NA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בנחלה/משק ב****.
+[REDACTED_NAME][REDACTED_NAME] ביום ***. 
+ביום *** [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]: רמ""י (להלן: ""הנ",housing,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 5
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0101,BrainboxAI/legal-training-il,src_a88b35c381de,public_licensed_training,,labor_employment,en,"What are the key legal implications of this clause?
+Consultant will not, during the Term, and for a period of one (1) year thereafter, directly or indirectly: (i) solicit, recruit or promote the solicitation or recruitment of any employee or consultant of the Company for the purpose of encouraging that employee or consultant to leave the Company's employ or sever an agreement for services
+Answer: ","What are the key legal implications of this clause?
+Consultant will not, during the Term, and for a period of one (1) year thereafter, directly or indirectly: (i) solicit, recruit or promote the solicitation or recruitment of any employee or consultant of the Company for the purpose of encouraging that employee or consultant to leave the Company's employ or sever an agreement for services","What are the key legal implications of this clause?
+Consultant will not, during the Term, and for a period of one (1) year thereafter, directly or indirectly: (i) solicit, recruit or promote the solicitation or recruitment of any employee or consultant of the Company for the purpose of encouraging that employee or consultant to leave the Company's employ or sever an agreement for services
+Answer: No-[REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","What are the key legal implications of this clause?
+Consultant will not, during the Term, and for a period of one (1) year thereafter, directly or indirectly: (i) solicit, recruit or promote the solicitation or recruitment of any employee or consultant of the Company for the purpose of encouraging t",labor_employment,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: No-Solicit Of Employees
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0103,BrainboxAI/legal-training-il,src_da9552da0347,public_licensed_training,,labor_employment,he,"[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] משומשים.
+
+[REDACTED_NAME], [REDACTED_NAME] ידי 5[REDACTED_NAME] 6 משיבות. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] של 55,358,640 ₪ (ת""צ 59582-03-22).
+
+[REDACTED_NAME], [REDACTED_NAME] ידי 8[REDACTED_NAME] 8 משיבות. [REDACTED_NAME][REDACTED_NAME][RE","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] משומשים.
+
+[REDACTED_NAME], [REDACTED_NAME] ידי 5[REDACTED_NAME] 6 משיבות. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] של 55,358,640 ₪ (ת""צ 59582-03-22).
+
+[REDACTED_NAME], [REDACTED_NAME] ידי 8[REDACTED_NAME] 8 משיבות. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] של 67,828,320 ₪ (ת""צ 38685-05-22). 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDA","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] משומשים.
+
+[REDACTED_NAME], [REDACTED_NAME] ידי 5[REDACTED_NAME] 6 משיבות. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] של 55,358,640 ₪ (ת""צ 59582-03-22).
+
+[REDACTED_NAME], [REDACTED_NAME] ידי 8[REDACTED_NAME] 8 משיבות. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] של 67,828,320 ₪ (ת""צ 38685-05-22). 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הלקוח; [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מוכרות, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הטבות; [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לתשלום; [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מחיר. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הטענות. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDAC","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] משומשים.
+
+[REDACTED_NAME], [REDACTED_NAME] ידי 5[REDACTED_NAME] 6 משיבות. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] של 55,358,640 ₪ (ת""צ 59582-03-22)",labor_employment,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 3
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 3. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0104,BrainboxAI/legal-training-il,src_9f1b7a89e47f,public_licensed_training,,labor_employment,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+ 
+
+[REDACTED_NAME][REDACTED_NAME] עבור 2 קטינות: נ' ילידת 2016 (כבת 8), ו-נ' ילידת 2020 (כבת 3 וחצי).
+ 	(להלן: ""הקטינות""). 
+
+[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ע""י[REDACTED_NAME] כדלקמן:
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הינה ***** ומשתכרת כ-10,000 ש""ח[REDACTED_NAME]","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+ 
+
+[REDACTED_NAME][REDACTED_NAME] עבור 2 קטינות: נ' ילידת 2016 (כבת 8), ו-נ' ילידת 2020 (כבת 3 וחצי).
+ 	(להלן: ""הקטינות""). 
+
+[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ע""י[REDACTED_NAME] כדלקמן:
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הינה ***** ומשתכרת כ-10,000 ש""ח[REDACTED_NAME]. 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ל **** [REDACTED_NAME][REDACTED_NAME","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+ 
+
+[REDACTED_NAME][REDACTED_NAME] עבור 2 קטינות: נ' ילידת 2016 (כבת 8), ו-נ' ילידת 2020 (כבת 3 וחצי).
+ 	(להלן: ""הקטינות""). 
+
+[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ע""י[REDACTED_NAME] כדלקמן:
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הינה ***** ומשתכרת כ-10,000 ש""ח[REDACTED_NAME]. 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ל **** [REDACTED_NAME][REDACTED_NAME] כ-600,000 ש""ח[REDACTED_NAME]-50,000 ש""ח[REDACTED_NAME]. 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 9,000 ₪ [REDACTED_NAME] ([REDACTED_NAME]) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הבית, [REDACTED_NAME][REDACTED_NAME] העסקי.  
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] משתכרת כ-12,000 ש""ח[REDACTED_NAME][REDACTED_NAME] 10,000 ל-11,000 ש""ח[REDACTED_NAME].
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 20,000 ל-22,000 ש""ח[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כ-8,000 ש""ח, [REDACTED_NAME][REDACTED_NAME]-1,000 ש""ח[REDACTED_NAME] (ראה: סעיף 9[REDACTED_NAME] זמניים). 
+
+[REDACTED_NAME]""ח[REDACTED_NAME][R","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+ 
+
+[REDACTED_NAME][REDACTED_NAME] עבור 2 קטינות: נ' ילידת 2016 (כבת 8), ו-נ' ילידת 2020 (כבת 3 וחצי).
+ 	(להלן: ""הקטינות""). 
+
+[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ע""י[REDACTED_NAME] כדלקמן:
+
+[REDACT",labor_employment,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 5
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0115,BrainboxAI/legal-training-il,src_a6df9b6f195d,public_licensed_training,,labor_employment,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. 
+[REDACTED_NAME][REDACTED_NAME] לשעבר, יהודים, [REDACTED_NAME] א' ת""ז ------יליד 2011 (בן כ- 13 שנים), ב' ת""ז -----יליד 2014 (בן כ-9.5 שנים) וג' ת""ז ---- יליד 2016 (בן כ-7.5 שנים). 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (""האֵם"") [REDACTED_NAME] (""הא","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. 
+[REDACTED_NAME][REDACTED_NAME] לשעבר, יהודים, [REDACTED_NAME] א' ת""ז ------יליד 2011 (בן כ- 13 שנים), ב' ת""ז -----יליד 2014 (בן כ-9.5 שנים) וג' ת""ז ---- יליד 2016 (בן כ-7.5 שנים). 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (""האֵם"") [REDACTED_NAME] (""האב): 
+[REDACTED_NAME][REDACTED_NAME] שהות - תלה""מ 37568-02-21; [REDACTED_NAME][REDACTED_NAME][REDACTE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. 
+[REDACTED_NAME][REDACTED_NAME] לשעבר, יהודים, [REDACTED_NAME] א' ת""ז ------יליד 2011 (בן כ- 13 שנים), ב' ת""ז -----יליד 2014 (בן כ-9.5 שנים) וג' ת""ז ---- יליד 2016 (בן כ-7.5 שנים). 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (""האֵם"") [REDACTED_NAME] (""האב): 
+[REDACTED_NAME][REDACTED_NAME] שהות - תלה""מ 37568-02-21; [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] - תלה""מ 37277-02-21. 
+ביום 11.1.2023[REDACTED_NAME] הצדדים. 
+[REDACTED_NAME][REDACTED_NAME]ֵם (עמ' 13 לפרוטוקול), [REDACTED_NAME][REDACTED_NAME] (עמ' 22 לפרוטוקול). [REDACTED_NAME][REDACTED_NAME]. 
+תלה""מ 37568-02-21 - [REDACTED_NAME][REDACTED_NAME] האֵם, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 20%-80% [REDACTED_NAME]ֵם. 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]ֵם[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_N","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. 
+[REDACTED_NAME][REDACTED_NAME] לשעבר, יהודים, [REDACTED_NAME] א' ת""ז ------יליד 2011 (בן כ- 13 שנים), ב' ת""ז -----יליד 2014 (בן כ-9.5 שנים) וג' ת""ז ---- יליד 2016 (בן כ-7.",labor_employment,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 3
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0116,BrainboxAI/legal-training-il,src_ad01336c8bb1,public_licensed_training,,social_benefits_welfare,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ZZZ[REDACTED_NAME] ZZZ[REDACTED_NAME][REDACTED_NAME] 3[REDACTED_NAME] קטינים:
+
+ZZZ ילידת YY
+XXX יליד YY
+YYY יליד YY[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] תביעות, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2[REDACTED_NAME][REDACTED_NAME]:
+
+[RE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ZZZ[REDACTED_NAME] ZZZ[REDACTED_NAME][REDACTED_NAME] 3[REDACTED_NAME] קטינים:
+
+ZZZ ילידת YY
+XXX יליד YY
+YYY יליד YY[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] תביעות, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2[REDACTED_NAME][REDACTED_NAME]:
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]""מ  22832-06-19[REDACTED_NAME][REDACTED_NAM","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ZZZ[REDACTED_NAME] ZZZ[REDACTED_NAME][REDACTED_NAME] 3[REDACTED_NAME] קטינים:
+
+ZZZ ילידת YY
+XXX יליד YY
+YYY יליד YY[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] תביעות, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2[REDACTED_NAME][REDACTED_NAME]:
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]""מ  22832-06-19[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] האב;
+
+[REDACTED_NAME][REDACTED_NAME]""מ 21342-06-19[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] האישה.
+כאמור, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ביום 18.10.20[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] נסגר.
+
+[REDACTED_NAME], [REDACTED_NAME] ביום 11.6.23[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] כעת.
+[REDACTED_NAME][REDACTED_NAME] ביום 21.10.22[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הצדדים, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ביום 27.5.24[REDACTED_NAME] 5 דיונים, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+
+[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ZZZ[REDACTED_NAME] ZZZ[REDACTED_NAME][REDACTED_NAME] 3[REDACTED_NAME] קטינים:
+
+ZZZ ילידת YY
+XXX יליד YY
+YYY יליד YY[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] תביעות, [REDACTED_NAM",social_benefits_welfare,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 5
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0121,BrainboxAI/legal-training-il,src_faeb77d738af,public_licensed_training,,social_benefits_welfare,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 36,629.5 ₪ [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הצדדים.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כדמו""י ביום 08/08/2018[REDACTED_NAME][REDACTED_NAME] ילידי 2018 ו- 2020.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 36,629.5 ₪ [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הצדדים.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כדמו""י ביום 08/08/2018[REDACTED_NAME][REDACTED_NAME] ילידי 2018 ו- 2020.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אשקלון. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2020, [REDACTED_NAME][RE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 36,629.5 ₪ [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הצדדים.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כדמו""י ביום 08/08/2018[REDACTED_NAME][REDACTED_NAME] ילידי 2018 ו- 2020.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אשקלון. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2020, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] נסתיימו.
+
+[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן: ""החשבון"") [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] צפויות.
+
+[REDACTED_NAME] ספטמבר 2020[REDACTED_NAME][REDACTED_NAME] 130,000 ₪.
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] 25,000 ₪ [REDACTED_NAME] של 15,000 ₪ לתובע. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+
+משכך, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 36,629.5 ₪ [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הצדדים.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כדמו""י ביום 0",social_benefits_welfare,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 7
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0148,BrainboxAI/legal-training-il,src_28f613fbc6d6,public_licensed_training,,social_benefits_welfare,en,"Identify potential risks in this contract section:
+[REDACTED_NAME] of Attorney shall bind and benefit the respective successors and assigns of the Adviser and FASC; provided, however, that FASC shall have no power or authority hereunder to appoint a successor or substitute attorney in fact for the Adviser or any Fund.
+Answer: Anti-[REDACTED_NAME]: This clause should be carefully reviewed. Key cons","Identify potential risks in this contract section:
+[REDACTED_NAME] of Attorney shall bind and benefit the respective successors and assigns of the Adviser and FASC; provided, however, that FASC shall have no power or authority hereunder to appoint a successor or substitute attorney in fact for the Adviser or any Fund.","Identify potential risks in this contract section:
+[REDACTED_NAME] of Attorney shall bind and benefit the respective successors and assigns of the Adviser and FASC; provided, however, that FASC shall have no power or authority hereunder to appoint a successor or substitute attorney in fact for the Adviser or any Fund.
+Answer: Anti-[REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","Identify potential risks in this contract section:
+[REDACTED_NAME] of Attorney shall bind and benefit the respective successors and assigns of the Adviser and FASC; provided, however, that FASC shall have no power or authority hereunder to appoint a successor or substitute attorney in fact for the A",social_benefits_welfare,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Anti-Assignment
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0153,BrainboxAI/legal-training-il,src_d6cc373ef1ad,public_licensed_training,,housing,en,"Identify potential risks in this contract section:
+[REDACTED_NAME] shall automatically renew beyond the[REDACTED_NAME] for successive one (I) year terms (each, a ""[REDACTED_NAME]""), unless a Party provides the other with written notice of termination at least one hundred eighty (180) days prior to the expiration of the[REDACTED_NAME] or the then-current[REDACTED_NAME].
+Answer: [REDACTED_NAME]: Thi","Identify potential risks in this contract section:
+[REDACTED_NAME] shall automatically renew beyond the[REDACTED_NAME] for successive one (I) year terms (each, a ""[REDACTED_NAME]""), unless a Party provides the other with written notice of termination at least one hundred eighty (180) days prior to the expiration of the[REDACTED_NAME] or the then-current[REDACTED_NAME].","Identify potential risks in this contract section:
+[REDACTED_NAME] shall automatically renew beyond the[REDACTED_NAME] for successive one (I) year terms (each, a ""[REDACTED_NAME]""), unless a Party provides the other with written notice of termination at least one hundred eighty (180) days prior to the expiration of the[REDACTED_NAME] or the then-current[REDACTED_NAME].
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","Identify potential risks in this contract section:
+[REDACTED_NAME] shall automatically renew beyond the[REDACTED_NAME] for successive one (I) year terms (each, a ""[REDACTED_NAME]""), unless a Party provides the other with written notice of termination at least one hundred eighty (180) days prior to t",housing,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: Renewal Term
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0159,BrainboxAI/legal-training-il,src_a381bc1d8274,public_licensed_training,,social_benefits_welfare,he,"[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+					[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מיום 19.12.23 ומיום 25.12.23 (כב' [REDACTED_NAME][REDACTED_NAME]""ז 23481-05-23) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המערערים, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הסבים. 
+
+א.	[REDACTED_NAME] 
+
+1.	הקטין ---- (להלן: הק","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+					[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מיום 19.12.23 ומיום 25.12.23 (כב' [REDACTED_NAME][REDACTED_NAME]""ז 23481-05-23) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המערערים, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הסבים. 
+
+א.	[REDACTED_NAME] 
+
+1.	הקטין ---- (להלן: הקטין) [REDACTED_NAME] ([REDACTED_NAME]: האב) ולמערערת ([REDACTED_NAME]: האם) ביום 00.00.22.  
+
+2.	ביו","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+					[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מיום 19.12.23 ומיום 25.12.23 (כב' [REDACTED_NAME][REDACTED_NAME]""ז 23481-05-23) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המערערים, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הסבים. 
+
+א.	[REDACTED_NAME] 
+
+1.	הקטין ---- (להלן: הקטין) [REDACTED_NAME] ([REDACTED_NAME]: האב) ולמערערת ([REDACTED_NAME]: האם) ביום 00.00.22.  
+
+2.	ביום 14.2.23[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]-[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. ביום 17.2.23[REDACTED_NAME][REDACTED_NAME] סעיף 11[REDACTED_NAME], [REDACTED_NAME] תש""כ-1960 (להלן: החוק) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בהשגחה. 
+
+3.	ביום 19.2.23[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הקטין. ביום 24.2.23[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הקטין. ביום 27.2.23[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDAC","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+					[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מיום 19.12.23 ומיום 25.12.23 (כב' [REDACTED_NAME][REDACTED_NAME]""ז 23481-05-23) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המערערים,",social_benefits_welfare,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 11
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 11. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0162,BrainboxAI/legal-training-il,src_d1468bf7029d,public_licensed_training,,social_benefits_welfare,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 31.1.24[REDACTED_NAME] (להלן: ""הבקשה"", ""ההחלטה"" ו""הצו"", [REDACTED_NAME]).
+
+[REDACTED_NAME][REDACTED_NAME] שנת 2003[REDACTED_NAME] ילדים, [REDACTED_NAME][REDACTED_NAME].  [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לפניי. 
+
+[REDACTED_NAME],  [R","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 31.1.24[REDACTED_NAME] (להלן: ""הבקשה"", ""ההחלטה"" ו""הצו"", [REDACTED_NAME]).
+
+[REDACTED_NAME][REDACTED_NAME] שנת 2003[REDACTED_NAME] ילדים, [REDACTED_NAME][REDACTED_NAME].  [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לפניי. 
+
+[REDACTED_NAME],  [REDACTED_NAME]  ביום 25.6.23[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] מטעמו, [RE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 31.1.24[REDACTED_NAME] (להלן: ""הבקשה"", ""ההחלטה"" ו""הצו"", [REDACTED_NAME]).
+
+[REDACTED_NAME][REDACTED_NAME] שנת 2003[REDACTED_NAME] ילדים, [REDACTED_NAME][REDACTED_NAME].  [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לפניי. 
+
+[REDACTED_NAME],  [REDACTED_NAME]  ביום 25.6.23[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] מטעמו, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המבקשת, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME] 31.1.24[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אלימות ([REDACTED_NAME]); [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בדיון, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לפניו; [REDACTED_NAME][RE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 31.1.24[REDACTED_NAME] (להלן: ""הבקשה"", ""ההחלטה"" ו""הצו"", [REDACTED_NAME]).
+
+[REDACTED_NAME][REDACTED_NAME] שנת 2003[REDACTED_NAME] ילדים, [REDACTE",social_benefits_welfare,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 7
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0173,BrainboxAI/legal-training-il,src_a56d77dabb7b,public_licensed_training,,housing,he,"[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] לשעבר:
+
+[REDACTED_NAME][REDACTED_NAME] האיש (תה""ס 65111-12-18)
+[REDACTED_NAME][REDACTED_NAME] האישה (תה""ס 17876-02-19)
+[REDACTED_NAME][REDACTED_NAME] (תלה""מ 24445-09-19). 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] דין, [REDACTED_N","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] לשעבר:
+
+[REDACTED_NAME][REDACTED_NAME] האיש (תה""ס 65111-12-18)
+[REDACTED_NAME][REDACTED_NAME] האישה (תה""ס 17876-02-19)
+[REDACTED_NAME][REDACTED_NAME] (תלה""מ 24445-09-19). 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] דין, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][RED","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] לשעבר:
+
+[REDACTED_NAME][REDACTED_NAME] האיש (תה""ס 65111-12-18)
+[REDACTED_NAME][REDACTED_NAME] האישה (תה""ס 17876-02-19)
+[REDACTED_NAME][REDACTED_NAME] (תלה""מ 24445-09-19). 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] דין, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 700,000 ₪ בגין ""[REDACTED_NAME]"". 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ביום 00.00.2013. 
+
+בשנת 2016, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] א', [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. (להלן: ""ההסכם"" או ""[REDACTED_NAME] נישואין""). [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 14.11.2016[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ברחוב *** בעיר *** (להלן: ""הדירה"") [REDACTED_NAME][REDACTED_NAME] האיש, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTE","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] לשעבר:
+
+[REDACTED_NAME][REDACTED_NAME] האיש (תה""ס 65111-12-18)
+[REDACTED_NAME][REDACTED_NAME] האישה (תה""ס 17876-02-19)
+[REDACTED_NAME][REDACTED_NAME] (תלה""מ 24445-09-19). 
+
+[REDACTED_NAME][REDACT",housing,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 5
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0175,BrainboxAI/legal-training-il,src_a6fa61563941,public_licensed_training,,social_benefits_welfare,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הבנות א., מ. וש., [REDACTED_NAME] התובעת (להלן: ""התובעת"" או ""האישה"" או ""האם"") [REDACTED_NAME] (להלן: ""הנתבע"" או ""האיש"" או ""האב"") ביום 11.11.20[REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. ביניהם, בתלה""מ *****-12-17 (מזונות) [REDACTED_NAME][REDACTED_NAME] 29.7.2020[REDAC","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הבנות א., מ. וש., [REDACTED_NAME] התובעת (להלן: ""התובעת"" או ""האישה"" או ""האם"") [REDACTED_NAME] (להלן: ""הנתבע"" או ""האיש"" או ""האב"") ביום 11.11.20[REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. ביניהם, בתלה""מ *****-12-17 (מזונות) [REDACTED_NAME][REDACTED_NAME] 29.7.2020[REDACTED_NAME][REDACTED_NAME] א. והקטינות ש. ומ. (להלן: ""[REDACTED_NAME]"").
+
+[REDACTED_NAME] כדמו""י ביום ","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הבנות א., מ. וש., [REDACTED_NAME] התובעת (להלן: ""התובעת"" או ""האישה"" או ""האם"") [REDACTED_NAME] (להלן: ""הנתבע"" או ""האיש"" או ""האב"") ביום 11.11.20[REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. ביניהם, בתלה""מ *****-12-17 (מזונות) [REDACTED_NAME][REDACTED_NAME] 29.7.2020[REDACTED_NAME][REDACTED_NAME] א. והקטינות ש. ומ. (להלן: ""[REDACTED_NAME]"").
+
+[REDACTED_NAME] כדמו""י ביום 13.03.89[REDACTED_NAME] 12.4.2018 (נספח 1[REDACTED_NAME]). [REDACTED_NAME] נולדו 6[REDACTED_NAME] 5[REDACTED_NAME] והקטינה, מ., בת כ- 17 שנים (ילידת 01.07.07).
+
+ביום 29.07.20[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הצדדים: [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] – ש. ומ. (ילידות 2005 ו – 2007) והבת א., [REDACTED_NAME] לה 19 (ילידת 2001) (תלה""מ *****-12-10) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (תלה""מ *****-08-17). [REDACTED_NAME][REDACTED_NAME] כדלקמן:
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_N","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הבנות א., מ. וש., [REDACTED_NAME] התובעת (להלן: ""התובעת"" או ""האישה"" או ""האם"") [REDACTED_NAME] (להלן: ""הנתבע"" או ""האיש"" או ""האב"") ביום 11.11.20[REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME",social_benefits_welfare,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 3
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0184,BrainboxAI/legal-training-il,src_1acf6e9d07de,public_licensed_training,,housing,en,"Identify potential risks in this contract section:
+ENERGOUS hereby grants DIALOG a non-exclusive, non-transferable (except as set forth in Section 2) license under the Product IP to use any of the[REDACTED_NAME] released from escrow for the purpose of fixing an[REDACTED_NAME] or other Product design or production issue impacting yield or quality during the Term and, if applicable, any[REDACTED_NAM","Identify potential risks in this contract section:
+ENERGOUS hereby grants DIALOG a non-exclusive, non-transferable (except as set forth in Section 2) license under the Product IP to use any of the[REDACTED_NAME] released from escrow for the purpose of fixing an[REDACTED_NAME] or other Product design or production issue impacting yield or quality during the Term and, if applicable, any[REDACTED_NAME] or[REDACTED_NAME] period, including, but not limited to, authorizing any third party subcontracto","Identify potential risks in this contract section:
+ENERGOUS hereby grants DIALOG a non-exclusive, non-transferable (except as set forth in Section 2) license under the Product IP to use any of the[REDACTED_NAME] released from escrow for the purpose of fixing an[REDACTED_NAME] or other Product design or production issue impacting yield or quality during the Term and, if applicable, any[REDACTED_NAME] or[REDACTED_NAME] period, including, but not limited to, authorizing any third party subcontractor to manufacture and supply Products, provided, however, that DIALOG continues to make all Royalty payment owed to ENERGOUS (or the then-current owner of the Product IP) as provided in this Agreement.
+Answer: [REDACTED_NAME]: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law","Identify potential risks in this contract section:
+ENERGOUS hereby grants DIALOG a non-exclusive, non-transferable (except as set forth in Section 2) license under the Product IP to use any of the[REDACTED_NAME] released from escrow for the purpose of fixing an[REDACTED_NAME] or other Product design",housing,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible English name(s).; Redacted possible English name(s).,False,True,True,real_case_inspired,"Answer: License Grant
+
+Legal Analysis: This clause should be carefully reviewed. Key considerations:
+1. Verify the scope and limitations defined in the clause
+2. Check for potential conflicts with other contract provisions
+3. Assess the risk allocation between parties
+4. Consider applicable jurisdiction and governing law"
+RC0205,BrainboxAI/legal-training-il,src_bdf31cd1a14f,public_licensed_training,,housing,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] תל-אביב (כב' [REDACTED_NAME] ז'[REDACTED_NAME] , בתמ""ש 17244-01-22) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 18.6.24[REDACTED_NAME] ביהמ""ש[REDACTED_NAME] המשיבה, [REDACTED_NAME] הנגדית, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הקטינה, [REDACTED_NAME]","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] תל-אביב (כב' [REDACTED_NAME] ז'[REDACTED_NAME] , בתמ""ש 17244-01-22) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 18.6.24[REDACTED_NAME] ביהמ""ש[REDACTED_NAME] המשיבה, [REDACTED_NAME] הנגדית, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הקטינה, [REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זוג, [REDACTED_NAME] בת 17 שנים (להל","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] תל-אביב (כב' [REDACTED_NAME] ז'[REDACTED_NAME] , בתמ""ש 17244-01-22) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 18.6.24[REDACTED_NAME] ביהמ""ש[REDACTED_NAME] המשיבה, [REDACTED_NAME] הנגדית, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הקטינה, [REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זוג, [REDACTED_NAME] בת 17 שנים (להלן: הקטינה).
+
+[REDACTED_NAME][REDACTED_NAME] המבקשת 1[REDACTED_NAME] הקטינה.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ילדיהם (להלן: הנכס). [REDACTED_NAME] הערעור ([REDACTED_NAME]""ע[REDACTED_NAME] אחרת) [REDACTED_NAME][REDACTED_NAME]""ש[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] חולון, [REDACTED_NAME][REDACTED_NAME] כמיליון ₪ [REDACTED_NAME].
+
+ביום 10.3.24[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][RE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]?
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] תל-אביב (כב' [REDACTED_NAME] ז'[REDACTED_NAME] , בתמ""ש 17244-01-22) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 18.6.24[REDACTED_NAME] ביהמ""ש[REDACTED_NAME] המשיבה, [REDACTE",housing,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 4
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0206,BrainboxAI/legal-training-il,src_8d7773779e3d,public_licensed_training,,housing,he,"[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] התובע ""[REDACTED_NAME][REDACTED_NAME]"", [REDACTED_NAME] הוא:
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2017[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+[REDACTED_NAME][REDACTED_NAME][REDAC","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] התובע ""[REDACTED_NAME][REDACTED_NAME]"", [REDACTED_NAME] הוא:
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2017[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] התובע ""[REDACTED_NAME][REDACTED_NAME]"", [REDACTED_NAME] הוא:
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2017[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לבימ""ש[REDACTED_NAME] אביב.
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] והמשרד, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]""י הדין.
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] נטו ([REDACTED_NAME][REDACTED_NAME]) [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME].
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] התובע.
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] התובע.
+[REDACTED_NAME] ב""כ[REDACTED_NAME][REDACT","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] התובע ""[REDACTED_NAME][REDACTED_NAME]"", [REDACTED_NAME] הוא:
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][RE",housing,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted address-like fragment(s).; Redacted possible Hebrew name(s).; Redacted address-like fragment(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0211,BrainboxAI/legal-training-il,src_ea44e5908df5,public_licensed_training,,immigration_status,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+ 
+1.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בקריות (כב' [REDACTED_NAME][REDACTED_NAME]) בתיק ת""ע 53278-07-22 מיום 18.7.24 (להלן: ""[REDACTED_NAME]"" ו- ""[REDACTED_NAME]"", בהתאמה) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME], ","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+ 
+1.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בקריות (כב' [REDACTED_NAME][REDACTED_NAME]) בתיק ת""ע 53278-07-22 מיום 18.7.24 (להלן: ""[REDACTED_NAME]"" ו- ""[REDACTED_NAME]"", בהתאמה) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME] קמא
+2.	[REDACTED_NAME][REDACTED_NAME], [REDACTED_NA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+ 
+1.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בקריות (כב' [REDACTED_NAME][REDACTED_NAME]) בתיק ת""ע 53278-07-22 מיום 18.7.24 (להלן: ""[REDACTED_NAME]"" ו- ""[REDACTED_NAME]"", בהתאמה) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME].
+
+[REDACTED_NAME] קמא
+2.	[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] משנת 2006[REDACTED_NAME] המנוח, בשנת 2022. 
+3.	משיבה 1[REDACTED_NAME][REDACTED_NAME] (להלן: ""המשיבה""). [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] 2003[REDACTED_NAME][REDACTED_NAME] רשמית, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+4.	משיבה 2[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן: ""הבת"").
+5.	ביום 00.00.2022[REDACTED_NAME], וביום 00.00.2022[REDACTED_NAME][REDACTED_NAME] ירושה, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] השנייה.
+6.	ביום 29.6.2022[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הירושה, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][RED","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+ 
+1.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בקריות (כב' [REDACTED_NAME][REDACTED_NAME]) בתיק ת""ע 53278-07-22 מיום 18.7.24 (להלן: ""[REDACTED_NAME]"" ו- ""[REDACTED_NAME]"", בהתאמה) [REDACTED_NAME][REDACTED_NAME][REDACTED",immigration_status,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 4
+מחוז: 3
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0223,BrainboxAI/legal-training-il,src_d1f91dcd9b95,public_licensed_training,,social_benefits_welfare,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+<#1#>
+נוכחים:
+[REDACTED_NAME] כוחו – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כוחה – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]-[REDACTED_NAME][REDACTED_NAME] בהכ[REDACTED_ADDRESS] [REDACTED_NAME]. 
+
+[REDACTED_NAME], [REDACTE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+<#1#>
+נוכחים:
+[REDACTED_NAME] כוחו – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כוחה – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]-[REDACTED_NAME][REDACTED_NAME] בהכ[REDACTED_ADDRESS] [REDACTED_NAME]. 
+
+[REDACTED_NAME], [REDACTED_NAME] ל. אקוקה, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] – יפו,","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+<#1#>
+נוכחים:
+[REDACTED_NAME] כוחו – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כוחה – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]-[REDACTED_NAME][REDACTED_NAME] בהכ[REDACTED_ADDRESS] [REDACTED_NAME]. 
+
+[REDACTED_NAME], [REDACTED_NAME] ל. אקוקה, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] – יפו, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הורי. 
+
+[REDACTED_NAME] טעות – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ""[REDACTED_NAME]"", [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] העליון, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בעתיד. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בית, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ובכך, לטעמו, [REDACTED_NAME][R","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+<#1#>
+נוכחים:
+[REDACTED_NAME] כוחו – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כוחה – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAM",social_benefits_welfare,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted address-like fragment(s).; Redacted possible Hebrew name(s).; Redacted address-like fragment(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0259,BrainboxAI/legal-training-il,src_b42f54013771,public_licensed_training,,accessibility_disability_rights,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בשנת 2020 (להלן – ""המנוח"").
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן – ""המבקש""); [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המנוח (להלן – ""המתנגדת"").  
+[REDACTED_NA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בשנת 2020 (להלן – ""המנוח"").
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן – ""המבקש""); [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המנוח (להלן – ""המתנגדת"").  
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+[REDACTED_NAME][REDA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בשנת 2020 (להלן – ""המנוח"").
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן – ""המבקש""); [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המנוח (להלן – ""המתנגדת"").  
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כן, [REDACTED_NAME][REDACTED_NAME] מהעיזבון.
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 2010[REDACTED_NAME] 2012[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] למסעדות, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+לטענתה, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] רשמי, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME] – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בשנת 2020 (להלן – ""המנוח"").
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להל",accessibility_disability_rights,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 4
+נושא: 4
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0307,BrainboxAI/legal-training-il,src_2803f06e3f11,public_licensed_training,,accessibility_disability_rights,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+   
+
+                                                                  
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (כב' [REDACTED_NAME] בז'ה) מיום 30.05.2023, [REDACTED_NAME] א""פ 50805-10-22[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], עו""ס[REDACTED_NAME]""ס[REDACTED_NA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+   
+
+                                                                  
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (כב' [REDACTED_NAME] בז'ה) מיום 30.05.2023, [REDACTED_NAME] א""פ 50805-10-22[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], עו""ס[REDACTED_NAME]""ס[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המבקשת- המשיבה 3 והמשיבים 4 ו – 5, [REDACTED_NAME","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+   
+
+                                                                  
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (כב' [REDACTED_NAME] בז'ה) מיום 30.05.2023, [REDACTED_NAME] א""פ 50805-10-22[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], עו""ס[REDACTED_NAME]""ס[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] המבקשת- המשיבה 3 והמשיבים 4 ו – 5, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (בהתאמה) [REDACTED_NAME] שנה. 
+
+המבקשת, [REDACTED_NAME], [REDACTED_NAME] לחייה, כבת 89 שנים, [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME]. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] עולה, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] צמודה. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הקוגניטיבי, המתבטאת, [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לקוי, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME]-[REDACTED_NAME] – [RE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+
+   
+
+                                                                  
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (כב' [REDACTED_NAME] בז'ה) מיום 30.05.2023, [REDACTED_N",accessibility_disability_rights,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 4
+מחוז: 7
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0843,BrainboxAI/legal-training-il,src_499d14ef5d2c,public_licensed_training,,accessibility_disability_rights,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] סעיף 5[REDACTED_NAME] סעיף 2(4) [REDACTED_NAME] הפרטיות, תשמ""א-1981 (להלן: ""[REDACTED_NAME] הפרטיות""),  [REDACTED_NAME] סעיף 192[REDACTED_NAME], התשל""ז- 1977 (להלן: ""[REDACTED_NAME]"") [REDACTED_NAME][REDACTED_NAME] סעיף 283(2)","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] סעיף 5[REDACTED_NAME] סעיף 2(4) [REDACTED_NAME] הפרטיות, תשמ""א-1981 (להלן: ""[REDACTED_NAME] הפרטיות""),  [REDACTED_NAME] סעיף 192[REDACTED_NAME], התשל""ז- 1977 (להלן: ""[REDACTED_NAME]"") [REDACTED_NAME][REDACTED_NAME] סעיף 283(2) [REDACTED_NAME]. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] סעיף 5[REDACTED_NAME] סעיף 2(4) [REDACTED_NAME] הפרטיות, תשמ""א-1981 (להלן: ""[REDACTED_NAME] הפרטיות""),  [REDACTED_NAME] סעיף 192[REDACTED_NAME], התשל""ז- 1977 (להלן: ""[REDACTED_NAME]"") [REDACTED_NAME][REDACTED_NAME] סעיף 283(2) [REDACTED_NAME]. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] עוקבים.  
+
+[REDACTED_NAME][REDACTED_NAME] 16.12.21[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]- [REDACTED_NAME][REDACTED_NAME] ש' (להלן: ""המתלונן ש'""), [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] עימו, [REDACTED_NAME][REDACTED_NAME] המרקחת. [REDACTED_NAME], המתלונן ש' [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] ל-למתלונן ש'. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מכן, [REDACTED_NAME] המרקחת, [REDACTED_NAME][REDACTED_NAME][REDAC","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] סעיף 5[REDACTED_NAME] סעיף 2(4) [REDACTED_NAME] הפרטיות, תשמ""א-1981 (להלן: ""[REDACTED_NAME] הפרטיות""),  [REDACTED_NAME] סעיף 1",accessibility_disability_rights,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 3
+נושא: 2
+מחוז: 6
+
+ניתוח: פסק דין זה עוסק בתחום 2. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC0855,BrainboxAI/legal-training-il,src_4e0e7a5105d2,public_licensed_training,,accessibility_disability_rights,he,"[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME] הדין:
+[REDACTED_NAME][REDACTED_NAME] אביב ([REDACTED_NAME] מאור) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מוגבלות, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] שלמה, [REDACTED_NAME][REDACTED_NAME][REDACTE","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME] הדין:
+[REDACTED_NAME][REDACTED_NAME] אביב ([REDACTED_NAME] מאור) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מוגבלות, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] שלמה, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ברשותו, [REDACTED_NAME][REDACTED","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME] הדין:
+[REDACTED_NAME][REDACTED_NAME] אביב ([REDACTED_NAME] מאור) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מוגבלות, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] שלמה, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ברשותו, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME].
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ([REDACTED_NAME][REDACTED_NAME]) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 52(ב) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ([REDACTED_NAME] לשירות), התשע""ג-2013[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בהחזקתה.
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מוגבלות ""[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][RE","[REDACTED_NAME][REDACTED_NAME] הבאה:
+
+
+[REDACTED_NAME] הדין:
+[REDACTED_NAME][REDACTED_NAME] אביב ([REDACTED_NAME] מאור) [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]",accessibility_disability_rights,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 3
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 3. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC1226,BrainboxAI/legal-training-il,src_e2d18df32798,public_licensed_training,,accessibility_disability_rights,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בימ""ש[REDACTED_NAME] 15.2.22 (כב' [REDACTED_NAME][REDACTED_NAME]) [REDACTED_NAME] בימ""ש[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] אפוטרופוס, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כ-4[REDACTED_NAME][REDACTED_NAME] המערערת.
+
+[REDACTED","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בימ""ש[REDACTED_NAME] 15.2.22 (כב' [REDACTED_NAME][REDACTED_NAME]) [REDACTED_NAME] בימ""ש[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] אפוטרופוס, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כ-4[REDACTED_NAME][REDACTED_NAME] המערערת.
+
+[REDACTED_NAME][REDACTED_NAME] 2[REDACTED_NAME][REDACTED_NAME] 1 (להלן: ""האם"") [REDACTED_NAME] 1939, [REDACTE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בימ""ש[REDACTED_NAME] 15.2.22 (כב' [REDACTED_NAME][REDACTED_NAME]) [REDACTED_NAME] בימ""ש[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] אפוטרופוס, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] כ-4[REDACTED_NAME][REDACTED_NAME] המערערת.
+
+[REDACTED_NAME][REDACTED_NAME] 2[REDACTED_NAME][REDACTED_NAME] 1 (להלן: ""האם"") [REDACTED_NAME] 1939, [REDACTED_NAME] 82. ([REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] להליכים).
+
+ביום 4.2.18[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]""ב-1962, [REDACTED_NAME][REDACTED_NAME]""ל[REDACTED_NAME][REDACTED_NAME] אימן, [REDACTED_NAME] האישיים, [REDACTED_NAME] (תיק א""פ 18360-11-17). [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] השנייה (משיבה 2) [REDACTED_NAME] שנה.
+
+[REDACTED_NAME][REDACTED_NAME], ביום 17.7.18[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]-[REDACTED_NAME], [REDACTED_NAME] ע""י[REDACTED_NAME][REDACTED_NAME] ""XXX"" בXXX (להלן: ""[REDACTED_NAME]"") [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] השנייה ([REDA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] בימ""ש[REDACTED_NAME] 15.2.22 (כב' [REDACTED_NAME][REDACTED_NAME]) [REDACTED_NAME] בימ""ש[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] אפוטרופוס,",accessibility_disability_rights,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 4
+מחוז: 3
+
+ניתוח: פסק דין זה עוסק בתחום 4. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC1536,BrainboxAI/legal-training-il,src_29c50ff3f964,public_licensed_training,,accessibility_disability_rights,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+השופט א' חזק:
+הנאשם, יליד 1986, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] טיעון, [REDACTED_NAME] מיום 26.10.2021, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אינוס – [REDACTED_NAME] סעיף 345(א)(5) [REDACTED_NAME], התשל""ז-1977 (להלן: ""החוק""). 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] של 5.5[REDACTED_NAME], [REDACTED_NAME][RE","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+השופט א' חזק:
+הנאשם, יליד 1986, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] טיעון, [REDACTED_NAME] מיום 26.10.2021, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אינוס – [REDACTED_NAME] סעיף 345(א)(5) [REDACTED_NAME], התשל""ז-1977 (להלן: ""החוק""). 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] של 5.5[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] בטיעוניו. ","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+השופט א' חזק:
+הנאשם, יליד 1986, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] טיעון, [REDACTED_NAME] מיום 26.10.2021, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אינוס – [REDACTED_NAME] סעיף 345(א)(5) [REDACTED_NAME], התשל""ז-1977 (להלן: ""החוק""). 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] של 5.5[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] בטיעוניו. 
+
+[REDACTED_NAME][REDACTED_NAME]:
+[REDACTED_NAME] 1990, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] חברתיות. 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. 
+ביום 20.10.2020[REDACTED_NAME] 10:50 בבוקר, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הארץ. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] במתלוננת, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] לה ""קולה"" [REDACTED_NAME] לכך. 
+[REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] ""קולה"" [REDACTED_NAME]. אז, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. 
+[REDACTED_NAME] לדירתו, [REDAC","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]:
+
+השופט א' חזק:
+הנאשם, יליד 1986, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] טיעון, [REDACTED_NAME] מיום 26.10.2021, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] אינוס – [REDACTED_NAME] סעיף 345(א)(5) [REDACTED_NAME], התשל""ז-1977 (להלן: ""החוק""). 
+
+[R",accessibility_disability_rights,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 2
+מחוז: 7
+
+ניתוח: פסק דין זה עוסק בתחום 2. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC1744,BrainboxAI/legal-training-il,src_9d1e5b7054f8,public_licensed_training,,accessibility_disability_rights,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 16[REDACTED_NAME] ייצוגיות, התשס""ו-2006[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מתוגמלת, [REDACTED_NAME] 16[REDACTED_NAME] ייצוגיות, התשס""ו-2006 (להלן: החוק).
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME]","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 16[REDACTED_NAME] ייצוגיות, התשס""ו-2006[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מתוגמלת, [REDACTED_NAME] 16[REDACTED_NAME] ייצוגיות, התשס""ו-2006 (להלן: החוק).
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] המשיבה, [REDACTED_NAME] אדם, [REDACTED_NAME][REDACTED_NAME] 33[REDACTED_NAME][REDACTED_NAME][REDACT","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 16[REDACTED_NAME] ייצוגיות, התשס""ו-2006[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מתוגמלת, [REDACTED_NAME] 16[REDACTED_NAME] ייצוגיות, התשס""ו-2006 (להלן: החוק).
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] המשיבה, [REDACTED_NAME] אדם, [REDACTED_NAME][REDACTED_NAME] 33[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ([REDACTED_NAME] לשירות) התשע""ג-2013 (להלן: [REDACTED_NAME]), [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]; [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] בעקיפין, [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] של 1,000 ₪ [REDACTED_NAME][REDACTED_NAME] 14,00","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 16[REDACTED_NAME] ייצוגיות, התשס""ו-2006[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מתוגמלת, [REDACTED_NAME] 16[REDACTED_NAME]",accessibility_disability_rights,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 3
+נושא: 3
+מחוז: 5
+
+ניתוח: פסק דין זה עוסק בתחום 3. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC2233,BrainboxAI/legal-training-il,src_130bf1d3c893,public_licensed_training,,accessibility_disability_rights,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] [אב""ד]:   
+
+
+[REDACTED_NAME]
+
+1.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מין, [REDACTED_NAME][REDACTED_NAME] אינוס, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] התפתחותית, [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_N","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] [אב""ד]:   
+
+
+[REDACTED_NAME]
+
+1.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מין, [REDACTED_NAME][REDACTED_NAME] אינוס, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] התפתחותית, [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] האם. 
+
+
+[REDACTED_NAME] וההרשעה
+
+2.	ביום 12.3.2024[REDACTED_NAME]","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] [אב""ד]:   
+
+
+[REDACTED_NAME]
+
+1.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מין, [REDACTED_NAME][REDACTED_NAME] אינוס, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] התפתחותית, [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] האם. 
+
+
+[REDACTED_NAME] וההרשעה
+
+2.	ביום 12.3.2024[REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (כא/1), [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] העונש, [REDACTED_NAME]:
+
+	(א)	הנאשמת 1 (להלן: ""הנאשמת""):
+
+		[REDACTED_NAME] - [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] 351(ג)(2) [REDACTED_NAME] סעיף 348(ב) [REDACTED_NAME] 345(ב)(5) [REDACTED_NAME] סעיף 31[REDACTED_NAME], תשל""ז-1977 (להלן: [REDACTED_NAME]); 
+	
+		[REDACTED_NAME] – [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] 351(ג)(2) [REDACTED_NAME] סעיף 348(ב) [REDACTED_NAME] 345(ב)(5) [REDACTED_NAME]; 
+	
+		[REDACTED_NAME] - [REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME] 242[","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+
+
+
+
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] [אב""ד]:   
+
+
+[REDACTED_NAME]
+
+1.	[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] מין, [REDACTED_NAME][REDACTED_NAME] אינוס, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][R",accessibility_disability_rights,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 2
+מחוז: 4
+
+ניתוח: פסק דין זה עוסק בתחום 2. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."
+RC2335,BrainboxAI/legal-training-il,src_60e87dbe6837,public_licensed_training,,accessibility_disability_rights,he,"[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן: ""המשיב"") מיום 20.02.2023[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 4[REDACTED_NAME] המשפטי, התשל""ב-1972 (להלן: ""[REDACTED_NAME] המשפטי"").
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][R","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן: ""המשיב"") מיום 20.02.2023[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 4[REDACTED_NAME] המשפטי, התשל""ב-1972 (להלן: ""[REDACTED_NAME] המשפטי"").
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הטענה, [REDACTED_NAME][REDACTED_NAME][RED","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן: ""המשיב"") מיום 20.02.2023[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 4[REDACTED_NAME] המשפטי, התשל""ב-1972 (להלן: ""[REDACTED_NAME] המשפטי"").
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] הטענה, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], שהתבטאה, [REDACTED_NAME],  [REDACTED_NAME] כנגדו, [REDACTED_NAME][REDACTED_NAME] במשטרה, [REDACTED_NAME][REDACTED_NAME] שלו, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ועוד. [REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] ונפשיים, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME]. [REDACTED_NAME] המערער, [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME] רחוב, כלשונו, [REDACTED_NAME][REDACTED_NAME]. 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME], [REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NA","[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] זה?
+ 
+
+[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] (להלן: ""המשיב"") מיום 20.02.2023[REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME][REDACTED_NAME] 4[REDACTED_NAME] המשפטי, התשל""ב-1972 (להלן: ""[REDACTED_NAME] המש",accessibility_disability_rights,Source-derived summary for audit realism. Not verified legal advice.,Public/licensed training-evaluation material (Legal-Training-IL). Not authoritative legal advice. Preserve attribution; human legal review required.,Derived from Legal-Training-IL (BrainboxAI) where applicable.,True,Redacted possible Hebrew name(s).; Redacted possible Hebrew name(s).,False,True,True,real_case_inspired,"סוג בית משפט: 2
+נושא: 3
+מחוז: 7
+
+ניתוח: פסק דין זה עוסק בתחום 3. בית המשפט בחן את הטענות המשפטיות של הצדדים והכריע בהתאם לדין הישראלי."

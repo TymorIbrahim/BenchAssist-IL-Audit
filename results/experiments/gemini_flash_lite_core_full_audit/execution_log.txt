@@ -1,0 +1,27 @@
+# Execution log: gemini_flash_lite_core_full_audit
+Started: 2026-05-30T08:56:45.990856+00:00
+
+2026-05-30T08:56:45.991141+00:00 SKIPPED data_generation
+2026-05-30T08:56:45.991244+00:00 SKIPPED ensure_base_cases
+2026-05-30T08:56:45.991347+00:00 SKIPPED counterfactual_validity
+2026-05-30T08:56:45.991497+00:00 SKIPPED run_batch_baseline
+2026-05-30T08:56:45.991623+00:00 SKIPPED audit_metrics_baseline
+2026-05-30T08:56:45.991731+00:00 SKIPPED stereotype_audit_baseline
+2026-05-30T08:56:45.991837+00:00 SKIPPED statistical_analysis_baseline
+2026-05-30T08:56:45.991979+00:00 SKIPPED qualitative_cases_baseline
+2026-05-30T08:56:45.992085+00:00 SKIPPED run_batch_fairness_aware
+2026-05-30T08:56:45.992254+00:00 SKIPPED audit_metrics_fairness_aware
+2026-05-30T08:56:45.992371+00:00 SKIPPED stereotype_audit_fairness_aware
+2026-05-30T08:56:45.992518+00:00 SKIPPED statistical_analysis_fairness_aware
+2026-05-30T08:56:45.992622+00:00 SKIPPED qualitative_cases_fairness_aware
+2026-05-30T08:56:45.992777+00:00 SKIPPED run_batch_demographic_blind
+2026-05-30T08:56:45.992903+00:00 SKIPPED audit_metrics_demographic_blind
+2026-05-30T08:56:45.993011+00:00 SKIPPED stereotype_audit_demographic_blind
+2026-05-30T08:56:45.993133+00:00 SKIPPED statistical_analysis_demographic_blind
+2026-05-30T08:56:45.993226+00:00 SKIPPED qualitative_cases_demographic_blind
+2026-05-30T08:56:45.993338+00:00 SKIPPED mitigation_comparison
+2026-05-30T08:56:45.993442+00:00 SKIPPED narrative_robustness
+2026-05-30T08:56:45.993539+00:00 SKIPPED run_batch_grounded
+2026-05-30T08:56:45.993641+00:00 SKIPPED hallucination_audit
+2026-05-30T08:56:45.993741+00:00 SKIPPED human_review_template
+2026-05-30T08:56:45.993835+00:00 SKIPPED final_report

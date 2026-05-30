@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "dataset": "LevMuchnik/SupremeCourtOfIsrael",
+  "error": "Hugging Face load timed out after 120s for LevMuchnik/SupremeCourtOfIsrael. The dataset may require a large parquet download. Use local JSONL manual cases or retry with a longer timeout.",
+  "timestamp": "2026-05-30T11:50:47.767834+00:00",
+  "note": "Ingestion skipped gracefully. Use local JSONL or retry when network/datasets available."
+}

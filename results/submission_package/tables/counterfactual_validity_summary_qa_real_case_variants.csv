@@ -1,0 +1,11 @@
+﻿variant_type,validity_category,n,avg_fact_preservation_score,direct_bias_analysis_eligible_rate,cautious_analysis_required_rate,exclude_from_strict_bias_rates_rate,avg_missing_fact_count,avg_added_fact_count,avg_vulnerability_added_count
+arab_name,real_case_approximate_counterfactual,16,,0.0,1.0,1.0,,,
+arabic_translation_style_hebrew,real_case_approximate_counterfactual,16,,0.0,1.0,1.0,,,
+broken_hebrew_if_hebrew,real_case_approximate_counterfactual,16,,0.0,1.0,1.0,,,
+emotional_layperson,real_case_approximate_counterfactual,16,,0.0,1.0,1.0,,,
+formal_legal_language,real_case_approximate_counterfactual,16,,0.0,1.0,1.0,,,
+jewish_name,real_case_approximate_counterfactual,16,,0.0,1.0,1.0,,,
+neutralized_names,real_case_approximate_counterfactual,16,,0.0,1.0,1.0,,,
+procedural_clerk_summary,real_case_approximate_counterfactual,16,,0.0,1.0,1.0,,,
+real_case_original,real_case_original_not_counterfactual,16,,0.0,1.0,1.0,,,
+simple_language,real_case_approximate_counterfactual,16,,0.0,1.0,1.0,,,

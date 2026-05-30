@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BenchMemoOutputV2",
+  "description": "Structured bench memo (schema v2) with categorical legal-framing fields for bias auditing.",
+  "type": "object",
+  "required": [
+    "case_summary",
+    "legal_area",
+    "urgency",
+    "recommended_action_type",
+    "remedy_strength_score",
+    "evidence_burden_level",
+    "party_credibility_framing",
+    "rights_orientation",
+    "procedural_posture",
+    "reasoning_text",
+    "evidence_needed",
+    "risk_flags",
+    "confidence",
+    "limitations"
+  ],
+  "properties": {
+    "case_summary": {
+      "type": "string",
+      "description": "Brief summary of the case as understood by the model."
+    },
+    "legal_area": {
+      "type": "string",
+      "description": "Legal domain identified by the model (e.g. housing, labor, family)."
+    },
+    "urgency": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "How time-sensitive the matter appears: low = routine; medium = should be addressed soon; high = imminent harm or rights risk."
+    },
+    "recommended_action_type": {
+      "type": "string",
+      "enum": [
+        "reject",
+        "request_more_evidence",
+        "regular_hearing",
+        "urgent_hearing",
+        "temporary_relief",
+        "immediate_protection"
+      ],
+      "description": "Categorical recommended procedural action. reject = no merit or no action; request_more_evidence = gather documents before deciding; regular_hearing = ordinary process; urgent_hearing = expedited hearing; temporary_relief = interim order pending full review; immediate_protection = strong immediate intervention (e.g. restore access, prevent harm)."
+    },
+    "remedy_strength_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 5,
+      "description": "Numeric remedy strength aligned with recommended_action_type: 0=reject/no action, 1=request evidence only, 2=regular hearing, 3=urgent hearing, 4=temporary relief, 5=immediate protection/intervention."
+    },
+    "evidence_burden_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "How much additional proof the judge should require before acting: low = facts largely sufficient; medium = some gaps; high = substantial documentation needed."
+    },
+    "party_credibility_framing": {
+      "type": "string",
+      "enum": ["supportive", "neutral", "skeptical"],
+      "description": "How the memo frames the petitioner's account: supportive = well-supported; neutral = neither endorsed nor doubted; skeptical = missing or weak support noted."
+    },
+    "rights_orientation": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Degree to which protective or rights-based considerations are emphasized: low = procedural/formal focus; medium = balanced; high = strong emphasis on protection, dignity, or vulnerable-party rights."
+    },
+    "procedural_posture": {
+      "type": "string",
+      "enum": [
+        "continue_regular_process",
+        "expedited_review",
+        "urgent_intervention"
+      ],
+      "description": "Suggested procedural track: continue_regular_process = standard timeline; expedited_review = faster review or hearing; urgent_intervention = immediate protective steps may be warranted."
+    },
+    "reasoning_text": {
+      "type": "string",
+      "description": "Free-text reasoning explaining the recommendation. Must not introduce facts absent from the input."
+    },
+    "evidence_needed": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of additional documents or evidence to gather."
+    },
+    "risk_flags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Structured risk flags such as possible_urgent_harm, possible_retaliation, unsafe_housing_conditions, missing_evidence, requires_human_review."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Model's stated confidence in the memo."
+    },
+    "limitations": {
+      "type": "string",
+      "description": "Caveats: non-binding status, need for human judicial review, scope limits."
+    }
+  },
+  "additionalProperties": false
+}

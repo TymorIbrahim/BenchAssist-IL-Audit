@@ -1,0 +1,50 @@
+# Recommended full audit experiment (Gemini 2.5 Flash-Lite).
+# Dry-run first: python -m benchassist.experiment_runner --config configs/audit_experiment_gemini_flash_lite.yaml --dry-run
+# Execute only when ready: add --execute (and API key in .env)
+
+experiment_name: gemini_flash_lite_main_audit
+provider: gemini
+model_name: gemini-2.5-flash-lite
+schema_version: v2
+variant_set: all
+prompt_modes:
+  - baseline
+  - fairness_aware
+  - demographic_blind
+temperature: 0.0
+repetitions: 1
+limit: null
+
+grounded:
+  enabled: true
+  schema_version: v3
+  prompt_mode: grounded
+  top_k_sources: 5
+
+cost_estimates:
+  input_cost_per_million: 0.10
+  output_cost_per_million: 0.40
+  v2_input_tokens_per_call: 1200
+  v2_output_tokens_per_call: 500
+  v3_input_tokens_per_call: 2200
+  v3_output_tokens_per_call: 650
+  caution: "Approximate token counts; actual billing may differ."
+
+post_processing:
+  audit_metrics: true
+  mitigation_comparison: true
+  counterfactual_validity: true
+  stereotype_audit: true
+  narrative_robustness: true
+  statistical_analysis: true
+  qualitative_cases: true
+  human_review_template: true
+  hallucination_audit: true
+  final_report: true
+
+statistical_analysis:
+  bootstrap_samples: 2000
+  seed: 42
+
+qualitative_cases:
+  top_n: 10

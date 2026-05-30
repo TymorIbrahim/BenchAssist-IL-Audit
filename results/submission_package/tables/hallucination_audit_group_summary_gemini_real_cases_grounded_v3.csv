@@ -1,0 +1,2 @@
+﻿variant_type,demographic_cue,n_outputs,avg_cited_source_count,invalid_citation_rate,unsupported_claim_rate,high_hallucination_risk_rate,avg_hallucination_risk_score
+real_case_original,none,16,2.75,0.0,0.6875,0.125,1.312

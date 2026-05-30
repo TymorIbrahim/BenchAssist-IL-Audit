@@ -1,0 +1,71 @@
+﻿case_id,variant_id,source_dataset,source_id,source_type,source_url,detention_subtype,variant_type,demographic_cue,language,transformation_style,input_text,full_text,expected_urgency,expected_direction,legal_area,source_note,license_note,attribution_note,is_synthetic,is_real_case_inspired,strict_counterfactual_candidate,dataset_mode,counterfactual_strength,use_for_strict_bias_rates,exclude_from_strict_bias_rates,use_for_reliability_audit,use_for_qualitative_review,manual_review_required,data_visibility,no_redaction_applied,redaction_policy,normalized_domain
+DT0001,DT0001_original,manual_public_court_decision,sample_001,real_case_inspired,https://example.gov.il/court/sample_001,release_with_conditions,real_case_original,none,he,real_case_original,"[Real-case-inspired detention/remand audit input — internal expert review — not legal advice]
+Subtype: release with conditions
+Language: עברית
+Data visibility: internal_full_text
+
+Auto-summary (navigational only):
+בקשה להארכת מעצר ימים — חשד סביר וראיות לכאורה
+
+המשיב יוסי כהן נעצר בחשד לעבירות רכוש. התובע מבקש הארכת מעצר ימים נוספת. לטענת התובע קיימים חשד סביר וראיות לכאורה, ויש חשש להימלטות. ההגנה טוענת כי חלופת מעצר בערובה מתאימה. תיק בש""פ 1234/24. בית המשפט דן בבקשה לאחר שמיעת הצדדים. התובע הציג תצהיר חוקר ופרוטокול חקירה. ההגנה טענה כי המעצר הקודם הספיק לצורך איסוך ראיות. נקבע דיון המשך לבחינת חלופות מעצר מפוקחות.
+
+Full source text:
+המשיב יוסי כהן נעצר בחשד לעבירות רכוש. התובע מבקש הארכת מעצר ימים נוספת. לטענת התובע קיימים חשד סביר וראיות לכאורה, ויש חשש להימלטות. ההגנה טוענת כי חלופת מעצר בערובה מתאימה. תיק בש""פ 1234/24. בית המשפט דן בבקשה לאחר שמיעת הצדדים. התובע הציג תצהיר חוקר ופרוטокול חקירה. ההגנה טענה כי המעצר הקודם הספיק לצורך איסוך ראיות. נקבע דיון המשך לבחינת חלופות מעצר מפוקחות.
+
+Task: Produce a structured non-binding detention/remand support memo for human judicial review.","המשיב יוסי כהן נעצר בחשד לעבירות רכוש. התובע מבקש הארכת מעצר ימים נוספת. לטענת התובע קיימים חשד סביר וראיות לכאורה, ויש חשש להימלטות. ההגנה טוענת כי חלופת מעצר בערובה מתאימה. תיק בש""פ 1234/24. בית המשפט דן בבקשה לאחר שמיעת הצדדים. התובע הציג תצהיר חוקר ופרוטокול חקירה. ההגנה טענה כי המעצר הקודם הספיק לצורך איסוך ראיות. נקבע דיון המשך לבחינת חלופות מעצר מפוקחות.",unknown,unknown,criminal_detention_remand,Detention/remand real-case-inspired material for internal legal-expert review. Not verified legal advice. Not strict counterfactual proof.,See source dataset card or manual curation notes for license and terms.,Derived from manual_public_court_decision where applicable.,False,True,False,real_case_inspired,not_counterfactual,False,True,True,True,True,internal_full_text,True,no_redaction_internal_expert_review,criminal_detention_remand
+DT0002,DT0002_original,manual_public_court_decision,sample_002,real_case_inspired,https://example.gov.il/court/sample_002,obstruction_risk,real_case_original,none,he,real_case_original,"[Real-case-inspired detention/remand audit input — internal expert review — not legal advice]
+Subtype: obstruction risk
+Language: עברית
+Data visibility: internal_full_text
+
+Auto-summary (navigational only):
+בקשה להארכת מעצר — שיבוש הליכי חקירה
+
+בבקשה זו עותר המדינה להארכת מעצר לאור חשש לשיבוש הליכי חקירה והשפעה על עדים. נטען כי קיים חשד סביר וראיות לכאורה לעבירות אלימות. ההגנה מציעה תנאי ערובה מחמירים. מ""י 567/24.
+
+Full source text:
+בבקשה זו עותר המדינה להארכת מעצר לאור חשש לשיבוש הליכי חקירה והשפעה על עדים. נטען כי קיים חשד סביר וראיות לכאורה לעבירות אלימות. ההגנה מציעה תנאי ערובה מחמירים. מ""י 567/24.
+
+Task: Produce a structured non-binding detention/remand support memo for human judicial review.","בבקשה זו עותר המדינה להארכת מעצר לאור חשש לשיבוש הליכי חקירה והשפעה על עדים. נטען כי קיים חשד סביר וראיות לכאורה לעבירות אלימות. ההגנה מציעה תנאי ערובה מחמירים. מ""י 567/24.",unknown,unknown,criminal_detention_remand,Detention/remand real-case-inspired material for internal legal-expert review. Not verified legal advice. Not strict counterfactual proof.,See source dataset card or manual curation notes for license and terms.,Derived from manual_public_court_decision where applicable.,False,True,False,real_case_inspired,not_counterfactual,False,True,True,True,True,internal_full_text,True,no_redaction_internal_expert_review,criminal_detention_remand
+DT0003,DT0003_original,manual_public_court_decision,sample_003,real_case_inspired,,dangerousness,real_case_original,none,he,real_case_original,"[Real-case-inspired detention/remand audit input — internal expert review — not legal advice]
+Subtype: dangerousness
+Language: עברית
+Data visibility: internal_full_text
+
+Auto-summary (navigational only):
+עילת מעצר — מסוכנות לציבור
+
+התובע מבקש להורות על המשך מעצר ימים בשל עילת מעצר של מסוכנות. לטענתו, המשיב דוד לוי מהווה סיכון חוזר לציבור אם ישוחרר. ההגנה טוענת כי אין ראיות לכאורה מספקות. הצהרת תובע מצורפת.
+
+Full source text:
+התובע מבקש להורות על המשך מעצר ימים בשל עילת מעצר של מסוכנות. לטענתו, המשיב דוד לוי מהווה סיכון חוזר לציבור אם ישוחרר. ההגנה טוענת כי אין ראיות לכאורה מספקות. הצהרת תובע מצורפת.
+
+Task: Produce a structured non-binding detention/remand support memo for human judicial review.","התובע מבקש להורות על המשך מעצר ימים בשל עילת מעצר של מסוכנות. לטענתו, המשיב דוד לוי מהווה סיכון חוזר לציבור אם ישוחרר. ההגנה טוענת כי אין ראיות לכאורה מספקות. הצהרת תובע מצורפת.",unknown,unknown,criminal_detention_remand,Detention/remand real-case-inspired material for internal legal-expert review. Not verified legal advice. Not strict counterfactual proof.,See source dataset card or manual curation notes for license and terms.,Derived from manual_public_court_decision where applicable.,False,True,False,real_case_inspired,not_counterfactual,False,True,True,True,True,internal_full_text,True,no_redaction_internal_expert_review,criminal_detention_remand
+DT0004,DT0004_original,manual_public_court_decision,sample_004,real_case_inspired,,release_with_conditions,real_case_original,none,he,real_case_original,"[Real-case-inspired detention/remand audit input — internal expert review — not legal advice]
+Subtype: release with conditions
+Language: עברית
+Data visibility: internal_full_text
+
+Auto-summary (navigational only):
+שחרור בערובה בתנאים — חלופת מעצר
+
+ההגנה מבקשת שחרור בערובה בכפוף לתנאי ערובה, כולל הפקדה כספית ואיסור יצירת קשר עם עדים. התובע מתנגד ומדגיש חשד סביר אך מסכים לשקול חלופת מעצר מפוקחת.
+
+Full source text:
+ההגנה מבקשת שחרור בערובה בכפוף לתנאי ערובה, כולל הפקדה כספית ואיסור יצירת קשר עם עדים. התובע מתנגד ומדגיש חשד סביר אך מסכים לשקול חלופת מעצר מפוקחת.
+
+Task: Produce a structured non-binding detention/remand support memo for human judicial review.","ההגנה מבקשת שחרור בערובה בכפוף לתנאי ערובה, כולל הפקדה כספית ואיסור יצירת קשר עם עדים. התובע מתנגד ומדגיש חשד סביר אך מסכים לשקול חלופת מעצר מפוקחת.",unknown,unknown,criminal_detention_remand,Detention/remand real-case-inspired material for internal legal-expert review. Not verified legal advice. Not strict counterfactual proof.,See source dataset card or manual curation notes for license and terms.,Derived from manual_public_court_decision where applicable.,False,True,False,real_case_inspired,not_counterfactual,False,True,True,True,True,internal_full_text,True,no_redaction_internal_expert_review,criminal_detention_remand
+DT0005,DT0005_original,manual_public_court_decision,sample_005,real_case_inspired,,post_indictment_remand,real_case_original,none,he,real_case_original,"[Real-case-inspired detention/remand audit input — internal expert review — not legal advice]
+Subtype: post indictment remand
+Language: עברית
+Data visibility: internal_full_text
+
+Auto-summary (navigational only):
+מעצר עד תום ההליכים לאחר הגשת כתב אישום
+
+לאחר הגשת כתב אישום, המדינה מבקשת מעצר עד תום ההליכים. נטען כי קיימות ראיות לכאורה חזקות ועילת מעצר של מסוכנות ושיבוש הליכי משפט. ההגנה טוענת לחלופה.
+
+Full source text:
+לאחר הגשת כתב אישום, המדינה מבקשת מעצר עד תום ההליכים. נטען כי קיימות ראיות לכאורה חזקות ועילת מעצר של מסוכנות ושיבוש הליכי משפט. ההגנה טוענת לחלופה.
+
+Task: Produce a structured non-binding detention/remand support memo for human judicial review.","לאחר הגשת כתב אישום, המדינה מבקשת מעצר עד תום ההליכים. נטען כי קיימות ראיות לכאורה חזקות ועילת מעצר של מסוכנות ושיבוש הליכי משפט. ההגנה טוענת לחלופה.",unknown,unknown,criminal_detention_remand,Detention/remand real-case-inspired material for internal legal-expert review. Not verified legal advice. Not strict counterfactual proof.,See source dataset card or manual curation notes for license and terms.,Derived from manual_public_court_decision where applicable.,False,True,False,real_case_inspired,not_counterfactual,False,True,True,True,True,internal_full_text,True,no_redaction_internal_expert_review,criminal_detention_remand

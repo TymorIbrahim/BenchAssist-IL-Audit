@@ -1,0 +1,63 @@
+# Experiment dry-run summary
+
+**Experiment:** `gemini_real_cases_grounded`
+**Provider:** `gemini`
+**Model:** `gemini-2.5-flash-lite`
+**Schema (V2):** `v2`
+**Prompt modes:** baseline
+**Variant set:** `all`
+**Base cases:** 12
+**Counterfactual cases (after limit):** 420
+**Repetitions:** 1
+**Limit:** none
+
+## Model calls
+
+- V2 calls (all modes): **420**
+- V3 grounded calls: **420**
+
+## Cost estimate (approximate)
+
+- Input tokens: **1,428,000**
+- Output tokens: **483,000**
+- Estimated total: **$0.3360 USD**
+- *Grounded real-case run — uses multidomain knowledge base.*
+
+## Output files (sample)
+
+### Mode `baseline`
+- Model: `gemini_real_cases_grounded.csv`
+- Pairwise: `v2_pairwise_comparison_gemini_real_cases_grounded.csv`
+
+### Grounded
+- Model: `gemini_real_cases_grounded.csv`
+
+## Planned commands
+
+1. **data_generation** — Generate counterfactual cases
+   ```bash
+   /Users/tymoribrahim/miniconda3/bin/python -m benchassist.data_generation --variant-set all
+   ```
+
+2. **ensure_base_cases** — Ensure base_cases.csv exists under data/processed
+   ```bash
+   /Users/tymoribrahim/miniconda3/bin/python -c from benchassist.data_generation import ensure_base_case_files; ensure_base_case_files()
+   ```
+
+3. **run_batch_baseline** — V2 model batch (baseline)
+   ```bash
+   /Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v2 --prompt-mode baseline --output-prefix gemini_real_cases_grounded --repetitions 1 --temperature 0.0 --input-cases data/real_cases/real_case_bench_inputs.csv
+   ```
+
+4. **run_batch_grounded** — V3 grounded model batch
+   ```bash
+   /Users/tymoribrahim/miniconda3/bin/python -m benchassist.run_batch --provider gemini --model-name gemini-2.5-flash-lite --schema-version v3 --prompt-mode grounded --top-k-sources 5 --output-prefix gemini_real_cases_grounded --repetitions 1 --input-cases data/real_cases/real_case_bench_inputs.csv
+   ```
+
+5. **hallucination_audit** — Hallucination / grounding audit
+   ```bash
+   /Users/tymoribrahim/miniconda3/bin/python -m benchassist.hallucination_audit --input /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/outputs/gemini_real_cases_grounded.csv --output-suffix gemini_real_cases_grounded_grounded
+   ```
+
+
+**No commands were executed.** Use `--execute` to run (requires API key for Gemini).

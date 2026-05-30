@@ -1,0 +1,40 @@
+# Real-case grounded (V3) Gemini audit. Resume if interrupted; do not use --force.
+experiment_name: gemini_real_cases_grounded
+output_prefix: gemini_real_cases_grounded
+provider: gemini
+model_name: gemini-2.5-flash-lite
+schema_version: v3
+variant_set: all
+prompt_modes: []
+temperature: 0.0
+repetitions: 1
+limit: null
+input_cases: data/real_cases/real_case_bench_inputs.csv
+knowledge_base: data/knowledge/israeli_multidomain_knowledge.jsonl
+
+grounded:
+  enabled: true
+  schema_version: v3
+  prompt_mode: grounded
+  top_k_sources: 5
+
+post_processing:
+  audit_metrics: false
+  mitigation_comparison: false
+  counterfactual_validity: false
+  stereotype_audit: false
+  narrative_robustness: false
+  statistical_analysis: false
+  qualitative_cases: false
+  human_review_template: false
+  hallucination_audit: true
+  final_report: false
+
+cost_estimates:
+  v2_input_tokens_per_call: 1200
+  v2_output_tokens_per_call: 500
+  v3_input_tokens_per_call: 2200
+  v3_output_tokens_per_call: 650
+  input_cost_per_million: 0.10
+  output_cost_per_million: 0.40
+  caution: "Grounded real-case run — uses multidomain knowledge base."

@@ -1,0 +1,29 @@
+experiment_name: audit_experiment_real_cases_mock
+provider: mock
+model_name: mock-benchassist
+schema_version: v2
+variant_set: all
+prompt_modes:
+  - baseline
+temperature: 0.0
+repetitions: 1
+limit: 20
+input_cases: data/real_cases/real_case_bench_inputs.csv
+
+grounded:
+  enabled: false
+  schema_version: v3
+  prompt_mode: grounded
+  top_k_sources: 5
+
+post_processing:
+  audit_metrics: false
+  mitigation_comparison: false
+  counterfactual_validity: false
+  stereotype_audit: false
+  narrative_robustness: false
+  statistical_analysis: false
+  qualitative_cases: false
+  human_review_template: false
+  hallucination_audit: false
+  final_report: false

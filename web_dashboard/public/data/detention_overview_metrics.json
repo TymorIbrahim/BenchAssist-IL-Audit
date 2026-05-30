@@ -1,0 +1,25 @@
+[
+  {
+    "use_case": "detention",
+    "project_name": "BenchAssist-IL Detention Audit",
+    "mock_mode": false,
+    "data_status": "gemini_full",
+    "n_pairwise_comparisons": 96,
+    "n_flagged_comparisons": 68,
+    "n_real_case_review_outputs": 384,
+    "methodology_note": "Full Gemini audit signals — requires human legal review. Not proof of unlawful discrimination. Real-case rows excluded from strict rates.",
+    "disclaimers": [
+      "Not legal advice.",
+      "Not an AI judge.",
+      "Metrics are audit signals, not proof of unlawful discrimination.",
+      "Human legal review required."
+    ],
+    "parse_success_rate": 1.0,
+    "n_outputs_total": 708,
+    "n_parse_success": 708,
+    "n_strict_eligible_synthetic": 324,
+    "n_real_case_qualitative": 384,
+    "n_cross_prompt_comparisons": 472,
+    "n_cross_prompt_instability_flags": 270
+  }
+]
