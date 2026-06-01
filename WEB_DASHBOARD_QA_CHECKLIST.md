@@ -2,55 +2,50 @@
 
 Manual checks before demo, class presentation, or Vercel deploy.
 
-## Core experience (20 checks)
+## Core experience (slim detention audit)
 
-1. [ ] **First screen** explains the project in under 30 seconds (title, subtitle, summary, trust badges, reviewer path).
-2. [ ] **Disclaimers** are visible without scrolling too far (sticky banner + trust badges on Executive overview).
-3. [ ] **Recommended review path** is clear (Open reviewer path buttons + best starting point text).
-4. [ ] **Main Findings** are understandable without technical background (What we measured / why inspect / caution lines).
-5. [ ] **Metric definitions** are available (MetricExplainer, glossary, tooltips on cards).
-6. [ ] **Explore by concern** works — cards set filters and scroll to Flagged Cases.
-7. [ ] **Flagged Cases filters** work (priority, issue tag, high-priority only, search, reset).
-8. [ ] **Flagged Cases actions** are not duplicated (Actions column; Copy JSON off by default).
-9. [ ] **Case Explorer comparison** works (neutral vs variant, cross-prompt modes, empty states clear).
-10. [ ] **Reviewer packet** downloads correctly with disclaimer and key fields (`review_packet_CASEID_VARIANTID.md`).
-11. [ ] **Cross-prompt comparison** empty states are clear when only one prompt mode exported.
-12. [ ] **Validity section** explains strict vs cautious comparisons.
-13. [ ] **Stereotype and hallucination** sections are understandable with graceful empty states.
-14. [ ] **Human Review** section gives clear next steps and template download.
-15. [ ] **Reports** are easy to find (categories, search, recommended reading order, download).
-16. [ ] No **“bias proven”** or unlawful-discrimination conclusion wording anywhere.
-17. [ ] No **API keys** or `.env` content in `web_dashboard/public/data/` or source.
-18. [ ] **Mobile / narrow layout** is usable (sidebar stacks, tables scroll, nav readable).
-19. [ ] **`npm run build`** passes after export refresh.
-20. [ ] **Vercel preview** can be deployed (`vercel` from `web_dashboard/`).
+1. [ ] **Home** explains the project in under 30 seconds (research question, minimal schema, expert review path).
+2. [ ] **Disclaimers** visible (SafetyContextBar + trust badges).
+3. [ ] **Primary tabs** load: Home, Audit Results, Case Review, Mitigation, Validity, Reports, Methodology.
+4. [ ] **Audit Results** shows dangerousness-focused metrics, address-proxy bucket, executive findings, variant matrix.
+5. [ ] **Case Review** loads review records; audit signal (dangerousness Δ) shown first; reasoning diff; collapsible case inputs; quick filters; slim checklist.
+6. [ ] **Mitigation** shows cross-prompt heatmap for three prompt modes.
+7. [ ] **Validity** explains strict vs address-proxy exclusions.
+8. [ ] **Reports** lists exported markdown reports and policy/overview JSON downloads.
+9. [ ] **Methodology** documents minimal schema and dangerousness-only flagging.
+10. [ ] No **“bias proven”** or unlawful-discrimination conclusion wording.
+11. [ ] No **API keys** or `.env` in `web_dashboard/public/data/`.
+12. [ ] **Mobile / narrow layout** usable (nav, tables, case review panes).
+13. [ ] **`npm test`** and **`npm run build`** pass after export refresh.
+14. [ ] **E2E** (`npm run test:e2e`) passes for tab navigation and deep links.
+15. [ ] **Performance**: home does not prefetch all 360 review JSON files; Case Review loads index first, records on demand; deep links work.
+16. [ ] **`npm run validate:data`** passes (no literal `NaN` / invalid JSON in export).
 
-## New UX features (this pass)
+## Performance (current)
 
-- [ ] **Executive overview** — trust badges, reviewer path, audience guide
-- [ ] **Key takeaways** — 3–6 cautious cards from exported data
-- [ ] **Explore by concern** — legal-concern cards with counts
-- [ ] **Flagged Cases queue** — review priority explanation, issue tags, reviewer packet
-- [ ] **Case Explorer** — reviewer guidance box, What changed panel
-- [ ] **Presentation panel** — 30s/1min summaries, demo path
-- [ ] **Data transparency** — export metadata expandable panel
-- [ ] **Methodology & limitations** — readable cards, scope caveats
+- Initial dashboard load fetches manifest once, then index and summary JSON — not all split review records.
+- Tab panels, presentation mode, and Recharts bar chart are code-split (`next/dynamic`).
+- Case Review deep links fetch a single record file; full queue loads in background when tab is open.
+- Export validation: `npm run validate:data` and `python -m benchassist.validate_dashboard_export`.
+- Flagging policy: [docs/detention_flagging_policy.md](docs/detention_flagging_policy.md).
+- Demo/public preview export: add `--demo-redact-case-text` to `vercel_export` (omits full case text in review JSON; manifest `dashboard_export_profile: demo_redacted`).
 
-## Interaction features
+## Flagging concept (current)
 
-- [ ] Start **guided review** — steps, localStorage progress, go-to-section buttons
-- [ ] **Presentation mode** — larger cards, hides dense tables, 5-minute path
-- [ ] **Share link** — Case Explorer copy link; Flagged Cases filtered view link
-- [ ] **Deep link** — `?section=case-explorer&case_id=…&variant_id=…` loads state
-- [ ] **Comparison modes** in Case Explorer (empty state when data missing)
-- [ ] **Glossary drawer** — opens from toolbar and sidebar
+- Only **dangerousness_level** changes between neutral and variant count as flagged.
+- Identity, unsupported inference, action/duration shifts are **not** primary audit signals in this export.
+- **Address-proxy** variants are in a separate bucket from strict demographic rates.
 
 ## Commands
 
 ```bash
-python -m benchassist.vercel_export --auto
-cd web_dashboard && npm install && npm run dev
-npm run build
-vercel          # preview
-vercel --prod   # production
-```dfxss
+make detention-preflight          # corpus + dry-run go/no-go (before Gemini; add --resume if output_dir exists)
+make detention-post-run           # analysis + dashboard export (after Gemini)
+make detention-regen-corpus       # regenerate slim+address CSV (10 bases)
+
+python -m benchassist.vercel_export --use-case detention \
+  --run-dir results/gemini/detention_expanded_minimal_address \
+  --data-status gemini_minimal_address
+cd web_dashboard && npm install && npm test && npm run validate:data && npm run build && npm run test:e2e
+make dashboard-qa
+```

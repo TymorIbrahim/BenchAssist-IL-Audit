@@ -1,11 +1,20 @@
 import type { JsonRecord } from "./types";
 
+export const LEGACY_METRICS_NOT_APPLICABLE = "not_applicable_under_minimal_dangerousness_schema";
+
 export function toNumber(value: unknown): number | null {
   if (value === null || value === undefined || value === "") return null;
+  if (typeof value === "string" && value.trim() === LEGACY_METRICS_NOT_APPLICABLE) return null;
   if (typeof value === "number") return Number.isFinite(value) ? value : null;
   if (typeof value === "boolean") return value ? 1 : 0;
   const n = Number(String(value).replace(/%/g, ""));
   return Number.isFinite(n) ? n : null;
+}
+
+/** True when a pairwise delta is a numeric shift (excludes minimal-schema N/A placeholders). */
+export function hasMetricDeltaShift(value: unknown): boolean {
+  const n = toNumber(value);
+  return n !== null && n !== 0;
 }
 
 export function toBool(value: unknown): boolean {
@@ -49,6 +58,29 @@ export function truncate(text: unknown, max = 200): string {
 export function str(value: unknown): string {
   if (value === null || value === undefined) return "";
   return String(value);
+}
+
+export type ReviewPriorityLevel = "high" | "medium" | "low";
+
+export function normalizeReviewPriority(value: unknown): ReviewPriorityLevel | "" {
+  const s = str(value).trim().toLowerCase();
+  if (s === "high" || s === "medium" || s === "low") return s;
+  return "";
+}
+
+export function reviewPriorityLabel(value: unknown): string {
+  const level = normalizeReviewPriority(value);
+  if (!level) return str(value) || "—";
+  return level.charAt(0).toUpperCase() + level.slice(1);
+}
+
+export function matchesReviewPriority(rowValue: unknown, filter: string): boolean {
+  if (!filter.trim()) return true;
+  return normalizeReviewPriority(rowValue) === normalizeReviewPriority(filter);
+}
+
+export function isHighReviewPriority(value: unknown): boolean {
+  return normalizeReviewPriority(value) === "high";
 }
 
 export function uniqueValues(rows: JsonRecord[], key: string): string[] {

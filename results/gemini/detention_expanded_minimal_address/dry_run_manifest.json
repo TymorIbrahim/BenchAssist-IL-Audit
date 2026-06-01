@@ -1,0 +1,248 @@
+{
+  "generated_at": "2026-06-01T19:59:39.216907+00:00",
+  "config_path": "configs/gemini_detention_expanded_minimal_address.yaml",
+  "run_type": "expanded_minimal_address",
+  "expanded_run": true,
+  "checks_passed": true,
+  "checks": [
+    {
+      "name": "pilot_qa_passed",
+      "ok": true,
+      "detail": "7/7 pilot QA checks"
+    },
+    {
+      "name": "use_case",
+      "ok": true,
+      "detail": "use_case=detention"
+    },
+    {
+      "name": "run_type_full",
+      "ok": true,
+      "detail": "run_type=expanded_minimal_address"
+    },
+    {
+      "name": "model",
+      "ok": true,
+      "detail": "model=gemini-2.5-flash-lite"
+    },
+    {
+      "name": "api_key",
+      "ok": true,
+      "detail": "API key verified in environment — value never logged or printed.",
+      "key_info": {
+        "api_key_present": true,
+        "api_key_source": "GEMINI_API_KEY",
+        "api_key_value": null,
+        "note": "API key verified in environment — value never logged or printed."
+      }
+    },
+    {
+      "name": "synthetic_input",
+      "ok": true,
+      "detail": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/synthetic/detention_core_cases_with_address.csv"
+    },
+    {
+      "name": "real_case_input",
+      "ok": true,
+      "detail": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/real_cases/detention/pilot_corpus/detention_pilot_bench_inputs.csv"
+    },
+    {
+      "name": "row_selection",
+      "ok": true,
+      "detail": "2240 full-run input rows selected"
+    },
+    {
+      "name": "schema_version",
+      "ok": true,
+      "detail": "schema_version=detention_minimal_dangerousness_v2"
+    },
+    {
+      "name": "minimal_schema_config",
+      "ok": true,
+      "detail": "expanded_minimal_address requires detention_minimal_dangerousness_v2"
+    },
+    {
+      "name": "flagging_policy_doc",
+      "ok": true,
+      "detail": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/docs/detention_flagging_policy.md"
+    },
+    {
+      "name": "address_proxy_strict_exclusion",
+      "ok": true,
+      "detail": "address_proxy_in_strict_rates=False"
+    },
+    {
+      "name": "address_proxy_rows_present",
+      "ok": true,
+      "detail": "480 address-proxy rows in selected inputs"
+    },
+    {
+      "name": "strict_fairness_policy",
+      "ok": true,
+      "detail": "Real cases excluded from strict fairness rates by methodology config."
+    },
+    {
+      "name": "real_case_strict_exclusion",
+      "ok": true,
+      "detail": "0 real-case rows marked strict-excluded."
+    },
+    {
+      "name": "output_collision",
+      "ok": true,
+      "detail": "No blocking full-run output collision.",
+      "existing": []
+    },
+    {
+      "name": "overwrite_disabled",
+      "ok": true,
+      "detail": "overwrite_existing=false"
+    },
+    {
+      "name": "dry_run_required",
+      "ok": true,
+      "detail": "Full runner requires dry_run_manifest checks_passed=true"
+    },
+    {
+      "name": "resume_supported",
+      "ok": true,
+      "detail": "Resume supported for partial runs"
+    },
+    {
+      "name": "parse_error_stop_threshold",
+      "ok": true,
+      "detail": "stop_on_parse_error_rate_above=0.1"
+    },
+    {
+      "name": "grounded_disabled",
+      "ok": true,
+      "detail": "Grounded mode disabled unless fully QA-tested"
+    },
+    {
+      "name": "strict_schema_validation",
+      "ok": true,
+      "detail": "Schema canonicalization + strict validation enabled for runner outputs."
+    },
+    {
+      "name": "dashboard_access_control_policy",
+      "ok": true,
+      "detail": "requires_access_control=True, strict_bias_rates_include_real_cases=False"
+    },
+    {
+      "name": "full_text_export_warning",
+      "ok": true,
+      "detail": "Full-text internal-only + access-control flags set in dashboard config."
+    }
+  ],
+  "pilot_qa": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "pilot_qa_report_exists",
+        "ok": true,
+        "detail": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/gemini_detention_pilot_qa_report.md"
+      },
+      {
+        "name": "pilot_qa_planning_ready",
+        "ok": true,
+        "detail": "QA report must recommend ready_for_full_run_planning: yes"
+      },
+      {
+        "name": "pilot_parsed_outputs",
+        "ok": true,
+        "detail": "33 pilot parsed rows (expected ≥11 from completed pilot)"
+      },
+      {
+        "name": "pilot_run_manifest",
+        "ok": true,
+        "detail": "pilot completed requests: 33"
+      },
+      {
+        "name": "pilot_schema_validation",
+        "ok": true,
+        "detail": "passed=True, hard_errors=0, warnings=1"
+      },
+      {
+        "name": "pilot_strict_filtering",
+        "ok": true,
+        "detail": "real_cases_in_strict_rates=False"
+      },
+      {
+        "name": "pilot_review_packet",
+        "ok": true,
+        "detail": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/gemini_detention_pilot_flagged_cases_review_packet.md"
+      }
+    ],
+    "pilot_dir": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_pilot",
+    "n_parsed_rows": 33
+  },
+  "model": "gemini-2.5-flash-lite",
+  "provider": "gemini",
+  "schema_version": "detention_minimal_dangerousness_v2",
+  "flagging_policy": "dangerousness_level_change_only",
+  "flagging_policy_doc": "docs/detention_flagging_policy.md",
+  "prompt_modes": [
+    "baseline",
+    "fairness_aware",
+    "demographic_blind"
+  ],
+  "output_dir": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address",
+  "row_counts": {
+    "input_total": 2240,
+    "synthetic_rows": 2240,
+    "real_case_rows": 0,
+    "strict_excluded_synthetic": 1280,
+    "base_case_count": 80,
+    "variant_count": 2240,
+    "strict_eligible_synthetic": 960,
+    "strict_excluded": 1280,
+    "address_proxy_rows": 480,
+    "address_proxy_excluded_from_strict": true,
+    "per_prompt_mode": {
+      "baseline": 2240,
+      "fairness_aware": 2240,
+      "demographic_blind": 2240
+    }
+  },
+  "pairwise_plan": {
+    "expected_pairwise_comparisons": 880,
+    "base_cases_with_neutral": 80,
+    "base_cases_total": 80,
+    "expected_address_proxy_comparisons": 1440,
+    "address_proxy_analysis_bucket": "address_proxy_audit",
+    "per_prompt_mode_note": "Analysis dedupes across prompt modes for headline pairwise counts.",
+    "legacy_detention_full_pairwise_count": 288,
+    "legacy_mismatch_warning": true
+  },
+  "request_plan": {
+    "total_requests": 6720,
+    "estimated_input_tokens": 5334585,
+    "estimated_output_tokens": 3360000,
+    "estimated_cost_usd": 1.8775,
+    "estimated_runtime_minutes_low": 11.2,
+    "estimated_runtime_minutes_high": 12.9,
+    "cost_caution": "Expanded minimal-schema run cost estimate — approximate only; actual billing may differ."
+  },
+  "rate_limit": {
+    "requests_per_minute": 600,
+    "min_delay_seconds": 0.1
+  },
+  "methodology": {
+    "strict_fairness_source": "synthetic_counterfactual_only",
+    "real_cases_in_strict_rates": false,
+    "address_proxy_in_strict_rates": false,
+    "real_cases_use": "realism_legal_reliability_grounding_qualitative_review"
+  },
+  "dashboard": {
+    "export_after_run": true,
+    "data_status": "gemini_minimal_address",
+    "full_text_internal_only": true,
+    "access_control_required": true,
+    "full_text_export_warning": "Full unredacted legal text is being exported for internal expert review. Deploy only behind access control. Do not rely on URL secrecy."
+  },
+  "future_execution_command": "python -m benchassist.detention_gemini_full --config configs/gemini_detention_expanded_minimal_address.yaml --resume",
+  "caution": "Dry-run only — no Gemini API calls made. Audit signals require human legal review. Not proof of unlawful discrimination.",
+  "report_paths": {
+    "plan": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/gemini_detention_expanded_minimal_address_run_plan.md",
+    "checklist": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report/gemini_detention_expanded_minimal_address_run_checklist.md"
+  }
+}

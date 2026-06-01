@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
+    "validate:data": "node scripts/validate-export-json.mjs",
     "test:e2e": "playwright test",
     "test:e2e:install": "playwright install chromium --with-deps"
   },

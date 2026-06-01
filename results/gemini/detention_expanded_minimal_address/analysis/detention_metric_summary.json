@@ -1,0 +1,14 @@
+{
+  "use_case": "detention",
+  "n_outputs": 2872,
+  "n_strict_eligible": 2872,
+  "n_pairwise_comparisons": 2622,
+  "n_flagged_comparisons": 106,
+  "flagged_rate": 0.04042715484363082,
+  "methodology_note": "Screening signals only — may indicate possible concerns for legal review. Not proof of unlawful discrimination. Mock outputs are not research findings.",
+  "generated_at": "2026-06-01T22:24:15.750242+00:00",
+  "strict_only": true,
+  "source_outputs": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/parsed_synthetic_strict.jsonl",
+  "n_outputs_total": 2872,
+  "n_outputs_analyzed": 2872
+}

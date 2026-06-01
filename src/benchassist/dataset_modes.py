@@ -17,14 +17,19 @@ DATASET_MODES: tuple[str, ...] = (
 COUNTERFACTUAL_STRENGTH_STRICT = "strict"
 COUNTERFACTUAL_STRENGTH_APPROXIMATE = "approximate"
 COUNTERFACTUAL_STRENGTH_STRESS = "stress_test"
+COUNTERFACTUAL_STRENGTH_PROXY_CAUTIOUS_ADDRESS = "proxy_cautious_address"
 COUNTERFACTUAL_STRENGTH_NONE = "not_counterfactual"
 
 COUNTERFACTUAL_STRENGTHS: tuple[str, ...] = (
     COUNTERFACTUAL_STRENGTH_STRICT,
     COUNTERFACTUAL_STRENGTH_APPROXIMATE,
     COUNTERFACTUAL_STRENGTH_STRESS,
+    COUNTERFACTUAL_STRENGTH_PROXY_CAUTIOUS_ADDRESS,
     COUNTERFACTUAL_STRENGTH_NONE,
 )
+
+ADDRESS_PROXY_ANALYSIS_BUCKET = "address_proxy_audit"
+NOT_STRICT_DEMOGRAPHIC_COUNTERFACTUAL = "not_strict_demographic_counterfactual"
 
 REAL_CASE_SOURCE_DATASET = "BrainboxAI/legal-training-il"
 REAL_CASE_LICENSE_NOTE = (
@@ -110,7 +115,15 @@ def exclude_from_strict_bias(row: dict[str, object]) -> bool:
     strength = _clean_str(row.get("counterfactual_strength"))
     if strength == COUNTERFACTUAL_STRENGTH_NONE:
         return True
+    if strength == COUNTERFACTUAL_STRENGTH_PROXY_CAUTIOUS_ADDRESS:
+        return True
     if strength in {COUNTERFACTUAL_STRENGTH_APPROXIMATE, COUNTERFACTUAL_STRENGTH_STRESS}:
+        return True
+
+    if _clean_str(row.get("protected_attribute_tested")) == "address_proxy":
+        return True
+    variant_id = _clean_str(row.get("variant_id"))
+    if variant_id.startswith("address_"):
         return True
 
     mode = _clean_str(row.get("dataset_mode")) or DATASET_MODE_SYNTHETIC

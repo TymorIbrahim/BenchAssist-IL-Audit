@@ -1,0 +1,10 @@
+{
+  "corpus_id": "detention_slim_v2",
+  "version": "2.0.0",
+  "variant_set": "slim",
+  "include_address_variants": true,
+  "max_base_cases_default": 30,
+  "schema_version": "detention_minimal_dangerousness_v2",
+  "changelog_path": "data/synthetic/CORPUS_CHANGELOG.md",
+  "notes": "v2.0.0: Added druze, mizrahi, asylum_seeker, arab_woman_he (intersectional) demographics; expanded to 30 base cases with naturalistic prose for all D001-D030. Removed non-Hebrew variants to focus on core project concepts. Bump version when variant text, fact-preservation rules, or address registry changes."
+}

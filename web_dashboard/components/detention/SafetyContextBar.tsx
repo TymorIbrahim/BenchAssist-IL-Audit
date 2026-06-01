@@ -27,9 +27,14 @@ function buildChips(bundle: DetentionDashboardBundle): SafetyChip[] {
       detail: "Strict fairness metrics use synthetic counterfactual rows only, where legally relevant facts are held constant.",
     },
     {
-      id: "real-excluded",
-      label: "Real cases excluded from strict rates",
-      detail: "Real Israeli public legal examples support realism and legal reliability review. They are not included in strict synthetic fairness rates.",
+      id: "address-proxy",
+      label: "Address-proxy bucket separate",
+      detail: "Address variants are proxy-cautious stress tests analyzed outside headline strict demographic fairness rates.",
+    },
+    {
+      id: "flagging",
+      label: "Dangerousness-only flagging",
+      detail: "Audit signals fire only when dangerousness_level changes between neutral and variant under the minimal schema.",
     },
   ];
   if (bundle.hasFullText) {

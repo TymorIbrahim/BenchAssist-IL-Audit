@@ -2,15 +2,18 @@
 
 import { Card } from "@/components/Card";
 import { groupRecordsByIssue, type CaseReviewRecord } from "@/lib/detentionCaseReview";
+import { formatVariantLabel } from "@/lib/v2/dataUtils";
 
 export function DetentionFindingsByIssue({
   records,
+  schemaVersion,
   onReviewCases,
 }: {
   records: CaseReviewRecord[];
+  schemaVersion?: string | null;
   onReviewCases: (filter: { issueKey: string; recordIds: string[] }) => void;
 }) {
-  const groups = groupRecordsByIssue(records);
+  const groups = groupRecordsByIssue(records, schemaVersion);
   if (!groups.length) return null;
 
   return (
@@ -23,7 +26,7 @@ export function DetentionFindingsByIssue({
             <p className="muted">{g.explanation}</p>
             <p><strong>{g.records.length}</strong> affected comparison{g.records.length === 1 ? "" : "s"}</p>
             <p className="muted">
-              Top variants: {[...new Set(g.records.slice(0, 5).map((r) => r.variant_type.replace(/_/g, " ")))].join(", ")}
+              Top variants: {[...new Set(g.records.slice(0, 5).map((r) => formatVariantLabel(r.variant_type)))].join(", ")}
             </p>
             <button
               type="button"

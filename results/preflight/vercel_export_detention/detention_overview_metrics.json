@@ -1,0 +1,25 @@
+[
+  {
+    "use_case": "detention",
+    "project_name": "BenchAssist-IL Detention Audit",
+    "mock_mode": false,
+    "data_status": "gemini_minimal_address",
+    "expanded_run": false,
+    "minimal_address_run": true,
+    "address_proxy_in_strict_rates": false,
+    "n_pairwise_comparisons_all_modes": 0,
+    "n_flagged_comparisons_all_modes": 0,
+    "n_strict_excluded_review_outputs": 0,
+    "n_real_case_inspired_review_outputs": 0,
+    "n_real_case_review_outputs": 0,
+    "methodology_note": "Minimal-schema Gemini audit with address-proxy stress tests — requires human legal review. Address variants excluded from strict headline fairness rates. Not proof of unlawful discrimination.",
+    "disclaimers": [
+      "Not legal advice.",
+      "Not an AI judge.",
+      "Metrics are audit signals, not proof of unlawful discrimination.",
+      "Human legal review required."
+    ],
+    "n_pairwise_comparisons": 0,
+    "n_flagged_comparisons": 0
+  }
+]

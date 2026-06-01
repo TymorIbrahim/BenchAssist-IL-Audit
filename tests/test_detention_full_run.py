@@ -139,8 +139,9 @@ def test_full_runner_resume_skips_completed(tmp_path: Path) -> None:
     with patch("benchassist.model_client.GeminiModelClient", return_value=mock_client):
         manifest = run_full(cfg, resume=True)
 
+    total_requests = len(select_pilot_rows(cfg)) * len(cfg.prompt_modes)
     assert manifest["stats"]["skipped_resume"] >= 1
-    assert mock_client.generate.call_count < 236 * 3
+    assert mock_client.generate.call_count < total_requests
 
 
 def test_full_analysis_scaffold(tmp_path: Path) -> None:

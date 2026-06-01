@@ -1,0 +1,6 @@
+Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+Full Gemini detention run complete.
+  Completed requests: 1170
+  Skipped (resume): 0
+  Parse success rate: 100.0%
+  Outputs: /Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_full/parsed_outputs.jsonl

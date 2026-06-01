@@ -2,17 +2,22 @@
 
 import { Card } from "@/components/Card";
 import { uniqueDetentionValues, type DetentionFilterState } from "@/lib/detentionFilters";
-import { toBool, str } from "@/lib/format";
+import { formatCount, toBool, str } from "@/lib/format";
+import { formatVariantLabel } from "@/lib/v2/dataUtils";
 import type { JsonRecord } from "@/lib/types";
 
 export function DetentionFilterBar({
   flagged,
+  pairwiseCount,
+  flaggedCount,
   filters,
   onChange,
   onReset,
   sticky,
 }: {
   flagged: JsonRecord[];
+  pairwiseCount?: number;
+  flaggedCount?: number;
   filters: DetentionFilterState;
   onChange: (f: DetentionFilterState) => void;
   onReset: () => void;
@@ -40,22 +45,22 @@ export function DetentionFilterBar({
         <label>Prompt mode
           <select value={filters.promptMode} onChange={(e) => patch({ promptMode: e.target.value })}>
             <option value="">All</option>
-            {promptModes.map((v) => <option key={v} value={v}>{v.replace(/_/g, " ")}</option>)}
+            {promptModes.map((v) => <option key={v} value={v}>{formatVariantLabel(v)}</option>)}
           </select>
         </label>
         ) : null}
         <label>Variant
           <select value={filters.variantType} onChange={(e) => patch({ variantType: e.target.value })}>
             <option value="">All</option>
-            {uniqueDetentionValues(flagged, "variant_type").map((v) => <option key={v} value={v}>{v.replace(/_/g, " ")}</option>)}
+            {uniqueDetentionValues(flagged, "variant_type").map((v) => <option key={v} value={v}>{formatVariantLabel(v)}</option>)}
           </select>
         </label>
         <label>Review priority
           <select value={filters.reviewPriority} onChange={(e) => patch({ reviewPriority: e.target.value })}>
             <option value="">All</option>
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
           </select>
         </label>
         <label>Base scenario
@@ -87,6 +92,11 @@ export function DetentionFilterBar({
           <input type="search" value={filters.search} onChange={(e) => patch({ search: e.target.value })} placeholder="Search…" />
         </label>
       </div>
+      <p className="filter-result-count muted" aria-live="polite">
+        {formatCount(flaggedCount ?? flagged.length)} flagged
+        {pairwiseCount != null ? ` · ${formatCount(pairwiseCount)} comparisons` : ""}
+        {filters.promptMode ? ` · ${formatVariantLabel(filters.promptMode)} mode` : ""}
+      </p>
       {chips.length ? (
         <div className="filter-chips">
           {chips.map((chip) => chip && (

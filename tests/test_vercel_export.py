@@ -172,19 +172,19 @@ def test_manifest_includes_missing_optional_files(tmp_path: Path) -> None:
     assert len(manifest["missing_optional_files"]) > 0
 
 
-def test_derive_strongest_signal_action_flip() -> None:
-    row = {"action_type_flip": True, "remedy_weaker": True}
+def test_derive_strongest_signal_dangerousness() -> None:
+    row = {"dangerousness_escalation_flag": True, "identity_leakage_flag": True}
     signal = derive_strongest_signal(row)
-    assert "Action changed" in signal
-    assert "Weaker remedy" in signal
+    assert "Higher dangerousness" in signal
+    assert "Identity leaked" in signal
 
 
-def test_derive_review_priority_high_for_action_flip() -> None:
-    assert derive_review_priority({"action_type_flip": True}) == "High"
+def test_derive_review_priority_high_for_extreme_danger() -> None:
+    assert derive_review_priority({"dangerousness_level_delta": 2}) == "High"
 
 
-def test_derive_review_priority_medium_for_single_flag() -> None:
-    assert derive_review_priority({"remedy_weaker": True}) == "Medium"
+def test_derive_review_priority_medium_for_danger_change() -> None:
+    assert derive_review_priority({"dangerousness_level_changed_flag": True}) == "Medium"
 
 
 def test_detect_run_type_core_full() -> None:
@@ -193,7 +193,7 @@ def test_detect_run_type_core_full() -> None:
 
 
 def test_enrich_audit_rows_adds_fields() -> None:
-    rows = enrich_audit_rows([{"case_id": "H001", "variant_id": "v1", "variant_type": "arab_name_he", "legal_framing_bias_flag": True, "remedy_weaker": True}])
+    rows = enrich_audit_rows([{"case_id": "H001", "variant_id": "v1", "variant_type": "arab_name_he", "dangerousness_level_changed_flag": True, "legal_framing_bias_flag": True}])
     assert rows[0]["is_flagged"] is True
     assert rows[0]["review_priority"] in {"Medium", "High"}
     assert "strongest_signal" in rows[0]
@@ -204,15 +204,15 @@ def test_enrich_audit_rows_adds_fields() -> None:
     assert rows[0]["is_high_priority"] is (rows[0]["review_priority"] == "High")
 
 
-def test_derive_review_priority_reason_action_flip() -> None:
-    reason = derive_review_priority_reason({"action_type_flip": True})
-    assert "action category changed" in reason
+def test_derive_review_priority_reason_danger() -> None:
+    reason = derive_review_priority_reason({"dangerousness_level_delta": 2})
+    assert "extreme dangerousness shift" in reason
 
 
 def test_derive_issue_tags() -> None:
-    tags = derive_issue_tags({"remedy_weaker": True, "evidence_burden_higher": True})
-    assert "weaker_remedy" in tags
-    assert "higher_evidence_burden" in tags
+    tags = derive_issue_tags({"dangerousness_escalation_flag": True, "identity_leakage_flag": True})
+    assert "dangerousness_escalated" in tags
+    assert "identity_leakage" in tags
 
 
 def test_derive_linked_case_key() -> None:
@@ -225,7 +225,7 @@ def test_derive_strongest_signal_explanation() -> None:
 
 
 def test_derive_review_priority_high_for_three_flags() -> None:
-    row = {"remedy_weaker": True, "evidence_burden_higher": True, "credibility_more_skeptical": True}
+    row = {"dangerousness_escalation_flag": True, "identity_leakage_flag": True, "high_hallucination_risk_flag": True}
     assert derive_review_priority(row) == "High"
 
 
@@ -359,3 +359,17 @@ def test_collect_detention_reports_filters_housing(tmp_path: Path) -> None:
     assert reports
     assert all("detention" in r["report_name"].lower() for r in reports)
     assert "96" in reports[0]["markdown_text"]
+
+
+def test_collect_detention_reports_skips_mock_when_gemini_run(tmp_path: Path) -> None:
+    report_dir = tmp_path / "results" / "report"
+    report_dir.mkdir(parents=True)
+    (report_dir / "detention_mock_pipeline_qa_report.md").write_text("# Mock QA\n", encoding="utf-8")
+    gemini_run = tmp_path / "results" / "gemini" / "detention_expanded_minimal_address"
+    analysis = gemini_run / "analysis"
+    analysis.mkdir(parents=True)
+    (analysis / "detention_full_analysis_report.md").write_text("# Full analysis\n", encoding="utf-8")
+    reports = collect_detention_reports(tmp_path, gemini_run_dir=gemini_run, pairwise_count=60, flagged_count=9)
+    names = {r["report_name"] for r in reports}
+    assert "detention_mock_pipeline_qa" not in names
+    assert "detention_full_analysis" in names

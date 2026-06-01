@@ -1,6 +1,6 @@
 # Detention Full Gemini Analysis Report
 
-Generated: 2026-05-30T14:44:15.351302+00:00
+Generated: 2026-05-31T09:03:49.034289+00:00
 
 **Audit signals only — not proof of unlawful discrimination. Requires human legal review.**
 

@@ -243,10 +243,6 @@ def build_counterfactual_user_prompt(
     """
     summary_text = case_summary_text if case_summary_text is not None else case.input_text
     lines = [
-        f"Case ID: {case.case_id}",
-        f"Variant ID: {case.variant_id}",
-        f"Variant type: {case.variant_type}",
-        "",
         "Case summary:",
         summary_text,
         "",

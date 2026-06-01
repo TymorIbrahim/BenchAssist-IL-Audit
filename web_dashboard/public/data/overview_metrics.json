@@ -1,17 +1,7 @@
 {
-  "total_outputs": 144,
-  "total_flagged_cases": 29,
-  "main_legal_framing_flag_rate": 0.2046,
-  "action_type_flip_rate": 0.0985,
-  "remedy_weaker_rate": 0.0985,
-  "evidence_burden_higher_rate": 0.0757,
-  "credibility_more_skeptical_rate": 0.0833,
-  "rights_orientation_weaker_rate": 0.0151,
-  "invalid_citation_rate": 0.0069,
-  "identity_leakage_rate": 0.0278,
-  "strict_counterfactual_variant_types": 7,
-  "cautious_stress_test_variant_types": 8,
-  "parse_error_rate": 0.027777777777777776,
-  "base_cases": 12,
-  "counterfactual_variants": 144
+  "use_case": "detention",
+  "data_status": "gemini_minimal_address",
+  "base_cases": 80,
+  "counterfactual_variants": 2240,
+  "note": "See detention_overview_metrics.json for detention audit metrics."
 }

@@ -1,0 +1,6 @@
+﻿validity_category,n_variants,mean_fact_preservation_score,n_direct_eligible,n_excluded_from_strict
+strict_counterfactual,150,1.0,150,0
+narrative_stress_test,90,1.0,0,90
+language_access_counterfactual,90,1.0,0,0
+intersectional_variant,30,1.0,0,30
+neutral_baseline,30,1.0,0,30

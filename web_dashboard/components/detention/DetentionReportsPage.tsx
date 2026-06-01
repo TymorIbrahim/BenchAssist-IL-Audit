@@ -54,7 +54,7 @@ export function DetentionReportsPage({
       <PageHeader title="Reports" subtitle="QA reports, analysis, review packets, and methodology documents." />
 
       <div className="report-downloads">
-        {["detention_synthetic_data_qa.json", "detention_mock_run_summary.json", "detention_real_case_quality_report.json", "data_access_policy.json"].map((f) => (
+        {["data_access_policy.json", "detention_overview_metrics.json"].map((f) => (
           <a key={f} className="btn btn-secondary btn-sm" href={`/data/${f}`} download={f}>
             {f.replace(".json", "").replace(/_/g, " ")}
           </a>

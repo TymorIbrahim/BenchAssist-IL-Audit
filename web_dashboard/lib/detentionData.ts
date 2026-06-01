@@ -2,15 +2,26 @@ import type { DashboardData, JsonRecord, Manifest, ReportEntry } from "./types";
 import type { CaseReviewIndexEntry, CaseReviewPayload, CaseReviewRecord } from "./detentionCaseReview";
 import { dedupeCaseReviewRecords, normalizeCaseReviewRecord } from "./detentionCaseReview";
 import { isDetentionUseCase as isDetentionUseCaseLabel } from "./detentionLabels";
-import { coerceStringList } from "./format";
+import { coerceStringList, isHighReviewPriority } from "./format";
+import { defaultAuditPromptMode, filterRowsByPromptMode } from "./detentionMetrics";
 
-export type DetentionDataStatus = "mock" | "pilot" | "gemini" | "gemini_full" | "final" | "empty";
+export type DetentionDataStatus =
+  | "mock"
+  | "pilot"
+  | "gemini"
+  | "gemini_full"
+  | "gemini_expanded_full"
+  | "gemini_minimal_address"
+  | "final"
+  | "empty";
 
 export interface DetentionDashboardBundle {
   manifest: Manifest;
   dataAccessPolicy: JsonRecord;
   overview: JsonRecord;
   pairwise: JsonRecord[];
+  addressProxyPairwise: JsonRecord[];
+  addressProxyFlagged: JsonRecord[];
   groupSummary: JsonRecord[];
   flagged: JsonRecord[];
   realCaseExamples: JsonRecord[];
@@ -20,9 +31,12 @@ export interface DetentionDashboardBundle {
   mockRunSummary: JsonRecord | null;
   reports: ReportEntry[];
   crossPromptComparisons: JsonRecord[];
+  crossPromptModeSummary: JsonRecord | null;
   mitigation: JsonRecord[];
   statisticalEffects: JsonRecord[];
   statisticalTests: JsonRecord[];
+  /** Full multi-prompt statistical export; baseline rows are in `statisticalTests` when available. */
+  statisticalTestsAll: JsonRecord[];
   hallucinationGroup: JsonRecord[];
   hallucinationPer: JsonRecord[];
   caseReviewRecords: CaseReviewRecord[];
@@ -37,6 +51,13 @@ export interface DetentionDashboardBundle {
   isMock: boolean;
   strictEligibleCount: number;
   highPriorityCount: number;
+  validityRows: JsonRecord[];
+  validitySummary: JsonRecord[];
+  validityCalibration: JsonRecord | null;
+  overviewUncertainty: JsonRecord | null;
+  humanReviewTemplate: JsonRecord[];
+  fullMetricSummary: JsonRecord[];
+  exportProvenance: JsonRecord | null;
 }
 
 async function fetchJson<T>(filename: string, fallback: T): Promise<T> {
@@ -55,7 +76,9 @@ export async function fetchCaseReviewRecord(recordPath: string): Promise<CaseRev
   try {
     const res = await fetch(`/data/${recordPath}`);
     if (!res.ok) return null;
-    const record = (await res.json()) as CaseReviewRecord;
+    const text = await res.text();
+    const sanitized = text.replace(/\bNaN\b/g, "null").replace(/\bInfinity\b/g, "null");
+    const record = JSON.parse(sanitized) as CaseReviewRecord;
     return normalizeCaseReviewRecord(record);
   } catch {
     return null;
@@ -155,6 +178,8 @@ export function detentionReviewPriority(row: JsonRecord): "High" | "Medium" | "L
 
 function inferDataStatus(manifest: Manifest, mockSummary: JsonRecord | null, overview: JsonRecord): DetentionDataStatus {
   const explicit = str(manifest.data_status || overview.data_status).toLowerCase();
+  if (explicit === "gemini_expanded_full") return "gemini_expanded_full";
+  if (explicit === "gemini_minimal_address") return "gemini_minimal_address";
   if (explicit === "gemini_full") return "gemini_full";
   if (explicit === "gemini_pilot") return "gemini";
 
@@ -179,30 +204,38 @@ export async function loadDetentionDashboardData(base: DashboardData): Promise<D
   const [
     overviewArr,
     pairwise,
+    addressProxyPairwise,
     groupSummary,
     flagged,
-    realCaseExamples,
-    realCaseQualityArr,
     sourceManifestArr,
-    syntheticQaArr,
-    mockRunSummaryArr,
     dataAccessPolicy,
     crossPromptDetention,
+    crossPromptModeSummaryRaw,
     statisticalDetention,
+    statisticalDetentionBaseline,
+    validityRows,
+    validitySummary,
+    validityCalibrationArr,
+    overviewUncertaintyArr,
+    fullMetricSummaryArr,
     caseReviewIndexPayload,
   ] = await Promise.all([
     fetchJson<JsonRecord[]>("detention_overview_metrics.json", []),
     fetchJson<JsonRecord[]>("detention_pairwise_comparison.json", []),
+    fetchJson<JsonRecord[]>("detention_address_proxy_pairwise_comparison.json", []),
     fetchJson<JsonRecord[]>("detention_group_summary.json", []),
     fetchJson<JsonRecord[]>("detention_flagged_cases.json", []),
-    fetchJson<JsonRecord[]>("detention_real_case_examples_fulltext.json", []),
-    fetchJson<JsonRecord[]>("detention_real_case_quality_report.json", []),
     fetchJson<JsonRecord[]>("detention_source_manifest.json", []),
-    fetchJson<JsonRecord[]>("detention_synthetic_data_qa.json", []),
-    fetchJson<JsonRecord[]>("detention_mock_run_summary.json", []),
     fetchJson<JsonRecord>("data_access_policy.json", {}),
     fetchJson<JsonRecord[]>("detention_cross_prompt_comparisons.json", []),
+    fetchJson<JsonRecord | JsonRecord[]>("detention_cross_prompt_mode_summary.json", {}),
     fetchJson<JsonRecord[]>("detention_statistical_tests.json", []),
+    fetchJson<JsonRecord[]>("detention_statistical_tests_baseline.json", []),
+    fetchJson<JsonRecord[]>("detention_counterfactual_validity.json", []),
+    fetchJson<JsonRecord[]>("detention_counterfactual_validity_summary.json", []),
+    fetchJson<JsonRecord[]>("detention_validity_calibration.json", []),
+    fetchJson<JsonRecord[]>("detention_overview_uncertainty.json", []),
+    fetchJson<JsonRecord[]>("detention_full_metric_summary.json", []),
     fetchJson<{
       record_count?: number;
       flagged_count?: number;
@@ -212,7 +245,12 @@ export async function loadDetentionDashboardData(base: DashboardData): Promise<D
   ]);
 
   const overview = firstRecord(overviewArr);
-  const mockRunSummary = mockRunSummaryArr.length ? mockRunSummaryArr[0] : null;
+  const explicitGeminiStatus = ["gemini_minimal_address", "gemini_expanded_full", "gemini_full", "gemini_pilot", "gemini"].includes(
+    str(base.manifest.data_status || overview.data_status).toLowerCase(),
+  );
+  const mockRunSummary = !explicitGeminiStatus
+    ? await fetchJson<JsonRecord[]>("detention_mock_run_summary.json", []).then((rows) => (rows.length ? rows[0] : null))
+    : null;
   const missingFiles = base.manifest.missing_optional_files?.filter((f) => f.startsWith("detention")) ?? [];
 
   let caseReviewMeta: CaseReviewPayload | null = null;
@@ -223,21 +261,28 @@ export async function loadDetentionDashboardData(base: DashboardData): Promise<D
   const caseReviewSplit = Boolean(caseReviewIndexPayload.records_split);
 
   const normalizedPairwise = (pairwise.length ? pairwise : flagged).map(normalizePairwiseRow);
+  const normalizedAddressProxy = addressProxyPairwise.map(normalizePairwiseRow);
   const normalizedFlagged = (flagged.length ? flagged : normalizedPairwise.filter((r) => r.detention_framing_bias_flag)).map(
     normalizePairwiseRow,
   );
+  const normalizedAddressProxyFlagged = normalizedAddressProxy.filter((r) => r.detention_framing_bias_flag);
 
   const policy = dataAccessPolicy as JsonRecord;
   const indicators = (policy.detention_fulltext_indicators ?? {}) as JsonRecord;
   const hasFullText =
     Boolean(indicators.contains_unredacted_public_legal_text) ||
-    Boolean(policy.contains_unredacted_public_legal_text) ||
-    realCaseExamples.length > 0;
+    Boolean(policy.contains_unredacted_public_legal_text);
 
   const dataStatus = inferDataStatus(base.manifest, mockRunSummary, overview);
   const isMock = dataStatus === "mock";
 
-  const highPriorityCount = normalizedFlagged.filter((r) => r.review_priority === "High").length;
+  const baselineMode = defaultAuditPromptMode({ pairwise: normalizedPairwise, dataStatus, overview });
+  const flaggedForHeadline = baselineMode
+    ? filterRowsByPromptMode(normalizedFlagged, baselineMode)
+    : normalizedFlagged;
+  const highPriorityCount = (flaggedForHeadline.length ? flaggedForHeadline : normalizedFlagged).filter((r) =>
+    isHighReviewPriority(r.review_priority),
+  ).length;
   const strictEligibleCount = Number(overview.n_pairwise_comparisons) || normalizedPairwise.length;
 
   return {
@@ -245,12 +290,16 @@ export async function loadDetentionDashboardData(base: DashboardData): Promise<D
     dataAccessPolicy: policy,
     overview,
     pairwise: normalizedPairwise,
+    addressProxyPairwise: normalizedAddressProxy,
+    addressProxyFlagged: normalizedAddressProxyFlagged.length
+      ? normalizedAddressProxyFlagged
+      : normalizedAddressProxy.filter((r) => r.detention_framing_bias_flag),
     groupSummary,
     flagged: normalizedFlagged,
-    realCaseExamples,
-    realCaseQuality: realCaseQualityArr.length ? realCaseQualityArr[0] : null,
+    realCaseExamples: [],
+    realCaseQuality: null,
     sourceManifest: sourceManifestArr.length ? sourceManifestArr[0] : null,
-    syntheticQa: syntheticQaArr.length ? syntheticQaArr[0] : null,
+    syntheticQa: null,
     mockRunSummary,
     reports: base.reports.filter(
       (r) => /detention/i.test(r.report_name) || /detention/i.test(r.title),
@@ -258,9 +307,22 @@ export async function loadDetentionDashboardData(base: DashboardData): Promise<D
     crossPromptComparisons: (crossPromptDetention.length ? crossPromptDetention : (base.crossPromptComparisons ?? [])).map(
       normalizeCrossPromptRow,
     ),
+    crossPromptModeSummary: (() => {
+      const raw = crossPromptModeSummaryRaw;
+      if (Array.isArray(raw) && raw.length) return raw[0] as JsonRecord;
+      if (raw && typeof raw === "object" && !Array.isArray(raw) && Object.keys(raw).length) {
+        return raw as JsonRecord;
+      }
+      return null;
+    })(),
     mitigation: base.mitigation ?? [],
     statisticalEffects: base.statisticalEffects ?? [],
-    statisticalTests: statisticalDetention.length ? statisticalDetention : (base.statisticalTests ?? []),
+    statisticalTestsAll: statisticalDetention.length ? statisticalDetention : (base.statisticalTests ?? []),
+    statisticalTests: statisticalDetentionBaseline.length
+      ? statisticalDetentionBaseline
+      : statisticalDetention.length
+        ? statisticalDetention
+        : (base.statisticalTests ?? []),
     hallucinationGroup: [],
     hallucinationPer: [],
     caseReviewRecords,
@@ -275,6 +337,13 @@ export async function loadDetentionDashboardData(base: DashboardData): Promise<D
     isMock,
     strictEligibleCount,
     highPriorityCount,
+    validityRows,
+    validitySummary,
+    validityCalibration: validityCalibrationArr.length ? validityCalibrationArr[0] : null,
+    overviewUncertainty: overviewUncertaintyArr.length ? overviewUncertaintyArr[0] : null,
+    humanReviewTemplate: [],
+    fullMetricSummary: fullMetricSummaryArr,
+    exportProvenance: (base.manifest.export_provenance as JsonRecord) ?? null,
   };
 }
 

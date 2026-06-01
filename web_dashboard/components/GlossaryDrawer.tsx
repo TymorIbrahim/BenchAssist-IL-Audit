@@ -1,5 +1,7 @@
 "use client";
 
+import { useOverlayDismiss } from "@/lib/useOverlayDismiss";
+
 export interface GlossaryEntry {
   term: string;
   meaning: string;
@@ -103,6 +105,7 @@ export function GlossaryDrawer({
   onClose: () => void;
   entries?: GlossaryEntry[];
 }) {
+  useOverlayDismiss(open, onClose);
   if (!open) return null;
 
   return (

@@ -1,4 +1,5 @@
 import type { CaseReviewFilters } from "./detentionCaseReview";
+import { presetPatchById } from "./caseReviewPresets";
 
 export function caseReviewFiltersFromUrl(params: URLSearchParams): Partial<CaseReviewFilters> {
   const out: Partial<CaseReviewFilters> = {};
@@ -13,6 +14,7 @@ export function caseReviewFiltersFromUrl(params: URLSearchParams): Partial<CaseR
   pick("baseCaseId", "cr_base");
   pick("protectedAttribute", "cr_protected");
   pick("strictEligible", "cr_strict");
+  pick("analysisBucket", "cr_bucket");
   pick("identityLeakage", "cr_identity");
   pick("unsupportedInference", "cr_unsupported");
   pick("decision", "cr_decision");
@@ -21,6 +23,8 @@ export function caseReviewFiltersFromUrl(params: URLSearchParams): Partial<CaseR
   if (local === "reviewed" || local === "unreviewed") out.localReview = local;
   if (params.get("cr_flagged") === "1") out.flaggedOnly = true;
   if (params.get("cr_focus") === "1") out.focusMode = true;
+  const preset = params.get("cr_preset");
+  if (preset) Object.assign(out, presetPatchById(preset) ?? {});
   return out;
 }
 
@@ -38,6 +42,7 @@ export function caseReviewFiltersToUrl(
   if (filters.baseCaseId) qs.set("cr_base", filters.baseCaseId);
   if (filters.protectedAttribute) qs.set("cr_protected", filters.protectedAttribute);
   if (filters.strictEligible) qs.set("cr_strict", filters.strictEligible);
+  if (filters.analysisBucket) qs.set("cr_bucket", filters.analysisBucket);
   if (filters.identityLeakage) qs.set("cr_identity", filters.identityLeakage);
   if (filters.unsupportedInference) qs.set("cr_unsupported", filters.unsupportedInference);
   if (filters.decision) qs.set("cr_decision", filters.decision);
@@ -45,5 +50,15 @@ export function caseReviewFiltersToUrl(
   if (filters.localReview !== "all") qs.set("cr_local", filters.localReview);
   if (filters.flaggedOnly) qs.set("cr_flagged", "1");
   if (filters.focusMode) qs.set("cr_focus", "1");
+  return qs.toString();
+}
+
+export function caseReviewFiltersToUrlWithPreset(
+  filters: CaseReviewFilters,
+  presetId: string | null,
+  opts?: { reviewId?: string; tab?: string },
+): string {
+  const qs = new URLSearchParams(caseReviewFiltersToUrl(filters, opts));
+  if (presetId) qs.set("cr_preset", presetId);
   return qs.toString();
 }

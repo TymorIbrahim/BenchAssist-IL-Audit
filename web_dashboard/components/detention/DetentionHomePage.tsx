@@ -3,22 +3,14 @@
 import { useState } from "react";
 import { PageHeader } from "@/components/detention/PageHeader";
 import { ExampleCard, ComparisonExample } from "@/components/detention/ExampleCard";
-import { AuditMethodDiagram } from "@/components/detention/AuditMethodDiagram";
 import { DetentionExportMetadataPanel } from "@/components/detention/DetentionExportMetadataPanel";
 import { DetentionReadinessPanel } from "@/components/detention/DetentionReadinessPanel";
 import { StatCard } from "@/components/MetricCard";
 import type { DetentionDashboardBundle } from "@/lib/detentionData";
 import { RESEARCH_PROCESS_STEPS, RESEARCH_QUESTION } from "@/lib/detentionStory";
 import type { DetentionTab } from "@/lib/detentionNavigation";
+import { detentionDataModeBadge, detentionHeadlineMetrics } from "@/lib/detentionMetrics";
 import { formatCount } from "@/lib/format";
-
-function dataModeBadge(bundle: DetentionDashboardBundle): string {
-  if (bundle.isMock) return "Mock data";
-  if (bundle.dataStatus === "gemini_full") return "Gemini full";
-  if (bundle.dataStatus === "gemini") return "Gemini pilot";
-  if (bundle.dataStatus === "pilot") return "Pilot corpus";
-  return "Exported data";
-}
 
 export function DetentionHomePage({
   bundle,
@@ -33,8 +25,9 @@ export function DetentionHomePage({
   onPresentationMode: () => void;
   onStartExpertReview?: () => void;
 }) {
-  const [expandedWhy, setExpandedWhy] = useState(false);
+  const [expandedWhy, setExpandedWhy] = useState(true);
   const { overview } = bundle;
+  const headline = detentionHeadlineMetrics(bundle);
 
   return (
     <div className="tab-panel home-panel">
@@ -43,9 +36,9 @@ export function DetentionHomePage({
         subtitle="A Responsible AI audit of a toy, non-binding detention/remand decision-support assistant."
         note="This dashboard is for research and expert review. It does not provide legal advice or make detention decisions."
         badges={[
-          { label: dataModeBadge(bundle), variant: bundle.isMock ? "caution" : "info" },
+          { label: detentionDataModeBadge(bundle), variant: bundle.isMock ? "caution" : "info" },
           { label: "Synthetic fairness audit", variant: "neutral" },
-          { label: "Real-case legal review", variant: "neutral" },
+          { label: "Minimal schema · dangerousness-only flagging", variant: "neutral" },
           { label: "Internal expert dashboard", variant: "neutral" },
         ]}
         actions={
@@ -128,12 +121,11 @@ export function DetentionHomePage({
             </p>
             <p className="muted">Same legal facts — only name, language, or presentation changes.</p>
           </ExampleCard>
-          <ExampleCard title="Model output (structured memo)" onSeeExample={() => onNavigate("audit-results")}>
+          <ExampleCard title="Model output (minimal schema)" onSeeExample={() => onNavigate("audit-results")}>
             <dl className="mini-dl">
+              <div><dt>Case summary</dt><dd>Short structured recap</dd></div>
               <div><dt>Dangerousness</dt><dd>medium</dd></div>
-              <div><dt>Obstruction</dt><dd>low</dd></div>
-              <div><dt>Action</dt><dd>release with conditions</dd></div>
-              <div><dt>Alternatives</dt><dd>house arrest, guarantee</dd></div>
+              <div><dt>Reasoning</dt><dd>Fact-based memo text</dd></div>
             </dl>
           </ExampleCard>
           <ExampleCard title="Neutral vs variant comparison" onSeeExample={() => onNavigate("case-review")}>
@@ -144,14 +136,29 @@ export function DetentionHomePage({
 
       <section className="section-card">
         <h3>Audit method at a glance</h3>
-        <AuditMethodDiagram />
+        <p className="muted section-intro">Slim synthetic corpus, minimal schema outputs, dangerousness-only flagging.</p>
+        <button type="button" className="btn btn-ghost btn-sm" onClick={() => onNavigate("methodology")}>
+          Full methodology →
+        </button>
       </section>
 
       <div className="metric-grid">
-        <StatCard label="Comparisons" value={formatCount(overview.n_pairwise_comparisons ?? bundle.pairwise.length)} sub="Synthetic strict audit" />
-        <StatCard label="Audit signals" value={formatCount(bundle.flagged.length)} sub="Flagged for legal review" />
+        <StatCard
+          label="Comparisons"
+          value={formatCount(headline.pairwiseCount)}
+          sub={headline.usesBaselineHeadline ? "Baseline prompt · strict synthetic audit" : "Synthetic strict audit"}
+        />
+        <StatCard
+          label="Audit signals"
+          value={formatCount(headline.flaggedCount)}
+          sub={
+            headline.usesBaselineHeadline
+              ? `Baseline prompt · ${formatCount(headline.flaggedCountAllModes)} across all modes`
+              : "Flagged for legal review"
+          }
+        />
         <StatCard label="High-priority queue" value={formatCount(bundle.highPriorityCount)} sub="Requires human review" />
-        <StatCard label="Real-case outputs" value={formatCount(overview.n_real_case_review_outputs ?? bundle.realCaseExamples.length)} sub="Excluded from strict rates" />
+        <StatCard label="Strict-excluded layer" value={formatCount(overview.n_strict_excluded_review_outputs ?? 0)} sub={`${formatCount(overview.n_address_proxy_review_outputs ?? overview.n_strict_excluded_review_outputs ?? 0)} address-proxy · excluded from strict rates`} />
       </div>
 
       <DetentionExportMetadataPanel bundle={bundle} />

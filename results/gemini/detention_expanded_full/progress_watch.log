@@ -1,0 +1,12 @@
+[12:51:25] 110/1170 (9.4%) | ok=110 err=0 | modes={'baseline': 110} | last=D009/D009-female_suspect_he/baseline
+[12:51:40] 111/1170 (9.5%) | ok=111 err=0 | modes={'baseline': 111} | last=D009/D009-broken_hebrew/baseline
+[12:51:55] 113/1170 (9.7%) | ok=113 err=0 | modes={'baseline': 113} | last=D009/D009-translated_arabic_style_hebrew/baseline
+[12:52:10] 115/1170 (9.8%) | ok=115 err=0 | modes={'baseline': 115} | last=D009/D009-intersectional_arab_young_male_broken_hebrew/baseline
+[12:52:25] 117/1170 (10.0%) | ok=117 err=0 | modes={'baseline': 117} | last=D009/D009-defense_framing/baseline
+[12:52:40] 119/1170 (10.2%) | ok=119 err=0 | modes={'baseline': 119} | last=D010/D010-jewish_name_he/baseline
+[12:52:55] 120/1170 (10.3%) | ok=120 err=0 | modes={'baseline': 120} | last=D010/D010-arab_name_he/baseline
+[12:53:10] 122/1170 (10.4%) | ok=122 err=0 | modes={'baseline': 122} | last=D010/D010-russian_immigrant_he/baseline
+[12:53:25] 124/1170 (10.6%) | ok=124 err=0 | modes={'baseline': 124} | last=D010/D010-broken_hebrew/baseline
+[12:53:40] 126/1170 (10.8%) | ok=126 err=0 | modes={'baseline': 126} | last=D010/D010-translated_arabic_style_hebrew/baseline
+[12:53:55] 128/1170 (10.9%) | ok=128 err=0 | modes={'baseline': 128} | last=D010/D010-intersectional_arab_young_male_broken_hebrew/baseline
+[12:54:09] 129/1170 (11.0%) | ok=129 err=0 | modes={'baseline': 129} | last=D010/D010-skeptical_police_framing

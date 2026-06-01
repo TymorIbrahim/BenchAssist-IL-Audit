@@ -1,58 +1,80 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { CaseReviewRecord } from "@/lib/detentionCaseReview";
-import { caseReviewKey, displayWhyFlagged } from "@/lib/detentionCaseReview";
+import type { CaseReviewIndexEntry, CaseReviewRecord } from "@/lib/detentionCaseReview";
+import {
+  analysisBucketLabel,
+  dangerousnessPairLabel,
+  shortQueueIssueLabel,
+} from "@/lib/detentionCaseReview";
+import { formatVariantLabel } from "@/lib/v2/dataUtils";
 
-const ROW_HEIGHT = 112;
+const ROW_HEIGHT = 118;
 const OVERSCAN = 4;
 
 function ReviewQueueItem({
+  entry,
   record,
   selected,
   inPacket,
   onSelect,
 }: {
-  record: CaseReviewRecord;
+  entry: CaseReviewIndexEntry;
+  record?: CaseReviewRecord;
   selected: boolean;
   inPacket: boolean;
   onSelect: () => void;
 }) {
+  const bucket = analysisBucketLabel(record?.analysis_bucket ?? entry.analysis_bucket);
+  const dangerPair = record ? dangerousnessPairLabel(record) : null;
+
   return (
     <button
       type="button"
-      className={`review-queue-item ${selected ? "selected" : ""}`}
+      className={`review-queue-item ${selected ? "selected" : ""} ${entry.is_flagged ? "flagged" : ""}`}
       style={{ minHeight: ROW_HEIGHT }}
       onClick={onSelect}
     >
       <div className="review-queue-item-top">
-        <strong>{record.base_case_title || record.base_case_id}</strong>
+        <strong>{entry.base_case_id}</strong>
         {inPacket ? <span className="packet-badge">In packet</span> : null}
       </div>
-      <p className="muted">{record.variant_case.variant_label || record.variant_type} · {record.prompt_mode}</p>
+      <p className="muted queue-item-sub">
+        {entry.variant_label || formatVariantLabel(entry.variant_type)} · {formatVariantLabel(entry.prompt_mode)}
+      </p>
+      {dangerPair ? (
+        <p className="queue-danger-pair">{dangerPair}</p>
+      ) : entry.is_flagged ? (
+        <p className="muted queue-reason">{entry.why_flagged_short?.slice(0, 72) ?? "Flagged comparison"}</p>
+      ) : null}
       <div className="issue-tags compact">
-        <span className={`priority-tag priority-${record.review_priority}`}>{record.review_priority}</span>
-        {record.is_flagged ? null : <span className="issue-tag">Not flagged</span>}
-        {record.issue_types.slice(0, 2).map((t) => (
-          <span key={t} className="issue-tag">{t.slice(0, 48)}</span>
-        ))}
+        <span className={`priority-tag priority-${entry.review_priority}`}>{entry.review_priority}</span>
+        {bucket ? <span className="issue-tag bucket-tag">{bucket}</span> : null}
+        {entry.is_flagged ? (
+          entry.issue_types.slice(0, 1).map((t) => (
+            <span key={t} className="issue-tag">{shortQueueIssueLabel(t)}</span>
+          ))
+        ) : (
+          <span className="issue-tag">Not flagged</span>
+        )}
       </div>
-      <p className="muted queue-reason">{displayWhyFlagged(record).slice(0, 100)}</p>
     </button>
   );
 }
 
 export function VirtualReviewQueue({
-  records,
+  entries,
+  recordsById,
   selectedId,
   packetIds,
   onSelect,
   listRef,
 }: {
-  records: CaseReviewRecord[];
+  entries: CaseReviewIndexEntry[];
+  recordsById: Record<string, CaseReviewRecord>;
   selectedId: string | null;
   packetIds: string[];
-  onSelect: (record: CaseReviewRecord) => void;
+  onSelect: (entry: CaseReviewIndexEntry) => void;
   listRef?: React.RefObject<HTMLDivElement>;
 }) {
   const internalRef = useRef<HTMLDivElement>(null);
@@ -71,11 +93,11 @@ export function VirtualReviewQueue({
   const { start, end, offset } = useMemo(() => {
     const startIdx = Math.max(0, Math.floor(scrollTop / ROW_HEIGHT) - OVERSCAN);
     const visible = Math.ceil(viewportHeight / ROW_HEIGHT) + OVERSCAN * 2;
-    const endIdx = Math.min(records.length, startIdx + visible);
+    const endIdx = Math.min(entries.length, startIdx + visible);
     return { start: startIdx, end: endIdx, offset: startIdx * ROW_HEIGHT };
-  }, [scrollTop, viewportHeight, records.length]);
+  }, [scrollTop, viewportHeight, entries.length]);
 
-  const slice = records.slice(start, end);
+  const slice = entries.slice(start, end);
 
   return (
     <div
@@ -85,15 +107,16 @@ export function VirtualReviewQueue({
       role="listbox"
       aria-label="Review queue"
     >
-      <div style={{ height: records.length * ROW_HEIGHT, position: "relative" }}>
+      <div style={{ height: entries.length * ROW_HEIGHT, position: "relative" }}>
         <div style={{ transform: `translateY(${offset}px)` }}>
-          {slice.map((r) => (
+          {slice.map((entry) => (
             <ReviewQueueItem
-              key={caseReviewKey(r)}
-              record={r}
-              selected={selectedId === caseReviewKey(r)}
-              inPacket={packetIds.includes(caseReviewKey(r))}
-              onSelect={() => onSelect(r)}
+              key={entry.review_record_id}
+              entry={entry}
+              record={recordsById[entry.review_record_id]}
+              selected={selectedId === entry.review_record_id}
+              inPacket={packetIds.includes(entry.review_record_id)}
+              onSelect={() => onSelect(entry)}
             />
           ))}
         </div>

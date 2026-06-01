@@ -13,4 +13,11 @@ describe("caseReviewUrl", () => {
     expect(parsed.reviewPriority).toBe("high");
     expect(params.get("review_id")).toBe("D001::v1::baseline");
   });
+
+  it("round-trips analysis bucket filter", () => {
+    const filters = { ...DEFAULT_CASE_REVIEW_FILTERS, analysisBucket: "address_proxy" as const };
+    const qs = caseReviewFiltersToUrl(filters, {});
+    const parsed = caseReviewFiltersFromUrl(new URLSearchParams(qs));
+    expect(parsed.analysisBucket).toBe("address_proxy");
+  });
 });

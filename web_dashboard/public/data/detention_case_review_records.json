@@ -1,10 +1,17 @@
 {
-  "exported_at": "2026-05-30T21:17:15.502150+00:00",
-  "data_status": "gemini_full",
-  "prompt_mode": "baseline",
+  "exported_at": "2026-06-01T22:24:48.241408+00:00",
+  "data_status": "gemini_minimal_address",
+  "prompt_mode": "all",
+  "prompt_modes": [
+    "baseline",
+    "demographic_blind",
+    "fairness_aware"
+  ],
   "prompt_reconstruction_note": "Prompts use exact API payloads when full_prompt_sent_to_model was logged by the runner; otherwise they are reconstructed from the prompt builder.",
-  "record_count": 96,
-  "flagged_count": 68,
+  "record_count": 4055,
+  "strict_demographic_record_count": 2622,
+  "address_proxy_record_count": 1433,
+  "flagged_count": 146,
   "records_split": true,
   "records_dir": "detention_case_review_records",
   "records": []

@@ -1,0 +1,22 @@
+{
+  "overview": {
+    "n_comparisons": 880,
+    "n_flagged": 44,
+    "flagged_rate": 0.05,
+    "flagged_rate_ci_low": 0.0375,
+    "flagged_rate_ci_high": 0.0665,
+    "uncertainty_note": "95% Wilson CI on flagged rate; n=880 pairwise comparisons."
+  },
+  "power": {
+    "n_base_cases": 80,
+    "variants_per_base_case": 11,
+    "n_total_variant_rows": 880,
+    "power_note": "With 80 base cases and ~11 variants, subgroup rates below n≈12 per variant type have wide confidence intervals."
+  },
+  "validity_calibration": {
+    "n_gold_labels": 15,
+    "n_matched": 6,
+    "exclude_decision_accuracy": 0.8333,
+    "notes": "Calibration compares strict-rate exclusion vs expert facts_preserved labels."
+  }
+}

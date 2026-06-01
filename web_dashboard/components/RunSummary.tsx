@@ -9,7 +9,10 @@ import { StatusPill } from "./StatusPill";
 export function RunSummary({ manifest }: { manifest: Manifest }) {
   const [expanded, setExpanded] = useState(false);
   const runType = manifest.run_type ?? detectRunType(manifest.run_label);
-  const files = Object.entries(manifest.selected_source_files ?? {});
+  const files = Object.entries(manifest.selected_source_files ?? {}).filter(([name]) => {
+    if (manifest.use_case !== "detention") return true;
+    return name !== "model_outputs.csv" && !name.startsWith("model_outputs");
+  });
 
   return (
     <div className="run-summary">

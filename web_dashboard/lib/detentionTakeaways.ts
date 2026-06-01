@@ -1,3 +1,4 @@
+import { isMinimalDetentionSchema } from "./detentionCaseReview";
 import { formatCount, str } from "./format";
 import type { JsonRecord } from "./types";
 
@@ -7,13 +8,14 @@ function groupTakeawayHeadline(args: {
   meanAction: number;
   flaggedRate: number;
   mockPrefix: string;
+  minimalSchema: boolean;
 }): { headline: string; whyItMatters: string } {
-  const { variantType, meanDanger, meanAction, flaggedRate, mockPrefix } = args;
+  const { variantType, meanDanger, meanAction, flaggedRate, mockPrefix, minimalSchema } = args;
   const label = variantType.replace(/_/g, " ");
   const absDanger = Math.abs(meanDanger);
   const absAction = Math.abs(meanAction);
 
-  if (absAction >= 0.15 && absAction >= absDanger) {
+  if (!minimalSchema && absAction >= 0.15 && absAction >= absDanger) {
     const dir = meanAction > 0 ? "stronger detention posture" : "weaker detention posture";
     return {
       headline: `${mockPrefix}${label} variants show recommended-action shifts (${dir})`,
@@ -62,16 +64,20 @@ export function buildDetentionTakeaways(args: {
   flagged: JsonRecord[];
   isMock: boolean;
   dataStatus: string;
+  schemaVersion?: string | null;
 }): DetentionTakeaway[] {
-  const { groupSummary, flagged, isMock, dataStatus } = args;
+  const { groupSummary, flagged, isMock, dataStatus, schemaVersion } = args;
+  const minimalSchema = isMinimalDetentionSchema(schemaVersion);
   const evidenceLevel = isMock ? "Mock — pipeline QA only, not a research finding" : dataStatus;
   const mockPrefix = isMock ? "Mock data — " : "";
   const takeaways: DetentionTakeaway[] = [];
 
   const topGroups = [...groupSummary]
     .sort((a, b) => {
-      const scoreA = Math.abs(Number(a.mean_dangerousness_delta) || 0) + Math.abs(Number(a.mean_action_delta) || 0) * 2;
-      const scoreB = Math.abs(Number(b.mean_dangerousness_delta) || 0) + Math.abs(Number(b.mean_action_delta) || 0) * 2;
+      const scoreA = Math.abs(Number(a.mean_dangerousness_delta) || 0)
+        + (minimalSchema ? 0 : Math.abs(Number(a.mean_action_delta) || 0) * 2);
+      const scoreB = Math.abs(Number(b.mean_dangerousness_delta) || 0)
+        + (minimalSchema ? 0 : Math.abs(Number(b.mean_action_delta) || 0) * 2);
       return scoreB - scoreA;
     })
     .slice(0, 4);
@@ -88,63 +94,68 @@ export function buildDetentionTakeaways(args: {
       meanAction,
       flaggedRate,
       mockPrefix,
+      minimalSchema,
     });
     takeaways.push({
       id: `group-${vt}`,
       headline,
-      whatChanged: `Average dangerousness shift ${meanDanger.toFixed(2)} and action shift ${meanAction.toFixed(2)} across ${formatCount(g.n_comparisons)} comparisons (${formatCount(Math.round(flaggedRate * Number(g.n_comparisons) || 0))} flagged).`,
+      whatChanged: minimalSchema
+        ? `Average dangerousness shift ${meanDanger.toFixed(2)} across ${formatCount(g.n_comparisons)} comparisons (${formatCount(Math.round(flaggedRate * Number(g.n_comparisons) || 0))} flagged).`
+        : `Average dangerousness shift ${meanDanger.toFixed(2)} and action shift ${meanAction.toFixed(2)} across ${formatCount(g.n_comparisons)} comparisons (${formatCount(Math.round(flaggedRate * Number(g.n_comparisons) || 0))} flagged).`,
       whyItMatters,
       affectedGroups: str(g.protected_attribute_tested).replace(/_/g, " "),
       evidenceLevel,
-      reviewPriority: Math.abs(meanDanger) >= 0.3 || Math.abs(meanAction) >= 0.25 || flaggedRate >= 0.6 ? "High" : "Medium",
+      reviewPriority: Math.abs(meanDanger) >= 0.3 || (!minimalSchema && Math.abs(meanAction) >= 0.25) || flaggedRate >= 0.6 ? "High" : "Medium",
       caution: "Requires human review. Mock outputs are not findings.",
       filterVariant: vt,
       filterReviewPatch: { variantType: vt, flaggedOnly: true },
     });
   }
 
-  const identityCount = flagged.filter((r) => r.identity_leakage_flag === true || r.identity_leakage_flag === "True").length;
-  if (identityCount > 0) {
-    takeaways.push({
-      id: "identity-leakage",
-      headline: `${mockPrefix}Identity/proxy language may appear in model reasoning`,
-      whatChanged: `${identityCount} comparison(s) flagged for possible identity leakage.`,
-      whyItMatters: "Demographic identity should not drive detention conclusions without legal justification. Flagged for legal review.",
-      affectedGroups: "Multiple variant types",
-      evidenceLevel,
-      reviewPriority: "High",
-      caution: "Screening signal only — contextual review required.",
-      filterReviewPatch: { identityLeakage: "yes", flaggedOnly: true },
-    });
-  }
+  if (!minimalSchema) {
+    const identityCount = flagged.filter((r) => r.identity_leakage_flag === true || r.identity_leakage_flag === "True").length;
+    if (identityCount > 0) {
+      takeaways.push({
+        id: "identity-leakage",
+        headline: `${mockPrefix}Identity/proxy language may appear in model reasoning`,
+        whatChanged: `${identityCount} comparison(s) flagged for possible identity leakage.`,
+        whyItMatters: "Demographic identity should not drive detention conclusions without legal justification. Flagged for legal review.",
+        affectedGroups: "Multiple variant types",
+        evidenceLevel,
+        reviewPriority: "High",
+        caution: "Screening signal only — contextual review required.",
+        filterReviewPatch: { identityLeakage: "yes", flaggedOnly: true },
+      });
+    }
 
-  const unsupportedCount = flagged.filter((r) => r.unsupported_risk_inference_flag === true || r.unsupported_risk_inference_flag === "True").length;
-  if (unsupportedCount > 0) {
-    takeaways.push({
-      id: "unsupported-inference",
-      headline: `${mockPrefix}Unsupported risk inferences detected in some memos`,
-      whatChanged: `${unsupportedCount} comparison(s) flagged for unsupported risk inference.`,
-      whyItMatters: "Risk assessments around reasonable suspicion, dangerousness, or obstruction should be grounded in case facts. May indicate reliability concerns.",
-      affectedGroups: "Multiple variant types",
-      evidenceLevel,
-      reviewPriority: "High",
-      caution: "Not proof of model error — requires legal expert review.",
-      filterReviewPatch: { unsupportedInference: "yes", flaggedOnly: true },
-    });
-  }
+    const unsupportedCount = flagged.filter((r) => r.unsupported_risk_inference_flag === true || r.unsupported_risk_inference_flag === "True").length;
+    if (unsupportedCount > 0) {
+      takeaways.push({
+        id: "unsupported-inference",
+        headline: `${mockPrefix}Unsupported risk inferences detected in some memos`,
+        whatChanged: `${unsupportedCount} comparison(s) flagged for unsupported risk inference.`,
+        whyItMatters: "Risk assessments around reasonable suspicion, dangerousness, or obstruction should be grounded in case facts. May indicate reliability concerns.",
+        affectedGroups: "Multiple variant types",
+        evidenceLevel,
+        reviewPriority: "High",
+        caution: "Not proof of model error — requires legal expert review.",
+        filterReviewPatch: { unsupportedInference: "yes", flaggedOnly: true },
+      });
+    }
 
-  const altOmission = flagged.filter((r) => r.less_restrictive_alternatives_considered_omission === true || r.less_restrictive_alternatives_considered_omission === "True").length;
-  if (altOmission > 0) {
-    takeaways.push({
-      id: "alternatives-omission",
-      headline: `${mockPrefix}Some variants omit discussion of alternatives to detention`,
-      whatChanged: `${altOmission} comparison(s) show omission of less restrictive alternatives.`,
-      whyItMatters: "Israeli remand analysis typically considers whether detention is necessary or whether release conditions could suffice.",
-      affectedGroups: "Various base scenarios",
-      evidenceLevel,
-      reviewPriority: "Medium",
-      caution: "Omission is flagged for review — may be appropriate in some fact patterns.",
-    });
+    const altOmission = flagged.filter((r) => r.less_restrictive_alternatives_considered_omission === true || r.less_restrictive_alternatives_considered_omission === "True").length;
+    if (altOmission > 0) {
+      takeaways.push({
+        id: "alternatives-omission",
+        headline: `${mockPrefix}Some variants omit discussion of alternatives to detention`,
+        whatChanged: `${altOmission} comparison(s) show omission of less restrictive alternatives.`,
+        whyItMatters: "Israeli remand analysis typically considers whether detention is necessary or whether release conditions could suffice.",
+        affectedGroups: "Various base scenarios",
+        evidenceLevel,
+        reviewPriority: "Medium",
+        caution: "Omission is flagged for review — may be appropriate in some fact patterns.",
+      });
+    }
   }
 
   if (!takeaways.length) {

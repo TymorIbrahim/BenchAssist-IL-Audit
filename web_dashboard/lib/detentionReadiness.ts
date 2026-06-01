@@ -70,13 +70,6 @@ export function assessDetentionReadiness(bundle: DetentionDashboardBundle): Read
   }
 
   checks.push({
-    id: "real-cases",
-    label: "Real-case examples",
-    ok: bundle.realCaseExamples.length > 0,
-    detail: bundle.realCaseExamples.length ? `${bundle.realCaseExamples.length} rows` : "Optional — qualitative review layer",
-  });
-
-  checks.push({
     id: "reports",
     label: "Markdown reports",
     ok: bundle.reports.length > 0,
@@ -94,7 +87,7 @@ export function assessDetentionReadiness(bundle: DetentionDashboardBundle): Read
     id: "strict-exclusion",
     label: "Strict-rate exclusion visible",
     ok: true,
-    detail: "Real cases labeled excluded from strict fairness rates",
+    detail: "Address-proxy bucket excluded from strict demographic rates",
   });
 
   const coreOk = checks.filter((c) => ["manifest", "flagged", "pairwise"].includes(c.id)).every((c) => c.ok);

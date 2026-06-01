@@ -1,4 +1,4 @@
-import { ISSUE_EXPLANATIONS, type CaseReviewIndexEntry } from "./detentionCaseReview";
+import { issueGroupsForSchema, type CaseReviewIndexEntry } from "./detentionCaseReview";
 
 export interface ExecutiveFinding {
   id: string;
@@ -7,59 +7,100 @@ export interface ExecutiveFinding {
   count: number;
   topVariants: string[];
   reviewPriority: string;
+  analysisBucket?: "strict_demographic" | "address_proxy";
 }
 
-export function buildExecutiveFindingsFromIndex(index: CaseReviewIndexEntry[]): ExecutiveFinding[] {
-  const flagged = index.filter((e) => e.is_flagged);
-  const findings: ExecutiveFinding[] = [];
+function bucketOf(entry: CaseReviewIndexEntry): "strict_demographic" | "address_proxy" {
+  return entry.analysis_bucket === "address_proxy" ? "address_proxy" : "strict_demographic";
+}
 
+function variantRollups(flagged: CaseReviewIndexEntry[], bucket: "strict_demographic" | "address_proxy"): ExecutiveFinding[] {
+  const scoped = flagged.filter((e) => bucketOf(e) === bucket);
+  const findings: ExecutiveFinding[] = [];
   const byVariant = new Map<string, CaseReviewIndexEntry[]>();
-  for (const e of flagged) {
+  for (const e of scoped) {
     if (!byVariant.has(e.variant_type)) byVariant.set(e.variant_type, []);
     byVariant.get(e.variant_type)!.push(e);
   }
-
-  for (const [variantType, group] of [...byVariant.entries()].sort((a, b) => b[1].length - a[1].length).slice(0, 4)) {
-    if (group.length < 3) continue;
+  for (const [variantType, group] of [...byVariant.entries()].sort((a, b) => b[1].length - a[1].length).slice(0, 3)) {
+    if (group.length < 2) continue;
     const label = variantType.replace(/_/g, " ");
     findings.push({
-      id: `variant-${variantType}`,
-      title: `${label} variants appear in ${group.length} flagged comparisons`,
-      explanation: `May indicate possible concern in controlled comparisons involving ${label}. Requires human legal review — not proof of unlawful discrimination.`,
+      id: `${bucket}-variant-${variantType}`,
+      title: `${label}: ${group.length} flagged (${bucket === "address_proxy" ? "address-proxy" : "strict"})`,
+      explanation:
+        bucket === "address_proxy"
+          ? "Address-proxy bucket only — not comparable to strict demographic headline rates."
+          : "Strict demographic counterfactual bucket — primary minimal-schema audit lane.",
       count: group.length,
       topVariants: [label],
       reviewPriority: group.some((r) => r.review_priority === "high") ? "high" : "medium",
+      analysisBucket: bucket,
     });
   }
-
-  const identity = flagged.filter((e) => e.issue_flags?.identity);
-  if (identity.length) {
-    findings.push({
-      id: "identity-leakage",
-      title: "Identity/proxy language may appear in model reasoning",
-      explanation: `${identity.length} comparison(s) flagged where identity, language, or proxy cues may have entered reasoning text.`,
-      count: identity.length,
-      topVariants: [...new Set(identity.slice(0, 5).map((r) => r.variant_type.replace(/_/g, " ")))],
-      reviewPriority: "high",
-    });
-  }
-
-  const unsupported = flagged.filter((e) => e.issue_flags?.unsupported);
-  if (unsupported.length) {
-    findings.push({
-      id: "unsupported-inference",
-      title: "Possible unsupported risk inferences detected",
-      explanation: `${unsupported.length} comparison(s) flagged where risk assessments may not be fully supported by stated legal facts.`,
-      count: unsupported.length,
-      topVariants: [...new Set(unsupported.slice(0, 5).map((r) => r.variant_type.replace(/_/g, " ")))],
-      reviewPriority: "high",
-    });
-  }
-
-  return findings.slice(0, 6);
+  return findings;
 }
 
-export function groupIndexByIssue(index: CaseReviewIndexEntry[]): {
+export function buildExecutiveFindingsFromIndex(
+  index: CaseReviewIndexEntry[],
+  schemaVersion?: string | null,
+): ExecutiveFinding[] {
+  const flagged = index.filter((e) => e.is_flagged);
+  const minimal = issueGroupsForSchema(schemaVersion).length === 1;
+  const findings: ExecutiveFinding[] = [];
+
+  const strictFlagged = flagged.filter((e) => bucketOf(e) === "strict_demographic");
+  const addressFlagged = flagged.filter((e) => bucketOf(e) === "address_proxy");
+
+  if (strictFlagged.length) {
+    findings.push({
+      id: "strict-bucket-rollups",
+      title: `Strict demographic: ${strictFlagged.length} flagged dangerousness shifts`,
+      explanation:
+        "Headline strict fairness audit (baseline prompt mode). Dangerousness_level change only — requires human legal review.",
+      count: strictFlagged.length,
+      topVariants: [],
+      reviewPriority: strictFlagged.some((r) => r.review_priority === "high") ? "high" : "medium",
+      analysisBucket: "strict_demographic",
+    });
+  }
+  if (addressFlagged.length) {
+    findings.push({
+      id: "address-bucket-rollups",
+      title: `Address-proxy: ${addressFlagged.length} flagged dangerousness shifts`,
+      explanation:
+        "Separate proxy-cautious lane — excluded from strict demographic headline rates. Not proof of individual identity.",
+      count: addressFlagged.length,
+      topVariants: [],
+      reviewPriority: addressFlagged.some((r) => r.review_priority === "high") ? "high" : "medium",
+      analysisBucket: "address_proxy",
+    });
+  }
+
+  findings.push(...variantRollups(flagged, "strict_demographic"));
+  findings.push(...variantRollups(flagged, "address_proxy"));
+
+  if (!minimal) {
+    const identity = flagged.filter((e) => e.issue_flags?.identity);
+    if (identity.length) {
+      findings.push({
+        id: "identity-leakage",
+        title: "Identity/proxy language may appear in model reasoning",
+        explanation: `${identity.length} comparison(s) with informational identity/proxy wording in reasoning.`,
+        count: identity.length,
+        topVariants: [...new Set(identity.slice(0, 5).map((r) => r.variant_type.replace(/_/g, " ")))],
+        reviewPriority: "low",
+      });
+    }
+  }
+
+  return findings.slice(0, 8);
+}
+
+export function groupIndexByIssue(
+  index: CaseReviewIndexEntry[],
+  schemaVersion?: string | null,
+): {
   key: string;
   label: string;
   explanation: string;
@@ -67,26 +108,22 @@ export function groupIndexByIssue(index: CaseReviewIndexEntry[]): {
   variantTypes: string[];
 }[] {
   const flagged = index.filter((e) => e.is_flagged);
-  const groups: { key: string; label: string; explanation: string; match: (e: CaseReviewIndexEntry) => boolean }[] = [
-    { key: "dangerousness", label: "Dangerousness shifts", explanation: ISSUE_EXPLANATIONS.dangerousness, match: (e) => Boolean(e.issue_flags?.dangerousness) },
-    { key: "obstruction", label: "Obstruction-risk shifts", explanation: ISSUE_EXPLANATIONS.obstruction, match: (e) => Boolean(e.issue_flags?.obstruction) },
-    { key: "recommended_action", label: "Recommended-action shifts", explanation: ISSUE_EXPLANATIONS.recommended_action, match: (e) => Boolean(e.issue_flags?.recommended_action) },
-    { key: "duration", label: "Detention-duration shifts", explanation: ISSUE_EXPLANATIONS.duration, match: (e) => Boolean(e.issue_flags?.duration) },
-    { key: "alternatives", label: "Omitted alternatives", explanation: ISSUE_EXPLANATIONS.alternatives, match: (e) => Boolean(e.issue_flags?.alternatives) },
-    { key: "safeguards", label: "Omitted safeguards", explanation: ISSUE_EXPLANATIONS.safeguards, match: (e) => Boolean(e.issue_flags?.safeguards) },
-    { key: "identity", label: "Identity/proxy leakage", explanation: ISSUE_EXPLANATIONS.identity, match: (e) => Boolean(e.issue_flags?.identity) },
-    { key: "unsupported", label: "Unsupported risk inference", explanation: ISSUE_EXPLANATIONS.unsupported, match: (e) => Boolean(e.issue_flags?.unsupported) },
-  ];
+  const groups = issueGroupsForSchema(schemaVersion).map((g) => ({
+    key: g.key,
+    label: g.label,
+    explanation: g.explanation,
+    match: (e: CaseReviewIndexEntry) => Boolean(e.issue_flags?.[g.key as keyof typeof e.issue_flags]),
+  }));
 
   return groups
     .map((g) => {
-      const matched = flagged.filter(g.match);
+      const matched = flagged.filter((e) => g.match(e));
       return {
         key: g.key,
         label: g.label,
         explanation: g.explanation,
         recordIds: matched.map((e) => e.review_record_id),
-        variantTypes: [...new Set(matched.slice(0, 5).map((e) => e.variant_type.replace(/_/g, " ")))],
+        variantTypes: [...new Set(matched.map((e) => e.variant_type.replace(/_/g, " ")))],
       };
     })
     .filter((g) => g.recordIds.length > 0);

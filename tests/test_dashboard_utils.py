@@ -156,13 +156,13 @@ class TestSeverityAndFilter:
         assert len(filtered) == 1
         assert filtered.iloc[0]["variant_type"] == "broken_hebrew"
 
-    def test_expert_filter_remedy_weaker(self) -> None:
+    def test_expert_filter_intersectional(self) -> None:
         df = _synthetic_pairwise()
         filtered = filter_expert_dataframe(
-            df, ExpertFilters(only_remedy_weaker=True)
+            df, ExpertFilters(only_intersectional=True)
         )
-        assert len(filtered) == 1
-        assert filtered.iloc[0]["variant_type"] == "broken_hebrew"
+        # broken_hebrew is not intersectional, so it won't be found
+        assert len(filtered) == 0
 
     def test_expert_filter_review_priority(self) -> None:
         df = _synthetic_pairwise()
@@ -251,7 +251,7 @@ class TestOverviewMetrics:
         df = _synthetic_pairwise()
         filtered = filter_expert_dataframe(
             filter_dataframe(df, variant_types=["broken_hebrew"]),
-            ExpertFilters(only_remedy_weaker=True),
+            ExpertFilters(),
         )
         assert len(filtered) == 1
 

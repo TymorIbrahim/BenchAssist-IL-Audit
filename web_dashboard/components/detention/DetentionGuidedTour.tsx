@@ -3,14 +3,15 @@
 import { useState } from "react";
 import type { DetentionTab } from "@/lib/detentionNavigation";
 import { RESEARCH_QUESTION } from "@/lib/detentionStory";
+import { useOverlayDismiss } from "@/lib/useOverlayDismiss";
 
 const TOUR_STEPS: { title: string; body: string; tab?: DetentionTab }[] = [
   { title: "Research question", body: RESEARCH_QUESTION, tab: "home" },
-  { title: "Audit method", body: "Synthetic counterfactuals feed strict fairness metrics. Real cases are reviewed separately.", tab: "methodology" },
+  { title: "Audit method", body: "Slim synthetic corpus with demographic and address-proxy variants. Flagging is dangerousness-level changes only.", tab: "methodology" },
   { title: "Example comparison", body: "Open Case Review to compare neutral vs variant structured outputs side by side.", tab: "case-review" },
   { title: "Top audit signals", body: "Audit Results summarizes flagged comparisons and key takeaways.", tab: "audit-results" },
-  { title: "Review a flagged case", body: "Use the triage board to open a case, complete the checklist, and add notes.", tab: "case-review" },
-  { title: "Build your packet", body: "Add cases to the reviewer packet and export from Expert Workspace.", tab: "expert-workspace" },
+  { title: "Review a flagged case", body: "Use the review queue to open a comparison, complete the checklist, and add notes.", tab: "case-review" },
+  { title: "Build your packet", body: "Add cases to the reviewer packet and export from Case Review.", tab: "case-review" },
 ];
 
 export function DetentionGuidedTour({
@@ -26,6 +27,7 @@ export function DetentionGuidedTour({
   onClose: () => void;
   onGoToTab: (tab: DetentionTab) => void;
 }) {
+  useOverlayDismiss(open, onClose);
   if (!open) return null;
   const current = TOUR_STEPS[step];
   const isLast = step >= TOUR_STEPS.length - 1;

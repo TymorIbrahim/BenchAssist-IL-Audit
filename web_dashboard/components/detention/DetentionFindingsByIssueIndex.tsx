@@ -6,12 +6,14 @@ import type { CaseReviewIndexEntry } from "@/lib/detentionCaseReview";
 
 export function DetentionFindingsByIssueIndex({
   index,
+  schemaVersion,
   onReviewCases,
 }: {
   index: CaseReviewIndexEntry[];
+  schemaVersion?: string | null;
   onReviewCases: (filter: { issueKey: string; recordIds: string[] }) => void;
 }) {
-  const groups = groupIndexByIssue(index);
+  const groups = groupIndexByIssue(index, schemaVersion);
   if (!groups.length) return null;
 
   return (

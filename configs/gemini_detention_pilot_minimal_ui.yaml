@@ -1,0 +1,68 @@
+# Fast UI refresh run — 5 bases, slim + address, minimal schema (3 prompt modes)
+# Preflight: make detention-preflight CONFIG_MINIMAL=configs/gemini_detention_pilot_minimal_ui.yaml
+
+use_case: detention
+
+model: gemini-2.5-flash-lite
+provider: gemini
+schema_version: detention_minimal_dangerousness_v2
+
+prompt_modes:
+  - baseline
+  - fairness_aware
+  - demographic_blind
+
+grounded:
+  enabled: false
+
+dataset:
+  synthetic_input: data/synthetic/detention_core_cases_with_address.csv
+  variant_set: slim
+  max_base_cases: 5
+
+output_dir: results/gemini/detention_pilot_minimal_ui
+
+max_synthetic_base_cases: 5
+max_variants_per_base_case: null
+max_real_cases: 0
+
+temperature: 0
+top_p: 1
+max_output_tokens: 4096
+request_timeout_seconds: 120
+
+rate_limit:
+  requests_per_minute: 10
+  retry_with_backoff: true
+  min_delay_seconds: 6.0
+
+cost_estimates:
+  input_tokens_per_call: 1600
+  output_tokens_per_call: 500
+  input_cost_per_million: 0.10
+  output_cost_per_million: 0.40
+
+safety:
+  dry_run_required: true
+  overwrite_existing: false
+  resume_supported: true
+  strict_schema_validation: true
+  stop_on_parse_error_rate_above: 0.10
+
+methodology:
+  strict_fairness_source: synthetic_counterfactual_only
+  real_cases_in_strict_rates: false
+  address_proxy_in_strict_rates: false
+
+dashboard:
+  export_after_run: true
+  data_status: gemini_minimal_address
+  full_text_internal_only: true
+  access_control_required: true
+
+metadata:
+  run_type: expanded_minimal_address
+  expanded_run: true
+  schema_version: detention_minimal_dangerousness_v2
+  flagging_policy: dangerousness_level_change_only
+  pilot_ui_refresh: true

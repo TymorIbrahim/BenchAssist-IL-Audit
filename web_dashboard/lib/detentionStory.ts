@@ -11,57 +11,47 @@ export interface ProcessStep {
 export const RESEARCH_PROCESS_STEPS: ProcessStep[] = [
   {
     id: "synthetic",
-    title: "Build synthetic detention scenarios",
-    description: "Controlled base cases with documented legal facts (evidence, priors, witness risk, release options).",
+    title: "Build slim synthetic corpus",
+    description: "10 base detention scenarios with core demographic variants plus proxy-cautious address variants (130 rows).",
     tab: "methodology",
-    exampleId: "base-case",
   },
   {
     id: "variants",
-    title: "Create controlled variants",
-    description: "Change only identity, language, or narrative framing while holding legally relevant facts constant.",
+    title: "Hold legal facts constant",
+    description: "Variants change identity, language, or address presentation only — legally relevant facts stay fixed.",
     tab: "methodology",
-    exampleId: "variant",
   },
   {
     id: "prompts",
-    title: "Run model prompt modes",
-    description: "Baseline, fairness-aware, and demographic-blind prompts produce structured risk memos.",
+    title: "Run three prompt modes",
+    description: "Baseline, fairness-aware, and demographic-blind prompts on the same cases.",
     tab: "mitigation",
   },
   {
     id: "parse",
-    title: "Parse structured risk memos",
-    description: "Outputs validated against a schema: dangerousness, obstruction, action, alternatives, safeguards.",
+    title: "Parse minimal schema outputs",
+    description: "Each memo contains case_summary, dangerousness_level, and reasoning_text only.",
     tab: "methodology",
-    exampleId: "output",
   },
   {
     id: "compare",
     title: "Compare neutral vs variant",
-    description: "Pairwise comparison detects field-level shifts that may require legal review.",
+    description: "Pairwise comparison flags only when dangerousness_level changes between neutral and variant.",
     tab: "case-review",
-    exampleId: "comparison",
   },
   {
-    id: "flag",
-    title: "Flag possible concerns",
-    description: "Audit signals highlight shifts, omissions, identity language, or unsupported inferences.",
+    id: "address",
+    title: "Review address-proxy bucket separately",
+    description: "Address variants are strict-excluded and analyzed in a separate audit bucket.",
     tab: "audit-results",
   },
   {
-    id: "real",
-    title: "Review real Israeli legal examples",
-    description: "Public legal text supports realism, grounding, and qualitative expert review — excluded from strict rates.",
-    tab: "real-cases",
-  },
-  {
     id: "export",
-    title: "Export legal-expert review packet",
-    description: "Selected cases, notes, and checklists export for final report preparation.",
-    tab: "expert-workspace",
+    title: "Expert review & export",
+    description: "Review flagged comparisons, complete checklists, and export a reviewer packet.",
+    tab: "case-review",
   },
 ];
 
 export const RESEARCH_QUESTION =
-  "Does the model produce different risk memos when only identity, language, or framing changes while legally relevant facts remain constant?";
+  "When legally relevant facts are held constant, does the model assign a different dangerousness level to counterfactual variants (identity, language, or address presentation)?";

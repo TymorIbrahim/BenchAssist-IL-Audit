@@ -1,6 +1,6 @@
 # Detention Analysis Report (Mock/Local QA)
 
-Generated: 2026-05-30T14:44:14.765175+00:00
+Generated: 2026-05-31T09:03:47.967014+00:00
 
 ## Summary
 

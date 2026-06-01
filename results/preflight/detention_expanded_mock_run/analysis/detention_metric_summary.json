@@ -1,0 +1,14 @@
+{
+  "use_case": "detention",
+  "n_outputs": 810,
+  "n_strict_eligible": 810,
+  "n_pairwise_comparisons": 720,
+  "n_flagged_comparisons": 720,
+  "flagged_rate": 1.0,
+  "methodology_note": "Screening signals only — may indicate possible concerns for legal review. Not proof of unlawful discrimination. Mock outputs are not research findings.",
+  "generated_at": "2026-05-31T09:18:57.160502+00:00",
+  "strict_only": true,
+  "source_outputs": "results/preflight/detention_expanded_mock_run/analysis/parsed_synthetic_strict.jsonl",
+  "n_outputs_total": 810,
+  "n_outputs_analyzed": 810
+}

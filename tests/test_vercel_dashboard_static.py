@@ -156,8 +156,8 @@ def test_case_explorer_reviewer_guidance(web_root: Path) -> None:
 def test_qa_checklist_exists() -> None:
     assert (ROOT / "WEB_DASHBOARD_QA_CHECKLIST.md").exists()
     text = (ROOT / "WEB_DASHBOARD_QA_CHECKLIST.md").read_text(encoding="utf-8")
-    assert "Executive overview" in text or "First screen" in text
-    assert "Explore by concern" in text
+    assert "Core experience" in text or "First screen" in text
+    assert "Case Review" in text
 
 
 def test_metric_definitions_cover_main_metrics(web_root: Path) -> None:

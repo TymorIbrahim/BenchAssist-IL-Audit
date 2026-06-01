@@ -40,6 +40,8 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
+      - run: npm run validate:data
       - run: npm run build
+      - run: bash ../scripts/scan_dashboard_secrets.sh
       - run: npx playwright install chromium --with-deps
       - run: npm run test:e2e

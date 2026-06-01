@@ -1,0 +1,7 @@
+[
+  {
+    "report_name": "detention_full_analysis",
+    "title": "Detention Full Analysis",
+    "markdown_text": "# Detention Full Gemini Analysis Report\n\nGenerated: 2026-05-31T09:18:58.337097+00:00\n\n**Audit signals only — not proof of unlawful discrimination. Requires human legal review.**\n\n## Scope\n\n- Total outputs: 1170\n- Parse success rate: 100.0%\n- Strict-eligible synthetic outputs: 810\n- Real-case qualitative outputs: 360\n- Real cases in strict rates: **No**\n\n## Cross-prompt screening\n\n- Cross-prompt comparison rows: 780\n- Possible instability flags: 123\n\n## Outputs\n\n- `detention_pairwise_comparison.csv`\n- `detention_group_summary.csv`\n- `detention_flagged_cases.csv`\n- `detention_real_case_review_outputs.csv`\n- `detention_cross_prompt_comparisons.csv`\n- `detention_statistical_tests.csv`\n- `detention_full_metric_summary.json`\n\nFull-run audit signals may indicate possible concerns requiring human review. Not proof of unlawful discrimination. Real-case rows excluded from strict rates."
+  }
+]

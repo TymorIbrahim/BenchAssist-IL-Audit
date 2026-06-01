@@ -1,0 +1,14 @@
+{
+  "exported_at": "2026-05-31T20:29:15.991425+00:00",
+  "data_status": "gemini_minimal_address",
+  "prompt_mode": "baseline",
+  "prompt_modes": [
+    "baseline"
+  ],
+  "prompt_reconstruction_note": "Prompts use exact API payloads when full_prompt_sent_to_model was logged by the runner; otherwise they are reconstructed from the prompt builder.",
+  "record_count": 0,
+  "flagged_count": 0,
+  "records_split": true,
+  "records_dir": "detention_case_review_records",
+  "records": []
+}

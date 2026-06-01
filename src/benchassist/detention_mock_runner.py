@@ -11,7 +11,12 @@ from typing import Any, Literal
 
 import pandas as pd
 
-from benchassist.detention_schema import DetentionRiskMemoOutput
+from benchassist.detention_prompting import build_detention_prompt
+from benchassist.detention_schema import (
+    DetentionMinimalDangerousnessOutput,
+    DetentionRiskMemoOutput,
+    SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2,
+)
 from benchassist.use_case import USE_CASE_DETENTION
 
 PromptMode = Literal["baseline", "fairness_aware", "demographic_blind", "grounded"]
@@ -128,8 +133,70 @@ def generate_mock_memo(
     row: dict[str, Any],
     *,
     prompt_mode: PromptMode = "baseline",
+    schema_version: str | None = None,
 ) -> dict[str, Any]:
     """Generate one deterministic mock detention memo output."""
+    if schema_version == SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2:
+        out = _generate_mock_minimal_memo(row, prompt_mode=prompt_mode)
+    else:
+        out = _generate_mock_full_memo(row, prompt_mode=prompt_mode)
+    return _attach_logged_prompt(out, prompt_mode=prompt_mode)
+
+
+def _attach_logged_prompt(record: dict[str, Any], *, prompt_mode: str) -> dict[str, Any]:
+    """Match Gemini runner: always persist exact prompt text for dashboard case review."""
+    case_text = str(record.get("prompt_input") or record.get("input_text") or "")
+    bundle = build_detention_prompt(
+        case_text,
+        prompt_mode=prompt_mode,
+        case_id=str(record.get("case_id") or ""),
+        schema_version=str(record.get("schema_version") or SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2),
+    )
+    record["full_prompt_sent_to_model"] = "\n\n".join(
+        f"--- {m['role'].upper()} ---\n{m['content']}" for m in bundle.messages
+    )
+    record["prompt_reconstruction_status"] = "exact_prompt_logged"
+    return record
+
+
+def _generate_mock_minimal_memo(
+    row: dict[str, Any],
+    *,
+    prompt_mode: PromptMode = "baseline",
+) -> dict[str, Any]:
+    case_id = str(row.get("case_id") or row.get("base_case_id") or "D000")
+    variant_type = str(row.get("variant_type") or "neutral_he")
+    variant_id = str(row.get("variant_id") or f"{case_id}-{variant_type}")
+    levels = _base_levels(case_id, variant_type)
+    memo = DetentionMinimalDangerousnessOutput(
+        case_summary=str(row.get("title") or f"Mock detention summary for {case_id}"),
+        dangerousness_level=levels["dangerousness_level"],  # type: ignore[arg-type]
+        reasoning_text=(
+            f"Mock minimal reasoning for {variant_id} ({prompt_mode}). "
+            "Pipeline QA only — not a detention decision."
+        ),
+    )
+    return {
+        **row,
+        **memo.model_dump(),
+        "use_case": USE_CASE_DETENTION,
+        "prompt_mode": prompt_mode,
+        "model_name": _MOCK_MODEL,
+        "provider": "mock",
+        "schema_version": SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2,
+        "timestamp": _utc_now(),
+        "parse_status": "success",
+        "parse_error": None,
+        "raw_output": json.dumps(memo.model_dump(), ensure_ascii=False),
+    }
+
+
+def _generate_mock_full_memo(
+    row: dict[str, Any],
+    *,
+    prompt_mode: PromptMode = "baseline",
+) -> dict[str, Any]:
+    """Generate one deterministic mock detention memo output (full schema)."""
     case_id = str(row.get("case_id") or row.get("base_case_id") or "D000")
     variant_type = str(row.get("variant_type") or "neutral_he")
     variant_id = str(row.get("variant_id") or f"{case_id}-{variant_type}")
@@ -182,6 +249,7 @@ def generate_mock_memo(
         "parse_status": "success",
         "parse_error": None,
         "raw_output": json.dumps(memo.model_dump(), ensure_ascii=False),
+        "schema_version": "detention_risk_memo_v1",
     }
     return output
 
@@ -191,6 +259,7 @@ def run_mock_batch(
     output: Path,
     *,
     prompt_mode: PromptMode = "baseline",
+    schema_version: str | None = None,
 ) -> dict[str, Any]:
     """Run mock batch and write JSONL."""
     rows = _load_inputs(inputs)
@@ -198,7 +267,7 @@ def run_mock_batch(
     outputs: list[dict[str, Any]] = []
     with open(output, "w", encoding="utf-8") as fh:
         for row in rows:
-            out = generate_mock_memo(row, prompt_mode=prompt_mode)
+            out = generate_mock_memo(row, prompt_mode=prompt_mode, schema_version=schema_version)
             outputs.append(out)
             fh.write(json.dumps(out, ensure_ascii=False) + "\n")
     return {
@@ -218,9 +287,19 @@ def main(argv: list[str] | None = None) -> int:
         default="baseline",
         choices=["baseline", "fairness_aware", "demographic_blind", "grounded"],
     )
+    parser.add_argument(
+        "--schema-version",
+        default=None,
+        help=f"Output schema (e.g. {SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2}).",
+    )
     args = parser.parse_args(argv)
 
-    result = run_mock_batch(args.inputs, args.output, prompt_mode=args.prompt_mode)  # type: ignore[arg-type]
+    result = run_mock_batch(
+        args.inputs,
+        args.output,
+        prompt_mode=args.prompt_mode,  # type: ignore[arg-type]
+        schema_version=args.schema_version,
+    )
     print(f"Mock detention run: {result['n_outputs']} outputs → {result['output']} ({result['prompt_mode']})")
     return 0
 

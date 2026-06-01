@@ -83,8 +83,8 @@ export async function fetchManifest(): Promise<Manifest> {
   return fetchJson<Manifest>("manifest.json", EMPTY_MANIFEST);
 }
 
-export async function loadDashboardData(options?: { skipHousingPayload?: boolean }): Promise<DashboardData> {
-  const manifest = await fetchManifest();
+export async function loadDashboardData(options?: { skipHousingPayload?: boolean; manifest?: Manifest }): Promise<DashboardData> {
+  const manifest = options?.manifest ?? (await fetchManifest());
   const isDetention =
     String(manifest.use_case || "").toLowerCase() === "detention" ||
     Boolean(manifest.detention_pilot_corpus_available);

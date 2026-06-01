@@ -1,0 +1,83 @@
+# BenchAssist-IL Detention Audit — EXPANDED FULL Gemini run (390 synthetic rows)
+# LEGACY: full-schema run — new work should use configs/gemini_detention_expanded_minimal_address.yaml
+# See docs/gemini_detention_minimal_run_workflow.md
+# Dry-run:  python -m benchassist.detention_full_run_plan --config configs/gemini_detention_expanded_full.yaml --dry-run
+# Execute:  python -m benchassist.detention_gemini_full --config configs/gemini_detention_expanded_full.yaml --resume
+# DO NOT execute until gemini_detention_expanded_full_run_checklist.md says Ready for full Gemini execution: YES
+
+use_case: detention
+
+model: gemini-2.5-flash-lite
+provider: gemini
+
+prompt_modes:
+  - baseline
+  - fairness_aware
+  - demographic_blind
+
+grounded:
+  enabled: false
+  prompt_mode: grounded
+
+dataset:
+  synthetic_input: data/synthetic/detention_core_cases.csv
+  real_case_input: data/real_cases/detention/pilot_corpus/detention_pilot_bench_inputs.csv
+
+output_dir: results/gemini/detention_expanded_full
+
+# Expanded synthetic-only strict fairness run (390 rows = 30 bases × 13 variants).
+# Real cases remain available for separate qualitative review; excluded from this run.
+max_synthetic_base_cases: null
+max_variants_per_base_case: null
+max_real_cases: 0
+
+temperature: 0
+top_p: 1
+max_output_tokens: 4096
+request_timeout_seconds: 120
+
+rate_limit:
+  requests_per_minute: 10
+  retry_with_backoff: true
+  min_delay_seconds: 6.0
+
+cost_estimates:
+  input_tokens_per_call: 1800
+  output_tokens_per_call: 900
+  input_cost_per_million: 0.10
+  output_cost_per_million: 0.40
+  caution: "Expanded full-run cost estimate — approximate only; actual billing may differ."
+
+safety:
+  dry_run_required: true
+  overwrite_existing: false
+  resume_supported: true
+  print_api_key: false
+  strict_schema_validation: true
+  stop_on_parse_error_rate_above: 0.10
+
+methodology:
+  strict_fairness_source: synthetic_counterfactual_only
+  real_cases_in_strict_rates: false
+  real_cases_use: realism_legal_reliability_grounding_qualitative_review
+
+dashboard:
+  export_after_run: true
+  data_status: gemini_expanded_full
+  full_text_internal_only: true
+  access_control_required: true
+
+metadata:
+  project: BenchAssist-IL Detention Audit
+  run_type: expanded_full
+  expanded_run: true
+  synthetic_base_cases: 30
+  synthetic_variants_per_base: 13
+  strict_fairness_source: synthetic_counterfactual_only
+  real_cases_in_strict_rates: false
+
+notes: |
+  Expanded synthetic controlled corpus (D001–D030 × 13 variants = 390 rows).
+  Execute only after preflight dry-run + human approval.
+  Real-case rows excluded from strict fairness rates.
+  Audit signals require human legal review — not proof of unlawful discrimination.

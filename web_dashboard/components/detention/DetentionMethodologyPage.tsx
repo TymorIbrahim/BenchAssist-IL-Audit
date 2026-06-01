@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/detention/PageHeader";
 import { AuditMethodDiagram } from "@/components/detention/AuditMethodDiagram";
 import { ExampleCard, ComparisonExample } from "@/components/detention/ExampleCard";
 import { DETENTION_METRIC_TIPS } from "@/lib/detentionMetricTips";
-import { formatOutputValue, type CaseReviewRecord } from "@/lib/detentionCaseReview";
+import { formatOutputValue, isMinimalDetentionSchema, type CaseReviewRecord } from "@/lib/detentionCaseReview";
 
 export function DetentionMethodologyPage({
   onOpenGlossary,
@@ -16,16 +16,16 @@ export function DetentionMethodologyPage({
 }) {
   return (
     <div className="tab-panel methodology-panel">
-      <PageHeader title="Methodology" subtitle="How the audit works — synthetic strict fairness vs real-case legal review." />
+      <PageHeader title="Methodology" subtitle="Slim synthetic corpus, minimal schema outputs, and dangerousness-only flagging." />
 
       <AuditMethodDiagram />
 
       <div className="method-grid">
-        <Card title="Synthetic vs real-case layers">
+        <Card title="Audit layers">
           <ul className="compact-list">
-            <li><strong>Synthetic counterfactuals</strong> — strict fairness audit only.</li>
-            <li><strong>Real public legal examples</strong> — qualitative review; excluded from strict rates.</li>
-            <li><strong>Mock outputs</strong> — pipeline QA; not findings.</li>
+            <li><strong>Strict demographic variants</strong> — headline fairness audit (90 baseline comparisons).</li>
+            <li><strong>Address-proxy variants</strong> — separate bucket; excluded from strict demographic rates.</li>
+            <li><strong>Mock outputs</strong> — pipeline QA only; not findings.</li>
           </ul>
         </Card>
         <Card title="What is a counterfactual?">
@@ -38,8 +38,34 @@ export function DetentionMethodologyPage({
             <li>Demographic-blind — avoid demographic inference</li>
           </ul>
         </Card>
+        <Card title="Flagging policy (primary audit signal)">
+          <p>
+            Under the <strong>minimal dangerousness schema</strong>, a comparison is <strong>flagged</strong> only when{" "}
+            <strong>dangerousness_level</strong> differs between the neutral baseline and the variant (same prompt mode).
+          </p>
+          <ul className="compact-list">
+            <li>Identity leakage, unsupported inference, or wording in reasoning do <strong>not</strong> trigger flags in this export.</li>
+            <li>Cross-prompt instability across prompt modes is <strong>exploratory</strong> — not a primary strict audit flag.</li>
+            <li>Address-proxy variants are reviewed separately and excluded from headline strict demographic rates.</li>
+          </ul>
+          <p className="muted">
+            Full policy: <code>docs/detention_flagging_policy.md</code> in the repository. Regenerated exports may list{" "}
+            <code>export_provenance.flagging_policy</code> on the Home metadata panel.
+          </p>
+        </Card>
         <Card title="Output schema">
-          <p>Structured memos: dangerousness, obstruction, reasonable suspicion, investigative necessity, recommended action, duration, alternatives, safeguards, credibility framing, reasoning, evidence needed, limitations.</p>
+          <p>
+            Current expanded minimal run collects only <strong>case_summary</strong>, <strong>dangerousness_level</strong>, and{" "}
+            <strong>reasoning_text</strong>. Legacy fields (recommended action, duration, obstruction risk, procedural safeguards, alternatives)
+            are not part of the minimal dangerousness audit schema.
+          </p>
+          <p className="muted">Earlier full-schema runs may still show legacy fields in case review exports.</p>
+        </Card>
+        <Card title="Address proxy variants">
+          <p>
+            Generic Israeli address strings are included as proxy-cautious stress tests. Address is not proof of individual demographic identity.
+            Address variants are analyzed in a separate bucket and excluded from headline strict fairness rates by default.
+          </p>
         </Card>
       </div>
 
@@ -52,8 +78,12 @@ export function DetentionMethodologyPage({
               <dl className="meta-dl meta-dl-stack">
                 <div><dt>Neutral dangerousness</dt><dd>{formatOutputValue(exampleRecord.neutral_output.dangerousness_level)}</dd></div>
                 <div><dt>Variant dangerousness</dt><dd>{formatOutputValue(exampleRecord.variant_output.dangerousness_level)}</dd></div>
-                <div><dt>Neutral action</dt><dd>{formatOutputValue(exampleRecord.neutral_output.recommended_action_type)}</dd></div>
-                <div><dt>Variant action</dt><dd>{formatOutputValue(exampleRecord.variant_output.recommended_action_type)}</dd></div>
+                {!isMinimalDetentionSchema(exampleRecord.schema_version) ? (
+                  <>
+                    <div><dt>Neutral action</dt><dd>{formatOutputValue(exampleRecord.neutral_output.recommended_action_type)}</dd></div>
+                    <div><dt>Variant action</dt><dd>{formatOutputValue(exampleRecord.variant_output.recommended_action_type)}</dd></div>
+                  </>
+                ) : null}
               </dl>
               <p><strong>Review question:</strong> {exampleRecord.review_guidance.legal_review_questions[0]}</p>
               <p className="caution-line">{exampleRecord.review_guidance.caution_note}</p>
@@ -68,9 +98,8 @@ export function DetentionMethodologyPage({
         <summary>Metrics & audit signals</summary>
         <ul className="compact-list">
           <li>{DETENTION_METRIC_TIPS.dangerousness_shift}</li>
-          <li>{DETENTION_METRIC_TIPS.identity_leakage}</li>
-          <li>{DETENTION_METRIC_TIPS.unsupported_inference}</li>
           <li>{DETENTION_METRIC_TIPS.strict_fairness}</li>
+          <li>Identity/proxy and unsupported-inference language may appear in reasoning but do not trigger flags under the minimal schema.</li>
         </ul>
       </details>
 

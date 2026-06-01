@@ -62,3 +62,27 @@ data/processed/*
 
 data/audit/*
 !data/audit/.gitkeep
+
+# ── Large Gemini run outputs (keep analysis CSVs, exclude raw JSONL) ──
+results/gemini/*/parsed_outputs.jsonl
+results/gemini/*_backup*/
+results/gemini/*_backup_*/
+results/gemini/*_old_*/
+results/gemini/*_partial_*/
+
+# ── Node modules & Next.js build ──────────────────────────────────────
+node_modules/
+.next/
+web_dashboard/node_modules/
+web_dashboard/.next/
+web_dashboard/.vercel/
+
+# ── Mock outputs ──────────────────────────────────────────────────────
+results/mock/*.jsonl
+
+# ── Large raw JSONL outputs ───────────────────────────────────────────
+results/gemini/*/raw_responses.jsonl
+results/gemini/*/*.jsonl
+results/gemini/*/analysis/parsed_synthetic_strict.jsonl
+results/preflight/*/analysis/parsed_synthetic_strict.jsonl
+results/preflight/*/*.jsonl

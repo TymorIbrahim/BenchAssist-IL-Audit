@@ -1,0 +1,4 @@
+﻿validity_category,n_variants,mean_fact_preservation_score,n_direct_eligible,n_excluded_from_strict
+strict_counterfactual,1361,1.0,1360,1
+intersectional_variant,800,1.0,0,800
+neutral_baseline,79,1.0,0,79

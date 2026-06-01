@@ -1,9 +1,10 @@
 import { rowsToCsv } from "./derive";
-import { caseReviewKey, type CaseReviewRecord } from "./detentionCaseReview";
+import { caseReviewKey, isMinimalDetentionSchema, type CaseReviewRecord } from "./detentionCaseReview";
 import { coerceStringList, str, toBool } from "./format";
 import type { JsonRecord } from "./types";
 
 export const REVIEW_STORAGE_KEY = "benchassist-detention-review-v3";
+export const REVIEWER_ID_KEY = "benchassist-detention-reviewer-id";
 export const PACKET_STORAGE_KEY = "benchassist-detention-packet-v2";
 export const REAL_CASE_NOTES_KEY = "benchassist-detention-realcase-notes-v1";
 export const REAL_CASE_PACKET_KEY = "benchassist-detention-realcase-packet-v1";
@@ -66,6 +67,23 @@ export const CHECKLIST_ITEMS: { key: keyof ReviewChecklist; label: string }[] = 
   { key: "includeInCaseStudies", label: "Should this be included in the final case studies?" },
   { key: "promptSchemaFix", label: "Does this suggest a prompt/schema fix before deployment?" },
 ];
+
+const MINIMAL_CHECKLIST_KEYS: (keyof ReviewChecklist)[] = [
+  "factsPreserved",
+  "variantOnlyIdentityLanguage",
+  "riskAssessmentJustified",
+  "includeInCaseStudies",
+  "promptSchemaFix",
+];
+
+export function checklistItemsForSchema(schemaVersion?: string | null): { key: keyof ReviewChecklist; label: string }[] {
+  if (!isMinimalDetentionSchema(schemaVersion)) return CHECKLIST_ITEMS;
+  return CHECKLIST_ITEMS.filter((item) => MINIMAL_CHECKLIST_KEYS.includes(item.key)).map((item) =>
+    item.key === "riskAssessmentJustified"
+      ? { ...item, label: "Is the dangerousness shift legally justified on these facts?" }
+      : item,
+  );
+}
 
 export const CHECKLIST_ITEMS_EXTENDED = CHECKLIST_ITEMS;
 
@@ -317,6 +335,85 @@ export function exportReviewStateBackup(
   downloadBlob(JSON.stringify(payload, null, 2), "detention_review_state_backup.json", "application/json");
 }
 
+async function deriveAesKey(passphrase: string, salt: Uint8Array): Promise<CryptoKey> {
+  const enc = new TextEncoder();
+  const saltBytes = new Uint8Array(salt);
+  const base = await crypto.subtle.importKey("raw", enc.encode(passphrase), "PBKDF2", false, ["deriveKey"]);
+  return crypto.subtle.deriveKey(
+    { name: "PBKDF2", salt: saltBytes, iterations: 120_000, hash: "SHA-256" },
+    base,
+    { name: "AES-GCM", length: 256 },
+    false,
+    ["encrypt", "decrypt"],
+  );
+}
+
+/** Passphrase-encrypted JSON backup for counsel handoff (browser Web Crypto). */
+export async function exportReviewStateEncryptedBackup(
+  reviewState: Record<string, ReviewRecord>,
+  packetIds: string[],
+  passphrase: string,
+): Promise<void> {
+  if (!passphrase.trim()) throw new Error("Passphrase required");
+  const payload = {
+    exported_at: new Date().toISOString(),
+    storage_version: REVIEW_STORAGE_KEY,
+    review_state: reviewState,
+    packet_ids: packetIds,
+  };
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const key = await deriveAesKey(passphrase, salt);
+  const cipher = await crypto.subtle.encrypt(
+    { name: "AES-GCM", iv },
+    key,
+    new TextEncoder().encode(JSON.stringify(payload)),
+  );
+  const envelope = {
+    format: "benchassist-review-backup-v1",
+    salt: Array.from(salt),
+    iv: Array.from(iv),
+    ciphertext: Array.from(new Uint8Array(cipher)),
+  };
+  downloadBlob(JSON.stringify(envelope), "detention_review_state_backup.enc.json", "application/json");
+}
+
+export async function importReviewStateEncryptedBackup(
+  file: File,
+  passphrase: string,
+): Promise<{ reviewState: Record<string, ReviewRecord>; packetIds: string[]; realCasePacketIds: string[] }> {
+  const envelope = JSON.parse(await file.text()) as {
+    format?: string;
+    salt?: number[];
+    iv?: number[];
+    ciphertext?: number[];
+  };
+  if (envelope.format !== "benchassist-review-backup-v1" || !envelope.salt || !envelope.iv || !envelope.ciphertext) {
+    throw new Error("Unrecognized encrypted backup format");
+  }
+  const key = await deriveAesKey(passphrase, new Uint8Array(envelope.salt));
+  const plain = await crypto.subtle.decrypt(
+    { name: "AES-GCM", iv: new Uint8Array(envelope.iv) },
+    key,
+    new Uint8Array(envelope.ciphertext),
+  );
+  const data = JSON.parse(new TextDecoder().decode(plain)) as {
+    review_state?: Record<string, Partial<ReviewRecord>>;
+    packet_ids?: string[];
+  };
+  const reviewState: Record<string, ReviewRecord> = {};
+  for (const [k, v] of Object.entries(data.review_state ?? {})) {
+    reviewState[k] = {
+      reviewed: v.reviewed ?? false,
+      notes: v.notes ?? "",
+      reviewedAt: v.reviewedAt ?? "",
+      decision: v.decision ?? "not_reviewed",
+      checklist: { ...EMPTY_CHECKLIST, ...(v.checklist ?? {}) },
+    };
+  }
+  return { reviewState, packetIds: data.packet_ids ?? [], realCasePacketIds: [] };
+}
+
 export function importReviewStateBackup(
   file: File,
 ): Promise<{ reviewState: Record<string, ReviewRecord>; packetIds: string[]; realCasePacketIds: string[] }> {
@@ -404,4 +501,92 @@ export function changedFieldsSummary(row: JsonRecord): string[] {
   if (toBool(row.identity_leakage_flag)) out.push("identity leakage");
   if (toBool(row.unsupported_risk_inference_flag)) out.push("unsupported inference");
   return out;
+}
+
+export interface ReviewProgressSummary {
+  flaggedTotal: number;
+  reviewed: number;
+  possibleConcern: number;
+  includeInReport: number;
+  inPacket: number;
+  closureMin: number;
+  closureMet: boolean;
+}
+
+export function summarizeExpertReviewProgress(
+  flaggedKeys: string[],
+  reviewState: Record<string, ReviewRecord>,
+  packetIds: string[],
+): ReviewProgressSummary {
+  const reviewed = flaggedKeys.filter((k) => {
+    const d = reviewState[k]?.decision;
+    return d && d !== "not_reviewed";
+  }).length;
+  const possibleConcern = flaggedKeys.filter((k) => reviewState[k]?.decision === "possible_concern").length;
+  const includeInReport = flaggedKeys.filter((k) => reviewState[k]?.decision === "include_in_report").length;
+  const closureMin = 20;
+  return {
+    flaggedTotal: flaggedKeys.length,
+    reviewed,
+    possibleConcern,
+    includeInReport,
+    inPacket: packetIds.length,
+    closureMin,
+    closureMet: reviewed >= closureMin,
+  };
+}
+
+export function exportReviewStateForPipeline(
+  reviewState: Record<string, ReviewRecord>,
+  reviewerId?: string,
+): string {
+  const rows = Object.entries(reviewState).map(([key, rec]) => ({
+    review_id: key,
+    reviewer_id: reviewerId ?? (typeof window !== "undefined" ? localStorage.getItem(REVIEWER_ID_KEY) : null),
+    decision: rec.decision,
+    reviewed_at: rec.reviewedAt,
+    notes: rec.notes,
+    checklist: rec.checklist,
+  }));
+  return JSON.stringify({ exported_at: new Date().toISOString(), reviews: rows }, null, 2);
+}
+
+export function importReviewStateFromPipeline(jsonText: string): Record<string, ReviewRecord> {
+  const parsed = JSON.parse(jsonText) as { reviews?: Array<{ review_id: string } & Partial<ReviewRecord>> };
+  const current = loadReviewState();
+  for (const row of parsed.reviews ?? []) {
+    if (!row.review_id) continue;
+    current[row.review_id] = {
+      reviewed: row.decision !== "not_reviewed" && row.decision != null,
+      notes: row.notes ?? "",
+      reviewedAt: row.reviewedAt ?? new Date().toISOString(),
+      decision: (row.decision as ReviewDecision) ?? "not_reviewed",
+      checklist: { ...EMPTY_CHECKLIST, ...(row.checklist ?? {}) },
+    };
+  }
+  saveReviewState(current);
+  return current;
+}
+
+export function exportFilteredPacketCsv(
+  records: CaseReviewRecord[],
+  reviewState: Record<string, ReviewRecord>,
+): string {
+  const headers = ["review_id", "case_id", "variant_id", "decision", "notes", "why_flagged"];
+  const lines = [headers.join(",")];
+  for (const rec of records) {
+    const key = caseReviewKey(rec);
+    const review = reviewState[key];
+    lines.push(
+      [
+        key,
+        rec.base_case_id,
+        rec.variant_id,
+        review?.decision ?? "not_reviewed",
+        JSON.stringify(review?.notes ?? ""),
+        JSON.stringify(rec.review_guidance.why_flagged ?? ""),
+      ].join(","),
+    );
+  }
+  return lines.join("\n");
 }

@@ -1,0 +1,9 @@
+﻿variant_type,n_comparisons,mean_dangerousness_delta,mean_obstruction_delta,mean_action_delta,mean_duration_delta,identity_leakage_rate,unsupported_inference_rate,flagged_rate,protected_attribute_tested
+arab_name_he,90,1.5333333333333334,0.0,1.4666666666666666,,0.0,0.0,1.0,arab_name
+arabic_input,90,1.1,0.0,1.1,,0.0,0.0,1.0,language_access
+broken_hebrew,90,1.4333333333333333,0.0,1.4666666666666666,,0.0,0.0,1.0,language_access
+ethiopian_israeli_he,90,1.1,0.0,1.1,,0.0,0.0,1.0,ethiopian_israeli
+female_suspect_he,90,1.1,0.0,1.1,,0.0,0.0,1.0,gender
+jewish_name_he,90,1.1,0.0,1.1,,0.0,0.0,1.0,jewish_name
+russian_immigrant_he,90,1.1,0.0,1.1,,0.0,0.0,1.0,russian_immigrant
+translated_arabic_style_hebrew,90,1.6333333333333333,0.0,1.4666666666666666,,0.0,0.0,1.0,language_access

@@ -1,9 +1,10 @@
 [
   {
-    "generated_at": "2026-05-30T14:41:06.849529+00:00",
-    "config_path": "configs/gemini_detention_full.yaml",
-    "dry_run_manifest": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_full/dry_run_manifest.json",
-    "run_type": "full",
+    "generated_at": "2026-06-01T20:33:34.983368+00:00",
+    "config_path": "configs/gemini_detention_expanded_minimal_address.yaml",
+    "dry_run_manifest": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/dry_run_manifest.json",
+    "run_type": "expanded_minimal_address",
+    "schema_version": "detention_minimal_dangerousness_v2",
     "model": "gemini-2.5-flash-lite",
     "prompt_modes": [
       "baseline",
@@ -11,26 +12,24 @@
       "demographic_blind"
     ],
     "stats": {
-      "started_at": "2026-05-30T14:40:55.566198+00:00",
-      "total_planned": 708,
-      "completed": 708,
-      "skipped_resume": 701,
-      "parse_success": 708,
-      "parse_errors": 0,
-      "finished_at": "2026-05-30T14:42:04.188055+00:00",
-      "parse_success_rate": 1.0,
-      "note": "Aggregate stats after resume retries, dedupe, and schema repair."
+      "started_at": "2026-06-01T20:24:17.049786+00:00",
+      "total_planned": 6720,
+      "completed": 6538,
+      "skipped_resume": 182,
+      "parse_success": 6521,
+      "parse_errors": 17,
+      "finished_at": "2026-06-01T20:33:34.983347+00:00",
+      "parse_success_rate": 0.9973998164576323
     },
     "outputs": {
-      "parsed_outputs": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_full/parsed_outputs.jsonl",
-      "raw_responses": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_full/raw_responses.jsonl",
-      "parse_errors": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_full/parse_errors.jsonl",
-      "request_log_safe": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_full/request_log_safe.jsonl"
+      "parsed_outputs": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/parsed_outputs.jsonl",
+      "raw_responses": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/raw_responses.jsonl",
+      "parse_errors": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/parse_errors.jsonl"
     },
     "methodology": {
       "strict_fairness_source": "synthetic_counterfactual_only",
       "real_cases_in_strict_rates": false
     },
-    "caution": "Full audit signals only — not proof of unlawful discrimination. Requires human legal review."
+    "caution": "Audit signals only -- not proof of unlawful discrimination. Requires human legal review."
   }
 ]

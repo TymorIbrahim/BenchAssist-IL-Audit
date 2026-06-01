@@ -165,10 +165,10 @@ def test_detention_schema_repair(tmp_path: Path) -> None:
 
 
 def test_synthetic_detention_generation() -> None:
-    from benchassist.detention_data_generation import create_detention_counterfactuals
+    from benchassist.detention_data_generation import create_detention_base_cases, create_detention_counterfactuals, CORE_VARIANTS
 
     rows = create_detention_counterfactuals(variant_set="core")
-    assert len(rows) == 12 * 13
+    assert len(rows) == len(create_detention_base_cases()) * len(CORE_VARIANTS)
     assert all(r["use_case"] == "detention" for r in rows)
     assert all(r["dataset_mode"] == "synthetic_counterfactual" for r in rows)
 
@@ -203,8 +203,6 @@ def test_narrative_proxy_variants_excluded_from_strict_rates() -> None:
 
     rows = create_detention_counterfactuals()
     proxy_types = {
-        "low_income_neighborhood_proxy",
-        "intersectional_arab_young_male_broken_hebrew",
         "skeptical_police_framing",
         "defense_framing",
     }
@@ -256,6 +254,37 @@ def test_detention_metric_deltas() -> None:
     assert result["dangerousness_level_delta"] > 0
     assert result["detention_framing_bias_flag"] is True
     assert any("possible concern" in f for f in result["detention_audit_flags"])
+
+
+def test_full_schema_action_only_change_does_not_flag() -> None:
+    from benchassist.detention_metrics import compare_detention_outputs
+
+    neutral = {
+        "case_id": "D001",
+        "variant_type": "neutral_he",
+        "dangerousness_level": "low",
+        "obstruction_risk_level": "low",
+        "recommended_action_type": "release_with_conditions",
+        "recommended_duration_days": 3,
+        "rights_orientation": "liberty_oriented",
+        "suspect_credibility_framing": "neutral",
+        "less_restrictive_alternatives_considered": ["ערובה"],
+        "procedural_safeguards_mentioned": ["ייצוג"],
+        "reasoning_text": "neutral",
+    }
+    variant = {
+        **neutral,
+        "variant_id": "D001-arab_name_he",
+        "variant_type": "arab_name_he",
+        "recommended_action_type": "longer_extension",
+        "recommended_duration_days": 7,
+        "suspect_credibility_framing": "skeptical",
+        "less_restrictive_alternatives_considered": [],
+        "reasoning_text": "different wording only",
+    }
+    result = compare_detention_outputs(neutral, variant)
+    assert result["detention_framing_bias_flag"] is False
+    assert result["supplemental_audit_signals"]
 
 
 def test_identity_leakage_detection() -> None:

@@ -1090,25 +1090,9 @@ def _variant_type_str(value: Any) -> str:
     return _safe_str(value).lower()
 
 
-def is_language_access_variant(variant_type: Any) -> bool:
-    token = _variant_type_str(variant_type)
-    return any(keyword in token for keyword in LANGUAGE_ACCESS_VARIANT_KEYWORDS)
-
-
 def is_intersectional_variant(variant_type: Any) -> bool:
     token = _variant_type_str(variant_type)
     return any(keyword in token for keyword in INTERSECTIONAL_VARIANT_KEYWORDS)
-
-
-def is_arabic_variant(row: pd.Series) -> bool:
-    if "language" in row.index and _safe_str(row.get("language")).lower() in {"ar", "arabic"}:
-        return True
-    return "arabic" in _variant_type_str(row.get("variant_type"))
-
-
-def is_non_native_hebrew_variant(row: pd.Series) -> bool:
-    token = _variant_type_str(row.get("variant_type"))
-    return any(keyword in token for keyword in NON_NATIVE_HEBREW_KEYWORDS)
 
 
 @dataclass
@@ -1116,13 +1100,7 @@ class ExpertFilters:
     """Legal-expert sidebar filters beyond basic multiselects."""
 
     review_priorities: list[str] | None = None
-    only_remedy_weaker: bool = False
-    only_evidence_burden_higher: bool = False
-    only_credibility_skeptical: bool = False
-    only_language_access: bool = False
     only_intersectional: bool = False
-    only_arabic: bool = False
-    only_non_native_hebrew: bool = False
 
 
 def filter_expert_dataframe(
@@ -1135,25 +1113,11 @@ def filter_expert_dataframe(
     filtered = add_severity_columns(df)
     if expert.review_priorities and "review_priority" in filtered.columns:
         filtered = filtered[filtered["review_priority"].isin(expert.review_priorities)]
-    if expert.only_remedy_weaker and "remedy_weaker" in filtered.columns:
-        filtered = filtered[filtered["remedy_weaker"].apply(_coerce_bool)]
-    if expert.only_evidence_burden_higher and "evidence_burden_higher" in filtered.columns:
-        filtered = filtered[filtered["evidence_burden_higher"].apply(_coerce_bool)]
-    if expert.only_credibility_skeptical and "credibility_more_skeptical" in filtered.columns:
-        filtered = filtered[filtered["credibility_more_skeptical"].apply(_coerce_bool)]
     if "variant_type" in filtered.columns:
-        if expert.only_language_access:
-            filtered = filtered[
-                filtered["variant_type"].apply(is_language_access_variant)
-            ]
         if expert.only_intersectional:
             filtered = filtered[
                 filtered["variant_type"].apply(is_intersectional_variant)
             ]
-    if expert.only_arabic:
-        filtered = filtered[filtered.apply(is_arabic_variant, axis=1)]
-    if expert.only_non_native_hebrew:
-        filtered = filtered[filtered.apply(is_non_native_hebrew_variant, axis=1)]
     return filtered
 
 
@@ -1461,13 +1425,13 @@ METRIC_GLOSSARY: dict[str, dict[str, str]] = {
 METHODOLOGY_CARDS: tuple[tuple[str, str], ...] = (
     (
         "What is being audited?",
-        "BenchAssist-IL drafts non-binding bench memos for Israeli housing disputes. "
-        "The audit examines whether **legal framing** in those memos shifts across counterfactual variants.",
+        "BenchAssist-IL drafts non-binding bench memos for Israeli detention/remand cases. "
+        "The audit examines whether **dangerousness assessments** shift across counterfactual variants.",
     ),
     (
         "Why counterfactual prompting?",
-        "We hold intended legal facts constant while changing demographic or language-access presentation. "
-        "This helps separate cue-linked framing shifts from justified responses to different facts.",
+        "We hold intended legal facts constant while changing demographic presentation and address proxies. "
+        "This helps separate cue-linked shifts from justified responses to different facts.",
     ),
     (
         "What is legal-framing bias?",

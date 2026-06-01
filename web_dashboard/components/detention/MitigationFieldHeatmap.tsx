@@ -1,12 +1,18 @@
 "use client";
 
 import { useMemo } from "react";
+import { isMinimalDetentionSchema } from "@/lib/detentionCaseReview";
 import type { DetentionDashboardBundle } from "@/lib/detentionData";
 import { coerceStringList, str, toBool } from "@/lib/format";
 
 const MODES = ["baseline", "fairness_aware", "demographic_blind"] as const;
 
 export function MitigationFieldHeatmap({ bundle }: { bundle: DetentionDashboardBundle }) {
+  const schemaVersion =
+    str(bundle.manifest.schema_version) ||
+    str(bundle.fullMetricSummary[0]?.schema_version) ||
+    str(bundle.overview.schema_version);
+  const minimalSchema = isMinimalDetentionSchema(schemaVersion);
   const rows = useMemo(() => {
     const counts = new Map<string, number>();
     for (const row of bundle.crossPromptComparisons) {
@@ -34,7 +40,11 @@ export function MitigationFieldHeatmap({ bundle }: { bundle: DetentionDashboardB
   return (
     <section className="section-card mitigation-heatmap">
       <h3>Cross-prompt field instability</h3>
-      <p className="muted section-intro">Which structured output fields change most often across prompt modes (screening only).</p>
+      <p className="muted section-intro">
+        {minimalSchema
+          ? "Which minimal-schema fields change most often across prompt modes. Material instability here means dangerousness-level changes — screening only."
+          : "Which structured output fields change most often across prompt modes (screening only)."}
+      </p>
       <div className="heatmap-table-wrap">
         <table className="data-table heatmap-table">
           <thead>

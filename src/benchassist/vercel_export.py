@@ -12,6 +12,13 @@ from typing import Any
 
 import pandas as pd
 
+from benchassist.detention_run_metadata import (
+    infer_detention_run_label,
+    infer_detention_run_type,
+    load_gemini_run_manifest,
+    normalize_detention_data_status,
+    resolve_synthetic_corpus_path,
+)
 from benchassist.config import get_settings
 from benchassist.use_case import DEFAULT_USE_CASE, UseCase, normalize_use_case
 from benchassist.dashboard_utils import (
@@ -29,6 +36,13 @@ from benchassist.detention_metrics import (
     compute_detention_group_summary,
     dedupe_detention_pairwise_rows,
     extract_detention_flagged_cases,
+)
+from benchassist.dashboard_export_manifest import (
+    build_cross_prompt_mode_summary,
+    export_completeness_score,
+    git_commit_short,
+    missing_optional_files_detail,
+    read_parent_run_id,
 )
 
 DISCLAIMER_TEXT = (
@@ -168,7 +182,8 @@ def _sanitize_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def _json_safe(value: Any) -> Any:
-    if value is None or (isinstance(value, float) and pd.isna(value)):
+    import math
+    if value is None or (isinstance(value, float) and (pd.isna(value) or math.isinf(value))):
         return None
     if isinstance(value, (pd.Timestamp, datetime)):
         return value.isoformat()
@@ -191,85 +206,62 @@ def _as_bool(value: Any) -> bool:
 
 def derive_strongest_signal(row: dict[str, Any]) -> str:
     labels = {
-        "action_type_flip": "Action changed",
-        "remedy_weaker": "Weaker remedy",
-        "evidence_burden_higher": "More evidence requested",
-        "credibility_more_skeptical": "More skeptical credibility",
-        "rights_orientation_weaker": "Weaker rights framing",
-        "procedural_posture_weaker": "Weaker procedural posture",
-        "urgency_weaker": "Lower urgency",
+        "dangerousness_escalation_flag": "Higher dangerousness",
+        "dangerousness_deescalation_flag": "Lower dangerousness",
+        "insufficient_information_shift": "Shifted to insufficient information",
+        "unsupported_risk_inference_flag": "Unsupported dangerousness inference",
+        "identity_leakage_flag": "Identity leaked in reasoning",
     }
     active = [labels[k] for k in labels if _as_bool(row.get(k))]
+    if not active and _as_bool(row.get("detention_framing_bias_flag")):
+        active.append("Dangerousness changed")
     return "; ".join(active) if active else "General legal-framing review"
 
 
 def derive_review_priority(row: dict[str, Any]) -> str:
-    major = sum(
-        1
-        for key in (
-            "remedy_weaker",
-            "evidence_burden_higher",
-            "credibility_more_skeptical",
-            "rights_orientation_weaker",
-            "procedural_posture_weaker",
-        )
-        if _as_bool(row.get(key))
-    )
+    danger_delta = row.get("dangerousness_level_delta")
+    try:
+        danger_delta_val = float(danger_delta) if danger_delta is not None else 0.0
+    except (ValueError, TypeError):
+        danger_delta_val = 0.0
+
     if (
-        _as_bool(row.get("action_type_flip"))
-        or major >= 3
-        or (_as_bool(row.get("evidence_burden_higher")) and _as_bool(row.get("credibility_more_skeptical")))
-        or _as_bool(row.get("language_credibility_bias_flag"))
-        or _as_bool(row.get("high_hallucination_risk_flag"))
+        abs(danger_delta_val) >= 2 
         or _as_bool(row.get("identity_leakage_flag"))
+        or _as_bool(row.get("high_hallucination_risk_flag"))
+        or _as_bool(row.get("unsupported_risk_inference_flag"))
     ):
         return "High"
-    if (
-        _as_bool(row.get("legal_framing_bias_flag"))
-        or _as_bool(row.get("remedy_weaker"))
-        or _as_bool(row.get("evidence_burden_higher"))
-        or _as_bool(row.get("credibility_more_skeptical"))
-        or _as_bool(row.get("unsupported_identity_assumption"))
-    ):
+    if _as_bool(row.get("detention_framing_bias_flag")) or _as_bool(row.get("dangerousness_level_changed_flag")):
         return "Medium"
     return "Low"
 
 
 def derive_review_priority_reason(row: dict[str, Any]) -> str:
     reasons: list[str] = []
-    major = sum(
-        1
-        for key in (
-            "remedy_weaker",
-            "evidence_burden_higher",
-            "credibility_more_skeptical",
-            "rights_orientation_weaker",
-            "procedural_posture_weaker",
-        )
-        if _as_bool(row.get(key))
-    )
-    if _as_bool(row.get("action_type_flip")):
-        reasons.append("recommended action category changed")
-    if major >= 3:
-        reasons.append("multiple legal-framing dimensions changed")
-    if _as_bool(row.get("evidence_burden_higher")) and _as_bool(row.get("credibility_more_skeptical")):
-        reasons.append("both higher evidence burden and more skeptical credibility framing")
+    
+    danger_delta = row.get("dangerousness_level_delta")
+    try:
+        danger_delta_val = float(danger_delta) if danger_delta is not None else 0.0
+    except (ValueError, TypeError):
+        danger_delta_val = 0.0
+
+    if abs(danger_delta_val) >= 2:
+        reasons.append("extreme dangerousness shift (2+ levels)")
     if _as_bool(row.get("identity_leakage_flag")):
         reasons.append("identity leakage screening flag")
     if _as_bool(row.get("high_hallucination_risk_flag")):
         reasons.append("high hallucination risk flag")
-    if _as_bool(row.get("language_credibility_bias_flag")):
-        reasons.append("language credibility bias flag")
-    if _as_bool(row.get("remedy_weaker")):
-        reasons.append("weaker remedy than neutral")
-    if _as_bool(row.get("evidence_burden_higher")):
-        reasons.append("more evidence requested than neutral")
-    if _as_bool(row.get("credibility_more_skeptical")):
-        reasons.append("more skeptical credibility framing")
-    if _as_bool(row.get("unsupported_identity_assumption")):
-        reasons.append("unsupported identity assumption")
-    if _as_bool(row.get("legal_framing_bias_flag")) and not reasons:
-        reasons.append("legal-framing audit signal present")
+    if _as_bool(row.get("unsupported_risk_inference_flag")):
+        reasons.append("unsupported dangerousness inference flag")
+    if _as_bool(row.get("dangerousness_escalation_flag")):
+        reasons.append("higher dangerousness vs neutral")
+    if _as_bool(row.get("dangerousness_deescalation_flag")):
+        reasons.append("lower dangerousness vs neutral")
+    
+    if _as_bool(row.get("detention_framing_bias_flag")) and not reasons:
+        reasons.append("dangerousness level changed")
+        
     if not reasons:
         return "Minor or uncertain signal — review if context warrants."
     return "Review priority is based on: " + "; ".join(reasons) + "."
@@ -278,12 +270,11 @@ def derive_review_priority_reason(row: dict[str, Any]) -> str:
 def derive_issue_tags(row: dict[str, Any]) -> list[str]:
     tags: list[str] = []
     mapping = {
-        "remedy_weaker": "weaker_remedy",
-        "evidence_burden_higher": "higher_evidence_burden",
-        "credibility_more_skeptical": "skeptical_credibility",
-        "rights_orientation_weaker": "weaker_rights_framing",
-        "action_type_flip": "action_changed",
+        "dangerousness_escalation_flag": "dangerousness_escalated",
+        "dangerousness_deescalation_flag": "dangerousness_deescalated",
         "identity_leakage_flag": "identity_leakage",
+        "unsupported_risk_inference_flag": "unsupported_inference",
+        "address_mention_in_reasoning": "address_leakage",
         "high_hallucination_risk_flag": "hallucination_risk",
     }
     for key, tag in mapping.items():
@@ -451,6 +442,16 @@ def _git_commit_short(project_root: Path) -> str | None:
     return None
 
 
+def _load_corpus_version(project_root: Path) -> dict[str, Any] | None:
+    path = project_root / "data" / "synthetic" / "CORPUS_VERSION.json"
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
 def _patch_detention_report_counts(text: str, *, pairwise: int, flagged: int) -> str:
     """Refresh stale pairwise/flagged counts in detention markdown reports."""
     text = re.sub(r"(Pairwise comparisons:\s*)\d+", rf"\g<1>{pairwise}", text)
@@ -513,11 +514,12 @@ def collect_detention_reports(
         )
         seen.add(name)
 
-    add(
-        "detention_mock_pipeline_qa",
-        project_root / "results" / "report" / "detention_mock_pipeline_qa_report.md",
-        "Detention mock pipeline QA",
-    )
+    if gemini_run_dir is None:
+        add(
+            "detention_mock_pipeline_qa",
+            project_root / "results" / "report" / "detention_mock_pipeline_qa_report.md",
+            "Detention mock pipeline QA",
+        )
     add(
         "detention_flagged_review_packet",
         project_root / "results" / "report" / "gemini_detention_full_flagged_cases_review_packet.md",
@@ -586,19 +588,58 @@ def compute_overview_metrics(
     return {
         "total_outputs": outputs_rows,
         "total_flagged_cases": flagged_count,
-        "main_legal_framing_flag_rate": avg_rate(group_summary, "legal_framing_bias_flag_rate"),
-        "action_type_flip_rate": avg_rate(group_summary, "action_type_flip_rate"),
-        "remedy_weaker_rate": avg_rate(group_summary, "remedy_weaker_rate"),
-        "evidence_burden_higher_rate": avg_rate(group_summary, "evidence_burden_higher_rate"),
-        "credibility_more_skeptical_rate": avg_rate(group_summary, "credibility_more_skeptical_rate"),
-        "rights_orientation_weaker_rate": avg_rate(group_summary, "rights_orientation_weaker_rate"),
+        "main_legal_framing_flag_rate": avg_rate(group_summary, "flagged_rate"),
+        "dangerousness_escalation_rate": avg_rate(group_summary, "dangerousness_escalation_rate"),
+        "dangerousness_change_rate": avg_rate(group_summary, "dangerousness_change_rate"),
+        "identity_leakage_rate": avg_rate(group_summary, "identity_leakage_rate"),
+        "unsupported_inference_rate": avg_rate(group_summary, "unsupported_inference_rate"),
+        "address_mention_rate": avg_rate(group_summary, "address_mention_rate"),
         "invalid_citation_rate": invalid_cite,
-        "identity_leakage_rate": identity_leak,
         "strict_counterfactual_variant_types": strict,
         "cautious_stress_test_variant_types": cautious,
         "parse_error_rate": parse_error_rate,
         "base_cases": base_cases,
         "counterfactual_variants": counterfactual_variants,
+    }
+
+
+def _infer_detention_run_metadata(gemini_run: Path | None) -> dict[str, Any]:
+    """Infer provider/model/schema from a Gemini detention run directory."""
+    provider = model = schema_version = None
+    prompt_modes: list[str] = []
+    if gemini_run is None:
+        return {
+            "provider": "unknown",
+            "model": "unknown",
+            "prompt_mode": "baseline",
+            "prompt_modes": ["baseline", "fairness_aware", "demographic_blind"],
+            "schema_versions": [],
+            "schema_version_v2": None,
+        }
+    manifest = load_gemini_run_manifest(gemini_run)
+    provider = "gemini"
+    model = str(manifest.get("model") or "unknown")
+    prompt_modes = [str(m) for m in manifest.get("prompt_modes") or []]
+    parsed_path = gemini_run / "parsed_outputs.jsonl"
+    if parsed_path.exists():
+        for line in parsed_path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if row.get("schema_version"):
+                schema_version = str(row["schema_version"])
+                break
+    schema_versions = [schema_version] if schema_version else []
+    return {
+        "provider": provider,
+        "model": model,
+        "prompt_mode": prompt_modes[0] if prompt_modes else "baseline",
+        "prompt_modes": prompt_modes or ["baseline", "fairness_aware", "demographic_blind"],
+        "schema_versions": schema_versions,
+        "schema_version_v2": schema_version,
     }
 
 
@@ -634,7 +675,16 @@ def _infer_run_metadata(run: AuditRunBundle, outputs_df: pd.DataFrame) -> dict[s
     }
 
 
-def _count_base_cases(project_root: Path) -> int | None:
+def _count_base_cases(project_root: Path, *, use_case: str | None = None) -> int | None:
+    if use_case == "detention":
+        for rel in (
+            "data/synthetic/detention_core_cases.csv",
+            "data/audit/detention/detention_counterfactual_cases.csv",
+        ):
+            path = project_root / rel
+            df = safe_read_csv(path)
+            if not df.empty and "base_case_id" in df.columns:
+                return int(df["base_case_id"].nunique())
     path = project_root / "data" / "processed" / "base_cases.csv"
     df = safe_read_csv(path)
     return len(df) if not df.empty else None
@@ -646,9 +696,93 @@ def _count_counterfactuals(project_root: Path) -> int | None:
     return len(df) if not df.empty else None
 
 
+def _count_detention_synthetic_rows(project_root: Path, *, gemini_run: Path | None = None) -> int | None:
+    path = resolve_synthetic_corpus_path(project_root, run_dir=gemini_run)
+    if path is None:
+        for rel in (
+            "data/synthetic/detention_core_cases_with_address.csv",
+            "data/synthetic/detention_core_cases.csv",
+            "data/audit/detention/detention_counterfactual_cases.csv",
+        ):
+            candidate = project_root / rel
+            df = safe_read_csv(candidate)
+            if not df.empty:
+                return len(df)
+        return None
+    df = safe_read_csv(path)
+    return len(df) if not df.empty else None
+
+
+def _count_detention_base_cases(project_root: Path, *, gemini_run: Path | None = None) -> int | None:
+    path = resolve_synthetic_corpus_path(project_root, run_dir=gemini_run)
+    if path is None:
+        return _count_base_cases(project_root, use_case="detention")
+    df = safe_read_csv(path)
+    if df.empty:
+        return None
+    if "base_case_id" in df.columns:
+        return int(df["base_case_id"].nunique())
+    if "case_id" in df.columns:
+        return int(df["case_id"].nunique())
+    return None
+
+
+def _is_detention_dashboard_export_key(filename: str) -> bool:
+    if filename in _DETENTION_DEPRECATED_EXPORTS:
+        return False
+    return filename.startswith("detention_") or filename in {
+        "overview_metrics.json",
+        "reports.json",
+        "data_access_policy.json",
+    }
+
+
+_DETENTION_DEPRECATED_EXPORTS = frozenset(
+    {
+        "detention_real_case_review_outputs.json",
+    }
+)
+
+# Mock/pilot QA artifacts — omit from Gemini run exports (stale files are removed).
+_DETENTION_MOCK_ONLY_EXPORTS = frozenset(
+    {
+        "detention_mock_run_summary.json",
+        "detention_synthetic_data_qa.json",
+        "detention_pilot_metric_summary.json",
+        "detention_pilot_analysis_report.json",
+        "detention_pilot_run_manifest.json",
+        "detention_pilot_examples_fulltext.json",
+        "detention_pilot_source_manifest.json",
+        "detention_pilot_quality_report.json",
+    }
+)
+
+
+def _detention_cross_prompt_manifest_meta(exports: dict[str, tuple[Path | None, list[dict[str, Any]]]]) -> dict[str, Any]:
+    rows = exports.get("detention_cross_prompt_comparisons.json", (None, []))[1]
+    material = sum(1 for r in rows if r.get("cross_prompt_instability_flag"))
+    wording = sum(1 for r in rows if r.get("reasoning_only_change"))
+    return {
+        "cross_prompt_comparisons_available": bool(rows),
+        "cross_prompt_comparison_row_count": len(rows),
+        "cross_prompt_material_instability_count": material,
+        "cross_prompt_wording_only_count": wording,
+    }
+
+
 def _write_json(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    import math
+    def _clean_nans(obj):
+        if isinstance(obj, dict):
+            return {k: _clean_nans(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [_clean_nans(v) for v in obj]
+        elif isinstance(obj, float) and (math.isnan(obj) or math.isinf(obj)):
+            return None
+        return obj
+    clean_data = _clean_nans(data)
+    path.write_text(json.dumps(clean_data, ensure_ascii=False, indent=2, allow_nan=False), encoding="utf-8")
 
 
 def _pick_outputs_for_run(outputs_dir: Path, label: str) -> Path | None:
@@ -1006,9 +1140,14 @@ def _resolve_gemini_detention_run_dir(
     """Pick Gemini detention run directory when --run-dir is omitted."""
     if run_dir is not None and run_dir.exists():
         return run_dir
-    if data_status not in {"gemini_pilot", "gemini_full", "gemini", "final"}:
+    data_status = normalize_detention_data_status(data_status)
+    if data_status not in {"gemini_pilot", "gemini_full", "gemini_expanded_full", "gemini_minimal_address", "gemini", "final"}:
         return run_dir
     candidates: list[Path] = []
+    if data_status == "gemini_minimal_address":
+        candidates.append(project_root / "results" / "gemini" / "detention_expanded_minimal_address")
+    if data_status == "gemini_expanded_full":
+        candidates.append(project_root / "results" / "gemini" / "detention_expanded_full")
     if data_status == "gemini_full":
         candidates.append(project_root / "results" / "gemini" / "detention_full")
     candidates.append(project_root / "results" / "gemini" / "detention_pilot")
@@ -1017,6 +1156,80 @@ def _resolve_gemini_detention_run_dir(
         if analysis.exists() and any(analysis.glob("detention_*.csv")):
             return path
     return run_dir
+
+
+def _load_detention_validity_exports(
+    project_root: Path,
+    analysis_dir: Path | None = None,
+    *,
+    synthetic_corpus_path: Path | None = None,
+) -> dict[str, tuple[Path | None, list[dict[str, Any]]]]:
+    """Load or compute detention counterfactual validity and uncertainty exports."""
+    from benchassist.detention_counterfactual_validity import run_detention_validity_audit
+
+    exports: dict[str, tuple[Path | None, list[dict[str, Any]]]] = {}
+    cf_csv = synthetic_corpus_path or resolve_synthetic_corpus_path(project_root)
+    if cf_csv is None:
+        cf_csv = project_root / "data" / "audit" / "detention" / "detention_counterfactual_cases.csv"
+    tables_dir = analysis_dir or project_root / "results" / "tables"
+
+    per_path = tables_dir / "detention_counterfactual_validity_export.csv"
+    summary_path = tables_dir / "detention_counterfactual_validity_summary_export.csv"
+    per_rows: list[dict[str, Any]] = []
+    summary_rows: list[dict[str, Any]] = []
+    calibration: dict[str, Any] = {}
+
+    if analysis_dir:
+        full_per = analysis_dir / "detention_counterfactual_validity_full.csv"
+        full_summary = analysis_dir / "detention_counterfactual_validity_summary_full.csv"
+        if full_per.exists():
+            per_path = full_per
+            per_rows = export_csv(full_per)
+        if full_summary.exists():
+            summary_path = full_summary
+            summary_rows = export_csv(full_summary)
+
+    if not per_rows and cf_csv.exists():
+        try:
+            result = run_detention_validity_audit(
+                cf_csv,
+                output_suffix="export",
+                results_dir=tables_dir,
+            )
+            per_rows = result["per_variant"].to_dict(orient="records")
+            summary_rows = result["summary"].to_dict(orient="records")
+            calibration = result.get("calibration", {})
+            per_path = result["paths"]["per_variant"]
+            summary_path = result["paths"]["summary"]
+        except Exception:  # noqa: BLE001
+            pass
+
+    uncertainty_rows: list[dict[str, Any]] = []
+    uncertainty_path: Path | None = None
+    if analysis_dir and (analysis_dir / "detention_overview_uncertainty.json").exists():
+        uncertainty_path = analysis_dir / "detention_overview_uncertainty.json"
+        uncertainty_rows = [json.loads(uncertainty_path.read_text(encoding="utf-8"))]
+
+    human_template_path = analysis_dir / "detention_human_review_template.csv" if analysis_dir else None
+    human_rows: list[dict[str, Any]] = []
+    if human_template_path and human_template_path.exists():
+        human_rows = export_csv(human_template_path)
+
+    exports["detention_counterfactual_validity.json"] = (per_path if per_rows else None, per_rows)
+    exports["detention_counterfactual_validity_summary.json"] = (
+        summary_path if summary_rows else None,
+        summary_rows,
+    )
+    exports["detention_overview_uncertainty.json"] = (uncertainty_path, uncertainty_rows)
+    exports["detention_validity_calibration.json"] = (
+        None,
+        [calibration] if calibration else [],
+    )
+    exports["detention_human_review_template.json"] = (
+        human_template_path if human_rows else None,
+        human_rows,
+    )
+    return exports
 
 
 def _load_detention_gemini_run_exports(
@@ -1030,23 +1243,33 @@ def _load_detention_gemini_run_exports(
     pairwise_path = analysis_dir / "detention_pairwise_comparison.csv"
     flagged_path = analysis_dir / "detention_flagged_cases.csv"
     group_path = analysis_dir / "detention_group_summary.csv"
+    strict_excluded_path = analysis_dir / "detention_strict_excluded_review_outputs.csv"
+    real_inspired_path = analysis_dir / "detention_real_case_inspired_review_outputs.csv"
     real_review_path = analysis_dir / "detention_real_case_review_outputs.csv"
     pilot_summary_path = analysis_dir / "detention_pilot_metric_summary.json"
     full_summary_path = analysis_dir / "detention_full_metric_summary.json"
     pilot_report_path = analysis_dir / "detention_pilot_analysis_report.md"
     full_report_path = analysis_dir / "detention_full_analysis_report.md"
     cross_prompt_path = analysis_dir / "detention_cross_prompt_comparisons.csv"
+    address_proxy_path = analysis_dir / "detention_address_proxy_pairwise_comparison.csv"
+    combined_path = analysis_dir / "detention_combined_pairwise_comparison.csv"
     statistical_path = analysis_dir / "detention_statistical_tests.csv"
+    statistical_baseline_path = analysis_dir / "detention_statistical_tests_baseline.csv"
     run_manifest_path = run_dir / "run_manifest.json"
 
     pairwise: list[dict[str, Any]] = []
     flagged: list[dict[str, Any]] = []
     group_summary: list[dict[str, Any]] = []
-    real_review: list[dict[str, Any]] = []
+    strict_excluded_review: list[dict[str, Any]] = []
+    real_inspired_review: list[dict[str, Any]] = []
     pilot_summary: list[dict[str, Any]] = []
     full_summary: list[dict[str, Any]] = []
     cross_prompt: list[dict[str, Any]] = []
+    address_proxy: list[dict[str, Any]] = []
+    combined_comparisons: list[dict[str, Any]] = []
     statistical: list[dict[str, Any]] = []
+    statistical_baseline: list[dict[str, Any]] = []
+    pairwise_df = pd.DataFrame()
 
     if pairwise_path.exists():
         pairwise = export_csv(pairwise_path)
@@ -1062,42 +1285,75 @@ def _load_detention_gemini_run_exports(
         flagged = export_csv(flagged_path)
     if group_path.exists() and not group_summary:
         group_summary = export_csv(group_path)
-    if real_review_path.exists() and real_review_path.stat().st_size > 0:
-        real_review = export_csv(real_review_path)
+    if strict_excluded_path.exists() and strict_excluded_path.stat().st_size > 0:
+        strict_excluded_review = export_csv(strict_excluded_path)
+    elif real_review_path.exists() and real_review_path.stat().st_size > 0:
+        strict_excluded_review = export_csv(real_review_path)
+    if real_inspired_path.exists() and real_inspired_path.stat().st_size > 0:
+        real_inspired_review = export_csv(real_inspired_path)
     if pilot_summary_path.exists():
         pilot_summary = [json.loads(pilot_summary_path.read_text(encoding="utf-8"))]
     if full_summary_path.exists():
         full_summary = [json.loads(full_summary_path.read_text(encoding="utf-8"))]
     if cross_prompt_path.exists() and cross_prompt_path.stat().st_size > 0:
         cross_prompt = export_csv(cross_prompt_path)
+    if address_proxy_path.exists() and address_proxy_path.stat().st_size > 0:
+        address_proxy = export_csv(address_proxy_path)
+    if combined_path.exists() and combined_path.stat().st_size > 0:
+        combined_comparisons = export_csv(combined_path)
     if statistical_path.exists() and statistical_path.stat().st_size > 0:
         statistical = [_normalize_detention_stat_row(r) for r in export_csv(statistical_path)]
-    if statistical and group_summary:
+    if statistical_baseline_path.exists() and statistical_baseline_path.stat().st_size > 0:
+        statistical_baseline = [_normalize_detention_stat_row(r) for r in export_csv(statistical_baseline_path)]
+    stat_for_merge = statistical_baseline or statistical
+    if stat_for_merge and group_summary:
         group_by_variant = {str(g.get("variant_type")): g for g in group_summary}
-        for row in statistical:
+        for row in stat_for_merge:
             if not row.get("flagged_rate") and str(row.get("variant_type")) in group_by_variant:
                 row["flagged_rate"] = group_by_variant[str(row["variant_type"])].get("flagged_rate", 0)
 
     is_pilot = data_status == "gemini_pilot"
-    is_full = data_status == "gemini_full"
+    is_full = data_status in {"gemini_full", "gemini_expanded_full", "gemini_minimal_address"}
+    is_expanded = data_status in {"gemini_expanded_full", "gemini_minimal_address"}
+    is_minimal_address = data_status == "gemini_minimal_address"
     metric_summary = full_summary if is_full and full_summary else pilot_summary
     overview: dict[str, Any] = {
         "use_case": "detention",
         "project_name": "BenchAssist-IL Detention Audit",
         "mock_mode": False,
         "data_status": data_status,
-        "n_pairwise_comparisons": len(pairwise),
-        "n_flagged_comparisons": len(flagged),
-        "n_real_case_review_outputs": len(real_review),
+        "expanded_run": is_expanded,
+        "minimal_address_run": is_minimal_address,
+        "address_proxy_in_strict_rates": False if is_minimal_address else None,
+        "n_pairwise_comparisons_all_modes": len(pairwise),
+        "n_flagged_comparisons_all_modes": len(flagged),
+        "n_strict_excluded_review_outputs": len(strict_excluded_review),
+        "n_address_proxy_review_outputs": len(address_proxy) if address_proxy else len(strict_excluded_review),
+        "n_real_case_inspired_review_outputs": len(real_inspired_review),
+        "n_strict_eligible_synthetic_note": (
+            "Aggregates strict-eligible outputs across all prompt modes "
+            "(e.g. 70 rows × 3 modes = 210)."
+        ),
         "methodology_note": (
             "Pilot Gemini audit signals — preliminary evidence only. "
             "Not proof of unlawful discrimination. Real-case rows excluded from strict rates."
             if is_pilot
             else (
-                "Full Gemini audit signals — requires human legal review. "
-                "Not proof of unlawful discrimination. Real-case rows excluded from strict rates."
-                if is_full
-                else "Gemini audit signals — requires human legal review."
+                "Minimal-schema Gemini audit with address-proxy stress tests — requires human legal review. "
+                "Address variants excluded from strict headline fairness rates. "
+                "Not proof of unlawful discrimination."
+                if is_minimal_address
+                else (
+                    "Expanded full Gemini audit signals — requires human legal review. "
+                    "Not proof of unlawful discrimination. Real-case rows excluded from strict rates."
+                    if is_expanded
+                    else (
+                        "Full Gemini audit signals — requires human legal review. "
+                        "Not proof of unlawful discrimination. Real-case rows excluded from strict rates."
+                        if is_full
+                        else "Gemini audit signals — requires human legal review."
+                    )
+                )
             )
         ),
         "disclaimers": [
@@ -1116,13 +1372,30 @@ def _load_detention_gemini_run_exports(
                 and k not in {"n_pairwise_comparisons", "n_flagged_comparisons"}
             }
         )
-    overview["n_pairwise_comparisons"] = len(pairwise)
-    overview["n_flagged_comparisons"] = len(flagged)
+    if metric_summary:
+        ms = metric_summary[0]
+        overview["n_pairwise_comparisons"] = int(
+            ms.get("n_pairwise_comparisons_baseline")
+            or ms.get("n_pairwise_comparisons")
+            or len(pairwise)
+        )
+        overview["n_flagged_comparisons"] = int(
+            ms.get("n_flagged_comparisons_baseline")
+            or ms.get("n_flagged_comparisons")
+            or len(flagged)
+        )
+        overview["n_pairwise_comparisons_all_modes"] = int(
+            ms.get("n_pairwise_comparisons") or len(pairwise)
+        )
+        overview["n_flagged_comparisons_all_modes"] = int(
+            ms.get("n_flagged_comparisons") or len(flagged)
+        )
+    else:
+        overview["n_pairwise_comparisons"] = len(pairwise)
+        overview["n_flagged_comparisons"] = len(flagged)
 
     if full_summary:
         updated_summary = dict(full_summary[0])
-        updated_summary["n_pairwise_comparisons"] = len(pairwise)
-        updated_summary["n_flagged_comparisons"] = len(flagged)
         full_summary = [updated_summary]
 
     overview_src = (
@@ -1137,11 +1410,23 @@ def _load_detention_gemini_run_exports(
 
     exports["detention_overview_metrics.json"] = (overview_src, [overview])
     exports["detention_pairwise_comparison.json"] = (pairwise_path if pairwise_path.exists() else None, pairwise)
+    exports["detention_address_proxy_pairwise_comparison.json"] = (
+        address_proxy_path if address_proxy else None,
+        address_proxy,
+    )
+    exports["detention_combined_pairwise_comparison.json"] = (
+        combined_path if combined_comparisons else None,
+        combined_comparisons,
+    )
     exports["detention_group_summary.json"] = (group_path if group_path.exists() else None, group_summary)
     exports["detention_flagged_cases.json"] = (flagged_path if flagged_path.exists() else None, flagged)
-    exports["detention_real_case_review_outputs.json"] = (
-        real_review_path if real_review_path.exists() else None,
-        real_review,
+    exports["detention_strict_excluded_review_outputs.json"] = (
+        strict_excluded_path if strict_excluded_review else None,
+        strict_excluded_review,
+    )
+    exports["detention_real_case_inspired_review_outputs.json"] = (
+        real_inspired_path if real_inspired_review else None,
+        real_inspired_review,
     )
     exports["detention_pilot_metric_summary.json"] = (pilot_summary_path if pilot_summary else None, pilot_summary)
     exports["detention_full_metric_summary.json"] = (full_summary_path if full_summary else None, full_summary)
@@ -1152,6 +1437,10 @@ def _load_detention_gemini_run_exports(
     exports["detention_statistical_tests.json"] = (
         statistical_path if statistical_path.exists() else None,
         statistical,
+    )
+    exports["detention_statistical_tests_baseline.json"] = (
+        statistical_baseline_path if statistical_baseline else None,
+        statistical_baseline,
     )
     run_manifest_records: list[dict[str, Any]] = []
     if run_manifest_path.exists():
@@ -1178,6 +1467,45 @@ def _load_detention_gemini_run_exports(
             full_report_path,
             [{"report_name": "detention_full_analysis", "title": "Detention Full Analysis", "markdown_text": report_text}],
         )
+    project_root = run_dir.parent.parent.parent
+    synthetic_corpus = resolve_synthetic_corpus_path(project_root, run_dir=run_dir)
+    exports.update(
+        _load_detention_validity_exports(
+            project_root,
+            analysis_dir,
+            synthetic_corpus_path=synthetic_corpus,
+        )
+    )
+    if not pairwise_df.empty:
+        from benchassist.detention_statistical_analysis import (
+            compute_detention_group_statistics,
+            compute_detention_overview_uncertainty,
+            compute_power_notes,
+        )
+
+        group_df = pd.DataFrame(group_summary)
+        statistical_df = compute_detention_group_statistics(group_df, pairwise_df)
+        statistical = [_normalize_detention_stat_row(r) for r in statistical_df.to_dict(orient="records")]
+        calibration = {}
+        cal_rows = exports.get("detention_validity_calibration.json", (None, []))[1]
+        if cal_rows:
+            calibration = cal_rows[0]
+        uncertainty_records = [
+            {
+                "overview": compute_detention_overview_uncertainty(pairwise_df),
+                "power": compute_power_notes(
+                    int(pairwise_df["case_id"].nunique()),
+                    int(pairwise_df["variant_type"].nunique()),
+                ),
+                "validity_calibration": calibration,
+            }
+        ]
+        exports["detention_statistical_tests.json"] = (statistical_path if statistical_path.exists() else None, statistical)
+        exports["detention_overview_uncertainty.json"] = (None, uncertainty_records)
+    project_root = run_dir.parent.parent.parent
+    corpus_rows = _count_detention_synthetic_rows(project_root, gemini_run=run_dir)
+    if corpus_rows is not None:
+        overview["n_synthetic_counterfactual_rows"] = corpus_rows
     return exports
 
 
@@ -1313,6 +1641,7 @@ def _load_detention_system_exports(
     exports["detention_flagged_cases.json"] = (mock_analysis_dir / "detention_flagged_cases.csv" if mock_mode else None, flagged)
     exports["detention_synthetic_data_qa.json"] = (qa_json_path if qa_json_path.exists() else None, qa_records)
     exports["detention_mock_run_summary.json"] = (mock_summary_path if mock_summary_path.exists() else None, mock_summary)
+    exports.update(_load_detention_validity_exports(project_root, mock_analysis_dir if mock_mode else None))
     return exports
 
 
@@ -1353,14 +1682,31 @@ def export_vercel_data(
     mock_mode: bool = False,
     run_dir: Path | None = None,
     data_status: str | None = None,
+    dry_run: bool = False,
+    demo_redact_case_text: bool = False,
 ) -> dict[str, Any]:
     """Export all dashboard JSON files; return manifest summary."""
     effective_use_case = use_case or DEFAULT_USE_CASE
+    data_status = normalize_detention_data_status(data_status)
     settings = get_settings()
     root = results_dir or settings.RESULTS_DIR
     project_root = _project_root()
+    production_data = default_output_dir()
+    if dry_run and output_dir is None:
+        output_dir = project_root / "results" / "preflight" / "vercel_export_detention"
     out_dir = output_dir or default_output_dir()
+    if dry_run and out_dir.resolve() == production_data.resolve():
+        out_dir = project_root / "results" / "preflight" / "vercel_export_detention"
     out_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Prune old detention JSON exports to prevent legacy files from surfacing in the dashboard
+    if effective_use_case == "detention" and not dry_run:
+        for p in out_dir.glob("detention_*.json"):
+            try:
+                p.unlink()
+            except OSError:
+                pass
+
 
     artifacts = discover_audit_artifacts(root)
     run = select_best_run(artifacts.runs)
@@ -1368,19 +1714,6 @@ def export_vercel_data(
         run = AuditRunBundle(label="empty")
 
     token = experiment_token_from_run_label(run.label) if run.label != "empty" else "current"
-    validity_paths = pick_validity_paths(artifacts, token)
-    stereotype_paths = pick_stereotype_paths_for_run(artifacts, run.label)
-    mitigation_path = pick_mitigation_for_run(artifacts, run.label)
-
-    stat_effects = _pick_stat_path(artifacts.statistical_group_effects, run.label)
-    stat_tests = _pick_stat_path(
-        [p for p in artifacts.results_dir.glob("tables/statistical_pairwise_tests*.csv")],
-        run.label,
-    )
-    narrative_summary = _pick_stat_path(artifacts.narrative_robustness_summary, token)
-    hallucination_per = _pick_hallucination_per(artifacts, token)
-    hallucination_group = _pick_stat_path(artifacts.hallucination_group_summary, token)
-    human_review = _pick_by_token(artifacts.human_review_template, token)
 
     outputs_df = safe_read_csv(run.outputs)
     if outputs_df.empty:
@@ -1396,67 +1729,45 @@ def export_vercel_data(
     else:
         source_files_extra = None
     parse_rate = compute_parse_error_rate(outputs_df)
-    meta = _infer_run_metadata(run, outputs_df)
-
-    pairwise_records = enrich_audit_rows(export_csv(run.pairwise))
-    flagged_records = enrich_audit_rows(export_csv(run.flagged))
-    if not flagged_records:
-        flagged_records = [r for r in pairwise_records if _as_bool(r.get("legal_framing_bias_flag"))]
-
-    cross_prompt_rows, cross_prompt_meta = build_cross_prompt_comparisons(root / "outputs")
-
-    exports: dict[str, tuple[Path | None, list[dict[str, Any]]]] = {
-        "group_summary.json": (run.group_summary, export_csv(run.group_summary)),
-        "pairwise_comparison.json": (run.pairwise, pairwise_records),
-        "flagged_cases.json": (run.flagged, flagged_records),
-        "counterfactual_validity.json": (validity_paths.get("per_variant"), export_csv(validity_paths.get("per_variant"))),
-        "counterfactual_validity_summary.json": (validity_paths.get("summary"), export_csv(validity_paths.get("summary"))),
-        "stereotype_group_summary.json": (stereotype_paths.get("group_summary"), export_csv(stereotype_paths.get("group_summary"))),
-        "stereotype_flagged_examples.json": (stereotype_paths.get("flagged_examples"), export_csv(stereotype_paths.get("flagged_examples"))),
-        "hallucination_group_summary.json": (hallucination_group, export_csv(hallucination_group)),
-        "hallucination_per_output.json": (hallucination_per, export_csv(hallucination_per)),
-        "statistical_group_effects.json": (stat_effects, export_csv(stat_effects)),
-        "statistical_pairwise_tests.json": (stat_tests, export_csv(stat_tests)),
-        "narrative_robustness_summary.json": (narrative_summary, export_csv(narrative_summary)),
-        "qualitative_case_studies.json": (run.qualitative, export_csv(run.qualitative)),
-        "human_review_template.json": (human_review, export_csv(human_review)),
-        "mitigation_comparison.json": (mitigation_path, export_csv(mitigation_path)),
-        "cross_prompt_comparisons.json": (root / "outputs", cross_prompt_rows),
-    }
-
-    real_case_exports = _load_real_case_layer_exports(root, project_root)
-    exports.update(real_case_exports)
-    real_case_meta = _real_case_manifest_meta(real_case_exports)
-
-    pilot_exports = _load_detention_pilot_exports(project_root)
-    exports.update(pilot_exports)
-    if any(records for _, records in pilot_exports.values()):
-        real_case_meta["detention_pilot_corpus_available"] = True
-        real_case_meta["detention_pilot_row_count"] = len(
-            pilot_exports.get("detention_pilot_examples_fulltext.json", (None, []))[1]
-        )
 
     gemini_run: Path | None = None
+    cross_prompt_meta: dict[str, Any] = {}
+    real_case_meta: dict[str, Any] = {}
+
     if effective_use_case == "detention":
         gemini_run = _resolve_gemini_detention_run_dir(project_root, run_dir, data_status)
-        detention_exports = _load_detention_system_exports(
+        meta = _infer_detention_run_metadata(gemini_run)
+        token = (
+            experiment_token_from_run_label(infer_detention_run_label(gemini_run, data_status=data_status))
+            if gemini_run is not None
+            else "detention"
+        )
+        exports = _load_detention_system_exports(
             project_root,
             use_case=effective_use_case,
             mock_mode=mock_mode and gemini_run is None,
             gemini_run_dir=gemini_run,
             data_status=data_status,
         )
-        exports.update(detention_exports)
-        real_case_meta["use_case"] = "detention"
-        overview_list = detention_exports.get("detention_overview_metrics.json", (None, []))[1]
-        real_case_meta["detention_synthetic_rows"] = (
-            overview_list[0].get("n_synthetic_counterfactual_rows", 0) if overview_list else 0
-        )
+        real_case_meta = {
+            "use_case": "detention",
+            "detention_pilot_corpus_available": bool(
+                exports.get("detention_real_case_examples_fulltext.json", (None, []))[1]
+            ),
+        }
+        overview_list = exports.get("detention_overview_metrics.json", (None, []))[1]
+        if overview_list:
+            corpus_n = _count_detention_synthetic_rows(project_root, gemini_run=gemini_run)
+            real_case_meta["detention_synthetic_rows"] = int(
+                overview_list[0].get("n_synthetic_counterfactual_rows")
+                or corpus_n
+                or 0
+            )
         if gemini_run is not None:
             from benchassist.detention_case_review_export import export_case_review_records
 
-            synthetic_input = project_root / "data" / "synthetic" / "detention_core_cases.csv"
-            if not synthetic_input.exists():
+            synthetic_input = resolve_synthetic_corpus_path(project_root, run_dir=gemini_run)
+            if synthetic_input is None:
                 synthetic_input = project_root / "data" / "audit" / "detention" / "detention_counterfactual_cases.csv"
             review_out = out_dir / "detention_case_review_records.json"
             review_status = data_status or "gemini_full"
@@ -1465,19 +1776,73 @@ def export_vercel_data(
                     run_dir=gemini_run,
                     synthetic_input=synthetic_input,
                     output=review_out,
-                    data_status=review_status if review_status in {"mock", "gemini_pilot", "gemini_full"} else "gemini_full",
+                    data_status=review_status
+                    if review_status in {"mock", "gemini_pilot", "gemini_full", "gemini_expanded_full", "gemini_minimal_address"}
+                    else "gemini_full",
+                    all_prompt_modes=True,
+                    schema_version=(
+                        "detention_minimal_dangerousness_v2"
+                        if review_status == "gemini_minimal_address"
+                        else None
+                    ),
+                    redact_full_case_text=demo_redact_case_text,
                 )
                 review_payload = json.loads(review_out.read_text(encoding="utf-8"))
                 exports["detention_case_review_records.json"] = (review_out, review_payload)
                 index_path = review_out.parent / "detention_case_review_index.json"
                 if index_path.exists():
-                    exports["detention_case_review_index.json"] = (index_path, json.loads(index_path.read_text(encoding="utf-8")))
+                    exports["detention_case_review_index.json"] = (
+                        index_path,
+                        json.loads(index_path.read_text(encoding="utf-8")),
+                    )
                 real_case_meta["case_review_records_available"] = review_result["record_count"] > 0
                 real_case_meta["case_review_record_count"] = review_result["record_count"]
             except Exception as exc:  # noqa: BLE001 — export should not block dashboard
                 real_case_meta["case_review_records_available"] = False
                 real_case_meta["case_review_record_count"] = 0
                 real_case_meta["case_review_export_error"] = str(exc)
+        cross_prompt_meta = _detention_cross_prompt_manifest_meta(exports)
+    else:
+        meta = _infer_run_metadata(run, outputs_df)
+        token = experiment_token_from_run_label(run.label) if run.label != "empty" else "current"
+        validity_paths = pick_validity_paths(artifacts, token)
+        stereotype_paths = pick_stereotype_paths_for_run(artifacts, run.label)
+        mitigation_path = pick_mitigation_for_run(artifacts, run.label)
+        stat_effects = _pick_stat_path(artifacts.statistical_group_effects, run.label)
+        stat_tests = _pick_stat_path(
+            [p for p in artifacts.results_dir.glob("tables/statistical_pairwise_tests*.csv")],
+            run.label,
+        )
+        narrative_summary = _pick_stat_path(artifacts.narrative_robustness_summary, token)
+        hallucination_per = _pick_hallucination_per(artifacts, token)
+        hallucination_group = _pick_stat_path(artifacts.hallucination_group_summary, token)
+        human_review = _pick_by_token(artifacts.human_review_template, token)
+        pairwise_records = enrich_audit_rows(export_csv(run.pairwise))
+        flagged_records = enrich_audit_rows(export_csv(run.flagged))
+        if not flagged_records:
+            flagged_records = [r for r in pairwise_records if _as_bool(r.get("legal_framing_bias_flag"))]
+        cross_prompt_rows, cross_prompt_meta = build_cross_prompt_comparisons(root / "outputs")
+        exports = {
+            "group_summary.json": (run.group_summary, export_csv(run.group_summary)),
+            "pairwise_comparison.json": (run.pairwise, pairwise_records),
+            "flagged_cases.json": (run.flagged, flagged_records),
+            "counterfactual_validity.json": (validity_paths.get("per_variant"), export_csv(validity_paths.get("per_variant"))),
+            "counterfactual_validity_summary.json": (validity_paths.get("summary"), export_csv(validity_paths.get("summary"))),
+            "stereotype_group_summary.json": (stereotype_paths.get("group_summary"), export_csv(stereotype_paths.get("group_summary"))),
+            "stereotype_flagged_examples.json": (stereotype_paths.get("flagged_examples"), export_csv(stereotype_paths.get("flagged_examples"))),
+            "hallucination_group_summary.json": (hallucination_group, export_csv(hallucination_group)),
+            "hallucination_per_output.json": (hallucination_per, export_csv(hallucination_per)),
+            "statistical_group_effects.json": (stat_effects, export_csv(stat_effects)),
+            "statistical_pairwise_tests.json": (stat_tests, export_csv(stat_tests)),
+            "narrative_robustness_summary.json": (narrative_summary, export_csv(narrative_summary)),
+            "qualitative_case_studies.json": (run.qualitative, export_csv(run.qualitative)),
+            "human_review_template.json": (human_review, export_csv(human_review)),
+            "mitigation_comparison.json": (mitigation_path, export_csv(mitigation_path)),
+            "cross_prompt_comparisons.json": (root / "outputs", cross_prompt_rows),
+        }
+        real_case_exports = _load_real_case_layer_exports(root, project_root)
+        exports.update(real_case_exports)
+        real_case_meta = _real_case_manifest_meta(real_case_exports)
 
     missing_optional: list[str] = []
     source_files: dict[str, str | None] = {}
@@ -1485,12 +1850,49 @@ def export_vercel_data(
     detention_pairwise_count: int | None = None
     detention_flagged_count: int | None = None
 
-    for filename, (src, records) in exports.items():
+    export_items = (
+        [(k, v) for k, v in exports.items() if _is_detention_dashboard_export_key(k)]
+        if effective_use_case == "detention"
+        else list(exports.items())
+    )
+    if effective_use_case == "detention" and gemini_run is not None:
+        export_items = [(k, v) for k, v in export_items if k not in _DETENTION_MOCK_ONLY_EXPORTS]
+
+    if effective_use_case == "detention" and not dry_run:
+        keep_names = {filename for filename, _ in export_items} | {"manifest.json", "data_access_policy.json", "overview_metrics.json"}
+        for stale in out_dir.glob("*.json"):
+            if stale.name in keep_names:
+                continue
+            if stale.name in _DETENTION_DEPRECATED_EXPORTS or not _is_detention_dashboard_export_key(stale.name):
+                try:
+                    stale.unlink()
+                except OSError:
+                    pass
+                continue
+            if gemini_run is not None and stale.name in _DETENTION_MOCK_ONLY_EXPORTS:
+                try:
+                    stale.unlink()
+                except OSError:
+                    pass
+
+    for filename, (src, records) in export_items:
         _write_json(out_dir / filename, records)
         source_files[filename] = str(src) if src else None
         row_counts[filename] = _export_row_count(filename, records)
         if not _export_has_content(records) and (src is None or not Path(src).exists()):
             missing_optional.append(filename)
+
+    if effective_use_case == "detention":
+        cross_rows = exports.get("detention_cross_prompt_comparisons.json", (None, []))[1]
+        if cross_rows:
+            cp_summary = build_cross_prompt_mode_summary(cross_rows)
+            _write_json(out_dir / "detention_cross_prompt_mode_summary.json", cp_summary)
+            row_counts["detention_cross_prompt_mode_summary.json"] = 1
+            source_files["detention_cross_prompt_mode_summary.json"] = (
+                str(gemini_run / "analysis" / "detention_cross_prompt_comparisons.csv")
+                if gemini_run
+                else None
+            )
 
     if effective_use_case == "detention":
         overview_list = exports.get("detention_overview_metrics.json", (None, []))[1]
@@ -1509,35 +1911,74 @@ def export_vercel_data(
     source_files["reports.json"] = str(root / "report")
     row_counts["reports.json"] = len(reports)
 
-    overview = compute_overview_metrics(
-        group_summary=exports["group_summary.json"][1],
-        flagged=exports["flagged_cases.json"][1],
-        pairwise=exports["pairwise_comparison.json"][1],
-        validity_summary=exports["counterfactual_validity_summary.json"][1],
-        stereotype_group=exports["stereotype_group_summary.json"][1],
-        hallucination_group=exports["hallucination_group_summary.json"][1],
-        outputs_rows=len(outputs_df),
-        parse_error_rate=parse_rate,
-        base_cases=_count_base_cases(project_root),
-        counterfactual_variants=_count_counterfactuals(project_root),
-    )
+    detention_ov: dict[str, Any] = {}
+    if effective_use_case == "detention":
+        detention_overview_rows = exports.get("detention_overview_metrics.json", (None, []))[1]
+        detention_ov = detention_overview_rows[0] if detention_overview_rows else {}
+        if detention_ov.get("parse_success_rate") is not None:
+            parse_rate = 1.0 - float(detention_ov["parse_success_rate"])
+        overview = {
+            "use_case": "detention",
+            "data_status": data_status,
+            "base_cases": _count_detention_base_cases(project_root, gemini_run=gemini_run),
+            "counterfactual_variants": _count_detention_synthetic_rows(project_root, gemini_run=gemini_run),
+            "note": "See detention_overview_metrics.json for detention audit metrics.",
+        }
+    else:
+        overview = compute_overview_metrics(
+            group_summary=exports["group_summary.json"][1],
+            flagged=exports["flagged_cases.json"][1],
+            pairwise=exports["pairwise_comparison.json"][1],
+            validity_summary=exports["counterfactual_validity_summary.json"][1],
+            stereotype_group=exports["stereotype_group_summary.json"][1],
+            hallucination_group=exports["hallucination_group_summary.json"][1],
+            outputs_rows=len(outputs_df),
+            parse_error_rate=parse_rate,
+            base_cases=_count_base_cases(project_root, use_case=effective_use_case),
+            counterfactual_variants=_count_counterfactuals(project_root),
+        )
     _write_json(out_dir / "overview_metrics.json", overview)
 
-    if source_files_extra:
+    if effective_use_case == "detention" and gemini_run is not None:
+        parsed_path = gemini_run / "parsed_outputs.jsonl"
+        if parsed_path.exists():
+            source_files["parsed_outputs.jsonl"] = str(parsed_path)
+    elif source_files_extra and effective_use_case != "detention":
         source_files["model_outputs.csv"] = source_files_extra
 
-    primary_files = [
-        k for k in ("group_summary.json", "pairwise_comparison.json", "flagged_cases.json", "overview_metrics.json")
-        if source_files.get(k)
-    ]
+    if effective_use_case == "detention":
+        primary_files = [
+            k
+            for k in (
+                "detention_overview_metrics.json",
+                "detention_pairwise_comparison.json",
+                "detention_flagged_cases.json",
+                "detention_address_proxy_pairwise_comparison.json",
+                "detention_case_review_index.json",
+            )
+            if source_files.get(k)
+        ]
+    else:
+        primary_files = [
+            k for k in ("group_summary.json", "pairwise_comparison.json", "flagged_cases.json", "overview_metrics.json")
+            if source_files.get(k)
+        ]
 
     manifest = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "use_case": effective_use_case,
         "data_status": data_status or ("mock" if mock_mode else None),
-        "run_label": run.label,
+        "run_label": (
+            infer_detention_run_label(gemini_run, data_status=data_status)
+            if effective_use_case == "detention" and gemini_run is not None
+            else run.label
+        ),
         "experiment_token": token,
-        "run_type": detect_run_type(run.label),
+        "run_type": (
+            infer_detention_run_type(gemini_run, data_status=data_status)
+            if effective_use_case == "detention" and gemini_run is not None
+            else detect_run_type(run.label)
+        ),
         "selected_source_files": source_files,
         "selected_primary_files": primary_files,
         "missing_optional_files": missing_optional,
@@ -1549,8 +1990,12 @@ def export_vercel_data(
         "schema_versions": meta["schema_versions"],
         "base_cases": overview.get("base_cases"),
         "counterfactual_variants": overview.get("counterfactual_variants"),
-        "flagged_cases": overview.get("total_flagged_cases"),
-        "parse_error_rate": parse_rate,
+        "flagged_cases": detention_flagged_count if effective_use_case == "detention" else overview.get("total_flagged_cases"),
+        "parse_error_rate": (
+            (1.0 - float(detention_ov.get("parse_success_rate", 1.0)))
+            if effective_use_case == "detention"
+            else parse_rate
+        ),
         "disclaimer": DISCLAIMER_TEXT,
         "secrets_excluded": True,
         "note": "Export contains no API keys, .env, or live model credentials.",
@@ -1564,7 +2009,17 @@ def export_vercel_data(
     }
     if effective_use_case == "detention":
         manifest["export_provenance"] = {
-            "git_commit": _git_commit_short(project_root),
+            "git_commit": git_commit_short(project_root),
+            "export_git_sha": git_commit_short(project_root),
+            "parent_run_id": read_parent_run_id(gemini_run),
+            "corpus_version": _load_corpus_version(project_root),
+            "flagging_policy": "dangerousness_level_change_only",
+            "flagging_policy_doc": "docs/detention_flagging_policy.md",
+            "dashboard_export_profile": "demo_redacted" if demo_redact_case_text else "full",
+            "headline_metrics_note": (
+                "Strict headline flagged count uses baseline prompt_mode rows in detention_overview_metrics "
+                "(dangerousness_level change only). Case review index flagged_count may include all prompt modes."
+            ),
             "pairwise_unique_note": (
                 "Detention pairwise rows are deduplicated by (case_id, variant_id, prompt_mode) at export."
             ),
@@ -1574,12 +2029,32 @@ def export_vercel_data(
                 else False
             ),
         }
+        completeness = export_completeness_score(row_counts, missing_optional=missing_optional)
+        manifest.update(completeness)
+        manifest["missing_optional_files_detail"] = missing_optional_files_detail(missing_optional)
+        if gemini_run is not None:
+            manifest["run_label"] = infer_detention_run_label(gemini_run, data_status=data_status)
+            manifest["run_type"] = infer_detention_run_type(gemini_run, data_status=data_status)
+            manifest["expanded_run"] = manifest["run_type"] in {"expanded_full", "expanded_minimal_address"}
+            manifest["minimal_address_run"] = (
+                data_status == "gemini_minimal_address" or manifest["run_type"] == "expanded_minimal_address"
+            )
+            if meta.get("schema_version_v2"):
+                manifest["schema_version"] = meta["schema_version_v2"]
+                manifest["schema_versions"] = meta.get("schema_versions") or [meta["schema_version_v2"]]
+            manifest["experiment_token"] = token
+            manifest["detention_gemini_run_dir"] = str(gemini_run)
     _write_json(out_dir / "manifest.json", manifest)
 
     policy, policy_warnings = _export_data_access_policy(out_dir, project_root)
     manifest["data_access_policy"] = policy
     if policy_warnings:
         manifest["full_text_export_warnings"] = policy_warnings
+    manifest["dry_run"] = dry_run
+    if dry_run:
+        manifest["preflight_note"] = (
+            "Dry-run export — written to preflight directory only; production dashboard data not replaced."
+        )
     _write_json(out_dir / "manifest.json", manifest)
 
     return manifest
@@ -1701,7 +2176,17 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--data-status",
         default=None,
-        help="Dashboard data status label (e.g. gemini_pilot, mock, final).",
+        help="Dashboard data status label (e.g. gemini_pilot, gemini_full, gemini_expanded_full, mock, final).",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Preflight export to results/preflight/ — does not replace web_dashboard/public/data.",
+    )
+    parser.add_argument(
+        "--demo-redact-case-text",
+        action="store_true",
+        help="Omit full case text in case review JSON (demo/public preview exports only).",
     )
     args = parser.parse_args(argv)
 
@@ -1712,9 +2197,14 @@ def main(argv: list[str] | None = None) -> int:
         mock_mode=args.mock,
         run_dir=args.run_dir,
         data_status=args.data_status,
+        dry_run=args.dry_run,
+        demo_redact_case_text=args.demo_redact_case_text,
     )
-    out = args.output_dir or default_output_dir()
-    print(f"Vercel export complete → {out}")
+    out = args.output_dir or (Path(__file__).resolve().parent.parent.parent / "results" / "preflight" / "vercel_export_detention" if args.dry_run else default_output_dir())
+    if args.dry_run:
+        print(f"Vercel export dry-run complete → {out}")
+    else:
+        print(f"Vercel export complete → {out}")
     print(f"  Run: {manifest.get('run_label')}")
     print(f"  Model: {manifest.get('model')} ({manifest.get('provider')})")
     print(f"  Missing optional: {len(manifest.get('missing_optional_files', []))}")

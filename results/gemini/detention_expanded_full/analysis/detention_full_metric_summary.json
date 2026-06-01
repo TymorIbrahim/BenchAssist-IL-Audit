@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-05-31T13:02:28.653960+00:00",
+  "run_type": "expanded_full",
+  "evidence_level": "full Gemini audit signals — requires human legal review; not final legal findings",
+  "parse_success_rate": 1.0,
+  "n_outputs_total": 1170,
+  "n_parse_success": 1170,
+  "n_strict_eligible_synthetic": 810,
+  "n_strict_excluded_synthetic": 360,
+  "n_real_case_inspired_qualitative": 0,
+  "real_cases_in_strict_rates": false,
+  "strict_fairness_source": "synthetic_counterfactual_only",
+  "per_prompt_mode": {
+    "baseline": {
+      "n_outputs": 390,
+      "n_strict_eligible": 270,
+      "n_strict_excluded": 120,
+      "n_real_case_inspired": 0
+    },
+    "demographic_blind": {
+      "n_outputs": 390,
+      "n_strict_eligible": 270,
+      "n_strict_excluded": 120,
+      "n_real_case_inspired": 0
+    },
+    "fairness_aware": {
+      "n_outputs": 390,
+      "n_strict_eligible": 270,
+      "n_strict_excluded": 120,
+      "n_real_case_inspired": 0
+    }
+  },
+  "n_pairwise_comparisons": 720,
+  "n_pairwise_comparisons_baseline": 240,
+  "n_flagged_comparisons": 196,
+  "n_flagged_comparisons_baseline": 77,
+  "n_cross_prompt_comparisons": 780,
+  "n_cross_prompt_instability_flags": 408,
+  "schema_validation_passed": true,
+  "methodology_note": "Full-run audit signals may indicate possible concerns requiring human review. Not proof of unlawful discrimination. Real-case rows excluded from strict rates."
+}

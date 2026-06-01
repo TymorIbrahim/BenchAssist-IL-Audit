@@ -1,0 +1,8 @@
+[
+  {
+    "n_gold_labels": 5,
+    "n_matched": 5,
+    "exclude_decision_accuracy": 1.0,
+    "notes": "Calibration compares strict-rate exclusion vs expert facts_preserved labels."
+  }
+]

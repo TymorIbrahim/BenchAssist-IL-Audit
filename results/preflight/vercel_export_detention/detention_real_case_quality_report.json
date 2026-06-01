@@ -1,0 +1,110 @@
+[
+  {
+    "generated_at": "2026-05-30T11:03:17.726925+00:00",
+    "candidate_rows_by_source": {
+      "source_candidates_brainboxai": 200,
+      "source_candidates_local": 8,
+      "source_candidates_sample_expanded": 15
+    },
+    "total_candidates": 223,
+    "detention_relevant_candidates": 164,
+    "selected_pilot_rows": 80,
+    "sensitive_flagged_rows": 80,
+    "excluded_rows": 59,
+    "duplicate_count": 0,
+    "min_relevance_score": 2,
+    "target_size": 80,
+    "stage_distribution_selected": {
+      "pre_indictment_arrest_extension": 4,
+      "post_indictment_remand": 2,
+      "detention_appeal": 4,
+      "release_with_conditions": 10,
+      "obstruction_risk": 2,
+      "dangerousness": 23,
+      "weak_evidence_dispute": 11,
+      "unclear": 24
+    },
+    "top_matched_keywords": [
+      [
+        "מסוכנות",
+        88
+      ],
+      [
+        "מ\"י",
+        36
+      ],
+      [
+        "ראיות לכאורה",
+        25
+      ],
+      [
+        "הארכת מעצר",
+        24
+      ],
+      [
+        "פיקוח",
+        23
+      ],
+      [
+        "חלופת מעצר",
+        16
+      ],
+      [
+        "חשד סביר",
+        16
+      ],
+      [
+        "עילת מעצר",
+        15
+      ],
+      [
+        "בש\"פ",
+        8
+      ],
+      [
+        "מעצר ימים",
+        8
+      ],
+      [
+        "חשש לשיבוש",
+        6
+      ],
+      [
+        "הימלטות",
+        6
+      ],
+      [
+        "הארכת מעצרו",
+        5
+      ],
+      [
+        "מעצר עד תום ההליכים",
+        5
+      ],
+      [
+        "חשש להימלטות",
+        4
+      ]
+    ],
+    "limitations": [
+      "Real-case-inspired qualitative corpus — not a counterfactual fairness dataset.",
+      "Must not be used for strict demographic bias rates.",
+      "Requires legal-expert review before model runs or dashboard deployment.",
+      "Full text preserved without redaction for internal expert review only.",
+      "Public legal text does not imply unrestricted redistribution."
+    ],
+    "methodology": {
+      "dataset_mode": "real_case_inspired",
+      "counterfactual_strength": "not_counterfactual",
+      "use_for_strict_bias_rates": false,
+      "exclude_from_strict_bias_rates": true,
+      "use_for_reliability_audit": true,
+      "use_for_qualitative_review": true,
+      "manual_review_required": true,
+      "data_visibility": "internal_full_text",
+      "no_redaction_applied": true,
+      "redaction_policy": "no_redaction_internal_expert_review",
+      "normalized_domain": "criminal_detention_remand"
+    }
+  }
+]

@@ -46,6 +46,7 @@ import {
   variantTypeFromChartLabel,
 } from "@/lib/filters";
 import { formatCount, formatRate, str, toBool, uniqueValues } from "@/lib/format";
+import { formatVariantLabel } from "@/lib/v2/dataUtils";
 import { generateInsights, generateKeyTakeaways, topFlaggedExamples } from "@/lib/insights";
 import { ALL_NAV_SECTIONS } from "@/lib/navigationGroups";
 import { getMetricDefinition } from "@/lib/metricDefinitions";
@@ -349,7 +350,7 @@ export default function Dashboard() {
             </Card>
             <Card title="Group summary" className={presentationMode ? "presentation-hide-table" : ""}>
               <DataTable rows={filteredGroup} columns={[
-                { key: "variant_type", label: "Variant", render: (r) => str(r.variant_type).replace(/_/g, " ") },
+                { key: "variant_type", label: "Variant", render: (r) => formatVariantLabel(str(r.variant_type)) },
                 { key: "demographic_cue", label: "Cue" },
                 { key: filters.metricKey, label: "Selected metric", render: (r) => formatRate(r[filters.metricKey]) },
                 { key: "n_pairs", label: "Pairs" },
@@ -395,7 +396,7 @@ export default function Dashboard() {
               selectedRowId={selectedFlagged ? rowId(selectedFlagged) : undefined}
               columns={[
                 { key: "case_id", label: "Case" },
-                { key: "variant_type", label: "Variant", render: (r) => str(r.variant_type).replace(/_/g, " ") },
+                { key: "variant_type", label: "Variant", render: (r) => formatVariantLabel(str(r.variant_type)) },
                 { key: "review_priority", label: "Priority", render: (r) => <StatusPill label={reviewPriority(r)} variant={reviewPriorityVariant(reviewPriority(r))} /> },
                 { key: "strongest_signal", label: "Strongest signal" },
                 { key: "issue_tags", label: "Issue tags", render: (r) => Array.isArray(r.issue_tags) ? (r.issue_tags as string[]).join(", ").replace(/_/g, " ") : "—" },
@@ -434,7 +435,7 @@ export default function Dashboard() {
             {selectedFlagged ? (
               <Card title="Selected case — review panel" className="detail-panel">
                 <div className="detail-header">
-                  <h4>{str(selectedFlagged.case_id)} · {str(selectedFlagged.variant_type).replace(/_/g, " ")}</h4>
+                  <h4>{str(selectedFlagged.case_id)} · {formatVariantLabel(str(selectedFlagged.variant_type))}</h4>
                   <StatusPill label="Flagged for legal review" variant="caution" />
                 </div>
                 <p><strong>Review priority:</strong> {reviewPriority(selectedFlagged)}</p>
@@ -454,7 +455,7 @@ export default function Dashboard() {
             <SectionGuide sectionId="case-explorer" />
             <div className="explorer-controls">
               <label>Case<select value={explorerCase} onChange={(e) => { setExplorerCase(e.target.value); setExplorerVariant(""); }}><option value="">Select…</option>{caseIds.map((id) => <option key={id} value={id}>{id}</option>)}</select></label>
-              <label>Variant<select value={explorerVariant} onChange={(e) => setExplorerVariant(e.target.value)} disabled={!explorerCase}><option value="">Select…</option>{variantsForCase.map((v) => <option key={str(v.variant_id)} value={str(v.variant_id)}>{str(v.variant_type).replace(/_/g, " ")}</option>)}</select></label>
+              <label>Variant<select value={explorerVariant} onChange={(e) => setExplorerVariant(e.target.value)} disabled={!explorerCase}><option value="">Select…</option>{variantsForCase.map((v) => <option key={str(v.variant_id)} value={str(v.variant_id)}>{formatVariantLabel(str(v.variant_type))}</option>)}</select></label>
               <label className="checkbox-label"><input type="checkbox" checked={explorerFlaggedOnly} onChange={(e) => setExplorerFlaggedOnly(e.target.checked)} /> Flagged variants only</label>
               <label className="checkbox-label"><input type="checkbox" checked={explorerStrictOnly} onChange={(e) => setExplorerStrictOnly(e.target.checked)} /> Direct-bias eligible only</label>
             </div>
@@ -477,7 +478,7 @@ export default function Dashboard() {
                 <ul>{presentationExamples.map((r) => (
                   <li key={`${str(r.case_id)}-${str(r.variant_id)}`}>
                     <button type="button" className="link-button" onClick={() => openExplorer(str(r.case_id), str(r.variant_id))}>
-                      {str(r.case_id)} · {str(r.variant_type).replace(/_/g, " ")} — {str(r.strongest_signal)}
+                      {str(r.case_id)} · {formatVariantLabel(str(r.variant_type))} — {str(r.strongest_signal)}
                     </button>
                   </li>
                 ))}</ul>
@@ -547,7 +548,7 @@ export default function Dashboard() {
               <>
                 <Callout title="Interpret carefully">Mitigation may improve one metric while worsening another. Not a substitute for legal review.</Callout>
                 <DataTable rows={data.mitigation} columns={[
-                  { key: "variant_type", label: "Variant", render: (r) => str(r.variant_type).replace(/_/g, " ") },
+                  { key: "variant_type", label: "Variant", render: (r) => formatVariantLabel(str(r.variant_type)) },
                   { key: "baseline_legal_framing_bias_flag_rate", label: "Baseline", render: (r) => formatRate(r.baseline_legal_framing_bias_flag_rate) },
                   { key: "fairness_legal_framing_bias_flag_rate", label: "Fairness-aware", render: (r) => formatRate(r.fairness_legal_framing_bias_flag_rate) },
                   { key: "demographic_blind_legal_framing_bias_flag_rate", label: "Demographic-blind", render: (r) => formatRate(r.demographic_blind_legal_framing_bias_flag_rate) },

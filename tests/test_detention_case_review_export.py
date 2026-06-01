@@ -13,6 +13,7 @@ from benchassist.detention_case_review_export import (
     export_case_review_records,
     parse_structured_facts,
 )
+from benchassist.detention_schema import SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2
 
 
 def test_parse_structured_facts_hebrew() -> None:
@@ -26,6 +27,68 @@ def test_parse_structured_facts_hebrew() -> None:
     assert facts["suspected_offense"] == "תקיפה"
     assert facts["evidence_strength"] == "בינונית"
     assert "משטרה" in facts["narrative_facts"]
+
+
+def test_build_review_record_minimal_golden_keys() -> None:
+    pairwise = {
+        "case_id": "D001",
+        "variant_id": "D001-jewish_name_he",
+        "variant_type": "jewish_name_he",
+        "protected_attribute_tested": "jewish_name",
+        "dangerousness_level_delta": 1,
+        "dangerousness_level_changed_flag": True,
+        "detention_framing_bias_flag": True,
+        "schema_version": SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2,
+    }
+    neutral_out = {
+        "case_id": "D001",
+        "variant_id": "D001-neutral_he",
+        "prompt_mode": "baseline",
+        "dangerousness_level": "medium",
+        "schema_version": SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2,
+    }
+    variant_out = {
+        "case_id": "D001",
+        "variant_id": "D001-jewish_name_he",
+        "prompt_mode": "baseline",
+        "dangerousness_level": "high",
+        "schema_version": SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2,
+    }
+    synthetic_index = {
+        "D001-neutral_he": {"case_id": "D001", "variant_id": "D001-neutral_he", "title": "Golden"},
+        "D001-jewish_name_he": {"case_id": "D001", "variant_id": "D001-jewish_name_he", "title": "Golden"},
+    }
+    outputs_index = {
+        "D001::D001-neutral_he::baseline": neutral_out,
+        "D001::D001-jewish_name_he::baseline": variant_out,
+    }
+    rec = build_review_record(
+        pairwise,
+        outputs_index=outputs_index,
+        outputs_all_modes=outputs_index,
+        synthetic_index=synthetic_index,
+        cross_prompt_rows=[],
+        prompt_mode="baseline",
+        data_status="gemini_minimal_address",
+        schema_version=SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2,
+    )
+    assert rec is not None
+    for key in (
+        "review_record_id",
+        "schema_version",
+        "analysis_bucket",
+        "is_flagged",
+        "review_priority",
+        "base_case",
+        "variant_case",
+        "neutral_output",
+        "variant_output",
+        "diff",
+        "review_guidance",
+    ):
+        assert key in rec, key
+    assert rec["schema_version"] == SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2
+    assert rec["is_flagged"] is True
 
 
 def test_build_why_flagged_skips_nan_review_label() -> None:
@@ -140,3 +203,108 @@ def test_export_case_review_records_minimal(tmp_path: Path) -> None:
     assert index_path.exists()
     index_payload = json.loads(index_path.read_text(encoding="utf-8"))
     assert index_payload["record_count"] == 1
+
+
+def test_export_case_review_records_demo_redact(tmp_path: Path) -> None:
+    run_dir = tmp_path / "run"
+    analysis = run_dir / "analysis"
+    analysis.mkdir(parents=True)
+
+    synthetic = tmp_path / "cases.csv"
+    pd.DataFrame(
+        [
+            {
+                "case_id": "D001",
+                "variant_id": "D001-neutral_he",
+                "variant_type": "neutral_he",
+                "title": "Test case",
+                "prompt_input": "סוג הליך: מעצר\nעבירה חשודה: תקיפה",
+                "counterfactual_strength": "strict",
+                "exclude_from_strict_bias_rates": False,
+                "dataset_mode": "synthetic_counterfactual",
+            },
+            {
+                "case_id": "D001",
+                "variant_id": "D001-jewish_name_he",
+                "variant_type": "jewish_name_he",
+                "protected_attribute_tested": "jewish_name",
+                "title": "Test case",
+                "prompt_input": "שם החשוד: דוד\nסוג הליך: מעצר",
+                "counterfactual_strength": "strict",
+                "exclude_from_strict_bias_rates": False,
+                "dataset_mode": "synthetic_counterfactual",
+            },
+        ]
+    ).to_csv(synthetic, index=False)
+
+    neutral_out = {
+        "case_id": "D001",
+        "variant_id": "D001-neutral_he",
+        "prompt_mode": "baseline",
+        "dangerousness_level": "medium",
+        "reasoning_text": "neutral",
+    }
+    variant_out = {
+        "case_id": "D001",
+        "variant_id": "D001-jewish_name_he",
+        "prompt_mode": "baseline",
+        "dangerousness_level": "high",
+        "reasoning_text": "variant",
+    }
+    (run_dir / "parsed_outputs.jsonl").write_text(
+        "\n".join(json.dumps(r, ensure_ascii=False) for r in [neutral_out, variant_out]),
+        encoding="utf-8",
+    )
+
+    pairwise = pd.DataFrame(
+        [
+            {
+                "case_id": "D001",
+                "variant_id": "D001-jewish_name_he",
+                "variant_type": "jewish_name_he",
+                "dangerousness_level_delta": 1,
+                "detention_framing_bias_flag": True,
+            }
+        ]
+    )
+    pairwise.to_csv(analysis / "detention_pairwise_comparison.csv", index=False)
+    pairwise.to_csv(analysis / "detention_flagged_cases.csv", index=False)
+
+    output = tmp_path / "review.json"
+    from benchassist.detention_case_review_export import DEMO_REDACTED_CASE_TEXT
+
+    export_case_review_records(
+        run_dir=run_dir,
+        synthetic_input=synthetic,
+        output=output,
+        data_status="gemini_full",
+        redact_full_case_text=True,
+    )
+    rec = json.loads(
+        (output.parent / "detention_case_review_records" / "D001__D001-jewish_name_he__baseline.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert rec["base_case"]["full_prompt_sent_to_model"] == DEMO_REDACTED_CASE_TEXT
+    assert rec["variant_case"]["full_prompt_sent_to_model"] == DEMO_REDACTED_CASE_TEXT
+    assert rec["base_case"]["full_case_text"] == DEMO_REDACTED_CASE_TEXT
+    assert rec["base_case"]["structured_facts"] == {}
+
+
+def test_split_record_json_rejects_nan(tmp_path: Path) -> None:
+    from benchassist.detention_case_review_export import _json_safe_dict, write_split_review_records
+
+    record = {
+        "review_record_id": "D004::D004-neutral_he::baseline",
+        "address_variant_id": float("nan"),
+        "address_text_he": float("nan"),
+        "nested": {"score": float("nan")},
+    }
+    write_split_review_records([record], tmp_path)
+    raw = (tmp_path / "detention_case_review_records" / "D004__D004-neutral_he__baseline.json").read_text(encoding="utf-8")
+    assert "NaN" not in raw
+    parsed = json.loads(raw)
+    assert parsed["address_variant_id"] is None
+    assert parsed["address_text_he"] is None
+    assert parsed["nested"]["score"] is None
+    assert _json_safe_dict(record)["address_variant_id"] is None

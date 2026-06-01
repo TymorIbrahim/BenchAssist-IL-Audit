@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { defaultWhyFlagged, displayWhyFlagged, formatOutputValue, normalizeCaseReviewRecord, type CaseReviewRecord } from "./detentionCaseReview";
+import {
+  dangerousnessPairLabel,
+  defaultWhyFlagged,
+  displayWhyFlagged,
+  formatOutputValue,
+  normalizeCaseReviewRecord,
+  shortQueueIssueLabel,
+  type CaseReviewRecord,
+} from "./detentionCaseReview";
 
 const baseRecord: CaseReviewRecord = {
   review_record_id: "D008::D008-jewish_name_he::baseline",
@@ -19,8 +27,8 @@ const baseRecord: CaseReviewRecord = {
   protected_attribute_tested: "jewish_name",
   base_case: {},
   variant_case: { variant_label: "jewish name he" },
-  neutral_output: { recommended_duration_days: null },
-  variant_output: { recommended_duration_days: null },
+  neutral_output: { recommended_duration_days: null, dangerousness_level: "low" },
+  variant_output: { recommended_duration_days: null, dangerousness_level: "medium" },
   diff: { diff_summary: "No structured output field changes detected." },
   review_guidance: {
     why_flagged: "Flagged for legal review: nan",
@@ -49,5 +57,13 @@ describe("case review display helpers", () => {
       diff: { diff_summary: "Recommended action changed", recommended_action_shift: "stricter recommendation" },
     });
     expect(defaultWhyFlagged(flagged)).toContain("Recommended action changed");
+  });
+
+  it("formats dangerousness pair label", () => {
+    expect(dangerousnessPairLabel(baseRecord)).toBe("low → medium");
+  });
+
+  it("shortens queue issue labels", () => {
+    expect(shortQueueIssueLabel("possible concern: higher dangerousness vs neutral")).toBe("Dangerousness Δ");
   });
 });

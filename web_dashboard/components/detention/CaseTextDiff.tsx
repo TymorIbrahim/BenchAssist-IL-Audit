@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { diffHasChanges, diffLines, type DiffLine } from "@/lib/textDiff";
 import { dirForText } from "@/lib/detentionCaseReview";
 
@@ -36,8 +37,9 @@ function DiffLineRow({ line }: { line: DiffLine }) {
 }
 
 export function CaseTextDiff({ baseText, variantText }: { baseText: string; variantText: string }) {
-  const lines = diffLines(baseText, variantText);
-  const hasChanges = diffHasChanges(lines);
+  const lines = useMemo(() => diffLines(baseText, variantText), [baseText, variantText]);
+  const hasChanges = useMemo(() => diffHasChanges(lines), [lines]);
+  const changedLines = useMemo(() => lines.filter((l) => l.kind !== "same"), [lines]);
   const dir = dirForText(baseText || variantText);
 
   if (!hasChanges) {
@@ -48,11 +50,11 @@ export function CaseTextDiff({ baseText, variantText }: { baseText: string; vari
     <div className="text-diff-panel" dir={dir}>
       <p className="muted text-diff-caption">Line-level diff — changed lines highlighted. Legally relevant facts are intended to remain constant in strict counterfactuals.</p>
       <div className="text-diff-lines">
-        {lines.filter((l) => l.kind !== "same").slice(0, 40).map((line, i) => (
+        {changedLines.slice(0, 40).map((line, i) => (
           <DiffLineRow key={`${line.kind}-${i}`} line={line} />
         ))}
       </div>
-      {lines.filter((l) => l.kind !== "same").length > 40 ? (
+      {changedLines.length > 40 ? (
         <p className="muted">Showing first 40 changed lines. Open full case text below for complete view.</p>
       ) : null}
     </div>

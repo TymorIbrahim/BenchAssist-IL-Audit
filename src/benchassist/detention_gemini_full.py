@@ -11,7 +11,9 @@ from benchassist.detention_gemini_runner import run_detention_gemini_audit
 
 def run_full(config, *, resume: bool = False):
     if not config.is_full_run:
-        raise RuntimeError(f"Refusing: config run_type is '{config.run_type}', expected 'full'.")
+        raise RuntimeError(
+            f"Refusing: config run_type is '{config.run_type}', expected full, expanded_full, or expanded_minimal_address."
+        )
     return run_detention_gemini_audit(config, resume=resume)
 
 

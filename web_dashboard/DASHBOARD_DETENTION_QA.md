@@ -1,6 +1,6 @@
 # BenchAssist-IL Detention Dashboard QA Checklist
 
-Manual QA for the v3 expert-facing detention audit dashboard.
+Manual QA for the **slim** expert-facing detention audit dashboard (7 tabs, minimal dangerousness schema).
 
 ## Build & runtime
 
@@ -8,156 +8,104 @@ Manual QA for the v3 expert-facing detention audit dashboard.
 - [ ] `npm run lint` passes
 - [ ] `npm run build` passes
 - [ ] `npm test` passes (vitest unit tests)
-- [ ] `npm run test:e2e` passes (Playwright smoke tests; requires build first)
+- [ ] `npm run validate:data` passes (no literal `NaN` in export JSON)
+- [ ] `npm run test:e2e` passes (Playwright; requires build first)
 - [ ] `npm run dev` → http://localhost:3000 loads without console errors
 - [ ] No Python backend, `.env`, or API keys required at runtime
+- [ ] From repo root: `make dashboard-qa` and `python -m benchassist.validate_dashboard_export --data-dir web_dashboard/public/data`
 
-## Information architecture (8 tabs)
+## Information architecture (7 tabs)
 
-- [ ] **Home** — research story, hero, timeline, examples, audit method diagram, readiness, **Start expert review** CTA, **export metadata & provenance** panel
-- [ ] **Audit Results** — summary cards, takeaways, **executive findings cards**, findings by issue, charts, group summary, variant matrix
-- [ ] **Case Review** — unified expert workspace (queue, comparison, checklist, packet, progress)
-- [ ] **Mitigation** — prompt mode cards, **cross-prompt field heatmap**, or clear empty state
-- [ ] **Real Cases** — source browser + RTL full-text viewer + **add to review packet**
-- [ ] **Legal Reliability** — grounding, unsupported inference, statistical tables
-- [ ] **Reports** — search, filter by type, Markdown render, download
-- [ ] **Methodology** — layers, examples, expandable limitations
-- [ ] Legacy **Expert Workspace** tab URL redirects to Case Review
-- [ ] Sticky tab navigation shows active section
-- [ ] URL updates on tab / filter / case (`?tab=case-review&review_id=…&cr_base=…&cr_variant=…`)
-- [ ] URL does **not** change on scroll alone
-- [ ] Legacy URLs (`?tab=overview`, `?tab=findings`) redirect to new tabs
+- [ ] **Home** — research story, readiness, **Start expert review**, export metadata & provenance (git commit, flagging policy when exported)
+- [ ] **Audit Results** — dangerousness-focused metrics, executive findings, variant matrix, address-proxy bucket callouts
+- [ ] **Case Review** — queue, comparison, checklist, packet summary, cross-prompt strip, prefetch on navigation
+- [ ] **Mitigation** — prompt mode cards and cross-prompt heatmap (or clear empty state)
+- [ ] **Validity** — strict vs address-proxy; CTAs open Case Review with filters
+- [ ] **Reports** — search, filter, Markdown render, download
+- [ ] **Methodology** — flagging policy card, minimal schema, limitations
+- [ ] Legacy tab URLs redirect (e.g. `overview` → Home, `findings` → Audit Results, `expert-workspace` → Case Review)
+- [ ] URL updates on tab / review selection (`?tab=case-review&review_id=…`); does **not** change on scroll alone
 
-## Safety & disclaimers (reduced clutter)
+## Removed / out of scope (slim product)
 
-- [ ] **No repeated disclaimer banners** on every section
-- [ ] **Status strip** shows data mode, strict fairness source, access control
-- [ ] **SafetyContextBar** chips visible (Research only, Not legal advice, etc.)
-- [ ] **Why this matters** drawer opens from chips / button
-- [ ] Full-text access-control note in drawer when full text exported
-- [ ] One-line contextual notes on pages (not wall-of-text)
-- [ ] No forbidden language (“bias proven”, “discriminatory”, “illegal”, etc.)
+- [ ] No **Real Cases** tab or full-text source browser in this build
+- [ ] No **Legal Reliability** tab (identity/grounding tables were housing-era / full-schema)
+- [ ] No **Run Comparison** or **Identity Audit** legacy panels
 
-## Home / research story
+## Safety & disclaimers
 
-- [ ] Hero with title, subtitle, badges, single clean note
-- [ ] Research question card visible
-- [ ] **Why this matters** expandable section works
-- [ ] **Process timeline** (8 steps) with links to sections
-- [ ] **Concrete examples** (base case, variant, output, comparison)
-- [ ] **Audit method diagram** (synthetic lane + real-case lane)
-- [ ] Readiness panel: “Dashboard ready for expert review”
-- [ ] Export metadata shows git commit, split-export note, pairwise dedupe note when present
+- [ ] **SafetyContextBar** chips visible (research only, not legal advice)
+- [ ] No forbidden conclusion language (“bias proven”, “discriminatory”, “illegal”, etc.)
+- [ ] Status strip shows data mode and access posture
+- [ ] Full-text deployments require access control; demo export uses `--demo-redact-case-text`
+
+## Home
+
+- [ ] Hero, research question, audit method diagram
+- [ ] Export metadata panel: row counts, dedupe note, optional `flagging_policy` / `dashboard_export_profile`
+- [ ] **Start expert review** opens Case Review with focus + first high-priority flagged case
 
 ## Audit Results
 
-- [ ] Layer 1: summary metric cards with ⓘ tooltips
-- [ ] Layer 2: key takeaway cards + **executive findings** + findings grouped by legal issue
-- [ ] Executive findings and findings-by-issue render from **review index** before full records load
-- [ ] “Review these cases” links open Case Review Workspace with filters pre-set
-- [ ] Variant matrix **Open in Case Review** sets `cr_base`, `cr_variant`, and `review_id` when index entry exists
-- [ ] Layer 3: filters (via sticky filter bar on tab)
-- [ ] Layer 4: bar chart + group summary cards
-- [ ] Mock/Gemini full labels unobtrusive but clear
+- [ ] Summary cards and takeaways reflect **dangerousness** as primary signal
+- [ ] “Review these cases” / matrix **Open in Case Review** set `review_id` and filters
+- [ ] Address-proxy metrics labeled separately from strict demographic rates
 
-## Case Review Workspace (legal expert)
+## Case Review Workspace
 
-- [ ] `detention_case_review_index.json` loads on initial page load (lightweight queue metadata with `search_blob`, `issue_flags`)
-- [ ] Full review records lazy-load in background (split per-record JSON under `detention_case_review_records/`)
-- [ ] Review queue shows all review records with filters
-- [ ] Search matches memo text / reasoning via index `search_blob` when records loaded
-- [ ] Filters work: priority, variant, base scenario, local review state, focus mode, **flagged-only**
-- [ ] **Mobile tab bar** (Queue / Comparison / Checklist) on narrow screens
-- [ ] Base vs variant facts visible (full case text + structured facts)
-- [ ] **Inline Hebrew text diff** between base and variant case text
-- [ ] Full prompt viewer works (collapsible, reconstruction / exact-prompt status shown)
-- [ ] **Cross-prompt comparison panel** (baseline vs mitigation modes when exported)
-- [ ] Model output comparison side-by-side with diff indicators
-- [ ] Changed fields highlighted (unchanged / changed / increased risk / omitted)
-- [ ] Difference summary + why flagged panel visible
-- [ ] **Reasoning excerpt** panel for long model outputs
-- [ ] Legal expert checklist works (Yes / No / —)
-- [ ] Review decision dropdown persists locally
-- [ ] Local notes persist in localStorage
-- [ ] Add/remove from review packet works (synthetic + real cases)
-- [ ] Packet export JSON / CSV / Markdown includes diffs + checklist + notes
-- [ ] **Review progress panel** (reviewed / flagged / packet counts; shows during lazy load)
-- [ ] **Review state backup** import/export (JSON)
-- [ ] **Keyboard navigation**: ↑/↓ or j/k to move queue selection
-- [ ] Focus review mode shows high-priority flagged only
-- [ ] Empty state shows export command when JSON missing
-- [ ] Prompt text marked as `reconstructed_from_prompt_builder` for existing runs; `exact_prompt_logged` on future runs
+- [ ] `detention_case_review_index.json` on first load; split records lazy-loaded
+- [ ] Deep link `?review_id=` loads single record without blocking on full queue
+- [ ] Adjacent queue records prefetched (±3) when browsing
+- [ ] Quick filters: flagged only, high priority, strict demographic, address proxy, unreviewed
+- [ ] Audit signal (dangerousness Δ) prominent; fact-preservation callout on diffs
+- [ ] **Cross-prompt dangerousness strip** when multi-mode export present
+- [ ] **Packet panel** summary table + open-in-review actions
+- [ ] Hebrew case titles use correct `dir` when RTL
+- [ ] Checklist, local notes, packet export (JSON/CSV/Markdown)
+- [ ] Keyboard ↑/↓ or j/k for queue navigation
+- [ ] Empty state shows export command when data missing
 
-## Start expert review flow
+## Mitigation & Validity
 
-- [ ] Home **Start expert review** opens Case Review with focus mode + first high-priority flagged case selected after lazy load
+- [ ] Mitigation heatmap or empty state with export hint
+- [ ] Validity page buttons open Case Review with `flaggedOnly` / `analysisBucket` presets
 
-## Real Case Review
+## Reports & Methodology
 
-- [ ] Source browser + metadata (stage, expert approval, sensitive flag)
-- [ ] RTL Hebrew typography, expand/collapse, keyword chips
-- [ ] “Excluded from strict rates” badge
-- [ ] Local notes persist in localStorage
-- [ ] Copy source summary
-- [ ] **Add to / remove from review packet** (browser-local)
+- [ ] Reports searchable and downloadable
+- [ ] Methodology documents dangerousness-only flagging and links to `docs/detention_flagging_policy.md`
 
-## Mitigation / Legal Reliability
+## Performance
 
-- [ ] Mitigation side-by-side prompt mode cards
-- [ ] **Cross-prompt field instability heatmap** when cross-prompt comparisons exported
-- [ ] Legal reliability grouped by legal field
-- [ ] Statistical tables show exploratory interpretation caveats
-- [ ] Empty states explain missing data + export command
-
-## Reports
-
-- [ ] Report cards + search + type filter
-- [ ] Markdown renders; download works
-- [ ] QA / analysis / review packet reports findable
-
-## Guided tour & presentation
-
-- [ ] **Start here** guided tour (6 steps)
-- [ ] **Presentation mode** — research question, method, metrics, findings, example, limitations
-- [ ] Presentation hides dense triage tables (overlay mode)
-
-## Metric tooltips
-
-- [ ] Dangerousness shift, identity leakage, unsupported inference, strict fairness explained
-
-## Accessibility & responsive
-
-- [ ] Tab keyboard focus visible
-- [ ] Tables scroll on narrow screens
-- [ ] Case review uses mobile tab bar on narrow screens; stacks on tablet
-- [ ] Loading screen while data fetches
-
-## Housing fallback
-
-- [ ] `manifest.use_case !== "detention"` still loads housing dashboard
+- [ ] Initial load does **not** fetch all split review JSON files
+- [ ] Tab panels and charts code-split (`next/dynamic`)
+- [ ] Manifest fetched once from server (`initialManifest` on dashboard shell)
 
 ## Commands
 
 ```bash
-cd web_dashboard
-npm install && npm run lint && npm test && npm run build && npm run test:e2e
+# Full export (expert review with case text):
+python -m benchassist.vercel_export --use-case detention \
+  --run-dir results/gemini/detention_expanded_minimal_address \
+  --data-status gemini_minimal_address
 
-# Refresh full Gemini export (repo root; no new model run):
-python -m benchassist.vercel_export --auto --use-case detention --run-dir results/gemini/detention_full --data-status gemini_full
+# Public demo preview (omits full case text in review JSON):
+python -m benchassist.vercel_export --use-case detention \
+  --run-dir results/gemini/detention_expanded_minimal_address \
+  --data-status gemini_minimal_address \
+  --demo-redact-case-text
 
-python -m benchassist.validate_dashboard_export --data-dir web_dashboard/public/data
-
-python -m pytest
+cd web_dashboard && npm install && npm test && npm run validate:data && npm run build && npm run test:e2e
+python -m pytest tests/test_detention_flagging_policy.py tests/test_detention_case_review_export.py -q
 ```
 
 ## Known limitations
 
-- Full side-by-side memo text requires per-case model output in export (deltas work from analysis)
-- Some statistical columns may use legacy housing-era names when reusing shared exports
+- Flagging is **dangerousness_level change only** for minimal schema exports
+- Cross-prompt panel needs multi-mode outputs in export
 - Review notes and packet state are browser-local only
-- Cross-prompt panel needs multi-mode outputs in export; single-mode runs show empty state
-- Existing Gemini run prompts are reconstructed; exact prompts logged on future runner executions
+- Existing Gemini runs may show reconstructed prompts until runner logs exact prompts
 
 ## Ready for legal-expert review?
 
-After this checklist passes on exported Gemini full data: **Yes** — deploy only behind access control if full text is included.
+After this checklist passes on a **full** export (not demo-redacted): **Yes** — deploy only behind access control when case text is included.

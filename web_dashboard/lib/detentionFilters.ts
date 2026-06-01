@@ -1,5 +1,5 @@
 import type { JsonRecord } from "./types";
-import { str, toBool } from "./format";
+import { str, toBool, matchesReviewPriority } from "./format";
 
 export interface DetentionFilterState {
   promptMode: string;
@@ -42,7 +42,7 @@ export function filterDetentionRows(rows: JsonRecord[], filters: DetentionFilter
     if (filters.protectedAttribute && str(row.protected_attribute_tested) !== filters.protectedAttribute) return false;
     if (filters.baseScenario && str(row.case_id) !== filters.baseScenario && str(row.base_scenario_id) !== filters.baseScenario) return false;
     if (filters.issueType && !str(row.issue_type).includes(filters.issueType) && !str(row.review_label).includes(filters.issueType)) return false;
-    if (filters.reviewPriority && str(row.review_priority) !== filters.reviewPriority) return false;
+    if (filters.reviewPriority && !matchesReviewPriority(row.review_priority, filters.reviewPriority)) return false;
     if (filters.caseStage && str(row.likely_case_stage) !== filters.caseStage && str(row.detention_subtype) !== filters.caseStage) return false;
     if (filters.realVsSynthetic === "real") {
       const isReal = toBool(row.exclude_from_strict_bias_rates) || str(row.dataset_mode) === "real_case_inspired";

@@ -13,6 +13,11 @@ export interface Manifest {
   prompt_mode: string;
   prompt_modes: string[];
   schema_versions: string[];
+  schema_version?: string;
+  expanded_run?: boolean;
+  minimal_address_run?: boolean;
+  cross_prompt_material_instability_count?: number;
+  cross_prompt_wording_only_count?: number;
   base_cases: number | null;
   counterfactual_variants: number | null;
   flagged_cases: number | null;
@@ -41,9 +46,20 @@ export interface Manifest {
   full_text_export_warnings?: string[];
   export_provenance?: {
     git_commit?: string;
+    export_git_sha?: string;
+    parent_run_id?: string;
+    corpus_version?: string;
+    flagging_policy?: string;
+    flagging_policy_doc?: string;
+    dashboard_export_profile?: string;
     pairwise_unique_note?: string;
+    headline_metrics_note?: string;
     case_review_split?: boolean;
   };
+  export_completeness_score?: number;
+  critical_exports_ok?: boolean;
+  deploy_blocked?: boolean;
+  missing_optional_files_detail?: Array<{ file: string; tabs_affected: string; effect: string }>;
 }
 
 export interface OverviewMetrics {

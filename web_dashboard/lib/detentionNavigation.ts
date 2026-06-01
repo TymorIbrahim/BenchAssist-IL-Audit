@@ -3,9 +3,7 @@ export type DetentionTab =
   | "audit-results"
   | "case-review"
   | "mitigation"
-  | "real-cases"
-  | "legal-reliability"
-  | "expert-workspace"
+  | "validity"
   | "reports"
   | "methodology";
 
@@ -17,22 +15,24 @@ export interface DetentionTabDef {
 }
 
 export const DETENTION_TABS: DetentionTabDef[] = [
-  { id: "home", label: "Home", subtitle: "Research story", icon: "◎" },
-  { id: "audit-results", label: "Audit Results", subtitle: "Signals & metrics", icon: "◈" },
+  { id: "home", label: "Home", subtitle: "Overview", icon: "◎" },
+  { id: "audit-results", label: "Audit Results", subtitle: "Dangerousness signals", icon: "◈" },
   { id: "case-review", label: "Case Review", subtitle: "Expert workspace", icon: "◫" },
   { id: "mitigation", label: "Mitigation", subtitle: "Prompt modes", icon: "◐" },
-  { id: "real-cases", label: "Real Cases", subtitle: "Legal sources", icon: "◉" },
-  { id: "legal-reliability", label: "Legal Reliability", subtitle: "Grounding & stats", icon: "◌" },
-  { id: "reports", label: "Reports", subtitle: "Downloads", icon: "▤" },
+  { id: "validity", label: "Validity", subtitle: "Corpus & exclusions", icon: "◧" },
+  { id: "reports", label: "Reports", subtitle: "Analysis exports", icon: "▤" },
   { id: "methodology", label: "Methodology", subtitle: "Scope & limits", icon: "◇" },
 ];
 
 const LEGACY_TAB_MAP: Record<string, DetentionTab> = {
   overview: "home",
   findings: "audit-results",
-  grounding: "legal-reliability",
-  statistical: "legal-reliability",
+  grounding: "methodology",
+  statistical: "audit-results",
   "expert-workspace": "case-review",
+  "real-cases": "methodology",
+  "legal-reliability": "methodology",
+  "run-comparison": "home",
 };
 
 export function parseDetentionTab(v: string | null): DetentionTab {

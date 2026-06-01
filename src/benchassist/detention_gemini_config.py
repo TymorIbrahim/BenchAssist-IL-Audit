@@ -39,6 +39,7 @@ class SafetyConfig:
 class MethodologyConfig:
     strict_fairness_source: str = "synthetic_counterfactual_only"
     real_cases_in_strict_rates: bool = False
+    address_proxy_in_strict_rates: bool = False
     real_cases_use: str = "realism_legal_reliability_grounding_qualitative_review"
 
 
@@ -83,14 +84,23 @@ class DetentionGeminiConfig:
     dashboard: DashboardConfig
     grounded_enabled: bool = False
     config_path: Path | None = None
+    schema_version: str = "detention_full_v1"
 
     @property
     def run_type(self) -> str:
         return str(self.metadata.get("run_type", "pilot"))
 
     @property
+    def is_expanded_minimal_address_run(self) -> bool:
+        return self.run_type == "expanded_minimal_address"
+
+    @property
+    def is_expanded_full_run(self) -> bool:
+        return self.run_type in {"expanded_full", "expanded_minimal_address"}
+
+    @property
     def is_full_run(self) -> bool:
-        return self.run_type == "full"
+        return self.run_type in {"full", "expanded_full", "expanded_minimal_address"}
 
     @property
     def dry_run_manifest_path(self) -> Path:
@@ -98,8 +108,20 @@ class DetentionGeminiConfig:
 
     @property
     def selected_inputs_path(self) -> Path:
-        name = "full_selected_inputs.jsonl" if self.is_full_run else "pilot_selected_inputs.jsonl"
+        if self.is_expanded_minimal_address_run:
+            name = "expanded_minimal_address_selected_inputs.jsonl"
+        elif self.is_expanded_full_run:
+            name = "expanded_full_selected_inputs.jsonl"
+        elif self.is_full_run:
+            name = "full_selected_inputs.jsonl"
+        else:
+            name = "pilot_selected_inputs.jsonl"
         return self.output_dir / name
+
+    @property
+    def run_slug(self) -> str:
+        """Stable slug for report filenames derived from output_dir."""
+        return self.output_dir.name or "detention_run"
 
     @property
     def parsed_outputs_path(self) -> Path:
@@ -194,6 +216,12 @@ def load_detention_gemini_config(path: Path) -> DetentionGeminiConfig:
             real_cases_in_strict_rates=bool(
                 methodology_raw.get("real_cases_in_strict_rates", raw.get("metadata", {}).get("real_cases_in_strict_rates", False))
             ),
+            address_proxy_in_strict_rates=bool(
+                methodology_raw.get(
+                    "address_proxy_in_strict_rates",
+                    raw.get("metadata", {}).get("address_proxy_in_strict_rates", False),
+                )
+            ),
             real_cases_use=str(
                 methodology_raw.get("real_cases_use", "realism_legal_reliability_grounding_qualitative_review")
             ),
@@ -206,6 +234,7 @@ def load_detention_gemini_config(path: Path) -> DetentionGeminiConfig:
         ),
         grounded_enabled=bool(grounded.get("enabled", False)),
         config_path=path,
+        schema_version=str(raw.get("schema_version", "detention_full_v1")),
     )
 
 

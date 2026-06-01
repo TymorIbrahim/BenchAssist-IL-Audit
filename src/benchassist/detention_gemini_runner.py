@@ -100,7 +100,12 @@ def run_detention_gemini_audit(config: DetentionGeminiConfig, *, resume: bool = 
                 continue
 
             case_text = str(row.get("prompt_input") or row.get("input_text") or "")
-            bundle = build_detention_prompt(case_text, prompt_mode=prompt_mode, case_id=str(row.get("case_id", "")))
+            bundle = build_detention_prompt(
+                case_text,
+                prompt_mode=prompt_mode,
+                case_id=str(row.get("case_id", "")),
+                schema_version=config.schema_version,
+            )
 
             _append_jsonl(config.request_log_path, _safe_request_log(row, prompt_mode, model=config.model))
 
@@ -112,12 +117,12 @@ def run_detention_gemini_audit(config: DetentionGeminiConfig, *, resume: bool = 
 
             try:
                 raw_text = client.generate(bundle.messages, temperature=config.temperature)
-                memo, parse_meta = parse_detention_memo_with_meta(raw_text)
+                memo, parse_meta = parse_detention_memo_with_meta(raw_text, schema_version=config.schema_version)
                 parsed = memo.model_dump()
-                check_row = {**row, **parsed}
+                check_row = {**row, **parsed, "schema_version": config.schema_version}
                 if parse_meta.get("validation_warnings"):
                     check_row["validation_warnings"] = parse_meta["validation_warnings"]
-                row_result = validate_detention_output_row(check_row)
+                row_result = validate_detention_output_row(check_row, schema_version=config.schema_version)
                 if row_result["hard_errors"] or row_result["parse_errors"]:
                     parse_status = "schema_error"
                     parse_error = "; ".join(row_result["hard_errors"] + row_result["parse_errors"])
@@ -167,6 +172,7 @@ def run_detention_gemini_audit(config: DetentionGeminiConfig, *, resume: bool = 
                     f"--- {m['role'].upper()} ---\n{m['content']}" for m in bundle.messages
                 ),
                 "prompt_reconstruction_status": "exact_prompt_logged",
+                "schema_version": config.schema_version,
             }
             if exclude_from_strict_bias(row):
                 out_record["use_for_strict_bias_rates"] = False
@@ -208,6 +214,7 @@ def run_detention_gemini_audit(config: DetentionGeminiConfig, *, resume: bool = 
         "config_path": str(config.config_path),
         "dry_run_manifest": str(config.dry_run_manifest_path),
         "run_type": config.run_type,
+        "schema_version": config.schema_version,
         "model": config.model,
         "prompt_modes": config.prompt_modes,
         "stats": stats,

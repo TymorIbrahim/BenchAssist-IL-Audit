@@ -1,4 +1,4 @@
-import { coerceStringList, str, textDir, toBool } from "./format";
+import { coerceStringList, str, textDir, toBool, matchesReviewPriority } from "./format";
 import type { JsonRecord } from "./types";
 
 export function normalizeIssueTypes(value: unknown): string[] {
@@ -132,8 +132,17 @@ export interface CrossPromptBlock {
     fields_changed?: string[];
     n_fields_changed?: number;
     cross_prompt_instability_flag?: boolean;
+    reasoning_only_change?: boolean;
     review_note?: string;
   }[];
+}
+
+export interface ValidityContextBlock {
+  fact_preservation_score?: number | null;
+  validity_category?: string | null;
+  exclude_from_strict_bias_rates?: boolean | string | null;
+  strict_exclusion_reason?: string | null;
+  gold_label_applied?: boolean | string | null;
 }
 
 export interface CaseReviewRecord {
@@ -152,18 +161,21 @@ export interface CaseReviewRecord {
   issue_types: string[];
   variant_type: string;
   protected_attribute_tested: string;
+  analysis_bucket?: "strict_demographic" | "address_proxy";
   base_case: CaseReviewSide;
   variant_case: CaseReviewSide;
   neutral_output: ModelOutputBlock;
   variant_output: ModelOutputBlock;
   diff: CaseReviewDiff;
   cross_prompt?: CrossPromptBlock;
+  validity_context?: ValidityContextBlock;
   review_guidance: {
     why_flagged: string;
     plain_language_summary: string;
     legal_review_questions: string[];
     caution_note: string;
   };
+  schema_version?: string;
 }
 
 export interface CaseReviewIndexEntry {
@@ -179,6 +191,7 @@ export interface CaseReviewIndexEntry {
   is_flagged: boolean;
   issue_types: string[];
   protected_attribute_tested?: string;
+  analysis_bucket?: "strict_demographic" | "address_proxy";
   why_flagged_short?: string;
   search_blob?: string;
   issue_flags?: {
@@ -205,6 +218,8 @@ export interface CaseReviewPayload {
   records: CaseReviewRecord[];
 }
 
+export type AnalysisBucket = "strict_demographic" | "address_proxy";
+
 export interface CaseReviewFilters {
   search: string;
   reviewPriority: string;
@@ -213,6 +228,7 @@ export interface CaseReviewFilters {
   variantType: string;
   baseCaseId: string;
   protectedAttribute: string;
+  analysisBucket: "" | AnalysisBucket;
   strictEligible: string;
   identityLeakage: string;
   unsupportedInference: string;
@@ -230,6 +246,7 @@ export const DEFAULT_CASE_REVIEW_FILTERS: CaseReviewFilters = {
   variantType: "",
   baseCaseId: "",
   protectedAttribute: "",
+  analysisBucket: "",
   strictEligible: "",
   identityLeakage: "",
   unsupportedInference: "",
@@ -246,6 +263,29 @@ export const REVIEW_DECISION_OPTIONS: { value: ReviewDecision; label: string }[]
   { value: "include_in_report", label: "Reviewed — include in report" },
   { value: "needs_discussion", label: "Needs discussion with legal team" },
 ];
+
+export const MINIMAL_DETENTION_SCHEMA_VERSION = "detention_minimal_dangerousness_v2";
+export const MINIMAL_OUTPUT_FIELD_KEYS: (keyof ModelOutputBlock)[] = [
+  "case_summary",
+  "dangerousness_level",
+  "reasoning_text",
+];
+export const LEGACY_METRICS_NOT_APPLICABLE = "not_applicable_under_minimal_dangerousness_schema";
+
+export function isMinimalDetentionSchema(schemaVersion?: string | null): boolean {
+  return str(schemaVersion) === MINIMAL_DETENTION_SCHEMA_VERSION;
+}
+
+export function isAddressProxyVariant(record: Pick<CaseReviewRecord, "protected_attribute_tested" | "variant_type">): boolean {
+  return record.protected_attribute_tested === "address_proxy" || str(record.variant_type).startsWith("address_");
+}
+
+export function outputComparisonRowsForSchema(schemaVersion?: string | null) {
+  if (isMinimalDetentionSchema(schemaVersion)) {
+    return OUTPUT_COMPARISON_ROWS.filter((row) => MINIMAL_OUTPUT_FIELD_KEYS.includes(row.key));
+  }
+  return OUTPUT_COMPARISON_ROWS;
+}
 
 export const OUTPUT_COMPARISON_ROWS: { key: keyof ModelOutputBlock; label: string; list?: boolean }[] = [
   { key: "case_summary", label: "Case summary" },
@@ -275,9 +315,31 @@ export const ISSUE_EXPLANATIONS: Record<string, string> = {
   duration: "Shows whether recommended detention duration increased between neutral and variant.",
   alternatives: "Flags outputs where less restrictive alternatives appeared in one version but not the other.",
   safeguards: "Flags outputs where procedural safeguards appeared in one version but not the other.",
-  identity: "Flags text where identity, language, nationality, or proxy traits may have entered the reasoning.",
-  unsupported: "Flags possible risk inferences that may not be supported by the stated legal facts.",
+  identity: "Informational only in minimal-schema runs — reasoning may reference variant presentation without changing dangerousness.",
+  unsupported: "Informational only in minimal-schema runs — possible inference language in reasoning without a dangerousness shift.",
 };
+
+const ALL_ISSUE_GROUPS: { key: string; label: string; explanation: string; matchRecord: (r: CaseReviewRecord) => boolean }[] = [
+  { key: "dangerousness", label: "Dangerousness shifts", explanation: ISSUE_EXPLANATIONS.dangerousness, matchRecord: (r) => Boolean(r.diff.dangerousness_shift) },
+  { key: "obstruction", label: "Obstruction-risk shifts", explanation: ISSUE_EXPLANATIONS.obstruction, matchRecord: (r) => Boolean(r.diff.obstruction_risk_shift) },
+  { key: "recommended_action", label: "Recommended-action shifts", explanation: ISSUE_EXPLANATIONS.recommended_action, matchRecord: (r) => Boolean(r.diff.recommended_action_shift) },
+  { key: "duration", label: "Detention-duration shifts", explanation: ISSUE_EXPLANATIONS.duration, matchRecord: (r) => Boolean(r.diff.duration_shift) },
+  { key: "alternatives", label: "Omitted alternatives", explanation: ISSUE_EXPLANATIONS.alternatives, matchRecord: (r) => toBool(r.diff.alternatives_omitted) },
+  { key: "safeguards", label: "Omitted safeguards", explanation: ISSUE_EXPLANATIONS.safeguards, matchRecord: (r) => toBool(r.diff.procedural_safeguards_omitted) },
+  { key: "identity", label: "Identity/proxy leakage", explanation: ISSUE_EXPLANATIONS.identity, matchRecord: (r) => toBool(r.diff.identity_leakage_flag) },
+  { key: "unsupported", label: "Unsupported risk inference", explanation: ISSUE_EXPLANATIONS.unsupported, matchRecord: (r) => toBool(r.diff.unsupported_risk_inference_flag) },
+];
+
+const MINIMAL_ISSUE_KEYS = new Set(["dangerousness"]);
+
+export function issueGroupKeysForSchema(schemaVersion?: string | null): Set<string> {
+  return isMinimalDetentionSchema(schemaVersion) ? MINIMAL_ISSUE_KEYS : new Set(ALL_ISSUE_GROUPS.map((g) => g.key));
+}
+
+export function issueGroupsForSchema(schemaVersion?: string | null) {
+  const allowed = issueGroupKeysForSchema(schemaVersion);
+  return ALL_ISSUE_GROUPS.filter((g) => allowed.has(g.key));
+}
 
 export function caseReviewKey(record: CaseReviewRecord | JsonRecord): string {
   return str(record.review_record_id) || `${str(record.base_case_id)}::${str(record.variant_id)}::${str(record.prompt_mode) || "baseline"}`;
@@ -356,6 +418,48 @@ export function outputDiffIndicator(
   return { changed: true, signal: "Changed", tone: "changed" };
 }
 
+export function matchesCaseReviewIssueKey(record: CaseReviewRecord, issueKey: string): boolean {
+  if (!issueKey) return true;
+  const d = record.diff;
+  switch (issueKey) {
+    case "dangerousness":
+      return Boolean(d.dangerousness_shift);
+    case "obstruction":
+      return Boolean(d.obstruction_risk_shift);
+    case "recommended_action":
+      return Boolean(d.recommended_action_shift);
+    case "duration":
+      return Boolean(d.duration_shift);
+    case "alternatives":
+      return toBool(d.alternatives_omitted);
+    case "safeguards":
+      return toBool(d.procedural_safeguards_omitted);
+    case "identity":
+      return toBool(d.identity_leakage_flag);
+    case "unsupported":
+      return toBool(d.unsupported_risk_inference_flag);
+    default:
+      return record.issue_types.some((t) => t.toLowerCase().includes(issueKey.toLowerCase()));
+  }
+}
+
+export function pickReviewRecordId(
+  recordIds: string[],
+  filters: Partial<CaseReviewFilters>,
+  index: CaseReviewIndexEntry[] = [],
+): string | null {
+  if (!recordIds.length) return null;
+  const promptMode = filters.promptMode;
+  if (promptMode) {
+    const fromIndex = recordIds.find((id) => {
+      const entry = index.find((e) => e.review_record_id === id);
+      return entry ? str(entry.prompt_mode || "baseline") === promptMode : id.endsWith(`::${promptMode}`);
+    });
+    if (fromIndex) return fromIndex;
+  }
+  return recordIds[0] ?? null;
+}
+
 export function filterCaseReviewRecords(
   records: CaseReviewRecord[],
   filters: CaseReviewFilters,
@@ -366,12 +470,18 @@ export function filterCaseReviewRecords(
     rows = rows.filter((r) => r.is_flagged && (r.review_priority === "high" || r.review_priority === "medium"));
   }
   if (filters.flaggedOnly) rows = rows.filter((r) => r.is_flagged);
-  if (filters.reviewPriority) rows = rows.filter((r) => r.review_priority === filters.reviewPriority);
-  if (filters.issueType) rows = rows.filter((r) => r.issue_types.some((t) => t.toLowerCase().includes(filters.issueType.toLowerCase())));
+  if (filters.reviewPriority) rows = rows.filter((r) => matchesReviewPriority(r.review_priority, filters.reviewPriority));
+  if (filters.issueType) rows = rows.filter((r) => matchesCaseReviewIssueKey(r, filters.issueType));
   if (filters.promptMode) rows = rows.filter((r) => r.prompt_mode === filters.promptMode);
   if (filters.variantType) rows = rows.filter((r) => r.variant_type === filters.variantType);
   if (filters.baseCaseId) rows = rows.filter((r) => r.base_case_id === filters.baseCaseId);
   if (filters.protectedAttribute) rows = rows.filter((r) => r.protected_attribute_tested === filters.protectedAttribute);
+  if (filters.analysisBucket) {
+    rows = rows.filter((r) => {
+      const bucket = r.analysis_bucket ?? (isAddressProxyVariant(r) ? "address_proxy" : "strict_demographic");
+      return bucket === filters.analysisBucket;
+    });
+  }
   if (filters.strictEligible === "yes") rows = rows.filter((r) => r.use_for_strict_bias_rates);
   if (filters.strictEligible === "no") rows = rows.filter((r) => !r.use_for_strict_bias_rates);
   if (filters.identityLeakage === "yes") rows = rows.filter((r) => toBool(r.diff.identity_leakage_flag));
@@ -401,19 +511,68 @@ export function filterCaseReviewRecords(
   return rows;
 }
 
-export function groupRecordsByIssue(records: CaseReviewRecord[]): { key: string; label: string; explanation: string; records: CaseReviewRecord[] }[] {
-  const groups: { key: string; label: string; explanation: string; match: (r: CaseReviewRecord) => boolean }[] = [
-    { key: "dangerousness", label: "Dangerousness shifts", explanation: ISSUE_EXPLANATIONS.dangerousness, match: (r) => Boolean(r.diff.dangerousness_shift) },
-    { key: "obstruction", label: "Obstruction-risk shifts", explanation: ISSUE_EXPLANATIONS.obstruction, match: (r) => Boolean(r.diff.obstruction_risk_shift) },
-    { key: "recommended_action", label: "Recommended-action shifts", explanation: ISSUE_EXPLANATIONS.recommended_action, match: (r) => Boolean(r.diff.recommended_action_shift) },
-    { key: "duration", label: "Detention-duration shifts", explanation: ISSUE_EXPLANATIONS.duration, match: (r) => Boolean(r.diff.duration_shift) },
-    { key: "alternatives", label: "Omitted alternatives", explanation: ISSUE_EXPLANATIONS.alternatives, match: (r) => toBool(r.diff.alternatives_omitted) },
-    { key: "safeguards", label: "Omitted safeguards", explanation: ISSUE_EXPLANATIONS.safeguards, match: (r) => toBool(r.diff.procedural_safeguards_omitted) },
-    { key: "identity", label: "Identity/proxy leakage", explanation: ISSUE_EXPLANATIONS.identity, match: (r) => toBool(r.diff.identity_leakage_flag) },
-    { key: "unsupported", label: "Unsupported risk inference", explanation: ISSUE_EXPLANATIONS.unsupported, match: (r) => toBool(r.diff.unsupported_risk_inference_flag) },
-  ];
-  return groups
-    .map((g) => ({ key: g.key, label: g.label, explanation: g.explanation, records: records.filter((r) => r.is_flagged && g.match(r)) }))
+function indexAnalysisBucket(entry: CaseReviewIndexEntry): AnalysisBucket {
+  if (entry.analysis_bucket) return entry.analysis_bucket;
+  const vt = entry.variant_type || "";
+  if (entry.protected_attribute_tested === "address_proxy" || vt.startsWith("address_")) return "address_proxy";
+  return "strict_demographic";
+}
+
+export function filterCaseReviewIndex(
+  index: CaseReviewIndexEntry[],
+  filters: CaseReviewFilters,
+  reviewState: Record<string, { reviewed?: boolean; decision?: ReviewDecision }>,
+): CaseReviewIndexEntry[] {
+  let rows = [...index];
+  if (filters.focusMode) {
+    rows = rows.filter((e) => e.is_flagged && (e.review_priority === "high" || e.review_priority === "medium"));
+  }
+  if (filters.flaggedOnly) rows = rows.filter((e) => e.is_flagged);
+  if (filters.reviewPriority) rows = rows.filter((e) => matchesReviewPriority(e.review_priority, filters.reviewPriority));
+  if (filters.issueType) {
+    rows = rows.filter((e) => {
+      const flags = e.issue_flags ?? {};
+      if (filters.issueType in flags) return Boolean(flags[filters.issueType as keyof typeof flags]);
+      return e.issue_types.some((t) => t.toLowerCase().includes(filters.issueType.toLowerCase()));
+    });
+  }
+  if (filters.promptMode) rows = rows.filter((e) => e.prompt_mode === filters.promptMode);
+  if (filters.variantType) rows = rows.filter((e) => e.variant_type === filters.variantType);
+  if (filters.baseCaseId) rows = rows.filter((e) => e.base_case_id === filters.baseCaseId);
+  if (filters.protectedAttribute) rows = rows.filter((e) => e.protected_attribute_tested === filters.protectedAttribute);
+  if (filters.analysisBucket) rows = rows.filter((e) => indexAnalysisBucket(e) === filters.analysisBucket);
+  if (filters.identityLeakage === "yes") rows = rows.filter((e) => e.issue_flags?.identity);
+  if (filters.identityLeakage === "no") rows = rows.filter((e) => !e.issue_flags?.identity);
+  if (filters.unsupportedInference === "yes") rows = rows.filter((e) => e.issue_flags?.unsupported);
+  if (filters.unsupportedInference === "no") rows = rows.filter((e) => !e.issue_flags?.unsupported);
+  if (filters.localReview === "reviewed") rows = rows.filter((e) => reviewState[e.review_record_id]?.reviewed);
+  if (filters.localReview === "unreviewed") rows = rows.filter((e) => !reviewState[e.review_record_id]?.reviewed);
+  if (filters.decision) {
+    rows = rows.filter((e) => (reviewState[e.review_record_id]?.decision ?? "not_reviewed") === filters.decision);
+  }
+  if (filters.search.trim()) {
+    const q = filters.search.toLowerCase();
+    rows = rows.filter((e) =>
+      [e.base_case_title, e.base_case_id, e.variant_id, e.variant_type, e.variant_label, e.why_flagged_short, e.search_blob, ...e.issue_types]
+        .join(" ")
+        .toLowerCase()
+        .includes(q),
+    );
+  }
+  return rows;
+}
+
+export function groupRecordsByIssue(
+  records: CaseReviewRecord[],
+  schemaVersion?: string | null,
+): { key: string; label: string; explanation: string; records: CaseReviewRecord[] }[] {
+  return issueGroupsForSchema(schemaVersion)
+    .map((g) => ({
+      key: g.key,
+      label: g.label,
+      explanation: g.explanation,
+      records: records.filter((r) => r.is_flagged && g.matchRecord(r)),
+    }))
     .filter((g) => g.records.length > 0);
 }
 
@@ -423,4 +582,25 @@ export function dirForText(text: string): "rtl" | "ltr" {
 
 export function exampleReviewRecord(records: CaseReviewRecord[]): CaseReviewRecord | null {
   return records.find((r) => r.is_flagged) ?? records[0] ?? null;
+}
+
+export function dangerousnessPairLabel(record: CaseReviewRecord): string {
+  const neutral = formatOutputValue(record.neutral_output.dangerousness_level);
+  const variant = formatOutputValue(record.variant_output.dangerousness_level);
+  return `${neutral} → ${variant}`;
+}
+
+export function analysisBucketLabel(bucket?: CaseReviewRecord["analysis_bucket"]): string {
+  if (bucket === "address_proxy") return "Address proxy";
+  if (bucket === "strict_demographic") return "Strict demographic";
+  return "";
+}
+
+export function shortQueueIssueLabel(issue: string): string {
+  const lower = issue.toLowerCase();
+  if (lower.includes("dangerousness")) return "Dangerousness Δ";
+  if (lower.includes("insufficient")) return "Insufficient-info Δ";
+  if (lower.includes("identity")) return "Identity mention";
+  if (lower.includes("unsupported")) return "Unsupported inference";
+  return issue.length > 36 ? `${issue.slice(0, 33)}…` : issue;
 }

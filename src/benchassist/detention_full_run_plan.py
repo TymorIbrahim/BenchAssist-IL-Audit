@@ -8,8 +8,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import pandas as pd
+
 from benchassist.config import get_settings, resolve_gemini_api_key
-from benchassist.dataset_modes import exclude_from_strict_bias
+from benchassist.address_variants import is_address_proxy_row
+from benchassist.dataset_modes import exclude_from_strict_bias, is_real_case_row
 from benchassist.detention_gemini_config import (
     DetentionGeminiConfig,
     estimate_prompt_chars,
@@ -56,6 +59,57 @@ def _check_output_collision(config: DetentionGeminiConfig, *, resume: bool) -> d
             "existing_files": existing,
         }
     return {"ok": True, "message": "No blocking full-run output collision.", "existing_files": existing}
+
+
+def _estimate_pairwise_comparisons(rows: list[dict[str, Any]]) -> dict[str, int]:
+    """Estimate neutral-vs-variant pairwise comparisons for strict-eligible rows."""
+    from collections import defaultdict
+
+    by_base: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        if exclude_from_strict_bias(row):
+            continue
+        base = str(row.get("base_case_id") or row.get("case_id") or "")
+        if base:
+            by_base[base].append(row)
+
+    per_base: dict[str, int] = {}
+    total = 0
+    for base, variants in sorted(by_base.items()):
+        has_neutral = any(str(v.get("variant_type")) == "neutral_he" for v in variants)
+        if not has_neutral:
+            per_base[base] = 0
+            continue
+        non_neutral = [v for v in variants if str(v.get("variant_type")) != "neutral_he"]
+        per_base[base] = len(non_neutral)
+        total += len(non_neutral)
+
+    return {
+        "expected_pairwise_comparisons": total,
+        "base_cases_with_neutral": sum(1 for n in per_base.values() if n > 0),
+        "base_cases_total": len(by_base),
+    }
+
+
+def _corpus_counts(rows: list[dict[str, Any]]) -> dict[str, int]:
+    bases = {str(r.get("base_case_id")) for r in rows if r.get("base_case_id")}
+    variants = {str(r.get("variant_id")) for r in rows if r.get("variant_id")}
+    strict = [r for r in rows if not exclude_from_strict_bias(r)]
+    excluded = [r for r in rows if exclude_from_strict_bias(r)]
+    return {
+        "base_case_count": len(bases),
+        "variant_count": len(variants),
+        "strict_eligible_count": len(strict),
+        "strict_excluded_count": len(excluded),
+    }
+
+
+def _report_paths(root: Path, config: DetentionGeminiConfig) -> tuple[Path, Path]:
+    slug = config.run_slug or "detention_run"
+    report_dir = root / "results" / "report"
+    plan_path = report_dir / f"gemini_{slug}_run_plan.md"
+    checklist_path = report_dir / f"gemini_{slug}_run_checklist.md"
+    return plan_path, checklist_path
 
 
 def _access_control_policy_ok(root: Path) -> dict[str, Any]:
@@ -109,7 +163,42 @@ def run_full_run_plan(
         add("row_selection", False, str(exc))
 
     strict_eligible = [r for r in rows if not exclude_from_strict_bias(r)]
-    real_rows = [r for r in rows if exclude_from_strict_bias(r)]
+    real_rows = [r for r in rows if is_real_case_row(r)]
+    strict_excluded = [r for r in rows if exclude_from_strict_bias(r)]
+    address_proxy_rows = [r for r in rows if is_address_proxy_row(r)]
+
+    add(
+        "schema_version",
+        bool(config.schema_version),
+        f"schema_version={config.schema_version}",
+    )
+    from benchassist.detention_schema import SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2
+
+    if config.is_expanded_minimal_address_run:
+        add(
+            "minimal_schema_config",
+            config.schema_version == SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2,
+            f"expanded_minimal_address requires {SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2}",
+        )
+    else:
+        add(
+            "minimal_schema_config",
+            True,
+            f"run_type={config.run_type} (minimal schema check applies only to expanded_minimal_address)",
+        )
+
+    flagging_doc = root / "docs" / "detention_flagging_policy.md"
+    add("flagging_policy_doc", flagging_doc.exists(), str(flagging_doc))
+    add(
+        "address_proxy_strict_exclusion",
+        not config.methodology.address_proxy_in_strict_rates,
+        f"address_proxy_in_strict_rates={config.methodology.address_proxy_in_strict_rates}",
+    )
+    add(
+        "address_proxy_rows_present",
+        len(address_proxy_rows) > 0 if config.is_expanded_minimal_address_run else True,
+        f"{len(address_proxy_rows)} address-proxy rows in selected inputs",
+    )
 
     add(
         "strict_fairness_policy",
@@ -134,6 +223,11 @@ def run_full_run_plan(
         f"stop_on_parse_error_rate_above={config.safety.stop_on_parse_error_rate_above}",
     )
     add("grounded_disabled", not config.grounded_enabled, "Grounded mode disabled unless fully QA-tested")
+    add(
+        "strict_schema_validation",
+        config.safety.strict_schema_validation,
+        "Schema canonicalization + strict validation enabled for runner outputs.",
+    )
 
     access = _access_control_policy_ok(root)
     add("dashboard_access_control_policy", access["ok"], access["detail"])
@@ -156,24 +250,58 @@ def run_full_run_plan(
     est_minutes_high = est_minutes_low * 1.15
 
     per_mode = {m: len(rows) for m in config.prompt_modes}
+    corpus = _corpus_counts(rows)
+    pairwise_est = _estimate_pairwise_comparisons(rows)
+
+    old_full_pairwise: int | None = None
+    old_pairwise_path = root / "results" / "gemini" / "detention_full" / "analysis" / "detention_pairwise_comparison.csv"
+    if old_pairwise_path.exists():
+        try:
+            old_full_pairwise = len(pd.read_csv(old_pairwise_path))
+        except Exception:
+            old_full_pairwise = None
 
     manifest: dict[str, Any] = {
         "generated_at": _utc_now(),
         "config_path": str(config.config_path) if config.config_path else None,
+        "run_type": config.run_type,
+        "expanded_run": config.is_expanded_full_run,
         "checks_passed": all_ok,
         "checks": checks,
         "pilot_qa": pilot_qa,
         "model": config.model,
         "provider": config.provider,
+        "schema_version": config.schema_version,
+        "flagging_policy": "dangerousness_level_change_only",
+        "flagging_policy_doc": "docs/detention_flagging_policy.md",
         "prompt_modes": config.prompt_modes,
         "output_dir": str(config.output_dir),
         "row_counts": {
             "input_total": len(rows),
             "synthetic_rows": len(rows) - len(real_rows),
             "real_case_rows": len(real_rows),
+            "strict_excluded_synthetic": len(strict_excluded) - len(real_rows),
+            "base_case_count": corpus["base_case_count"],
+            "variant_count": corpus["variant_count"],
             "strict_eligible_synthetic": len(strict_eligible),
-            "strict_excluded": len(rows) - len(strict_eligible),
+            "strict_excluded": len(strict_excluded),
+            "address_proxy_rows": len(address_proxy_rows),
+            "address_proxy_excluded_from_strict": all(exclude_from_strict_bias(r) for r in address_proxy_rows)
+            if address_proxy_rows
+            else True,
             "per_prompt_mode": per_mode,
+        },
+        "pairwise_plan": {
+            **pairwise_est,
+            "expected_address_proxy_comparisons": len(address_proxy_rows) * len(config.prompt_modes),
+            "address_proxy_analysis_bucket": "address_proxy_audit",
+            "per_prompt_mode_note": "Analysis dedupes across prompt modes for headline pairwise counts.",
+            "legacy_detention_full_pairwise_count": old_full_pairwise,
+            "legacy_mismatch_warning": (
+                old_full_pairwise is not None
+                and old_full_pairwise != pairwise_est["expected_pairwise_comparisons"]
+                and config.is_expanded_full_run
+            ),
         },
         "request_plan": {
             "total_requests": total_requests,
@@ -191,6 +319,7 @@ def run_full_run_plan(
         "methodology": {
             "strict_fairness_source": config.methodology.strict_fairness_source,
             "real_cases_in_strict_rates": config.methodology.real_cases_in_strict_rates,
+            "address_proxy_in_strict_rates": config.methodology.address_proxy_in_strict_rates,
             "real_cases_use": config.methodology.real_cases_use,
         },
         "dashboard": {
@@ -219,11 +348,15 @@ def run_full_run_plan(
 
     report_dir = root / "results" / "report"
     report_dir.mkdir(parents=True, exist_ok=True)
-    plan_path = report_dir / "gemini_detention_full_run_plan.md"
-    checklist_path = report_dir / "gemini_detention_full_run_checklist.md"
+    plan_path, checklist_path = _report_paths(root, config)
 
+    run_label = (
+        "Expanded Minimal Address"
+        if config.is_expanded_minimal_address_run
+        else ("Expanded Full" if config.is_expanded_full_run else "Full")
+    )
     plan_lines = [
-        "# Gemini Detention Full Run — Planning Report",
+        f"# Gemini Detention {run_label} Run — Planning Report",
         "",
         f"Generated: {manifest['generated_at']}",
         "",
@@ -242,9 +375,24 @@ def run_full_run_plan(
         "## Row plan",
         "",
         f"- Total input rows: **{len(rows)}**",
-        f"- Synthetic (strict-eligible subset): {len(rows) - len(real_rows)}",
+        f"- Base cases: **{corpus['base_case_count']}**",
+        f"- Variants: **{corpus['variant_count']}**",
+        f"- Synthetic rows: {len(rows) - len(real_rows)}",
         f"- Strict-eligible synthetic: **{len(strict_eligible)}**",
+        f"- Strict-excluded (stress/proxy/narrative/real/address): **{len(rows) - len(strict_eligible)}**",
+        f"- Address-proxy rows (separate audit bucket): **{len(address_proxy_rows)}**",
         f"- Real-case qualitative/reliability: **{len(real_rows)}**",
+        "",
+        "## Pairwise comparison plan",
+        "",
+        f"- Expected strict pairwise comparisons (neutral vs variant): **{pairwise_est['expected_pairwise_comparisons']}**",
+        f"- Base cases with neutral baseline: **{pairwise_est['base_cases_with_neutral']}**",
+    ]
+    if old_full_pairwise is not None and config.is_expanded_full_run:
+        plan_lines.extend([
+            f"- Legacy `detention_full` pairwise count: **{old_full_pairwise}** (12-base run — will not be silently reused)",
+        ])
+    plan_lines.extend([
         "",
         "## Request plan",
         "",
@@ -258,12 +406,13 @@ def run_full_run_plan(
         "## Methodology",
         "",
         "- Strict fairness metrics: synthetic controlled counterfactual only.",
+        "- Address proxy variants: proxy-cautious audit signals only — analyzed separately; not proof of discrimination.",
         "- Real Israeli cases: realism, legal reliability, grounding, qualitative review.",
         "- Real-case rows **excluded** from strict fairness rates.",
         "",
         "## Safety checks",
         "",
-    ]
+    ])
     for c in checks:
         mark = "✓" if c["ok"] else "✗"
         plan_lines.append(f"- {mark} **{c['name']}**: {c['detail']}")
@@ -282,8 +431,15 @@ def run_full_run_plan(
 
     schema_ok = any(c["name"] == "pilot_schema_validation" and c["ok"] for c in pilot_qa["checks"])
     ready_execution = all_ok and pilot_qa["passed"] and collision["ok"]
+    ready_label = (
+        "READY_FOR_MINIMAL_ADDRESS_GEMINI_RUN"
+        if config.is_expanded_minimal_address_run
+        else "READY_FOR_EXPANDED_GEMINI_RUN"
+        if config.is_expanded_full_run
+        else "Ready for full Gemini execution"
+    )
     checklist_lines = [
-        "# Gemini Detention Full Run — Readiness Checklist",
+        f"# Gemini Detention {run_label} Run — Readiness Checklist",
         "",
         f"Generated: {manifest['generated_at']}",
         "",
@@ -303,6 +459,7 @@ def run_full_run_plan(
         "## Planned run parameters",
         "",
         f"- Estimated request count: **{total_requests}**",
+        f"- Expected pairwise comparisons: **{pairwise_est['expected_pairwise_comparisons']}**",
         f"- Prompt modes: {', '.join(config.prompt_modes)}",
         f"- Strict-eligible synthetic rows: {len(strict_eligible)}",
         f"- Real-case qualitative outputs (max): {len(real_rows) * n_modes}",
@@ -315,7 +472,7 @@ def run_full_run_plan(
         "- [ ] Full-run cost and runtime reviewed",
         "- [ ] Access-control deployment plan confirmed if exporting full text",
         "",
-        f"**Ready for full Gemini execution: {'YES' if ready_execution else 'NO'}**",
+        f"**{ready_label}: {'YES' if ready_execution else 'NO'}**",
         "",
         "Planning only — this sprint does not execute the full audit.",
         "",
@@ -344,7 +501,7 @@ def main(argv: list[str] | None = None) -> int:
 
     config = load_detention_gemini_config(args.config)
     if not config.is_full_run:
-        print(f"Refusing: config run_type is '{config.run_type}', expected 'full'.")
+        print(f"Refusing: config run_type is '{config.run_type}', expected full or expanded run type.")
         return 2
 
     manifest = run_full_run_plan(config, resume=args.resume)

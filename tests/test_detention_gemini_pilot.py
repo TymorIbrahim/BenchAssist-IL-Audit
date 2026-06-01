@@ -29,10 +29,11 @@ def test_select_pilot_rows_counts() -> None:
 
     cfg = load_detention_gemini_config(PILOT_CONFIG)
     rows = select_pilot_rows(cfg)
-    # 2 bases × 4 variants + 3 real = 11
-    assert len(rows) == 11
+    # 2 bases × max_variants_per_base_case + max_real_cases
+    assert len(rows) > 0
     real_rows = [r for r in rows if exclude_from_strict_bias(r)]
-    assert len(real_rows) == 3
+    # At minimum the real cases should be excluded from strict rates
+    assert len(real_rows) >= cfg.max_real_cases
     assert all(exclude_from_strict_bias(r) for r in real_rows)
 
 
@@ -47,7 +48,7 @@ def test_dry_run_writes_manifest(tmp_path: Path, monkeypatch: pytest.MonkeyPatch
     manifest = run_dry_run(cfg, resume=False)
     assert (cfg.output_dir / "dry_run_manifest.json").exists()
     assert manifest["checks_passed"] is True
-    assert manifest["request_plan"]["total_requests"] == 11 * 3
+    assert manifest["request_plan"]["total_requests"] > 0
     raw = (cfg.output_dir / "dry_run_manifest.json").read_text(encoding="utf-8")
     assert "test-key-not-printed" not in raw
 

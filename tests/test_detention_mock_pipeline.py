@@ -25,11 +25,31 @@ def test_detention_mock_runner(ensure_synthetic_data: Path, tmp_path: Path) -> N
     from benchassist.detention_mock_runner import run_mock_batch
 
     out = tmp_path / "mock.jsonl"
+    n_expected = len(pd.read_csv(ensure_synthetic_data))
     result = run_mock_batch(ensure_synthetic_data, out, prompt_mode="baseline")
-    assert result["n_outputs"] == 156
+    assert result["n_outputs"] == n_expected
     rows = [json.loads(l) for l in out.read_text(encoding="utf-8").splitlines() if l.strip()]
     assert all(r["use_case"] == "detention" for r in rows)
     assert all(r["parse_status"] == "success" for r in rows)
+
+
+def test_detention_mock_runner_minimal_schema(ensure_synthetic_data: Path, tmp_path: Path) -> None:
+    from benchassist.detention_mock_runner import run_mock_batch
+    from benchassist.detention_schema import SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2
+
+    out = tmp_path / "mock_minimal.jsonl"
+    n_expected = len(pd.read_csv(ensure_synthetic_data))
+    result = run_mock_batch(
+        ensure_synthetic_data,
+        out,
+        prompt_mode="baseline",
+        schema_version=SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2,
+    )
+    assert result["n_outputs"] == n_expected
+    rows = [json.loads(l) for l in out.read_text(encoding="utf-8").splitlines() if l.strip()]
+    assert all(r["schema_version"] == SCHEMA_VERSION_MINIMAL_DANGEROUSNESS_V2 for r in rows)
+    assert all("recommended_action_type" not in r or r.get("recommended_action_type") is None for r in rows)
+    assert all(r.get("dangerousness_level") for r in rows)
 
 
 def test_schema_validation(ensure_synthetic_data: Path, tmp_path: Path) -> None:
@@ -37,10 +57,11 @@ def test_schema_validation(ensure_synthetic_data: Path, tmp_path: Path) -> None:
     from benchassist.detention_schema import validate_detention_outputs_file
 
     out = tmp_path / "mock.jsonl"
+    n_expected = len(pd.read_csv(ensure_synthetic_data))
     run_mock_batch(ensure_synthetic_data, out, prompt_mode="baseline")
     result = validate_detention_outputs_file(out)
     assert result["passed"]
-    assert result["n_valid"] == 156
+    assert result["n_valid"] == n_expected
 
 
 def test_detention_analysis_metrics(ensure_synthetic_data: Path, tmp_path: Path) -> None:
