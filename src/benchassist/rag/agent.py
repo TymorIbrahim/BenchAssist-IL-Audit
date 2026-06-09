@@ -406,14 +406,23 @@ def set_vector_store(store: LegalVectorStore) -> None:
 # ---------------------------------------------------------------------------
 
 
-def build_agent_graph() -> Any:
+def build_agent_graph(*, fast: bool = False) -> Any:
     """Build and compile the LangGraph state graph.
 
-    Graph topology::
+    Args:
+        fast: If ``True``, skip the retrieval-checking step for ~40% faster
+            processing. The graph becomes:
+            ``analyze_case → retrieve_law → judicial_reasoning → END``
+
+    Graph topology (full)::
 
         analyze_case → retrieve_law → check_retrieval
             ↗ (if insufficient & step_count < 2)  ↘
         retrieve_law ←——————————————  judicial_reasoning → END
+
+    Graph topology (fast)::
+
+        analyze_case → retrieve_law → judicial_reasoning → END
 
     Returns:
         A compiled LangGraph ``StateGraph``.
@@ -431,7 +440,6 @@ def build_agent_graph() -> Any:
     # Add nodes
     graph.add_node("analyze_case", analyze_case)
     graph.add_node("retrieve_law", retrieve_law)
-    graph.add_node("check_retrieval", check_retrieval)
     graph.add_node("judicial_reasoning", judicial_reasoning)
 
     # Set entry point
@@ -439,15 +447,25 @@ def build_agent_graph() -> Any:
 
     # Add edges
     graph.add_edge("analyze_case", "retrieve_law")
-    graph.add_edge("retrieve_law", "check_retrieval")
-    graph.add_conditional_edges(
-        "check_retrieval",
-        _should_retrieve_more,
-        {
-            "retrieve_law": "retrieve_law",
-            "judicial_reasoning": "judicial_reasoning",
-        },
-    )
+
+    if fast:
+        # Fast mode: skip retrieval checking, go straight to reasoning
+        graph.add_edge("retrieve_law", "judicial_reasoning")
+        logger.info("Built FAST agent graph (no retrieval check)")
+    else:
+        # Full mode: check retrieval, possibly retrieve again
+        graph.add_node("check_retrieval", check_retrieval)
+        graph.add_edge("retrieve_law", "check_retrieval")
+        graph.add_conditional_edges(
+            "check_retrieval",
+            _should_retrieve_more,
+            {
+                "retrieve_law": "retrieve_law",
+                "judicial_reasoning": "judicial_reasoning",
+            },
+        )
+        logger.info("Built FULL agent graph (with retrieval check)")
+
     graph.add_edge("judicial_reasoning", END)
 
     return graph.compile()
@@ -476,19 +494,32 @@ class JudicialAgent:
         print(output.recommendation)
     """
 
-    def __init__(self, vector_store: LegalVectorStore | None = None) -> None:
+    def __init__(
+        self,
+        vector_store: LegalVectorStore | None = None,
+        *,
+        fast: bool = False,
+    ) -> None:
         """Initialise the agent.
 
         Args:
             vector_store: Optional vector store to use. If not provided,
                 the default store at ``data/vectordb/`` is used.
+            fast: If ``True``, skip the retrieval-checking step for ~40%
+                faster processing. Recommended for batch runs where retrieval
+                quality is already validated.
         """
         if vector_store is not None:
             set_vector_store(vector_store)
 
-        self._graph = build_agent_graph()
+        self._graph = build_agent_graph(fast=fast)
         self._model_name = _MODEL_NAME
-        logger.info("JudicialAgent initialised with model %s", self._model_name)
+        self._fast = fast
+        logger.info(
+            "JudicialAgent initialised with model %s (fast=%s)",
+            self._model_name,
+            fast,
+        )
 
     @property
     def model_name(self) -> str:

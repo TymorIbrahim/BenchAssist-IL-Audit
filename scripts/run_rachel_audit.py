@@ -341,8 +341,11 @@ def _call_agent(
     try:
         from benchassist.rag.agent import JudicialAgent
 
-        agent = JudicialAgent()
-        result = agent.assess(
+        global _agent_singleton
+        if _agent_singleton is None:
+            _agent_singleton = JudicialAgent(fast=True)
+
+        result = _agent_singleton.assess(
             case_text=case_text,
             case_id=case_id,
             language=language,
@@ -353,6 +356,10 @@ def _call_agent(
         return raw, parsed, None
     except Exception as e:
         return "", None, f"Agent error: {e}"
+
+
+# Module-level singleton for the agent (avoids rebuilding graph per case)
+_agent_singleton = None
 
 
 # ---------------------------------------------------------------------------
@@ -670,7 +677,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Run pretrial detention LLM audit using Rachel's data."
     )
-    parser.add_argument("--provider", default="mock", choices=["mock", "gemini", "openai"])
+    parser.add_argument("--provider", default="mock", choices=["mock", "gemini", "openai", "agent"])
     parser.add_argument("--model-name", default=None)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--limit", type=int, default=None)
