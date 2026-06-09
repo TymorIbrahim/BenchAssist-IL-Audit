@@ -1,0 +1,242 @@
+{
+  "corpus_name": "BenchAssist-IL Legal Corpus",
+  "corpus_version": "1.0.0",
+  "created_date": "2026-06-09",
+  "description": "Israeli legal corpus for pretrial detention bias audit, containing statutes, case law, and guidelines relevant to the Criminal Procedure (Enforcement Powers – Detention) Law and related legal frameworks.",
+  "language_coverage": ["en", "he"],
+  "total_documents": 6,
+  "documents": [
+    {
+      "filename": "statutes/detention_law_5756_1996_en.txt",
+      "title": "Criminal Procedure (Enforcement Powers – Detention) Law, 5756-1996",
+      "title_he": "חוק סדר הדין הפלילי (סמכויות אכיפה – מעצרים), התשנ\"ו-1996",
+      "language": "en",
+      "document_type": "statute",
+      "date": "1996-03-04",
+      "last_amended": "2024",
+      "jurisdiction": "Israel",
+      "legislative_body": "Knesset",
+      "publication": "Sefer HaChukkim No. 1558, p. 338",
+      "description": "Primary Israeli legislation governing arrests and detention in criminal proceedings. Covers police arrest powers, judicial detention orders, detention until end of proceedings, grounds for detention, alternatives to detention, time limits, and judicial review. Reconstructed from official sources and legal databases.",
+      "source_quality": "reconstructed",
+      "sections": [
+        "Chapter 1: Definitions and General Provisions (Sections 1-5)",
+        "Chapter 2: Arrest by Police Officer (Sections 6-9)",
+        "Chapter 3: Detention by Court Order (Sections 10-15)",
+        "Chapter 4: Detention Until End of Proceedings (Sections 16-24)",
+        "Chapter 5: Detention of Special Categories (Sections 25-27)",
+        "Chapter 6: Appeals and Judicial Review (Sections 28-30)",
+        "Chapter 7: Miscellaneous Provisions (Sections 31-34)",
+        "Schedule: Offenses Carrying Presumption of Dangerousness"
+      ],
+      "key_sections_for_audit": [
+        "Section 13 — Conditions of Release",
+        "Section 21 — Grounds for Detention Until End of Proceedings",
+        "Section 21A — Duty to Consider Alternatives to Detention",
+        "Section 21B — House Arrest as Alternative",
+        "Section 22 — Duration of Detention (Nine-Month Limit)"
+      ],
+      "tags": ["detention", "arrest", "pretrial", "alternatives", "bail", "proportionality", "grounds", "time-limits"]
+    },
+    {
+      "filename": "statutes/detention_law_5756_1996_he.txt",
+      "title": "חוק סדר הדין הפלילי (סמכויות אכיפה – מעצרים), התשנ\"ו-1996",
+      "title_en": "Criminal Procedure (Enforcement Powers – Detention) Law, 5756-1996",
+      "language": "he",
+      "document_type": "statute",
+      "date": "1996-03-04",
+      "last_amended": "2024",
+      "jurisdiction": "Israel",
+      "legislative_body": "Knesset",
+      "publication": "ספר החוקים 1558, עמ' 338",
+      "description": "Hebrew text of the primary Israeli detention law, including definitions, police arrest powers, court-ordered detention, detention until end of proceedings, grounds for detention, alternatives to detention, and appeals. Reconstructed from official sources.",
+      "source_quality": "reconstructed",
+      "sections": [
+        "פרק א': הגדרות והוראות כלליות",
+        "פרק ב': מעצר בידי שוטר",
+        "פרק ג': מעצר על פי צו בית משפט",
+        "פרק ד': מעצר עד תום ההליכים",
+        "פרק ה': ערעורים וביקורת שיפוטית"
+      ],
+      "key_sections_for_audit": [
+        "סעיף 13 — תנאי שחרור",
+        "סעיף 21 — עילות מעצר עד תום ההליכים",
+        "סעיף 21א — חובת בחינת חלופת מעצר",
+        "סעיף 22 — משך המעצר עד תום ההליכים"
+      ],
+      "tags": ["detention", "arrest", "pretrial", "alternatives", "bail", "hebrew", "מעצר", "חלופת-מעצר"]
+    },
+    {
+      "filename": "statutes/basic_law_human_dignity_en.txt",
+      "title": "Basic Law: Human Dignity and Freedom",
+      "title_he": "חוק-יסוד: כבוד האדם וחירותו",
+      "language": "en",
+      "document_type": "statute",
+      "date": "1992-03-17",
+      "last_amended": "1994-03-09",
+      "jurisdiction": "Israel",
+      "legislative_body": "Knesset",
+      "publication": "Sefer HaChukkim No. 1391, p. 150",
+      "description": "Israel's quasi-constitutional Basic Law protecting human dignity and freedom. Contains the right to personal liberty (Section 5), the limitation clause (Section 8) establishing the proportionality test, and protections for life, body, dignity, property, and privacy. Includes detailed commentary on relevance to detention law.",
+      "source_quality": "based_on_official_translation",
+      "sections": [
+        "Section 1 — Basic Principles",
+        "Section 1A — Purpose",
+        "Section 2 — Preservation of Life, Body, and Dignity",
+        "Section 3 — Protection of Property",
+        "Section 4 — Protection of Life, Body, and Dignity",
+        "Section 5 — Personal Liberty",
+        "Section 6 — Leaving and Entering Israel",
+        "Section 7 — Privacy",
+        "Section 8 — Violation of Rights (Limitation Clause)",
+        "Section 9 — Reservation Regarding Security Forces",
+        "Section 10 — Validity of Laws",
+        "Section 11 — Applicability to State Authorities",
+        "Section 12 — Emergency Provisions and Entrenchment",
+        "Relevance to Pretrial Detention Bias Audit"
+      ],
+      "key_sections_for_audit": [
+        "Section 5 — Personal Liberty (right against deprivation of liberty)",
+        "Section 8 — Limitation Clause (proportionality test)",
+        "Relevance to Pretrial Detention Bias Audit (equal application, alternatives)"
+      ],
+      "tags": ["constitutional", "basic-law", "liberty", "dignity", "proportionality", "limitation-clause", "human-rights"]
+    },
+    {
+      "filename": "statutes/bail_regulations_en.txt",
+      "title": "Israeli Bail and Conditional Release Provisions",
+      "title_he": "הוראות ערובה ושחרור בתנאים בישראל",
+      "language": "en",
+      "document_type": "statute",
+      "date": "1996-03-04",
+      "last_amended": "2015",
+      "jurisdiction": "Israel",
+      "description": "Comprehensive compilation of Israeli bail and conditional release provisions, synthesized from the Detention Law, Electronic Monitoring Law (2014), Conditional Release from Imprisonment Law (2001), and related regulations. Covers financial bail, house arrest, electronic monitoring, reporting requirements, and all forms of alternative conditions.",
+      "source_quality": "reconstructed",
+      "source_laws": [
+        "Criminal Procedure (Enforcement Powers – Detention) Law, 5756-1996",
+        "Electronic Monitoring Law, 5775-2014",
+        "Conditional Release from Imprisonment Law, 5761-2001",
+        "Criminal Procedure Law [Consolidated Version], 5742-1982"
+      ],
+      "sections": [
+        "Part 1: Overview of Conditional Release Framework (Sections 1-3)",
+        "Part 2: Financial Bail (Sections 4-6)",
+        "Part 3: House Arrest (Sections 7-11)",
+        "Part 4: Electronic Monitoring (Sections 12-16)",
+        "Part 5: Other Conditions of Release (Sections 17-23)",
+        "Part 6: Enforcement and Consequences of Violation (Sections 24-25)",
+        "Part 7: Conditional Release from Imprisonment (Sections 26-27)",
+        "Part 8: Special Considerations (Sections 28-31)"
+      ],
+      "key_sections_for_audit": [
+        "Part 2 — Financial Bail (amount determination, socioeconomic impact)",
+        "Part 3 — House Arrest (custodian requirements, residence suitability)",
+        "Part 4 — Electronic Monitoring (consent, feasibility, infrastructure)",
+        "Section 28 — Socioeconomic Disparities in Bail",
+        "Section 29 — Domestic Violence Cases"
+      ],
+      "tags": ["bail", "conditional-release", "house-arrest", "electronic-monitoring", "surety", "alternatives", "socioeconomic"]
+    },
+    {
+      "filename": "case_law/supreme_court_detention_rulings.txt",
+      "title": "Key Supreme Court Precedents on Pretrial Detention in Israel",
+      "title_he": "פסקי דין מנחים של בית המשפט העליון בנושא מעצר טרום-משפטי",
+      "language": "en",
+      "document_type": "case_law",
+      "date": "1995-2013",
+      "jurisdiction": "Israel",
+      "court": "Supreme Court of Israel (High Court of Justice / Criminal Appeals)",
+      "description": "Compilation of 10 landmark Supreme Court decisions on pretrial detention, covering proportionality, alternatives to detention, presumption of dangerousness, due process, evidentiary standards, bail equality, and dignity in detention. Each case includes citation, facts, holding, key principles, and relevance to bias audit.",
+      "source_quality": "reconstructed_from_academic_sources",
+      "sections": [
+        "Case 1: HCJ 6055/95 Tzemach v. Minister of Defense (Proportionality)",
+        "Case 2: CrimA 7048/97 Anonymous v. State (Alternatives Examination)",
+        "Case 3: CrimA 8087/03 State v. Anonymous (DV Presumption)",
+        "Case 4: HCJ 2028/08 Public Committee v. Minister of Justice (Due Process)",
+        "Case 5: HCJ 7146/12 Adam v. Knesset (Individualized Assessment)",
+        "Case 6: CrimA 2581/95 Ganimat v. State (Evidentiary Standard)",
+        "Case 7: CrimA 4424/98 Anonymous v. State (Combined Alternatives)",
+        "Case 8: CrimA 6352/10 State v. Anonymous (Duration Limits)",
+        "Case 9: FH CrimA 10141/09 Ben Haim v. State (Bail Equality)",
+        "Case 10: HCJ 5100/94 Public Committee v. State (Dignity in Detention)",
+        "Summary Table: Key Precedents and Relevance",
+        "Legal Framework Summary"
+      ],
+      "cases_cited": [
+        {"citation": "HCJ 6055/95", "year": 1999, "topic": "proportionality"},
+        {"citation": "CrimA 7048/97", "year": 1998, "topic": "alternatives_to_detention"},
+        {"citation": "CrimA 8087/03", "year": 2004, "topic": "domestic_violence_presumption"},
+        {"citation": "HCJ 2028/08", "year": 2010, "topic": "due_process"},
+        {"citation": "HCJ 7146/12", "year": 2013, "topic": "individualized_assessment"},
+        {"citation": "CrimA 2581/95", "year": 1995, "topic": "evidentiary_standard"},
+        {"citation": "CrimA 4424/98", "year": 1998, "topic": "combined_alternatives"},
+        {"citation": "CrimA 6352/10", "year": 2011, "topic": "duration_limits"},
+        {"citation": "FH CrimA 10141/09", "year": 2010, "topic": "bail_equality"},
+        {"citation": "HCJ 5100/94", "year": 1999, "topic": "dignity_in_detention"}
+      ],
+      "tags": ["case-law", "supreme-court", "precedent", "proportionality", "alternatives", "due-process", "bias", "equality"]
+    },
+    {
+      "filename": "guidelines/detention_hearing_guidelines.txt",
+      "title": "Guidelines for Pretrial Detention Hearings in Israel",
+      "title_he": "הנחיות לדיוני מעצר טרום-משפטיים בישראל",
+      "language": "en",
+      "document_type": "guideline",
+      "date": "2026-06-09",
+      "jurisdiction": "Israel",
+      "description": "Comprehensive practical guidelines for conducting pretrial detention hearings in Israel. Covers constitutional framework, types of hearings, substantive requirements (three-stage analysis), procedural requirements, structured decision-making framework, factors for risk assessment, bias awareness, special populations, and statistical indicators for bias monitoring.",
+      "source_quality": "compiled_from_multiple_sources",
+      "source_references": [
+        "Criminal Procedure (Enforcement Powers – Detention) Law, 5756-1996",
+        "Basic Law: Human Dignity and Freedom, 5752-1992",
+        "Supreme Court Jurisprudence",
+        "Israel Bar Association Standards",
+        "State Comptroller Reports"
+      ],
+      "sections": [
+        "Part 1: Overview and Constitutional Framework (Sections 1-3)",
+        "Part 2: Types of Detention Hearings (Sections 4-8)",
+        "Part 3: What the Judge Must Consider (Section 9 — Three-Stage Analysis)",
+        "Part 4: Procedural Requirements (Sections 10-13)",
+        "Part 5: Decision-Making Framework (Sections 14-15)",
+        "Part 6: Avoiding Bias in Detention Decisions (Sections 16-18)",
+        "Part 7: Special Populations (Sections 19-23)",
+        "Part 8: Practical Guidance for Attorneys (Sections 24-25)",
+        "Part 9: Statistical Indicators for Bias Monitoring (Sections 26-27)",
+        "Appendix: Legal References"
+      ],
+      "key_sections_for_audit": [
+        "Section 9 — Three-Stage Analysis (prima facie, grounds, alternatives)",
+        "Section 14 — Structured Decision Checklist",
+        "Section 15 — Factors Relevant to Risk Assessment",
+        "Section 16 — Prohibited Considerations",
+        "Section 17 — Bias Awareness",
+        "Section 26 — Recommended Data Collection",
+        "Section 27 — Red Flags for Potential Bias"
+      ],
+      "tags": ["guidelines", "judicial-practice", "hearing-procedure", "decision-framework", "bias-monitoring", "risk-assessment", "checklist"]
+    }
+  ],
+  "chunking_guidance": {
+    "recommended_chunk_size": "500-1000 tokens",
+    "section_delimiter_patterns": [
+      "^={3,}$",
+      "^Section \\d+\\.",
+      "^סעיף \\d+\\.",
+      "^CHAPTER \\d+:",
+      "^פרק [א-ת]':",
+      "^PART \\d+:",
+      "^CASE \\d+:",
+      "^STAGE \\d+:",
+      "^GROUND \\d+ —"
+    ],
+    "metadata_to_preserve": [
+      "document_type",
+      "language",
+      "section_title",
+      "parent_chapter"
+    ],
+    "notes": "Documents are formatted with clear section headers using '=' delimiters and 'Section NN.' / 'סעיף NN.' format to facilitate automatic chunking. Each section is self-contained and includes sufficient context for standalone retrieval."
+  }
+}

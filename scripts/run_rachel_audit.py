@@ -253,12 +253,25 @@ def _call_model(
     provider: str,
     model_name: str,
     temperature: float = 0.0,
+    case_id: str = "",
+    variant_id: str = "",
+    language: str = "en",
+    prompt_mode: str = "baseline",
 ) -> tuple[str, dict | None, str | None]:
     """Call the model and return (raw_output, parsed_dict, error_or_None)."""
     if provider == "mock":
         parsed = _mock_response(user_prompt)
         raw = json.dumps(parsed, ensure_ascii=False, indent=2)
         return raw, parsed, None
+
+    if provider == "agent":
+        return _call_agent(
+            user_prompt,
+            case_id=case_id,
+            variant_id=variant_id,
+            language=language,
+            prompt_mode=prompt_mode,
+        )
 
     from benchassist.model_client import get_model_client
 
@@ -287,6 +300,61 @@ def _call_model(
         return "", None, str(e)
 
 
+def _call_agent(
+    case_text: str,
+    *,
+    case_id: str = "",
+    variant_id: str = "",
+    language: str = "en",
+    prompt_mode: str = "baseline",
+) -> tuple[str, dict | None, str | None]:
+    """Call the Agentic RAG pipeline.
+
+    First tries the FastAPI service at localhost:8000. If unavailable,
+    falls back to direct agent invocation.
+    """
+    # Try API server first
+    try:
+        import httpx
+
+        resp = httpx.post(
+            "http://localhost:8000/assess",
+            json={
+                "case_text": case_text,
+                "case_id": case_id,
+                "variant_id": variant_id,
+                "language": language,
+                "prompt_mode": prompt_mode,
+            },
+            timeout=120.0,
+        )
+        if resp.status_code == 200:
+            data = resp.json()
+            raw = json.dumps(data, ensure_ascii=False, indent=2)
+            return raw, data, None
+        else:
+            logger.warning("Agent API returned %d, falling back to direct call", resp.status_code)
+    except Exception as e:
+        logger.info("Agent API not available (%s), using direct agent call", e)
+
+    # Fallback: direct agent invocation
+    try:
+        from benchassist.rag.agent import JudicialAgent
+
+        agent = JudicialAgent()
+        result = agent.assess(
+            case_text=case_text,
+            case_id=case_id,
+            language=language,
+            prompt_mode=prompt_mode,
+        )
+        parsed = result.model_dump()
+        raw = json.dumps(parsed, ensure_ascii=False, indent=2)
+        return raw, parsed, None
+    except Exception as e:
+        return "", None, f"Agent error: {e}"
+
+
 # ---------------------------------------------------------------------------
 # Single-case worker
 # ---------------------------------------------------------------------------
@@ -313,6 +381,10 @@ def _process_single_case(
         provider=provider,
         model_name=model_name,
         temperature=temperature,
+        case_id=case.case_id,
+        variant_id=case.variant_id,
+        language=case.language,
+        prompt_mode=prompt_mode,
     )
 
     # Build the record with MODEL output fields
@@ -350,6 +422,17 @@ def _process_single_case(
         record["reference_to_sensitive_variable"] = parsed.get(
             "reference_to_sensitive_or_proxy_variable", ""
         )
+        # Agent RAG extras (present when provider == "agent")
+        if parsed.get("legal_citations"):
+            record["legal_citations"] = parsed["legal_citations"]
+        if parsed.get("alternatives_considered"):
+            record["alternatives_considered"] = parsed["alternatives_considered"]
+        if parsed.get("retrieved_provisions"):
+            record["retrieved_provisions"] = parsed["retrieved_provisions"]
+        if parsed.get("retrieval_queries"):
+            record["retrieval_queries"] = parsed["retrieval_queries"]
+        if parsed.get("legal_basis_summary"):
+            record["legal_basis_summary"] = parsed["legal_basis_summary"]
 
     # POST-PROCESS: code audit fields from the output (researcher coding)
     audit_fields = code_audit_fields(

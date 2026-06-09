@@ -1,0 +1,310 @@
+================================================================================
+BASIC LAW: HUMAN DIGNITY AND FREEDOM
+חוק-יסוד: כבוד האדם וחירותו
+
+Enacted by the Knesset on March 17, 1992 (5752)
+Published in Sefer HaChukkim (Book of Laws) No. 1391, p. 150
+Amended: March 9, 1994 (Amendment No. 1)
+
+[TEXT BASED ON OFFICIAL KNESSET ENGLISH TRANSLATION AND
+AUTHORITATIVE LEGAL SOURCES INCLUDING HAMOKED, JEWISH VIRTUAL
+LIBRARY, AND ACADEMIC PUBLICATIONS]
+================================================================================
+
+PREAMBLE
+
+Fundamental human rights in Israel are founded upon recognition of the
+value of the human being, the sanctity of human life, and the principle
+that all persons are free; these rights shall be upheld in the spirit of
+the principles set forth in the Declaration of the Establishment of the
+State of Israel.
+
+================================================================================
+SECTION 1. BASIC PRINCIPLES
+================================================================================
+
+Fundamental human rights in Israel are founded upon recognition of the
+value of the human being, the sanctity of human life, and the principle
+that all persons are free, and they shall be upheld in the spirit of the
+principles set forth in the Declaration of the Establishment of the State
+of Israel.
+
+================================================================================
+SECTION 1A. PURPOSE (ADDED BY AMENDMENT NO. 1, 1994)
+================================================================================
+
+The purpose of this Basic Law is to protect human dignity and liberty, in
+order to establish in a Basic Law the values of the State of Israel as a
+Jewish and democratic state.
+
+Commentary: This section, added in 1994, establishes the dual purpose of
+the law: protecting individual rights while anchoring them in the values
+of a Jewish and democratic state. The Supreme Court has interpreted this
+as requiring a balance between universal human rights norms and the
+particular character of the State.
+
+================================================================================
+SECTION 2. PRESERVATION OF LIFE, BODY, AND DIGNITY
+================================================================================
+
+There shall be no violation of the life, body, or dignity of any person
+as such.
+
+Commentary: This section establishes an absolute prohibition against
+violations of life, body, and dignity. In the context of detention, this
+has been interpreted to prohibit:
+- Physical abuse of detainees
+- Degrading treatment during arrest or detention
+- Conditions of detention that violate human dignity
+- Disproportionate use of force during arrest
+
+================================================================================
+SECTION 3. PROTECTION OF PROPERTY
+================================================================================
+
+There shall be no violation of the property of a person.
+
+Commentary: While primarily concerned with property rights, this section
+has relevance to detention proceedings where property may be seized as
+bail or where financial conditions of release are imposed.
+
+================================================================================
+SECTION 4. PROTECTION OF LIFE, BODY, AND DIGNITY
+================================================================================
+
+All persons are entitled to protection of their life, body, and dignity.
+
+Commentary: Whereas Section 2 creates a negative obligation (prohibition
+against violation), Section 4 creates a positive obligation on the state
+to protect these rights. In the context of detention, this includes:
+- The duty to protect detainees from harm by other detainees
+- The duty to provide adequate medical care to detained persons
+- The duty to ensure humane conditions of detention
+
+================================================================================
+SECTION 5. PERSONAL LIBERTY
+================================================================================
+
+There shall be no deprivation or restriction of the liberty of a person
+by imprisonment, arrest, extradition, or otherwise.
+
+Commentary: This is the most directly relevant section for detention law.
+Section 5 establishes personal liberty as a constitutionally protected
+right. Key implications include:
+
+(a) CONSTITUTIONAL STATUS OF LIBERTY: The right to personal liberty has
+quasi-constitutional status in Israeli law. Any deprivation of liberty
+must meet the requirements of the limitation clause (Section 8).
+
+(b) SCOPE OF PROTECTION: The phrase "or otherwise" has been interpreted
+broadly to include:
+    - Police arrest and detention
+    - Judicial detention (remand)
+    - Detention until end of proceedings
+    - Administrative detention
+    - House arrest
+    - Electronic monitoring (though considered less restrictive)
+    - Any other form of restriction on freedom of movement
+
+(c) PRESUMPTION OF LIBERTY: The Supreme Court has derived from this
+section a presumption in favor of liberty, meaning that detention is the
+exception rather than the rule, and the burden lies on the state to
+justify any deprivation of liberty.
+
+(d) RELEVANCE TO PRETRIAL DETENTION: In the context of pretrial detention,
+Section 5 requires:
+    - That detention be authorized by law
+    - That there be sufficient grounds for detention
+    - That alternatives to detention be considered
+    - That the duration of detention be limited
+    - That periodic judicial review be provided
+    - That the detention be proportionate to its purpose
+
+================================================================================
+SECTION 6. LEAVING AND ENTERING ISRAEL
+================================================================================
+
+(a) All persons are free to leave Israel.
+
+(b) Every Israeli national has the right of entry into Israel from abroad.
+
+Commentary: These provisions are relevant to detention proceedings where
+conditions of release may include restrictions on travel. A prohibition
+on leaving the country, frequently imposed as a condition of release
+(bail condition), constitutes a limitation on the right under Section 6(a)
+and must therefore satisfy the limitation clause.
+
+================================================================================
+SECTION 7. PRIVACY
+================================================================================
+
+(a) All persons have the right to privacy and to intimacy.
+
+(b) There shall be no entry into the private premises of a person who has
+not consented thereto.
+
+(c) No search shall be conducted on the private premises of a person, nor
+in the body or personal effects of a person.
+
+(d) There shall be no violation of the confidentiality of conversation,
+or of the writings or records of a person.
+
+Commentary: Privacy rights are relevant to detention proceedings in
+several ways:
+- Searches conducted incident to arrest must comply with this section
+- Electronic monitoring as an alternative to detention involves ongoing
+  surveillance that implicates privacy rights
+- The confidentiality of attorney-client communications during detention
+  is protected
+
+================================================================================
+SECTION 8. VIOLATION OF RIGHTS — THE LIMITATION CLAUSE
+================================================================================
+
+There shall be no violation of rights under this Basic Law except by a
+law befitting the values of the State of Israel, enacted for a proper
+purpose, and to an extent no greater than is required.
+
+Commentary: This is the LIMITATION CLAUSE (פסקת ההגבלה), which is the
+most important provision for analyzing the constitutionality of detention
+laws and practices. It establishes a FOUR-PART TEST:
+
+(1) BY LAW (בחוק): Any limitation on fundamental rights must be
+    authorized by legislation enacted by the Knesset. Executive orders
+    or administrative decisions alone are insufficient.
+
+(2) BEFITTING THE VALUES OF THE STATE (ההולם את ערכי מדינת ישראל):
+    The law must be consistent with the values of the State of Israel
+    as a Jewish and democratic state. This includes respect for human
+    rights, rule of law, and democratic principles.
+
+(3) PROPER PURPOSE (שנועד לתכלית ראויה): The limitation must serve a
+    legitimate purpose. In the context of detention, recognized proper
+    purposes include:
+    - Protection of public safety
+    - Prevention of obstruction of justice
+    - Ensuring the defendant's appearance at trial
+    - Protection of witnesses and evidence
+
+(4) PROPORTIONALITY (במידה שאינה עולה על הנדרש): The limitation must be
+    proportionate — it must not exceed what is required to achieve the
+    proper purpose. The Supreme Court has developed a THREE-PART
+    PROPORTIONALITY TEST (following the Barak framework):
+
+    (a) RATIONAL CONNECTION (קשר רציונלי): There must be a rational
+        connection between the means (detention) and the purpose
+        (e.g., public safety).
+
+    (b) LEAST RESTRICTIVE MEANS (המידה הפחותה ביותר): The means chosen
+        must be the least restrictive available to achieve the purpose.
+        This is the basis for the requirement to consider alternatives
+        to detention under Section 21A of the Detention Law.
+
+    (c) PROPORTIONALITY STRICTO SENSU (מידתיות במובן הצר): The harm
+        caused by the limitation (deprivation of liberty) must not be
+        disproportionate to the benefit gained (protection of public
+        safety). The court must weigh the severity of the infringement
+        on the right against the importance and urgency of the purpose.
+
+APPLICATION TO DETENTION LAW:
+The limitation clause provides the constitutional framework for evaluating
+every detention decision. Specifically:
+
+- The Detention Law (5756-1996) satisfies the "by law" requirement.
+- The grounds for detention (public safety, obstruction of justice) serve
+  "proper purposes."
+- The requirement to consider alternatives satisfies the "least restrictive
+  means" prong.
+- The time limits on detention and the requirement for periodic review
+  address "proportionality stricto sensu."
+- Judicial review ensures ongoing compliance with the limitation clause.
+
+================================================================================
+SECTION 9. RESERVATION REGARDING SECURITY FORCES
+================================================================================
+
+There shall be no restriction of rights under this Basic Law held by
+persons serving in the Israel Defense Forces, the Israel Police, the
+Prisons Service, or other security organizations of the State, nor shall
+such rights be subject to conditions, except by virtue of a law, or by
+regulation enacted by virtue of a law, and to an extent no greater than
+is required by the nature and character of the service.
+
+================================================================================
+SECTION 10. VALIDITY OF LAWS
+================================================================================
+
+This Basic Law shall not affect the validity of any law (din) in force
+prior to the commencement of this Basic Law.
+
+Commentary: This is a GRANDFATHER CLAUSE that preserves the validity of
+laws enacted before the Basic Law came into force. However, the Supreme
+Court has ruled (in the landmark case of United Mizrahi Bank v. Migdal,
+CA 6821/93) that while pre-existing laws are not invalidated, they should
+be interpreted in light of the values of the Basic Law.
+
+================================================================================
+SECTION 11. APPLICABILITY TO STATE AUTHORITIES
+================================================================================
+
+All governmental authorities are bound to respect the rights under this
+Basic Law.
+
+================================================================================
+SECTION 12. EMERGENCY PROVISIONS AND ENTRENCHMENT
+================================================================================
+
+(a) This Basic Law cannot be varied, suspended, or made subject to
+conditions by emergency regulations; however, when a state of emergency
+exists by virtue of a declaration under Section 9 of the Basic Law: The
+Government, it is permissible to enact emergency regulations by virtue
+of said section to deny or restrict rights under this Basic Law, provided
+the denial or restriction shall be for a proper purpose and for a period
+and to an extent no greater than is required.
+
+(b) This section establishes the ENTRENCHMENT of the Basic Law, meaning
+it cannot be easily overridden even in times of emergency. This reflects
+the fundamental importance of human dignity and freedom in Israeli
+constitutional law.
+
+================================================================================
+RELEVANCE TO PRETRIAL DETENTION BIAS AUDIT
+================================================================================
+
+This Basic Law is the constitutional foundation for analyzing bias in
+pretrial detention decisions. Key considerations include:
+
+1. EQUAL APPLICATION: While the Basic Law does not contain an explicit
+   equality clause (unlike Basic Law: Human Dignity and Freedom's
+   companion, Basic Law: Freedom of Occupation), the principle of human
+   dignity has been interpreted to encompass a prohibition on
+   discrimination. Discriminatory detention practices — whether based on
+   ethnicity, nationality, religion, socioeconomic status, or other
+   protected characteristics — may violate the dignity protections of
+   Sections 2 and 4.
+
+2. PROPORTIONALITY IN PRACTICE: The proportionality requirement of
+   Section 8 demands that detention decisions be individually assessed
+   and tailored to the specific circumstances of each case. Blanket
+   policies or statistical profiles that lead to disproportionate
+   detention of particular groups may fail the proportionality test.
+
+3. ALTERNATIVES REQUIREMENT: The constitutional mandate to consider less
+   restrictive alternatives means that a failure to meaningfully consider
+   alternatives — or systematic disparities in the availability or
+   application of alternatives — may constitute a constitutional
+   violation.
+
+4. JUDICIAL ACCOUNTABILITY: The obligation on all governmental authorities
+   (Section 11) to respect these rights extends to judges making detention
+   decisions. Systematic bias in judicial decision-making would constitute
+   a violation of this obligation.
+
+5. DIGNITY IN DETENTION: Even where detention is justified, the conditions
+   of detention must respect human dignity (Sections 2 and 4). This
+   includes the duty to provide adequate facilities, medical care, and
+   humane treatment.
+
+================================================================================
+END OF DOCUMENT
+================================================================================

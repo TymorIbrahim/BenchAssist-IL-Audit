@@ -1,0 +1,532 @@
+================================================================================
+ISRAELI BAIL AND CONDITIONAL RELEASE PROVISIONS
+הוראות ערובה ושחרור בתנאים בישראל
+
+Compiled from:
+- Criminal Procedure (Enforcement Powers – Detention) Law, 5756-1996
+  (Sections 13, 21A, 21B, and related provisions)
+- Electronic Monitoring Law, 5775-2014
+- Conditional Release from Imprisonment Law, 5761-2001
+- Criminal Procedure Law [Consolidated Version], 5742-1982
+- Relevant Supreme Court Decisions
+
+[RECONSTRUCTED FROM OFFICIAL SOURCES, LEGAL DATABASES, AND
+ACADEMIC REFERENCES]
+================================================================================
+
+
+================================================================================
+PART 1: OVERVIEW OF CONDITIONAL RELEASE FRAMEWORK
+================================================================================
+
+Section 1. General Principles
+
+(a) Israeli law establishes a strong preference for release over detention,
+rooted in the constitutional right to personal liberty enshrined in
+Section 5 of the Basic Law: Human Dignity and Freedom.
+
+(b) The court is obligated to consider alternatives to detention before
+ordering the detention of a suspect or defendant. This obligation is not
+merely procedural but substantive — the court must genuinely examine
+whether less restrictive measures can achieve the purpose of detention.
+
+(c) The burden of proving that no alternative to detention is sufficient
+rests on the prosecution.
+
+(d) Conditions of release must be proportionate to the risk posed by the
+release of the suspect or defendant, taking into account the nature of the
+offense, the strength of the evidence, and the personal circumstances of
+the individual.
+
+Section 2. Types of Conditional Release
+
+The Israeli legal framework recognizes the following types of conditional
+release:
+
+(a) RELEASE ON PERSONAL RECOGNIZANCE — release without any financial
+    condition, based on the suspect's or defendant's undertaking to comply
+    with conditions and appear when required;
+
+(b) RELEASE ON FINANCIAL BAIL — release subject to the deposit of money
+    or the provision of a financial guarantee;
+
+(c) RELEASE ON THIRD-PARTY SURETY — release guaranteed by a third party
+    who undertakes responsibility for the suspect's or defendant's
+    compliance;
+
+(d) RELEASE WITH RESTRICTIVE CONDITIONS — release subject to conditions
+    limiting the person's freedom of movement, contact, or activities;
+
+(e) HOUSE ARREST — confinement to a specified residence under supervision;
+
+(f) ELECTRONIC MONITORING — detention under electronic supervision as an
+    alternative to physical detention in a custodial facility.
+
+Section 3. Applicable Stages
+
+Conditional release may be ordered at the following stages of criminal
+proceedings:
+
+(a) During investigation — release from police detention subject to
+    conditions (Section 9 of the Detention Law);
+(b) During judicial extension of investigatory detention — release from
+    court-ordered detention subject to conditions (Section 13 of the
+    Detention Law);
+(c) Instead of detention until end of proceedings — release as an
+    alternative to pretrial detention (Section 21A of the Detention Law);
+(d) Pending appeal — release after conviction pending the determination
+    of an appeal;
+(e) Conditional release from imprisonment — early release from a sentence
+    of imprisonment (Conditional Release from Imprisonment Law).
+
+
+================================================================================
+PART 2: FINANCIAL BAIL (ערובה כספית)
+================================================================================
+
+Section 4. Authority to Set Financial Bail
+
+(a) A court or a police officer (of the rank of Inspector or above) may
+order the release of a person subject to the provision of financial bail.
+
+(b) Financial bail may take the following forms:
+
+    (1) CASH DEPOSIT (פיקדון כספי) — a sum of money deposited with the
+        court or police, to be returned upon compliance with all
+        conditions and completion of the proceedings;
+
+    (2) BANK GUARANTEE (ערבות בנקאית) — a guarantee issued by a bank
+        in favor of the court, undertaking to pay a specified sum if the
+        conditions of release are violated;
+
+    (3) PERSONAL BOND (התחייבות עצמית) — a written undertaking by the
+        released person to pay a specified sum if the conditions are
+        violated or the person fails to appear;
+
+    (4) THIRD-PARTY BOND (ערבות צד שלישי) — a written undertaking by a
+        third party to pay a specified sum if the released person violates
+        conditions or fails to appear.
+
+Section 5. Determination of Bail Amount
+
+(a) In determining the amount of financial bail, the court shall consider:
+
+    (1) the nature and severity of the offense;
+    (2) the strength of the prima facie evidence;
+    (3) the financial ability of the defendant or surety to provide bail;
+    (4) the risk of flight;
+    (5) the risk of danger to public safety;
+    (6) the personal circumstances of the defendant;
+    (7) any prior violations of conditions of release.
+
+(b) The amount of bail shall be sufficient to provide a meaningful
+incentive for compliance with conditions, but shall not be so excessive
+as to render release effectively impossible for the defendant.
+
+(c) The Supreme Court has emphasized that bail should not serve as a
+disguised form of detention — setting bail at an amount that the defendant
+cannot realistically provide is inconsistent with the obligation to
+consider alternatives to detention.
+
+Section 6. Forfeiture of Bail
+
+(a) Where a person released on financial bail fails to comply with the
+conditions of release or fails to appear before the court when required,
+the court may order the forfeiture of the bail.
+
+(b) Before ordering forfeiture, the court shall give the released person
+and any surety an opportunity to show cause why the bail should not be
+forfeited.
+
+(c) Forfeited funds are paid to the State Treasury.
+
+
+================================================================================
+PART 3: HOUSE ARREST (מעצר בית)
+================================================================================
+
+Section 7. Nature of House Arrest
+
+(a) House arrest is an alternative to detention in which the defendant is
+confined to a specified residence under the supervision of a custodian
+(supervisor), rather than being held in a custodial facility.
+
+(b) House arrest constitutes a significant restriction on personal liberty
+but is considered less restrictive than detention in a facility, as the
+person remains in their own home or the home of a designated custodian.
+
+(c) House arrest may be ordered as:
+    (1) full house arrest — confinement to the residence at all times;
+    (2) partial house arrest — confinement to the residence during
+        specified hours (e.g., nighttime curfew), with permission to
+        leave for specified purposes during other hours.
+
+Section 8. Conditions for Ordering House Arrest
+
+(a) The court may order house arrest as an alternative to detention if:
+
+    (1) grounds for detention exist under the Detention Law;
+    (2) the court determines that the purpose of the detention can be
+        achieved by confining the defendant to a specified residence;
+    (3) a suitable residence is available;
+    (4) a suitable custodian (supervisor) is available and willing to
+        undertake responsibility for the defendant's compliance.
+
+(b) The court shall consider the following factors:
+    (1) the nature and severity of the offense;
+    (2) the specific risk posed by the defendant (flight, obstruction,
+        dangerousness);
+    (3) the suitability of the proposed residence;
+    (4) the reliability and availability of the proposed custodian;
+    (5) the defendant's ties to the community;
+    (6) any history of compliance or non-compliance with previous
+        conditions.
+
+Section 9. Role of the Custodian (Supervisor)
+
+(a) The custodian is a person who undertakes, in writing, to supervise
+the defendant during the period of house arrest and to report any
+violation of conditions to the police immediately.
+
+(b) The custodian must be:
+    (1) a person over the age of 18;
+    (2) a person of good character and without a relevant criminal record;
+    (3) a person who is physically present at the residence during the
+        hours of confinement;
+    (4) a person who understands and accepts the responsibilities of the
+        role.
+
+(c) The court shall satisfy itself that the proposed custodian is suitable
+and reliable before ordering house arrest.
+
+(d) If the custodian fails to perform the supervisory duties, the
+custodian may be held liable for any financial surety provided, and the
+court may revoke the house arrest order.
+
+Section 10. Permitted Departures from Residence
+
+(a) The court may specify circumstances under which the defendant may
+leave the residence, including:
+    (1) attendance at court hearings;
+    (2) meetings with legal counsel;
+    (3) medical appointments;
+    (4) religious worship;
+    (5) employment (in cases of partial house arrest);
+    (6) any other purpose approved by the court.
+
+(b) The specific hours and routes of permitted departure may be specified
+by the court.
+
+Section 11. Violation of House Arrest
+
+(a) If the defendant violates the conditions of house arrest, the police
+may arrest the defendant without a warrant.
+
+(b) The prosecution may apply to the court for the revocation of the house
+arrest order and the detention of the defendant.
+
+(c) Unauthorized departure from the residence may constitute an independent
+criminal offense.
+
+
+================================================================================
+PART 4: ELECTRONIC MONITORING (פיקוח אלקטרוני)
+================================================================================
+
+Section 12. Legal Framework
+
+(a) Electronic monitoring in Israel is governed by the Electronic
+Monitoring Law, 5775-2014 (חוק הפיקוח האלקטרוני, התשע"ה-2014), which
+came into effect in 2015.
+
+(b) Under this law, a person subject to electronic monitoring is formally
+classified as being in "detention under electronic supervision"
+(מעצר בפיקוח אלקטרוני), rather than simply being on bail.
+
+(c) Electronic monitoring is managed by the Electronic Monitoring Unit
+of the Israel Prison Service (שב"ס — שירות בתי הסוהר).
+
+Section 13. Types of Electronic Monitoring
+
+(a) GPS TRACKING (איתור GPS) — the monitored person wears a GPS-enabled
+ankle bracelet that continuously tracks their location and transmits
+data to the monitoring center. This allows enforcement of:
+    - geographic restrictions (exclusion zones);
+    - curfew hours;
+    - permitted routes and locations.
+
+(b) HOME DETENTION MONITORING (ניטור מעצר בית) — the monitored person
+wears an ankle bracelet that communicates with a base unit installed at
+the designated residence. The system detects when the person leaves or
+enters the residence and verifies compliance with curfew hours.
+
+(c) COMBINED MONITORING — a combination of GPS tracking and home
+detention monitoring.
+
+Section 14. Conditions for Ordering Electronic Monitoring
+
+(a) The court may order electronic monitoring as an alternative to
+detention in a facility if:
+
+    (1) grounds for detention exist;
+    (2) the court determines that the purpose of detention can be achieved
+        through electronic monitoring combined with other conditions;
+    (3) the defendant consents to electronic monitoring;
+    (4) the Israel Prison Service confirms that electronic monitoring is
+        technically feasible for the defendant's circumstances.
+
+(b) Consent: The defendant must provide informed consent to electronic
+monitoring. This includes understanding:
+    (1) the nature of the monitoring device;
+    (2) the restrictions on movement and activity;
+    (3) the consequences of tampering with or removing the device;
+    (4) the consequences of violating the conditions of monitoring.
+
+Section 15. Operational Aspects
+
+(a) The Israel Prison Service operates a 24-hour monitoring center that
+receives data from electronic monitoring devices.
+
+(b) Any violation of monitoring conditions (e.g., leaving an authorized
+area, entering a prohibited zone, tampering with the device) triggers
+an automatic alert at the monitoring center.
+
+(c) Upon receiving an alert, the monitoring center shall:
+    (1) attempt to contact the monitored person;
+    (2) notify the police;
+    (3) document the violation.
+
+(d) The monitored person is responsible for maintaining the device in
+working order, including charging the battery.
+
+Section 16. Violations of Electronic Monitoring
+
+(a) Tampering with, removing, or destroying an electronic monitoring
+device is a criminal offense.
+
+(b) Violation of the conditions of electronic monitoring may result in:
+    (1) revocation of the electronic monitoring order;
+    (2) detention in a custodial facility;
+    (3) prosecution for the separate offense of tampering with monitoring
+        equipment.
+
+
+================================================================================
+PART 5: OTHER CONDITIONS OF RELEASE
+================================================================================
+
+Section 17. Restriction on Movement
+
+(a) The court may restrict the defendant's movement to a specified
+geographical area (e.g., a particular city or neighborhood).
+
+(b) The court may prohibit the defendant from entering specified areas
+(e.g., the area where the complainant resides or works, or the area
+where the offense was committed).
+
+Section 18. Prohibition on Contact
+
+(a) The court may prohibit the defendant from contacting, directly or
+indirectly, specified persons, including:
+    (1) the complainant (victim);
+    (2) witnesses;
+    (3) co-suspects or co-defendants;
+    (4) members of criminal organizations.
+
+(b) "Contact" includes in-person meetings, telephone calls, text messages,
+social media communication, and communication through third parties.
+
+Section 19. Reporting Requirements
+
+(a) The court may require the defendant to report to a police station at
+specified times and intervals (e.g., daily, twice weekly, weekly).
+
+(b) Reporting requirements serve multiple purposes:
+    (1) verifying the defendant's continued presence in the jurisdiction;
+    (2) providing a degree of ongoing supervision;
+    (3) deterring flight.
+
+Section 20. Surrender of Passport and Travel Documents
+
+(a) The court may order the defendant to surrender their passport and any
+other travel documents to the court or police.
+
+(b) The court may issue an order prohibiting the defendant from leaving
+the State of Israel (צו עיכוב יציאה מהארץ), which is communicated to
+border control authorities.
+
+Section 21. Prohibition on Possessing Weapons
+
+The court may order the defendant to surrender any weapons in their
+possession and prohibit the acquisition or possession of weapons during
+the period of release.
+
+Section 22. Suspension from Employment or Position
+
+In appropriate cases, particularly where the offense is related to the
+defendant's employment or position, the court may order the suspension
+of the defendant from their employment or position as a condition of
+release.
+
+Section 23. Mandatory Treatment or Counseling
+
+The court may order the defendant to undergo treatment or counseling
+(e.g., for substance abuse, anger management, or domestic violence)
+as a condition of release.
+
+
+================================================================================
+PART 6: ENFORCEMENT AND CONSEQUENCES OF VIOLATION
+================================================================================
+
+Section 24. Police Authority to Arrest for Violation
+
+(a) A police officer may arrest without warrant a person who has been
+released on conditions if:
+    (1) the officer has reasonable grounds to believe that the person has
+        violated a material condition of release; or
+    (2) the officer has reasonable grounds to believe that the person is
+        about to flee the jurisdiction.
+
+(b) A person arrested under this section must be brought before a court
+within 48 hours for a hearing on the alleged violation.
+
+Section 25. Court Hearing on Violation
+
+(a) Upon application by the prosecution, the court may hold a hearing to
+determine whether the defendant has violated a condition of release.
+
+(b) If the court finds that a violation has occurred, it may:
+    (1) revoke the release and order the detention of the defendant;
+    (2) modify the conditions of release by imposing additional or more
+        restrictive conditions;
+    (3) forfeit any financial bail or surety;
+    (4) issue a warning.
+
+(c) In determining the appropriate response to a violation, the court
+shall consider:
+    (1) the nature and severity of the violation;
+    (2) whether the violation was deliberate or inadvertent;
+    (3) the risk posed by the violation;
+    (4) the defendant's overall compliance with conditions;
+    (5) the personal circumstances of the defendant.
+
+
+================================================================================
+PART 7: CONDITIONAL RELEASE FROM IMPRISONMENT
+================================================================================
+
+Section 26. Parole and Conditional Release
+
+(a) The Conditional Release from Imprisonment Law, 5761-2001 governs the
+early release of prisoners serving sentences of imprisonment.
+
+(b) A Parole Committee (ועדת שחרורים) is authorized to grant conditional
+release to prisoners who have served at least two-thirds of their
+sentence, subject to conditions.
+
+(c) Conditions of parole may include:
+    (1) electronic monitoring;
+    (2) participation in rehabilitation programs;
+    (3) restrictions on movement;
+    (4) reporting requirements;
+    (5) prohibition on contact with specified persons;
+    (6) mandatory treatment or counseling;
+    (7) any other condition deemed necessary by the Parole Committee.
+
+(d) The Prisoner Rehabilitation Authority (רשות לשיקום האסיר) provides
+rehabilitation services and supervision for conditionally released
+prisoners.
+
+Section 27. Revocation of Conditional Release
+
+(a) If a conditionally released prisoner violates the conditions of
+release or commits a new offense, the Parole Committee may revoke the
+conditional release and order the return of the prisoner to prison.
+
+(b) The revoked prisoner shall serve the remaining balance of the
+original sentence, in addition to any new sentence imposed for a
+subsequent offense.
+
+
+================================================================================
+PART 8: SPECIAL CONSIDERATIONS
+================================================================================
+
+Section 28. Socioeconomic Disparities in Bail
+
+(a) Israeli courts and legal scholars have recognized that financial bail
+conditions can create disparities based on socioeconomic status.
+
+(b) A defendant who cannot afford bail may be effectively denied the
+alternative of conditional release, resulting in detention that is driven
+by poverty rather than the merits of the case.
+
+(c) The Supreme Court has indicated that bail amounts must be calibrated
+to the defendant's financial capacity, and that inability to pay bail
+alone should not result in continued detention.
+
+(d) This principle is directly relevant to bias audits, as socioeconomic
+disparities may correlate with other demographic characteristics such as
+ethnicity, national origin, or geographic location.
+
+Section 29. Domestic Violence Cases
+
+(a) In cases involving domestic violence, the Detention Law creates a
+presumption of dangerousness (Section 21(a)(3)(e)), which may be rebutted
+by the defendant.
+
+(b) Special bail and release conditions in domestic violence cases
+frequently include:
+    (1) prohibition on contact with the victim and family members;
+    (2) removal from the shared residence;
+    (3) mandatory participation in a batterers' intervention program;
+    (4) prohibition on possessing weapons;
+    (5) electronic monitoring to enforce exclusion zones.
+
+(c) The court must balance the protection of the victim with the
+defendant's right to liberty, applying the proportionality principle.
+
+Section 30. Security Offenses
+
+(a) For defendants charged with security offenses, additional restrictions
+may apply to the conditions of release, including heightened supervision
+and more restrictive conditions.
+
+(b) The availability of alternatives to detention may be more limited in
+security cases, though the obligation to consider alternatives remains.
+
+Section 31. Juveniles
+
+(a) For juvenile defendants (under age 18), the court shall give
+heightened consideration to the developmental needs and best interests
+of the minor.
+
+(b) House arrest with a parent or guardian as custodian is generally
+preferred over institutional detention for juveniles.
+
+(c) Financial bail for juveniles shall take into account the financial
+circumstances of the juvenile's family.
+
+
+================================================================================
+NOTES AND COMMENTARY
+================================================================================
+
+Key Legislative References:
+- Criminal Procedure (Enforcement Powers – Detention) Law, 5756-1996
+- Electronic Monitoring Law, 5775-2014
+- Conditional Release from Imprisonment Law, 5761-2001
+- Prevention of Violence in the Family Law, 5751-1991
+- Basic Law: Human Dignity and Freedom, 5752-1992
+
+Key Judicial Principles:
+- Bail must not serve as a disguised form of detention
+- Financial conditions must be calibrated to the defendant's means
+- Alternatives to detention must be genuinely considered
+- The prosecution bears the burden of showing that no alternative suffices
+- Conditions must be proportionate to the risk
+
+================================================================================
+END OF DOCUMENT
+================================================================================

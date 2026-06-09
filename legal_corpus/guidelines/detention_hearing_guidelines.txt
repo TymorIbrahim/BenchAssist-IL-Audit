@@ -1,0 +1,701 @@
+================================================================================
+GUIDELINES FOR PRETRIAL DETENTION HEARINGS IN ISRAEL
+הנחיות לדיוני מעצר טרום-משפטיים בישראל
+
+Based on:
+- Criminal Procedure (Enforcement Powers – Detention) Law, 5756-1996
+- Basic Law: Human Dignity and Freedom, 5752-1992
+- Supreme Court Jurisprudence and Judicial Directives
+- Israel Bar Association Standards
+- State Comptroller Reports on Detention Practices
+
+[COMPILED FROM OFFICIAL LEGAL SOURCES, JUDICIAL PRACTICE GUIDELINES,
+AND ACADEMIC LITERATURE ON ISRAELI CRIMINAL PROCEDURE]
+================================================================================
+
+
+================================================================================
+PART 1: OVERVIEW AND CONSTITUTIONAL FRAMEWORK
+================================================================================
+
+Section 1. Purpose of These Guidelines
+
+These guidelines describe the procedural requirements, substantive
+standards, and judicial considerations applicable to pretrial detention
+hearings in Israel. They are intended to ensure that detention decisions
+comply with the constitutional framework established by the Basic Law:
+Human Dignity and Freedom and the statutory framework established by the
+Criminal Procedure (Enforcement Powers – Detention) Law, 5756-1996.
+
+Section 2. Constitutional Foundation
+
+(a) The right to personal liberty is a constitutional right protected by
+Section 5 of the Basic Law: Human Dignity and Freedom: "There shall be
+no deprivation or restriction of the liberty of a person by imprisonment,
+arrest, extradition, or otherwise."
+
+(b) Any deprivation of liberty must satisfy the limitation clause
+(Section 8): the deprivation must be authorized by law, serve a proper
+purpose, befit the values of the State of Israel, and be proportionate
+(no greater than required).
+
+(c) The presumption is in favor of liberty. The burden rests on the
+prosecution to justify detention.
+
+Section 3. Fundamental Principles
+
+A judge conducting a detention hearing must be guided by the following
+principles:
+
+(a) PRESUMPTION OF INNOCENCE — The defendant has not been convicted and
+is presumed innocent. Detention is not punishment but a preventive
+measure.
+
+(b) LAST RESORT — Detention is a measure of last resort, to be ordered
+only when no less restrictive alternative can achieve the purpose.
+
+(c) PROPORTIONALITY — The detention must be proportionate to the risk
+and to the severity of the offense.
+
+(d) INDIVIDUALIZED ASSESSMENT — Each case must be assessed on its own
+merits, based on the specific circumstances of the defendant and the
+case.
+
+(e) REASONED DECISION — The judge must provide a reasoned decision
+explaining the basis for the detention order or the release order,
+including the assessment of alternatives.
+
+(f) TEMPORAL LIMITATION — Detention must be subject to time limits and
+periodic review.
+
+
+================================================================================
+PART 2: TYPES OF DETENTION HEARINGS
+================================================================================
+
+Section 4. First Appearance Hearing (הבאה ראשונה)
+
+(a) PURPOSE: To determine whether continued detention following police
+arrest is justified.
+
+(b) TIMING: Within 24 hours of arrest (48 hours for security suspects;
+up to 96 hours in exceptional security cases with judicial approval).
+
+(c) PROCEDURE:
+    (1) The police present the grounds for the arrest and the need for
+        continued detention for investigation purposes.
+    (2) The suspect (or defense counsel) is given an opportunity to
+        respond.
+    (3) The judge reviews the materials and determines whether to extend
+        detention or release the suspect.
+
+(d) POSSIBLE OUTCOMES:
+    (1) Extension of detention for investigation (up to 15 days);
+    (2) Release without conditions;
+    (3) Release with conditions (bail, reporting requirements, etc.);
+    (4) Referral for psychiatric evaluation (if mental health concerns).
+
+Section 5. Extension of Investigatory Detention (הארכת מעצר חקירה)
+
+(a) PURPOSE: To extend detention beyond the initial period for the
+purpose of completing the investigation.
+
+(b) TIMING: Before the expiration of the current detention period.
+
+(c) THE JUDGE MUST VERIFY:
+    (1) Reasonable suspicion that the suspect committed an offense;
+    (2) Existence of a ground for detention (obstruction risk, danger
+        to public safety, flight risk);
+    (3) The investigation is being conducted with due diligence;
+    (4) Continued detention is necessary for the investigation;
+    (5) No alternative to detention can achieve the same purpose.
+
+Section 6. Detention Until End of Proceedings (מעצר עד תום ההליכים)
+
+(a) PURPOSE: To determine whether the defendant should be detained from
+the time of indictment until the conclusion of all proceedings.
+
+(b) TIMING: After the filing of an indictment.
+
+(c) THIS IS THE MOST CONSEQUENTIAL DETENTION HEARING — it may result
+in the deprivation of liberty for months (up to 9 months initially,
+with possible extensions).
+
+(d) The remainder of these guidelines focuses primarily on this type of
+hearing, as it is the most common subject of Supreme Court scrutiny and
+the most relevant to bias audit.
+
+Section 7. Periodic Review Hearing (ביקורת תקופתית)
+
+(a) PURPOSE: To review whether the grounds for continued detention
+still exist and whether alternatives have become available.
+
+(b) TIMING: At least once every 30 days.
+
+(c) THE JUDGE MUST CONSIDER:
+    (1) Whether the grounds for detention still exist;
+    (2) Whether circumstances have changed;
+    (3) Whether alternatives to detention are now available;
+    (4) Whether the trial is progressing at a reasonable pace;
+    (5) The cumulative impact of the detention on the defendant.
+
+Section 8. Extension Beyond Nine Months (הארכת מעצר מעבר לתשעה חודשים)
+
+(a) PURPOSE: To determine whether detention should be extended beyond
+the statutory nine-month limit.
+
+(b) AUTHORITY: Only a Supreme Court judge may grant such extensions.
+
+(c) STANDARD: The judge must find that:
+    (1) The extension is necessary;
+    (2) The trial is being conducted with reasonable diligence;
+    (3) The delay is justified by the complexity of the case;
+    (4) Continued detention remains proportionate.
+
+
+================================================================================
+PART 3: WHAT THE JUDGE MUST CONSIDER — SUBSTANTIVE REQUIREMENTS
+================================================================================
+
+Section 9. Three-Stage Analysis for Detention Until End of Proceedings
+
+The judge must conduct a structured three-stage analysis:
+
+STAGE 1: PRIMA FACIE EVIDENCE (תשתית ראייתית)
+
+(a) The judge must be satisfied that there exists a sufficient
+evidentiary infrastructure to support the charges in the indictment.
+
+(b) The standard is "prima facie evidence" — evidence sufficient on
+its face to support a conviction if not contradicted.
+
+(c) The judge does NOT:
+    - Determine guilt or innocence;
+    - Weigh the credibility of witnesses;
+    - Conduct a mini-trial;
+    - Hear oral testimony.
+
+(d) The judge DOES:
+    - Review the indictment;
+    - Review the summary of evidence submitted by the prosecution;
+    - Consider any material submitted by the defense;
+    - Assess the overall evidentiary picture;
+    - Determine whether the evidence is sufficient to justify continued
+      deprivation of liberty.
+
+(e) If prima facie evidence is NOT established, the judge MUST release
+the defendant regardless of the alleged dangerousness or risk.
+
+
+STAGE 2: GROUNDS FOR DETENTION (עילת מעצר)
+
+(a) Even if prima facie evidence exists, the judge must find that at
+least one statutory ground for detention is established:
+
+    GROUND 1 — OBSTRUCTION AND FLIGHT RISK:
+    - Reasonable basis to believe the defendant will obstruct justice
+    - Factors to consider:
+      * Nature of the evidence (documentary vs. testimonial)
+      * Stage of proceedings (early vs. late)
+      * Relationship between defendant and witnesses
+      * Prior instances of obstruction
+      * Flight risk indicators: ties to other countries, access to
+        financial resources, lack of community ties, severity of
+        potential sentence
+      * History of compliance with legal processes
+
+    GROUND 2 — DANGER TO PUBLIC SAFETY:
+    - Reasonable basis to believe the defendant poses a danger
+    - Factors to consider:
+      * Nature and severity of the charged offense
+      * Criminal history and pattern of offending
+      * Use of weapons or violence
+      * Threats made to victims or witnesses
+      * Substance abuse issues
+      * Mental health considerations
+      * Risk assessment reports (if available)
+
+    GROUND 3 — PRESUMPTION OF DANGEROUSNESS:
+    - Applicable to specified categories of serious offenses
+    - The presumption shifts the burden to the defendant
+    - The defendant may rebut the presumption by demonstrating that
+      release would not pose a danger
+    - Categories:
+      (a) Offenses punishable by death or life imprisonment
+      (b) Security offenses
+      (c) Drug offenses (excluding personal use)
+      (d) Offenses involving severe violence or weapons
+      (e) Domestic violence (rebuttable presumption)
+
+(b) The judge must identify which specific ground(s) apply and explain
+the basis for the finding.
+
+
+STAGE 3: ALTERNATIVES TO DETENTION (חלופת מעצר)
+
+(a) Even if prima facie evidence AND a ground for detention exist, the
+judge MUST examine whether the purpose of detention can be achieved by
+less restrictive means.
+
+(b) This is NOT optional — it is a mandatory substantive requirement
+established by Section 21A of the Detention Law and reinforced by
+Supreme Court jurisprudence.
+
+(c) The judge must consider ALL available alternatives, including:
+    (1) House arrest with a custodian
+    (2) Electronic monitoring
+    (3) Financial bail
+    (4) Reporting requirements
+    (5) Restriction on movement
+    (6) Prohibition on contact
+    (7) Surrender of passport
+    (8) Combination of multiple conditions
+
+(d) The judge must evaluate each proposed alternative based on:
+    (1) Does it adequately address the specific risk? (obstruction,
+        danger, or flight)
+    (2) Is it feasible? (availability of custodian, residence,
+        monitoring equipment)
+    (3) Is it enforceable? (can compliance be effectively monitored?)
+    (4) Is it proportionate? (does it impose the minimum necessary
+        restriction?)
+
+(e) The judge must explain in the decision why available alternatives
+are or are not sufficient.
+
+
+================================================================================
+PART 4: PROCEDURAL REQUIREMENTS
+================================================================================
+
+Section 10. Rights of the Defendant at the Hearing
+
+(a) RIGHT TO BE PRESENT: The defendant must be physically present at
+the hearing (HCJ 2028/08).
+
+(b) RIGHT TO COUNSEL: The defendant is entitled to be represented by
+an attorney. If the defendant cannot afford counsel, a public defender
+must be appointed for hearings on detention until end of proceedings.
+
+(c) RIGHT TO REVIEW MATERIALS: The defense is entitled to review the
+materials submitted by the prosecution, subject to limited exceptions
+for classified information in security cases.
+
+(d) RIGHT TO PRESENT ARGUMENTS: The defense must be given adequate time
+and opportunity to present arguments, submit materials, and propose
+alternatives.
+
+(e) RIGHT TO REASONED DECISION: The defendant is entitled to a reasoned
+decision explaining the basis for the court's determination.
+
+(f) RIGHT TO APPEAL: The defendant may appeal the detention order to the
+District Court (from Magistrate's Court) or to the Supreme Court (from
+District Court).
+
+Section 11. Duties of the Prosecution
+
+(a) The prosecution must present:
+    (1) The indictment;
+    (2) A summary of the evidence (תמצית ראיות);
+    (3) The grounds for detention;
+    (4) Why alternatives to detention are insufficient;
+    (5) Any relevant information about the defendant's circumstances.
+
+(b) The prosecution has a duty of fairness — it must disclose material
+that is favorable to the defense if it is known to the prosecution.
+
+(c) The prosecution must not seek detention routinely or automatically,
+but must exercise independent judgment about whether detention is
+genuinely necessary.
+
+Section 12. Conduct of the Hearing
+
+(a) The hearing is conducted on the basis of WRITTEN MATERIALS AND
+ORAL ARGUMENTS — not witness testimony.
+
+(b) The typical sequence is:
+    (1) Prosecution presents the application and materials;
+    (2) Defense responds with arguments and materials;
+    (3) Prosecution replies (if necessary);
+    (4) Judge asks questions (if needed);
+    (5) Judge issues a decision.
+
+(c) The hearing should be conducted with appropriate urgency, given
+that the defendant's liberty is at stake.
+
+(d) The judge should ensure that the defendant understands the
+proceedings, particularly if the defendant is unrepresented or does
+not speak the language of the proceedings fluently.
+
+Section 13. Time Limits for Scheduling Hearings
+
+(a) First appearance: within 24 hours of arrest;
+(b) Detention hearing after indictment: as soon as practicable after
+    filing of indictment;
+(c) Periodic review: at least every 30 days;
+(d) Appeal hearing: within 30 days of filing.
+
+
+================================================================================
+PART 5: DECISION-MAKING FRAMEWORK
+================================================================================
+
+Section 14. Structured Decision Checklist
+
+The following checklist provides a structured framework for judicial
+decision-making in detention hearings:
+
+□ 1. IDENTITY AND STATUS
+  □ Confirm the identity of the defendant
+  □ Confirm the defendant is represented by counsel (or offered counsel)
+  □ Confirm the defendant understands the proceedings
+  □ Confirm the current stage of proceedings (investigation / post-
+    indictment / review)
+
+□ 2. EVIDENTIARY ASSESSMENT
+  □ Review the indictment and summary of evidence
+  □ Consider defense submissions
+  □ Determine whether prima facie evidence exists
+  □ If NO → RELEASE (no further analysis needed)
+  □ If YES → proceed to Step 3
+
+□ 3. GROUNDS FOR DETENTION
+  □ Identify which ground(s) the prosecution asserts:
+    □ Obstruction / flight risk
+    □ Danger to public safety
+    □ Presumption of dangerousness (specify offense category)
+  □ Evaluate the evidence supporting each asserted ground
+  □ Consider defense arguments against the ground
+  □ If NO ground established → RELEASE
+  □ If ground established → proceed to Step 4
+
+□ 4. ALTERNATIVES TO DETENTION
+  □ Has the defense proposed specific alternatives?
+  □ Has the prosecution explained why alternatives are insufficient?
+  □ Evaluate each proposed alternative:
+    □ House arrest: suitable residence? suitable custodian?
+    □ Electronic monitoring: feasible? consented?
+    □ Financial bail: appropriate amount? defendant's means?
+    □ Other conditions: sufficient to address the risk?
+  □ Consider combination of multiple conditions
+  □ If suitable alternative EXISTS → RELEASE WITH CONDITIONS
+  □ If NO suitable alternative → DETAIN (with detailed reasoning)
+
+□ 5. PROPORTIONALITY CHECK
+  □ Is the detention proportionate to the offense?
+  □ Is the detention proportionate to the evidence?
+  □ Has the impact on the defendant been considered?
+  □ Are there any special circumstances? (minor, health, family)
+  □ Is the expected duration of proceedings reasonable?
+
+□ 6. DOCUMENTATION
+  □ Record the decision in writing
+  □ State the prima facie evidence finding
+  □ Identify the ground(s) for detention
+  □ Explain the assessment of alternatives
+  □ Provide proportionality reasoning
+  □ Set the next review date (if detention ordered)
+
+Section 15. Factors Relevant to Risk Assessment
+
+The following factors should be considered in assessing the risk posed
+by the defendant's release:
+
+(a) FACTORS FAVORING DETENTION:
+    (1) Severity of the charged offense
+    (2) Strength of the evidence
+    (3) History of violent behavior
+    (4) History of non-compliance with court orders
+    (5) Active threats against victims or witnesses
+    (6) Access to weapons
+    (7) Substance abuse with violent behavior
+    (8) Lack of stable residence
+    (9) Lack of community ties
+    (10) Previous violations of bail conditions
+    (11) Outstanding warrants or pending charges
+    (12) Pattern of escalating criminal behavior
+
+(b) FACTORS FAVORING RELEASE:
+    (1) First offense or limited criminal history
+    (2) Strong community ties (employment, family, residence)
+    (3) Health conditions that make detention particularly burdensome
+    (4) Family responsibilities (minor children, elderly dependents)
+    (5) Availability of a suitable custodian
+    (6) Willingness to comply with restrictive conditions
+    (7) Passage of time since the offense without further incidents
+    (8) Cooperation with law enforcement
+    (9) Professional or educational commitments
+    (10) Advanced age
+    (11) Suitability for electronic monitoring
+    (12) Character references and community support
+
+(c) NEUTRAL FACTORS REQUIRING CAREFUL ANALYSIS:
+    (1) The defendant's nationality or immigration status — while
+        relevant to flight risk, must not be used as a proxy for
+        dangerousness
+    (2) The defendant's socioeconomic status — relevant to bail
+        capacity but must not determine the outcome
+    (3) The defendant's neighborhood or place of residence — may be
+        relevant to risk but must not serve as a basis for
+        stereotyping or profiling
+
+
+================================================================================
+PART 6: AVOIDING BIAS IN DETENTION DECISIONS
+================================================================================
+
+Section 16. Prohibited Considerations
+
+The following factors must NOT serve as a basis for detention decisions:
+
+(a) The defendant's race, ethnicity, or national origin (except as
+    narrowly relevant to flight risk based on objective facts);
+
+(b) The defendant's religion;
+
+(c) The defendant's gender (except as relevant to specific risks in
+    domestic violence cases);
+
+(d) The defendant's socioeconomic status (inability to afford bail
+    must not automatically result in detention);
+
+(e) The defendant's place of residence (living in a particular
+    neighborhood must not create a presumption of dangerousness);
+
+(f) The defendant's family or clan membership;
+
+(g) General stereotypes about demographic groups;
+
+(h) The public or media attention to the case (detention must not be
+    ordered to satisfy public pressure).
+
+Section 17. Bias Awareness
+
+(a) Judges should be aware of the potential for implicit bias in
+detention decisions. Research has shown that cognitive biases — including
+anchoring, confirmation bias, and availability heuristic — can
+influence judicial decision-making.
+
+(b) Specific areas of potential bias in Israeli pretrial detention
+include:
+    (1) ETHNIC BIAS: Disparities in detention rates between Jewish and
+        Arab defendants;
+    (2) SOCIOECONOMIC BIAS: Disparities between defendants who can
+        afford bail and those who cannot;
+    (3) GEOGRAPHIC BIAS: Disparities between defendants from urban vs.
+        rural areas, or from specific neighborhoods;
+    (4) GENDER BIAS: Disparities in the application of the domestic
+        violence presumption;
+    (5) CITIZENSHIP/RESIDENCY BIAS: Disparities between citizens and
+        non-citizens, or permanent residents and temporary residents.
+
+(c) Structured decision-making tools (such as the checklist in Section
+14) can help mitigate implicit bias by ensuring that all relevant
+factors are systematically considered.
+
+Section 18. Documentation and Accountability
+
+(a) All detention decisions must be documented in writing with
+sufficient detail to enable meaningful appellate review.
+
+(b) The decision must address:
+    (1) The evidentiary basis;
+    (2) The specific ground for detention;
+    (3) The assessment of alternatives;
+    (4) The proportionality analysis;
+    (5) Any special circumstances.
+
+(c) Aggregate data on detention decisions should be collected and
+analyzed to identify potential patterns of bias.
+
+
+================================================================================
+PART 7: SPECIAL POPULATIONS
+================================================================================
+
+Section 19. Minors (Under 18)
+
+(a) Detention of minors is subject to enhanced protections under the
+Youth (Trial, Punishment, and Modes of Treatment) Law.
+
+(b) Special considerations:
+    (1) Best interests of the child must be a primary consideration;
+    (2) Detention must be for the shortest appropriate period;
+    (3) Minors must be held separately from adults;
+    (4) The court should seek the input of a probation officer;
+    (5) Family reunification should be prioritized where possible;
+    (6) Educational needs must be addressed during detention.
+
+Section 20. Persons with Mental Health Conditions
+
+(a) If there is reason to believe the defendant has a mental health
+condition, the court should:
+    (1) Order a psychiatric assessment before deciding on detention;
+    (2) Consider whether the mental health condition affects the
+        defendant's ability to participate in proceedings;
+    (3) Consider commitment to a psychiatric facility as an alternative
+        to detention in a custodial facility;
+    (4) Ensure that appropriate treatment is available during detention.
+
+Section 21. Pregnant Women and Nursing Mothers
+
+(a) The court must give special consideration to the health of the
+woman and the welfare of the child.
+
+(b) Alternatives to detention should be strongly preferred.
+
+(c) If detention is necessary, appropriate medical care must be ensured.
+
+Section 22. Elderly Defendants
+
+(a) The court should consider the health conditions associated with
+advanced age and the disproportionate impact of detention on elderly
+persons.
+
+(b) House arrest with medical support may be an appropriate alternative.
+
+Section 23. Persons with Disabilities
+
+(a) Detention facilities must accommodate the needs of persons with
+disabilities.
+
+(b) The court should consider whether detention would create particular
+hardship due to a disability.
+
+(c) Alternatives that allow the defendant to access necessary support
+services should be preferred.
+
+
+================================================================================
+PART 8: PRACTICAL GUIDANCE FOR ATTORNEYS
+================================================================================
+
+Section 24. For Defense Counsel
+
+(a) PREPARATION:
+    (1) Review all prosecution materials as early as possible;
+    (2) Prepare a detailed alternative to detention (identify custodian,
+        residence, proposed conditions);
+    (3) Gather supporting materials (employment records, medical
+        records, character references);
+    (4) Assess the strength of the prosecution's evidence and prepare
+        challenges to the prima facie case;
+    (5) Interview the defendant to understand personal circumstances.
+
+(b) AT THE HEARING:
+    (1) Challenge the sufficiency of prima facie evidence if warranted;
+    (2) Challenge the asserted grounds for detention with specific facts;
+    (3) Present a concrete, detailed alternative to detention;
+    (4) Introduce the proposed custodian (in person if possible);
+    (5) Emphasize proportionality — the human cost of detention;
+    (6) If detention is ordered, ensure the decision is documented and
+        consider an immediate appeal.
+
+Section 25. For Prosecution Counsel
+
+(a) The prosecution must exercise independent judgment — detention
+should not be sought reflexively or routinely.
+
+(b) The prosecution must present a fair picture of the evidence,
+including any material favorable to the defense.
+
+(c) The prosecution must explain specifically why alternatives to
+detention are insufficient, not merely assert that they are.
+
+(d) The prosecution should be prepared to respond to defense proposals
+for alternatives with specific reasons why each proposed alternative
+is inadequate.
+
+
+================================================================================
+PART 9: STATISTICAL INDICATORS FOR BIAS MONITORING
+================================================================================
+
+Section 26. Recommended Data Collection
+
+To enable ongoing monitoring for potential bias, the following data
+should be collected for each detention hearing:
+
+(a) DEFENDANT DEMOGRAPHICS:
+    (1) Age
+    (2) Gender
+    (3) Ethnicity/national origin (self-reported)
+    (4) Citizenship/residency status
+    (5) Place of residence
+    (6) Socioeconomic indicators (employment status, income bracket)
+
+(b) CASE CHARACTERISTICS:
+    (1) Offense type and severity
+    (2) Whether presumption of dangerousness applies
+    (3) Strength of evidence (as assessed by the court)
+    (4) Criminal history
+
+(c) HEARING OUTCOMES:
+    (1) Detention ordered vs. release
+    (2) Type of alternative imposed (if released)
+    (3) Bail amount (if financial bail)
+    (4) Duration of detention (if detained)
+    (5) Whether appeal was filed
+    (6) Appeal outcome
+
+(d) PROCESS INDICATORS:
+    (1) Time from arrest to first hearing
+    (2) Whether defendant was represented
+    (3) Duration of hearing
+    (4) Whether alternatives were proposed by defense
+    (5) Whether alternatives were considered by court
+    (6) Whether decision was documented in writing
+
+Section 27. Red Flags for Potential Bias
+
+The following statistical patterns may indicate potential bias:
+
+(a) Significant differences in detention rates across demographic
+    groups, after controlling for offense severity and criminal history;
+
+(b) Significant differences in bail amounts across demographic groups,
+    after controlling for offense type and risk factors;
+
+(c) Significant differences in the rate at which alternatives are
+    proposed, considered, or accepted across demographic groups;
+
+(d) Significant differences in the duration of detention across
+    demographic groups;
+
+(e) Significant differences in the rate of bail forfeiture or condition
+    violation across groups (which may indicate inappropriate conditions
+    were set);
+
+(f) Significant differences in the time from arrest to hearing across
+    groups;
+
+(g) Significant differences in the rate of legal representation across
+    groups.
+
+
+================================================================================
+APPENDIX: LEGAL REFERENCES
+================================================================================
+
+Primary Legislation:
+1. Basic Law: Human Dignity and Freedom, 5752-1992
+2. Criminal Procedure (Enforcement Powers – Detention) Law, 5756-1996
+3. Electronic Monitoring Law, 5775-2014
+4. Youth (Trial, Punishment, and Modes of Treatment) Law, 5731-1971
+5. Treatment of Mentally Ill Persons Law, 5751-1991
+6. Conditional Release from Imprisonment Law, 5761-2001
+7. Prevention of Violence in the Family Law, 5751-1991
+8. Criminal Procedure Law [Consolidated Version], 5742-1982
+
+Key Supreme Court Decisions:
+1. HCJ 6055/95 Tzemach v. Minister of Defense (proportionality)
+2. CrimA 7048/97 Anonymous v. State (alternatives examination)
+3. CrimA 8087/03 State v. Anonymous (DV presumption)
+4. HCJ 2028/08 Public Committee v. Minister of Justice (due process)
+5. HCJ 7146/12 Adam v. Knesset (individualized assessment)
+6. CrimA 2581/95 Ganimat v. State (evidentiary standard)
+7. FH CrimA 10141/09 Ben Haim v. State (bail equality)
+
+================================================================================
+END OF DOCUMENT
+================================================================================

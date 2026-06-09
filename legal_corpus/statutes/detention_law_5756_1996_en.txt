@@ -1,0 +1,684 @@
+================================================================================
+CRIMINAL PROCEDURE (ENFORCEMENT POWERS – DETENTION) LAW, 5756-1996
+חוק סדר הדין הפלילי (סמכויות אכיפה – מעצרים), התשנ"ו-1996
+
+Enacted by the Knesset on March 4, 1996
+Published in Sefer HaChukkim (Book of Laws) No. 1558, p. 338
+Last Amended: 5784-2024
+
+[RECONSTRUCTED TEXT BASED ON OFFICIAL SOURCES, LEGAL DATABASES,
+AND ACADEMIC REFERENCES. KEY SECTIONS REFLECT THE SUBSTANTIVE
+CONTENT OF THE LAW AS PUBLISHED BY THE KNESSET AND INTERPRETED
+BY THE ISRAELI SUPREME COURT.]
+================================================================================
+
+CHAPTER 1: DEFINITIONS AND GENERAL PROVISIONS
+
+Section 1. Definitions
+
+In this Law —
+
+"Arrest" (מעצר) — the deprivation of a person's liberty by a police officer
+or other authorized official, or by court order, in accordance with the
+provisions of this Law;
+
+"Court" (בית משפט) — includes a Magistrate's Court and a District Court,
+as the context requires;
+
+"Detention" (עצירה) — the holding of a person in custody pursuant to an
+arrest under this Law;
+
+"Police Officer" (שוטר) — a member of the Israel Police, including a
+military police officer where applicable;
+
+"Suspect" (חשוד) — a person against whom there exists a reasonable
+suspicion of having committed an offense;
+
+"Defendant" (נאשם) — a person against whom an indictment has been filed;
+
+"Security Offense" (עבירת ביטחון) — an offense under the Prevention of
+Terrorism Ordinance, the Emergency Regulations, or other security-related
+legislation as defined by the Minister of Justice;
+
+"Surety" or "Bail" (ערובה) — financial or other guarantee provided to
+ensure compliance with conditions of release;
+
+"Electronic Monitoring" (פיקוח אלקטרוני) — supervision by means of
+electronic devices as prescribed by the Electronic Monitoring Law,
+5775-2014;
+
+"Alternatives to Detention" (חלופת מעצר) — conditions or measures imposed
+in lieu of physical detention, including house arrest, electronic monitoring,
+bail, and other restrictive conditions.
+
+Section 2. Purpose of the Law
+
+The purpose of this Law is to regulate the powers of arrest and detention in
+criminal proceedings, while balancing the need to protect public safety and
+ensure the proper conduct of criminal proceedings with the fundamental right
+to personal liberty as enshrined in Basic Law: Human Dignity and Freedom.
+
+Section 3. Guiding Principles
+
+(a) Arrest and detention shall be carried out only in accordance with the
+provisions of this Law.
+
+(b) No person shall be arrested or detained except on the grounds and in
+the manner prescribed by this Law.
+
+(c) In exercising powers under this Law, due regard shall be given to the
+rights of the arrested or detained person, including the right to dignity,
+the right to legal representation, and the right to be brought before a
+judge within the time limits prescribed by this Law.
+
+(d) Arrest and detention shall be used as measures of last resort; where the
+purpose of the arrest or detention can be achieved by less restrictive
+means, such means shall be preferred.
+
+Section 4. Right to Legal Representation
+
+(a) A person who has been arrested is entitled to meet with an attorney as
+soon as practicable after the arrest, and in any event no later than the
+time of being brought before a judge.
+
+(b) A person who has been arrested and does not have an attorney is entitled
+to be informed of the right to legal representation and, where eligible,
+to be assigned a public defender.
+
+(c) The right to consult with an attorney may be delayed for a period not
+exceeding 48 hours where there are reasonable grounds to believe that such
+consultation would impede the investigation, provided that a judge approves
+the delay within 24 hours.
+
+Section 5. Notification of Arrest
+
+(a) A police officer who arrests a person shall inform the arrested person,
+as soon as practicable, of the reason for the arrest.
+
+(b) The police shall notify a family member or other person designated by
+the arrested person of the arrest, within a reasonable time.
+
+
+================================================================================
+CHAPTER 2: ARREST BY POLICE OFFICER (WITHOUT COURT ORDER)
+================================================================================
+
+Section 6. Authority to Arrest Without Warrant
+
+(a) A police officer may arrest a person without a warrant if the officer
+has reasonable grounds to suspect that the person has committed, is
+committing, or is about to commit a felony (עוון or פשע).
+
+(b) A police officer may arrest a person without a warrant if:
+    (1) there is a reasonable basis to suspect that the person has committed
+        an offense and there is a concern that, if not arrested, the person
+        will flee, obstruct the investigation, or endanger public safety;
+    (2) the person has violated conditions of release or bail;
+    (3) the person is suspected of committing an offense involving violence
+        against a family member.
+
+Section 7. Limitations on Police Arrest
+
+(a) A police officer shall not arrest a person if the purpose of the arrest
+can be achieved by issuing a summons to appear before a court or police
+station, unless there are specific grounds to believe that the person will
+not comply with such summons.
+
+(b) In considering whether to arrest, the police officer shall take into
+account the severity of the offense, the strength of the evidence, the
+personal circumstances of the suspect, and any other relevant factor.
+
+Section 8. Duration of Police Detention
+
+(a) A person arrested by a police officer must be brought before a judge
+for a hearing as soon as possible, and in no event later than 24 hours
+from the time of arrest.
+
+(b) For suspects of security offenses, the period specified in subsection
+(a) may be extended to 48 hours, with the approval of a police officer of
+the rank of Superintendent or above.
+
+(c) In exceptional circumstances involving security offenses, the period
+may be further extended to 96 hours, with the approval of a District Court
+judge.
+
+Section 9. Release by Police Officer
+
+(a) A police officer of the rank of Inspector or above may release an
+arrested person from police detention, with or without conditions, if the
+officer determines that the grounds for the arrest no longer exist or that
+the purpose of the detention can be achieved through conditions of release.
+
+(b) Conditions that may be imposed under this section include:
+    (1) a financial deposit or surety;
+    (2) restriction on leaving the country;
+    (3) surrender of passport;
+    (4) obligation to report to a police station at specified times;
+    (5) restriction on contacting specified persons;
+    (6) any other condition that the officer deems necessary.
+
+
+================================================================================
+CHAPTER 3: DETENTION BY COURT ORDER
+================================================================================
+
+Section 10. Bringing an Arrested Person Before a Judge
+
+(a) When a person arrested by a police officer is brought before a judge,
+the judge shall consider whether there are grounds for the continued
+detention of the person.
+
+(b) The judge shall hear the position of the prosecution and the defense
+before making a determination.
+
+Section 11. Extension of Detention for Investigation Purposes
+
+(a) A judge may order the extension of detention for the purpose of
+investigation for a period not exceeding 15 days at a time.
+
+(b) The total period of detention for investigation purposes shall not
+exceed 30 days, unless extended by a District Court judge for an additional
+period not exceeding 45 days.
+
+(c) In exceptional circumstances, the Attorney General may apply to the
+Supreme Court for a further extension of detention for investigation
+purposes, for a period not exceeding 90 days.
+
+Section 12. Conditions for Extension of Investigatory Detention
+
+A judge shall not extend the detention of a person for investigation
+purposes unless the judge is satisfied that:
+
+(a) there exists a reasonable suspicion that the person has committed an
+offense;
+
+(b) there exist grounds for detention, namely:
+    (1) a reasonable basis to believe that the release of the person will
+        lead to the obstruction of the investigation, including the
+        destruction of evidence, influencing of witnesses, or coordination
+        with accomplices;
+    (2) a reasonable basis to believe that the release of the person will
+        endanger the safety of any person, the public, or the security of
+        the state;
+    (3) a reasonable basis to believe that the person will flee the
+        jurisdiction;
+
+(c) the investigation is being conducted with due diligence and cannot be
+completed without the continued detention of the suspect;
+
+(d) the purpose of the detention cannot be achieved by imposing conditions
+of release (alternatives to detention) under Section 13.
+
+Section 13. Conditions of Release (Alternatives to Investigatory Detention)
+
+(a) Where a judge finds that there exist grounds for detention under
+Section 12, but determines that the purpose of the detention can be achieved
+by imposing conditions of release, the judge shall order the release of
+the person subject to such conditions as the judge deems appropriate.
+
+(b) Conditions that may be imposed under this section include:
+
+    (1) FINANCIAL BAIL (ערובה כספית) — a deposit of money or the provision
+        of a financial guarantee by the suspect or a third party, in an
+        amount determined by the court, which shall be forfeited if the
+        suspect fails to comply with the conditions of release or fails to
+        appear before the court when required;
+
+    (2) PERSONAL SURETY (ערבות אישית) — a signed undertaking by the suspect
+        to comply with all conditions of release and to appear before the
+        court when required, under penalty of a specified monetary amount;
+
+    (3) THIRD-PARTY SURETY (ערבות צד שלישי) — a signed undertaking by a
+        third party to ensure that the suspect complies with the conditions
+        of release, under penalty of a specified monetary amount;
+
+    (4) RESTRICTION ON MOVEMENT (הגבלת תנועה) — restriction of the suspect's
+        movement to a specified geographical area, or prohibition from
+        entering specified areas;
+
+    (5) HOUSE ARREST (מעצר בית) — confinement of the suspect to a specified
+        residence, with or without permission to leave at specified times
+        for specified purposes;
+
+    (6) REPORTING REQUIREMENTS (חובת התייצבות) — obligation to report to a
+        police station at specified times and intervals;
+
+    (7) SURRENDER OF DOCUMENTS (הפקדת מסמכים) — surrender of passport and
+        other travel documents;
+
+    (8) PROHIBITION ON CONTACT (איסור קשר) — prohibition from contacting
+        specified persons, including complainants, witnesses, or
+        accomplices;
+
+    (9) PROHIBITION ON LEAVING THE COUNTRY (איסור יציאה מהארץ) — prohibition
+        from leaving the State of Israel;
+
+    (10) ELECTRONIC MONITORING (פיקוח אלקטרוני) — supervision by means of
+         electronic monitoring devices, in accordance with the Electronic
+         Monitoring Law, 5775-2014;
+
+    (11) ANY OTHER CONDITION — any other condition that the court deems
+         necessary to achieve the purpose of the detention.
+
+(c) In determining the conditions of release, the court shall take into
+account:
+    (1) the severity of the offense;
+    (2) the strength of the evidence;
+    (3) the personal circumstances of the suspect, including age, health,
+        family status, and community ties;
+    (4) the risk of flight;
+    (5) the risk of obstruction of the investigation;
+    (6) the risk of danger to public safety;
+    (7) the financial ability of the suspect to provide bail or surety;
+    (8) any prior criminal record of the suspect.
+
+(d) The court may modify or revoke conditions of release at any time upon
+application by the prosecution or the defense, or on its own motion.
+
+Section 14. Supervision of Released Person
+
+(a) The police shall supervise compliance with conditions of release
+imposed under this Chapter.
+
+(b) Where a released person violates a condition of release, the police
+may apply to the court for the revocation of the release and the re-arrest
+of the person.
+
+(c) A police officer may arrest without warrant a person who has been
+released on conditions if there are reasonable grounds to believe that the
+person is about to flee the jurisdiction or has violated a material
+condition of release.
+
+Section 15. Judicial Review of Detention
+
+(a) A person detained under this Chapter may, at any time, apply to the
+court for review of the detention order.
+
+(b) The court shall hold a hearing on such application within 48 hours.
+
+(c) On review, the court may confirm, modify, or revoke the detention
+order, or impose or modify conditions of release.
+
+
+================================================================================
+CHAPTER 4: DETENTION UNTIL END OF PROCEEDINGS
+================================================================================
+
+Section 16. Application of Chapter
+
+This Chapter applies to the detention of a defendant after the filing of an
+indictment, until the conclusion of all proceedings in the matter, including
+sentencing.
+
+Section 17. Application for Detention Until End of Proceedings
+
+(a) The prosecution may apply to the court before which the indictment has
+been filed for an order detaining the defendant until the end of proceedings.
+
+(b) The application shall be supported by the indictment, a summary of the
+evidence, and any other material that the prosecution deems relevant.
+
+Section 18. Hearing on Detention
+
+(a) The court shall hold a hearing on the application for detention until
+the end of proceedings.
+
+(b) At the hearing:
+    (1) the court shall not examine witnesses or hear oral testimony;
+    (2) the court shall consider the indictment, the summary of evidence
+        submitted by the prosecution, and any material submitted by the
+        defense;
+    (3) the defendant shall be entitled to be represented by an attorney;
+    (4) the defendant shall be entitled to present arguments and submit
+        material in opposition to the application.
+
+(c) The court shall make its determination based on the materials before
+it, without determining the ultimate guilt or innocence of the defendant.
+
+Section 19. Standard of Proof
+
+In determining whether to order detention until the end of proceedings, the
+court shall be satisfied that there exists a sufficient evidentiary
+infrastructure (תשתית ראייתית מספקת) — that is, prima facie evidence — to
+support the charges set forth in the indictment. The court shall not weigh
+the evidence as would be done at trial, but shall satisfy itself that the
+evidence is sufficient to justify the continued deprivation of liberty
+pending trial.
+
+Section 20. Hearing Without Oral Testimony
+
+(a) The procedure for detention until the end of proceedings is conducted
+on the basis of written materials and oral arguments, without the
+examination of witnesses.
+
+(b) The court does not assess the credibility or weight of individual
+testimonies at this stage; rather, it evaluates the overall evidentiary
+picture as presented in the investigation file.
+
+Section 21. Grounds for Detention Until End of Proceedings
+
+(a) After an indictment has been filed, the court may order the detention
+of the defendant until the end of proceedings (including detention under
+electronic monitoring) if the court finds, based on the materials before
+it, that prima facie evidence exists to support the charges, AND one of
+the following grounds is established:
+
+    (1) OBSTRUCTION AND FLIGHT RISK (חשש לשיבוש או התחמקות) —
+        There exists a reasonable basis to believe that the release of the
+        defendant will lead to:
+        (a) obstruction of judicial proceedings;
+        (b) evasion of trial or punishment;
+        (c) concealment of property;
+        (d) influencing of witnesses; or
+        (e) tampering with or destruction of evidence.
+
+    (2) DANGER TO PUBLIC SAFETY (סכנה לביטחון) —
+        There exists a reasonable basis to believe that the defendant, if
+        released, will endanger:
+        (a) the safety of any individual;
+        (b) the safety of the public; or
+        (c) the security of the State.
+
+    (3) PRESUMPTION OF DANGEROUSNESS (חזקת מסוכנות) —
+        The defendant has been charged with one of the following categories
+        of offenses, which carry a presumption of dangerousness:
+
+        (a) an offense punishable by death or life imprisonment;
+
+        (b) a security offense as defined in this Law;
+
+        (c) a drug offense under the Dangerous Drugs Ordinance [New Version],
+            5733-1973, excluding possession or use for personal consumption;
+
+        (d) an offense committed with severe violence or cruelty, or with
+            the use of a weapon (firearm or cold weapon);
+
+        (e) an offense of violence against a family member — in such cases,
+            there exists a presumption of dangerousness, unless the
+            defendant proves otherwise.
+
+        Where this presumption applies, the burden shifts to the defendant
+        to demonstrate that no danger will result from release.
+
+(b) The court may also order detention if it had previously ordered the
+defendant's release subject to conditions of bail or surety, and:
+    (1) the bail or surety was not provided;
+    (2) a condition of the bail or surety was violated; or
+    (3) grounds exist for the revocation of the bail or surety.
+
+Section 21A. Duty to Consider Alternatives to Detention
+
+(a) Even where the court finds that grounds for detention exist under
+Section 21, the court shall not order detention until the end of proceedings
+unless it has first examined whether the purpose of the detention can be
+achieved by less restrictive means (alternatives to detention).
+
+(b) The court shall consider the following alternatives:
+
+    (1) house arrest at a specified residence, with or without a
+        custodian (supervisor);
+    (2) electronic monitoring under the Electronic Monitoring Law,
+        5775-2014;
+    (3) financial bail or surety;
+    (4) restriction on movement or travel;
+    (5) prohibition on contact with specified persons;
+    (6) reporting requirements to a police station;
+    (7) surrender of passport;
+    (8) any other condition or combination of conditions that the court
+        deems sufficient to achieve the purpose of the detention.
+
+(c) In examining alternatives to detention, the court shall consider:
+    (1) the nature and severity of the offense;
+    (2) the strength of the evidence;
+    (3) the specific ground for detention that has been established
+        (obstruction risk, danger, or presumption of dangerousness);
+    (4) the personal circumstances of the defendant, including age, health,
+        family responsibilities, employment, and community ties;
+    (5) the criminal history of the defendant;
+    (6) the availability and suitability of a supervisor (custodian) for
+        house arrest;
+    (7) the risk assessment, including any professional opinions;
+    (8) any other relevant factor.
+
+(d) Where the court determines that an alternative to detention is
+sufficient to achieve the purpose of the detention, it shall order the
+release of the defendant subject to such conditions, rather than ordering
+detention.
+
+(e) The court shall state in its decision the reasons for its conclusion
+regarding the availability or unavailability of suitable alternatives to
+detention.
+
+Section 21B. House Arrest as Alternative to Detention
+
+(a) Where the court orders house arrest as an alternative to detention,
+it shall specify:
+    (1) the address of the residence at which the defendant shall reside;
+    (2) the identity of the custodian (supervisor) responsible for ensuring
+        compliance;
+    (3) the hours during which the defendant may leave the residence, if
+        any, and the purposes for which departure is permitted;
+    (4) any additional conditions.
+
+(b) The custodian shall undertake, in writing, to supervise the defendant
+and to report any violation of the conditions to the police immediately.
+
+(c) The custodian may be held liable if the defendant violates the
+conditions of house arrest due to the custodian's failure to supervise.
+
+Section 22. Duration of Detention Until End of Proceedings
+
+(a) Detention until the end of proceedings shall not exceed nine (9) months
+from the date of the detention order.
+
+(b) If the trial has not been concluded within the period specified in
+subsection (a), a judge of the Supreme Court may, upon application by the
+prosecution, extend the detention for additional periods, each not
+exceeding 150 days.
+
+(c) In considering an application for extension under subsection (b), the
+Supreme Court judge shall consider:
+    (1) the complexity of the case;
+    (2) the number of defendants and witnesses;
+    (3) the nature of the offense;
+    (4) the reasons for the delay in concluding the trial;
+    (5) whether the delay is attributable to the prosecution, the defense,
+        or the court;
+    (6) the total period of detention already served;
+    (7) the personal circumstances of the defendant.
+
+(d) The Supreme Court judge shall not extend the detention unless satisfied
+that the extension is necessary and that the trial is being conducted with
+reasonable diligence.
+
+Section 23. Periodic Review of Detention
+
+(a) The court shall review the detention of a defendant detained until the
+end of proceedings at least once every 30 days.
+
+(b) At each review, the court shall consider whether the grounds for
+detention still exist, whether alternatives to detention have become
+available, and whether continued detention remains proportionate.
+
+(c) The defendant may apply for review of the detention at any time if
+there has been a material change in circumstances.
+
+Section 24. Release Pending Appeal
+
+(a) A defendant who has been convicted and sentenced to imprisonment may
+apply to the court for release pending appeal.
+
+(b) The court may grant release pending appeal if it is satisfied that:
+    (1) there is a reasonable prospect that the appeal will succeed;
+    (2) the release of the defendant will not endanger public safety; and
+    (3) the defendant will not flee the jurisdiction.
+
+
+================================================================================
+CHAPTER 5: DETENTION OF SPECIAL CATEGORIES
+================================================================================
+
+Section 25. Minors
+
+(a) The detention of a minor (under age 18) shall be carried out in
+accordance with the special provisions of the Youth (Trial, Punishment,
+and Modes of Treatment) Law, 5731-1971, and this Law shall apply to the
+extent not inconsistent with those provisions.
+
+(b) A minor shall not be detained together with adult detainees.
+
+(c) In considering the detention of a minor, the court shall give
+heightened consideration to the developmental needs and best interests of
+the minor.
+
+Section 26. Persons with Mental Illness
+
+(a) Where there is a reasonable basis to believe that an arrested person
+suffers from a mental illness, the court may order a psychiatric
+examination before determining the question of detention.
+
+(b) A person found to be suffering from a mental illness may be committed
+to a psychiatric facility in lieu of detention, pursuant to the Treatment
+of Mentally Ill Persons Law, 5751-1991.
+
+Section 27. Pregnant Women and Nursing Mothers
+
+In considering the detention of a pregnant woman or a nursing mother, the
+court shall give special consideration to the health and welfare of the
+woman and the child, and shall prefer alternatives to detention wherever
+possible.
+
+
+================================================================================
+CHAPTER 6: APPEALS AND JUDICIAL REVIEW
+================================================================================
+
+Section 28. Appeal Against Detention Order
+
+(a) A defendant may appeal against a detention order to the District Court
+within 30 days of the order.
+
+(b) An appeal against a detention order issued by the District Court may
+be filed with the Supreme Court.
+
+(c) An appeal shall be heard expeditiously, within 30 days of filing.
+
+Section 29. Appeal by Prosecution
+
+The prosecution may appeal against an order releasing a defendant, or
+against the conditions of release imposed, in the same manner as the
+defendant may appeal against a detention order.
+
+Section 30. Powers of the Appellate Court
+
+On appeal, the court may:
+(a) confirm, modify, or revoke the detention order;
+(b) impose, modify, or revoke conditions of release;
+(c) order the release of the defendant;
+(d) remand the matter for rehearing.
+
+
+================================================================================
+CHAPTER 7: MISCELLANEOUS PROVISIONS
+================================================================================
+
+Section 31. Compensation for Wrongful Detention
+
+(a) A person who has been detained and subsequently acquitted, or whose
+case has been dismissed, may apply to the court for compensation for the
+period of detention.
+
+(b) The court may award compensation taking into account:
+    (1) the duration of the detention;
+    (2) the circumstances of the arrest and detention;
+    (3) the harm caused to the person;
+    (4) any other relevant factor.
+
+Section 32. Records and Documentation
+
+(a) The police shall maintain records of all arrests, including the reason
+for the arrest, the time of arrest, the time the arrested person was
+brought before a judge, and the outcome of the hearing.
+
+(b) The court shall maintain records of all detention hearings and orders.
+
+Section 33. Regulations
+
+The Minister of Justice may, with the approval of the Constitution, Law,
+and Justice Committee of the Knesset, make regulations for the
+implementation of this Law.
+
+Section 34. Commencement
+
+This Law shall come into force on the date determined by the Minister of
+Justice, which shall be no later than six months from its publication.
+
+
+================================================================================
+SCHEDULE: OFFENSES CARRYING PRESUMPTION OF DANGEROUSNESS
+(Referenced in Section 21(a)(3))
+================================================================================
+
+The following categories of offenses carry a presumption of dangerousness
+for purposes of detention until the end of proceedings:
+
+1. Offenses punishable by death or life imprisonment under the Penal Law,
+   5737-1977, including:
+   - Murder (Section 300)
+   - Attempted murder (Section 305)
+   - Manslaughter under aggravating circumstances
+
+2. Security offenses under:
+   - Prevention of Terrorism Ordinance, 5708-1948
+   - Emergency Defense Regulations, 1945
+   - Other security legislation as designated by the Minister of Justice
+
+3. Drug trafficking offenses under the Dangerous Drugs Ordinance
+   [New Version], 5733-1973:
+   - Manufacturing, importing, exporting, or distributing dangerous drugs
+   - Possession of dangerous drugs for purposes of distribution
+   (Excluding: possession or use for personal consumption)
+
+4. Offenses involving severe violence or cruelty:
+   - Offenses committed with the use of a firearm or cold weapon
+   - Offenses involving severe bodily harm
+   - Offenses committed with particular cruelty
+
+5. Domestic violence offenses:
+   - Offenses of violence against a family member as defined in the
+     Prevention of Violence in the Family Law, 5751-1991
+   - In such cases, a presumption of dangerousness applies, which the
+     defendant may rebut by demonstrating that release would not pose
+     a danger
+
+
+================================================================================
+NOTES AND COMMENTARY
+================================================================================
+
+Legislative History:
+- Original enactment: March 4, 1996 (Sefer HaChukkim 1558, p. 338)
+- Major amendments include provisions on electronic monitoring (2014),
+  expanded alternatives to detention, and enhanced protections for minors
+  and vulnerable populations.
+
+Constitutional Framework:
+- This Law operates within the constitutional framework established by
+  Basic Law: Human Dignity and Freedom (1992), which protects the right
+  to personal liberty (Section 5) and requires that any limitation on
+  rights satisfy the limitation clause (Section 8): enacted for a proper
+  purpose, befitting the values of the State, and to an extent no greater
+  than required (proportionality).
+
+Key Supreme Court Interpretations:
+- The Supreme Court has consistently held that detention is a severe
+  infringement on the right to liberty and must be used only when
+  strictly necessary.
+- The duty to examine alternatives to detention (Section 21A) has been
+  interpreted as a substantive obligation, not merely procedural.
+- The presumption of dangerousness (Section 21(a)(3)) has been upheld
+  but subject to proportionality review.
+
+================================================================================
+END OF DOCUMENT
+================================================================================

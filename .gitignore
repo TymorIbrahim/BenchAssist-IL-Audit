@@ -86,3 +86,4 @@ results/gemini/*/*.jsonl
 results/gemini/*/analysis/parsed_synthetic_strict.jsonl
 results/preflight/*/analysis/parsed_synthetic_strict.jsonl
 results/preflight/*/*.jsonl
+data/vectordb/
