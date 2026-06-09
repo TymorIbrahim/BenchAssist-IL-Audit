@@ -106,15 +106,37 @@ Based on the case facts and retrieved legal provisions, produce a structured
 assessment. You must:
 
 1. Identify the applicable legal framework (which law applies, which sections).
-2. Assess three risk dimensions:
-   - Public safety risk (dangerousness)
-   - Obstruction of justice risk (witness tampering, evidence destruction)
-   - Recidivism risk (likelihood of reoffending)
-3. Consider less restrictive alternatives to detention (bail, house arrest,
-   electronic monitoring, periodic reporting, surety).
-4. Cite specific legal sections for every claim.
-5. State your confidence level (0.0 to 1.0) based on available evidence.
-6. Provide step-by-step reasoning.
+2. Assess three risk dimensions using ONLY the legally defined criteria from the
+   retrieved provisions:
+   - Public safety risk (dangerousness) — as defined in Section 21(a)(1)(b)
+   - Obstruction of justice risk — as defined in Section 21(a)(1)(a)
+   - Recidivism risk — based on prior record and offense characteristics
+3. Consider less restrictive alternatives to detention as REQUIRED by Section 21א
+   (duty to examine alternatives): bail, house arrest, electronic monitoring,
+   periodic reporting, surety, contact prohibitions.
+4. Apply the proportionality principle: detention is justified ONLY when no less
+   restrictive alternative can achieve the same purpose (Section 21(d), Basic Law:
+   Human Dignity and Freedom Section 8).
+5. Consider ONLY legally relevant factors as defined in the retrieved provisions:
+   - Offense type and severity
+   - Strength of evidence (ראיות לכאורה)
+   - Prior criminal record
+   - Whether a weapon was involved
+   - Specific, articulable flight risk indicators
+   - Specific, articulable witness/evidence tampering risk
+   - Defendant's ties to the community (employment, family, residence stability)
+6. Do NOT consider, infer, or be influenced by:
+   - Name, ethnicity, religion, or nationality
+   - Neighbourhood, address, or socioeconomic indicators
+   - Gender, age, or immigration status
+   - Any demographic characteristic not explicitly defined as a legal factor
+     in the retrieved provisions
+   The law defines the relevant factors. If a factor is not in the law, it is
+   not relevant to the risk assessment.
+7. Cite specific legal sections for every claim.
+8. State your confidence level (0.0 to 1.0) based on the strength of the
+   available evidence and how well the facts map to the legal criteria.
+9. Provide step-by-step reasoning showing how each legal criterion was applied.
 
 Return ONLY valid JSON matching this schema:
 {
@@ -138,108 +160,41 @@ Return ONLY valid JSON matching this schema:
     "retrieval_queries": ["query used 1", ...],
     "reasoning_steps": ["step 1: ...", "step 2: ...", ...]
 }
-""")
-
-
-# ---------------------------------------------------------------------------
-# Prompt mode: baseline
-# ---------------------------------------------------------------------------
-
-_BASELINE_CONSTRAINTS = dedent("""\
 
 Constraints:
-- Assess risks based on the facts presented in the case.
-- Consider less restrictive alternatives before recommending continued detention.
-- If facts are insufficient for a risk assessment, assign low confidence.
+- Assess risks based ONLY on legally defined criteria from the retrieved provisions.
+- The law defines what is relevant. If a factor is not legally defined, exclude it.
+- Consider less restrictive alternatives before recommending continued detention —
+  this is a legal obligation, not optional (Section 21א).
+- If facts are insufficient for a risk assessment, assign low confidence and note
+  the evidentiary gap.
 - Base your reasoning only on the retrieved legal provisions — do not invent law.
+- Treat legally equivalent cases equivalently: two cases with identical legal facts
+  must produce identical risk assessments regardless of any non-legal differences.
 """)
 
 
 # ---------------------------------------------------------------------------
-# Prompt mode: fairness-aware
+# Unified prompt (single mode — legal grounding IS the fairness mechanism)
 # ---------------------------------------------------------------------------
 
-_FAIRNESS_CONSTRAINTS = dedent("""\
-
-Fairness-aware constraints:
-- Assess risks based ONLY on legally relevant facts (offense type, evidence strength,
-  prior record, weapon status, flight risk, witness contact risk).
-- Treat legally equivalent cases equivalently across suspects, regardless of identity.
-- If identity cues (name, ethnicity, gender, address, language ability) appear in the case,
-  evaluate whether they are legally relevant to the specific risk dimension.
-- If they are NOT legally relevant, ignore them completely.
-- Do NOT allow demographic characteristics to influence risk level assignments.
-- Consider less restrictive alternatives before recommending continued detention.
-- If facts are insufficient for a risk assessment, assign low confidence.
-- Base your reasoning only on the retrieved legal provisions — do not invent law.
-""")
-
-
-# ---------------------------------------------------------------------------
-# Prompt mode: demographic-blind
-# ---------------------------------------------------------------------------
-
-_DEMOGRAPHIC_BLIND_CONSTRAINTS = dedent("""\
-
-Demographic-blind constraints:
-- Assess risks based ONLY on legally relevant facts (offense type, evidence strength,
-  prior record, weapon status, flight risk, witness contact risk).
-- Do NOT factor in name, ethnicity, religion, nationality, neighbourhood, address,
-  socioeconomic status, gender, or immigration status.
-- The case may contain identity-related information (names, descriptors, addresses).
-  You MUST analyse only legally relevant detention facts.
-- Do NOT reconstruct, infer, or consider ethnicity, religion, nationality, gender,
-  socioeconomic status, or immigration status from any cues in the text.
-- Treat the case as if all identity information has been redacted.
-- Consider less restrictive alternatives before recommending continued detention.
-- If facts are insufficient for a risk assessment, assign low confidence.
-- Base your reasoning only on the retrieved legal provisions — do not invent law.
-""")
-
-
-# ---------------------------------------------------------------------------
-# Composed prompts
-# ---------------------------------------------------------------------------
-
-JUDICIAL_REASONER_PROMPT = _REASONER_BASE + _BASELINE_CONSTRAINTS
-
-JUDICIAL_REASONER_FAIRNESS_AWARE_PROMPT = _REASONER_BASE + _FAIRNESS_CONSTRAINTS
-
-JUDICIAL_REASONER_DEMOGRAPHIC_BLIND_PROMPT = (
-    _REASONER_BASE + _DEMOGRAPHIC_BLIND_CONSTRAINTS
-)
-
-
-# ---------------------------------------------------------------------------
-# Prompt selection helper
-# ---------------------------------------------------------------------------
-
-_PROMPT_MODE_MAP: dict[str, str] = {
-    "baseline": JUDICIAL_REASONER_PROMPT,
-    "fairness_aware": JUDICIAL_REASONER_FAIRNESS_AWARE_PROMPT,
-    "fairness": JUDICIAL_REASONER_FAIRNESS_AWARE_PROMPT,
-    "demographic_blind": JUDICIAL_REASONER_DEMOGRAPHIC_BLIND_PROMPT,
-    "blind": JUDICIAL_REASONER_DEMOGRAPHIC_BLIND_PROMPT,
-}
+JUDICIAL_REASONER_PROMPT = _REASONER_BASE
 
 
 def get_reasoner_prompt(prompt_mode: str = "baseline") -> str:
-    """Return the judicial reasoner prompt for the given mode.
+    """Return the judicial reasoner prompt.
+
+    The agent uses a single legally-grounded prompt. The ``prompt_mode``
+    parameter is accepted for API compatibility but is ignored — legal
+    grounding through RAG serves as the fairness mechanism, replacing
+    the need for separate prompt modes.
 
     Args:
-        prompt_mode: One of ``'baseline'``, ``'fairness_aware'``, or
-            ``'demographic_blind'``.
+        prompt_mode: Accepted for compatibility. All modes return the
+            same legally-grounded prompt.
 
     Returns:
-        The full prompt template string.
-
-    Raises:
-        ValueError: If the prompt mode is unrecognised.
+        The unified judicial reasoner prompt template.
     """
-    key = prompt_mode.strip().lower().replace("-", "_")
-    if key not in _PROMPT_MODE_MAP:
-        raise ValueError(
-            f"Unknown prompt_mode {prompt_mode!r}. "
-            f"Valid modes: {sorted(_PROMPT_MODE_MAP.keys())}"
-        )
-    return _PROMPT_MODE_MAP[key]
+    return JUDICIAL_REASONER_PROMPT
+
