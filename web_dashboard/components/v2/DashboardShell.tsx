@@ -35,6 +35,10 @@ const BiasAnalysisPage = dynamic(
   () => import("@/components/v2/BiasAnalysisPage").then((m) => m.BiasAnalysisPage),
   { loading: () => <Loading /> },
 );
+const AgentAuditPage = dynamic(
+  () => import("@/components/v2/AgentAuditPage").then((m) => m.AgentAuditPage),
+  { loading: () => <Loading /> },
+);
 
 function Loading() {
   return (
@@ -157,6 +161,9 @@ export function DashboardShell() {
         )}
         {activeTab === "case-explorer" && (
           <CaseExplorerPage bundle={bundle} />
+        )}
+        {activeTab === "agent-audit" && (
+          <AgentAuditPage />
         )}
         {activeTab === "run-metadata" && (
           <RunMetadataPage bundle={bundle} />

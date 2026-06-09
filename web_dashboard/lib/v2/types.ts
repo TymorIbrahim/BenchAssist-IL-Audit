@@ -346,6 +346,7 @@ export type DashboardTab =
   | "mitigation"
   | "bias-analysis"
   | "case-explorer"
+  | "agent-audit"
   | "run-metadata";
 
 export interface TabDef {
@@ -361,6 +362,7 @@ export const DASHBOARD_TABS: TabDef[] = [
   { id: "mitigation", label: "Prompt Mitigation", subtitle: "Mode comparison", icon: "◐" },
   { id: "bias-analysis", label: "Bias Analysis", subtitle: "Deep-dive findings", icon: "◉" },
   { id: "case-explorer", label: "Case Explorer", subtitle: "Side-by-side review", icon: "◫" },
+  { id: "agent-audit", label: "Agent Audit", subtitle: "Agentic RAG results", icon: "🤖" },
   { id: "run-metadata", label: "Run Metadata", subtitle: "Data quality", icon: "◇" },
 ];
 
