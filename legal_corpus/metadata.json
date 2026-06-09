@@ -3,8 +3,11 @@
   "corpus_version": "1.0.0",
   "created_date": "2026-06-09",
   "description": "Israeli legal corpus for pretrial detention bias audit, containing statutes, case law, and guidelines relevant to the Criminal Procedure (Enforcement Powers – Detention) Law and related legal frameworks.",
-  "language_coverage": ["en", "he"],
-  "total_documents": 6,
+  "language_coverage": [
+    "en",
+    "he"
+  ],
+  "total_documents": 10,
   "documents": [
     {
       "filename": "statutes/detention_law_5756_1996_en.txt",
@@ -36,7 +39,16 @@
         "Section 21B — House Arrest as Alternative",
         "Section 22 — Duration of Detention (Nine-Month Limit)"
       ],
-      "tags": ["detention", "arrest", "pretrial", "alternatives", "bail", "proportionality", "grounds", "time-limits"]
+      "tags": [
+        "detention",
+        "arrest",
+        "pretrial",
+        "alternatives",
+        "bail",
+        "proportionality",
+        "grounds",
+        "time-limits"
+      ]
     },
     {
       "filename": "statutes/detention_law_5756_1996_he.txt",
@@ -64,7 +76,16 @@
         "סעיף 21א — חובת בחינת חלופת מעצר",
         "סעיף 22 — משך המעצר עד תום ההליכים"
       ],
-      "tags": ["detention", "arrest", "pretrial", "alternatives", "bail", "hebrew", "מעצר", "חלופת-מעצר"]
+      "tags": [
+        "detention",
+        "arrest",
+        "pretrial",
+        "alternatives",
+        "bail",
+        "hebrew",
+        "מעצר",
+        "חלופת-מעצר"
+      ]
     },
     {
       "filename": "statutes/basic_law_human_dignity_en.txt",
@@ -100,7 +121,15 @@
         "Section 8 — Limitation Clause (proportionality test)",
         "Relevance to Pretrial Detention Bias Audit (equal application, alternatives)"
       ],
-      "tags": ["constitutional", "basic-law", "liberty", "dignity", "proportionality", "limitation-clause", "human-rights"]
+      "tags": [
+        "constitutional",
+        "basic-law",
+        "liberty",
+        "dignity",
+        "proportionality",
+        "limitation-clause",
+        "human-rights"
+      ]
     },
     {
       "filename": "statutes/bail_regulations_en.txt",
@@ -136,7 +165,15 @@
         "Section 28 — Socioeconomic Disparities in Bail",
         "Section 29 — Domestic Violence Cases"
       ],
-      "tags": ["bail", "conditional-release", "house-arrest", "electronic-monitoring", "surety", "alternatives", "socioeconomic"]
+      "tags": [
+        "bail",
+        "conditional-release",
+        "house-arrest",
+        "electronic-monitoring",
+        "surety",
+        "alternatives",
+        "socioeconomic"
+      ]
     },
     {
       "filename": "case_law/supreme_court_detention_rulings.txt",
@@ -164,18 +201,67 @@
         "Legal Framework Summary"
       ],
       "cases_cited": [
-        {"citation": "HCJ 6055/95", "year": 1999, "topic": "proportionality"},
-        {"citation": "CrimA 7048/97", "year": 1998, "topic": "alternatives_to_detention"},
-        {"citation": "CrimA 8087/03", "year": 2004, "topic": "domestic_violence_presumption"},
-        {"citation": "HCJ 2028/08", "year": 2010, "topic": "due_process"},
-        {"citation": "HCJ 7146/12", "year": 2013, "topic": "individualized_assessment"},
-        {"citation": "CrimA 2581/95", "year": 1995, "topic": "evidentiary_standard"},
-        {"citation": "CrimA 4424/98", "year": 1998, "topic": "combined_alternatives"},
-        {"citation": "CrimA 6352/10", "year": 2011, "topic": "duration_limits"},
-        {"citation": "FH CrimA 10141/09", "year": 2010, "topic": "bail_equality"},
-        {"citation": "HCJ 5100/94", "year": 1999, "topic": "dignity_in_detention"}
+        {
+          "citation": "HCJ 6055/95",
+          "year": 1999,
+          "topic": "proportionality"
+        },
+        {
+          "citation": "CrimA 7048/97",
+          "year": 1998,
+          "topic": "alternatives_to_detention"
+        },
+        {
+          "citation": "CrimA 8087/03",
+          "year": 2004,
+          "topic": "domestic_violence_presumption"
+        },
+        {
+          "citation": "HCJ 2028/08",
+          "year": 2010,
+          "topic": "due_process"
+        },
+        {
+          "citation": "HCJ 7146/12",
+          "year": 2013,
+          "topic": "individualized_assessment"
+        },
+        {
+          "citation": "CrimA 2581/95",
+          "year": 1995,
+          "topic": "evidentiary_standard"
+        },
+        {
+          "citation": "CrimA 4424/98",
+          "year": 1998,
+          "topic": "combined_alternatives"
+        },
+        {
+          "citation": "CrimA 6352/10",
+          "year": 2011,
+          "topic": "duration_limits"
+        },
+        {
+          "citation": "FH CrimA 10141/09",
+          "year": 2010,
+          "topic": "bail_equality"
+        },
+        {
+          "citation": "HCJ 5100/94",
+          "year": 1999,
+          "topic": "dignity_in_detention"
+        }
       ],
-      "tags": ["case-law", "supreme-court", "precedent", "proportionality", "alternatives", "due-process", "bias", "equality"]
+      "tags": [
+        "case-law",
+        "supreme-court",
+        "precedent",
+        "proportionality",
+        "alternatives",
+        "due-process",
+        "bias",
+        "equality"
+      ]
     },
     {
       "filename": "guidelines/detention_hearing_guidelines.txt",
@@ -215,7 +301,47 @@
         "Section 26 — Recommended Data Collection",
         "Section 27 — Red Flags for Potential Bias"
       ],
-      "tags": ["guidelines", "judicial-practice", "hearing-procedure", "decision-framework", "bias-monitoring", "risk-assessment", "checklist"]
+      "tags": [
+        "guidelines",
+        "judicial-practice",
+        "hearing-procedure",
+        "decision-framework",
+        "bias-monitoring",
+        "risk-assessment",
+        "checklist"
+      ]
+    },
+    {
+      "filename": "statutes/basic_law_human_dignity_he.txt",
+      "title": "חוק-יסוד: כבוד האדם וחירותו",
+      "language": "he",
+      "document_type": "statute",
+      "date": "1992-03-17",
+      "description": "Hebrew text of Basic Law: Human Dignity and Freedom"
+    },
+    {
+      "filename": "statutes/bail_regulations_he.txt",
+      "title": "הוראות שחרור בערובה ותנאי שחרור",
+      "language": "he",
+      "document_type": "statute",
+      "date": "1996",
+      "description": "Hebrew bail and conditional release provisions"
+    },
+    {
+      "filename": "case_law/supreme_court_detention_rulings_he.txt",
+      "title": "פסיקת בית המשפט העליון בנושא מעצרים",
+      "language": "he",
+      "document_type": "case_law",
+      "date": "2024",
+      "description": "Hebrew summaries of key Supreme Court detention precedents"
+    },
+    {
+      "filename": "guidelines/detention_hearing_guidelines_he.txt",
+      "title": "הנחיות לדיוני מעצרים",
+      "language": "he",
+      "document_type": "guideline",
+      "date": "2024",
+      "description": "Hebrew guidelines for pretrial detention hearings"
     }
   ],
   "chunking_guidance": {
