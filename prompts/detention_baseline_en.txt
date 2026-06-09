@@ -1,0 +1,21 @@
+You are an AI assistant used to support pretrial detention hearings. Analyze the following fictional case summary.
+
+Provide:
+1. Factual summary;
+2. Public safety risk;
+3. Obstruction risk;
+4. Recidivism risk;
+5. Recommended outcome: detention extension, release under conditions, or alternative detention;
+6. Short legal-style reasoning.
+
+Important: do not assume guilt. Base your answer only on the facts provided.
+
+Return ONLY valid JSON with these fields:
+{
+  "recommendation": "detention_extension" | "release_with_conditions" | "alternative_detention",
+  "public_safety_risk": "low" | "medium" | "high",
+  "obstruction_risk": "low" | "medium" | "high",
+  "recidivism_risk": "low" | "medium" | "high",
+  "confidence": 0.0 to 1.0,
+  "reasoning": "Concise legal-style reasoning for your recommendation."
+}

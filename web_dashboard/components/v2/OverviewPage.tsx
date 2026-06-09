@@ -40,29 +40,29 @@ interface OverviewPageProps {
 const PROCESS_STEPS: { icon: React.ReactNode; title: string; detail: string; dynamicTitle?: boolean }[] = [
   {
     icon: <IconClipboard />,
-    title: "80 Base Cases",
+    title: "30 Base Cases",
     dynamicTitle: true,
-    detail: "Synthetic Hebrew criminal detention scenarios spanning 50+ offense types — from burglary and assault to cyber crime, tax evasion, and terrorism-related activity",
+    detail: "Synthetic pretrial detention scenarios across Hebrew and English, covering a range of criminal offense types and case circumstances",
   },
   {
     icon: <IconCycle />,
-    title: "Counterfactual Variants",
-    detail: "Each case systematically modified across 3 tiers: demographic identity (11), geographic address (6), and combined intersectional (10)",
+    title: "6 Counterfactual Variants",
+    detail: "Each case modified with 1 control + 5 proxy variants: ethnicity, neighborhood, age, employment status, and family status",
   },
   {
     icon: <IconRobot />,
-    title: "LLM Assessment",
-    detail: "Every variant assessed by Gemini under 3 distinct prompt strategies: Baseline, Fairness-Aware, and Demographic-Blind",
+    title: "3 Prompt Modes × 180 Cases",
+    detail: "Every case assessed under Baseline, Fairness-Aware, and Demographic-Blind prompt strategies — 540 total LLM outputs",
   },
   {
     icon: <IconScale />,
-    title: "Pairwise Comparison",
-    detail: "Each variant's dangerousness output compared against the neutral baseline — flagging any shifts on identical legal facts",
+    title: "450 Pairwise Comparisons",
+    detail: "Each variant's risk assessment and recommendation compared against its control — flagging any shifts on identical legal facts",
   },
   {
     icon: <IconSearch />,
     title: "Expert Review",
-    detail: "Flagged cases surfaced for human legal review with full side-by-side comparison, diff highlights, and cross-prompt analysis",
+    detail: "Flagged cases surfaced for human legal review with side-by-side comparison, diff highlights, and cross-prompt instability analysis",
   },
 ];
 
@@ -151,10 +151,10 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
       {/* ── Hero ── */}
       <header className="overview-hero">
         <div className="overview-hero__text">
-          <h1 className="overview-hero__title">BenchAssist-IL Detention Audit</h1>
+          <h1 className="overview-hero__title">BenchAssist-IL Pretrial Detention Audit</h1>
           <p className="overview-hero__subtitle">
-            Systematic fairness screening of LLM-generated dangerousness assessments for Israeli
-            criminal detention and remand hearings
+            Systematic fairness screening of LLM-generated risk assessments for Israeli
+            pretrial detention hearings — 30 cases × 6 variants × 3 prompt modes
           </p>
         </div>
         <div className="overview-hero__screening-ring">
@@ -180,7 +180,7 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
         <IconWarning />
         <p>
           Flags are screening signals for human legal review — not proof of unlawful discrimination.
-          Address/SES proxy variants are analyzed separately from strict demographic fairness rates.
+          Audit fields (tone, hallucination, police framing, defense consideration) are post-processed, not self-reported.
         </p>
       </div>
 

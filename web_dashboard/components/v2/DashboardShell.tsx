@@ -31,6 +31,10 @@ const RunMetadataPage = dynamic(
   () => import("@/components/v2/RunMetadataPage").then((m) => m.RunMetadataPage),
   { loading: () => <Loading /> },
 );
+const BiasAnalysisPage = dynamic(
+  () => import("@/components/v2/BiasAnalysisPage").then((m) => m.BiasAnalysisPage),
+  { loading: () => <Loading /> },
+);
 
 function Loading() {
   return (
@@ -147,6 +151,9 @@ export function DashboardShell() {
         )}
         {activeTab === "mitigation" && (
           <PromptMitigationPage bundle={bundle} />
+        )}
+        {activeTab === "bias-analysis" && (
+          <BiasAnalysisPage onNavigate={navigateTab} />
         )}
         {activeTab === "case-explorer" && (
           <CaseExplorerPage bundle={bundle} />

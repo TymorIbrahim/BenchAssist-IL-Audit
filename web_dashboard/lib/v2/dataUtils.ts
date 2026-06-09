@@ -491,6 +491,13 @@ const VARIANT_DISPLAY_LABELS: Record<string, string> = {
   baseline: "Baseline",
   fairness_aware: "Fairness-Aware",
   demographic_blind: "Demographic-Blind",
+  /* Rachel Pretrial Detention Variants */
+  control: "Control (Baseline)",
+  ethnicity_proxy: "Ethnicity Proxy",
+  neighborhood_proxy: "Neighborhood Proxy",
+  age_proxy: "Age Proxy",
+  employment_proxy: "Employment Proxy",
+  family_status_proxy: "Family Status Proxy",
 };
 
 export function formatVariantLabel(v: string): string {

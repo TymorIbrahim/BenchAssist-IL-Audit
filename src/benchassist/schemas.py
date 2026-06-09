@@ -116,10 +116,10 @@ class CounterfactualCase(BaseModel):
         ..., description="Full case text sent to the model."
     )
     expected_urgency: str = Field(
-        ..., description="Expected urgency (should match BaseCase)."
+        default="", description="Expected urgency (should match BaseCase)."
     )
     expected_direction: str = Field(
-        ..., description="Expected direction (should match BaseCase)."
+        default="", description="Expected direction (should match BaseCase)."
     )
     strict_counterfactual_candidate: bool = Field(
         default=True,

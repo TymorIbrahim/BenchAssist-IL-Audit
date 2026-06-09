@@ -63,33 +63,72 @@ function truncate(text: string, maxLines: number): string {
   return lines.slice(0, maxLines).join("\n") + "…";
 }
 
-/** Simple word-level diff: highlight words that appear in one text but not the other. */
-function highlightDiffs(baseText: string, variantText: string): { baseParts: Array<{ text: string; changed: boolean }>; variantParts: Array<{ text: string; changed: boolean }> } {
-  const baseSentences = baseText.split(/(?<=[.!?])\s+/);
-  const variantSentences = variantText.split(/(?<=[.!?])\s+/);
-  const variantSet = new Set(variantSentences.map(s => s.trim()));
-  const baseSet = new Set(baseSentences.map(s => s.trim()));
+/**
+ * Line-by-line diff: splits both texts by newline, aligns lines by their
+ * field label (text before the colon), and marks a line as changed only
+ * when the *value* portion differs between base and variant.
+ */
+function highlightDiffs(
+  baseText: string,
+  variantText: string,
+): {
+  baseParts: Array<{ text: string; changed: boolean }>;
+  variantParts: Array<{ text: string; changed: boolean }>;
+} {
+  const baseLines = baseText.split("\n").map((l) => l.trim()).filter(Boolean);
+  const variantLines = variantText.split("\n").map((l) => l.trim()).filter(Boolean);
 
-  const baseParts = baseSentences.map(s => ({
-    text: s,
-    changed: !variantSet.has(s.trim()),
-  }));
-  const variantParts = variantSentences.map(s => ({
-    text: s,
-    changed: !baseSet.has(s.trim()),
-  }));
+  // Build a map: fieldLabel → value for the variant
+  const variantByLabel = new Map<string, string>();
+  for (const line of variantLines) {
+    const colonIdx = line.indexOf(":");
+    if (colonIdx > 0) {
+      variantByLabel.set(line.slice(0, colonIdx).trim(), line.slice(colonIdx + 1).trim());
+    } else {
+      variantByLabel.set(line, line);
+    }
+  }
+  const baseByLabel = new Map<string, string>();
+  for (const line of baseLines) {
+    const colonIdx = line.indexOf(":");
+    if (colonIdx > 0) {
+      baseByLabel.set(line.slice(0, colonIdx).trim(), line.slice(colonIdx + 1).trim());
+    } else {
+      baseByLabel.set(line, line);
+    }
+  }
+
+  const baseParts = baseLines.map((line) => {
+    const colonIdx = line.indexOf(":");
+    const label = colonIdx > 0 ? line.slice(0, colonIdx).trim() : line;
+    const baseVal = colonIdx > 0 ? line.slice(colonIdx + 1).trim() : line;
+    const variantVal = variantByLabel.get(label);
+    return { text: line, changed: variantVal !== undefined && variantVal !== baseVal };
+  });
+
+  const variantParts = variantLines.map((line) => {
+    const colonIdx = line.indexOf(":");
+    const label = colonIdx > 0 ? line.slice(0, colonIdx).trim() : line;
+    const varVal = colonIdx > 0 ? line.slice(colonIdx + 1).trim() : line;
+    const baseVal = baseByLabel.get(label);
+    return { text: line, changed: baseVal !== undefined && baseVal !== varVal };
+  });
+
   return { baseParts, variantParts };
 }
 
 function DiffText({ parts }: { parts: Array<{ text: string; changed: boolean }> }) {
   return (
-    <p className="v2-case-explorer__field-text">
+    <div className="v2-case-explorer__field-text">
       {parts.map((p, i) => (
-        <span key={i} className={p.changed ? "v2-diff-highlight" : ""}>
-          {p.text}{" "}
-        </span>
+        <div
+          key={i}
+          className={p.changed ? "v2-diff-line v2-diff-highlight" : "v2-diff-line"}
+        >
+          {p.text}
+        </div>
       ))}
-    </p>
+    </div>
   );
 }
 
@@ -123,6 +162,15 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
   const [showPromptNeutral, setShowPromptNeutral] = useState(false);
   const [showPromptVariant, setShowPromptVariant] = useState(false);
   const [showPromptDiffs, setShowPromptDiffs] = useState(false);
+  // Collapsible sections
+  const [sectionOpen, setSectionOpen] = useState<Record<string, boolean>>({
+    input: true,
+    output: true,
+    reasoning: false,
+    crossPrompt: false,
+    diff: false,
+  });
+  const toggleSection = (key: string) => setSectionOpen((s) => ({ ...s, [key]: !s[key] }));
 
   /* ---------- filtered entries ---------- */
   const filtered = useMemo(
@@ -280,18 +328,38 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
 
           {pagedEntries.map((entry) => {
             const isSelected = selectedEntry?.review_record_id === entry.review_record_id;
+            const priorityColor = entry.is_flagged
+              ? (entry.review_priority === "high" ? "var(--v2-danger, #dc2626)" : "var(--v2-warning, #d97706)")
+              : undefined;
             return (
               <button
                 key={entry.review_record_id}
                 type="button"
                 className={`v2-case-explorer__card${isSelected ? " v2-case-explorer__card--selected" : ""}`}
-                style={entry.is_flagged ? { borderLeft: "3px solid var(--v2-danger)" } : undefined}
+                style={priorityColor ? { borderLeft: `3px solid ${priorityColor}` } : undefined}
                 onClick={() => handleSelectEntry(entry)}
                 aria-pressed={isSelected}
               >
                 <div className="v2-case-explorer__card-top">
                   <span className="v2-case-explorer__case-id">{entry.base_case_id}</span>
-                  {entry.is_flagged && <span aria-label="Flagged"><IconFlag /></span>}
+                  <span style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}>
+                    {entry.is_flagged && (
+                      <span style={{
+                        display: "inline-block", padding: "0.1rem 0.4rem", borderRadius: "999px",
+                        fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.03em",
+                        background: entry.review_priority === "high" ? "hsl(0 75% 92%)" : "hsl(35 80% 92%)",
+                        color: entry.review_priority === "high" ? "hsl(0 70% 40%)" : "hsl(35 70% 35%)",
+                      }}>
+                        {entry.review_priority === "high" ? "⚠ HIGH" : "⚡ FLAGGED"}
+                      </span>
+                    )}
+                    {!entry.is_flagged && (
+                      <span style={{
+                        display: "inline-block", padding: "0.1rem 0.4rem", borderRadius: "999px",
+                        fontSize: "0.65rem", fontWeight: 600, background: "hsl(220 15% 94%)", color: "hsl(220 10% 60%)",
+                      }}>OK</span>
+                    )}
+                  </span>
                 </div>
                 <span className="v2-case-explorer__variant-label">
                   {entry.base_case_title}
@@ -377,43 +445,50 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
                 </div>
               )}
 
-              {/* ---- SECTION 1: Input Case Comparison ---- */}
+              {/* ---- SECTION 1: Input Case Comparison (Collapsible) ---- */}
               <div className="section-card" style={{ marginBottom: "1.25rem" }}>
-                <h3 style={{ marginBottom: "0.75rem" }}><IconDocument /> Input Case — Neutral vs Variant</h3>
-                <p className="muted" style={{ marginBottom: "0.75rem" }}>
-                  The case text given to the model. Differences are highlighted.
-                  {loadedRecord.variant_case?.what_changed_from_base && (
-                    <span>
-                      {" "}Changed: <strong>{Array.isArray(loadedRecord.variant_case.what_changed_from_base)
-                        ? loadedRecord.variant_case.what_changed_from_base.join(", ")
-                        : loadedRecord.variant_case.what_changed_from_base}</strong>
-                    </span>
-                  )}
-                </p>
-                <div className="v2-case-explorer__comparison">
-                  {/* Neutral input */}
-                  <div className="v2-case-explorer__column">
-                    <h4 className="v2-case-explorer__column-title">Neutral Baseline — Input</h4>
-                    <div className="v2-case-explorer__input-text" dir="rtl">
-                      {inputDiff ? (
-                        <DiffText parts={inputDiff.baseParts} />
-                      ) : (
-                        <p className="v2-case-explorer__field-text">{baseCaseText ?? "N/A"}</p>
+                <button type="button" onClick={() => toggleSection('input')} style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', width: '100%' }}>
+                  <span style={{ fontSize: '0.8rem', transition: 'transform 0.2s', transform: sectionOpen.input ? 'rotate(90deg)' : 'rotate(0)' }}>▶</span>
+                  <h3 style={{ margin: 0 }}><IconDocument /> Input Case — Neutral vs Variant</h3>
+                </button>
+                {sectionOpen.input && (
+                  <>
+                    <p className="muted" style={{ marginBottom: "0.75rem", marginTop: "0.5rem" }}>
+                      The case text given to the model. Differences are highlighted.
+                      {loadedRecord.variant_case?.what_changed_from_base && (
+                        <span>
+                          {" "}Changed: <strong>{Array.isArray(loadedRecord.variant_case.what_changed_from_base)
+                            ? loadedRecord.variant_case.what_changed_from_base.join(", ")
+                            : loadedRecord.variant_case.what_changed_from_base}</strong>
+                        </span>
                       )}
+                    </p>
+                    <div className="v2-case-explorer__comparison">
+                      {/* Neutral input */}
+                      <div className="v2-case-explorer__column">
+                        <h4 className="v2-case-explorer__column-title">Neutral Baseline — Input</h4>
+                        <div className="v2-case-explorer__input-text" dir="auto" style={{ whiteSpace: "pre-wrap" }}>
+                          {inputDiff ? (
+                            <DiffText parts={inputDiff.baseParts} />
+                          ) : (
+                            <p className="v2-case-explorer__field-text">{baseCaseText ?? "N/A"}</p>
+                          )}
+                        </div>
+                      </div>
+                      {/* Variant input */}
+                      <div className="v2-case-explorer__column">
+                        <h4 className="v2-case-explorer__column-title">Variant: {variantLabel} — Input</h4>
+                        <div className="v2-case-explorer__input-text" dir="auto" style={{ whiteSpace: "pre-wrap" }}>
+                          {inputDiff ? (
+                            <DiffText parts={inputDiff.variantParts} />
+                          ) : (
+                            <p className="v2-case-explorer__field-text">{variantCaseText ?? "N/A"}</p>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  {/* Variant input */}
-                  <div className="v2-case-explorer__column">
-                    <h4 className="v2-case-explorer__column-title">Variant: {variantLabel} — Input</h4>
-                    <div className="v2-case-explorer__input-text" dir="rtl">
-                      {inputDiff ? (
-                        <DiffText parts={inputDiff.variantParts} />
-                      ) : (
-                        <p className="v2-case-explorer__field-text">{variantCaseText ?? "N/A"}</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
+                  </>
+                )}
               </div>
 
               {/* ---- Prompt toggles ---- */}
@@ -443,76 +518,91 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
                 </div>
               )}
 
-              {/* ---- SECTION 2: Dangerousness Assessment ---- */}
+              {/* ---- SECTION 2: Model Output Comparison (Collapsible, default open) ---- */}
               <div className="section-card" style={{ marginBottom: "1.25rem" }}>
-                <h3 style={{ marginBottom: "0.75rem" }}><IconScale /> Dangerousness Assessment</h3>
-                <div className="v2-case-explorer__danger-row">
-                  <div className="v2-case-explorer__danger-box">
-                    <span className="v2-case-explorer__danger-heading">Neutral Baseline</span>
-                    <span
-                      className={`v2-case-explorer__danger-badge${dangerMismatch ? "" : ""}`}
-                      style={{ color: getDangerColor(neutralDanger), background: "var(--v2-neutral-bg)" }}
-                    >
-                      {neutralDanger?.replace(/_/g, " ") ?? "N/A"}
-                    </span>
-                  </div>
-                  <span className="v2-case-explorer__danger-arrow">→</span>
-                  <div className="v2-case-explorer__danger-box">
-                    <span className="v2-case-explorer__danger-heading">Variant: {variantLabel}</span>
-                    <span
-                      className={`v2-case-explorer__danger-badge${dangerMismatch ? " v2-danger-mismatch" : ""}`}
-                      style={{ color: getDangerColor(variantDanger), background: dangerMismatch ? "var(--v2-danger-bg)" : "var(--v2-neutral-bg)" }}
-                    >
-                      {variantDanger?.replace(/_/g, " ") ?? "N/A"}
-                    </span>
-                  </div>
-                </div>
+                <button type="button" onClick={() => toggleSection('output')} style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', width: '100%' }}>
+                  <span style={{ fontSize: '0.8rem', transition: 'transform 0.2s', transform: sectionOpen.output ? 'rotate(90deg)' : 'rotate(0)' }}>▶</span>
+                  <h3 style={{ margin: 0 }}><IconScale /> Model Output Comparison</h3>
+                </button>
+                {sectionOpen.output && (
+                  <>
+                    <p className="muted" style={{ marginBottom: "0.75rem", marginTop: "0.5rem", fontSize: "var(--v2-fs-sm, 0.85rem)" }}>
+                      All fields the model produced. Differences between neutral and variant are highlighted.
+                    </p>
+                    <div className="v2-output-table-wrap">
+                      <table className="v2-output-table">
+                        <thead>
+                          <tr>
+                            <th>Field</th>
+                            <th>Neutral Baseline</th>
+                            <th>Variant: {variantLabel}</th>
+                            <th className="v2-output-table__status">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {(() => {
+                            const n = loadedRecord.neutral_output ?? {} as Record<string, unknown>;
+                            const v = loadedRecord.variant_output ?? {} as Record<string, unknown>;
+                            const fields: Array<{ label: string; key: string; format?: (val: unknown) => string }> = [
+                              { label: "Recommendation", key: "recommendation", format: (x) => String(x ?? "").replace(/_/g, " ") },
+                              { label: "Public Safety Risk", key: "public_safety_risk" },
+                              { label: "Obstruction Risk", key: "obstruction_risk" },
+                              { label: "Recidivism Risk", key: "recidivism_risk" },
+                            ];
+                            return fields.map(({ label, key, format }) => {
+                              const nVal = (n as Record<string, unknown>)[key];
+                              const vVal = (v as Record<string, unknown>)[key];
+                              const fmt = format ?? ((x: unknown) => String(x ?? "N/A"));
+                              const changed = String(nVal) !== String(vVal);
+                              return (
+                                <tr key={key} className={changed ? "v2-output-table__row--changed" : ""}>
+                                  <td className="v2-output-table__field">{label}</td>
+                                  <td className="v2-output-table__val">{fmt(nVal)}</td>
+                                  <td className={`v2-output-table__val${changed ? " v2-output-table__val--diff" : ""}`}>{fmt(vVal)}</td>
+                                  <td className="v2-output-table__status">{changed ? <span className="v2-output-badge v2-output-badge--changed">Changed</span> : <span className="v2-output-badge v2-output-badge--same">Same</span>}</td>
+                                </tr>
+                              );
+                            });
+                          })()}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                )}
               </div>
 
-              {/* ---- SECTION 3: Model Output — Summary & Reasoning ---- */}
+              {/* ---- SECTION 3: Model Reasoning (Collapsible, default closed) ---- */}
               <div className="section-card" style={{ marginBottom: "1.25rem" }}>
-                <h3 style={{ marginBottom: "0.75rem" }}><IconRobot /> Model Output — Summary & Reasoning</h3>
-                <div className="v2-case-explorer__comparison">
-                  {/* Neutral output */}
-                  <div className="v2-case-explorer__column">
-                    <h4 className="v2-case-explorer__column-title">Neutral Baseline</h4>
-                    <div className="v2-case-explorer__field">
-                      <span className="v2-case-explorer__field-label">Case Summary</span>
-                      <p className="v2-case-explorer__field-text">
-                        {loadedRecord.neutral_output?.case_summary ?? "N/A"}
-                      </p>
-                    </div>
-                    <div className="v2-case-explorer__field">
-                      <span className="v2-case-explorer__field-label">Reasoning</span>
-                      <div className="v2-case-explorer__reasoning-scroll">
-                        <p className="v2-case-explorer__field-text">
+                <button type="button" onClick={() => toggleSection('reasoning')} style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', width: '100%' }}>
+                  <span style={{ fontSize: '0.8rem', transition: 'transform 0.2s', transform: sectionOpen.reasoning ? 'rotate(90deg)' : 'rotate(0)' }}>▶</span>
+                  <h3 style={{ margin: 0 }}><IconRobot /> Model Reasoning</h3>
+                </button>
+                {sectionOpen.reasoning && (
+                  <div style={{ marginTop: "0.75rem" }}>
+                    <p className="muted" style={{ marginBottom: "0.75rem", fontSize: "var(--v2-fs-sm)" }}>
+                      The model&apos;s legal-style reasoning for each version. Compare how the justification changes when demographic details differ.
+                    </p>
+                    <div className="v2-case-explorer__comparison">
+                      {/* Neutral reasoning */}
+                      <div className="v2-case-explorer__column">
+                        <h4 className="v2-case-explorer__column-title">Neutral Baseline</h4>
+                        <div className="v2-case-explorer__reasoning-scroll" dir="auto" style={{ whiteSpace: "pre-wrap", lineHeight: 1.6, fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-secondary)", background: "var(--v2-bg-surface, hsl(220 15% 97%))", padding: "0.75rem", borderRadius: "6px", border: "1px solid var(--v2-border-subtle, hsl(220 15% 94%))" }}>
                           {loadedRecord.neutral_output?.reasoning_text ?? "N/A"}
-                        </p>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  {/* Variant output */}
-                  <div className="v2-case-explorer__column">
-                    <h4 className="v2-case-explorer__column-title">Variant: {variantLabel}</h4>
-                    <div className="v2-case-explorer__field">
-                      <span className="v2-case-explorer__field-label">Case Summary</span>
-                      <p className="v2-case-explorer__field-text">
-                        {loadedRecord.variant_output?.case_summary ?? "N/A"}
-                      </p>
-                    </div>
-                    <div className="v2-case-explorer__field">
-                      <span className="v2-case-explorer__field-label">Reasoning</span>
-                      <div className="v2-case-explorer__reasoning-scroll">
-                        <p className="v2-case-explorer__field-text">
+                      {/* Variant reasoning */}
+                      <div className="v2-case-explorer__column">
+                        <h4 className="v2-case-explorer__column-title">Variant: {variantLabel}</h4>
+                        <div className="v2-case-explorer__reasoning-scroll" dir="auto" style={{ whiteSpace: "pre-wrap", lineHeight: 1.6, fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-secondary)", background: "var(--v2-bg-surface, hsl(220 15% 97%))", padding: "0.75rem", borderRadius: "6px", border: "1px solid var(--v2-border-subtle, hsl(220 15% 94%))" }}>
                           {loadedRecord.variant_output?.reasoning_text ?? "N/A"}
-                        </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
 
-              {/* ---- SECTION 4: Cross-prompt comparison ---- */}
+              {/* ---- SECTION 4: Cross-prompt comparison (Collapsible) ---- */}
               {hasCrossPrompt && (() => {
                 const PROMPT_DESCRIPTIONS: Record<string, string> = {
                   baseline: "Standard assessment — no explicit fairness instructions",

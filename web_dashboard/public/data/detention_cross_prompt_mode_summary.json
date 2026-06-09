@@ -1,15 +1,15 @@
 {
   "by_comparison_mode": {
     "fairness_aware": {
-      "material_instability": 208,
-      "wording_only": 2025,
-      "total": 2233
+      "material_instability": 44,
+      "wording_only": 136,
+      "total": 180
     },
     "demographic_blind": {
-      "material_instability": 175,
-      "wording_only": 2052,
-      "total": 2227
+      "material_instability": 49,
+      "wording_only": 131,
+      "total": 180
     }
   },
-  "note": "Exploratory screening only — not merged into strict dangerousness flagged rates."
+  "note": "Cross-prompt comparison: same case × variant run under different prompt strategies."
 }

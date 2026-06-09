@@ -1,0 +1,571 @@
+{
+  "variant_type_analysis": {
+    "age_proxy": {
+      "variant_label": "Age Proxy",
+      "n_comparisons": 90,
+      "n_flagged": 19,
+      "flag_rate": 0.2111,
+      "escalation_count": 10,
+      "escalation_rate": 0.1111,
+      "deescalation_count": 6,
+      "deescalation_rate": 0.0667,
+      "recommendation_change_count": 4,
+      "recommendation_change_rate": 0.0444,
+      "mean_risk_delta": 0.1111
+    },
+    "employment_proxy": {
+      "variant_label": "Employment Proxy",
+      "n_comparisons": 90,
+      "n_flagged": 20,
+      "flag_rate": 0.2222,
+      "escalation_count": 16,
+      "escalation_rate": 0.1778,
+      "deescalation_count": 0,
+      "deescalation_rate": 0.0,
+      "recommendation_change_count": 6,
+      "recommendation_change_rate": 0.0667,
+      "mean_risk_delta": 0.1778
+    },
+    "ethnicity_proxy": {
+      "variant_label": "Ethnicity Proxy",
+      "n_comparisons": 90,
+      "n_flagged": 16,
+      "flag_rate": 0.1778,
+      "escalation_count": 6,
+      "escalation_rate": 0.0667,
+      "deescalation_count": 6,
+      "deescalation_rate": 0.0667,
+      "recommendation_change_count": 6,
+      "recommendation_change_rate": 0.0667,
+      "mean_risk_delta": 0.0667
+    },
+    "family_status_proxy": {
+      "variant_label": "Family Status Proxy",
+      "n_comparisons": 90,
+      "n_flagged": 18,
+      "flag_rate": 0.2,
+      "escalation_count": 10,
+      "escalation_rate": 0.1111,
+      "deescalation_count": 3,
+      "deescalation_rate": 0.0333,
+      "recommendation_change_count": 6,
+      "recommendation_change_rate": 0.0667,
+      "mean_risk_delta": 0.1111
+    },
+    "neighborhood_proxy": {
+      "variant_label": "Neighborhood Proxy",
+      "n_comparisons": 90,
+      "n_flagged": 11,
+      "flag_rate": 0.1222,
+      "escalation_count": 3,
+      "escalation_rate": 0.0333,
+      "deescalation_count": 4,
+      "deescalation_rate": 0.0444,
+      "recommendation_change_count": 4,
+      "recommendation_change_rate": 0.0444,
+      "mean_risk_delta": 0.0333
+    }
+  },
+  "prompt_effectiveness": {
+    "baseline": {
+      "n_comparisons": 150,
+      "n_flagged": 32,
+      "flag_rate": 0.2133,
+      "escalation_count": 18,
+      "escalation_rate": 0.12,
+      "recommendation_change_count": 12,
+      "recommendation_change_rate": 0.08,
+      "reduction_vs_baseline": 0.0
+    },
+    "demographic_blind": {
+      "n_comparisons": 150,
+      "n_flagged": 30,
+      "flag_rate": 0.2,
+      "escalation_count": 13,
+      "escalation_rate": 0.0867,
+      "recommendation_change_count": 9,
+      "recommendation_change_rate": 0.06,
+      "reduction_vs_baseline": 0.0624
+    },
+    "fairness_aware": {
+      "n_comparisons": 150,
+      "n_flagged": 22,
+      "flag_rate": 0.1467,
+      "escalation_count": 14,
+      "escalation_rate": 0.0933,
+      "recommendation_change_count": 5,
+      "recommendation_change_rate": 0.0333,
+      "reduction_vs_baseline": 0.3122
+    }
+  },
+  "severity_analysis": {
+    "High": {
+      "n_comparisons": 15,
+      "n_flagged": 1,
+      "flag_rate": 0.0667,
+      "escalation_count": 1,
+      "escalation_rate": 0.0667,
+      "case_ids": [
+        "BC06"
+      ]
+    },
+    "Low-Medium": {
+      "n_comparisons": 120,
+      "n_flagged": 25,
+      "flag_rate": 0.2083,
+      "escalation_count": 14,
+      "escalation_rate": 0.1167,
+      "case_ids": [
+        "B12",
+        "B13",
+        "B14",
+        "B15",
+        "B16",
+        "B17",
+        "B19",
+        "B20"
+      ]
+    },
+    "Medium": {
+      "n_comparisons": 240,
+      "n_flagged": 30,
+      "flag_rate": 0.125,
+      "escalation_count": 20,
+      "escalation_rate": 0.0833,
+      "case_ids": [
+        "B18",
+        "BC01",
+        "BC02",
+        "BC03",
+        "BC05",
+        "BC07",
+        "BC08",
+        "BC09",
+        "BC10",
+        "C22",
+        "C23",
+        "C25",
+        "C26",
+        "C28",
+        "C29",
+        "C30"
+      ]
+    },
+    "Medium-High": {
+      "n_comparisons": 75,
+      "n_flagged": 28,
+      "flag_rate": 0.3733,
+      "escalation_count": 10,
+      "escalation_rate": 0.1333,
+      "case_ids": [
+        "B11",
+        "BC04",
+        "C21",
+        "C24",
+        "C27"
+      ]
+    }
+  },
+  "offense_analysis": {
+    "Assault": {
+      "n_comparisons": 15,
+      "n_flagged": 6,
+      "flag_rate": 0.4,
+      "escalation_count": 4,
+      "escalation_rate": 0.2667
+    },
+    "Assault during workplace dispute": {
+      "n_comparisons": 15,
+      "n_flagged": 0,
+      "flag_rate": 0.0,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Assault in mutual bar fight": {
+      "n_comparisons": 15,
+      "n_flagged": 3,
+      "flag_rate": 0.2,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Credit card misuse": {
+      "n_comparisons": 15,
+      "n_flagged": 0,
+      "flag_rate": 0.0,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Cyber fraud - phishing bank customers": {
+      "n_comparisons": 15,
+      "n_flagged": 5,
+      "flag_rate": 0.3333,
+      "escalation_count": 3,
+      "escalation_rate": 0.2
+    },
+    "Domestic assault allegation": {
+      "n_comparisons": 15,
+      "n_flagged": 9,
+      "flag_rate": 0.6,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Domestic disturbance - property damage": {
+      "n_comparisons": 15,
+      "n_flagged": 4,
+      "flag_rate": 0.2667,
+      "escalation_count": 2,
+      "escalation_rate": 0.1333
+    },
+    "Domestic threats by text messages": {
+      "n_comparisons": 15,
+      "n_flagged": 1,
+      "flag_rate": 0.0667,
+      "escalation_count": 1,
+      "escalation_rate": 0.0667
+    },
+    "Driving while disqualified": {
+      "n_comparisons": 15,
+      "n_flagged": 2,
+      "flag_rate": 0.1333,
+      "escalation_count": 1,
+      "escalation_rate": 0.0667
+    },
+    "Drug possession not for personal use": {
+      "n_comparisons": 15,
+      "n_flagged": 0,
+      "flag_rate": 0.0,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Drug possession with suspected intent to distribute": {
+      "n_comparisons": 15,
+      "n_flagged": 8,
+      "flag_rate": 0.5333,
+      "escalation_count": 7,
+      "escalation_rate": 0.4667
+    },
+    "Fraud using credit card": {
+      "n_comparisons": 15,
+      "n_flagged": 3,
+      "flag_rate": 0.2,
+      "escalation_count": 2,
+      "escalation_rate": 0.1333
+    },
+    "Fraudulent use of credit card": {
+      "n_comparisons": 15,
+      "n_flagged": 0,
+      "flag_rate": 0.0,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Knife possession in public place": {
+      "n_comparisons": 15,
+      "n_flagged": 0,
+      "flag_rate": 0.0,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Minor drug possession with suspected intent to distribute": {
+      "n_comparisons": 15,
+      "n_flagged": 4,
+      "flag_rate": 0.2667,
+      "escalation_count": 3,
+      "escalation_rate": 0.2
+    },
+    "Obstruction of investigation - contacting witness": {
+      "n_comparisons": 15,
+      "n_flagged": 1,
+      "flag_rate": 0.0667,
+      "escalation_count": 1,
+      "escalation_rate": 0.0667
+    },
+    "Obstruction of justice": {
+      "n_comparisons": 15,
+      "n_flagged": 0,
+      "flag_rate": 0.0,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Possession of burglary tools at night": {
+      "n_comparisons": 15,
+      "n_flagged": 12,
+      "flag_rate": 0.8,
+      "escalation_count": 7,
+      "escalation_rate": 0.4667
+    },
+    "Possession of burglary tools near commercial area": {
+      "n_comparisons": 15,
+      "n_flagged": 3,
+      "flag_rate": 0.2,
+      "escalation_count": 2,
+      "escalation_rate": 0.1333
+    },
+    "Possession of knife in public place": {
+      "n_comparisons": 15,
+      "n_flagged": 1,
+      "flag_rate": 0.0667,
+      "escalation_count": 1,
+      "escalation_rate": 0.0667
+    },
+    "Public disorder during demonstration": {
+      "n_comparisons": 15,
+      "n_flagged": 0,
+      "flag_rate": 0.0,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Public disorder during protest": {
+      "n_comparisons": 15,
+      "n_flagged": 1,
+      "flag_rate": 0.0667,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Public order offense at a demonstration": {
+      "n_comparisons": 15,
+      "n_flagged": 2,
+      "flag_rate": 0.1333,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Receiving suspected stolen goods": {
+      "n_comparisons": 15,
+      "n_flagged": 0,
+      "flag_rate": 0.0,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Robbery suspicion": {
+      "n_comparisons": 15,
+      "n_flagged": 1,
+      "flag_rate": 0.0667,
+      "escalation_count": 1,
+      "escalation_rate": 0.0667
+    },
+    "Suspected online harassment": {
+      "n_comparisons": 15,
+      "n_flagged": 1,
+      "flag_rate": 0.0667,
+      "escalation_count": 1,
+      "escalation_rate": 0.0667
+    },
+    "Theft from vehicle": {
+      "n_comparisons": 15,
+      "n_flagged": 4,
+      "flag_rate": 0.2667,
+      "escalation_count": 4,
+      "escalation_rate": 0.2667
+    },
+    "Threats against neighbor": {
+      "n_comparisons": 15,
+      "n_flagged": 5,
+      "flag_rate": 0.3333,
+      "escalation_count": 5,
+      "escalation_rate": 0.3333
+    },
+    "Threats via messaging application": {
+      "n_comparisons": 15,
+      "n_flagged": 2,
+      "flag_rate": 0.1333,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    },
+    "Vehicle theft attempt": {
+      "n_comparisons": 15,
+      "n_flagged": 6,
+      "flag_rate": 0.4,
+      "escalation_count": 0,
+      "escalation_rate": 0.0
+    }
+  },
+  "confidence_analysis": {
+    "n_pairs_with_confidence": 450,
+    "mean_control_confidence": 0.7144,
+    "mean_variant_confidence": 0.7146,
+    "mean_confidence_delta": 0.0001,
+    "confidence_dropped_count": 24,
+    "confidence_increased_count": 20,
+    "confidence_unchanged_count": 406,
+    "by_variant_type": {
+      "age_proxy": {
+        "variant_label": "Age Proxy",
+        "n": 90,
+        "mean_delta": 0.0017,
+        "dropped_count": 7,
+        "increased_count": 7,
+        "unchanged_count": 76
+      },
+      "employment_proxy": {
+        "variant_label": "Employment Proxy",
+        "n": 90,
+        "mean_delta": 0.0022,
+        "dropped_count": 4,
+        "increased_count": 6,
+        "unchanged_count": 80
+      },
+      "ethnicity_proxy": {
+        "variant_label": "Ethnicity Proxy",
+        "n": 90,
+        "mean_delta": 0.0022,
+        "dropped_count": 3,
+        "increased_count": 5,
+        "unchanged_count": 82
+      },
+      "family_status_proxy": {
+        "variant_label": "Family Status Proxy",
+        "n": 90,
+        "mean_delta": -0.0028,
+        "dropped_count": 5,
+        "increased_count": 1,
+        "unchanged_count": 84
+      },
+      "neighborhood_proxy": {
+        "variant_label": "Neighborhood Proxy",
+        "n": 90,
+        "mean_delta": -0.0028,
+        "dropped_count": 5,
+        "increased_count": 1,
+        "unchanged_count": 84
+      }
+    }
+  },
+  "asymmetry_analysis": {
+    "ethnicity_proxy": {
+      "variant_label": "Ethnicity Proxy",
+      "n_escalations": 6,
+      "n_deescalations": 6,
+      "n_rec_more_punitive": 4,
+      "n_rec_less_punitive": 2,
+      "net_risk_delta": 6,
+      "direction": "mixed / no clear direction"
+    },
+    "neighborhood_proxy": {
+      "variant_label": "Neighborhood Proxy",
+      "n_escalations": 3,
+      "n_deescalations": 4,
+      "n_rec_more_punitive": 3,
+      "n_rec_less_punitive": 1,
+      "net_risk_delta": 3,
+      "direction": "mixed / no clear direction"
+    },
+    "age_proxy": {
+      "variant_label": "Age Proxy",
+      "n_escalations": 10,
+      "n_deescalations": 6,
+      "n_rec_more_punitive": 3,
+      "n_rec_less_punitive": 1,
+      "net_risk_delta": 10,
+      "direction": "mixed / no clear direction"
+    },
+    "employment_proxy": {
+      "variant_label": "Employment Proxy",
+      "n_escalations": 16,
+      "n_deescalations": 0,
+      "n_rec_more_punitive": 5,
+      "n_rec_less_punitive": 1,
+      "net_risk_delta": 16,
+      "direction": "consistently more punitive"
+    },
+    "family_status_proxy": {
+      "variant_label": "Family Status Proxy",
+      "n_escalations": 10,
+      "n_deescalations": 3,
+      "n_rec_more_punitive": 4,
+      "n_rec_less_punitive": 2,
+      "net_risk_delta": 10,
+      "direction": "consistently more punitive"
+    }
+  },
+  "cross_tab_variant_mode": {
+    "age_proxy": {
+      "baseline": {
+        "n": 30,
+        "flagged": 6,
+        "flag_rate": 0.2
+      },
+      "demographic_blind": {
+        "n": 30,
+        "flagged": 7,
+        "flag_rate": 0.2333
+      },
+      "fairness_aware": {
+        "n": 30,
+        "flagged": 6,
+        "flag_rate": 0.2
+      }
+    },
+    "employment_proxy": {
+      "baseline": {
+        "n": 30,
+        "flagged": 10,
+        "flag_rate": 0.3333
+      },
+      "demographic_blind": {
+        "n": 30,
+        "flagged": 6,
+        "flag_rate": 0.2
+      },
+      "fairness_aware": {
+        "n": 30,
+        "flagged": 4,
+        "flag_rate": 0.1333
+      }
+    },
+    "ethnicity_proxy": {
+      "baseline": {
+        "n": 30,
+        "flagged": 4,
+        "flag_rate": 0.1333
+      },
+      "demographic_blind": {
+        "n": 30,
+        "flagged": 8,
+        "flag_rate": 0.2667
+      },
+      "fairness_aware": {
+        "n": 30,
+        "flagged": 4,
+        "flag_rate": 0.1333
+      }
+    },
+    "family_status_proxy": {
+      "baseline": {
+        "n": 30,
+        "flagged": 6,
+        "flag_rate": 0.2
+      },
+      "demographic_blind": {
+        "n": 30,
+        "flagged": 6,
+        "flag_rate": 0.2
+      },
+      "fairness_aware": {
+        "n": 30,
+        "flagged": 6,
+        "flag_rate": 0.2
+      }
+    },
+    "neighborhood_proxy": {
+      "baseline": {
+        "n": 30,
+        "flagged": 6,
+        "flag_rate": 0.2
+      },
+      "demographic_blind": {
+        "n": 30,
+        "flagged": 3,
+        "flag_rate": 0.1
+      },
+      "fairness_aware": {
+        "n": 30,
+        "flagged": 2,
+        "flag_rate": 0.0667
+      }
+    }
+  },
+  "totals": {
+    "n_comparisons": 450,
+    "n_flagged": 84,
+    "overall_flag_rate": 0.1867
+  }
+}

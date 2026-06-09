@@ -614,13 +614,112 @@
 
 
 /* ------------------------------------------------------------------ */
-/*  Diff Highlight                                                     */
+/*  Diff Highlight — line-by-line field diff                           */
 /* ------------------------------------------------------------------ */
 
+.v2-diff-line {
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: var(--v2-fs-sm);
+  line-height: 1.6;
+}
+
 .v2-diff-highlight {
-  background: hsl(45, 85%, 90%);
-  border-radius: 2px;
-  padding: 0 2px;
+  background: hsl(45, 90%, 88%);
+  border-left: 3px solid hsl(35, 85%, 55%);
+  font-weight: 600;
+}
+
+
+/* ------------------------------------------------------------------ */
+/*  Output Comparison Table                                            */
+/* ------------------------------------------------------------------ */
+
+.v2-output-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--v2-border, hsl(220 15% 88%));
+  border-radius: var(--v2-radius, 8px);
+}
+
+.v2-output-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--v2-fs-sm, 0.85rem);
+}
+
+.v2-output-table th {
+  text-align: left;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  font-size: var(--v2-fs-xs, 0.75rem);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--v2-text-muted, hsl(220 10% 55%));
+  background: var(--v2-bg-elevated, hsl(220 15% 97%));
+  border-bottom: 2px solid var(--v2-border, hsl(220 15% 88%));
+}
+
+.v2-output-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--v2-border-subtle, hsl(220 15% 94%));
+  color: var(--v2-text, hsl(220 20% 15%));
+  vertical-align: middle;
+}
+
+.v2-output-table__field {
+  font-weight: 600;
+  color: var(--v2-text-secondary, hsl(220 15% 40%));
+  white-space: nowrap;
+  width: 22%;
+}
+
+.v2-output-table__val {
+  min-width: 120px;
+}
+
+.v2-output-table__val--diff {
+  font-weight: 700;
+  color: var(--v2-danger, #dc2626);
+}
+
+.v2-output-table__status {
+  width: 80px;
+  text-align: center;
+}
+
+.v2-output-table__row--changed {
+  background: hsl(0 80% 97%);
+}
+
+.v2-output-table__row--changed:hover {
+  background: hsl(0 80% 95%) !important;
+}
+
+.v2-output-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.v2-output-table tbody tr:hover {
+  background: var(--v2-bg-hover, hsl(220 15% 97%));
+}
+
+.v2-output-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.v2-output-badge--changed {
+  background: hsl(0 75% 92%);
+  color: hsl(0 70% 40%);
+}
+
+.v2-output-badge--same {
+  background: hsl(220 15% 94%);
+  color: hsl(220 10% 60%);
 }
 
 

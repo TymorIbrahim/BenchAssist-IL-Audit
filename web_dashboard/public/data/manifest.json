@@ -1,212 +1,35 @@
 {
-  "timestamp": "2026-06-01T22:24:50.113265+00:00",
+  "timestamp": "2026-06-09T16:50:49.958900+00:00",
   "use_case": "detention",
-  "data_status": "gemini_minimal_address",
-  "run_label": "detention_expanded_minimal_address_gemini-2_5-flash-lite",
-  "experiment_token": "detention_expanded_minimal_address",
-  "run_type": "expanded_minimal_address",
-  "selected_source_files": {
-    "detention_overview_metrics.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_full_metric_summary.json",
-    "detention_pairwise_comparison.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_pairwise_comparison.csv",
-    "detention_address_proxy_pairwise_comparison.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_address_proxy_pairwise_comparison.csv",
-    "detention_combined_pairwise_comparison.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_combined_pairwise_comparison.csv",
-    "detention_group_summary.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_group_summary.csv",
-    "detention_flagged_cases.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_flagged_cases.csv",
-    "detention_strict_excluded_review_outputs.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_strict_excluded_review_outputs.csv",
-    "detention_real_case_inspired_review_outputs.json": null,
-    "detention_full_metric_summary.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_full_metric_summary.json",
-    "detention_cross_prompt_comparisons.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_cross_prompt_comparisons.csv",
-    "detention_statistical_tests.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_statistical_tests.csv",
-    "detention_statistical_tests_baseline.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_statistical_tests_baseline.csv",
-    "detention_full_run_manifest.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/run_manifest.json",
-    "detention_full_analysis_report.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_full_analysis_report.md",
-    "detention_counterfactual_validity.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_counterfactual_validity_full.csv",
-    "detention_counterfactual_validity_summary.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_counterfactual_validity_summary_full.csv",
-    "detention_overview_uncertainty.json": null,
-    "detention_validity_calibration.json": null,
-    "detention_human_review_template.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_human_review_template.csv",
-    "detention_real_case_examples_fulltext.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/real_cases/detention/pilot_corpus/detention_pilot_fulltext.jsonl",
-    "detention_real_case_quality_report.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/real_cases/detention/pilot_corpus/detention_pilot_quality_report.json",
-    "detention_source_manifest.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/data/real_cases/detention/pilot_corpus/detention_pilot_source_manifest.json",
-    "detention_case_review_records.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/web_dashboard/public/data/detention_case_review_records.json",
-    "detention_case_review_index.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/web_dashboard/public/data/detention_case_review_index.json",
-    "detention_cross_prompt_mode_summary.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/analysis/detention_cross_prompt_comparisons.csv",
-    "reports.json": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/report",
-    "parsed_outputs.jsonl": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address/parsed_outputs.jsonl"
-  },
-  "selected_primary_files": [
-    "detention_overview_metrics.json",
-    "detention_pairwise_comparison.json",
-    "detention_flagged_cases.json",
-    "detention_address_proxy_pairwise_comparison.json",
-    "detention_case_review_index.json"
-  ],
-  "missing_optional_files": [
-    "detention_real_case_inspired_review_outputs.json",
-    "detention_validity_calibration.json"
-  ],
-  "row_counts": {
-    "detention_overview_metrics.json": 1,
-    "detention_pairwise_comparison.json": 2622,
-    "detention_address_proxy_pairwise_comparison.json": 1433,
-    "detention_combined_pairwise_comparison.json": 3098,
-    "detention_group_summary.json": 33,
-    "detention_flagged_cases.json": 106,
-    "detention_strict_excluded_review_outputs.json": 3831,
-    "detention_real_case_inspired_review_outputs.json": 0,
-    "detention_full_metric_summary.json": 1,
-    "detention_cross_prompt_comparisons.json": 4460,
-    "detention_statistical_tests.json": 33,
-    "detention_statistical_tests_baseline.json": 11,
-    "detention_full_run_manifest.json": 1,
-    "detention_full_analysis_report.json": 1,
-    "detention_counterfactual_validity.json": 2240,
-    "detention_counterfactual_validity_summary.json": 3,
-    "detention_overview_uncertainty.json": 1,
-    "detention_validity_calibration.json": 0,
-    "detention_human_review_template.json": 100,
-    "detention_real_case_examples_fulltext.json": 80,
-    "detention_real_case_quality_report.json": 1,
-    "detention_source_manifest.json": 1,
-    "detention_case_review_records.json": 4055,
-    "detention_case_review_index.json": 4055,
-    "detention_cross_prompt_mode_summary.json": 1,
-    "reports.json": 3
-  },
+  "data_status": "gemini_full",
+  "run_label": "rachel_detention_audit_gemini_gemini-2.5-flash-lite",
   "provider": "gemini",
   "model": "gemini-2.5-flash-lite",
   "prompt_mode": "baseline",
   "prompt_modes": [
     "baseline",
-    "fairness_aware",
-    "demographic_blind"
+    "demographic_blind",
+    "fairness_aware"
   ],
   "schema_versions": [
-    "detention_minimal_dangerousness_v2"
+    "rachel_detention_v1"
   ],
-  "base_cases": 80,
-  "counterfactual_variants": 2240,
-  "flagged_cases": 44,
-  "parse_error_rate": 0.0027000000000000357,
-  "disclaimer": "Research audit interface only. Not legal advice. Not an AI judge. Synthetic toy audit setting. Metrics are screening signals, not proof of unlawful discrimination. Human legal review required.",
-  "secrets_excluded": true,
-  "note": "Export contains no API keys, .env, or live model credentials.",
-  "available_sections": [
-    "detention_overview_metrics",
-    "detention_pairwise_comparison",
-    "detention_address_proxy_pairwise_comparison",
-    "detention_combined_pairwise_comparison",
-    "detention_group_summary",
-    "detention_flagged_cases",
-    "detention_strict_excluded_review_outputs",
-    "detention_full_metric_summary",
-    "detention_cross_prompt_comparisons",
-    "detention_statistical_tests",
-    "detention_statistical_tests_baseline",
-    "detention_full_run_manifest",
-    "detention_full_analysis_report",
-    "detention_counterfactual_validity",
-    "detention_counterfactual_validity_summary",
-    "detention_overview_uncertainty",
-    "detention_human_review_template",
-    "detention_real_case_examples_fulltext",
-    "detention_real_case_quality_report",
-    "detention_source_manifest",
-    "detention_case_review_records",
-    "detention_case_review_index",
-    "detention_cross_prompt_mode_summary"
-  ],
+  "base_cases": 30,
+  "counterfactual_variants": 540,
+  "flagged_cases": 84,
   "cross_prompt_comparisons_available": true,
-  "cross_prompt_comparison_row_count": 4460,
-  "cross_prompt_material_instability_count": 383,
-  "cross_prompt_wording_only_count": 4077,
-  "detention_pilot_corpus_available": true,
-  "detention_synthetic_rows": 2240,
   "case_review_records_available": true,
-  "case_review_record_count": 4055,
+  "row_counts": {
+    "detention_overview_metrics.json": 1,
+    "detention_pairwise_comparison.json": 450,
+    "detention_group_summary.json": "per (variant_type, prompt_mode)",
+    "detention_cross_prompt_comparisons.json": 360,
+    "detention_case_review_index.json": 450
+  },
   "export_provenance": {
-    "git_commit": "50dbae7",
-    "export_git_sha": "50dbae7",
-    "parent_run_id": null,
-    "corpus_version": {
-      "corpus_id": "detention_slim_v2",
-      "version": "2.0.0",
-      "variant_set": "slim",
-      "include_address_variants": true,
-      "max_base_cases_default": 30,
-      "schema_version": "detention_minimal_dangerousness_v2",
-      "changelog_path": "data/synthetic/CORPUS_CHANGELOG.md",
-      "notes": "v2.0.0: Added druze, mizrahi, asylum_seeker, arab_woman_he (intersectional) demographics; expanded to 30 base cases with naturalistic prose for all D001-D030. Removed non-Hebrew variants to focus on core project concepts. Bump version when variant text, fact-preservation rules, or address registry changes."
-    },
-    "flagging_policy": "dangerousness_level_change_only",
-    "flagging_policy_doc": "docs/detention_flagging_policy.md",
-    "dashboard_export_profile": "full",
-    "headline_metrics_note": "Strict headline flagged count uses baseline prompt_mode rows in detention_overview_metrics (dangerousness_level change only). Case review index flagged_count may include all prompt modes.",
-    "pairwise_unique_note": "Detention pairwise rows are deduplicated by (case_id, variant_id, prompt_mode) at export.",
-    "case_review_split": true
-  },
-  "export_completeness_score": 100,
-  "critical_exports_ok": true,
-  "critical_export_checks": {
-    "detention_overview_metrics.json": true,
-    "detention_pairwise_comparison.json": true,
-    "detention_flagged_cases.json": true,
-    "detention_case_review_index.json": true
-  },
-  "optional_files_missing": [
-    "detention_real_case_inspired_review_outputs.json",
-    "detention_validity_calibration.json"
-  ],
-  "deploy_blocked": false,
-  "missing_optional_files_detail": [
-    {
-      "file": "detention_real_case_inspired_review_outputs.json",
-      "tabs_affected": "Unknown",
-      "effect": "May show empty state where data is referenced."
-    },
-    {
-      "file": "detention_validity_calibration.json",
-      "tabs_affected": "Unknown",
-      "effect": "May show empty state where data is referenced."
-    }
-  ],
-  "expanded_run": true,
-  "minimal_address_run": true,
-  "schema_version": "detention_minimal_dangerousness_v2",
-  "detention_gemini_run_dir": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_expanded_minimal_address",
-  "data_access_policy": {
-    "dashboard_data_mode": "internal_full_text",
-    "contains_unredacted_public_legal_text": true,
-    "requires_access_control": true,
-    "approved_audience": "legal experts and law professors only",
-    "public_indexing_allowed": false,
-    "strict_bias_rates_include_real_cases": false,
-    "manual_review_required_before_deployment": true,
-    "policy_notes": [
-      "Public legal material may be shown in full for internal expert review.",
-      "Do not treat public data as automatically safe for unrestricted redistribution.",
-      "Do not rely on URL secrecy as security.",
-      "Use public_summary export mode for course submission unless explicitly approved."
-    ],
-    "detention_fulltext_indicators": {
-      "detention_fulltext_dir_exists": true,
-      "pilot_corpus_dir_exists": true,
-      "contains_unredacted_public_legal_text": true,
-      "detention_files_present": [
-        "detention_case_summaries_fulltext.csv",
-        "raw_real_detention_examples_fulltext.jsonl",
-        "detention_bench_inputs_fulltext.csv",
-        "detention_data_handling_manifest.json"
-      ],
-      "pilot_corpus_files_present": [
-        "detention_pilot_fulltext.jsonl",
-        "detention_pilot_quality_report.json",
-        "detention_pilot_source_manifest.json"
-      ]
-    }
-  },
-  "full_text_export_warnings": [
-    "Full unredacted legal text is being exported for internal expert review. Deploy only behind access control. Do not rely on URL secrecy."
-  ],
-  "dry_run": false
+    "source": "rachel_data (3 Excel files)",
+    "export_script": "scripts/export_rachel_dashboard.py",
+    "audit_script": "scripts/run_rachel_audit.py",
+    "dashboard_export_profile": "rachel_full"
+  }
 }

@@ -1,0 +1,7 @@
+[
+  {
+    "report_name": "detention_pilot_analysis",
+    "title": "Detention Pilot Analysis",
+    "markdown_text": "# Detention Gemini Pilot — Analysis Report\n\nGenerated: 2026-05-30T12:33:04.188537+00:00\n\n> **Pilot evidence only** — preliminary audit signals, not final research findings.\n\n## Parse quality\n\n- Total outputs: 33\n- Parse success: 33 (100.0%)\n\n## Strict fairness filtering\n\n- Strict-eligible synthetic rows: 24\n- Real-case qualitative rows (excluded from strict rates): 9\n- Real cases in strict rates: **No**\n\n## Audit signals (synthetic strict only)\n\n- Pairwise comparisons: 18\n- Flagged for legal review: 3\n\n## Per prompt mode\n\n- **baseline**: 11 outputs (8 strict-eligible)\n- **demographic_blind**: 11 outputs (8 strict-eligible)\n- **fairness_aware**: 11 outputs (8 strict-eligible)\n\n## Cautious interpretation\n\nPilot sample — may indicate possible concerns requiring human review. Not proof of unlawful discrimination. Do not overclaim from small sample size.\n\nThis report uses audit-signal language only. It does **not** claim bias is proven, unlawful treatment, illegal conduct, or that the model failed fairness checks.\n\n## Outputs\n\n- `detention_pairwise_comparison.csv`\n- `detention_group_summary.csv`\n- `detention_flagged_cases.csv`\n- `detention_real_case_review_outputs.csv`\n- `detention_pilot_metric_summary.json`"
+  }
+]

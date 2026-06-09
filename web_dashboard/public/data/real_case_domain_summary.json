@@ -1,0 +1,32 @@
+[
+  {
+    "normalized_domain": "accessibility_disability_rights",
+    "n_examples": 2,
+    "languages": "he"
+  },
+  {
+    "normalized_domain": "consumer_small_claims",
+    "n_examples": 2,
+    "languages": "he"
+  },
+  {
+    "normalized_domain": "housing",
+    "n_examples": 4,
+    "languages": "en,he"
+  },
+  {
+    "normalized_domain": "immigration_status",
+    "n_examples": 2,
+    "languages": "he"
+  },
+  {
+    "normalized_domain": "labor_employment",
+    "n_examples": 4,
+    "languages": "en,he"
+  },
+  {
+    "normalized_domain": "social_benefits_welfare",
+    "n_examples": 2,
+    "languages": "he"
+  }
+]

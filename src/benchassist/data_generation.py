@@ -1204,7 +1204,11 @@ def load_cases_from_path(path: Path) -> list[CounterfactualCase]:
     df = pd.read_csv(path)
     cases = []
     for row in df.to_dict(orient="records"):
-        cleaned = {k: (None if isinstance(v, float) and pd.isna(v) else v) for k, v in row.items()}
+        # Drop NaN/None values so Pydantic field defaults apply
+        cleaned = {
+            k: v for k, v in row.items()
+            if not (v is None or (isinstance(v, float) and pd.isna(v)))
+        }
         cases.append(CounterfactualCase(**cleaned))
     return cases
 

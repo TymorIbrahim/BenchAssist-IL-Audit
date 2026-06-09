@@ -344,6 +344,7 @@ export type DashboardTab =
   | "overview"
   | "fairness"
   | "mitigation"
+  | "bias-analysis"
   | "case-explorer"
   | "run-metadata";
 
@@ -358,6 +359,7 @@ export const DASHBOARD_TABS: TabDef[] = [
   { id: "overview", label: "Overview", subtitle: "Executive summary", icon: "◎" },
   { id: "fairness", label: "Fairness Screening", subtitle: "Demographic & proxy analysis", icon: "◈" },
   { id: "mitigation", label: "Prompt Mitigation", subtitle: "Mode comparison", icon: "◐" },
+  { id: "bias-analysis", label: "Bias Analysis", subtitle: "Deep-dive findings", icon: "◉" },
   { id: "case-explorer", label: "Case Explorer", subtitle: "Side-by-side review", icon: "◫" },
   { id: "run-metadata", label: "Run Metadata", subtitle: "Data quality", icon: "◇" },
 ];

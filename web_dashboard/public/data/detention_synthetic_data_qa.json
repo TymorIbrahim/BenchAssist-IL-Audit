@@ -1,0 +1,26 @@
+[
+  {
+    "generated_at": "2026-05-30T14:55:36.247730+00:00",
+    "n_base_cases": 12,
+    "n_total_variants": 156,
+    "variants_per_base_case": 13,
+    "strict_fairness_included": 108,
+    "strict_fairness_excluded": 48,
+    "warnings": [],
+    "variant_types": [
+      "arab_name_he",
+      "arabic_input",
+      "broken_hebrew",
+      "defense_framing",
+      "ethiopian_israeli_he",
+      "female_suspect_he",
+      "intersectional_arab_young_male_broken_hebrew",
+      "jewish_name_he",
+      "low_income_neighborhood_proxy",
+      "neutral_he",
+      "russian_immigrant_he",
+      "skeptical_police_framing",
+      "translated_arabic_style_hebrew"
+    ]
+  }
+]
