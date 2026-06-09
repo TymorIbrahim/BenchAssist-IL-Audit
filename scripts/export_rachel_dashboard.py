@@ -1148,41 +1148,38 @@ def build_manifest(
     cross_prompt_comps: list[dict],
     review_index: dict,
 ) -> dict:
-    """Build the dashboard manifest.json."""
+    """Build the dashboard run manifest matching the RunManifest TS type."""
     model_name = records[0].get("model_name", "gemini-2.5-flash-lite") if records else "unknown"
-    provider = records[0].get("provider", "gemini") if records else "unknown"
-
-    n_flagged = sum(1 for r in pairwise if r["detention_framing_bias_flag"])
     prompt_modes_present = sorted(set(r.get("prompt_mode", "baseline") for r in records))
+    total = len(records)
+    success = sum(1 for r in records if r.get("parse_status") == "success")
+    errors = total - success
 
     return {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "use_case": "detention",
-        "data_status": "gemini_full",
-        "run_label": f"rachel_detention_audit_{provider}_{model_name}",
-        "provider": provider,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "config_path": "configs/rachel_audit_config.yaml",
+        "run_type": "rachel_full_audit",
+        "schema_version": "rachel_detention_v1",
         "model": model_name,
-        "prompt_mode": "baseline",
         "prompt_modes": prompt_modes_present,
-        "schema_versions": ["rachel_detention_v1"],
-        "base_cases": 30,
-        "counterfactual_variants": len(records),
-        "flagged_cases": n_flagged,
-        "cross_prompt_comparisons_available": len(cross_prompt_comps) > 0,
-        "case_review_records_available": True,
-        "row_counts": {
-            "detention_overview_metrics.json": 1,
-            "detention_pairwise_comparison.json": len(pairwise),
-            "detention_group_summary.json": "per (variant_type, prompt_mode)",
-            "detention_cross_prompt_comparisons.json": len(cross_prompt_comps),
-            "detention_case_review_index.json": review_index.get("record_count", 0),
+        "stats": {
+            "started_at": records[0].get("timestamp", "") if records else "",
+            "total_planned": total,
+            "completed": total,
+            "skipped_resume": 0,
+            "parse_success": success,
+            "parse_errors": errors,
+            "finished_at": records[-1].get("timestamp", "") if records else "",
+            "parse_success_rate": round(success / total, 4) if total else 0,
         },
-        "export_provenance": {
-            "source": "rachel_data (3 Excel files)",
-            "export_script": "scripts/export_rachel_dashboard.py",
-            "audit_script": "scripts/run_rachel_audit.py",
-            "dashboard_export_profile": "rachel_full",
+        "methodology": {
+            "strict_fairness_source": "synthetic_counterfactual",
+            "real_cases_in_strict_rates": False,
         },
+        "caution": (
+            "Research audit only. All cases are synthetic. "
+            "Results require human legal review before any operational use."
+        ),
     }
 
 
@@ -1225,12 +1222,22 @@ def build_full_metric_summary(
         }
 
     return [{
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "run_type": "rachel_full_audit",
         "schema_version": "rachel_detention_v1",
         "minimal_dangerousness_schema": False,
+        "legacy_metrics_status": "not_applicable",
+        "evidence_level": "synthetic_counterfactual",
         "parse_success_rate": round(success / total, 4) if total else 0,
         "n_outputs_total": total,
+        "n_parse_success": success,
         "n_strict_eligible_synthetic": success,
         "n_strict_eligible_synthetic_per_prompt_mode": n_per_mode,
+        "n_strict_excluded_synthetic": 0,
+        "n_address_proxy_outputs": 0,
+        "n_address_proxy_pairwise_comparisons": 0,
+        "address_proxy_in_strict_rates": False,
+        "n_real_case_inspired_qualitative": 0,
         "per_prompt_mode": per_prompt_mode,
         "n_pairwise_comparisons": len(pairwise),
         "n_pairwise_comparisons_baseline": len(baseline_pw),
@@ -1311,7 +1318,7 @@ def export_dashboard(jsonl_path: Path, output_dir: Path | None = None) -> None:
     print(f"\nWriting to {out}/...")
 
     # Core files
-    write_json("manifest.json", manifest)
+    write_json("detention_full_run_manifest.json", [manifest])
     write_json("detention_overview_metrics.json", [overview])
     write_json("detention_pairwise_comparison.json", pairwise)
     write_json("detention_group_summary.json", group_summary)

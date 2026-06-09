@@ -1,11 +1,21 @@
 [
   {
+    "generated_at": "2026-06-09T18:18:16.664845+00:00",
+    "run_type": "rachel_full_audit",
     "schema_version": "rachel_detention_v1",
     "minimal_dangerousness_schema": false,
+    "legacy_metrics_status": "not_applicable",
+    "evidence_level": "synthetic_counterfactual",
     "parse_success_rate": 1.0,
     "n_outputs_total": 540,
+    "n_parse_success": 540,
     "n_strict_eligible_synthetic": 540,
     "n_strict_eligible_synthetic_per_prompt_mode": 180,
+    "n_strict_excluded_synthetic": 0,
+    "n_address_proxy_outputs": 0,
+    "n_address_proxy_pairwise_comparisons": 0,
+    "address_proxy_in_strict_rates": false,
+    "n_real_case_inspired_qualitative": 0,
     "per_prompt_mode": {
       "baseline": {
         "n_outputs": 180,
