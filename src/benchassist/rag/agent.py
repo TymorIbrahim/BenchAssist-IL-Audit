@@ -96,13 +96,93 @@ def _call_gemini(client: Any, prompt: str) -> str:
         raise
 
 
+def _repair_json(text: str) -> str:
+    """Attempt to repair common JSON issues from LLM output."""
+    import re as _re
+
+    # Remove control characters except newlines and tabs
+    text = _re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', '', text)
+
+    # Fix trailing commas before } or ]
+    text = _re.sub(r',\s*([}\]])', r'\1', text)
+
+    # Try to fix unescaped quotes inside string values.
+    # Strategy: find strings that fail to parse and escape inner quotes.
+    # This is a best-effort heuristic.
+    def _escape_inner_quotes(m: _re.Match) -> str:
+        key = m.group(1)
+        val = m.group(2)
+        # Escape any unescaped double quotes inside the value
+        fixed = val.replace('\\"', '\x00ESCAPED\x00')  # protect already-escaped
+        fixed = fixed.replace('"', '\\"')
+        fixed = fixed.replace('\x00ESCAPED\x00', '\\"')  # restore
+        return f'"{key}": "{fixed}"'
+
+    # Match "key": "value with problematic quotes" patterns
+    # Only apply if the simple json.loads fails
+    try:
+        json.loads(text)
+        return text
+    except json.JSONDecodeError:
+        pass
+
+    # Try wrapping in a code fence removal first
+    lines = text.split('\n')
+    cleaned_lines = []
+    for line in lines:
+        stripped = line.rstrip()
+        # Remove lines that are just ``` markers
+        if stripped in ('```', '```json', '```JSON'):
+            continue
+        cleaned_lines.append(line)
+    text = '\n'.join(cleaned_lines)
+
+    return text
+
+
 def _extract_json(raw_text: str) -> dict[str, Any]:
-    """Extract and parse JSON from raw model output, stripping markdown fences."""
+    """Extract and parse JSON from raw model output, with repair on failure."""
     text = raw_text.strip()
     match = _JSON_FENCE_RE.search(text)
     if match:
         text = match.group(1).strip()
-    return json.loads(text)
+
+    # First attempt: direct parse
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+
+    # Second attempt: repair and retry
+    repaired = _repair_json(text)
+    try:
+        return json.loads(repaired)
+    except json.JSONDecodeError:
+        pass
+
+    # Third attempt: find the largest valid JSON object in the text
+    # Scan for { and find matching }
+    brace_start = text.find('{')
+    if brace_start >= 0:
+        depth = 0
+        last_close = -1
+        for i in range(brace_start, len(text)):
+            if text[i] == '{':
+                depth += 1
+            elif text[i] == '}':
+                depth -= 1
+                if depth == 0:
+                    last_close = i
+        if last_close > brace_start:
+            candidate = text[brace_start:last_close + 1]
+            candidate = _repair_json(candidate)
+            try:
+                return json.loads(candidate)
+            except json.JSONDecodeError:
+                pass
+
+    # All attempts failed
+    raise json.JSONDecodeError("All JSON repair attempts failed", text, 0)
 
 
 # ---------------------------------------------------------------------------
@@ -265,6 +345,22 @@ def check_retrieval(state: AgentState) -> dict[str, Any]:
         return {"retrieval_sufficient": True}
 
 
+def _norm_risk(val: str) -> str:
+    """Normalize risk level values from Gemini output.
+
+    Gemini sometimes returns values like ``'medium-low'``, ``'low_medium'``,
+    ``'very high'`` etc. This maps them to the closest valid enum value.
+    """
+    v = val.strip().lower().replace("-", "_").replace(" ", "_")
+    if v in ("low", "medium", "high"):
+        return v
+    if "high" in v:
+        return "high"
+    if "low" in v:
+        return "low"
+    return "medium"
+
+
 def judicial_reasoning(state: AgentState) -> dict[str, Any]:
     """Node: Apply Israeli pretrial detention law and produce a structured assessment.
 
@@ -312,9 +408,9 @@ def judicial_reasoning(state: AgentState) -> dict[str, Any]:
         # Build AgentOutput
         output = AgentOutput(
             recommendation=parsed.get("recommendation", "release_with_conditions"),
-            public_safety_risk=parsed.get("public_safety_risk", "medium"),
-            obstruction_risk=parsed.get("obstruction_risk", "low"),
-            recidivism_risk=parsed.get("recidivism_risk", "medium"),
+            public_safety_risk=_norm_risk(parsed.get("public_safety_risk", "medium")),
+            obstruction_risk=_norm_risk(parsed.get("obstruction_risk", "low")),
+            recidivism_risk=_norm_risk(parsed.get("recidivism_risk", "medium")),
             confidence=float(parsed.get("confidence", 0.5)),
             reasoning=parsed.get("reasoning", ""),
             legal_citations=citations,
@@ -340,11 +436,62 @@ def judicial_reasoning(state: AgentState) -> dict[str, Any]:
         }
 
     except json.JSONDecodeError as exc:
-        logger.error("Failed to parse reasoning JSON: %s", exc)
-        return {
-            "error": f"Reasoning JSON parse error: {exc}",
-            "final_output": None,
-        }
+        logger.warning("JSON parse failed on first attempt: %s — retrying", exc)
+        # Retry once with a stricter instruction
+        retry_prompt = (
+            prompt
+            + "\n\nIMPORTANT: Your previous response contained invalid JSON. "
+            "Return ONLY a single valid JSON object. Do not include any text "
+            "before or after the JSON. Ensure all strings are properly escaped "
+            "(use \\\" for quotes inside strings). Do not use trailing commas."
+        )
+        try:
+            raw_retry = _call_gemini(client, retry_prompt)
+            parsed = _extract_json(raw_retry)
+
+            citations_raw = parsed.get("legal_citations", [])
+            citations = []
+            for cit in citations_raw:
+                try:
+                    citations.append(LegalCitation(**cit))
+                except Exception:
+                    pass
+
+            output = AgentOutput(
+                recommendation=parsed.get("recommendation", "release_with_conditions"),
+                public_safety_risk=_norm_risk(parsed.get("public_safety_risk", "medium")),
+                obstruction_risk=_norm_risk(parsed.get("obstruction_risk", "low")),
+                recidivism_risk=_norm_risk(parsed.get("recidivism_risk", "medium")),
+                confidence=float(parsed.get("confidence", 0.5)),
+                reasoning=parsed.get("reasoning", ""),
+                legal_citations=citations,
+                legal_basis_summary=parsed.get("legal_basis_summary", ""),
+                alternatives_considered=parsed.get("alternatives_considered", []),
+                retrieved_provisions=[
+                    f"{c.document_name}: {c.section_title}" for c in retrieved_chunks
+                ],
+                retrieval_queries=search_queries,
+                reasoning_steps=parsed.get("reasoning_steps", []),
+            )
+
+            logger.info(
+                "judicial_reasoning (retry): recommendation=%s, confidence=%.2f",
+                output.recommendation,
+                output.confidence,
+            )
+
+            return {
+                "final_output": output,
+                "legal_citations": citations,
+                "reasoning_output": parsed,
+            }
+
+        except Exception as retry_exc:
+            logger.error("Retry also failed: %s", retry_exc)
+            return {
+                "error": f"Reasoning JSON parse error after retry: {exc}",
+                "final_output": None,
+            }
     except Exception as exc:
         logger.error("judicial_reasoning failed: %s", exc)
         return {
