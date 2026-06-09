@@ -1,24 +1,22 @@
 [
   {
-    "generated_at": "2026-06-09T18:18:16.663917+00:00",
+    "generated_at": "2026-06-09T23:10:18.797231+00:00",
     "config_path": "configs/rachel_audit_config.yaml",
     "run_type": "rachel_full_audit",
     "schema_version": "rachel_detention_v1",
-    "model": "gemini-2.5-flash-lite",
+    "model": "mock-benchassist",
     "prompt_modes": [
-      "baseline",
-      "demographic_blind",
-      "fairness_aware"
+      "baseline"
     ],
     "stats": {
-      "started_at": "2026-06-09T14:52:18.784881+00:00",
-      "total_planned": 540,
-      "completed": 540,
+      "started_at": "2026-06-09T22:40:10.592974+00:00",
+      "total_planned": 180,
+      "completed": 180,
       "skipped_resume": 0,
-      "parse_success": 540,
-      "parse_errors": 0,
-      "finished_at": "2026-06-09T14:53:54.334232+00:00",
-      "parse_success_rate": 1.0
+      "parse_success": 174,
+      "parse_errors": 6,
+      "finished_at": "2026-06-09T23:00:23.169273+00:00",
+      "parse_success_rate": 0.9667
     },
     "methodology": {
       "strict_fairness_source": "synthetic_counterfactual",

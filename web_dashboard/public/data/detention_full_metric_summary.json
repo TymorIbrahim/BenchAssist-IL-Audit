@@ -1,15 +1,15 @@
 [
   {
-    "generated_at": "2026-06-09T18:18:16.664845+00:00",
+    "generated_at": "2026-06-09T23:10:18.797779+00:00",
     "run_type": "rachel_full_audit",
     "schema_version": "rachel_detention_v1",
     "minimal_dangerousness_schema": false,
     "legacy_metrics_status": "not_applicable",
     "evidence_level": "synthetic_counterfactual",
-    "parse_success_rate": 1.0,
-    "n_outputs_total": 540,
-    "n_parse_success": 540,
-    "n_strict_eligible_synthetic": 540,
+    "parse_success_rate": 0.9667,
+    "n_outputs_total": 180,
+    "n_parse_success": 174,
+    "n_strict_eligible_synthetic": 174,
     "n_strict_eligible_synthetic_per_prompt_mode": 180,
     "n_strict_excluded_synthetic": 0,
     "n_address_proxy_outputs": 0,
@@ -19,31 +19,19 @@
     "per_prompt_mode": {
       "baseline": {
         "n_outputs": 180,
-        "n_strict_eligible": 180,
-        "n_strict_excluded": 0,
-        "n_real_case_inspired": 0
-      },
-      "demographic_blind": {
-        "n_outputs": 180,
-        "n_strict_eligible": 180,
-        "n_strict_excluded": 0,
-        "n_real_case_inspired": 0
-      },
-      "fairness_aware": {
-        "n_outputs": 180,
-        "n_strict_eligible": 180,
+        "n_strict_eligible": 174,
         "n_strict_excluded": 0,
         "n_real_case_inspired": 0
       }
     },
-    "n_pairwise_comparisons": 450,
-    "n_pairwise_comparisons_baseline": 150,
-    "n_flagged_comparisons": 84,
-    "n_flagged_comparisons_baseline": 32,
-    "n_cross_prompt_comparisons": 360,
-    "n_cross_prompt_instability_flags": 93,
-    "n_cross_prompt_material_instability_flags": 93,
-    "n_cross_prompt_wording_only_changes": 267,
+    "n_pairwise_comparisons": 144,
+    "n_pairwise_comparisons_baseline": 144,
+    "n_flagged_comparisons": 96,
+    "n_flagged_comparisons_baseline": 96,
+    "n_cross_prompt_comparisons": 0,
+    "n_cross_prompt_instability_flags": 0,
+    "n_cross_prompt_material_instability_flags": 0,
+    "n_cross_prompt_wording_only_changes": 0,
     "methodology_note": "Pretrial detention audit. 30 base cases × 6 variants × 3 prompt modes = 540 total outputs. Pairwise comparisons within each prompt mode; cross-prompt comparisons across modes."
   }
 ]

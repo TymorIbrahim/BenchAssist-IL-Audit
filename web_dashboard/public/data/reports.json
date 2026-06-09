@@ -2,7 +2,7 @@
   {
     "report_name": "detention_audit",
     "title": "Pretrial Detention Audit Report",
-    "summary": "Audit of 540 pretrial detention cases across 30 base cases, 3 prompt modes.",
+    "summary": "Audit of 180 pretrial detention cases across 30 base cases, 1 prompt modes.",
     "sections": []
   }
 ]

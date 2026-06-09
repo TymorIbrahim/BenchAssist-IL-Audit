@@ -1,14 +1,14 @@
 {
   "by_comparison_mode": {
     "fairness_aware": {
-      "material_instability": 44,
-      "wording_only": 136,
-      "total": 180
+      "material_instability": 0,
+      "wording_only": 0,
+      "total": 0
     },
     "demographic_blind": {
-      "material_instability": 49,
-      "wording_only": 131,
-      "total": 180
+      "material_instability": 0,
+      "wording_only": 0,
+      "total": 0
     }
   },
   "note": "Cross-prompt comparison: same case × variant run under different prompt strategies."
