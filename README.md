@@ -466,3 +466,7 @@ Copy `.env.example` to `.env`:
 ## License
 
 Course project — license TBD. Consult course staff before public release.
+
+To prepare for submission, run: python -m benchassist.submission_package
+
+This generates submission_package.zip.

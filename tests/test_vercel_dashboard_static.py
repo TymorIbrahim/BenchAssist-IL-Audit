@@ -193,7 +193,7 @@ def test_cross_prompt_loader_exists(web_root: Path) -> None:
 
 def test_case_explorer_cross_prompt_labels(web_root: Path) -> None:
     text = (web_root / "lib" / "crossPromptComparison.ts").read_text(encoding="utf-8")
-    assert "Baseline vs fairness-aware prompt" in text
+    assert "Baseline vs masked prompt" in text
     case_cmp = (web_root / "components" / "CaseComparison.tsx").read_text(encoding="utf-8")
     assert "crossPromptComparisons" in case_cmp
 
