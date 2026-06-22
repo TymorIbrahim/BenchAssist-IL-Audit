@@ -8,9 +8,7 @@ import { filtersFromUrl, parseUrlState, urlFromAppState } from "./urlState";
 
 const VALID_MODES: ComparisonMode[] = [
   "neutral_vs_variant",
-  "baseline_vs_fairness",
-  "baseline_vs_blind",
-  "fairness_vs_blind",
+  "baseline_vs_masked",
   "variant_to_variant",
 ];
 

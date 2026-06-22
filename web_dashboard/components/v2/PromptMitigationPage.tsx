@@ -2,7 +2,7 @@
 
 import type React from "react";
 import { useMemo } from "react";
-import { IconClipboard, IconScale, IconLock, IconDocument, IconWarning } from "@/components/v2/Icons";
+import { IconScale, IconDocument, IconWarning } from "@/components/v2/Icons";
 import type { DashboardBundle } from "@/lib/v2/dataUtils";
 import {
   computeHeadlineMetrics,

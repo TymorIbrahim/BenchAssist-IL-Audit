@@ -529,8 +529,7 @@ export default function Dashboard() {
                 </p>
                 <div className="stat-grid">
                   <StatCard label="Comparable case/variant pairs" value={String(crossPromptSummary.comparableRows)} sub="Unique pairs in export" />
-                  <StatCard label="Baseline → fairness: action changed" value={formatRate(crossPromptSummary.baselineVsFairnessActionRate)} sub="Same case/variant" />
-                  <StatCard label="Baseline → blind: action changed" value={formatRate(crossPromptSummary.baselineVsBlindActionRate)} sub="Same case/variant" />
+                  <StatCard label="Baseline → masked: action changed" value={formatRate(crossPromptSummary.baselineVsMaskedActionRate)} sub="Same case/variant" />
                   <StatCard label="Avg remedy strength Δ" value={crossPromptSummary.avgRemedyStrengthDelta != null ? crossPromptSummary.avgRemedyStrengthDelta.toFixed(2) : "—"} sub="Across all comparisons" />
                   <StatCard label="Evidence burden changed" value={formatRate(crossPromptSummary.evidenceBurdenChangedRate)} sub="Any comparison type" />
                   <StatCard label="Credibility framing changed" value={formatRate(crossPromptSummary.credibilityChangedRate)} sub="Any comparison type" />
