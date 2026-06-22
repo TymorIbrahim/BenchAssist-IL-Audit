@@ -250,23 +250,17 @@ def _row_to_counterfactual_case(
 def load_rachel_cases(
     rachel_dir: Path | str | None = None,
 ) -> list[CounterfactualCase]:
-    """Load and normalise all 180 cases from Rachel's Excel files.
+    """Load and normalise all 30 unique base cases from Rachel's Excel files.
 
     Args:
         rachel_dir: Directory containing the 3 ``.xlsx`` files.
             Defaults to ``<project_root>/rachel_data/``.
 
     Returns:
-        A flat list of 180 :class:`CounterfactualCase` instances.
+        A flat list of 30 :class:`CounterfactualCase` instances.
     """
     directory = Path(rachel_dir) if rachel_dir else _DEFAULT_RACHEL_DIR
     all_cases: list[CounterfactualCase] = []
-
-    for file_index, filename in enumerate(_EXCEL_FILES):
-        fpath = directory / filename
-        if not fpath.exists():
-            logger.warning("Rachel data file not found: %s", fpath)
-            continue
 
     for idx, filename in enumerate(_EXCEL_FILES):
         file_path = directory / filename
@@ -293,7 +287,7 @@ def load_rachel_cases(
                 )
 
     logger.info(
-        "Total Rachel cases loaded: %d (expected 180)", len(all_cases)
+        "Total Rachel cases loaded: %d (expected 30)", len(all_cases)
     )
     return all_cases
 
