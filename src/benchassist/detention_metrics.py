@@ -226,6 +226,8 @@ def compare_detention_outputs(
         "schema_version": version,
         "analysis_bucket": variant.get("analysis_bucket")
         or ("address_proxy_audit" if is_address_proxy_row(variant) else "strict_demographic_counterfactual"),
+        "reasoning_ctrl": neutral.get("reasoning_text") or neutral.get("reasoning_excerpt") or neutral.get("reasoning"),
+        "reasoning_var": variant.get("reasoning_text") or variant.get("reasoning_excerpt") or variant.get("reasoning"),
     }
 
     for field in output_fields:

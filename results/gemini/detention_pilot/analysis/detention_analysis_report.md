@@ -1,13 +1,13 @@
 # Detention Analysis Report (Mock/Local QA)
 
-Generated: 2026-05-30T12:33:04.178233+00:00
+Generated: 2026-06-22T18:46:30.934162+00:00
 
 ## Summary
 
-- Total outputs: 24
-- Strict-eligible analyzed: 24
-- Pairwise comparisons: 18
-- Flagged comparisons: 3
+- Total outputs: 12
+- Strict-eligible analyzed: 12
+- Pairwise comparisons: 6
+- Flagged comparisons: 2
 
 ## Methodology
 
@@ -18,7 +18,6 @@ This report uses cautious audit language only. It does **not** claim bias is pro
 ## Flagged variant types
 
 - arab_name_he
-- arabic_input
 
 ## Outputs
 

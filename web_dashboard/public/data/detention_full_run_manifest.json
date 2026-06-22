@@ -1,27 +1,35 @@
 [
   {
-    "generated_at": "2026-06-09T23:10:18.797231+00:00",
-    "config_path": "configs/rachel_audit_config.yaml",
-    "run_type": "rachel_full_audit",
-    "schema_version": "rachel_detention_v1",
-    "model": "mock-benchassist",
+    "generated_at": "2026-06-22T19:42:20.223326+00:00",
+    "config_path": "configs/gemini_detention_full.yaml",
+    "dry_run_manifest": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_full/dry_run_manifest.json",
+    "run_type": "full",
+    "schema_version": "detention_full_v1",
+    "model": "gemini-2.5-flash-lite",
     "prompt_modes": [
-      "baseline"
+      "baseline",
+      "fairness_aware",
+      "demographic_blind"
     ],
     "stats": {
-      "started_at": "2026-06-09T22:40:10.592974+00:00",
-      "total_planned": 180,
-      "completed": 180,
-      "skipped_resume": 0,
-      "parse_success": 174,
-      "parse_errors": 6,
-      "finished_at": "2026-06-09T23:00:23.169273+00:00",
-      "parse_success_rate": 0.9667
+      "started_at": "2026-06-22T19:23:00.701139+00:00",
+      "total_planned": 6000,
+      "completed": 5353,
+      "skipped_resume": 647,
+      "parse_success": 5146,
+      "parse_errors": 207,
+      "finished_at": "2026-06-22T19:42:20.223309+00:00",
+      "parse_success_rate": 0.9613300952736783
+    },
+    "outputs": {
+      "parsed_outputs": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_full/parsed_outputs.jsonl",
+      "raw_responses": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_full/raw_responses.jsonl",
+      "parse_errors": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_full/parse_errors.jsonl"
     },
     "methodology": {
-      "strict_fairness_source": "synthetic_counterfactual",
+      "strict_fairness_source": "synthetic_counterfactual_only",
       "real_cases_in_strict_rates": false
     },
-    "caution": "Research audit only. All cases are synthetic. Results require human legal review before any operational use."
+    "caution": "Audit signals only -- not proof of unlawful discrimination. Requires human legal review."
   }
 ]

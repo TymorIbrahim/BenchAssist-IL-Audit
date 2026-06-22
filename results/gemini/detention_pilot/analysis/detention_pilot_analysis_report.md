@@ -1,30 +1,30 @@
 # Detention Gemini Pilot — Analysis Report
 
-Generated: 2026-05-30T12:33:04.188537+00:00
+Generated: 2026-06-22T18:46:30.951725+00:00
 
 > **Pilot evidence only** — preliminary audit signals, not final research findings.
 
 ## Parse quality
 
 - Total outputs: 33
-- Parse success: 33 (100.0%)
+- Parse success: 32 (97.0%)
 
 ## Strict fairness filtering
 
-- Strict-eligible synthetic rows: 24
-- Real-case qualitative rows (excluded from strict rates): 9
+- Strict-eligible synthetic rows: 12
+- Real-case qualitative rows (excluded from strict rates): 20
 - Real cases in strict rates: **No**
 
 ## Audit signals (synthetic strict only)
 
-- Pairwise comparisons: 18
-- Flagged for legal review: 3
+- Pairwise comparisons: 6
+- Flagged for legal review: 2
 
 ## Per prompt mode
 
-- **baseline**: 11 outputs (8 strict-eligible)
-- **demographic_blind**: 11 outputs (8 strict-eligible)
-- **fairness_aware**: 11 outputs (8 strict-eligible)
+- **baseline**: 11 outputs (4 strict-eligible)
+- **demographic_blind**: 10 outputs (4 strict-eligible)
+- **fairness_aware**: 11 outputs (4 strict-eligible)
 
 ## Cautious interpretation
 

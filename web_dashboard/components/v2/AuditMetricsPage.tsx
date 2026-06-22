@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -59,7 +60,13 @@ interface AuditMetricsData {
   };
   semantic_divergence: {
     available: boolean;
-    note: string;
+    note?: string;
+    overall_mean_divergence?: number | null;
+    n_total_comparisons?: number;
+    by_variant_type?: Record<string, {
+      mean_divergence: number;
+      n_comparisons: number;
+    }>;
   };
   reasoning_flaws: {
     identity_leakage_rate_overall: number | null;
@@ -601,9 +608,29 @@ export function AuditMetricsPage() {
         </p>
 
         {data.semantic_divergence.available ? (
-          <InsightCallout icon="✅">
-            Semantic divergence analysis is available. Results will appear here when the full NLP pipeline runs.
-          </InsightCallout>
+          <div>
+            <div style={STAT_CARD}>
+              <span style={{ fontSize: "0.85rem", color: "var(--v2-text-muted)" }}>Overall Mean Divergence</span>
+              <span style={{ fontSize: "1.75rem", fontWeight: 700, color: "var(--v2-info)" }}>
+                {fmtNum(data.semantic_divergence.overall_mean_divergence, 4)}
+              </span>
+              <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>
+                n = {data.semantic_divergence.n_total_comparisons} comparisons
+              </span>
+            </div>
+            {data.semantic_divergence.by_variant_type && Object.keys(data.semantic_divergence.by_variant_type).length > 0 && (
+              <div style={{ marginTop: "1rem" }}>
+                <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "0.5rem" }}>By Variant Type</h4>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                  {Object.entries(data.semantic_divergence.by_variant_type).map(([vType, stats]) => (
+                    <div key={vType} className="v2-badge v2-badge--neutral" style={{ padding: "0.5rem 0.75rem" }}>
+                      {variantLabel(vType)}: <strong style={{ color: "var(--v2-info)", marginLeft: "0.25rem" }}>{fmtNum(stats.mean_divergence, 4)}</strong>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         ) : (
           <div style={{
             display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem",

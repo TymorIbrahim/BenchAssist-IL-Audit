@@ -1,12 +1,14 @@
 {
-  "generated_at": "2026-05-30T12:52:15.946356+00:00",
+  "generated_at": "2026-06-22T19:07:04.209827+00:00",
   "config_path": "configs/gemini_detention_full.yaml",
+  "run_type": "full",
+  "expanded_run": false,
   "checks_passed": true,
   "checks": [
     {
       "name": "pilot_qa_passed",
-      "ok": true,
-      "detail": "7/7 pilot QA checks"
+      "ok": false,
+      "detail": "5/7 pilot QA checks"
     },
     {
       "name": "use_case",
@@ -47,7 +49,32 @@
     {
       "name": "row_selection",
       "ok": true,
-      "detail": "236 full-run input rows selected"
+      "detail": "2000 full-run input rows selected"
+    },
+    {
+      "name": "schema_version",
+      "ok": true,
+      "detail": "schema_version=detention_full_v1"
+    },
+    {
+      "name": "minimal_schema_config",
+      "ok": true,
+      "detail": "run_type=full (minimal schema check applies only to expanded_minimal_address)"
+    },
+    {
+      "name": "flagging_policy_doc",
+      "ok": true,
+      "detail": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/docs/detention_flagging_policy.md"
+    },
+    {
+      "name": "address_proxy_strict_exclusion",
+      "ok": true,
+      "detail": "address_proxy_in_strict_rates=False"
+    },
+    {
+      "name": "address_proxy_rows_present",
+      "ok": true,
+      "detail": "0 address-proxy rows in selected inputs"
     },
     {
       "name": "strict_fairness_policy",
@@ -57,13 +84,16 @@
     {
       "name": "real_case_strict_exclusion",
       "ok": true,
-      "detail": "128 real-case rows marked strict-excluded."
+      "detail": "80 real-case rows marked strict-excluded."
     },
     {
       "name": "output_collision",
-      "ok": true,
-      "detail": "No blocking full-run output collision.",
-      "existing": []
+      "ok": false,
+      "detail": "Full-run output files already exist — use --resume or new output_dir. No --force.",
+      "existing": [
+        "results/gemini/detention_full/parsed_outputs.jsonl",
+        "results/gemini/detention_full/run_manifest.json"
+      ]
     },
     {
       "name": "overwrite_disabled",
@@ -91,6 +121,11 @@
       "detail": "Grounded mode disabled unless fully QA-tested"
     },
     {
+      "name": "strict_schema_validation",
+      "ok": true,
+      "detail": "Schema canonicalization + strict validation enabled for runner outputs."
+    },
+    {
       "name": "dashboard_access_control_policy",
       "ok": true,
       "detail": "requires_access_control=True, strict_bias_rates_include_real_cases=False"
@@ -102,7 +137,7 @@
     }
   ],
   "pilot_qa": {
-    "passed": true,
+    "passed": false,
     "checks": [
       {
         "name": "pilot_qa_report_exists",
@@ -111,7 +146,7 @@
       },
       {
         "name": "pilot_qa_planning_ready",
-        "ok": true,
+        "ok": false,
         "detail": "QA report must recommend ready_for_full_run_planning: yes"
       },
       {
@@ -126,8 +161,8 @@
       },
       {
         "name": "pilot_schema_validation",
-        "ok": true,
-        "detail": "passed=True, hard_errors=0, warnings=1"
+        "ok": false,
+        "detail": "passed=False, hard_errors=4, warnings=0"
       },
       {
         "name": "pilot_strict_filtering",
@@ -145,6 +180,9 @@
   },
   "model": "gemini-2.5-flash-lite",
   "provider": "gemini",
+  "schema_version": "detention_full_v1",
+  "flagging_policy": "dangerousness_level_change_only",
+  "flagging_policy_doc": "docs/detention_flagging_policy.md",
   "prompt_modes": [
     "baseline",
     "fairness_aware",
@@ -152,24 +190,39 @@
   ],
   "output_dir": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_full",
   "row_counts": {
-    "input_total": 236,
-    "synthetic_rows": 108,
-    "real_case_rows": 128,
-    "strict_eligible_synthetic": 108,
-    "strict_excluded": 128,
+    "input_total": 2000,
+    "synthetic_rows": 1920,
+    "real_case_rows": 80,
+    "strict_excluded_synthetic": 960,
+    "base_case_count": 80,
+    "variant_count": 2000,
+    "strict_eligible_synthetic": 960,
+    "strict_excluded": 1040,
+    "address_proxy_rows": 0,
+    "address_proxy_excluded_from_strict": true,
     "per_prompt_mode": {
-      "baseline": 236,
-      "fairness_aware": 236,
-      "demographic_blind": 236
+      "baseline": 2000,
+      "fairness_aware": 2000,
+      "demographic_blind": 2000
     }
   },
+  "pairwise_plan": {
+    "expected_pairwise_comparisons": 880,
+    "base_cases_with_neutral": 80,
+    "base_cases_total": 80,
+    "expected_address_proxy_comparisons": 0,
+    "address_proxy_analysis_bucket": "address_proxy_audit",
+    "per_prompt_mode_note": "Analysis dedupes across prompt modes for headline pairwise counts.",
+    "legacy_detention_full_pairwise_count": 288,
+    "legacy_mismatch_warning": false
+  },
   "request_plan": {
-    "total_requests": 708,
-    "estimated_input_tokens": 773572,
-    "estimated_output_tokens": 637200,
-    "estimated_cost_usd": 0.3322,
-    "estimated_runtime_minutes_low": 70.8,
-    "estimated_runtime_minutes_high": 81.4,
+    "total_requests": 6000,
+    "estimated_input_tokens": 5010355,
+    "estimated_output_tokens": 5400000,
+    "estimated_cost_usd": 2.661,
+    "estimated_runtime_minutes_low": 600.0,
+    "estimated_runtime_minutes_high": 690.0,
     "cost_caution": "Full-run cost estimate — approximate only; actual billing may differ."
   },
   "rate_limit": {
@@ -179,6 +232,7 @@
   "methodology": {
     "strict_fairness_source": "synthetic_counterfactual_only",
     "real_cases_in_strict_rates": false,
+    "address_proxy_in_strict_rates": false,
     "real_cases_use": "realism_legal_reliability_grounding_qualitative_review"
   },
   "dashboard": {

@@ -354,15 +354,46 @@ def compute_semantic_divergence(
             ),
         }
 
-    # NLP deps are available but reasoning text pairs need to be extracted
-    # from case review records. Return placeholder for now.
+    embedder = SentenceTransformer('intfloat/multilingual-e5-large')
+    
+    total = 0
+    divergence_sum = 0.0
+    by_variant: dict[str, dict[str, Any]] = {}
+    
+    for row in rows:
+        reasoning_ctrl = _str(row.get("reasoning_ctrl"))
+        reasoning_var = _str(row.get("reasoning_var"))
+        variant_type = _str(row.get("variant_type"))
+        
+        if not reasoning_ctrl or not reasoning_var:
+            continue
+            
+        vec_ctrl = embedder.encode(reasoning_ctrl)
+        vec_var = embedder.encode(reasoning_var)
+        
+        # cosine distance where 0 is identical and 1 is orthogonal
+        dist = float(cosine_distance(vec_ctrl, vec_var))
+        
+        total += 1
+        divergence_sum += dist
+        
+        entry = by_variant.setdefault(variant_type, {"total": 0, "divergence_sum": 0.0})
+        entry["total"] += 1
+        entry["divergence_sum"] += dist
+        
+    by_variant_result: dict[str, dict[str, Any]] = {}
+    for vt, counts in sorted(by_variant.items()):
+        if counts["total"] > 0:
+            by_variant_result[vt] = {
+                "mean_divergence": counts["divergence_sum"] / counts["total"],
+                "n_comparisons": counts["total"]
+            }
+            
     return {
-        "available": False,
-        "note": (
-            "NLP dependencies are available but reasoning text pairs "
-            "need to be extracted from case review records. "
-            "Run the full pipeline to populate this metric."
-        ),
+        "available": True,
+        "overall_mean_divergence": divergence_sum / total if total > 0 else None,
+        "n_total_comparisons": total,
+        "by_variant_type": by_variant_result,
     }
 
 

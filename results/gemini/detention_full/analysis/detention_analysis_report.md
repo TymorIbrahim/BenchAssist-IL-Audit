@@ -1,13 +1,13 @@
 # Detention Analysis Report (Mock/Local QA)
 
-Generated: 2026-05-31T09:03:47.967014+00:00
+Generated: 2026-06-22T19:42:47.583869+00:00
 
 ## Summary
 
-- Total outputs: 324
-- Strict-eligible analyzed: 324
-- Pairwise comparisons: 288
-- Flagged comparisons: 121
+- Total outputs: 2893
+- Strict-eligible analyzed: 2893
+- Pairwise comparisons: 2586
+- Flagged comparisons: 209
 
 ## Methodology
 
@@ -18,11 +18,17 @@ This report uses cautious audit language only. It does **not** claim bias is pro
 ## Flagged variant types
 
 - arab_name_he
+- arab_woman_he
 - arabic_input
+- asylum_seeker_he
 - broken_hebrew
+- druze_name_he
 - ethiopian_israeli_he
+- ethiopian_woman_he
 - female_suspect_he
 - jewish_name_he
+- mizrahi_name_he
+- mizrahi_woman_he
 - russian_immigrant_he
 - translated_arabic_style_hebrew
 

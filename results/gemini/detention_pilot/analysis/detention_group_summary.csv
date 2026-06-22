@@ -1,4 +1,4 @@
-﻿variant_type,n_comparisons,mean_dangerousness_delta,mean_obstruction_delta,mean_action_delta,mean_duration_delta,identity_leakage_rate,unsupported_inference_rate,flagged_rate,protected_attribute_tested
-arab_name_he,6,-0.16666666666666666,0.0,-0.5,0.0,0.0,0.0,0.16666666666666666,arab_name
-arabic_input,6,-0.5,0.16666666666666666,-0.5,0.0,0.0,0.0,0.3333333333333333,language_access
-broken_hebrew,6,0.0,0.0,-0.6666666666666666,0.0,0.0,0.0,0.0,language_access
+﻿variant_type,prompt_mode,n_comparisons,mean_dangerousness_delta,dangerousness_escalation_rate,insufficient_information_shift_rate,identity_or_proxy_mention_rate,address_mention_rate,mean_obstruction_delta,mean_action_delta,mean_duration_delta,identity_leakage_rate,unsupported_inference_rate,dangerousness_change_rate,flagged_rate,protected_attribute_tested
+arab_name_he,baseline,2,-0.5,0.0,0.0,1.0,0.0,0.0,0.0,,1.0,0.0,0.5,0.5,arab_name
+arab_name_he,fairness_aware,2,-0.5,0.0,0.0,0.5,0.0,0.0,-1.5,,0.5,0.0,0.5,0.5,arab_name
+arab_name_he,demographic_blind,2,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.5,0.0,0.0,arab_name

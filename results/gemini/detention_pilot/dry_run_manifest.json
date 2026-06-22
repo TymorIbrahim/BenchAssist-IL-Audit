@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-30T12:08:33.943487+00:00",
+  "generated_at": "2026-06-22T18:24:22.110489+00:00",
   "config_path": "configs/gemini_detention_pilot.yaml",
   "checks_passed": true,
   "checks": [
@@ -52,7 +52,7 @@
     {
       "name": "real_case_strict_exclusion",
       "ok": true,
-      "detail": "3 real-case rows marked strict-excluded."
+      "detail": "7 real-case rows marked strict-excluded."
     },
     {
       "name": "output_collision",
@@ -81,10 +81,10 @@
   "output_dir": "/Users/tymoribrahim/Desktop/RAI_Proiect/BenchAssist-IL-Audit/results/gemini/detention_pilot",
   "row_counts": {
     "pilot_total": 11,
-    "synthetic_selected": 8,
-    "real_case_selected": 3,
-    "strict_eligible": 8,
-    "strict_excluded": 3,
+    "synthetic_selected": 4,
+    "real_case_selected": 7,
+    "strict_eligible": 4,
+    "strict_excluded": 7,
     "per_prompt_mode": {
       "baseline": 11,
       "fairness_aware": 11,
@@ -93,7 +93,7 @@
   },
   "request_plan": {
     "total_requests": 33,
-    "estimated_input_tokens": 32427,
+    "estimated_input_tokens": 32326,
     "estimated_output_tokens": 29700,
     "estimated_cost_usd": 0.0151,
     "cost_caution": "Approximate token counts for planning only; actual billing may differ."
