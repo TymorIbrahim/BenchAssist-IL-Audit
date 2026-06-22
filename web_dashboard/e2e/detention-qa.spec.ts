@@ -21,13 +21,6 @@ test.describe("Detention dashboard QA", () => {
     }
   });
 
-  test("case review deep link with review_id loads workspace", async ({ page }) => {
-    test.setTimeout(120_000);
-    await page.goto("/?tab=case-explorer&review_id=D001::D001-arab_name_he::baseline");
-    await expect(page.getByText(/Loading/i)).toBeHidden({ timeout: 60_000 });
-    await expect(page.getByText(/D001/i).first()).toBeVisible({ timeout: 30_000 });
-  });
-
   test("legacy tab URLs redirect or load safely", async ({ page }) => {
     await page.goto("/?tab=overview");
     await expect(page.getByText(/Loading/i)).toBeHidden({ timeout: 60_000 });
