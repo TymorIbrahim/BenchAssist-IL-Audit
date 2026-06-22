@@ -43,6 +43,8 @@ def test_dry_run_writes_manifest(tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 
     cfg = load_detention_gemini_config(PILOT_CONFIG)
     cfg.output_dir = tmp_path / "pilot"
+    from benchassist.config import get_settings
+    get_settings.cache_clear()
     monkeypatch.setenv("GEMINI_API_KEY", "test-key-not-printed")
 
     manifest = run_dry_run(cfg, resume=False)

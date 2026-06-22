@@ -32,6 +32,8 @@ def test_full_run_planner_dry_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatc
 
     cfg = load_detention_gemini_config(FULL_CONFIG)
     cfg.output_dir = tmp_path / "full"
+    from benchassist.config import get_settings
+    get_settings.cache_clear()
     monkeypatch.setenv("GEMINI_API_KEY", "test-key-not-printed")
 
     manifest = run_full_run_plan(cfg, resume=False)
@@ -49,6 +51,8 @@ def test_full_planner_refuses_if_pilot_qa_failed(tmp_path: Path, monkeypatch: py
 
     cfg = load_detention_gemini_config(FULL_CONFIG)
     cfg.output_dir = tmp_path / "full"
+    from benchassist.config import get_settings
+    get_settings.cache_clear()
     monkeypatch.setenv("GEMINI_API_KEY", "test-key")
 
     with patch("benchassist.detention_full_run_plan.verify_pilot_qa_passed") as mock_qa:
@@ -67,6 +71,8 @@ def test_full_planner_refuses_overwrite_conflict(tmp_path: Path, monkeypatch: py
     cfg.output_dir = tmp_path / "full"
     cfg.output_dir.mkdir(parents=True)
     cfg.parsed_outputs_path.write_text('{"x":1}\n', encoding="utf-8")
+    from benchassist.config import get_settings
+    get_settings.cache_clear()
     monkeypatch.setenv("GEMINI_API_KEY", "test-key")
 
     manifest = run_full_run_plan(cfg, resume=False)
