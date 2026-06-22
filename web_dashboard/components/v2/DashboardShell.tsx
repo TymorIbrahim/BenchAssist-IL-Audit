@@ -39,6 +39,10 @@ const AgentAuditPage = dynamic(
   () => import("@/components/v2/AgentAuditPage").then((m) => m.AgentAuditPage),
   { loading: () => <Loading /> },
 );
+const AuditMetricsPage = dynamic(
+  () => import("@/components/v2/AuditMetricsPage").then((m) => m.AuditMetricsPage),
+  { loading: () => <Loading /> },
+);
 
 function Loading() {
   return (
@@ -158,6 +162,9 @@ export function DashboardShell() {
         )}
         {activeTab === "bias-analysis" && (
           <BiasAnalysisPage onNavigate={navigateTab} />
+        )}
+        {activeTab === "audit-metrics" && (
+          <AuditMetricsPage />
         )}
         {activeTab === "case-explorer" && (
           <CaseExplorerPage bundle={bundle} />

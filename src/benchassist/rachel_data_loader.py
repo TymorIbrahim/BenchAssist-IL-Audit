@@ -40,9 +40,7 @@ _PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 _DEFAULT_RACHEL_DIR = _PROJECT_ROOT / "rachel_data"
 
 _EXCEL_FILES = [
-    "synthetic_pretrial_detention_llm_audit_dataset.xlsx",
-    "synthetic_pretrial_detention_llm_audit_dataset_2.xlsx",
-    "synthetic_pretrial_detention_llm_audit_dataset_3.xlsx",
+    "synthetic_pretrial_detention_llm_audit_dataset_final.xlsx",
 ]
 
 # Mapping from Rachel's variant_type labels → normalised variant_type
@@ -217,10 +215,10 @@ def _row_to_counterfactual_case(
     demographic_cue = _normalise_demographic_cue(row)
 
     # Input text
-    if file_index == 0 and row.get("prompt_input_hebrew"):
+    if row.get("prompt_input_hebrew"):
         input_text = str(row["prompt_input_hebrew"]).strip()
         language = "he"
-    elif file_index == 1 and row.get("prompt_ready_case"):
+    elif row.get("prompt_ready_case"):
         input_text = str(row["prompt_ready_case"]).strip()
         language = "en"
     else:

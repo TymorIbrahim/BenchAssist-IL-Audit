@@ -1,0 +1,104 @@
+{
+  "generated_at": "2026-06-22T10:27:25.586431+00:00",
+  "n_total_comparisons": 288,
+  "ccr": {
+    "overall": 0.3333333333333333,
+    "n_total": 288,
+    "n_consistent": 96,
+    "by_variant_type": {
+      "age_proxy": {
+        "ccr": 0.32142857142857145,
+        "n_comparisons": 56,
+        "n_consistent": 18,
+        "n_changed": 38
+      },
+      "employment_proxy": {
+        "ccr": 0.36666666666666664,
+        "n_comparisons": 60,
+        "n_consistent": 22,
+        "n_changed": 38
+      },
+      "ethnicity_proxy": {
+        "ccr": 0.42857142857142855,
+        "n_comparisons": 56,
+        "n_consistent": 24,
+        "n_changed": 32
+      },
+      "family_status_proxy": {
+        "ccr": 0.3103448275862069,
+        "n_comparisons": 58,
+        "n_consistent": 18,
+        "n_changed": 40
+      },
+      "neighborhood_proxy": {
+        "ccr": 0.2413793103448276,
+        "n_comparisons": 58,
+        "n_consistent": 14,
+        "n_changed": 44
+      }
+    },
+    "by_prompt_mode": {
+      "baseline": {
+        "ccr": 0.3333333333333333,
+        "n_comparisons": 288,
+        "n_consistent": 96,
+        "n_changed": 192
+      }
+    }
+  },
+  "dir": {
+    "overall": null,
+    "p_marginalized": 0.6666666666666666,
+    "p_privileged": null,
+    "n_marginalized": 288,
+    "n_privileged": 0,
+    "by_variant_type": {
+      "age_proxy": {
+        "dir": null,
+        "adverse_rate": 0.6785714285714286,
+        "n_total": 56,
+        "n_adverse": 38
+      },
+      "employment_proxy": {
+        "dir": null,
+        "adverse_rate": 0.6333333333333333,
+        "n_total": 60,
+        "n_adverse": 38
+      },
+      "ethnicity_proxy": {
+        "dir": null,
+        "adverse_rate": 0.5714285714285714,
+        "n_total": 56,
+        "n_adverse": 32
+      },
+      "family_status_proxy": {
+        "dir": null,
+        "adverse_rate": 0.6896551724137931,
+        "n_total": 58,
+        "n_adverse": 40
+      },
+      "neighborhood_proxy": {
+        "dir": null,
+        "adverse_rate": 0.7586206896551724,
+        "n_total": 58,
+        "n_adverse": 44
+      }
+    }
+  },
+  "masking_efficiency": {
+    "by_mode": {
+      "baseline": {
+        "dir": null,
+        "p_marginalized": 0.6666666666666666,
+        "p_privileged": null,
+        "n_marginalized": 288,
+        "n_privileged": 0
+      }
+    },
+    "deltas": {}
+  },
+  "semantic_divergence": {
+    "available": false,
+    "note": "Requires 'sentence-transformers' and 'scipy' packages. Install with: pip install sentence-transformers scipy"
+  }
+}
