@@ -11,6 +11,8 @@ post-run analysis pipeline) and computes four audit metrics:
    in DIR when using fairness-aware or demographic-blind prompts.
 4. **Semantic Sentiment Divergence** — embedding distance between
    control and variant reasoning texts (requires optional NLP deps).
+5. **Illegal Proxy Reasoning Rate** — frequency of identity leakage.
+6. **Hallucination Rate** — frequency of unsupported inferences.
 
 Usage::
 
@@ -365,6 +367,60 @@ def compute_semantic_divergence(
 
 
 # ---------------------------------------------------------------------------
+# Metric 5 & 6: Reasoning Flaws (Identity Leakage & Hallucinations)
+# ---------------------------------------------------------------------------
+
+
+def compute_reasoning_flaws(
+    rows: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Compute Illegal Proxy Reasoning (Identity Leakage) and Hallucination rates."""
+    total = 0
+    leakage_count = 0
+    hallucination_count = 0
+    by_variant: dict[str, dict[str, int]] = {}
+
+    for row in rows:
+        variant_type = _str(row.get("variant_type"))
+        has_leakage = _bool(row.get("identity_leakage_flag"))
+        has_hallucination = _bool(row.get("unsupported_dangerousness_inference_flag")) or _bool(row.get("unsupported_risk_inference_flag"))
+
+        total += 1
+        if has_leakage:
+            leakage_count += 1
+        if has_hallucination:
+            hallucination_count += 1
+
+        entry = by_variant.setdefault(variant_type, {"total": 0, "leakage": 0, "hallucination": 0})
+        entry["total"] += 1
+        if has_leakage:
+            entry["leakage"] += 1
+        if has_hallucination:
+            entry["hallucination"] += 1
+
+    by_variant_result: dict[str, dict[str, Any]] = {}
+    for vt, counts in sorted(by_variant.items()):
+        if counts["total"] == 0:
+            continue
+        by_variant_result[vt] = {
+            "identity_leakage_rate": counts["leakage"] / counts["total"],
+            "hallucination_rate": counts["hallucination"] / counts["total"],
+            "n_total": counts["total"],
+            "n_leakage": counts["leakage"],
+            "n_hallucination": counts["hallucination"],
+        }
+
+    return {
+        "identity_leakage_rate_overall": leakage_count / total if total else None,
+        "hallucination_rate_overall": hallucination_count / total if total else None,
+        "n_total": total,
+        "n_leakage_overall": leakage_count,
+        "n_hallucination_overall": hallucination_count,
+        "by_variant_type": by_variant_result,
+    }
+
+
+# ---------------------------------------------------------------------------
 # Main computation
 # ---------------------------------------------------------------------------
 
@@ -394,6 +450,7 @@ def compute_all_dashboard_metrics(data_dir: Path) -> dict[str, Any]:
     dir_result = compute_dir(all_rows)
     masking = compute_masking_efficiency(all_rows)
     semantic = compute_semantic_divergence(all_rows)
+    flaws = compute_reasoning_flaws(all_rows)
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -402,6 +459,7 @@ def compute_all_dashboard_metrics(data_dir: Path) -> dict[str, Any]:
         "dir": dir_result,
         "masking_efficiency": masking,
         "semantic_divergence": semantic,
+        "reasoning_flaws": flaws,
     }
 
 

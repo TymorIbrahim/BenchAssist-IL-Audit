@@ -61,6 +61,20 @@ interface AuditMetricsData {
     available: boolean;
     note: string;
   };
+  reasoning_flaws: {
+    identity_leakage_rate_overall: number | null;
+    hallucination_rate_overall: number | null;
+    n_total: number;
+    n_leakage_overall: number;
+    n_hallucination_overall: number;
+    by_variant_type: Record<string, {
+      identity_leakage_rate: number | null;
+      hallucination_rate: number | null;
+      n_total: number;
+      n_leakage: number;
+      n_hallucination: number;
+    }>;
+  };
   error?: string;
 }
 
@@ -614,6 +628,85 @@ export function AuditMetricsPage() {
             </p>
           </div>
         )}
+      </section>
+
+      {/* ================================================================ */}
+      {/* METRIC 5: Reasoning Flaws (Identity Leakage & Hallucinations)    */}
+      {/* ================================================================ */}
+      <section style={SECTION_CARD}>
+        <h3 style={{ fontSize: "var(--v2-fs-lg)", fontWeight: 700, margin: "0 0 0.35rem" }}>
+          ⑤ Reasoning Flaws
+        </h3>
+        <p style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch" }}>
+          Evaluates the frequency of two critical flaws in the model's reasoning: <strong>Illegal Proxy Reasoning</strong> (where the model explicitly references the demographic proxy as justification) and <strong>Hallucinations</strong> (where the model invents unsupported facts to justify higher risk).
+        </p>
+
+        {data.reasoning_flaws && (
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
+            <div style={STAT_CARD}>
+              <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                Identity Leakage
+              </span>
+              <span style={{
+                fontSize: "2rem", fontWeight: 800, fontVariantNumeric: "tabular-nums",
+                color: (data.reasoning_flaws.identity_leakage_rate_overall ?? 0) > 0.1 ? "hsl(0 65% 50%)" : "hsl(140 50% 35%)",
+              }}>
+                {pct(data.reasoning_flaws.identity_leakage_rate_overall)}
+              </span>
+              <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)" }}>
+                {data.reasoning_flaws.n_leakage_overall} occurrences
+              </span>
+            </div>
+
+            <div style={STAT_CARD}>
+              <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                Hallucinations
+              </span>
+              <span style={{
+                fontSize: "2rem", fontWeight: 800, fontVariantNumeric: "tabular-nums",
+                color: (data.reasoning_flaws.hallucination_rate_overall ?? 0) > 0.05 ? "hsl(0 65% 50%)" : "hsl(140 50% 35%)",
+              }}>
+                {pct(data.reasoning_flaws.hallucination_rate_overall)}
+              </span>
+              <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)" }}>
+                {data.reasoning_flaws.n_hallucination_overall} unsupported claims
+              </span>
+            </div>
+          </div>
+        )}
+
+        <div className="v2-output-table-wrap">
+          <table className="v2-output-table">
+            <thead>
+              <tr>
+                <th>Variant Type</th>
+                <th>Identity Leakage Rate</th>
+                <th>Hallucination Rate</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(data.reasoning_flaws?.by_variant_type || {}).map(([key, v]) => (
+                <tr key={key}>
+                  <td className="v2-output-table__field">{variantLabel(key)}</td>
+                  <td style={{
+                    fontWeight: 700,
+                    color: (v.identity_leakage_rate ?? 0) > 0.1 ? "var(--v2-danger, #dc2626)" : undefined,
+                  }}>
+                    {pct(v.identity_leakage_rate)} <span style={{ fontSize: "0.75rem", fontWeight: "normal", color: "var(--v2-text-muted)" }}>({v.n_leakage})</span>
+                  </td>
+                  <td style={{
+                    fontWeight: 700,
+                    color: (v.hallucination_rate ?? 0) > 0.05 ? "var(--v2-danger, #dc2626)" : undefined,
+                  }}>
+                    {pct(v.hallucination_rate)} <span style={{ fontSize: "0.75rem", fontWeight: "normal", color: "var(--v2-text-muted)" }}>({v.n_hallucination})</span>
+                  </td>
+                  <td>{v.n_total}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       {/* ── Methodology note ── */}

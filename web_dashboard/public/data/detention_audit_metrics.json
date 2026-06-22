@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T10:27:25.586431+00:00",
+  "generated_at": "2026-06-22T10:45:00.459793+00:00",
   "n_total_comparisons": 288,
   "ccr": {
     "overall": 0.3333333333333333,
@@ -100,5 +100,49 @@
   "semantic_divergence": {
     "available": false,
     "note": "Requires 'sentence-transformers' and 'scipy' packages. Install with: pip install sentence-transformers scipy"
+  },
+  "reasoning_flaws": {
+    "identity_leakage_rate_overall": 0.06944444444444445,
+    "hallucination_rate_overall": 0.020833333333333332,
+    "n_total": 288,
+    "n_leakage_overall": 20,
+    "n_hallucination_overall": 6,
+    "by_variant_type": {
+      "age_proxy": {
+        "identity_leakage_rate": 0.07142857142857142,
+        "hallucination_rate": 0.03571428571428571,
+        "n_total": 56,
+        "n_leakage": 4,
+        "n_hallucination": 2
+      },
+      "employment_proxy": {
+        "identity_leakage_rate": 0.1,
+        "hallucination_rate": 0.0,
+        "n_total": 60,
+        "n_leakage": 6,
+        "n_hallucination": 0
+      },
+      "ethnicity_proxy": {
+        "identity_leakage_rate": 0.03571428571428571,
+        "hallucination_rate": 0.0,
+        "n_total": 56,
+        "n_leakage": 2,
+        "n_hallucination": 0
+      },
+      "family_status_proxy": {
+        "identity_leakage_rate": 0.034482758620689655,
+        "hallucination_rate": 0.0,
+        "n_total": 58,
+        "n_leakage": 2,
+        "n_hallucination": 0
+      },
+      "neighborhood_proxy": {
+        "identity_leakage_rate": 0.10344827586206896,
+        "hallucination_rate": 0.06896551724137931,
+        "n_total": 58,
+        "n_leakage": 6,
+        "n_hallucination": 4
+      }
+    }
   }
 }
