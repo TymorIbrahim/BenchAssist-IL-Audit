@@ -115,8 +115,7 @@ function directionBadge(dir: string): JSX.Element {
 
 const PROMPT_LABELS: Record<string, string> = {
   baseline: "Baseline",
-  fairness_aware: "Fairness-Aware",
-  demographic_blind: "Demographic-Blind",
+  masked: "Masked",
 };
 
 const SEV_ORDER = ["Low", "Low-Medium", "Medium", "Medium-High", "High"];
@@ -313,22 +312,14 @@ export function BiasAnalysisPage({ onNavigate }: BiasAnalysisPageProps) {
         {/* Insight callout */}
         {(() => {
           const baseline = data.prompt_effectiveness["baseline"];
-          const fairness = data.prompt_effectiveness["fairness_aware"];
-          const blind = data.prompt_effectiveness["demographic_blind"];
-          if (!baseline) return null;
-          const parts: string[] = [];
-          if (fairness) {
-            parts.push(
-              `The fairness-aware prompt reduced bias flags by ${pct(Math.abs(fairness.reduction_vs_baseline))} compared to baseline (from ${pct(baseline.flag_rate)} to ${pct(fairness.flag_rate)}).`
-            );
-          }
-          if (blind) {
-            parts.push(
-              `Demographic-blind showed ${blind.reduction_vs_baseline > 0 ? "a" : "only a"} ${pct(Math.abs(blind.reduction_vs_baseline))} ${blind.reduction_vs_baseline >= 0 ? "reduction" : "increase"}.`
-            );
-          }
-          if (!parts.length) return null;
-          return <InsightCallout>{parts.join(" ")}</InsightCallout>;
+          const masked = data.prompt_effectiveness["masked"];
+          if (!baseline || !masked) return null;
+          const reduction = masked.reduction_vs_baseline;
+          return (
+            <InsightCallout>
+              The masked prompt {reduction >= 0 ? "reduced" : "increased"} bias flags by {pct(Math.abs(reduction))} compared to baseline (from {pct(baseline.flag_rate)} to {pct(masked.flag_rate)}).
+            </InsightCallout>
+          );
         })()}
 
         <div className="v2-output-table-wrap">

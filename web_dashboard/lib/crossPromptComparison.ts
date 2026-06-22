@@ -3,9 +3,7 @@ import type { JsonRecord } from "./types";
 import type { ComparisonMode } from "@/components/CaseComparison";
 
 export const COMPARISON_TYPE_BY_MODE: Partial<Record<ComparisonMode, string>> = {
-  baseline_vs_fairness: "baseline_vs_fairness_aware",
-  baseline_vs_blind: "baseline_vs_demographic_blind",
-  fairness_vs_blind: "fairness_aware_vs_demographic_blind",
+  baseline_vs_masked: "baseline_vs_masked",
 };
 
 export const COMPARISON_MODE_LABELS: Record<
@@ -16,17 +14,9 @@ export const COMPARISON_MODE_LABELS: Record<
     label: "Neutral vs selected variant",
     subtitle: "Shows whether changing the case wording changed the legal framing.",
   },
-  baseline_vs_fairness: {
-    label: "Baseline vs fairness-aware prompt",
-    subtitle: "Shows whether fairness instructions changed the memo for the same case.",
-  },
-  baseline_vs_blind: {
-    label: "Baseline vs demographic-blind prompt",
-    subtitle: "Shows whether removing demographic cues changed the memo.",
-  },
-  fairness_vs_blind: {
-    label: "Fairness-aware vs demographic-blind prompt",
-    subtitle: "Compares two mitigation approaches.",
+  baseline_vs_masked: {
+    label: "Baseline vs masked prompt",
+    subtitle: "Shows whether masking demographic cues changed the memo for the same case.",
   },
   variant_to_variant: {
     label: "Variant-to-variant",
@@ -35,7 +25,7 @@ export const COMPARISON_MODE_LABELS: Record<
 };
 
 export const CROSS_PROMPT_EMPTY_MESSAGE =
-  "Cross-prompt comparison is not available in this exported run. This usually means the export only found one prompt mode, such as baseline. Run or export baseline, fairness-aware, and demographic-blind outputs, then rerun `python -m benchassist.vercel_export --auto`.";
+  "Cross-prompt comparison is not available in this exported run. This usually means the export only found one prompt mode, such as baseline. Run or export baseline and masked outputs, then rerun `python -m benchassist.vercel_export --auto`.";
 
 export function getCrossPromptRow(
   rows: JsonRecord[],
@@ -92,22 +82,8 @@ export function crossPromptEmptyDetail(
 ): string {
   const missing = manifest.missing_prompt_modes_for_comparison ?? [];
   const detected = manifest.prompt_modes_detected ?? [];
-  if (mode === "baseline_vs_fairness" && missing.includes("fairness_aware")) {
-    return "Fairness-aware outputs were not found in this export. Run the fairness-aware experiment, then re-export.";
-  }
-  if (mode === "baseline_vs_blind" && missing.includes("demographic_blind")) {
-    return "Demographic-blind outputs were not found in this export. Run the demographic-blind experiment, then re-export.";
-  }
-  if (mode === "fairness_vs_blind") {
-    if (missing.includes("fairness_aware") && missing.includes("demographic_blind")) {
-      return "Neither fairness-aware nor demographic-blind outputs were exported.";
-    }
-    if (missing.includes("fairness_aware")) {
-      return "Fairness-aware outputs are missing for this comparison.";
-    }
-    if (missing.includes("demographic_blind")) {
-      return "Demographic-blind outputs are missing for this comparison.";
-    }
+  if (mode === "baseline_vs_masked" && missing.includes("masked")) {
+    return "Masked outputs were not found in this export. Run the masked experiment, then re-export.";
   }
   if (detected.length <= 1) {
     return CROSS_PROMPT_EMPTY_MESSAGE;
@@ -117,8 +93,7 @@ export function crossPromptEmptyDetail(
 
 export interface CrossPromptSummary {
   comparableRows: number;
-  baselineVsFairnessActionRate: number | null;
-  baselineVsBlindActionRate: number | null;
+  baselineVsMaskedActionRate: number | null;
   avgRemedyStrengthDelta: number | null;
   evidenceBurdenChangedRate: number | null;
   credibilityChangedRate: number | null;
@@ -138,14 +113,12 @@ function avgDelta(rows: JsonRecord[]): number | null {
 }
 
 export function summarizeCrossPromptComparisons(rows: JsonRecord[]): CrossPromptSummary {
-  const baselineFairness = rows.filter((r) => str(r.comparison_type) === "baseline_vs_fairness_aware");
-  const baselineBlind = rows.filter((r) => str(r.comparison_type) === "baseline_vs_demographic_blind");
+  const baselineMasked = rows.filter((r) => str(r.comparison_type) === "baseline_vs_masked");
   const allTypes = new Set(rows.map((r) => `${str(r.case_id)}::${str(r.variant_id)}`));
 
   return {
     comparableRows: allTypes.size,
-    baselineVsFairnessActionRate: rate(baselineFairness, "action_type_changed"),
-    baselineVsBlindActionRate: rate(baselineBlind, "action_type_changed"),
+    baselineVsMaskedActionRate: rate(baselineMasked, "action_type_changed"),
     avgRemedyStrengthDelta: avgDelta(rows),
     evidenceBurdenChangedRate: rate(rows, "evidence_burden_changed"),
     credibilityChangedRate: rate(rows, "credibility_framing_changed"),

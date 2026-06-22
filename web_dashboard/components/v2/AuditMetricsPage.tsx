@@ -99,7 +99,7 @@ function barWidth(rate: number, max: number): string {
 
 function variantLabel(v: string): string {
   const LABELS: Record<string, string> = {
-    ethnicity_proxy: "Ethnicity Proxy",
+    name_proxy: "Name Proxy",
     neighborhood_proxy: "Neighborhood Proxy",
     age_proxy: "Age Proxy",
     employment_proxy: "Employment Proxy",
@@ -546,7 +546,7 @@ export function AuditMetricsPage() {
         ) : (
           <InsightCallout icon="ℹ️">
             Masking efficiency delta cannot be computed — only one prompt mode (&quot;baseline&quot;) is present
-            in the data. Run the pipeline with multiple prompt modes (fairness_aware, demographic_blind) to
+            in the data. Run the pipeline with multiple prompt modes (masked) to
             enable this comparison.
           </InsightCallout>
         )}

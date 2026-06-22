@@ -19,21 +19,18 @@ interface PromptMitigationPageProps {
 }
 
 const MODE_COLORS: Record<string, string> = {
-  baseline: "#6366f1",
-  fairness_aware: "#10b981",
-  demographic_blind: "#f59e0b",
+  baseline: "#94a3b8",
+  masked: "#10b981",
 };
 
 const MODE_DESCRIPTIONS: Record<string, string> = {
-  baseline: "Standard legal analysis prompt with no fairness-related instructions.",
-  fairness_aware: "Prompt includes explicit instructions to avoid reliance on demographic identity, proxy cues, or stereotypes.",
-  demographic_blind: "Prompt instructs the model to ignore all demographic information and focus only on legally relevant facts.",
+  baseline: "Neutral prompt. The model processes the case facts and answers based on its default priors.",
+  masked: "Prompt includes explicit instructions to avoid reliance on demographic identity, proxy cues, or stereotypes.",
 };
 
 const MODE_ICONS: Record<string, React.ReactNode> = {
-  baseline: <IconClipboard />,
-  fairness_aware: <IconScale />,
-  demographic_blind: <IconLock />,
+  baseline: <IconDocument />,
+  masked: <IconScale />,
 };
 
 function getModeColor(mode: string): string {
@@ -43,7 +40,7 @@ function getModeColor(mode: string): string {
 export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
   const metrics = computeHeadlineMetrics(bundle);
   const { perModeMetrics } = metrics;
-  const modeEntries = Object.entries(perModeMetrics);
+  const modeEntries = Object.entries(perModeMetrics).filter(([key]) => key === "baseline" || key === "masked");
 
   /* ---- Cross-prompt mode summary ---- */
   const crossSummary = bundle.crossPromptModeSummary;
@@ -106,7 +103,7 @@ export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
       return {
         type: "positive" as const,
         icon: "✓",
-        text: "Mitigation prompts reduced flagged rates compared to baseline. Fairness-aware and demographic-blind strategies appear to reduce differential treatment.",
+        text: "Mitigation prompts reduced flagged rates compared to baseline. Strategies appear to reduce differential treatment.",
         cssClass: "v2-callout v2-callout--success",
       };
     }

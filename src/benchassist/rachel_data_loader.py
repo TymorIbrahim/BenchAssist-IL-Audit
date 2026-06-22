@@ -40,26 +40,14 @@ _PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 _DEFAULT_RACHEL_DIR = _PROJECT_ROOT / "rachel_data"
 
 _EXCEL_FILES = [
-    "synthetic_pretrial_detention_llm_audit_dataset_final.xlsx",
+    "benchassist_synthetic_detention_audit_dataset_final.xlsx",
 ]
 
 # Mapping from Rachel's variant_type labels → normalised variant_type
 _VARIANT_TYPE_MAP: dict[str, str] = {
-    # File 1 labels
-    "V0_Control": "control",
-    "V1_EthnicName": "ethnicity_proxy",
-    "V2_Neighborhood": "neighborhood_proxy",
-    "V3_Age": "age_proxy",
-    "V4_Employment": "employment_proxy",
-    "V5_FamilyStatus": "family_status_proxy",
-    # File 2 & 3 labels (already normalised)
-    "control": "control",
-    "baseline": "control",
-    "ethnicity_proxy": "ethnicity_proxy",
-    "neighborhood_proxy": "neighborhood_proxy",
-    "age_proxy": "age_proxy",
-    "employment_proxy": "employment_proxy",
-    "family_status_proxy": "family_status_proxy",
+    "Control": "control",
+    "Name_Proxy": "name_proxy",
+    "Neighborhood_Proxy": "neighborhood_proxy",
 }
 
 # Severity → urgency mapping
@@ -84,12 +72,12 @@ def _read_excel_sheet(path: Path, sheet_index: int = 0) -> list[dict[str, Any]]:
     try:
         ws = wb[wb.sheetnames[sheet_index]]
         rows = list(ws.iter_rows(values_only=True))
-        if len(rows) < 2:
+        if len(rows) < 4:
             return []
-        headers = [str(h or "").strip() for h in rows[0]]
+        headers = [str(h or "").strip() for h in rows[2]]
         return [
             {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
-            for row in rows[1:]
+            for row in rows[3:]
         ]
     finally:
         wb.close()
@@ -208,14 +196,17 @@ def _row_to_counterfactual_case(
 
     # Variant type
     variant_type = _normalise_variant_type(
-        row.get("variant_type") or row.get("variation_type")
+        row.get("Counterfactual_Condition") or row.get("variant_type") or row.get("variation_type")
     )
 
     # Demographic cue
     demographic_cue = _normalise_demographic_cue(row)
 
     # Input text
-    if row.get("prompt_input_hebrew"):
+    if row.get("Case_Input_Text"):
+        input_text = str(row["Case_Input_Text"]).strip()
+        language = "en"
+    elif row.get("prompt_input_hebrew"):
         input_text = str(row["prompt_input_hebrew"]).strip()
         language = "he"
     elif row.get("prompt_ready_case"):
@@ -227,7 +218,7 @@ def _row_to_counterfactual_case(
 
     # Urgency from severity
     expected_urgency = _normalise_severity_to_urgency(
-        row.get("offense_severity")
+        row.get("Offense_Severity") or row.get("offense_severity")
     )
 
     return CounterfactualCase(
@@ -277,23 +268,28 @@ def load_rachel_cases(
             logger.warning("Rachel data file not found: %s", fpath)
             continue
 
-        rows = _read_excel_sheet(fpath, sheet_index=0)
-        logger.info(
-            "Loaded %d rows from %s (sheet: %s)",
-            len(rows),
-            filename,
-            "dataset",
-        )
+    for idx, filename in enumerate(_EXCEL_FILES):
+        file_path = directory / filename
+        if not file_path.exists():
+            logger.warning("Rachel data file not found: %s", file_path)
+            continue
 
-        for row in rows:
+        raw_rows = _read_excel_sheet(file_path, sheet_index=2)  # Sheet 'Audit Dataset' is index 2
+
+        for r in raw_rows:
+            # Deduplicate by only processing the 'Baseline' mode runs, since inputs are identical
+            prompt_mode = str(r.get("Prompt_Mode", "")).strip().lower()
+            if prompt_mode and prompt_mode != "baseline":
+                continue
+
             try:
-                case = _row_to_counterfactual_case(row, file_index=file_index)
+                case = _row_to_counterfactual_case(r, file_index=idx)
                 all_cases.append(case)
             except Exception:
                 logger.exception(
                     "Failed to convert row from %s: %s",
                     filename,
-                    row.get("case_id") or row.get("record_id"),
+                    r.get("case_id") or r.get("record_id"),
                 )
 
     logger.info(
@@ -429,8 +425,8 @@ def main() -> None:
         basename=args.basename,
     )
     print(f"\nExported:")
-    print(f"  → {csv_path}")
-    print(f"  → {jsonl_path}")
+    print(f"  -> {csv_path}")
+    print(f"  -> {jsonl_path}")
 
     # Also export prompts
     prompts = load_rachel_prompts(args.rachel_dir)

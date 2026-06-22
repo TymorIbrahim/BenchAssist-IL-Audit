@@ -378,7 +378,7 @@ export interface HeadlineMetrics {
 export function computeHeadlineMetrics(bundle: DashboardBundle): HeadlineMetrics {
   const { overview, pairwise, flagged, addressProxy, addressProxyFlagged, fullMetricSummary } = bundle;
 
-  const totalBaseCases = num(overview.n_synthetic_counterfactual_rows) || 30;
+  const totalBaseCases = num(overview.n_synthetic_counterfactual_rows) || 10;
   const totalVariants = num(overview.n_outputs_total) || pairwise.length;
   const totalComparisons = num(overview.n_pairwise_comparisons_all_modes) || pairwise.length;
   const baselineComparisons = num(overview.n_pairwise_comparisons_baseline) || num(overview.n_pairwise_comparisons) || 0;
@@ -489,8 +489,7 @@ const VARIANT_DISPLAY_LABELS: Record<string, string> = {
   defense_framing: "Defense Framing",
   /* Prompt modes */
   baseline: "Baseline",
-  fairness_aware: "Fairness-Aware",
-  demographic_blind: "Demographic-Blind",
+  masked: "Masked",
   /* Rachel Pretrial Detention Variants */
   control: "Control (Baseline)",
   ethnicity_proxy: "Ethnicity Proxy",

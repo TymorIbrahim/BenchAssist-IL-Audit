@@ -40,7 +40,7 @@ interface OverviewPageProps {
 const PROCESS_STEPS: { icon: React.ReactNode; title: string; detail: string; dynamicTitle?: boolean }[] = [
   {
     icon: <IconClipboard />,
-    title: "30 Base Cases",
+    title: "10 Base Cases",
     dynamicTitle: true,
     detail: "Synthetic pretrial detention scenarios across Hebrew and English, covering a range of criminal offense types and case circumstances",
   },
@@ -51,8 +51,8 @@ const PROCESS_STEPS: { icon: React.ReactNode; title: string; detail: string; dyn
   },
   {
     icon: <IconRobot />,
-    title: "3 Prompt Modes × 180 Cases",
-    detail: "Every case assessed under Baseline, Fairness-Aware, and Demographic-Blind prompt strategies — 540 total LLM outputs",
+    title: "2 Prompt Modes × 60 Cases",
+    detail: "Every case assessed under Baseline and Masked prompt strategies — 60 total LLM outputs",
   },
   {
     icon: <IconScale />,
@@ -125,12 +125,11 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
 
   /* ── Prompt mode cards ── */
   const promptModes = useMemo(() => {
-    const modes = [
-      { key: "baseline", label: "Baseline", desc: "Neutral legal prompt — no demographic instructions" },
-      { key: "fairness_aware", label: "Fairness-Aware", desc: "Explicit identity cue evaluation and equal treatment" },
-      { key: "demographic_blind", label: "Demographic-Blind", desc: "Strong identity blindness — treat as if redacted" },
+    const PROMPT_MODES = [
+      { key: "baseline", label: "Baseline", desc: "No explicit anti-bias instruction" },
+      { key: "masked", label: "Masked", desc: "Explicitly instructed to ignore demographic cues" },
     ];
-    return modes.map(({ key, label, desc }) => {
+    return PROMPT_MODES.map(({ key, label, desc }) => {
       const rows = bundle.groupSummary.filter((g) => g.prompt_mode === key && !g.variant_type.startsWith("address_"));
       const comparisons = rows.reduce((s, r) => s + r.n_comparisons, 0);
       const flagged = rows.reduce((s, r) => s + Math.round(r.flagged_rate * r.n_comparisons), 0);
@@ -155,7 +154,7 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
           <h1 className="overview-hero__title">BenchAssist-IL Pretrial Detention Audit</h1>
           <p className="overview-hero__subtitle">
             Systematic fairness screening of LLM-generated risk assessments for Israeli
-            pretrial detention hearings — 30 cases × 6 variants × 3 prompt modes
+            pretrial detention hearings — 10 cases × 3 variants × 2 prompt modes
           </p>
         </div>
         <div className="overview-hero__screening-ring">

@@ -38,9 +38,7 @@ const PAIR_FIELDS: FieldSpec[] = [
 
 export type ComparisonMode =
   | "neutral_vs_variant"
-  | "baseline_vs_fairness"
-  | "baseline_vs_blind"
-  | "fairness_vs_blind"
+  | "baseline_vs_masked"
   | "variant_to_variant";
 
 function fieldChanged(row: JsonRecord, spec: FieldSpec): boolean {

@@ -232,9 +232,8 @@ export function FairnessScreeningPage({ bundle }: FairnessScreeningPageProps) {
       {/* ── Header ── */}
       <header className="fair-header">
         <h1 className="fair-header__title">Fairness Screening</h1>
-        <p className="fair-header__subtitle">
-          Counterfactual analysis measuring how demographic proxy variants (ethnicity, neighborhood,
-          age, employment, family status) affect LLM risk assessments across 30 base cases
+        <p className="v2-hero__subtitle" style={{ maxWidth: 800 }}>
+          Analyse how injected demographic proxy cues (name, neighborhood) affect LLM risk assessments across 10 base cases
         </p>
       </header>
 
@@ -243,11 +242,10 @@ export function FairnessScreeningPage({ bundle }: FairnessScreeningPageProps) {
         <div className="fair-explainer__icon"><IconUser /></div>
         <div>
           <strong>Demographic Proxy Variants</strong>
-          <p>
-            Each of 30 base cases is tested with 5 proxy variants: ethnicity, neighborhood, age,
-            employment status, and family status. The control case is held constant while only
-            the demographic cue changes. Any shift in risk assessment flags potential bias.
-          </p>
+          <div className="v2-info-card__content">
+            Each of 10 base cases is tested with 2 proxy variants: name and neighborhood.
+            We measure whether the LLM recommends harsher actions compared to the identical control baseline.
+          </div>
         </div>
       </div>
 
@@ -335,7 +333,7 @@ export function FairnessScreeningPage({ bundle }: FairnessScreeningPageProps) {
         <section className="fair-section">
           <h2 className="fair-section__title">Flagged Rate by Variant</h2>
           <p className="fair-section__subtitle">
-            {formatVariantLabel(selectedPromptMode)} prompt mode — 30 comparisons per variant
+            {formatVariantLabel(selectedPromptMode)} prompt mode — 10 comparisons per variant
           </p>
           <div className="fair-chart">
             {currentGroups.map(g => (
