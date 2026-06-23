@@ -63,6 +63,11 @@ function truncate(text: string, maxLines: number): string {
   return lines.slice(0, maxLines).join("\n") + "…";
 }
 
+function formatCaseText(text: string): string {
+  if (!text) return "";
+  return text.split(". ").join(".\n");
+}
+
 /**
  * Line-by-line diff: splits both texts by newline, aligns lines by their
  * field label (text before the colon), and marks a line as changed only
@@ -117,6 +122,22 @@ function highlightDiffs(
   return { baseParts, variantParts };
 }
 
+/**
+ * Sentence-by-sentence diff for paragraphs (like reasoning text).
+ */
+function highlightSentenceDiffs(
+  baseText: string,
+  variantText: string,
+) {
+  const baseSentences = baseText.split(/(?<=\.)\s+/).map(s => s.trim()).filter(Boolean);
+  const variantSentences = variantText.split(/(?<=\.)\s+/).map(s => s.trim()).filter(Boolean);
+
+  const baseParts = baseSentences.map(s => ({ text: s, changed: !variantSentences.includes(s) }));
+  const variantParts = variantSentences.map(s => ({ text: s, changed: !baseSentences.includes(s) }));
+
+  return { baseParts, variantParts };
+}
+
 function DiffText({ parts }: { parts: Array<{ text: string; changed: boolean }> }) {
   return (
     <div className="v2-case-explorer__field-text">
@@ -127,6 +148,22 @@ function DiffText({ parts }: { parts: Array<{ text: string; changed: boolean }> 
         >
           {p.text}
         </div>
+      ))}
+    </div>
+  );
+}
+
+function SentenceDiffText({ parts }: { parts: Array<{ text: string; changed: boolean }> }) {
+  return (
+    <div className="v2-case-explorer__reasoning-text">
+      {parts.map((p, i) => (
+        <span
+          key={i}
+          className={p.changed ? "v2-diff-sentence v2-diff-highlight" : "v2-diff-sentence"}
+          style={p.changed ? { background: "var(--v2-warning-bg, hsl(35 80% 92%))", padding: "0 2px", borderRadius: "3px" } : {}}
+        >
+          {p.text}{" "}
+        </span>
       ))}
     </div>
   );
@@ -264,10 +301,17 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
     (loadedRecord ? formatVariantLabel(loadedRecord.variant_type) : "");
 
   // Input case texts
-  const baseCaseText = loadedRecord?.base_case?.full_case_text;
-  const variantCaseText = loadedRecord?.variant_case?.full_case_text;
+  const baseCaseText = loadedRecord?.base_case?.full_case_text ? formatCaseText(loadedRecord.base_case.full_case_text) : undefined;
+  const variantCaseText = loadedRecord?.variant_case?.full_case_text ? formatCaseText(loadedRecord.variant_case.full_case_text) : undefined;
   const inputDiff = baseCaseText && variantCaseText
     ? highlightDiffs(baseCaseText, variantCaseText)
+    : null;
+
+  // Reasoning texts
+  const baseReasoningText = loadedRecord?.neutral_output?.reasoning_text;
+  const variantReasoningText = loadedRecord?.variant_output?.reasoning_text;
+  const reasoningDiff = baseReasoningText && variantReasoningText
+    ? highlightSentenceDiffs(baseReasoningText, variantReasoningText)
     : null;
 
   // Cross-prompt data
@@ -588,14 +632,22 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
                       <div className="v2-case-explorer__column">
                         <h4 className="v2-case-explorer__column-title">Neutral Baseline</h4>
                         <div className="v2-case-explorer__reasoning-scroll" dir="auto" style={{ whiteSpace: "pre-wrap", lineHeight: 1.6, fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-secondary)", background: "var(--v2-bg-surface, hsl(220 15% 97%))", padding: "0.75rem", borderRadius: "6px", border: "1px solid var(--v2-border-subtle, hsl(220 15% 94%))" }}>
-                          {loadedRecord.neutral_output?.reasoning_text ?? "N/A"}
+                          {reasoningDiff ? (
+                            <SentenceDiffText parts={reasoningDiff.baseParts} />
+                          ) : (
+                            baseReasoningText ?? "N/A"
+                          )}
                         </div>
                       </div>
                       {/* Variant reasoning */}
                       <div className="v2-case-explorer__column">
                         <h4 className="v2-case-explorer__column-title">Variant: {variantLabel}</h4>
                         <div className="v2-case-explorer__reasoning-scroll" dir="auto" style={{ whiteSpace: "pre-wrap", lineHeight: 1.6, fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-secondary)", background: "var(--v2-bg-surface, hsl(220 15% 97%))", padding: "0.75rem", borderRadius: "6px", border: "1px solid var(--v2-border-subtle, hsl(220 15% 94%))" }}>
-                          {loadedRecord.variant_output?.reasoning_text ?? "N/A"}
+                          {reasoningDiff ? (
+                            <SentenceDiffText parts={reasoningDiff.variantParts} />
+                          ) : (
+                            variantReasoningText ?? "N/A"
+                          )}
                         </div>
                       </div>
                     </div>
