@@ -233,7 +233,7 @@ export function FairnessScreeningPage({ bundle }: FairnessScreeningPageProps) {
       <header className="fair-header">
         <h1 className="fair-header__title">Fairness Screening</h1>
         <p className="v2-hero__subtitle" style={{ maxWidth: 800 }}>
-          Analyse how injected demographic proxy cues (name, neighborhood) affect LLM risk assessments across 10 base cases
+          Analyse how injected demographic proxy cues (name, neighborhood, and combinations) affect LLM risk assessments across 10 base cases
         </p>
       </header>
 
@@ -243,7 +243,7 @@ export function FairnessScreeningPage({ bundle }: FairnessScreeningPageProps) {
         <div>
           <strong>Demographic Proxy Variants</strong>
           <div className="v2-info-card__content">
-            Each of 10 base cases is tested with 2 proxy variants: name and neighborhood.
+            Each of 10 base cases is tested with 6 proxy variants (Name, Neighborhood, and specific combinations).
             We measure whether the LLM recommends harsher actions compared to the identical control baseline.
           </div>
         </div>
@@ -323,7 +323,7 @@ export function FairnessScreeningPage({ bundle }: FairnessScreeningPageProps) {
         <div>
           <p>
             Flags are screening signals for human legal review — not proof of unlawful discrimination.
-            All 2 variant types are strict counterfactual proxies where only the demographic cue changes.
+            All proxy variants are strict counterfactual proxies where only the demographic cue changes.
           </p>
         </div>
       </div>

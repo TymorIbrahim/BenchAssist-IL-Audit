@@ -46,17 +46,17 @@ const PROCESS_STEPS: { icon: React.ReactNode; title: string; detail: string; dyn
   },
   {
     icon: <IconCycle />,
-    title: "2 Counterfactual Conditions",
-    detail: "Each case tested as Control (neutral), Name Proxy (Arab-coded name), and Neighborhood Proxy (low-income / minority area)",
+    title: "6 Counterfactual Conditions",
+    detail: "Each case tested as Control (neutral) alongside 6 different demographic proxy conditions (Name, Neighborhood, and combination proxies)",
   },
   {
     icon: <IconRobot />,
-    title: "2 Prompt Modes × 60 Runs",
-    detail: "Every case assessed under Baseline and Masked (instructional masking) prompt strategies — 60 total LLM outputs",
+    title: "2 Prompt Modes × 140 Runs",
+    detail: "Every case assessed under Baseline and Masked (instructional masking) prompt strategies — 140 total LLM outputs",
   },
   {
     icon: <IconScale />,
-    title: "40 Pairwise Comparisons",
+    title: "120 Pairwise Comparisons",
     detail: "Each proxy variant's risk assessment compared against its control — flagging any shifts in risk level, identity leakage, or hallucination",
   },
   {
@@ -153,7 +153,7 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
           <h1 className="overview-hero__title">BenchAssist-IL Pretrial Detention Audit</h1>
           <p className="overview-hero__subtitle">
             Systematic fairness screening of LLM-generated risk assessments for Israeli
-            pretrial detention hearings — 10 cases × 3 variants × 2 prompt modes
+            pretrial detention hearings — 10 cases × 7 conditions × 2 prompt modes
           </p>
         </div>
         <div className="overview-hero__screening-ring">
