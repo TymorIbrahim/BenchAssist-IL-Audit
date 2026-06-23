@@ -1,15 +1,1 @@
-{
-  "by_comparison_mode": {
-    "fairness_aware": {
-      "material_instability": 1171,
-      "wording_only": 803,
-      "total": 1974
-    },
-    "demographic_blind": {
-      "material_instability": 1095,
-      "wording_only": 820,
-      "total": 1915
-    }
-  },
-  "note": "Exploratory screening only — not merged into strict dangerousness flagged rates."
-}
+{}
