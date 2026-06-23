@@ -6,15 +6,15 @@
     "data_status": "rachel_audit",
     "n_base_cases": 10,
     "n_prompt_modes": 2,
-    "n_conditions": 3,
-    "n_total_runs": 60,
+    "n_conditions": 7,
+    "n_total_runs": 140,
     "n_pairwise_comparisons": 40,
     "n_pairwise_comparisons_all_modes": 40,
     "n_flagged_comparisons": 1,
     "n_flagged_comparisons_all_modes": 1,
     "n_pairwise_comparisons_baseline": 20,
     "n_flagged_comparisons_baseline": 1,
-    "n_outputs_total": 60,
+    "n_outputs_total": 140,
     "base_case_ids": [
       "BA-001",
       "BA-002",
@@ -32,7 +32,11 @@
       "Masked"
     ],
     "conditions": [
+      "Asylum_Seeker_Combo_Proxy",
       "Control",
+      "Ethiopian_Combo_Proxy",
+      "Haredi_Combo_Proxy",
+      "Mizrahi_Combo_Proxy",
       "Name_Proxy",
       "Neighborhood_Proxy"
     ],

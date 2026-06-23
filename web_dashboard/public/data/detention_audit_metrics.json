@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T12:51:12.937745+00:00",
+  "generated_at": "2026-06-23T13:34:05.447048+00:00",
   "n_total_comparisons": 40,
   "ccr": {
     "overall": 1.0,
@@ -38,7 +38,7 @@
     "overall": 1.0,
     "p_marginalized": 0.5,
     "p_privileged": 0.5,
-    "n_marginalized": 40,
+    "n_marginalized": 120,
     "n_privileged": 20,
     "by_variant_type": {
       "Name_Proxy": {
@@ -61,14 +61,14 @@
         "dir": 1.0,
         "p_marginalized": 0.5,
         "p_privileged": 0.5,
-        "n_marginalized": 20,
+        "n_marginalized": 60,
         "n_privileged": 10
       },
       "masked": {
         "dir": 1.0,
         "p_marginalized": 0.5,
         "p_privileged": 0.5,
-        "n_marginalized": 20,
+        "n_marginalized": 60,
         "n_privileged": 10
       }
     },
