@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T11:17:04.376892+00:00",
+  "generated_at": "2026-06-23T11:43:46.108341+00:00",
   "n_total_comparisons": 40,
   "ccr": {
     "overall": 1.0,
@@ -83,19 +83,19 @@
   },
   "semantic_divergence": {
     "available": true,
-    "overall_mean": 0.1166332408586429,
+    "overall_mean": 0.12132930723485194,
     "overall_max": 0.2967961607453906,
-    "n_pairs": 34,
+    "n_pairs": 40,
     "by_variant_type": {
       "Name_Proxy": {
-        "mean_divergence": 0.11180158970295256,
-        "max_divergence": 0.21888003405571055,
-        "n_pairs": 17
+        "mean_divergence": 0.1186829314245716,
+        "max_divergence": 0.22599241811014437,
+        "n_pairs": 20
       },
       "Neighborhood_Proxy": {
-        "mean_divergence": 0.12146489201433326,
+        "mean_divergence": 0.12397568304513232,
         "max_divergence": 0.2967961607453906,
-        "n_pairs": 17
+        "n_pairs": 20
       }
     }
   },
