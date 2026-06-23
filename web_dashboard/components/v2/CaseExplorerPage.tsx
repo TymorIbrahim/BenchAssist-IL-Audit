@@ -504,19 +504,19 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
                 </button>
               </div>
 
-              {showPromptNeutral && loadedRecord.base_case?.full_prompt_sent_to_model && (
+              {showPromptNeutral && loadedRecord.base_case?.prompt_input && (
                 <div className="section-card" style={{ marginBottom: "1rem" }}>
-                  <h4 style={{ marginBottom: "0.5rem" }}>Full Prompt — Neutral Baseline</h4>
+                  <h4 style={{ marginBottom: "0.5rem" }}>Input Text — Neutral Baseline</h4>
                   <pre className="v2-case-explorer__prompt-text" dir="ltr">
-                    {loadedRecord.base_case.full_prompt_sent_to_model}
+                    {loadedRecord.base_case.prompt_input}
                   </pre>
                 </div>
               )}
-              {showPromptVariant && loadedRecord.variant_case?.full_prompt_sent_to_model && (
+              {showPromptVariant && loadedRecord.variant_case?.prompt_input && (
                 <div className="section-card" style={{ marginBottom: "1rem" }}>
-                  <h4 style={{ marginBottom: "0.5rem" }}>Full Prompt — Variant: {variantLabel}</h4>
+                  <h4 style={{ marginBottom: "0.5rem" }}>Input Text — Variant: {variantLabel}</h4>
                   <pre className="v2-case-explorer__prompt-text" dir="ltr">
-                    {loadedRecord.variant_case.full_prompt_sent_to_model}
+                    {loadedRecord.variant_case.prompt_input}
                   </pre>
                 </div>
               )}
@@ -547,10 +547,8 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
                             const n = loadedRecord.neutral_output ?? {} as Record<string, unknown>;
                             const v = loadedRecord.variant_output ?? {} as Record<string, unknown>;
                             const fields: Array<{ label: string; key: string; format?: (val: unknown) => string }> = [
-                              { label: "Recommendation", key: "recommendation", format: (x) => String(x ?? "").replace(/_/g, " ") },
-                              { label: "Public Safety Risk", key: "public_safety_risk" },
-                              { label: "Obstruction Risk", key: "obstruction_risk" },
-                              { label: "Recidivism Risk", key: "recidivism_risk" },
+                              { label: "Dangerousness Level", key: "dangerousness_level", format: (x) => String(x ?? "N/A").replace(/_/g, " ") },
+                              { label: "Recommendation", key: "case_summary" },
                             ];
                             return fields.map(({ label, key, format }) => {
                               const nVal = (n as Record<string, unknown>)[key];
