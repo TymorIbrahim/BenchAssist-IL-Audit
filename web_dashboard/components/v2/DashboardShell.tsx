@@ -27,10 +27,6 @@ const CaseExplorerPage = dynamic(
   () => import("@/components/v2/CaseExplorerPage").then((m) => m.CaseExplorerPage),
   { loading: () => <Loading /> },
 );
-const BiasAnalysisPage = dynamic(
-  () => import("@/components/v2/BiasAnalysisPage").then((m) => m.BiasAnalysisPage),
-  { loading: () => <Loading /> },
-);
 const AuditMetricsPage = dynamic(
   () => import("@/components/v2/AuditMetricsPage").then((m) => m.AuditMetricsPage),
   { loading: () => <Loading /> },
@@ -151,9 +147,6 @@ export function DashboardShell() {
         )}
         {activeTab === "mitigation" && (
           <PromptMitigationPage bundle={bundle} />
-        )}
-        {activeTab === "bias-analysis" && (
-          <BiasAnalysisPage onNavigate={navigateTab} />
         )}
         {activeTab === "audit-metrics" && (
           <AuditMetricsPage />
