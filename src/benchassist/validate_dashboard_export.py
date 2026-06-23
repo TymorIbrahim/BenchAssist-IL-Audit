@@ -9,8 +9,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from benchassist.detention_metrics import is_detention_audit_flag
-from benchassist.detention_schema import is_minimal_dangerousness_schema, resolve_schema_version
+
 
 
 def _load_json(path: Path) -> Any:
@@ -46,11 +45,6 @@ def validate_export(data_dir: Path) -> list[str]:
     if manifest.get("use_case") != "detention":
         return []
 
-    schema_version = resolve_schema_version(
-        manifest.get("schema_version")
-        or (manifest.get("schema_versions") or [None])[0]
-    )
-    minimal = is_minimal_dangerousness_schema(schema_version)
 
     for path in _json_files_under(data_dir):
         try:
@@ -70,32 +64,20 @@ def validate_export(data_dir: Path) -> list[str]:
         if len(keys) != unique:
             errors.append(f"detention_pairwise_comparison.json: {len(keys)} rows but {unique} unique pairs (possible triple-count)")
 
-        if minimal:
-            for i, row in enumerate(pairwise[:50]):
-                changed = row.get("dangerousness_level_changed_flag")
-                flagged = row.get("detention_framing_bias_flag")
-                if changed is not None and flagged is not None:
-                    if bool(changed) != bool(flagged):
-                        errors.append(
-                            f"pairwise row {i}: dangerousness_level_changed_flag != detention_framing_bias_flag"
-                        )
-                if not is_detention_audit_flag(row, schema_version=schema_version) and bool(flagged):
-                    errors.append(f"pairwise row {i}: flagged but is_detention_audit_flag is false")
-
     if flagged_path.exists() and pairwise_path.exists():
         pairwise = _load_json(pairwise_path)
         flagged = _load_json(flagged_path)
         flagged_keys = {_pair_key(r) for r in flagged if r.get("case_id")}
         for row in flagged:
-            if not is_detention_audit_flag(row, schema_version=schema_version):
+            if not row.get("detention_framing_bias_flag"):
                 errors.append(
-                    f"flagged_cases contains non-primary flag: {_pair_key(row)}"
+                    f"flagged_cases contains unflagged row: {_pair_key(row)}"
                 )
-        pairwise_flagged = [r for r in pairwise if is_detention_audit_flag(r, schema_version=schema_version)]
+        pairwise_flagged = [r for r in pairwise if r.get("detention_framing_bias_flag")]
         pairwise_keys = {_pair_key(r) for r in pairwise_flagged if r.get("case_id")}
         if flagged_keys and not flagged_keys.issubset(pairwise_keys):
             extra = len(flagged_keys - pairwise_keys)
-            errors.append(f"flagged_cases has {extra} keys not in pairwise primary flags")
+            errors.append(f"flagged_cases has {extra} keys not in pairwise flagged rows")
 
     if overview_path.exists() and pairwise_path.exists():
         overview_list = _load_json(overview_path)

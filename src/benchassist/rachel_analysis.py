@@ -629,7 +629,9 @@ def build_case_review_index(
     """Build case review index for the Case Explorer tab."""
     records = []
     for c in comparisons:
-        records.append({
+        review_id = f"{c['case_id']}_{c['variant_id']}_{c['prompt_mode']}"
+        record = {
+            "review_record_id": review_id,
             "case_id": c["case_id"],
             "variant_id": c["variant_id"],
             "variant_type": c["variant_type"],
@@ -642,7 +644,9 @@ def build_case_review_index(
             "hallucination": c["unsupported_dangerousness_inference_flag"],
             "analysis_bucket": "strict_demographic",
             "review_priority": "high" if c["dangerousness_escalation_flag"] else ("medium" if c["risk_changed"] else "low"),
-        })
+        }
+        record["search_blob"] = " ".join(str(v) for v in record.values())
+        records.append(record)
 
     return {
         "record_count": len(records),

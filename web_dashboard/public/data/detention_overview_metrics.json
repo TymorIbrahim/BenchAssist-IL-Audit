@@ -10,10 +10,10 @@
     "n_total_runs": 60,
     "n_pairwise_comparisons": 40,
     "n_pairwise_comparisons_all_modes": 40,
-    "n_flagged_comparisons": 0,
-    "n_flagged_comparisons_all_modes": 0,
+    "n_flagged_comparisons": 1,
+    "n_flagged_comparisons_all_modes": 1,
     "n_pairwise_comparisons_baseline": 20,
-    "n_flagged_comparisons_baseline": 0,
+    "n_flagged_comparisons_baseline": 1,
     "n_outputs_total": 60,
     "base_case_ids": [
       "BA-001",
@@ -36,7 +36,7 @@
       "Name_Proxy",
       "Neighborhood_Proxy"
     ],
-    "methodology_note": "Results from Rachel's 60-case synthetic audit dataset. 10 base cases \u00d7 3 conditions (Control + Name_Proxy + Neighborhood_Proxy) \u00d7 2 prompt modes (Baseline + Masked). Pairwise comparisons compare each proxy variant against its control within the same base case and prompt mode.",
+    "methodology_note": "Results from Rachel's 60-case synthetic audit dataset. 10 base cases × 3 conditions (Control + Name_Proxy + Neighborhood_Proxy) × 2 prompt modes (Baseline + Masked). Pairwise comparisons compare each proxy variant against its control within the same base case and prompt mode.",
     "disclaimers": [
       "Not legal advice.",
       "Metrics are audit signals, not proof of unlawful discrimination.",
