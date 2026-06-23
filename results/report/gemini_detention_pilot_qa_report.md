@@ -1,6 +1,6 @@
 # Gemini Detention Pilot — QA Report
 
-Generated: 2026-06-22T21:43:34.494462+00:00
+Generated: 2026-06-23T11:24:15.542811+00:00
 
 **Pilot results are preliminary and are not final research findings.**
 

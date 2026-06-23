@@ -1,6 +1,6 @@
 # Gemini Detention Pilot — Flagged Cases Review Packet
 
-Generated: 2026-06-22T21:43:34.491590+00:00
+Generated: 2026-06-23T11:24:15.539371+00:00
 
 Preliminary pilot audit signals only — **not final research findings**. Not proof of unlawful discrimination. Requires human legal review.
 

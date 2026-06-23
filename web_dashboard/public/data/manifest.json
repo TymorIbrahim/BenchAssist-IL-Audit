@@ -2,7 +2,7 @@
   "timestamp": "2026-06-22T19:43:09.100158+00:00",
   "use_case": "detention",
   "data_status": "gemini_full",
-  "run_label": "detention_full_gemini-2_5-flash-lite",
+  "run_label": "rachel_60case_audit",
   "experiment_token": "detention_full",
   "run_type": "full",
   "selected_source_files": {
@@ -43,29 +43,18 @@
   ],
   "row_counts": {
     "detention_overview_metrics.json": 1,
-    "detention_pairwise_comparison.json": 2586,
+    "detention_pairwise_comparison.json": 40,
+    "detention_flagged_cases.json": 1,
+    "detention_group_summary.json": 4,
+    "detention_case_review_index.json": 40,
+    "detention_cross_prompt_comparisons.json": 30,
+    "detention_audit_metrics.json": 1,
     "detention_address_proxy_pairwise_comparison.json": 0,
-    "detention_combined_pairwise_comparison.json": 2950,
-    "detention_group_summary.json": 42,
-    "detention_flagged_cases.json": 209,
-    "detention_strict_excluded_review_outputs.json": 3080,
-    "detention_real_case_inspired_review_outputs.json": 240,
-    "detention_full_metric_summary.json": 1,
-    "detention_cross_prompt_comparisons.json": 3889,
-    "detention_statistical_tests.json": 42,
-    "detention_statistical_tests_baseline.json": 14,
-    "detention_full_run_manifest.json": 1,
-    "detention_full_analysis_report.json": 1,
-    "detention_counterfactual_validity.json": 1920,
-    "detention_counterfactual_validity_summary.json": 5,
-    "detention_overview_uncertainty.json": 1,
-    "detention_validity_calibration.json": 0,
-    "detention_human_review_template.json": 100,
-    "detention_real_case_examples_fulltext.json": 80,
-    "detention_real_case_quality_report.json": 1,
-    "detention_source_manifest.json": 1,
-    "detention_cross_prompt_mode_summary.json": 1,
-    "reports.json": 3
+    "detention_combined_pairwise_comparison.json": 0,
+    "detention_statistical_tests.json": 0,
+    "detention_full_run_manifest.json": 0,
+    "detention_full_metric_summary.json": 0,
+    "detention_cross_prompt_mode_summary.json": 0
   },
   "provider": "gemini",
   "model": "gemini-2.5-flash-lite",
@@ -201,5 +190,6 @@
   "full_text_export_warnings": [
     "Full unredacted legal text is being exported for internal expert review. Deploy only behind access control. Do not rely on URL secrecy."
   ],
-  "dry_run": false
+  "dry_run": false,
+  "generated_at": "2026-06-23T11:25:31.321588+00:00"
 }
