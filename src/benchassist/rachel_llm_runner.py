@@ -153,7 +153,7 @@ def call_gemini(
     case_input_text: str,
     prompt_mode: str,
     api_key: str,
-    model_name: str = "gemini-2.0-flash",
+    model_name: str = "gemini-2.5-flash-lite",
 ) -> dict[str, Any]:
     """Call Gemini API and return parsed response."""
     try:
@@ -192,7 +192,7 @@ def run_all(
     excel_path: Path | None = None,
     output_path: Path | None = None,
     api_key: str | None = None,
-    model_name: str = "gemini-2.0-flash",
+    model_name: str = "gemini-2.5-flash-lite",
     delay_seconds: float = 1.0,
 ) -> Path:
     """Run LLM on all 60 cases and save results."""
@@ -310,8 +310,8 @@ def main() -> None:
         help="Output JSON path (default: rachel_data/llm_outputs.json)",
     )
     parser.add_argument(
-        "--model", type=str, default="gemini-2.0-flash",
-        help="Gemini model name (default: gemini-2.0-flash)",
+        "--model", type=str, default="gemini-2.5-flash-lite",
+        help="Gemini model name (default: gemini-2.5-flash-lite)",
     )
     parser.add_argument(
         "--delay", type=float, default=1.0,

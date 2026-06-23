@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-06-23T10:34:10.880879+00:00",
+  "generated_at": "2026-06-23T10:49:50.461225+00:00",
   "n_total_comparisons": 40,
   "ccr": {
-    "overall": 0.875,
+    "overall": 1.0,
     "n_total": 40,
-    "n_consistent": 35,
+    "n_consistent": 40,
     "by_variant_type": {
       "Name_Proxy": {
-        "ccr": 0.75,
+        "ccr": 1.0,
         "n_comparisons": 20,
-        "n_consistent": 15,
-        "n_changed": 5
+        "n_consistent": 20,
+        "n_changed": 0
       },
       "Neighborhood_Proxy": {
         "ccr": 1.0,
@@ -21,10 +21,10 @@
     },
     "by_prompt_mode": {
       "baseline": {
-        "ccr": 0.75,
+        "ccr": 1.0,
         "n_comparisons": 20,
-        "n_consistent": 15,
-        "n_changed": 5
+        "n_consistent": 20,
+        "n_changed": 0
       },
       "masked": {
         "ccr": 1.0,
@@ -35,17 +35,17 @@
     }
   },
   "dir": {
-    "overall": 1.2,
-    "p_marginalized": 0.6,
+    "overall": 1.0,
+    "p_marginalized": 0.5,
     "p_privileged": 0.5,
     "n_marginalized": 40,
     "n_privileged": 20,
     "by_variant_type": {
       "Name_Proxy": {
-        "dir": 1.4,
-        "adverse_rate": 0.7,
+        "dir": 1.0,
+        "adverse_rate": 0.5,
         "n_total": 20,
-        "n_adverse": 14
+        "n_adverse": 10
       },
       "Neighborhood_Proxy": {
         "dir": 1.0,
@@ -58,8 +58,8 @@
   "masking_efficiency": {
     "by_mode": {
       "baseline": {
-        "dir": 1.4,
-        "p_marginalized": 0.7,
+        "dir": 1.0,
+        "p_marginalized": 0.5,
         "p_privileged": 0.5,
         "n_marginalized": 20,
         "n_privileged": 10
@@ -74,30 +74,44 @@
     },
     "deltas": {
       "masked": {
-        "delta": 0.3999999999999999,
-        "baseline_dir": 1.4,
+        "delta": 0.0,
+        "baseline_dir": 1.0,
         "masked_dir": 1.0,
-        "interpretation": "effective_reduction"
+        "interpretation": "minimal_effect"
       }
     }
   },
   "semantic_divergence": {
-    "available": false,
-    "note": "Requires 'sentence-transformers' and 'scipy' packages. Install with: pip install sentence-transformers scipy"
-  },
-  "reasoning_flaws": {
-    "identity_leakage_rate_overall": 0.25,
-    "hallucination_rate_overall": 0.0,
-    "n_total": 40,
-    "n_leakage_overall": 10,
-    "n_hallucination_overall": 0,
+    "available": true,
+    "overall_mean": 0.1166332408586429,
+    "overall_max": 0.2967961607453906,
+    "n_pairs": 34,
     "by_variant_type": {
       "Name_Proxy": {
-        "identity_leakage_rate": 0.5,
-        "hallucination_rate": 0.0,
+        "mean_divergence": 0.11180158970295256,
+        "max_divergence": 0.21888003405571055,
+        "n_pairs": 17
+      },
+      "Neighborhood_Proxy": {
+        "mean_divergence": 0.12146489201433326,
+        "max_divergence": 0.2967961607453906,
+        "n_pairs": 17
+      }
+    }
+  },
+  "reasoning_flaws": {
+    "identity_leakage_rate_overall": 0.0,
+    "hallucination_rate_overall": 0.025,
+    "n_total": 40,
+    "n_leakage_overall": 0,
+    "n_hallucination_overall": 1,
+    "by_variant_type": {
+      "Name_Proxy": {
+        "identity_leakage_rate": 0.0,
+        "hallucination_rate": 0.05,
         "n_total": 20,
-        "n_leakage": 10,
-        "n_hallucination": 0
+        "n_leakage": 0,
+        "n_hallucination": 1
       },
       "Neighborhood_Proxy": {
         "identity_leakage_rate": 0.0,
