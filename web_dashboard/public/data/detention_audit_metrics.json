@@ -1,637 +1,108 @@
 {
-  "generated_at": "2026-06-22T20:22:40.139075+00:00",
-  "n_total_comparisons": 5536,
+  "generated_at": "2026-06-23T10:34:10.880879+00:00",
+  "n_total_comparisons": 40,
   "ccr": {
-    "overall": 0.9058887283236994,
-    "n_total": 5536,
-    "n_consistent": 5015,
+    "overall": 0.875,
+    "n_total": 40,
+    "n_consistent": 35,
     "by_variant_type": {
-      "arab_name_haifa": {
-        "ccr": 0.90625,
-        "n_comparisons": 224,
-        "n_consistent": 203,
-        "n_changed": 21
+      "Name_Proxy": {
+        "ccr": 0.75,
+        "n_comparisons": 20,
+        "n_consistent": 15,
+        "n_changed": 5
       },
-      "arab_name_he": {
-        "ccr": 0.9565217391304348,
-        "n_comparisons": 230,
-        "n_consistent": 220,
-        "n_changed": 10
-      },
-      "arab_name_nazareth": {
-        "ccr": 0.8977777777777778,
-        "n_comparisons": 225,
-        "n_consistent": 202,
-        "n_changed": 23
-      },
-      "arab_name_tel_aviv": {
-        "ccr": 0.8951965065502183,
-        "n_comparisons": 229,
-        "n_consistent": 205,
-        "n_changed": 24
-      },
-      "arab_woman_he": {
-        "ccr": 0.8705357142857143,
-        "n_comparisons": 448,
-        "n_consistent": 390,
-        "n_changed": 58
-      },
-      "arabic_input": {
-        "ccr": 0.7222222222222222,
-        "n_comparisons": 36,
-        "n_consistent": 26,
-        "n_changed": 10
-      },
-      "asylum_seeker_he": {
-        "ccr": 0.8963963963963963,
-        "n_comparisons": 222,
-        "n_consistent": 199,
-        "n_changed": 23
-      },
-      "broken_hebrew": {
-        "ccr": 0.9722222222222222,
-        "n_comparisons": 36,
-        "n_consistent": 35,
-        "n_changed": 1
-      },
-      "druze_name_he": {
-        "ccr": 0.9111111111111111,
-        "n_comparisons": 225,
-        "n_consistent": 205,
-        "n_changed": 20
-      },
-      "ethiopian_israeli_he": {
-        "ccr": 0.9388646288209607,
-        "n_comparisons": 229,
-        "n_consistent": 215,
-        "n_changed": 14
-      },
-      "ethiopian_netanya": {
-        "ccr": 0.8844444444444445,
-        "n_comparisons": 225,
-        "n_consistent": 199,
-        "n_changed": 26
-      },
-      "ethiopian_tel_aviv": {
-        "ccr": 0.88,
-        "n_comparisons": 225,
-        "n_consistent": 198,
-        "n_changed": 27
-      },
-      "ethiopian_woman_he": {
-        "ccr": 0.905829596412556,
-        "n_comparisons": 446,
-        "n_consistent": 404,
-        "n_changed": 42
-      },
-      "female_suspect_he": {
-        "ccr": 0.9517543859649122,
-        "n_comparisons": 228,
-        "n_consistent": 217,
-        "n_changed": 11
-      },
-      "intersectional_arab_young_male_broken_hebrew": {
-        "ccr": 0.9444444444444444,
-        "n_comparisons": 36,
-        "n_consistent": 34,
-        "n_changed": 2
-      },
-      "jewish_name_dimona": {
-        "ccr": 0.915929203539823,
-        "n_comparisons": 226,
-        "n_consistent": 207,
-        "n_changed": 19
-      },
-      "jewish_name_he": {
-        "ccr": 0.9551569506726457,
-        "n_comparisons": 223,
-        "n_consistent": 213,
-        "n_changed": 10
-      },
-      "jewish_name_nazareth": {
-        "ccr": 0.8873873873873874,
-        "n_comparisons": 222,
-        "n_consistent": 197,
-        "n_changed": 25
-      },
-      "jewish_name_tel_aviv": {
-        "ccr": 0.9004524886877828,
-        "n_comparisons": 221,
-        "n_consistent": 199,
-        "n_changed": 22
-      },
-      "mizrahi_beer_sheva": {
-        "ccr": 0.9045454545454545,
-        "n_comparisons": 220,
-        "n_consistent": 199,
-        "n_changed": 21
-      },
-      "mizrahi_name_he": {
-        "ccr": 0.915929203539823,
-        "n_comparisons": 226,
-        "n_consistent": 207,
-        "n_changed": 19
-      },
-      "mizrahi_woman_he": {
-        "ccr": 0.9013452914798207,
-        "n_comparisons": 446,
-        "n_consistent": 402,
-        "n_changed": 44
-      },
-      "russian_ashdod": {
-        "ccr": 0.8678414096916299,
-        "n_comparisons": 227,
-        "n_consistent": 197,
-        "n_changed": 30
-      },
-      "russian_immigrant_he": {
-        "ccr": 0.9244444444444444,
-        "n_comparisons": 225,
-        "n_consistent": 208,
-        "n_changed": 17
-      },
-      "translated_arabic_style_hebrew": {
-        "ccr": 0.9444444444444444,
-        "n_comparisons": 36,
-        "n_consistent": 34,
-        "n_changed": 2
+      "Neighborhood_Proxy": {
+        "ccr": 1.0,
+        "n_comparisons": 20,
+        "n_consistent": 20,
+        "n_changed": 0
       }
     },
     "by_prompt_mode": {
       "baseline": {
-        "ccr": 0.9062988027069234,
-        "n_comparisons": 1921,
-        "n_consistent": 1741,
-        "n_changed": 180
+        "ccr": 0.75,
+        "n_comparisons": 20,
+        "n_consistent": 15,
+        "n_changed": 5
       },
-      "demographic_blind": {
-        "ccr": 0.9054669703872438,
-        "n_comparisons": 1756,
-        "n_consistent": 1590,
-        "n_changed": 166
-      },
-      "fairness_aware": {
-        "ccr": 0.9058633674018289,
-        "n_comparisons": 1859,
-        "n_consistent": 1684,
-        "n_changed": 175
+      "masked": {
+        "ccr": 1.0,
+        "n_comparisons": 20,
+        "n_consistent": 20,
+        "n_changed": 0
       }
     }
   },
   "dir": {
-    "overall": 0.9714212482378571,
-    "p_marginalized": 0.09367276322293623,
-    "p_privileged": 0.09642857142857143,
-    "n_marginalized": 4046,
-    "n_privileged": 1120,
+    "overall": 1.2,
+    "p_marginalized": 0.6,
+    "p_privileged": 0.5,
+    "n_marginalized": 40,
+    "n_privileged": 20,
     "by_variant_type": {
-      "arab_name_haifa": {
-        "dir": 0.9722222222222222,
-        "adverse_rate": 0.09375,
-        "n_total": 224,
-        "n_adverse": 21
-      },
-      "arab_name_he": {
-        "dir": 0.4508856682769726,
-        "adverse_rate": 0.043478260869565216,
-        "n_total": 230,
-        "n_adverse": 10
-      },
-      "arab_name_nazareth": {
-        "dir": 1.060082304526749,
-        "adverse_rate": 0.10222222222222223,
-        "n_total": 225,
-        "n_adverse": 23
-      },
-      "arab_woman_he": {
-        "dir": 1.3425925925925926,
-        "adverse_rate": 0.12946428571428573,
-        "n_total": 448,
-        "n_adverse": 58
-      },
-      "arabic_input": {
-        "dir": 2.880658436213992,
-        "adverse_rate": 0.2777777777777778,
-        "n_total": 36,
-        "n_adverse": 10
-      },
-      "asylum_seeker_he": {
-        "dir": 1.0744077410744077,
-        "adverse_rate": 0.1036036036036036,
-        "n_total": 222,
-        "n_adverse": 23
-      },
-      "broken_hebrew": {
-        "dir": 0.28806584362139914,
-        "adverse_rate": 0.027777777777777776,
-        "n_total": 36,
-        "n_adverse": 1
-      },
-      "druze_name_he": {
-        "dir": 0.9218106995884774,
-        "adverse_rate": 0.08888888888888889,
-        "n_total": 225,
-        "n_adverse": 20
-      },
-      "ethiopian_israeli_he": {
-        "dir": 0.6339964418567038,
-        "adverse_rate": 0.0611353711790393,
-        "n_total": 229,
+      "Name_Proxy": {
+        "dir": 1.4,
+        "adverse_rate": 0.7,
+        "n_total": 20,
         "n_adverse": 14
       },
-      "ethiopian_netanya": {
-        "dir": 1.1983539094650204,
-        "adverse_rate": 0.11555555555555555,
-        "n_total": 225,
-        "n_adverse": 26
-      },
-      "ethiopian_woman_he": {
-        "dir": 0.9765819631290482,
-        "adverse_rate": 0.09417040358744394,
-        "n_total": 446,
-        "n_adverse": 42
-      },
-      "female_suspect_he": {
-        "dir": 0.5003248862897985,
-        "adverse_rate": 0.04824561403508772,
-        "n_total": 228,
-        "n_adverse": 11
-      },
-      "intersectional_arab_young_male_broken_hebrew": {
-        "dir": 0.5761316872427983,
-        "adverse_rate": 0.05555555555555555,
-        "n_total": 36,
-        "n_adverse": 2
-      },
-      "jewish_name_dimona": {
-        "dir": 0.8718452966240577,
-        "adverse_rate": 0.084070796460177,
-        "n_total": 226,
-        "n_adverse": 19
-      },
-      "mizrahi_beer_sheva": {
-        "dir": 0.98989898989899,
-        "adverse_rate": 0.09545454545454546,
-        "n_total": 220,
-        "n_adverse": 21
-      },
-      "mizrahi_name_he": {
-        "dir": 0.8718452966240577,
-        "adverse_rate": 0.084070796460177,
-        "n_total": 226,
-        "n_adverse": 19
-      },
-      "mizrahi_woman_he": {
-        "dir": 1.0230858661351934,
-        "adverse_rate": 0.09865470852017937,
-        "n_total": 446,
-        "n_adverse": 44
-      },
-      "russian_ashdod": {
-        "dir": 1.3705335291238374,
-        "adverse_rate": 0.13215859030837004,
-        "n_total": 227,
-        "n_adverse": 30
-      },
-      "russian_immigrant_he": {
-        "dir": 0.7835390946502058,
-        "adverse_rate": 0.07555555555555556,
-        "n_total": 225,
-        "n_adverse": 17
-      },
-      "translated_arabic_style_hebrew": {
-        "dir": 0.5761316872427983,
-        "adverse_rate": 0.05555555555555555,
-        "n_total": 36,
-        "n_adverse": 2
+      "Neighborhood_Proxy": {
+        "dir": 1.0,
+        "adverse_rate": 0.5,
+        "n_total": 20,
+        "n_adverse": 10
       }
     }
   },
   "masking_efficiency": {
     "by_mode": {
       "baseline": {
-        "dir": 0.9732546412162414,
-        "p_marginalized": 0.09581263307310149,
-        "p_privileged": 0.09844559585492228,
-        "n_marginalized": 1409,
-        "n_privileged": 386
+        "dir": 1.4,
+        "p_marginalized": 0.7,
+        "p_privileged": 0.5,
+        "n_marginalized": 20,
+        "n_privileged": 10
       },
-      "demographic_blind": {
-        "dir": 1.0109394651289718,
-        "p_marginalized": 0.09318715740015662,
-        "p_privileged": 0.09217877094972067,
-        "n_marginalized": 1277,
-        "n_privileged": 358
-      },
-      "fairness_aware": {
-        "dir": 0.9340222575516693,
-        "p_marginalized": 0.09191176470588236,
-        "p_privileged": 0.09840425531914894,
-        "n_marginalized": 1360,
-        "n_privileged": 376
+      "masked": {
+        "dir": 1.0,
+        "p_marginalized": 0.5,
+        "p_privileged": 0.5,
+        "n_marginalized": 20,
+        "n_privileged": 10
       }
     },
     "deltas": {
-      "demographic_blind": {
-        "delta": -0.037684823912730425,
-        "baseline_dir": 0.9732546412162414,
-        "masked_dir": 1.0109394651289718,
-        "interpretation": "minimal_effect"
-      },
-      "fairness_aware": {
-        "delta": 0.039232383664572046,
-        "baseline_dir": 0.9732546412162414,
-        "masked_dir": 0.9340222575516693,
-        "interpretation": "minimal_effect"
+      "masked": {
+        "delta": 0.3999999999999999,
+        "baseline_dir": 1.4,
+        "masked_dir": 1.0,
+        "interpretation": "effective_reduction"
       }
     }
   },
   "semantic_divergence": {
-    "available": true,
-    "overall_mean_divergence": 0.050664755823711445,
-    "n_total_comparisons": 5536,
-    "by_variant_type": {
-      "arab_name_haifa": {
-        "mean_divergence": 0.05141825938936722,
-        "n_comparisons": 224
-      },
-      "arab_name_he": {
-        "mean_divergence": 0.035573487941046374,
-        "n_comparisons": 230
-      },
-      "arab_name_nazareth": {
-        "mean_divergence": 0.05321182556843131,
-        "n_comparisons": 225
-      },
-      "arab_name_tel_aviv": {
-        "mean_divergence": 0.05408820531835401,
-        "n_comparisons": 229
-      },
-      "arab_woman_he": {
-        "mean_divergence": 0.05651219770015457,
-        "n_comparisons": 448
-      },
-      "arabic_input": {
-        "mean_divergence": 0.052762319230446136,
-        "n_comparisons": 36
-      },
-      "asylum_seeker_he": {
-        "mean_divergence": 0.053298032006086835,
-        "n_comparisons": 222
-      },
-      "broken_hebrew": {
-        "mean_divergence": 0.053436075742620166,
-        "n_comparisons": 36
-      },
-      "druze_name_he": {
-        "mean_divergence": 0.051771341171919456,
-        "n_comparisons": 225
-      },
-      "ethiopian_israeli_he": {
-        "mean_divergence": 0.03799797642500976,
-        "n_comparisons": 229
-      },
-      "ethiopian_netanya": {
-        "mean_divergence": 0.05275597235456668,
-        "n_comparisons": 225
-      },
-      "ethiopian_tel_aviv": {
-        "mean_divergence": 0.05266330567377749,
-        "n_comparisons": 225
-      },
-      "ethiopian_woman_he": {
-        "mean_divergence": 0.05804847047202052,
-        "n_comparisons": 446
-      },
-      "female_suspect_he": {
-        "mean_divergence": 0.042092165992208934,
-        "n_comparisons": 228
-      },
-      "intersectional_arab_young_male_broken_hebrew": {
-        "mean_divergence": 0.044653924182829284,
-        "n_comparisons": 36
-      },
-      "jewish_name_dimona": {
-        "mean_divergence": 0.053416354610495716,
-        "n_comparisons": 226
-      },
-      "jewish_name_he": {
-        "mean_divergence": 0.03643807954532514,
-        "n_comparisons": 223
-      },
-      "jewish_name_nazareth": {
-        "mean_divergence": 0.052233000898264895,
-        "n_comparisons": 222
-      },
-      "jewish_name_tel_aviv": {
-        "mean_divergence": 0.05158261505590069,
-        "n_comparisons": 221
-      },
-      "mizrahi_beer_sheva": {
-        "mean_divergence": 0.051461575339060116,
-        "n_comparisons": 220
-      },
-      "mizrahi_name_he": {
-        "mean_divergence": 0.05351731168938524,
-        "n_comparisons": 226
-      },
-      "mizrahi_woman_he": {
-        "mean_divergence": 0.0560447130535589,
-        "n_comparisons": 446
-      },
-      "russian_ashdod": {
-        "mean_divergence": 0.05393839538555735,
-        "n_comparisons": 227
-      },
-      "russian_immigrant_he": {
-        "mean_divergence": 0.03891621474986995,
-        "n_comparisons": 225
-      },
-      "translated_arabic_style_hebrew": {
-        "mean_divergence": 0.04665084055475431,
-        "n_comparisons": 36
-      }
-    }
+    "available": false,
+    "note": "Requires 'sentence-transformers' and 'scipy' packages. Install with: pip install sentence-transformers scipy"
   },
   "reasoning_flaws": {
-    "identity_leakage_rate_overall": 0.33923410404624277,
-    "hallucination_rate_overall": 0.22344653179190752,
-    "n_total": 5536,
-    "n_leakage_overall": 1878,
-    "n_hallucination_overall": 1237,
+    "identity_leakage_rate_overall": 0.25,
+    "hallucination_rate_overall": 0.0,
+    "n_total": 40,
+    "n_leakage_overall": 10,
+    "n_hallucination_overall": 0,
     "by_variant_type": {
-      "arab_name_haifa": {
-        "identity_leakage_rate": 0.35714285714285715,
-        "hallucination_rate": 0.22321428571428573,
-        "n_total": 224,
-        "n_leakage": 80,
-        "n_hallucination": 50
-      },
-      "arab_name_he": {
-        "identity_leakage_rate": 0.29130434782608694,
-        "hallucination_rate": 0.20869565217391303,
-        "n_total": 230,
-        "n_leakage": 67,
-        "n_hallucination": 48
-      },
-      "arab_name_nazareth": {
-        "identity_leakage_rate": 0.37777777777777777,
-        "hallucination_rate": 0.24444444444444444,
-        "n_total": 225,
-        "n_leakage": 85,
-        "n_hallucination": 55
-      },
-      "arab_name_tel_aviv": {
-        "identity_leakage_rate": 0.37554585152838427,
-        "hallucination_rate": 0.23580786026200873,
-        "n_total": 229,
-        "n_leakage": 86,
-        "n_hallucination": 54
-      },
-      "arab_woman_he": {
-        "identity_leakage_rate": 0.33035714285714285,
-        "hallucination_rate": 0.20089285714285715,
-        "n_total": 448,
-        "n_leakage": 148,
-        "n_hallucination": 90
-      },
-      "arabic_input": {
-        "identity_leakage_rate": 0.0,
+      "Name_Proxy": {
+        "identity_leakage_rate": 0.5,
         "hallucination_rate": 0.0,
-        "n_total": 36,
-        "n_leakage": 0,
+        "n_total": 20,
+        "n_leakage": 10,
         "n_hallucination": 0
       },
-      "asylum_seeker_he": {
-        "identity_leakage_rate": 0.3783783783783784,
-        "hallucination_rate": 0.25675675675675674,
-        "n_total": 222,
-        "n_leakage": 84,
-        "n_hallucination": 57
-      },
-      "broken_hebrew": {
+      "Neighborhood_Proxy": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.0,
-        "n_total": 36,
-        "n_leakage": 0,
-        "n_hallucination": 0
-      },
-      "druze_name_he": {
-        "identity_leakage_rate": 0.32,
-        "hallucination_rate": 0.2088888888888889,
-        "n_total": 225,
-        "n_leakage": 72,
-        "n_hallucination": 47
-      },
-      "ethiopian_israeli_he": {
-        "identity_leakage_rate": 0.33624454148471616,
-        "hallucination_rate": 0.2314410480349345,
-        "n_total": 229,
-        "n_leakage": 77,
-        "n_hallucination": 53
-      },
-      "ethiopian_netanya": {
-        "identity_leakage_rate": 0.31555555555555553,
-        "hallucination_rate": 0.20444444444444446,
-        "n_total": 225,
-        "n_leakage": 71,
-        "n_hallucination": 46
-      },
-      "ethiopian_tel_aviv": {
-        "identity_leakage_rate": 0.40444444444444444,
-        "hallucination_rate": 0.28,
-        "n_total": 225,
-        "n_leakage": 91,
-        "n_hallucination": 63
-      },
-      "ethiopian_woman_he": {
-        "identity_leakage_rate": 0.42152466367713004,
-        "hallucination_rate": 0.29596412556053814,
-        "n_total": 446,
-        "n_leakage": 188,
-        "n_hallucination": 132
-      },
-      "female_suspect_he": {
-        "identity_leakage_rate": 0.2894736842105263,
-        "hallucination_rate": 0.19736842105263158,
-        "n_total": 228,
-        "n_leakage": 66,
-        "n_hallucination": 45
-      },
-      "intersectional_arab_young_male_broken_hebrew": {
-        "identity_leakage_rate": 0.0,
-        "hallucination_rate": 0.0,
-        "n_total": 36,
-        "n_leakage": 0,
-        "n_hallucination": 0
-      },
-      "jewish_name_dimona": {
-        "identity_leakage_rate": 0.34513274336283184,
-        "hallucination_rate": 0.20353982300884957,
-        "n_total": 226,
-        "n_leakage": 78,
-        "n_hallucination": 46
-      },
-      "jewish_name_he": {
-        "identity_leakage_rate": 0.32286995515695066,
-        "hallucination_rate": 0.2242152466367713,
-        "n_total": 223,
-        "n_leakage": 72,
-        "n_hallucination": 50
-      },
-      "jewish_name_nazareth": {
-        "identity_leakage_rate": 0.3738738738738739,
-        "hallucination_rate": 0.23423423423423423,
-        "n_total": 222,
-        "n_leakage": 83,
-        "n_hallucination": 52
-      },
-      "jewish_name_tel_aviv": {
-        "identity_leakage_rate": 0.3574660633484163,
-        "hallucination_rate": 0.22171945701357465,
-        "n_total": 221,
-        "n_leakage": 79,
-        "n_hallucination": 49
-      },
-      "mizrahi_beer_sheva": {
-        "identity_leakage_rate": 0.33181818181818185,
-        "hallucination_rate": 0.20454545454545456,
-        "n_total": 220,
-        "n_leakage": 73,
-        "n_hallucination": 45
-      },
-      "mizrahi_name_he": {
-        "identity_leakage_rate": 0.3230088495575221,
-        "hallucination_rate": 0.20353982300884957,
-        "n_total": 226,
-        "n_leakage": 73,
-        "n_hallucination": 46
-      },
-      "mizrahi_woman_he": {
-        "identity_leakage_rate": 0.3632286995515695,
-        "hallucination_rate": 0.22869955156950672,
-        "n_total": 446,
-        "n_leakage": 162,
-        "n_hallucination": 102
-      },
-      "russian_ashdod": {
-        "identity_leakage_rate": 0.32599118942731276,
-        "hallucination_rate": 0.2555066079295154,
-        "n_total": 227,
-        "n_leakage": 74,
-        "n_hallucination": 58
-      },
-      "russian_immigrant_he": {
-        "identity_leakage_rate": 0.30666666666666664,
-        "hallucination_rate": 0.21777777777777776,
-        "n_total": 225,
-        "n_leakage": 69,
-        "n_hallucination": 49
-      },
-      "translated_arabic_style_hebrew": {
-        "identity_leakage_rate": 0.0,
-        "hallucination_rate": 0.0,
-        "n_total": 36,
+        "n_total": 20,
         "n_leakage": 0,
         "n_hallucination": 0
       }

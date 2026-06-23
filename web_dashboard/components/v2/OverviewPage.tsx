@@ -42,27 +42,27 @@ const PROCESS_STEPS: { icon: React.ReactNode; title: string; detail: string; dyn
     icon: <IconClipboard />,
     title: "10 Base Cases",
     dynamicTitle: true,
-    detail: "Synthetic pretrial detention scenarios across Hebrew and English, covering a range of criminal offense types and case circumstances",
+    detail: "Synthetic pretrial detention scenarios covering a range of criminal offense types and case circumstances in the Israeli legal context",
   },
   {
     icon: <IconCycle />,
-    title: "6 Counterfactual Variants",
-    detail: "Each case modified with 1 control + 5 proxy variants: ethnicity, neighborhood, age, employment status, and family status",
+    title: "3 Counterfactual Conditions",
+    detail: "Each case tested as Control (neutral), Name Proxy (Arab-coded name), and Neighborhood Proxy (low-income / minority area)",
   },
   {
     icon: <IconRobot />,
-    title: "2 Prompt Modes × 60 Cases",
-    detail: "Every case assessed under Baseline and Masked prompt strategies — 60 total LLM outputs",
+    title: "2 Prompt Modes × 60 Runs",
+    detail: "Every case assessed under Baseline and Masked (instructional masking) prompt strategies — 60 total LLM outputs",
   },
   {
     icon: <IconScale />,
-    title: "450 Pairwise Comparisons",
-    detail: "Each variant's risk assessment and recommendation compared against its control — flagging any shifts on identical legal facts",
+    title: "40 Pairwise Comparisons",
+    detail: "Each proxy variant's risk assessment compared against its control — flagging any shifts in risk level, identity leakage, or hallucination",
   },
   {
     icon: <IconSearch />,
     title: "Expert Review",
-    detail: "Flagged cases surfaced for human legal review with side-by-side comparison, diff highlights, and cross-prompt instability analysis",
+    detail: "Flagged cases surfaced for human legal review with side-by-side comparison and cross-prompt instability analysis",
   },
 ];
 

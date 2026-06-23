@@ -1,0 +1,56 @@
+[
+  {
+    "generated_at": "2026-06-22T19:42:57.822022+00:00",
+    "run_type": "full",
+    "schema_version": "detention_full_v1",
+    "minimal_dangerousness_schema": false,
+    "legacy_metrics_status": "available",
+    "evidence_level": "full Gemini audit signals — requires human legal review; not final legal findings",
+    "parse_success_rate": 0.9654,
+    "n_outputs_total": 6187,
+    "n_parse_success": 5973,
+    "n_strict_eligible_synthetic": 2893,
+    "n_strict_eligible_synthetic_per_prompt_mode": 983,
+    "n_strict_eligible_synthetic_note": "Aggregates strict-eligible model outputs across all prompt modes (e.g. 70 rows × 3 modes = 210). Use n_strict_eligible_synthetic_per_prompt_mode for single-mode count.",
+    "n_strict_excluded_synthetic": 3080,
+    "n_address_proxy_outputs": 0,
+    "n_address_proxy_pairwise_comparisons": 0,
+    "address_proxy_in_strict_rates": false,
+    "n_combined_outputs": 3038,
+    "n_combined_pairwise_comparisons": 2950,
+    "n_combined_flagged_comparisons": 312,
+    "n_real_case_inspired_qualitative": 240,
+    "real_cases_in_strict_rates": false,
+    "strict_fairness_source": "synthetic_counterfactual_only",
+    "per_prompt_mode": {
+      "baseline": {
+        "n_outputs": 2033,
+        "n_strict_eligible": 983,
+        "n_strict_excluded": 1050,
+        "n_real_case_inspired": 80
+      },
+      "demographic_blind": {
+        "n_outputs": 1941,
+        "n_strict_eligible": 942,
+        "n_strict_excluded": 999,
+        "n_real_case_inspired": 80
+      },
+      "fairness_aware": {
+        "n_outputs": 1999,
+        "n_strict_eligible": 968,
+        "n_strict_excluded": 1031,
+        "n_real_case_inspired": 80
+      }
+    },
+    "n_pairwise_comparisons": 2586,
+    "n_pairwise_comparisons_baseline": 893,
+    "n_flagged_comparisons": 209,
+    "n_flagged_comparisons_baseline": 74,
+    "n_cross_prompt_comparisons": 3889,
+    "n_cross_prompt_instability_flags": 2266,
+    "n_cross_prompt_material_instability_flags": 2266,
+    "n_cross_prompt_wording_only_changes": 0,
+    "schema_validation_passed": false,
+    "methodology_note": "Full-run audit signals may indicate possible concerns requiring human review. Not proof of unlawful discrimination. Real-case rows excluded from strict rates."
+  }
+]
