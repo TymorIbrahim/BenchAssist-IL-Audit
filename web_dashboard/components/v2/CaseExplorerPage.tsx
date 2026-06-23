@@ -198,8 +198,11 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
       setShowPromptNeutral(false);
       setShowPromptVariant(false);
       try {
+        const path = entry.record_path.startsWith("/data/")
+          ? entry.record_path.slice(6) // strip "/data/"
+          : entry.record_path;
         const record = await fetchJson<CaseReviewRecord>(
-          entry.record_path,
+          path,
           null as unknown as CaseReviewRecord,
         );
         setLoadedRecord(record);
