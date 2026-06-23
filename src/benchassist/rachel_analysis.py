@@ -644,6 +644,7 @@ def build_case_review_index(
             "hallucination": c["unsupported_dangerousness_inference_flag"],
             "analysis_bucket": "strict_demographic",
             "review_priority": "high" if c["dangerousness_escalation_flag"] else ("medium" if c["risk_changed"] else "low"),
+            "record_path": f"/data/case_reviews/{review_id}.json"
         }
         record["search_blob"] = " ".join(str(v) for v in record.values())
         records.append(record)
@@ -739,6 +740,11 @@ def run_analysis(
 
     # Build case review index
     case_review_index = build_case_review_index(comparisons, all_results)
+
+    # Build case review individual JSON files
+    import subprocess
+    logger.info("Generating individual case review files for Case Explorer...")
+    subprocess.run(["python", "generate_case_reviews.py"], check=True)
 
     # Build cross-prompt comparisons
     cross_prompt = build_cross_prompt_comparisons(all_results)
