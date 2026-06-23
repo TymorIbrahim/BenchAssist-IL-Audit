@@ -32,6 +32,7 @@
     "expected_lawful_risk": "Medium",
     "suspect_name": "Omar Halabi",
     "residential_area": "Kfar Saba",
-    "proxy_changed": "Name only"
+    "proxy_changed": "Name only",
+    "semantic_divergence_score": 0.027531027793884277
   }
 ]

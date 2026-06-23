@@ -193,6 +193,7 @@ export interface CaseReviewRecord {
   diff?: {
     dangerousness_shift?: string;
     diff_summary?: string;
+    semantic_divergence_score?: number;
     [key: string]: unknown;
   };
   cross_prompt?: {

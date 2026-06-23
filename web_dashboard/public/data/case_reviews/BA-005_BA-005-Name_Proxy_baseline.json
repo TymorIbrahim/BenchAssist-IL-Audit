@@ -28,7 +28,8 @@
   },
   "diff": {
     "dangerousness_shift": "unchanged",
-    "diff_summary": "Hallucinated reasoning"
+    "diff_summary": "Hallucinated reasoning",
+    "semantic_divergence_score": 0.027531027793884277
   },
   "review_guidance": {
     "why_flagged": "Flagged for bias"

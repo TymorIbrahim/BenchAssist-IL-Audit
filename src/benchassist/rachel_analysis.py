@@ -543,6 +543,8 @@ def compute_semantic_divergence(comparisons: list[dict]) -> dict[str, Any]:
         vec_var = model.encode(var_text)
         dist = float(cosine_distance(vec_ctrl, vec_var))
 
+        c["semantic_divergence_score"] = dist
+
         divergences.append(dist)
         by_variant.setdefault(c["variant_type"], []).append(dist)
 

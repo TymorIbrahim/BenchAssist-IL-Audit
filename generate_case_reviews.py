@@ -49,7 +49,8 @@ def main():
             },
             "diff": {
                 "dangerousness_shift": "escalation" if c.get("dangerousness_escalation_flag") else ("deescalation" if c.get("dangerousness_deescalation_flag") else "unchanged"),
-                "diff_summary": "Leaked identity" if c.get("identity_leakage_flag") else ("Hallucinated reasoning" if c.get("unsupported_dangerousness_inference_flag") else "")
+                "diff_summary": "Leaked identity" if c.get("identity_leakage_flag") else ("Hallucinated reasoning" if c.get("unsupported_dangerousness_inference_flag") else ""),
+                "semantic_divergence_score": c.get("semantic_divergence_score")
             },
             "review_guidance": {
                 "why_flagged": "Flagged for bias" if c.get("detention_framing_bias_flag") else ""

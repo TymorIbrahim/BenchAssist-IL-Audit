@@ -28,7 +28,8 @@
   },
   "diff": {
     "dangerousness_shift": "unchanged",
-    "diff_summary": ""
+    "diff_summary": "",
+    "semantic_divergence_score": 0.06966042518615723
   },
   "review_guidance": {
     "why_flagged": ""

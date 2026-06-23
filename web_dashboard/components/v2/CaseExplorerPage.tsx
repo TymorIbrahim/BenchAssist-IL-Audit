@@ -122,22 +122,6 @@ function highlightDiffs(
   return { baseParts, variantParts };
 }
 
-/**
- * Sentence-by-sentence diff for paragraphs (like reasoning text).
- */
-function highlightSentenceDiffs(
-  baseText: string,
-  variantText: string,
-) {
-  const baseSentences = baseText.split(/(?<=\.)\s+/).map(s => s.trim()).filter(Boolean);
-  const variantSentences = variantText.split(/(?<=\.)\s+/).map(s => s.trim()).filter(Boolean);
-
-  const baseParts = baseSentences.map(s => ({ text: s, changed: !variantSentences.includes(s) }));
-  const variantParts = variantSentences.map(s => ({ text: s, changed: !baseSentences.includes(s) }));
-
-  return { baseParts, variantParts };
-}
-
 function DiffText({ parts }: { parts: Array<{ text: string; changed: boolean }> }) {
   return (
     <div className="v2-case-explorer__field-text">
@@ -148,22 +132,6 @@ function DiffText({ parts }: { parts: Array<{ text: string; changed: boolean }> 
         >
           {p.text}
         </div>
-      ))}
-    </div>
-  );
-}
-
-function SentenceDiffText({ parts }: { parts: Array<{ text: string; changed: boolean }> }) {
-  return (
-    <div className="v2-case-explorer__reasoning-text">
-      {parts.map((p, i) => (
-        <span
-          key={i}
-          className={p.changed ? "v2-diff-sentence v2-diff-highlight" : "v2-diff-sentence"}
-          style={p.changed ? { background: "var(--v2-warning-bg, hsl(35 80% 92%))", padding: "0 2px", borderRadius: "3px" } : {}}
-        >
-          {p.text}{" "}
-        </span>
       ))}
     </div>
   );
@@ -305,13 +273,6 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
   const variantCaseText = loadedRecord?.variant_case?.full_case_text ? formatCaseText(loadedRecord.variant_case.full_case_text) : undefined;
   const inputDiff = baseCaseText && variantCaseText
     ? highlightDiffs(baseCaseText, variantCaseText)
-    : null;
-
-  // Reasoning texts
-  const baseReasoningText = loadedRecord?.neutral_output?.reasoning_text;
-  const variantReasoningText = loadedRecord?.variant_output?.reasoning_text;
-  const reasoningDiff = baseReasoningText && variantReasoningText
-    ? highlightSentenceDiffs(baseReasoningText, variantReasoningText)
     : null;
 
   // Cross-prompt data
@@ -624,30 +585,32 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
                 </button>
                 {sectionOpen.reasoning && (
                   <div style={{ marginTop: "0.75rem" }}>
-                    <p className="muted" style={{ marginBottom: "0.75rem", fontSize: "var(--v2-fs-sm)" }}>
-                      The model&apos;s legal-style reasoning for each version. Compare how the justification changes when demographic details differ.
-                    </p>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.75rem" }}>
+                      <p className="muted" style={{ margin: 0, fontSize: "var(--v2-fs-sm)" }}>
+                        The model&apos;s legal-style reasoning for each version. Compare how the justification changes when demographic details differ.
+                      </p>
+                      {loadedRecord.diff?.semantic_divergence_score !== undefined && (
+                        <div style={{ fontSize: "var(--v2-fs-sm)", background: "var(--v2-bg-surface)", padding: "0.2rem 0.5rem", borderRadius: "4px", border: "1px solid var(--v2-border-subtle)", display: "flex", gap: "0.4rem", alignItems: "center" }}>
+                          <span style={{ color: "var(--v2-text-secondary)" }}>Semantic Divergence:</span>
+                          <span style={{ fontWeight: 600, color: loadedRecord.diff.semantic_divergence_score > 0.1 ? "var(--v2-danger)" : "var(--v2-text)" }}>
+                            {loadedRecord.diff.semantic_divergence_score.toFixed(3)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
                     <div className="v2-case-explorer__comparison">
                       {/* Neutral reasoning */}
                       <div className="v2-case-explorer__column">
                         <h4 className="v2-case-explorer__column-title">Neutral Baseline</h4>
                         <div className="v2-case-explorer__reasoning-scroll" dir="auto" style={{ whiteSpace: "pre-wrap", lineHeight: 1.6, fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-secondary)", background: "var(--v2-bg-surface, hsl(220 15% 97%))", padding: "0.75rem", borderRadius: "6px", border: "1px solid var(--v2-border-subtle, hsl(220 15% 94%))" }}>
-                          {reasoningDiff ? (
-                            <SentenceDiffText parts={reasoningDiff.baseParts} />
-                          ) : (
-                            baseReasoningText ?? "N/A"
-                          )}
+                          {loadedRecord.neutral_output?.reasoning_text ?? "N/A"}
                         </div>
                       </div>
                       {/* Variant reasoning */}
                       <div className="v2-case-explorer__column">
                         <h4 className="v2-case-explorer__column-title">Variant: {variantLabel}</h4>
                         <div className="v2-case-explorer__reasoning-scroll" dir="auto" style={{ whiteSpace: "pre-wrap", lineHeight: 1.6, fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-secondary)", background: "var(--v2-bg-surface, hsl(220 15% 97%))", padding: "0.75rem", borderRadius: "6px", border: "1px solid var(--v2-border-subtle, hsl(220 15% 94%))" }}>
-                          {reasoningDiff ? (
-                            <SentenceDiffText parts={reasoningDiff.variantParts} />
-                          ) : (
-                            variantReasoningText ?? "N/A"
-                          )}
+                          {loadedRecord.variant_output?.reasoning_text ?? "N/A"}
                         </div>
                       </div>
                     </div>
