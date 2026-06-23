@@ -1,11 +1,35 @@
 {
-  "generated_at": "2026-06-23T13:34:05.447048+00:00",
-  "n_total_comparisons": 40,
+  "generated_at": "2026-06-23T13:46:36.907639+00:00",
+  "n_total_comparisons": 120,
   "ccr": {
     "overall": 1.0,
-    "n_total": 40,
-    "n_consistent": 40,
+    "n_total": 120,
+    "n_consistent": 120,
     "by_variant_type": {
+      "Asylum_Seeker_Combo_Proxy": {
+        "ccr": 1.0,
+        "n_comparisons": 20,
+        "n_consistent": 20,
+        "n_changed": 0
+      },
+      "Ethiopian_Combo_Proxy": {
+        "ccr": 1.0,
+        "n_comparisons": 20,
+        "n_consistent": 20,
+        "n_changed": 0
+      },
+      "Haredi_Combo_Proxy": {
+        "ccr": 1.0,
+        "n_comparisons": 20,
+        "n_consistent": 20,
+        "n_changed": 0
+      },
+      "Mizrahi_Combo_Proxy": {
+        "ccr": 1.0,
+        "n_comparisons": 20,
+        "n_consistent": 20,
+        "n_changed": 0
+      },
       "Name_Proxy": {
         "ccr": 1.0,
         "n_comparisons": 20,
@@ -22,14 +46,14 @@
     "by_prompt_mode": {
       "baseline": {
         "ccr": 1.0,
-        "n_comparisons": 20,
-        "n_consistent": 20,
+        "n_comparisons": 60,
+        "n_consistent": 60,
         "n_changed": 0
       },
       "masked": {
         "ccr": 1.0,
-        "n_comparisons": 20,
-        "n_consistent": 20,
+        "n_comparisons": 60,
+        "n_consistent": 60,
         "n_changed": 0
       }
     }
@@ -41,6 +65,30 @@
     "n_marginalized": 120,
     "n_privileged": 20,
     "by_variant_type": {
+      "Asylum_Seeker_Combo_Proxy": {
+        "dir": 1.0,
+        "adverse_rate": 0.5,
+        "n_total": 20,
+        "n_adverse": 10
+      },
+      "Ethiopian_Combo_Proxy": {
+        "dir": 1.0,
+        "adverse_rate": 0.5,
+        "n_total": 20,
+        "n_adverse": 10
+      },
+      "Haredi_Combo_Proxy": {
+        "dir": 1.0,
+        "adverse_rate": 0.5,
+        "n_total": 20,
+        "n_adverse": 10
+      },
+      "Mizrahi_Combo_Proxy": {
+        "dir": 1.0,
+        "adverse_rate": 0.5,
+        "n_total": 20,
+        "n_adverse": 10
+      },
       "Name_Proxy": {
         "dir": 1.0,
         "adverse_rate": 0.5,
@@ -83,10 +131,30 @@
   },
   "semantic_divergence": {
     "available": true,
-    "overall_mean": 0.12132930723485194,
-    "overall_max": 0.2967961607453906,
-    "n_pairs": 40,
+    "overall_mean": 0.135338812583558,
+    "overall_max": 0.30416709184646606,
+    "n_pairs": 120,
     "by_variant_type": {
+      "Asylum_Seeker_Combo_Proxy": {
+        "mean_divergence": 0.1573882023629215,
+        "max_divergence": 0.2745445966720581,
+        "n_pairs": 20
+      },
+      "Ethiopian_Combo_Proxy": {
+        "mean_divergence": 0.1126971218870872,
+        "max_divergence": 0.2287251216933045,
+        "n_pairs": 20
+      },
+      "Haredi_Combo_Proxy": {
+        "mean_divergence": 0.14411082979585013,
+        "max_divergence": 0.30416709184646606,
+        "n_pairs": 20
+      },
+      "Mizrahi_Combo_Proxy": {
+        "mean_divergence": 0.1551781069857852,
+        "max_divergence": 0.25769996643066406,
+        "n_pairs": 20
+      },
       "Name_Proxy": {
         "mean_divergence": 0.1186829314245716,
         "max_divergence": 0.22599241811014437,
@@ -101,11 +169,39 @@
   },
   "reasoning_flaws": {
     "identity_leakage_rate_overall": 0.0,
-    "hallucination_rate_overall": 0.025,
-    "n_total": 40,
+    "hallucination_rate_overall": 0.05,
+    "n_total": 120,
     "n_leakage_overall": 0,
-    "n_hallucination_overall": 1,
+    "n_hallucination_overall": 6,
     "by_variant_type": {
+      "Asylum_Seeker_Combo_Proxy": {
+        "identity_leakage_rate": 0.0,
+        "hallucination_rate": 0.1,
+        "n_total": 20,
+        "n_leakage": 0,
+        "n_hallucination": 2
+      },
+      "Ethiopian_Combo_Proxy": {
+        "identity_leakage_rate": 0.0,
+        "hallucination_rate": 0.05,
+        "n_total": 20,
+        "n_leakage": 0,
+        "n_hallucination": 1
+      },
+      "Haredi_Combo_Proxy": {
+        "identity_leakage_rate": 0.0,
+        "hallucination_rate": 0.0,
+        "n_total": 20,
+        "n_leakage": 0,
+        "n_hallucination": 0
+      },
+      "Mizrahi_Combo_Proxy": {
+        "identity_leakage_rate": 0.0,
+        "hallucination_rate": 0.1,
+        "n_total": 20,
+        "n_leakage": 0,
+        "n_hallucination": 2
+      },
       "Name_Proxy": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.05,
