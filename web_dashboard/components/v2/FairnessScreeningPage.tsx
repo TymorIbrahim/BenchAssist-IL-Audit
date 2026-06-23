@@ -323,7 +323,7 @@ export function FairnessScreeningPage({ bundle }: FairnessScreeningPageProps) {
         <div>
           <p>
             Flags are screening signals for human legal review — not proof of unlawful discrimination.
-            All 5 variant types are strict counterfactual proxies where only the demographic cue changes.
+            All 2 variant types are strict counterfactual proxies where only the demographic cue changes.
           </p>
         </div>
       </div>

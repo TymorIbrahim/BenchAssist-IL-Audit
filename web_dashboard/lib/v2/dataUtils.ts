@@ -41,24 +41,13 @@ export async function fetchJson<T>(filename: string, fallback: T): Promise<T> {
 export interface DashboardBundle {
   overview: OverviewMetrics;
   pairwise: PairwiseComparison[];
-  addressProxy: PairwiseComparison[];
-  combinedPairwise: PairwiseComparison[];
   groupSummary: GroupSummary[];
-  combinedGroupSummary: GroupSummary[];
   flagged: PairwiseComparison[];
-  addressProxyFlagged: PairwiseComparison[];
-  combinedFlagged: PairwiseComparison[];
   caseReviewIndex: CaseReviewIndexEntry[];
   caseReviewIndexCount: number;
   crossPromptComparisons: CrossPromptComparison[];
-  crossPromptModeSummary: CrossPromptModeSummary | null;
-  statisticalTests: StatisticalTest[];
-  runManifest: RunManifest | null;
-  fullMetricSummary: FullMetricSummary | null;
   promptModes: string[];
   variantTypes: string[];
-  addressVariantTypes: string[];
-  combinedVariantTypes: string[];
   baseCaseIds: string[];
   dataStatus: string;
   isMock: boolean;
@@ -114,28 +103,16 @@ export async function loadDashboardBundle(): Promise<DashboardBundle> {
   const [
     overviewArr,
     pairwiseRaw,
-    addressProxyRaw,
-    combinedRaw,
     groupSummaryRaw,
     flaggedRaw,
     crossPromptRaw,
-    crossPromptModeSummaryRaw,
-    statisticalRaw,
-    runManifestArr,
-    fullMetricArr,
     caseReviewIndexPayload,
   ] = await Promise.all([
     fetchJson<Record<string, unknown>[]>("detention_overview_metrics.json", []),
     fetchJson<Record<string, unknown>[]>("detention_pairwise_comparison.json", []),
-    fetchJson<Record<string, unknown>[]>("detention_address_proxy_pairwise_comparison.json", []),
-    fetchJson<Record<string, unknown>[]>("detention_combined_pairwise_comparison.json", []),
     fetchJson<Record<string, unknown>[]>("detention_group_summary.json", []),
     fetchJson<Record<string, unknown>[]>("detention_flagged_cases.json", []),
     fetchJson<Record<string, unknown>[]>("detention_cross_prompt_comparisons.json", []),
-    fetchJson<CrossPromptModeSummary | Record<string, unknown>[]>("detention_cross_prompt_mode_summary.json", [] as Record<string, unknown>[]),
-    fetchJson<Record<string, unknown>[]>("detention_statistical_tests.json", []),
-    fetchJson<Record<string, unknown>[]>("detention_full_run_manifest.json", []),
-    fetchJson<Record<string, unknown>[]>("detention_full_metric_summary.json", []),
     fetchJson<{
       record_count?: number;
       records_index?: CaseReviewIndexEntry[];
@@ -147,38 +124,18 @@ export async function loadDashboardBundle(): Promise<DashboardBundle> {
 
   const overview = (firstOfArray(overviewArr) ?? {}) as unknown as OverviewMetrics;
   const pairwise = pairwiseRaw.map(normalizePairwise);
-  const addressProxy = addressProxyRaw.map(normalizePairwise);
-  const combinedPairwise = combinedRaw.map(normalizePairwise);
   const flagged = flaggedRaw.length
     ? flaggedRaw.map(normalizePairwise)
     : pairwise.filter((r) => r.detention_framing_bias_flag);
-  const addressProxyFlagged = addressProxy.filter((r) => r.detention_framing_bias_flag);
-  const combinedFlagged = combinedPairwise.filter((r) => r.detention_framing_bias_flag);
   const groupSummary = groupSummaryRaw as unknown as GroupSummary[];
 
-  // Build combined group summary from combined pairwise data
-  const combinedGroupSummary = buildGroupSummaryFromPairwise(combinedPairwise);
-
-  // Cross-prompt mode summary can be object or array
-  let crossPromptModeSummary: CrossPromptModeSummary | null = null;
-  if (crossPromptModeSummaryRaw && !Array.isArray(crossPromptModeSummaryRaw) && "by_comparison_mode" in crossPromptModeSummaryRaw) {
-    crossPromptModeSummary = crossPromptModeSummaryRaw as CrossPromptModeSummary;
-  } else if (Array.isArray(crossPromptModeSummaryRaw) && crossPromptModeSummaryRaw.length) {
-    crossPromptModeSummary = crossPromptModeSummaryRaw[0] as unknown as CrossPromptModeSummary;
-  }
-
   const crossPromptComparisons = crossPromptRaw as unknown as CrossPromptComparison[];
-  const statisticalTests = statisticalRaw as unknown as StatisticalTest[];
-  const runManifest = firstOfArray(runManifestArr) as unknown as RunManifest | null;
-  const fullMetricSummary = firstOfArray(fullMetricArr) as unknown as FullMetricSummary | null;
   const caseReviewIndex = caseReviewIndexPayload.records_index ?? [];
   const caseReviewIndexCount = caseReviewIndexPayload.record_count ?? caseReviewIndex.length;
 
   const promptModes = uniqueValues(pairwise, "prompt_mode");
   const variantTypes = uniqueValues(pairwise, "variant_type");
-  const addressVariantTypes = uniqueValues(addressProxy, "variant_type");
-  const combinedVariantTypes = uniqueValues(combinedPairwise, "variant_type");
-  const baseCaseIds = uniqueValues([...pairwise, ...addressProxy, ...combinedPairwise], "case_id");
+  const baseCaseIds = uniqueValues([...pairwise], "case_id");
 
   const dataStatus = str(overview.data_status || "");
   const isMock = dataStatus === "mock" || overview.mock_mode === true;
@@ -186,24 +143,13 @@ export async function loadDashboardBundle(): Promise<DashboardBundle> {
   return {
     overview,
     pairwise,
-    addressProxy,
-    combinedPairwise,
     groupSummary,
-    combinedGroupSummary,
     flagged,
-    addressProxyFlagged,
-    combinedFlagged,
     caseReviewIndex,
     caseReviewIndexCount,
     crossPromptComparisons,
-    crossPromptModeSummary,
-    statisticalTests,
-    runManifest,
-    fullMetricSummary,
     promptModes,
     variantTypes,
-    addressVariantTypes,
-    combinedVariantTypes,
     baseCaseIds,
     dataStatus,
     isMock,
@@ -370,13 +316,12 @@ export interface HeadlineMetrics {
   totalFlagged: number;
   baselineFlagged: number;
   strictDemographicRate: number;
-  addressProxyRate: number;
   parseSuccessRate: number;
   perModeMetrics: Record<string, { comparisons: number; flagged: number; flaggedRate: number }>;
 }
 
 export function computeHeadlineMetrics(bundle: DashboardBundle): HeadlineMetrics {
-  const { overview, pairwise, flagged, addressProxy, addressProxyFlagged, fullMetricSummary } = bundle;
+  const { overview, pairwise, flagged } = bundle;
 
   const totalBaseCases = num(overview.n_synthetic_counterfactual_rows) || 10;
   const totalVariants = num(overview.n_outputs_total) || pairwise.length;
@@ -386,31 +331,18 @@ export function computeHeadlineMetrics(bundle: DashboardBundle): HeadlineMetrics
   const baselineFlagged = num(overview.n_flagged_comparisons_baseline) || num(overview.n_flagged_comparisons) || 0;
 
   const strictDemographicRate = baselineComparisons > 0 ? baselineFlagged / baselineComparisons : 0;
-  const addressProxyRate = addressProxy.length > 0 ? addressProxyFlagged.length / addressProxy.length : 0;
   const parseSuccessRate = num(overview.parse_success_rate) || 0;
 
   // Per-mode metrics
   const perModeMetrics: Record<string, { comparisons: number; flagged: number; flaggedRate: number }> = {};
-  if (fullMetricSummary?.per_prompt_mode) {
-    for (const [mode, data] of Object.entries(fullMetricSummary.per_prompt_mode)) {
-      const modeRows = pairwise.filter((r) => r.prompt_mode === mode);
-      const modeFlagged = modeRows.filter((r) => r.detention_framing_bias_flag).length;
-      perModeMetrics[mode] = {
-        comparisons: data.n_strict_eligible || modeRows.length,
-        flagged: modeFlagged,
-        flaggedRate: modeRows.length > 0 ? modeFlagged / modeRows.length : 0,
-      };
-    }
-  } else {
-    for (const mode of bundle.promptModes) {
-      const modeRows = pairwise.filter((r) => r.prompt_mode === mode);
-      const modeFlagged = modeRows.filter((r) => r.detention_framing_bias_flag).length;
-      perModeMetrics[mode] = {
-        comparisons: modeRows.length,
-        flagged: modeFlagged,
-        flaggedRate: modeRows.length > 0 ? modeFlagged / modeRows.length : 0,
-      };
-    }
+  for (const mode of bundle.promptModes) {
+    const modeRows = pairwise.filter((r) => r.prompt_mode === mode);
+    const modeFlagged = modeRows.filter((r) => r.detention_framing_bias_flag).length;
+    perModeMetrics[mode] = {
+      comparisons: modeRows.length,
+      flagged: modeFlagged,
+      flaggedRate: modeRows.length > 0 ? modeFlagged / modeRows.length : 0,
+    };
   }
 
   return {
@@ -421,7 +353,6 @@ export function computeHeadlineMetrics(bundle: DashboardBundle): HeadlineMetrics
     totalFlagged,
     baselineFlagged,
     strictDemographicRate,
-    addressProxyRate,
     parseSuccessRate,
     perModeMetrics,
   };

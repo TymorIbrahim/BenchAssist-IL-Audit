@@ -27,16 +27,8 @@ const CaseExplorerPage = dynamic(
   () => import("@/components/v2/CaseExplorerPage").then((m) => m.CaseExplorerPage),
   { loading: () => <Loading /> },
 );
-const RunMetadataPage = dynamic(
-  () => import("@/components/v2/RunMetadataPage").then((m) => m.RunMetadataPage),
-  { loading: () => <Loading /> },
-);
 const BiasAnalysisPage = dynamic(
   () => import("@/components/v2/BiasAnalysisPage").then((m) => m.BiasAnalysisPage),
-  { loading: () => <Loading /> },
-);
-const AgentAuditPage = dynamic(
-  () => import("@/components/v2/AgentAuditPage").then((m) => m.AgentAuditPage),
   { loading: () => <Loading /> },
 );
 const AuditMetricsPage = dynamic(
@@ -115,10 +107,10 @@ export function DashboardShell() {
           </div>
           <div className="v2-header__actions">
             <span className="v2-badge v2-badge--info">
-              {bundle.runManifest?.schema_version ?? "minimal_dangerousness_v2"}
+              60-Case Dataset
             </span>
             <span className="v2-badge v2-badge--neutral">
-              {bundle.runManifest?.model ?? "gemini-2.5-flash-lite"}
+              gemini-2.5-flash-lite
             </span>
           </div>
         </div>
@@ -168,12 +160,6 @@ export function DashboardShell() {
         )}
         {activeTab === "case-explorer" && (
           <CaseExplorerPage bundle={bundle} />
-        )}
-        {activeTab === "agent-audit" && (
-          <AgentAuditPage />
-        )}
-        {activeTab === "run-metadata" && (
-          <RunMetadataPage bundle={bundle} />
         )}
       </main>
 

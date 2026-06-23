@@ -42,25 +42,10 @@ export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
   const { perModeMetrics } = metrics;
   const modeEntries = Object.entries(perModeMetrics).filter(([key]) => key === "baseline" || key === "masked");
 
-  /* ---- Cross-prompt mode summary ---- */
-  const crossSummary = bundle.crossPromptModeSummary;
-  const crossEntries = useMemo(() => {
-    if (!crossSummary?.by_comparison_mode) return [];
-    return Object.entries(crossSummary.by_comparison_mode);
-  }, [crossSummary]);
-
   /* ---- Total instability counts ---- */
   const totalInstability = useMemo(() => {
-    let material = 0;
-    let wordingOnly = 0;
-    let total = 0;
-    for (const [, data] of crossEntries) {
-      material += data.material_instability ?? 0;
-      wordingOnly += data.wording_only ?? 0;
-      total += data.total ?? 0;
-    }
-    return { material, wordingOnly, total };
-  }, [crossEntries]);
+    return { material: 0, wordingOnly: 0, total: 0 };
+  }, []);
 
   /* ---- Chart data: flagged rate by prompt mode ---- */
   const flaggedRateChartData = useMemo(
@@ -237,38 +222,6 @@ export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
         </div>
       </div>
 
-      {/* Cross-prompt mode summary cards */}
-      {crossSummary && crossEntries.length > 0 && (
-        <div className="v2-mitigation-page__cross-summary">
-          <h2 className="v2-mitigation-page__section-title">Per-Mode Instability Breakdown</h2>
-          {crossSummary.note && (
-            <p className="v2-mitigation-page__note">{crossSummary.note}</p>
-          )}
-          <div className="v2-mitigation-page__cross-cards">
-            {crossEntries.map(([mode, data]) => (
-              <article key={mode} className="v2-mitigation-page__cross-card">
-                <h3 className="v2-mitigation-page__cross-card-title">
-                  vs {formatPromptMode(mode)}
-                </h3>
-                <dl className="v2-mitigation-page__cross-card-metrics">
-                  <div className="v2-mitigation-page__cross-card-metric">
-                    <dt>Material Instability</dt>
-                    <dd>{formatCount(data.material_instability)}</dd>
-                  </div>
-                  <div className="v2-mitigation-page__cross-card-metric">
-                    <dt>Wording-Only</dt>
-                    <dd>{formatCount(data.wording_only)}</dd>
-                  </div>
-                  <div className="v2-mitigation-page__cross-card-metric">
-                    <dt>Total</dt>
-                    <dd>{formatCount(data.total)}</dd>
-                  </div>
-                </dl>
-              </article>
-            ))}
-          </div>
-        </div>
-      )}
     </section>
   );
 }

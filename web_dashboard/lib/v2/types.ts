@@ -346,9 +346,7 @@ export type DashboardTab =
   | "mitigation"
   | "bias-analysis"
   | "audit-metrics"
-  | "case-explorer"
-  | "agent-audit"
-  | "run-metadata";
+  | "case-explorer";
 
 export interface TabDef {
   id: DashboardTab;
@@ -359,13 +357,11 @@ export interface TabDef {
 
 export const DASHBOARD_TABS: TabDef[] = [
   { id: "overview", label: "Overview", subtitle: "Executive summary", icon: "◎" },
-  { id: "fairness", label: "Fairness Screening", subtitle: "Demographic & proxy analysis", icon: "◈" },
+  { id: "fairness", label: "Fairness Screening", subtitle: "Demographic proxy analysis", icon: "◈" },
   { id: "mitigation", label: "Prompt Mitigation", subtitle: "Mode comparison", icon: "◐" },
   { id: "bias-analysis", label: "Bias Analysis", subtitle: "Deep-dive findings", icon: "◉" },
   { id: "audit-metrics", label: "Audit Metrics", subtitle: "CCR · DIR · Masking", icon: "◆" },
   { id: "case-explorer", label: "Case Explorer", subtitle: "Side-by-side review", icon: "◫" },
-  { id: "agent-audit", label: "Agent Audit", subtitle: "Agentic RAG results", icon: "🤖" },
-  { id: "run-metadata", label: "Run Metadata", subtitle: "Data quality", icon: "◇" },
 ];
 
 /* ------------------------------------------------------------------ */

@@ -309,7 +309,7 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
         filters={filters}
         onChange={handleFilterChange}
         promptModes={bundle.promptModes}
-        variantTypes={[...bundle.variantTypes, ...bundle.addressVariantTypes]}
+        variantTypes={bundle.variantTypes}
         baseCaseIds={bundle.baseCaseIds}
         totalCount={bundle.caseReviewIndex.length}
         filteredCount={filtered.length}

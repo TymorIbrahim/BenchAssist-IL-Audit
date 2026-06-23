@@ -46,7 +46,7 @@ const PROCESS_STEPS: { icon: React.ReactNode; title: string; detail: string; dyn
   },
   {
     icon: <IconCycle />,
-    title: "3 Counterfactual Conditions",
+    title: "2 Counterfactual Conditions",
     detail: "Each case tested as Control (neutral), Name Proxy (Arab-coded name), and Neighborhood Proxy (low-income / minority area)",
   },
   {
@@ -71,11 +71,10 @@ const PROCESS_STEPS: { icon: React.ReactNode; title: string; detail: string; dyn
 /* ------------------------------------------------------------------ */
 
 const NAV_ITEMS: { tab: DashboardTab; label: string; desc: string; icon: React.ReactNode }[] = [
-  { tab: "fairness", label: "Fairness Screening", desc: "Three-tier demographic, address, and combined bias analysis", icon: <IconScale /> },
+  { tab: "fairness", label: "Fairness Screening", desc: "Demographic proxy analysis", icon: <IconScale /> },
   { tab: "mitigation", label: "Prompt Mitigation", desc: "Compare prompt strategies and their effect on model behavior", icon: <IconChart /> },
   { tab: "audit-metrics", label: "Audit Metrics", desc: "CCR, Disparate Impact Ratio, Masking Efficiency, Semantic Divergence", icon: <IconFlag /> },
   { tab: "case-explorer", label: "Case Explorer", desc: "Side-by-side case review with diff highlighting and prompt viewer", icon: <IconSearch /> },
-  { tab: "run-metadata", label: "Run Metadata", desc: "Technical details: model, schema, config, and run statistics", icon: <IconClipboard /> },
 ];
 
 /* ------------------------------------------------------------------ */
