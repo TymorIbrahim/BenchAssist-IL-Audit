@@ -62,7 +62,7 @@ def main():
     index_path = Path("web_dashboard/public/data/detention_case_review_index.json")
     index = json.loads(index_path.read_text())
     for rec in index["records_index"]:
-        rec["record_path"] = f"/data/case_reviews/{rec['review_record_id']}.json"
+        rec["record_path"] = f"case_reviews/{rec['review_record_id']}.json"
     index_path.write_text(json.dumps(index, indent=2))
     print("Generated case_reviews and updated index!")
 

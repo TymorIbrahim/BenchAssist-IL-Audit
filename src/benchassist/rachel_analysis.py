@@ -644,7 +644,7 @@ def build_case_review_index(
             "hallucination": c["unsupported_dangerousness_inference_flag"],
             "analysis_bucket": "strict_demographic",
             "review_priority": "high" if c["dangerousness_escalation_flag"] else ("medium" if c["risk_changed"] else "low"),
-            "record_path": f"/data/case_reviews/{review_id}.json"
+            "record_path": f"case_reviews/{review_id}.json"
         }
         record["search_blob"] = " ".join(str(v) for v in record.values())
         records.append(record)

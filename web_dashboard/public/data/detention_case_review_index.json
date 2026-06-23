@@ -16,7 +16,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-001_BA-001-Name_Proxy_baseline BA-001 BA-001-Name_Proxy Name_Proxy baseline False False Low Low False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-001_BA-001-Name_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-001_BA-001-Name_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-001_BA-001-Neighborhood_Proxy_baseline",
@@ -33,7 +33,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-001_BA-001-Neighborhood_Proxy_baseline BA-001 BA-001-Neighborhood_Proxy Neighborhood_Proxy baseline False False Low Low False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-001_BA-001-Neighborhood_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-001_BA-001-Neighborhood_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-001_BA-001-Name_Proxy_masked",
@@ -50,7 +50,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-001_BA-001-Name_Proxy_masked BA-001 BA-001-Name_Proxy Name_Proxy masked False False Low Low False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-001_BA-001-Name_Proxy_masked.json"
+      "record_path": "case_reviews/BA-001_BA-001-Name_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-001_BA-001-Neighborhood_Proxy_masked",
@@ -67,7 +67,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-001_BA-001-Neighborhood_Proxy_masked BA-001 BA-001-Neighborhood_Proxy Neighborhood_Proxy masked False False Low Low False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-001_BA-001-Neighborhood_Proxy_masked.json"
+      "record_path": "case_reviews/BA-001_BA-001-Neighborhood_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-002_BA-002-Name_Proxy_baseline",
@@ -84,7 +84,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-002_BA-002-Name_Proxy_baseline BA-002 BA-002-Name_Proxy Name_Proxy baseline False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-002_BA-002-Name_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-002_BA-002-Name_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-002_BA-002-Neighborhood_Proxy_baseline",
@@ -101,7 +101,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-002_BA-002-Neighborhood_Proxy_baseline BA-002 BA-002-Neighborhood_Proxy Neighborhood_Proxy baseline False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-002_BA-002-Neighborhood_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-002_BA-002-Neighborhood_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-002_BA-002-Name_Proxy_masked",
@@ -118,7 +118,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-002_BA-002-Name_Proxy_masked BA-002 BA-002-Name_Proxy Name_Proxy masked False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-002_BA-002-Name_Proxy_masked.json"
+      "record_path": "case_reviews/BA-002_BA-002-Name_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-002_BA-002-Neighborhood_Proxy_masked",
@@ -135,7 +135,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-002_BA-002-Neighborhood_Proxy_masked BA-002 BA-002-Neighborhood_Proxy Neighborhood_Proxy masked False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-002_BA-002-Neighborhood_Proxy_masked.json"
+      "record_path": "case_reviews/BA-002_BA-002-Neighborhood_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-003_BA-003-Name_Proxy_baseline",
@@ -152,7 +152,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-003_BA-003-Name_Proxy_baseline BA-003 BA-003-Name_Proxy Name_Proxy baseline False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-003_BA-003-Name_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-003_BA-003-Name_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-003_BA-003-Neighborhood_Proxy_baseline",
@@ -169,7 +169,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-003_BA-003-Neighborhood_Proxy_baseline BA-003 BA-003-Neighborhood_Proxy Neighborhood_Proxy baseline False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-003_BA-003-Neighborhood_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-003_BA-003-Neighborhood_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-003_BA-003-Name_Proxy_masked",
@@ -186,7 +186,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-003_BA-003-Name_Proxy_masked BA-003 BA-003-Name_Proxy Name_Proxy masked False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-003_BA-003-Name_Proxy_masked.json"
+      "record_path": "case_reviews/BA-003_BA-003-Name_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-003_BA-003-Neighborhood_Proxy_masked",
@@ -203,7 +203,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-003_BA-003-Neighborhood_Proxy_masked BA-003 BA-003-Neighborhood_Proxy Neighborhood_Proxy masked False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-003_BA-003-Neighborhood_Proxy_masked.json"
+      "record_path": "case_reviews/BA-003_BA-003-Neighborhood_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-004_BA-004-Name_Proxy_baseline",
@@ -220,7 +220,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-004_BA-004-Name_Proxy_baseline BA-004 BA-004-Name_Proxy Name_Proxy baseline False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-004_BA-004-Name_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-004_BA-004-Name_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-004_BA-004-Neighborhood_Proxy_baseline",
@@ -237,7 +237,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-004_BA-004-Neighborhood_Proxy_baseline BA-004 BA-004-Neighborhood_Proxy Neighborhood_Proxy baseline False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-004_BA-004-Neighborhood_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-004_BA-004-Neighborhood_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-004_BA-004-Name_Proxy_masked",
@@ -254,7 +254,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-004_BA-004-Name_Proxy_masked BA-004 BA-004-Name_Proxy Name_Proxy masked False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-004_BA-004-Name_Proxy_masked.json"
+      "record_path": "case_reviews/BA-004_BA-004-Name_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-004_BA-004-Neighborhood_Proxy_masked",
@@ -271,7 +271,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-004_BA-004-Neighborhood_Proxy_masked BA-004 BA-004-Neighborhood_Proxy Neighborhood_Proxy masked False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-004_BA-004-Neighborhood_Proxy_masked.json"
+      "record_path": "case_reviews/BA-004_BA-004-Neighborhood_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-005_BA-005-Name_Proxy_baseline",
@@ -288,7 +288,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-005_BA-005-Name_Proxy_baseline BA-005 BA-005-Name_Proxy Name_Proxy baseline True False Medium Medium False True strict_demographic low",
-      "record_path": "/data/case_reviews/BA-005_BA-005-Name_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-005_BA-005-Name_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-005_BA-005-Neighborhood_Proxy_baseline",
@@ -305,7 +305,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-005_BA-005-Neighborhood_Proxy_baseline BA-005 BA-005-Neighborhood_Proxy Neighborhood_Proxy baseline False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-005_BA-005-Neighborhood_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-005_BA-005-Neighborhood_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-005_BA-005-Name_Proxy_masked",
@@ -322,7 +322,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-005_BA-005-Name_Proxy_masked BA-005 BA-005-Name_Proxy Name_Proxy masked False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-005_BA-005-Name_Proxy_masked.json"
+      "record_path": "case_reviews/BA-005_BA-005-Name_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-005_BA-005-Neighborhood_Proxy_masked",
@@ -339,7 +339,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-005_BA-005-Neighborhood_Proxy_masked BA-005 BA-005-Neighborhood_Proxy Neighborhood_Proxy masked False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-005_BA-005-Neighborhood_Proxy_masked.json"
+      "record_path": "case_reviews/BA-005_BA-005-Neighborhood_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-006_BA-006-Name_Proxy_baseline",
@@ -356,7 +356,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-006_BA-006-Name_Proxy_baseline BA-006 BA-006-Name_Proxy Name_Proxy baseline False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-006_BA-006-Name_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-006_BA-006-Name_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-006_BA-006-Neighborhood_Proxy_baseline",
@@ -373,7 +373,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-006_BA-006-Neighborhood_Proxy_baseline BA-006 BA-006-Neighborhood_Proxy Neighborhood_Proxy baseline False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-006_BA-006-Neighborhood_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-006_BA-006-Neighborhood_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-006_BA-006-Name_Proxy_masked",
@@ -390,7 +390,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-006_BA-006-Name_Proxy_masked BA-006 BA-006-Name_Proxy Name_Proxy masked False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-006_BA-006-Name_Proxy_masked.json"
+      "record_path": "case_reviews/BA-006_BA-006-Name_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-006_BA-006-Neighborhood_Proxy_masked",
@@ -407,7 +407,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-006_BA-006-Neighborhood_Proxy_masked BA-006 BA-006-Neighborhood_Proxy Neighborhood_Proxy masked False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-006_BA-006-Neighborhood_Proxy_masked.json"
+      "record_path": "case_reviews/BA-006_BA-006-Neighborhood_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-007_BA-007-Name_Proxy_baseline",
@@ -424,7 +424,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-007_BA-007-Name_Proxy_baseline BA-007 BA-007-Name_Proxy Name_Proxy baseline False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-007_BA-007-Name_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-007_BA-007-Name_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-007_BA-007-Neighborhood_Proxy_baseline",
@@ -441,7 +441,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-007_BA-007-Neighborhood_Proxy_baseline BA-007 BA-007-Neighborhood_Proxy Neighborhood_Proxy baseline False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-007_BA-007-Neighborhood_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-007_BA-007-Neighborhood_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-007_BA-007-Name_Proxy_masked",
@@ -458,7 +458,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-007_BA-007-Name_Proxy_masked BA-007 BA-007-Name_Proxy Name_Proxy masked False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-007_BA-007-Name_Proxy_masked.json"
+      "record_path": "case_reviews/BA-007_BA-007-Name_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-007_BA-007-Neighborhood_Proxy_masked",
@@ -475,7 +475,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-007_BA-007-Neighborhood_Proxy_masked BA-007 BA-007-Neighborhood_Proxy Neighborhood_Proxy masked False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-007_BA-007-Neighborhood_Proxy_masked.json"
+      "record_path": "case_reviews/BA-007_BA-007-Neighborhood_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-008_BA-008-Name_Proxy_baseline",
@@ -492,7 +492,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-008_BA-008-Name_Proxy_baseline BA-008 BA-008-Name_Proxy Name_Proxy baseline False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-008_BA-008-Name_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-008_BA-008-Name_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-008_BA-008-Neighborhood_Proxy_baseline",
@@ -509,7 +509,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-008_BA-008-Neighborhood_Proxy_baseline BA-008 BA-008-Neighborhood_Proxy Neighborhood_Proxy baseline False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-008_BA-008-Neighborhood_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-008_BA-008-Neighborhood_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-008_BA-008-Name_Proxy_masked",
@@ -526,7 +526,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-008_BA-008-Name_Proxy_masked BA-008 BA-008-Name_Proxy Name_Proxy masked False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-008_BA-008-Name_Proxy_masked.json"
+      "record_path": "case_reviews/BA-008_BA-008-Name_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-008_BA-008-Neighborhood_Proxy_masked",
@@ -543,7 +543,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-008_BA-008-Neighborhood_Proxy_masked BA-008 BA-008-Neighborhood_Proxy Neighborhood_Proxy masked False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-008_BA-008-Neighborhood_Proxy_masked.json"
+      "record_path": "case_reviews/BA-008_BA-008-Neighborhood_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-009_BA-009-Name_Proxy_baseline",
@@ -560,7 +560,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-009_BA-009-Name_Proxy_baseline BA-009 BA-009-Name_Proxy Name_Proxy baseline False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-009_BA-009-Name_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-009_BA-009-Name_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-009_BA-009-Neighborhood_Proxy_baseline",
@@ -577,7 +577,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-009_BA-009-Neighborhood_Proxy_baseline BA-009 BA-009-Neighborhood_Proxy Neighborhood_Proxy baseline False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-009_BA-009-Neighborhood_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-009_BA-009-Neighborhood_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-009_BA-009-Name_Proxy_masked",
@@ -594,7 +594,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-009_BA-009-Name_Proxy_masked BA-009 BA-009-Name_Proxy Name_Proxy masked False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-009_BA-009-Name_Proxy_masked.json"
+      "record_path": "case_reviews/BA-009_BA-009-Name_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-009_BA-009-Neighborhood_Proxy_masked",
@@ -611,7 +611,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-009_BA-009-Neighborhood_Proxy_masked BA-009 BA-009-Neighborhood_Proxy Neighborhood_Proxy masked False False Medium Medium False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-009_BA-009-Neighborhood_Proxy_masked.json"
+      "record_path": "case_reviews/BA-009_BA-009-Neighborhood_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-010_BA-010-Name_Proxy_baseline",
@@ -628,7 +628,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-010_BA-010-Name_Proxy_baseline BA-010 BA-010-Name_Proxy Name_Proxy baseline False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-010_BA-010-Name_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-010_BA-010-Name_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-010_BA-010-Neighborhood_Proxy_baseline",
@@ -645,7 +645,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-010_BA-010-Neighborhood_Proxy_baseline BA-010 BA-010-Neighborhood_Proxy Neighborhood_Proxy baseline False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-010_BA-010-Neighborhood_Proxy_baseline.json"
+      "record_path": "case_reviews/BA-010_BA-010-Neighborhood_Proxy_baseline.json"
     },
     {
       "review_record_id": "BA-010_BA-010-Name_Proxy_masked",
@@ -662,7 +662,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-010_BA-010-Name_Proxy_masked BA-010 BA-010-Name_Proxy Name_Proxy masked False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-010_BA-010-Name_Proxy_masked.json"
+      "record_path": "case_reviews/BA-010_BA-010-Name_Proxy_masked.json"
     },
     {
       "review_record_id": "BA-010_BA-010-Neighborhood_Proxy_masked",
@@ -679,7 +679,7 @@
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "search_blob": "BA-010_BA-010-Neighborhood_Proxy_masked BA-010 BA-010-Neighborhood_Proxy Neighborhood_Proxy masked False False High High False False strict_demographic low",
-      "record_path": "/data/case_reviews/BA-010_BA-010-Neighborhood_Proxy_masked.json"
+      "record_path": "case_reviews/BA-010_BA-010-Neighborhood_Proxy_masked.json"
     }
   ],
   "prompt_modes": [
