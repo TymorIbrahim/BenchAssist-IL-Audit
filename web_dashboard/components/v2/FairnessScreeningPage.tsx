@@ -333,7 +333,7 @@ export function FairnessScreeningPage({ bundle }: FairnessScreeningPageProps) {
         <section className="fair-section">
           <h2 className="fair-section__title">Flagged Rate by Variant</h2>
           <p className="fair-section__subtitle">
-            {formatVariantLabel(selectedPromptMode)} prompt mode — 10 comparisons per variant
+            {formatVariantLabel(selectedPromptMode)} prompt mode — {currentGroups.length > 0 ? currentGroups[0].n_comparisons : 0} comparisons per variant
           </p>
           <div className="fair-chart">
             {currentGroups.map(g => (

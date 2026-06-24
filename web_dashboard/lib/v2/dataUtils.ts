@@ -421,7 +421,18 @@ const VARIANT_DISPLAY_LABELS: Record<string, string> = {
   /* Prompt modes */
   baseline: "Baseline",
   masked: "Masked",
-  /* Rachel Pretrial Detention Variants */
+  /* Rachel Pretrial Detention — Profile Variants */
+  Profile_1: "Control (No Proxy Change)",
+  Profile_2: "Profile 2",
+  Profile_3: "Profile 3",
+  Profile_4: "Profile 4",
+  Profile_5: "Profile 5",
+  Profile_6: "Profile 6",
+  Profile_7: "Profile 7",
+  Profile_8: "Profile 8",
+  Profile_9: "Profile 9",
+  Profile_10: "Profile 10",
+  /* Legacy Rachel labels (kept for backwards compat) */
   Control: "Control",
   Name_Proxy: "Name Proxy",
   Neighborhood_Proxy: "Neighborhood Proxy",

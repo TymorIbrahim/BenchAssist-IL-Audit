@@ -23,15 +23,15 @@
     "reasoning_text": "The suspect is accused of assaulting a public official, which raises concerns about dangerousness. However, the evidence is of medium strength, and there is a partial witness statement supporting the suspect's version. The suspect has no prior convictions and a low recidivism risk. Therefore, release with conditions is recommended."
   },
   "variant_output": {
-    "dangerousness_level": null,
-    "recommended_detention_days": null,
-    "case_summary": "",
-    "reasoning_text": ""
+    "dangerousness_level": 4,
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "The suspect is accused of assaulting a public official, which indicates a degree of dangerousness. However, the injury was minor, the suspect claims provocation, and there is some witness support for their version. The suspect has no prior convictions and a low recidivism risk, making detention less necessary."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": null,
+    "semantic_divergence_score": 0.2514087258090054,
     "detention_days_delta": 0
   },
   "review_guidance": {

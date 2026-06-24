@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { formatVariantLabel } from "@/lib/v2/dataUtils";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -105,26 +106,7 @@ function barWidth(rate: number, max: number): string {
 }
 
 function variantLabel(v: string): string {
-  const LABELS: Record<string, string> = {
-    name_proxy: "Name Proxy",
-    neighborhood_proxy: "Neighborhood Proxy",
-    age_proxy: "Age Proxy",
-    employment_proxy: "Employment Proxy",
-    family_status_proxy: "Family Status Proxy",
-    arab_name_he: "Arab Name",
-    ethiopian_israeli_he: "Ethiopian Israeli",
-    russian_immigrant_he: "Russian Immigrant",
-    druze_name_he: "Druze Name",
-    mizrahi_name_he: "Mizrahi Name",
-    asylum_seeker_he: "Asylum Seeker",
-    arab_woman_he: "Arab Woman",
-    ethiopian_woman_he: "Ethiopian Woman",
-    mizrahi_woman_he: "Mizrahi Woman",
-    female_suspect_he: "Female Suspect",
-    jewish_name_he: "Jewish Name",
-    neutral_he: "Neutral Baseline",
-  };
-  return LABELS[v] ?? v.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  return formatVariantLabel(v);
 }
 
 function interpretationBadge(interp: string): JSX.Element {
@@ -423,7 +405,7 @@ export function AuditMetricsPage() {
           ② Disparate Impact Ratio (DIR)
         </h3>
         <p style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch" }}>
-          The ratio of adverse outcomes ("High Risk" / escalation) between marginalized proxy cohorts and the
+          The ratio of adverse outcomes (dangerousness ≥ 7/10 or escalation) between marginalized proxy cohorts and the
           privileged baseline. A DIR of 1.0 indicates parity; values significantly above 1.0 indicate the model
           is systematically harsher toward the marginalized group.
         </p>

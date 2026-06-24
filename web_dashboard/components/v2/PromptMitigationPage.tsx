@@ -145,7 +145,7 @@ export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
       <div className="v2-mitigation-page__section">
         <h2 className="v2-mitigation-page__section-title">Prompt Strategies Tested</h2>
         <p className="v2-mitigation-page__section-subtitle">
-          Each case was assessed under three different prompt strategies to test whether mitigation instructions reduce bias signals
+          Each case was assessed under two different prompt strategies to test whether mitigation instructions reduce bias signals
         </p>
         <div className="v2-mitigation-page__mode-cards">
           {modeEntries.map(([mode, data]) => (

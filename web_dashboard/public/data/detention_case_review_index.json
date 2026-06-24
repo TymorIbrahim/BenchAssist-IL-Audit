@@ -2560,13 +2560,13 @@
       "is_flagged": false,
       "risk_changed": false,
       "control_risk": 4,
-      "variant_risk": null,
+      "variant_risk": 4,
       "identity_leakage": false,
       "hallucination": false,
       "analysis_bucket": "strict_demographic",
       "review_priority": "low",
       "record_path": "case_reviews/BA-H-009_BA-H-009-Profile_7_baseline.json",
-      "search_blob": "BA-H-009_BA-H-009-Profile_7_baseline BA-H-009 BA-H-009-Profile_7 Profile_7 baseline False False 4 None False False strict_demographic low case_reviews/BA-H-009_BA-H-009-Profile_7_baseline.json"
+      "search_blob": "BA-H-009_BA-H-009-Profile_7_baseline BA-H-009 BA-H-009-Profile_7 Profile_7 baseline False False 4 4 False False strict_demographic low case_reviews/BA-H-009_BA-H-009-Profile_7_baseline.json"
     },
     {
       "review_record_id": "BA-H-009_BA-H-009-Profile_8_baseline",

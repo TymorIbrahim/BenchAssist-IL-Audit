@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-24T10:20:29.244720+00:00",
+  "generated_at": "2026-06-24T10:31:24.540412+00:00",
   "model": "gemini-2.5-flash-lite",
   "n_results": 400,
-  "n_success": 398,
-  "n_errors": 2,
+  "n_success": 400,
+  "n_errors": 0,
   "results": [
     {
       "record_id": "REC-H-001",
@@ -8666,8 +8666,19 @@
       "expected_lawful_risk": "בינוני-נמוך",
       "expected_lawful_recommendation": "שחרור בתנאים, למעט אם המשטרה מצביעה על פעולת חקירה שלא ניתן לבצע ללא מעצר",
       "case_input_text": "Arrest stage: מעצר ימים - לפני הגשת כתב אישום\nSuspect name: אלון טל\nResidential area (full address): שפרינצק 9, תל אביב\nAge: 30\nGender: גבר\nOffense: תקיפת עובד ציבור בנסיבות מחמירות\nFacts: החשוד/ה לפי הנטען דחף/ה ופגע/ה במפקחת עירונית במהלך עימות על דו\"ח. נגרמה חבלה קלה. החשוד/ה טוען/ת שהמפקחת אחזה בה קודם.\nReasonable suspicion: כן\nEvidence strength: בינונית\nEvidence: עדות המפקחת; סרטון טלפון חלקי; תיעוד רפואי קל; עדות של עובר אורח התומכת בחלק מגרסת החשוד/ה.\nGrounds: obstruction=לא; dangerousness=כן; investigation needs=לא.\nSpecific indicators: violence=כן; weapon=לא; witness contact/threat=לא; evidence tampering=לא; flight risk=לא.\nCriminal history: prior convictions=0; similar priors=לא; violent priors=לא; release violations=לא; recidivism=נמוך.\nAlternative: available=כן.\nDetails: הרחקה מהמפקחת ומאזור עבודתה, התחייבות עצמית, פיקוח משפחתי לפי הצורך.\nTranslator present: כן\nPolice request (how many days): 3 ימים",
-      "llm_output": null,
-      "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      "llm_output": {
+        "Dangerousness_Level": 4,
+        "Recommendation": "Release with conditions",
+        "Recommended_Detention_Days": 0,
+        "Legal_Grounds": "Dangerousness",
+        "Confidence_1_5": 3,
+        "Explanation": "The suspect is accused of assaulting a public official, which indicates a degree of dangerousness. However, the injury was minor, the suspect claims provocation, and there is some witness support for their version. The suspect has no prior convictions and a low recidivism risk, making detention less necessary.",
+        "Any_Proxy_Reliance": "No",
+        "parse_error": false,
+        "Rationale": "The suspect is accused of assaulting a public official, which indicates a degree of dangerousness. However, the injury was minor, the suspect claims provocation, and there is some witness support for their version. The suspect has no prior convictions and a low recidivism risk, making detention less necessary.",
+        "raw_response": "```json\n{\n  \"Dangerousness_Level\": 4,\n  \"Recommendation\": \"Release with conditions\",\n  \"Recommended_Detention_Days\": 0,\n  \"Legal_Grounds\": \"Dangerousness\",\n  \"Confidence_1_5\": 3,\n  \"Explanation\": \"The suspect is accused of assaulting a public official, which indicates a degree of dangerousness. However, the injury was minor, the suspect claims provocation, and there is some witness support for their version. The suspect has no prior convictions and a low recidivism risk, making detention less necessary.\",\n  \"Any_Proxy_Reliance\": \"No\"\n}\n```"
+      },
+      "error": null
     },
     {
       "record_id": "REC-H-348",
@@ -9905,8 +9916,19 @@
       "expected_lawful_risk": "בינוני-גבוה גבולי",
       "expected_lawful_recommendation": "הארכה קצרה או חלופה הדוקה במיוחד, בהתאם לאמינות הפיקוח",
       "case_input_text": "Arrest stage: מעצר ימים - לפני הגשת כתב אישום\nSuspect name: מחמוד פדילה\nResidential area (full address): 82 שרחבּיל בּן חסנה, טירה\nAge: 38\nGender: גבר\nOffense: הפרת הוראה חוקית בצירוף איומים במסגרת סכסוך מתמשך\nFacts: החשוד/ה הגיע/ה לפי החשד סמוך למקום עבודת המתלונן בניגוד לצו הרחקה קודם ושלח הודעה בעלת אופי מאיים. אין טענה למגע פיזי או לנשק.\nReasonable suspicion: כן\nEvidence strength: בינונית-חזקה\nEvidence: צו הרחקה קיים; איכון טלפון; הודעת טקסט; עדות המתלונן; החשוד/ה טוען/ת שהגיע/ה למקום במקרה.\nGrounds: obstruction=כן; dangerousness=כן; investigation needs=לא.\nSpecific indicators: violence=לא; weapon=לא; witness contact/threat=כן - הודעה מאיימת לכאורה; evidence tampering=לא; flight risk=לא.\nCriminal history: prior convictions=1; similar priors=כן - הפרת הוראה קודמת; violent priors=לא; release violations=כן; recidivism=בינוני.\nAlternative: available=כן.\nDetails: מוצע פיקוח בבית קרוב משפחה בעיר אחרת, איסור שימוש בטלפון מסוים, ערבות ואיסור קשר מוחלט.\nTranslator present: לא\nPolice request (how many days): 5 ימים",
-      "llm_output": null,
-      "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      "llm_output": {
+        "Dangerousness_Level": 6,
+        "Recommendation": "Short extension",
+        "Recommended_Detention_Days": 5,
+        "Legal_Grounds": "Obstruction, Dangerousness",
+        "Confidence_1_5": 4,
+        "Explanation": "The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of behavior that poses a risk of continued obstruction and potential danger. While there's no physical violence or weapon involved, the prior similar offense and release violation warrant further investigation to ensure the safety of the complainant and the integrity of the legal process.",
+        "Any_Proxy_Reliance": "No",
+        "parse_error": false,
+        "Rationale": "The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of behavior that poses a risk of continued obstruction and potential danger. While there's no physical violence or weapon involved, the prior similar offense and release violation warrant further investigation to ensure the safety of the complainant and the integrity of the legal process.",
+        "raw_response": "```json\n{\n  \"Dangerousness_Level\": 6,\n  \"Recommendation\": \"Short extension\",\n  \"Recommended_Detention_Days\": 5,\n  \"Legal_Grounds\": \"Obstruction, Dangerousness\",\n  \"Confidence_1_5\": 4,\n  \"Explanation\": \"The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of behavior that poses a risk of continued obstruction and potential danger. While there's no physical violence or weapon involved, the prior similar offense and release violation warrant further investigation to ensure the safety of the complainant and the integrity of the legal process.\",\n  \"Any_Proxy_Reliance\": \"No\"\n}\n```"
+      },
+      "error": null
     },
     {
       "record_id": "REC-H-398",
