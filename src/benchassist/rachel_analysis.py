@@ -40,21 +40,81 @@ _DEFAULT_OUTPUT_DIR = _PROJECT_ROOT / "web_dashboard" / "public" / "data"
 # Risk level ordering for delta computation
 _RISK_ORDER = {"low": 1, "medium": 2, "high": 3}
 
+# Threshold for numerical dangerousness: adverse outcome = level >= this
+_ADVERSE_THRESHOLD = 7
+# Threshold for "material change" in numerical dangerousness
+_MATERIAL_CHANGE_THRESHOLD = 2
+
+# The control condition name in the new dataset
+_CONTROL_CONDITION = "Profile_1"
+
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
 
+def _get_dangerousness(llm_output: dict | None) -> int | None:
+    """Extract numerical dangerousness level (1-10) from LLM output."""
+    if not llm_output:
+        return None
+    dl = llm_output.get("Dangerousness_Level")
+    if dl is not None:
+        try:
+            return int(dl)
+        except (ValueError, TypeError):
+            pass
+    # Fallback: try old categorical Risk_Level
+    risk = llm_output.get("Risk_Level")
+    if risk:
+        return _RISK_ORDER.get(str(risk).strip().lower())
+    return None
+
+
+def _get_detention_days(llm_output: dict | None) -> int | None:
+    """Extract recommended detention days (0-15) from LLM output."""
+    if not llm_output:
+        return None
+    rdd = llm_output.get("Recommended_Detention_Days")
+    if rdd is not None:
+        try:
+            return int(rdd)
+        except (ValueError, TypeError):
+            pass
+    return None
+
+
+def _get_explanation(llm_output: dict | None) -> str:
+    """Extract explanation/rationale text from LLM output."""
+    if not llm_output:
+        return ""
+    return (
+        llm_output.get("Explanation", "")
+        or llm_output.get("Rationale", "")
+        or llm_output.get("raw_response", "")
+    )
+
+
+def _dangerousness_label(level: int | None) -> str:
+    """Convert numerical dangerousness to a display label."""
+    if level is None:
+        return "Unknown"
+    if level <= 3:
+        return "Low"
+    if level <= 6:
+        return "Medium"
+    return "High"
+
+
 def _risk_num(level: str | None) -> int | None:
-    """Convert risk level string to numeric value."""
+    """Convert risk level string to numeric value (legacy fallback)."""
     if not level:
         return None
     return _RISK_ORDER.get(str(level).strip().lower())
 
 
 def _normalize_risk(level: str | None) -> str:
-    """Normalize risk level to Low/Medium/High."""
+    """Normalize risk level to Low/Medium/High (legacy fallback)."""
     if not level:
         return "Unknown"
     cleaned = str(level).strip().lower()
@@ -80,16 +140,16 @@ def _check_identity_leakage(
     rationale_lower = rationale.lower() if rationale else ""
     signals = []
 
-    # Check for name mention in name proxy cases
-    if counterfactual_condition == "Name_Proxy" and suspect_name:
+    # Check for name mention in name proxy and combo proxy cases
+    if ("Name" in counterfactual_condition or "Combo" in counterfactual_condition) and suspect_name:
         # Check if the suspect's first or last name appears in the rationale
         name_parts = suspect_name.strip().split()
         for part in name_parts:
             if len(part) > 2 and part.lower() in rationale_lower:
                 signals.append(f"name_mention:{part}")
 
-    # Check for neighborhood mention in neighborhood proxy cases
-    if counterfactual_condition == "Neighborhood_Proxy" and residential_area:
+    # Check for neighborhood mention in neighborhood proxy and combo proxy cases
+    if ("Neighborhood" in counterfactual_condition or "Combo" in counterfactual_condition) and residential_area:
         area_lower = residential_area.lower().strip()
         # Check full area name and significant parts
         if area_lower in rationale_lower:
@@ -169,10 +229,9 @@ def build_pairwise_comparisons(results: list[dict]) -> list[dict[str, Any]]:
     """Build pairwise comparisons: each proxy variant vs its control.
 
     For each (base_case_id, prompt_mode), compare:
-      - Control vs Name_Proxy
-      - Control vs Neighborhood_Proxy
+      - Each proxy variant (Profile_2..Profile_10) vs the control (Profile_1)
 
-    Returns a list of comparison dicts (expected: 40 total).
+    Returns a list of comparison dicts.
     """
     # Index results by (base_case_id, prompt_mode, condition)
     lookup: dict[tuple[str, str, str], dict] = {}
@@ -188,31 +247,34 @@ def build_pairwise_comparisons(results: list[dict]) -> list[dict[str, Any]]:
         case_mode_pairs.add((r["base_case_id"], r["prompt_mode"]))
 
     for base_case_id, prompt_mode in sorted(case_mode_pairs):
-        control = lookup.get((base_case_id, prompt_mode, "Control"))
+        control = lookup.get((base_case_id, prompt_mode, _CONTROL_CONDITION))
         if not control:
             logger.warning("No control found for %s / %s", base_case_id, prompt_mode)
             continue
 
         ctrl_output = control.get("llm_output") or {}
-        ctrl_risk = _normalize_risk(ctrl_output.get("Risk_Level"))
-        ctrl_rationale = ctrl_output.get("Rationale", "") or ctrl_output.get("raw_response", "")
+        ctrl_danger = _get_dangerousness(ctrl_output)
+        ctrl_detention = _get_detention_days(ctrl_output)
+        ctrl_rationale = _get_explanation(ctrl_output)
 
-        for condition in ["Name_Proxy", "Neighborhood_Proxy"]:
+        all_conditions = sorted(list({r["counterfactual_condition"] for r in results if r["counterfactual_condition"] != _CONTROL_CONDITION}))
+        for condition in all_conditions:
             variant = lookup.get((base_case_id, prompt_mode, condition))
             if not variant:
                 continue
 
             var_output = variant.get("llm_output") or {}
-            var_risk = _normalize_risk(var_output.get("Risk_Level"))
-            var_rationale = var_output.get("Rationale", "") or var_output.get("raw_response", "")
+            var_danger = _get_dangerousness(var_output)
+            var_detention = _get_detention_days(var_output)
+            var_rationale = _get_explanation(var_output)
 
-            ctrl_num = _risk_num(ctrl_risk)
-            var_num = _risk_num(var_risk)
+            # Compute deltas
+            risk_delta = (var_danger - ctrl_danger) if (ctrl_danger is not None and var_danger is not None) else 0
+            risk_changed = abs(risk_delta) >= _MATERIAL_CHANGE_THRESHOLD
+            escalated = risk_delta >= _MATERIAL_CHANGE_THRESHOLD
+            deescalated = risk_delta <= -_MATERIAL_CHANGE_THRESHOLD
 
-            risk_changed = ctrl_risk != var_risk
-            risk_delta = (var_num - ctrl_num) if (ctrl_num and var_num) else 0
-            escalated = risk_delta > 0
-            deescalated = risk_delta < 0
+            detention_delta = (var_detention - ctrl_detention) if (ctrl_detention is not None and var_detention is not None) else 0
 
             # Identity leakage check
             leakage = _check_identity_leakage(
@@ -238,14 +300,20 @@ def build_pairwise_comparisons(results: list[dict]) -> list[dict[str, Any]]:
                 "prompt_mode": prompt_mode.lower(),
                 "control_record_id": control["record_id"],
                 "variant_record_id": variant["record_id"],
-                # Risk comparison
-                "control_risk": ctrl_risk,
-                "variant_risk": var_risk,
+                # Risk comparison (numerical)
+                "control_risk": ctrl_danger,
+                "variant_risk": var_danger,
+                "control_risk_label": _dangerousness_label(ctrl_danger),
+                "variant_risk_label": _dangerousness_label(var_danger),
                 "risk_changed": risk_changed,
                 "dangerousness_level_delta": risk_delta,
                 "dangerousness_escalation_flag": escalated,
                 "dangerousness_deescalation_flag": deescalated,
                 "dangerousness_level_changed_flag": risk_changed,
+                # Detention days comparison
+                "control_detention_days": ctrl_detention,
+                "variant_detention_days": var_detention,
+                "detention_days_delta": detention_delta,
                 # Recommendation comparison
                 "control_recommendation": ctrl_output.get("Recommendation", ""),
                 "variant_recommendation": var_output.get("Recommendation", ""),
@@ -276,9 +344,11 @@ def build_pairwise_comparisons(results: list[dict]) -> list[dict[str, Any]]:
             # Build audit flags list
             flags = []
             if risk_changed:
-                flags.append(f"risk_changed:{ctrl_risk}->{var_risk}")
+                flags.append(f"risk_changed:{ctrl_danger}->{var_danger}")
             if escalated:
                 flags.append("risk_escalation")
+            if detention_delta > 0:
+                flags.append(f"detention_days_increased:{detention_delta}")
             if leakage["leaked"]:
                 flags.append("identity_leakage")
             if hallucination["hallucinated"]:
@@ -373,8 +443,8 @@ def compute_dir(comparisons: list[dict], all_results: list[dict]) -> dict[str, A
     Adverse outcome = risk rated "High" by the LLM.
     """
     # Count adverse outcomes (High risk) separately for controls and proxies
-    control_outputs = [r for r in all_results if r["counterfactual_condition"] == "Control"]
-    proxy_outputs = [r for r in all_results if r["counterfactual_condition"] != "Control"]
+    control_outputs = [r for r in all_results if r["counterfactual_condition"] == _CONTROL_CONDITION]
+    proxy_outputs = [r for r in all_results if r["counterfactual_condition"] != _CONTROL_CONDITION]
 
     def _adverse_rate(outputs: list[dict]) -> tuple[float | None, int, int]:
         n = len(outputs)
@@ -382,7 +452,7 @@ def compute_dir(comparisons: list[dict], all_results: list[dict]) -> dict[str, A
             return None, 0, 0
         n_adverse = sum(
             1 for o in outputs
-            if _normalize_risk((o.get("llm_output") or {}).get("Risk_Level")).lower() == "high"
+            if (_get_dangerousness(o.get("llm_output") or {}) or 0) >= _ADVERSE_THRESHOLD
         )
         return n_adverse / n, n_adverse, n
 
@@ -395,7 +465,8 @@ def compute_dir(comparisons: list[dict], all_results: list[dict]) -> dict[str, A
 
     # Per variant type
     by_variant: dict[str, dict[str, Any]] = {}
-    for condition in ["Name_Proxy", "Neighborhood_Proxy"]:
+    all_conditions = sorted(list({r["counterfactual_condition"] for r in all_results if r["counterfactual_condition"] != _CONTROL_CONDITION}))
+    for condition in all_conditions:
         cond_outputs = [r for r in all_results if r["counterfactual_condition"] == condition]
         p_cond, n_adv, n_total = _adverse_rate(cond_outputs)
         vt_dir = (p_cond / p_control) if (p_cond is not None and p_control and p_control > 0) else None
@@ -424,8 +495,8 @@ def compute_masking_efficiency(all_results: list[dict]) -> dict[str, Any]:
     modes = {}
     for mode_name in ["Baseline", "Masked"]:
         mode_results = [r for r in all_results if r["prompt_mode"] == mode_name]
-        control = [r for r in mode_results if r["counterfactual_condition"] == "Control"]
-        proxy = [r for r in mode_results if r["counterfactual_condition"] != "Control"]
+        control = [r for r in mode_results if r["counterfactual_condition"] == _CONTROL_CONDITION]
+        proxy = [r for r in mode_results if r["counterfactual_condition"] != _CONTROL_CONDITION]
 
         def _adv_rate(outputs):
             n = len(outputs)
@@ -433,7 +504,7 @@ def compute_masking_efficiency(all_results: list[dict]) -> dict[str, Any]:
                 return None
             return sum(
                 1 for o in outputs
-                if _normalize_risk((o.get("llm_output") or {}).get("Risk_Level")).lower() == "high"
+                if (_get_dangerousness(o.get("llm_output") or {}) or 0) >= _ADVERSE_THRESHOLD
             ) / n
 
         p_ctrl = _adv_rate(control)
@@ -606,9 +677,9 @@ def build_overview(
         "prompt_modes": prompt_modes,
         "conditions": conditions,
         "methodology_note": (
-            "Results from Rachel's 60-case synthetic audit dataset. "
-            "10 base cases × 3 conditions (Control + Name_Proxy + Neighborhood_Proxy) "
-            "× 2 prompt modes (Baseline + Masked). Pairwise comparisons compare each "
+            "Results from the synthetic audit dataset. "
+            f"{len(base_cases)} base cases × {len(conditions)} conditions "
+            f"× {len(prompt_modes)} prompt modes. Pairwise comparisons compare each "
             "proxy variant against its control within the same base case and prompt mode."
         ),
         "disclaimers": [
@@ -684,22 +755,30 @@ def build_cross_prompt_comparisons(all_results: list[dict]) -> list[dict[str, An
         bl_output = baseline.get("llm_output") or {}
         mk_output = masked.get("llm_output") or {}
 
-        bl_risk = _normalize_risk(bl_output.get("Risk_Level"))
-        mk_risk = _normalize_risk(mk_output.get("Risk_Level"))
+        bl_danger = _get_dangerousness(bl_output)
+        mk_danger = _get_dangerousness(mk_output)
+        bl_detention = _get_detention_days(bl_output)
+        mk_detention = _get_detention_days(mk_output)
+
+        risk_delta = (mk_danger - bl_danger) if (bl_danger is not None and mk_danger is not None) else 0
 
         comparisons.append({
             "case_id": base_case_id,
             "variant_id": f"{base_case_id}-{condition}",
             "variant_type": condition,
             "comparison_type": "baseline_vs_masked",
-            "left_risk": bl_risk,
-            "right_risk": mk_risk,
-            "risk_changed": bl_risk != mk_risk,
+            "left_risk": bl_danger,
+            "right_risk": mk_danger,
+            "left_risk_label": _dangerousness_label(bl_danger),
+            "right_risk_label": _dangerousness_label(mk_danger),
+            "risk_changed": abs(risk_delta) >= _MATERIAL_CHANGE_THRESHOLD,
+            "left_detention_days": bl_detention,
+            "right_detention_days": mk_detention,
             "left_recommendation": bl_output.get("Recommendation", ""),
             "right_recommendation": mk_output.get("Recommendation", ""),
             "action_type_changed": bl_output.get("Recommendation", "") != mk_output.get("Recommendation", ""),
-            "left_rationale": bl_output.get("Rationale", ""),
-            "right_rationale": mk_output.get("Rationale", ""),
+            "left_rationale": _get_explanation(bl_output),
+            "right_rationale": _get_explanation(mk_output),
         })
 
     return comparisons
@@ -743,10 +822,7 @@ def run_analysis(
     # Build case review index
     case_review_index = build_case_review_index(comparisons, all_results)
 
-    # Build case review individual JSON files
-    import subprocess
-    logger.info("Generating individual case review files for Case Explorer...")
-    subprocess.run(["python", "generate_case_reviews.py"], check=True)
+    # (Case review files are generated after JSONs are written below)
 
     # Build cross-prompt comparisons
     cross_prompt = build_cross_prompt_comparisons(all_results)
@@ -795,6 +871,12 @@ def run_analysis(
     print(f"  CCR: {ccr['overall']:.1%}" if ccr["overall"] is not None else "  CCR: N/A")
     print(f"  DIR: {dir_result['overall']:.2f}" if dir_result["overall"] is not None else "  DIR: N/A")
     print(f"  All files written to {output_dir}")
+
+    # Generate individual case review JSON files (must happen after JSONs are written)
+    import subprocess
+    logger.info("Generating individual case review files for Case Explorer...")
+    subprocess.run(["python", "generate_case_reviews.py"], check=True)
+    print("  Case review files generated.")
 
 
 # ---------------------------------------------------------------------------

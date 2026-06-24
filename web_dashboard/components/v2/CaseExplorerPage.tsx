@@ -137,7 +137,13 @@ function DiffText({ parts }: { parts: Array<{ text: string; changed: boolean }> 
   );
 }
 
-function getDangerColor(level?: string): string {
+function getDangerColor(level?: number | string): string {
+  if (typeof level === "number") {
+    if (level >= 1 && level <= 3) return "var(--v2-success)";
+    if (level >= 4 && level <= 6) return "var(--v2-warning)";
+    if (level >= 7 && level <= 10) return "var(--v2-danger)";
+    return "var(--v2-text-secondary)";
+  }
   switch (level) {
     case "low": return "var(--v2-success)";
     case "medium": return "var(--v2-warning)";
@@ -146,6 +152,12 @@ function getDangerColor(level?: string): string {
     case "insufficient_information": return "var(--v2-text-muted)";
     default: return "var(--v2-text-secondary)";
   }
+}
+
+function formatDangerLevel(level?: number | string): string {
+  if (level == null) return "N/A";
+  if (typeof level === "number") return `${level}/10`;
+  return String(level).replace(/_/g, " ");
 }
 
 /* ------------------------------------------------------------------ */
@@ -262,7 +274,7 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
   /* ---------- derived ---------- */
   const neutralDanger = loadedRecord?.neutral_output?.dangerousness_level;
   const variantDanger = loadedRecord?.variant_output?.dangerousness_level;
-  const dangerMismatch = neutralDanger && variantDanger && neutralDanger !== variantDanger;
+  const dangerMismatch = neutralDanger && variantDanger && String(neutralDanger) !== String(variantDanger);
 
   const variantLabel =
     loadedRecord?.variant_case?.variant_label ??
@@ -552,8 +564,16 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
                             const n = loadedRecord.neutral_output ?? {} as Record<string, unknown>;
                             const v = loadedRecord.variant_output ?? {} as Record<string, unknown>;
                             const fields: Array<{ label: string; key: string; format?: (val: unknown) => string }> = [
-                              { label: "Dangerousness Level", key: "dangerousness_level", format: (x) => String(x ?? "N/A").replace(/_/g, " ") },
+                              { label: "Dangerousness Level", key: "dangerousness_level", format: (x) => {
+                                if (x == null) return "N/A";
+                                if (typeof x === "number") return `${x}/10`;
+                                return String(x).replace(/_/g, " ");
+                              } },
                               { label: "Recommendation", key: "case_summary" },
+                              { label: "Detention Days", key: "recommended_detention_days", format: (x) => {
+                                if (x == null) return "N/A";
+                                return `${x} days`;
+                              } },
                             ];
                             return fields.map(({ label, key, format }) => {
                               const nVal = (n as Record<string, unknown>)[key];
@@ -603,14 +623,14 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
                       <div className="v2-case-explorer__column">
                         <h4 className="v2-case-explorer__column-title">Neutral Baseline</h4>
                         <div className="v2-case-explorer__reasoning-scroll" dir="auto" style={{ whiteSpace: "pre-wrap", lineHeight: 1.6, fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-secondary)", background: "var(--v2-bg-surface, hsl(220 15% 97%))", padding: "0.75rem", borderRadius: "6px", border: "1px solid var(--v2-border-subtle, hsl(220 15% 94%))" }}>
-                          {loadedRecord.neutral_output?.reasoning_text ?? "N/A"}
+                          {loadedRecord.neutral_output?.reasoning_text ?? (loadedRecord.neutral_output as Record<string, unknown>)?.Explanation as string ?? (loadedRecord.neutral_output as Record<string, unknown>)?.Rationale as string ?? "N/A"}
                         </div>
                       </div>
                       {/* Variant reasoning */}
                       <div className="v2-case-explorer__column">
                         <h4 className="v2-case-explorer__column-title">Variant: {variantLabel}</h4>
                         <div className="v2-case-explorer__reasoning-scroll" dir="auto" style={{ whiteSpace: "pre-wrap", lineHeight: 1.6, fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-secondary)", background: "var(--v2-bg-surface, hsl(220 15% 97%))", padding: "0.75rem", borderRadius: "6px", border: "1px solid var(--v2-border-subtle, hsl(220 15% 94%))" }}>
-                          {loadedRecord.variant_output?.reasoning_text ?? "N/A"}
+                          {loadedRecord.variant_output?.reasoning_text ?? (loadedRecord.variant_output as Record<string, unknown>)?.Explanation as string ?? (loadedRecord.variant_output as Record<string, unknown>)?.Rationale as string ?? "N/A"}
                         </div>
                       </div>
                     </div>
@@ -668,7 +688,7 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
                                   border: differsFromBaseline ? "1px solid var(--v2-danger)" : "none",
                                 }}
                               >
-                                {dangerLevel?.replace(/_/g, " ") ?? "N/A"}
+                                {typeof dangerLevel === "number" ? `${dangerLevel}/10` : (dangerLevel?.replace(/_/g, " ") ?? "N/A")}
                                 {differsFromBaseline ? <>{" "}<IconWarning /></> : ""}
                               </span>
                             </div>

@@ -28,6 +28,12 @@ const DANGER_ORDER: Record<string, number> = {
   very_high: 4,
 };
 
+function dangerOrdinal(level?: string | number): number {
+  if (typeof level === "number") return level;
+  if (typeof level === "string") return DANGER_ORDER[level] ?? -1;
+  return -1;
+}
+
 function getShiftDirection(
   neutralDangerousness?: string,
   variantDangerousness?: string,
@@ -38,16 +44,22 @@ function getShiftDirection(
     if (shiftDelta < 0) return "deescalation";
     return "unchanged";
   }
-  if (neutralDangerousness && variantDangerousness) {
-    const nOrd = DANGER_ORDER[neutralDangerousness] ?? -1;
-    const vOrd = DANGER_ORDER[variantDangerousness] ?? -1;
+  if (neutralDangerousness != null && variantDangerousness != null) {
+    const nOrd = dangerOrdinal(neutralDangerousness);
+    const vOrd = dangerOrdinal(variantDangerousness);
     if (vOrd > nOrd) return "escalation";
     if (vOrd < nOrd) return "deescalation";
   }
   return "unchanged";
 }
 
-function getDangerColor(level?: string): string {
+function getDangerColor(level?: string | number): string {
+  if (typeof level === "number") {
+    if (level >= 1 && level <= 3) return "var(--v2-success)";
+    if (level >= 4 && level <= 6) return "var(--v2-warning)";
+    if (level >= 7 && level <= 10) return "var(--v2-danger)";
+    return "var(--v2-text-secondary)";
+  }
   switch (level) {
     case "low": return "var(--v2-success)";
     case "medium": return "var(--v2-warning)";
@@ -58,8 +70,9 @@ function getDangerColor(level?: string): string {
   }
 }
 
-function formatDangerLevel(level?: string): string {
-  if (!level) return "—";
+function formatDangerLevel(level?: string | number): string {
+  if (level == null) return "—";
+  if (typeof level === "number") return `${level}/10`;
   return level.replace(/_/g, " ");
 }
 

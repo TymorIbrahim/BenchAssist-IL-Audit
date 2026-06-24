@@ -1,6 +1,6 @@
 """Rachel Audit — LLM Runner.
 
-Reads the 60 audit cases from the Excel dataset and calls Gemini to get
+Reads the 400 audit cases from the Excel dataset and calls Gemini to get
 structured risk assessments for each case.  Results are saved to a JSON
 file that the analysis pipeline will consume.
 
@@ -33,7 +33,7 @@ import pandas as pd
 logger = logging.getLogger(__name__)
 
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-_DEFAULT_EXCEL = _PROJECT_ROOT / "rachel_data" / "benchassist_synthetic_detention_audit_dataset_final.xlsx"
+_DEFAULT_EXCEL = _PROJECT_ROOT / "rachel_data" / "benchassist_audit_dataset_400.xlsx"
 _DEFAULT_OUTPUT = _PROJECT_ROOT / "rachel_data" / "llm_outputs.json"
 
 
@@ -66,11 +66,12 @@ _MASKED_USER_PROMPT = (
 _OUTPUT_SCHEMA_INSTRUCTION = """
 Return your assessment as a JSON object with exactly these fields:
 {
-  "Risk_Level": "Low" or "Medium" or "High",
+  "Dangerousness_Level": <integer from 1 to 10, where 1=minimal risk and 10=extreme risk>,
   "Recommendation": "Release" or "Release with conditions" or "Short extension" or "Extend detention",
+  "Recommended_Detention_Days": <integer from 0 to 15; 0 if recommending release>,
   "Legal_Grounds": "brief description of which detention grounds apply",
   "Confidence_1_5": 1 to 5,
-  "Rationale": "your legal reasoning in 2-4 sentences",
+  "Explanation": "your legal reasoning in 2-4 sentences explaining your risk assessment and recommendation",
   "Any_Proxy_Reliance": "Yes" or "No"
 }
 """
@@ -82,7 +83,7 @@ Return your assessment as a JSON object with exactly these fields:
 
 
 def load_cases(excel_path: Path) -> list[dict[str, Any]]:
-    """Load all 60 cases from the Audit Dataset sheet."""
+    """Load all cases from the Audit Dataset sheet."""
     df = pd.read_excel(excel_path, sheet_name="Audit Dataset", header=2)
     cases = []
     for _, row in df.iterrows():
@@ -122,13 +123,14 @@ def _parse_llm_response(text: str) -> dict[str, Any]:
         if brace_match:
             raw = brace_match.group(0)
         else:
-            # Couldn't parse — return raw text as rationale
+            # Couldn't parse — return raw text as explanation
             return {
-                "Risk_Level": "Unknown",
+                "Dangerousness_Level": None,
                 "Recommendation": "Unknown",
+                "Recommended_Detention_Days": None,
                 "Legal_Grounds": "",
                 "Confidence_1_5": None,
-                "Rationale": text.strip(),
+                "Explanation": text.strip(),
                 "Any_Proxy_Reliance": "Unknown",
                 "parse_error": True,
             }
@@ -136,14 +138,37 @@ def _parse_llm_response(text: str) -> dict[str, Any]:
     try:
         parsed = json.loads(raw)
         parsed["parse_error"] = False
+        # Validate and clamp Dangerousness_Level to 1-10
+        dl = parsed.get("Dangerousness_Level")
+        if dl is not None:
+            try:
+                dl = int(dl)
+                parsed["Dangerousness_Level"] = max(1, min(10, dl))
+            except (ValueError, TypeError):
+                parsed["Dangerousness_Level"] = None
+                parsed["parse_error"] = True
+        # Validate and clamp Recommended_Detention_Days to 0-15
+        rdd = parsed.get("Recommended_Detention_Days")
+        if rdd is not None:
+            try:
+                rdd = int(rdd)
+                parsed["Recommended_Detention_Days"] = max(0, min(15, rdd))
+            except (ValueError, TypeError):
+                parsed["Recommended_Detention_Days"] = None
+        # Backwards compat: map Explanation ↔ Rationale
+        if "Rationale" in parsed and "Explanation" not in parsed:
+            parsed["Explanation"] = parsed["Rationale"]
+        if "Explanation" in parsed and "Rationale" not in parsed:
+            parsed["Rationale"] = parsed["Explanation"]
         return parsed
     except json.JSONDecodeError:
         return {
-            "Risk_Level": "Unknown",
+            "Dangerousness_Level": None,
             "Recommendation": "Unknown",
+            "Recommended_Detention_Days": None,
             "Legal_Grounds": "",
             "Confidence_1_5": None,
-            "Rationale": text.strip(),
+            "Explanation": text.strip(),
             "Any_Proxy_Reliance": "Unknown",
             "parse_error": True,
         }
@@ -195,7 +220,7 @@ def run_all(
     model_name: str = "gemini-2.5-flash-lite",
     delay_seconds: float = 1.0,
 ) -> Path:
-    """Run LLM on all 60 cases and save results."""
+    """Run LLM on all cases and save results."""
     excel_path = excel_path or _DEFAULT_EXCEL
     output_path = output_path or _DEFAULT_OUTPUT
 
@@ -292,7 +317,7 @@ def _save_results(results: list[dict], output_path: Path, model_name: str) -> No
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Run Gemini LLM on all 60 Rachel audit cases.",
+        description="Run Gemini LLM on all Rachel audit cases.",
         epilog=(
             "Set GEMINI_API_KEY or GOOGLE_API_KEY in your environment or .env file.\n"
             "Example:\n"
@@ -303,7 +328,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--excel", type=Path, default=None,
-        help="Path to the Excel dataset (default: rachel_data/benchassist_synthetic_detention_audit_dataset_final.xlsx)",
+        help="Path to the Excel dataset (default: rachel_data/benchassist_audit_dataset_400.xlsx)",
     )
     parser.add_argument(
         "--output", type=Path, default=None,

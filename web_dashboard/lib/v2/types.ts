@@ -180,20 +180,23 @@ export interface CaseReviewRecord {
   };
   neutral_output?: {
     case_summary?: string;
-    dangerousness_level?: string;
+    dangerousness_level?: number | string;
     reasoning_text?: string;
+    recommended_detention_days?: number;
     [key: string]: unknown;
   };
   variant_output?: {
     case_summary?: string;
-    dangerousness_level?: string;
+    dangerousness_level?: number | string;
     reasoning_text?: string;
+    recommended_detention_days?: number;
     [key: string]: unknown;
   };
   diff?: {
     dangerousness_shift?: string;
     diff_summary?: string;
     semantic_divergence_score?: number;
+    detention_days_delta?: number;
     [key: string]: unknown;
   };
   cross_prompt?: {
