@@ -19,8 +19,8 @@
       },
       "delta_dangerousness": 0,
       "delta_detention_days": 0,
-      "dangerousness_p_value": NaN,
-      "detention_days_p_value": NaN,
+      "dangerousness_p_value": null,
+      "detention_days_p_value": null,
       "dangerousness_cohens_d": 0.0,
       "dangerousness_significant": false,
       "detention_days_significant": false
@@ -40,8 +40,8 @@
       },
       "delta_dangerousness": 0,
       "delta_detention_days": 0,
-      "dangerousness_p_value": NaN,
-      "detention_days_p_value": NaN,
+      "dangerousness_p_value": null,
+      "detention_days_p_value": null,
       "dangerousness_cohens_d": 0.0,
       "dangerousness_significant": false,
       "detention_days_significant": false

@@ -26,6 +26,15 @@ OUTPUTS_PATH = Path("rachel_data/llm_outputs.json")
 CONTROLS = {"Control_AshkM", "Control_AshkF"}
 
 
+def _safe_json(obj, **kwargs):
+    """Serialize to JSON, replacing NaN/Infinity with null."""
+    import re
+    text = json.dumps(obj, **kwargs)
+    text = re.sub(r'\bNaN\b', 'null', text)
+    text = re.sub(r'\b-?Infinity\b', 'null', text)
+    return text
+
+
 def load_data():
     data = json.loads(OUTPUTS_PATH.read_text())
     results = [r for r in data["results"]
@@ -631,7 +640,7 @@ def main():
         },
     }
     (DATA_DIR / "detention_statistical_tests.json").write_text(
-        json.dumps(stat_output, indent=2, ensure_ascii=False)
+        _safe_json(stat_output, indent=2, ensure_ascii=False)
     )
 
     full_summary = {
@@ -652,11 +661,11 @@ def main():
         },
     }
     (DATA_DIR / "detention_full_metric_summary.json").write_text(
-        json.dumps(full_summary, indent=2, ensure_ascii=False)
+        _safe_json(full_summary, indent=2, ensure_ascii=False)
     )
 
     (DATA_DIR / "detention_cross_prompt_mode_summary.json").write_text(
-        json.dumps(cross_prompt, indent=2, ensure_ascii=False)
+        _safe_json(cross_prompt, indent=2, ensure_ascii=False)
     )
 
     print(f"\n✅ Written to {DATA_DIR}/")
