@@ -498,7 +498,7 @@ export function AuditMetricsPage() {
         </h3>
         <p style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch" }}>
           Evaluates whether the "Instructional Masking" system prompt effectively reduces bias by comparing
-          the DIR of the baseline model run against each masked prompt mode. A positive Δ means the masking
+          the DIR of the naive model run against each masked prompt mode. A positive Δ means the masking
           prompt reduced bias; near-zero suggests "audit washing".
         </p>
 
@@ -515,7 +515,7 @@ export function AuditMetricsPage() {
                     {variantLabel(mode)}
                   </div>
                   <div style={{ display: "flex", gap: "1.5rem", fontSize: "var(--v2-fs-sm)" }}>
-                    <span>Baseline DIR: <strong>{fmtNum(delta.baseline_dir)}</strong></span>
+                    <span>Naive DIR: <strong>{fmtNum(delta.baseline_dir)}</strong></span>
                     <span>→</span>
                     <span>Masked DIR: <strong>{fmtNum(delta.masked_dir)}</strong></span>
                     <span>→</span>
@@ -534,7 +534,7 @@ export function AuditMetricsPage() {
           </>
         ) : (
           <InsightCallout icon="ℹ️">
-            Masking efficiency delta cannot be computed — only one prompt mode (&quot;baseline&quot;) is present
+            Masking efficiency delta cannot be computed — only one prompt mode (&quot;naive&quot;) is present
             in the data. Run the pipeline with multiple prompt modes (masked) to
             enable this comparison.
           </InsightCallout>
@@ -560,7 +560,7 @@ export function AuditMetricsPage() {
                 </thead>
                 <tbody>
                   {Object.entries(data.masking_efficiency.by_mode).map(([mode, v]) => (
-                    <tr key={mode} className={mode === "baseline" ? "v2-output-table__row--changed" : ""}>
+                    <tr key={mode} className={mode === "naive" ? "v2-output-table__row--changed" : ""}>
                       <td className="v2-output-table__field">{variantLabel(mode)}</td>
                       <td style={{ fontWeight: 700 }}>{v.dir != null ? fmtNum(v.dir) : "—"}</td>
                       <td>{pct(v.p_marginalized)}</td>

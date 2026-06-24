@@ -19,17 +19,17 @@ interface PromptMitigationPageProps {
 }
 
 const MODE_COLORS: Record<string, string> = {
-  baseline: "#94a3b8",
+  naive: "#94a3b8",
   masked: "#10b981",
 };
 
 const MODE_DESCRIPTIONS: Record<string, string> = {
-  baseline: "Neutral prompt. The model processes the case facts and answers based on its default priors.",
+  naive: "Naive judge prompt. The model processes the case facts and answers based on its default priors.",
   masked: "Prompt includes explicit instructions to avoid reliance on demographic identity, proxy cues, or stereotypes.",
 };
 
 const MODE_ICONS: Record<string, React.ReactNode> = {
-  baseline: <IconDocument />,
+  naive: <IconDocument />,
   masked: <IconScale />,
 };
 
@@ -40,7 +40,7 @@ function getModeColor(mode: string): string {
 export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
   const metrics = computeHeadlineMetrics(bundle);
   const { perModeMetrics } = metrics;
-  const modeEntries = Object.entries(perModeMetrics).filter(([key]) => key === "baseline" || key === "masked");
+  const modeEntries = Object.entries(perModeMetrics).filter(([key]) => key === "naive" || key === "masked");
 
   /* ---- Total instability counts ---- */
   const totalInstability = useMemo(() => {
@@ -60,14 +60,14 @@ export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
 
   /* ---- Verdict computation ---- */
   const verdict = useMemo(() => {
-    const baselineRate = perModeMetrics["baseline"]?.flaggedRate ?? 0;
-    const otherModes = modeEntries.filter(([m]) => m !== "baseline");
+    const baselineRate = perModeMetrics["naive"]?.flaggedRate ?? 0;
+    const otherModes = modeEntries.filter(([m]) => m !== "naive");
 
     if (otherModes.length === 0) {
       return {
         type: "neutral" as const,
         icon: "—",
-        text: "Only baseline prompt mode is available — no mitigation comparison possible.",
+        text: "Only naive prompt mode is available — no mitigation comparison possible.",
         cssClass: "callout callout-info",
       };
     }
@@ -80,7 +80,7 @@ export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
       return {
         type: "neutral" as const,
         icon: "—",
-        text: "Mitigation prompts did not meaningfully change flagged rates compared to baseline.",
+        text: "Mitigation prompts did not meaningfully change flagged rates compared to naive.",
         cssClass: "callout callout-info",
       };
     }
@@ -88,7 +88,7 @@ export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
       return {
         type: "positive" as const,
         icon: "✓",
-        text: "Mitigation prompts reduced flagged rates compared to baseline. Strategies appear to reduce differential treatment.",
+        text: "Mitigation prompts reduced flagged rates compared to naive. Strategies appear to reduce differential treatment.",
         cssClass: "v2-callout v2-callout--success",
       };
     }
@@ -96,14 +96,14 @@ export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
       return {
         type: "negative" as const,
         icon: <IconWarning />,
-        text: "Mitigation prompts increased flagged rates compared to baseline — the mitigation strategies may have introduced overcorrection or new instabilities. Further investigation recommended.",
+        text: "Mitigation prompts increased flagged rates compared to naive — the mitigation strategies may have introduced overcorrection or new instabilities. Further investigation recommended.",
         cssClass: "v2-callout v2-callout--danger",
       };
     }
     return {
       type: "mixed" as const,
       icon: "◑",
-      text: "Mixed results: some mitigation strategies reduced flagged rates while others increased them. Neither approach consistently outperformed baseline.",
+      text: "Mixed results: some mitigation strategies reduced flagged rates while others increased them. Neither approach consistently outperformed naive.",
       cssClass: "v2-callout v2-callout--warning",
     };
   }, [perModeMetrics, modeEntries]);

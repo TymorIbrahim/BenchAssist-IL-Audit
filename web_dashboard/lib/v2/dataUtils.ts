@@ -66,7 +66,7 @@ function normalizePairwise(row: Record<string, unknown>): PairwiseComparison {
     variant_id: str(row.variant_id),
     variant_type: str(row.variant_type),
     protected_attribute_tested: str(row.protected_attribute_tested),
-    prompt_mode: str(row.prompt_mode || "baseline"),
+    prompt_mode: str(row.prompt_mode || "naive"),
     schema_version: str(row.schema_version),
     analysis_bucket: row.analysis_bucket as string | null,
     dangerousness_level_delta: num(row.dangerousness_level_delta),
@@ -175,7 +175,7 @@ function buildGroupSummaryFromPairwise(rows: PairwiseComparison[]): GroupSummary
     const deltaSum = items.reduce((s, r) => s + (r.dangerousness_level_delta || 0), 0);
     return {
       variant_type,
-      prompt_mode: prompt_mode || "baseline",
+      prompt_mode: prompt_mode || "naive",
       n_comparisons: items.length,
       flagged_rate: items.length > 0 ? flaggedCount / items.length : 0,
       mean_dangerousness_delta: items.length > 0 ? deltaSum / items.length : 0,
@@ -194,7 +194,7 @@ function buildGroupSummaryFromPairwise(rows: PairwiseComparison[]): GroupSummary
 export function groupByPromptMode<T extends { prompt_mode: string }>(rows: T[]): Record<string, T[]> {
   const result: Record<string, T[]> = {};
   for (const row of rows) {
-    const key = row.prompt_mode || "baseline";
+    const key = row.prompt_mode || "naive";
     (result[key] ??= []).push(row);
   }
   return result;
@@ -323,7 +323,7 @@ export interface HeadlineMetrics {
 export function computeHeadlineMetrics(bundle: DashboardBundle): HeadlineMetrics {
   const { overview, pairwise, flagged } = bundle;
 
-  const totalBaseCases = num(overview.n_synthetic_counterfactual_rows) || 10;
+  const totalBaseCases = num(overview.n_synthetic_counterfactual_rows) || 21;
   const totalVariants = num(overview.n_outputs_total) || pairwise.length;
   const totalComparisons = num(overview.n_pairwise_comparisons_all_modes) || pairwise.length;
   const baselineComparisons = num(overview.n_pairwise_comparisons_baseline) || num(overview.n_pairwise_comparisons) || 0;
@@ -419,7 +419,7 @@ const VARIANT_DISPLAY_LABELS: Record<string, string> = {
   skeptical_police_framing: "Skeptical Police Framing",
   defense_framing: "Defense Framing",
   /* Prompt modes */
-  baseline: "Baseline",
+  naive: "Naive",
   masked: "Masked",
   /* Rachel Pretrial Detention — Profile Variants */
   Profile_1: "Control (Mizrahi Male)",

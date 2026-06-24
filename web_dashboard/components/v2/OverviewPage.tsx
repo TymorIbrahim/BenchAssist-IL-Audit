@@ -40,24 +40,24 @@ interface OverviewPageProps {
 const PROCESS_STEPS: { icon: React.ReactNode; title: string; detail: string; dynamicTitle?: boolean }[] = [
   {
     icon: <IconClipboard />,
-    title: "10 Base Cases",
+    title: "21 Base Cases",
     dynamicTitle: true,
-    detail: "Synthetic pretrial detention scenarios covering a range of criminal offense types and case circumstances in the Israeli legal context",
+    detail: "10 original + 5 high-severity + 3 ambiguous + 3 validation scenarios covering a range of criminal offense types and evidence strengths",
   },
   {
     icon: <IconCycle />,
-    title: "10 Demographic Profiles",
-    detail: "Each case tested as 1 control (neutral) alongside 9 proxy variant profiles with name and address changes reflecting different demographic backgrounds",
+    title: "13 Demographic Profiles",
+    detail: "Each case tested as 1 control (neutral) alongside 12 proxy variant profiles with name, residential address, and demographic signals reflecting different demographic backgrounds",
   },
   {
     icon: <IconRobot />,
-    title: "2 Prompt Modes × 400 Runs",
-    detail: "Every case assessed under Baseline and Masked (instructional masking) prompt strategies — 400 total LLM outputs",
+    title: "2 Prompt Modes × 746 Runs",
+    detail: "Every case assessed under Naive and Masked (instructional masking) prompt strategies — 746 total LLM outputs",
   },
   {
     icon: <IconScale />,
-    title: "180 Pairwise Comparisons",
-    detail: "Each of 10 base cases × 9 variant profiles × 2 prompt modes — flagging any shifts in risk level, identity leakage, or hallucination",
+    title: "504 Pairwise Comparisons",
+    detail: "Each of 21 base cases × 12 variant profiles × 2 prompt modes — flagging any shifts in risk level, identity leakage, or hallucination",
   },
   {
     icon: <IconSearch />,
@@ -99,10 +99,10 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
 
   /* ── Per-variant flagging rates for chart ── */
   const variantBars = useMemo(() => {
-    const baselineRows = bundle.groupSummary.filter(
-      (g) => g.prompt_mode === "baseline" && !g.variant_type.startsWith("address_"),
+    const naiveRows = bundle.groupSummary.filter(
+      (g) => g.prompt_mode === "naive" && !g.variant_type.startsWith("address_"),
     );
-    return baselineRows
+    return naiveRows
       .map((g) => ({
         label: formatVariantLabel(g.variant_type),
         rate: g.flagged_rate,
@@ -117,7 +117,7 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
   /* ── Real flagged examples ── */
   const featuredExamples = useMemo(() => {
     const flaggedIdx = (bundle.caseReviewIndex || []).filter(
-      (r) => r.is_flagged && r.prompt_mode === "baseline" && r.analysis_bucket === "strict_demographic",
+      (r) => r.is_flagged && r.prompt_mode === "naive" && r.analysis_bucket === "strict_demographic",
     );
     return flaggedIdx.slice(0, 3);
   }, [bundle.caseReviewIndex]);
@@ -125,7 +125,7 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
   /* ── Prompt mode cards ── */
   const promptModes = useMemo(() => {
     const PROMPT_MODES = [
-      { key: "baseline", label: "Baseline", desc: "No explicit anti-bias instruction" },
+      { key: "naive", label: "Naive", desc: "No explicit anti-bias instruction" },
       { key: "masked", label: "Masked", desc: "Explicitly instructed to ignore demographic cues" },
     ];
     return PROMPT_MODES.map(({ key, label, desc }) => {
@@ -153,7 +153,7 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
           <h1 className="overview-hero__title">BenchAssist-IL Pretrial Detention Audit</h1>
           <p className="overview-hero__subtitle">
             Systematic fairness screening of LLM-generated risk assessments for Israeli
-            pretrial detention hearings — 10 cases × 10 profiles × 2 prompt modes
+            pretrial detention hearings — 21 cases × 13 profiles × 2 prompt modes
           </p>
         </div>
         <div className="overview-hero__screening-ring">
@@ -199,7 +199,7 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
         </div>
         <div className="overview-stat">
           <span className="overview-stat__value overview-stat__value--warn">{formatCount(metrics.baselineFlagged)}</span>
-          <span className="overview-stat__label">Flagged (Baseline)</span>
+          <span className="overview-stat__label">Flagged (Naive)</span>
         </div>
         <div className="overview-stat">
           <span className="overview-stat__value overview-stat__value--info">{formatCount(crossPromptInstability)}</span>
@@ -238,7 +238,7 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
       <section className="overview-section">
         <h2 className="overview-section__title">Flagging Rate by Variant</h2>
         <p className="overview-section__subtitle">
-          Baseline prompt mode — strict demographic comparisons only
+          Naive prompt mode — strict demographic comparisons only
         </p>
         <div className="overview-chart">
           {variantBars.map((bar) => (
@@ -301,7 +301,7 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
           {promptModes.map((m) => (
             <div
               key={m.key}
-              className={`overview-mode ${m.key === "baseline" ? "overview-mode--primary" : ""}`}
+              className={`overview-mode ${m.key === "naive" ? "overview-mode--primary" : ""}`}
             >
               <h3 className="overview-mode__title">{m.label}</h3>
               <p className="overview-mode__desc">{m.desc}</p>
