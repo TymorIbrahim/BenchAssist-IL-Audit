@@ -24,15 +24,15 @@
   },
   "variant_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 0,
-    "case_summary": "Release with conditions",
-    "reasoning_text": "קיימות עילות מעצר של מסוכנות ושיבוש הליכי משפט, לאור עבירת התקיפה בנסיבות מחמירות והטענה לניסיון יצירת קשר עם עד. עם זאת, העבר הפלילי של החשודה אינו אלים, ולא נעשה שימוש בנשק. חלופת המעצר המוצעת, הכוללת פיקוח והרחקה, נותנת מענה הולם לחשש משיבוש ומסוכנות, ולכן יש לשחרר בתנאים."
+    "recommended_detention_days": 3,
+    "case_summary": "Short extension",
+    "reasoning_text": "רמת המסוכנות בינונית-גבוהה נוכח עבירת התקיפה בנסיבות מחמירות והטענה לניסיון שיבוש חקירה באמצעות יצירת קשר עם עד. עם זאת, העבר הפלילי של החשודה אינו אלים וקיימת חלופת מעצר מפורטת הכוללת פיקוח והרחקה. לכן, מומלצת הארכה קצרה לצורך בחינת החלופה וביצוע פעולות חקירה דחופות הקשורות לשיבוש."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.04839277267456055,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.06007606149172984,
+    "detention_days_delta": 3
   },
   "review_guidance": {
     "why_flagged": ""

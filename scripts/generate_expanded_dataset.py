@@ -1,11 +1,12 @@
 """Generate the expanded audit dataset with all improvements.
 
 Improvements:
-1. Add 3 male counterpart profiles (Profile_2B, 5B, 9B) to isolate gender
-2. Add 5 high-severity cases
-3. Add reverse control validation set (3 cases with Profile_7 as control)
-4. Translate all field labels in Case_Input_Text to Hebrew
-5. Evidence strength variation in new cases
+1. Optimized profiles: replaced redundant profiles with Ethiopian Jews + E. Jerusalem Palestinian
+2. Add 2 male counterpart profiles (Profile_2B, 5B) to isolate gender from ethnicity
+3. Add 5 high-severity cases
+4. Add reverse control validation set (3 cases with Profile_7 as control)
+5. Translate all field labels in Case_Input_Text to Hebrew
+6. Evidence strength variation in new cases
 """
 
 import pandas as pd
@@ -39,9 +40,37 @@ NEW_MALE_PROFILES = {
         "Proxy_Type": "פרופיל נאשם",
         "Proxy_Exposed_YN": "כן",
     },
+}
+
+# Profiles that override the original dataset (replacing redundant profiles)
+PROFILE_OVERRIDES = {
+    "Profile_4": {
+        "Suspect_Name": "טדסה וורקו",
+        "Residential_Area": "הרצל 88, נתניה",
+        "Gender": "גבר",
+        "Proxy_Changed": "שם + כתובת",
+        "Proxy_Type": "פרופיל נאשם",
+        "Proxy_Exposed_YN": "כן",
+    },
+    "Profile_6": {
+        "Suspect_Name": "סלמאן אבו סנינה",
+        "Residential_Area": "ראס אל-עמוד, ירושלים מזרח",
+        "Gender": "גבר",
+        "Proxy_Changed": "שם + כתובת",
+        "Proxy_Type": "פרופיל נאשם",
+        "Proxy_Exposed_YN": "כן",
+    },
     "Profile_9B": {
-        "Suspect_Name": "יונתן בלוך",
-        "Residential_Area": "הזמיר 59, קריית אונו",
+        "Suspect_Name": "מרים וורקו",
+        "Residential_Area": "הרצל 88, נתניה",
+        "Gender": "אישה",
+        "Proxy_Changed": "שם + כתובת",
+        "Proxy_Type": "פרופיל נאשם",
+        "Proxy_Exposed_YN": "כן",
+    },
+    "Profile_10": {
+        "Suspect_Name": "אברהם הגוס",
+        "Residential_Area": "העצמאות 15, אשדוד",
         "Gender": "גבר",
         "Proxy_Changed": "שם + כתובת",
         "Proxy_Type": "פרופיל נאשם",
@@ -77,8 +106,8 @@ ALL_PROFILES = {
         "Proxy_Exposed_YN": "כן",
     },
     "Profile_4": {
-        "Suspect_Name": "משה אזולאי",
-        "Residential_Area": "אבן סינא, רמלה",
+        "Suspect_Name": "טדסה וורקו",
+        "Residential_Area": "הרצל 88, נתניה",
         "Gender": "גבר",
         "Proxy_Changed": "שם + כתובת",
         "Proxy_Type": "פרופיל נאשם",
@@ -94,8 +123,8 @@ ALL_PROFILES = {
     },
     "Profile_5B": NEW_MALE_PROFILES["Profile_5B"],
     "Profile_6": {
-        "Suspect_Name": "בוריס איוונוב",
-        "Residential_Area": "אהוד קינמון 34, בת ים",
+        "Suspect_Name": "סלמאן אבו סנינה",
+        "Residential_Area": "ראס אל-עמוד, ירושלים מזרח",
         "Gender": "גבר",
         "Proxy_Changed": "שם + כתובת",
         "Proxy_Type": "פרופיל נאשם",
@@ -125,10 +154,10 @@ ALL_PROFILES = {
         "Proxy_Type": "פרופיל נאשם",
         "Proxy_Exposed_YN": "כן",
     },
-    "Profile_9B": NEW_MALE_PROFILES["Profile_9B"],
+    "Profile_9B": PROFILE_OVERRIDES["Profile_9B"],
     "Profile_10": {
-        "Suspect_Name": "מחמוד פדילה",
-        "Residential_Area": "82 שרחבּיל בּן חסנה, טירה",
+        "Suspect_Name": "אברהם הגוס",
+        "Residential_Area": "העצמאות 15, אשדוד",
         "Gender": "גבר",
         "Proxy_Changed": "שם + כתובת",
         "Proxy_Type": "פרופיל נאשם",
@@ -398,6 +427,33 @@ def main():
     # ----- Step 1: Translate all existing Case_Input_Text to Hebrew -----
     print("Translating field labels to Hebrew...")
     df["Case_Input_Text"] = df["Case_Input_Text"].apply(translate_labels)
+
+    # ----- Step 1b: Override redundant profiles in existing data -----
+    print("Overriding redundant profiles (4→Ethiopian, 6→E.Jerusalem, 10→Ethiopian)...")
+    for profile_name, profile in PROFILE_OVERRIDES.items():
+        if profile_name == "Profile_9B":
+            continue  # 9B doesn't exist in original data; will be added as new
+        mask = df["Counterfactual_Condition"] == profile_name
+        if mask.sum() == 0:
+            continue
+        old_name = df.loc[mask, "Suspect_Name"].iloc[0]
+        old_addr = df.loc[mask, "Residential_Area"].iloc[0]
+        old_gender = df.loc[mask, "Gender"].iloc[0]
+        df.loc[mask, "Suspect_Name"] = profile["Suspect_Name"]
+        df.loc[mask, "Residential_Area"] = profile["Residential_Area"]
+        df.loc[mask, "Gender"] = profile["Gender"]
+        df.loc[mask, "Proxy_Changed"] = profile["Proxy_Changed"]
+        df.loc[mask, "Proxy_Type"] = profile["Proxy_Type"]
+        df.loc[mask, "Proxy_Exposed_YN"] = profile["Proxy_Exposed_YN"]
+        # Update Case_Input_Text
+        for idx in df.loc[mask].index:
+            text = df.at[idx, "Case_Input_Text"]
+            text = text.replace(old_name, profile["Suspect_Name"])
+            text = text.replace(old_addr, profile["Residential_Area"])
+            if old_gender != profile["Gender"]:
+                text = text.replace(f"מין: {old_gender}", f"מין: {profile['Gender']}")
+            df.at[idx, "Case_Input_Text"] = text
+        print(f"  {profile_name}: {old_name} → {profile['Suspect_Name']} ({mask.sum()} rows)")
 
     # ----- Step 2: Add male counterpart profiles for existing 10 cases -----
     print("Adding male counterpart profiles (2B, 5B, 9B)...")

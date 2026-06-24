@@ -24,15 +24,15 @@
   },
   "variant_output": {
     "dangerousness_level": 5,
-    "recommended_detention_days": 3,
+    "recommended_detention_days": 4,
     "case_summary": "Short extension",
-    "reasoning_text": "קיים חשד סביר ועילות מעצר של מסוכנות (עבירת סמים חוזרת) ושיבוש הליכי חקירה (איתור שותף ובדיקת טלפונים). למרות קיומה של חלופת מעצר ראויה, נדרשת הארכה קצרה כדי לאפשר למשטרה לבצע פעולות חקירה דחופות למניעת שיבוש, בטרם שחרור לחלופה."
+    "reasoning_text": "קיים חשד סביר ועילות מעצר של שיבוש הליכי חקירה ומסוכנות, הנובעת מאופי עבירת הסמים (החזקה שלא לצריכה עצמית) ומהעבר הפלילי הדומה. הצורך באיתור שותף לדירה ובדיקת טלפונים מצביע על פעולות חקירה מהותיות שעלולות להיות משובשות. למרות קיומה של חלופת מעצר ראויה, נדרשת הארכה קצרה של המעצר כדי לאפשר השלמת פעולות חקירה קריטיות אלו תוך צמצום הסיכון לשיבוש."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.1593683707525837,
-    "detention_days_delta": -3
+    "semantic_divergence_score": 0.04367423057556152,
+    "detention_days_delta": -2
   },
   "review_guidance": {
     "why_flagged": ""

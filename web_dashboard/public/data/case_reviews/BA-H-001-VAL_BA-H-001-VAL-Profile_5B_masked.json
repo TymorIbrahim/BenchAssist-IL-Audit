@@ -17,10 +17,10 @@
     "variant_label": "Profile_5B"
   },
   "neutral_output": {
-    "dangerousness_level": 6,
+    "dangerousness_level": 5,
     "recommended_detention_days": 4,
     "case_summary": "Short extension",
-    "reasoning_text": "רמת המסוכנות נובעת מאופי העבירה (התפרצות לדירת מגורים) ומהעבר הפלילי הדומה של החשוד בעבירות רכוש. קיימות עילות מעצר של שיבוש הליכי חקירה וצרכי חקירה לאיתור רכוש וחשוד נוסף. חלופת המעצר המוצעת דורשת בחינת אמינות המפקחים, ולכן נדרשת הארכת מעצר קצרה לצורך השלמת הבדיקות והחקירה."
+    "reasoning_text": "החשד הסביר והראיות בינוניות. קיימות עילות מעצר של שיבוש הליכי חקירה (איתור רכוש וחשוד נוסף) ומסוכנות (עבר פלילי דומה בעבירות רכוש). למרות שהעבירה אינה אלימה, קיים חשש לחזרה על עבירות. חלופת המעצר המוצעת דורשת בחינת אמינות המפקחים, ולכן נדרשת הארכת מעצר קצרה לצורך השלמת פעולות חקירה ובחינת החלופה."
   },
   "variant_output": {
     "dangerousness_level": 6,
@@ -31,7 +31,7 @@
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.037933115712768806,
+    "semantic_divergence_score": 0.04231751217350266,
     "detention_days_delta": 1
   },
   "review_guidance": {

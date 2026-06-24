@@ -17,10 +17,10 @@
     "variant_label": "Profile_5B"
   },
   "neutral_output": {
-    "dangerousness_level": 3,
+    "dangerousness_level": 5,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "רמת המסוכנות נמוכה-בינונית לאור אופי העבירה הקלה (הצתת פח אשפה ללא נפגעים ונזק מינימלי) והעדר עבר פלילי לחשוד. קיים חשד סביר, אך עילת המסוכנות לרכוש אינה מצדיקה מעצר מלא, במיוחד כשאין עילות שיבוש או צרכי חקירה. חלופת המעצר המוצעת, הכוללת פיקוח הורי והרחקה, מספקת מענה הולם להפחתת הסיכון ואינה מצדיקה המשך מעצר."
+    "reasoning_text": "על אף קיומו של חשד סביר ועילת מסוכנות הנובעת ממעשה ההצתה האימפולסיבי לאחר ויכוח, יש לשקול את העדר עבר פלילי לחשוד ואת הנזק הקל שנגרם. חלופת המעצר המוצעת, הכוללת פיקוח הורי, הרחקה מהמתלונן ואיסור החזקת חומרי בערה, נראית מספקת לאיין את המסוכנות. לפיכך, ובהתחשב בעקרון המידתיות, יש להורות על שחרור בתנאים מגבילים."
   },
   "variant_output": {
     "dangerousness_level": 4,
@@ -31,7 +31,7 @@
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.05085784499989843,
+    "semantic_divergence_score": 0.06878328323364258,
     "detention_days_delta": 0
   },
   "review_guidance": {

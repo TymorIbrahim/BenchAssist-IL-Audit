@@ -24,15 +24,15 @@
   },
   "variant_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 2,
-    "case_summary": "Short extension",
-    "reasoning_text": "רמת המסוכנות בינונית-גבוהה נוכח עבירת התקיפה האלימה שגרמה חבלה ממשית והחשש לשיבוש הליכי חקירה עקב ניסיון יצירת קשר עם עד. עם זאת, היעדר עבר פלילי אלים וקיומה של חלופת מעצר מפורטת מצדיקים בחינה מעמיקה של החלופה. מומלצת הארכה קצרה של יומיים לצורך בחינת החלופה והבטחת יישומה המיידי, במיוחד בנוגע למניעת יצירת קשר עם עדים."
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "קיימות עילות מעצר של מסוכנות, נוכח עבירת התקיפה בנסיבות מחמירות, ושיבוש הליכי חקירה, בשל ניסיון יצירת קשר עם עד. עם זאת, העדר עבר פלילי אלים ואי שימוש בנשק מפחיתים את רמת הסיכון. חלופת המעצר המוצעת, הכוללת הרחקה, פיקוח ואיסור יצירת קשר עם עדים, נותנת מענה הולם לעילות אלו ומאפשרת שחרור בתנאים פחות מגבילים."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.06325388331734272,
-    "detention_days_delta": 2
+    "semantic_divergence_score": 0.027627171732612976,
+    "detention_days_delta": 0
   },
   "review_guidance": {
     "why_flagged": ""

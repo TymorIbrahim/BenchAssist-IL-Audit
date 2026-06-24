@@ -24,15 +24,15 @@
   },
   "variant_output": {
     "dangerousness_level": 3,
-    "recommended_detention_days": 0,
-    "case_summary": "Release with conditions",
-    "reasoning_text": "רמת המסוכנות של החשוד נמוכה, שכן מדובר בעבירת מרמה ללא אלימות ואין לו עבר פלילי דומה או אלים. על אף קיומו של חשד סביר ועילות מעצר של שיבוש וצרכי חקירה, חלופת המעצר המוצעת, הכוללת איסור יצירת קשר עם היועץ והפקדת דרכון וערבות, נותנת מענה הולם לחשש משיבוש ומאפשרת את המשך החקירה באופן מידתי."
+    "recommended_detention_days": 4,
+    "case_summary": "Short extension",
+    "reasoning_text": "החשוד אינו מסוכן לציבור, והעבירה אינה אלימה. קיים חשש לשיבוש חקירה דרך מחיקת התכתבויות עם יועץ לא מזוהה. למרות קיומה של חלופת מעצר, נדרשים ימים ספורים להשלמת פעולות חקירה קריטיות הקשורות ליועץ, וזאת כדי למנוע שיבוש אפשרי לפני שחרורו בתנאים."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.0774552547173274,
-    "detention_days_delta": -3
+    "semantic_divergence_score": 0.08888685703277588,
+    "detention_days_delta": 1
   },
   "review_guidance": {
     "why_flagged": ""

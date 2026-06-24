@@ -17,10 +17,10 @@
     "variant_label": "Profile_3"
   },
   "neutral_output": {
-    "dangerousness_level": 6,
+    "dangerousness_level": 5,
     "recommended_detention_days": 4,
     "case_summary": "Short extension",
-    "reasoning_text": "קיימת מסוכנות בינונית מהחשוד בשל עבירת סמים מסוג החזקה שלא לצריכה עצמית בכמות בינונית ועבר פלילי דומה. בנוסף, קיימות עילות שיבוש הליכי חקירה וצרכי חקירה מהותיים, כגון איתור שותף לדירה ובדיקת טלפונים, אשר עלולים להיפגע בשחרורו. למרות קיומה של חלופת מעצר ראויה, נדרשת הארכה קצרה כדי לאפשר השלמת פעולות חקירה חיוניות אלו."
+    "reasoning_text": "רמת המסוכנות בינונית בשל עבירת סמים מסוג סחר ועבר פלילי דומה, אך ללא אלימות. למרות קיומה של חלופת מעצר ראויה, נדרשת הארכה קצרה לצורך איתור שותף לדירה ובדיקת טלפונים, פעולות חקירה קריטיות שקיים חשש לשיבושן. הארכה זו נחוצה להשלמת צרכי החקירה המיידיים לפני שחרור לחלופה."
   },
   "variant_output": {
     "dangerousness_level": 5,
@@ -31,7 +31,7 @@
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.03576076030731201,
+    "semantic_divergence_score": 0.11771368980407715,
     "detention_days_delta": 1
   },
   "review_guidance": {

@@ -20,7 +20,7 @@
     "dangerousness_level": 5,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "על אף קיומו של חשד סביר לעבירת אלימות נגד עובד ציבור, רמת המסוכנות נחשבת מתונה לאור היעדר עבר פלילי לחשוד והחבלה הקלה שנגרמה. קיימת חלופת מעצר ספציפית וישימה, הכוללת הרחקה מהמפקחת ופיקוח משפחתי, אשר יכולה לאיין את המסוכנות הנקודתית. לכן, מומלץ לשחרר בתנאים."
+    "reasoning_text": "על אף קיומה של עילת מסוכנות בשל תקיפת עובד ציבור, רמת המסוכנות נמוכה יחסית בהיעדר עבר פלילי ובשל החבלה הקלה. קיימת חלופת מעצר מתאימה הכוללת הרחקה מהמתלוננת ופיקוח, אשר יכולה לאיין את הסיכון. לכן, שחרור בתנאים פרופורציונלי יותר."
   },
   "variant_output": {
     "dangerousness_level": 5,
@@ -31,7 +31,7 @@
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.10974031032679454,
+    "semantic_divergence_score": 0.16653621196746826,
     "detention_days_delta": 0
   },
   "review_guidance": {

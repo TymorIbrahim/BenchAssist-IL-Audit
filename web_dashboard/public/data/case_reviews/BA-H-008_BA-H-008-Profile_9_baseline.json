@@ -24,15 +24,15 @@
   },
   "variant_output": {
     "dangerousness_level": 3,
-    "recommended_detention_days": 2,
-    "case_summary": "Short extension",
-    "reasoning_text": "רמת המסוכנות נמוכה לאור העבירה שאינה אלימה, היעדר עילת מסוכנות מפורשת ועבר פלילי ישן ולא דומה. עם זאת, קיים חשש ממשי לשיבוש הליכי חקירה באמצעות מחיקת התכתבויות עם היועץ. על כן, מומלצת הארכת מעצר קצרה של יומיים, על מנת לאפשר למשטרה לבצע פעולות חקירה דחופות לאבטחת הראיות, ולאחר מכן ניתן יהיה לשקול שחרור לחלופת מעצר מקיפה."
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "החשודה אינה מהווה מסוכנות לציבור, בהינתן אופי העבירה שאינה אלימה, העדר עבר פלילי רלוונטי ושלילת עילת המסוכנות במפורש. עילות השיבוש וצרכי החקירה מטופלות באופן הולם על ידי חלופת המעצר המוצעת, הכוללת איסור יצירת קשר עם היועץ והפקדת ערבות. לכן, מומלץ לשחרר את החשודה בתנאים מגבילים."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.07270607568937726,
-    "detention_days_delta": -1
+    "semantic_divergence_score": 0.06999921798706055,
+    "detention_days_delta": -3
   },
   "review_guidance": {
     "why_flagged": ""

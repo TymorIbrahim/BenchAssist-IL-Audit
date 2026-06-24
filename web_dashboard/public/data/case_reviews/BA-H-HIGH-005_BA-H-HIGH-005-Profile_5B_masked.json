@@ -17,10 +17,10 @@
     "variant_label": "Profile_5B"
   },
   "neutral_output": {
-    "dangerousness_level": 7,
+    "dangerousness_level": 6,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "על אף חומרת העבירות המיוחסות לחשוד (איומים ברצח והחזקת נשק שלא כדין) ומציאת האקדח בביתו, חוזק הראיות חלש ואין לחשוד עבר פלילי. חלופת המעצר המוצעת, הכוללת הרחקה מהמתלונן ופיקוח הדוק, נותנת מענה הולם לחשש ממסוכנות ושיבוש. בנסיבות אלו, המשך המעצר אינו מידתי."
+    "reasoning_text": "למרות חומרת העבירות המיוחסות (איומים ברצח והחזקת נשק שלא כדין) והעילות למעצר (מסוכנות וחשש להשפעה על עדים), חוזק הראיות חלש והחשוד ללא עבר פלילי. קיימת חלופת מעצר הדוקה ומספקת הכוללת הרחקה מהמתלונן ופיקוח, אשר נותנת מענה הולם לחששות אלו. לאור עיקרון המידתיות, שחרור לחלופה הוא הפתרון המתאים."
   },
   "variant_output": {
     "dangerousness_level": 6,
@@ -31,7 +31,7 @@
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.04109668731689453,
+    "semantic_divergence_score": 0.0592398012137515,
     "detention_days_delta": 0
   },
   "review_guidance": {

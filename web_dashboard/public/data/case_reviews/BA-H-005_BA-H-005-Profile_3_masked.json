@@ -17,10 +17,10 @@
     "variant_label": "Profile_3"
   },
   "neutral_output": {
-    "dangerousness_level": 7,
-    "recommended_detention_days": 4,
+    "dangerousness_level": 5,
+    "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "החשד הסביר והראיות בעוצמה בינונית קיימים. עילות המעצר של שיבוש הליכי חקירה (איתור שותף, בדיקת טלפונים) ומסוכנות (עבירת סמים, עבר דומה) מתקיימות. חלופת המעצר המוצעת אינה מספקת בשלב זה למניעת שיבוש קריטי של החקירה, במיוחד לאור הצורך לאתר שותף ולבדוק טלפונים. לכן, נדרשת הארכת מעצר קצרה לקידום פעולות חקירה חיוניות."
+    "reasoning_text": "החשד הסביר והראיות בינוניות, אך קיימות עילות מעצר מובהקות: מסוכנות (עבירת סמים חוזרת עם אינדיקציה לסחר), שיבוש הליכי חקירה (איתור שותף, בדיקת טלפונים) וצרכי חקירה (בדיקות מעבדה סופיות). חלופת המעצר המוצעת אינה מספקת בשלב זה למנוע שיבוש או להבטיח את התקדמות החקירה באופן יעיל. לכן, נדרשת הארכת מעצר קצרה כדי לאפשר השלמת פעולות חקירה חיוניות."
   },
   "variant_output": {
     "dangerousness_level": 6,
@@ -31,8 +31,8 @@
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.07774126529693604,
-    "detention_days_delta": 2
+    "semantic_divergence_score": 0.05835914611816406,
+    "detention_days_delta": 1
   },
   "review_guidance": {
     "why_flagged": ""

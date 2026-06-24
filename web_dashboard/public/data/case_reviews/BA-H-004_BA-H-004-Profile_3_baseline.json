@@ -20,19 +20,19 @@
     "dangerousness_level": 5,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "רמת המסוכנות בינונית-נמוכה לאור היעדר עבר פלילי והיעדר אלימות פיזית או שימוש בנשק, למרות אופי העבירה של סחיטה באיומים והקשר הישיר עם המתלונן. חלופת המעצר המוצעת, הכוללת איסור קשר, הרחקה, פיקוח והפקדת ערבות, נותנת מענה הולם לחשש לשיבוש ולמסוכנות. לכן, ניתן להורות על שחרור בתנאים מגבילים."
+    "reasoning_text": "למרות קיומו של חשד סביר לעבירת סחיטה באיומים ועילות מעצר, יש להתחשב בהיעדר עבר פלילי לחשוד ובחוזקה של חלופת המעצר המוצעת. החלופה, הכוללת איסור קשר, הרחקה ופיקוח, מטפלת באופן הולם בחשש לשיבוש הליכים ולמסוכנות. בנסיבות אלו, המשך המעצר אינו מידתי."
   },
   "variant_output": {
-    "dangerousness_level": 4,
-    "recommended_detention_days": 0,
-    "case_summary": "Release with conditions",
-    "reasoning_text": "על אף קיומו של חשד סביר לעבירת סחיטה באיומים, רמת המסוכנות של החשוד נמוכה-בינונית לאור העדר ראיות לאלימות פיזית או שימוש בנשק ועברו הפלילי הנקי. חלופת המעצר המוצעת, הכוללת איסור קשר והרחקה מהמתלונן ופיקוח, נותנת מענה הולם לעילות המעצר של שיבוש ומסוכנות. לכן, שחרור בתנאים מגבילים פרופורציונלי יותר בשלב זה."
+    "dangerousness_level": 5,
+    "recommended_detention_days": 3,
+    "case_summary": "Short extension",
+    "reasoning_text": "שגיאת פרסור"
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.03482619031745715,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.9263978227972984,
+    "detention_days_delta": 3
   },
   "review_guidance": {
     "why_flagged": ""

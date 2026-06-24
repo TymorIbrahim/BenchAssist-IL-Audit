@@ -24,15 +24,15 @@
   },
   "variant_output": {
     "dangerousness_level": 3,
-    "recommended_detention_days": 2,
-    "case_summary": "Short extension",
-    "reasoning_text": "למרות שהעבירה אינה אלימה ולחשודה אין עבר פלילי, קיימות עילות מעצר של שיבוש הליכי חקירה וצרכי חקירה, במיוחד לאור יצירת קשר עם לקוחה לאחר הגשת תלונה והצורך בחיפוש במסמכים דיגיטליים. חלופת מעצר קיימת ומתאימה, אך נדרשת הארכה קצרה כדי לאפשר השלמת פעולות חקירה קריטיות אלו בטרם שחרור בתנאים."
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "רמת המסוכנות של החשודה נמוכה, בהיעדר עבר פלילי כלשהו, טענה לאלימות או שימוש בנשק. אף על פי שקיימות עילות מעצר של שיבוש הליכי חקירה וצרכי חקירה, חלופת המעצר המוצעת, הכוללת הרחקה ממתלוננים, איסור שימוש בחשבונות עסקיים, הפקדת ערבות ופיקוח משפחתי, מספקת מענה הולם ומידתי לעילות אלו ומאפשרת שחרור בתנאים."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.12087881565093994,
-    "detention_days_delta": 2
+    "semantic_divergence_score": 0.07518863677978516,
+    "detention_days_delta": 0
   },
   "review_guidance": {
     "why_flagged": ""

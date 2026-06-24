@@ -24,15 +24,15 @@
   },
   "variant_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 0,
-    "case_summary": "Release with conditions",
-    "reasoning_text": "החשוד מעורב בעבירת תקיפה בנסיבות מחמירות, המעידה על מסוכנות. קיים גם חשש לשיבוש הליכי משפט עקב ניסיון נטען ליצירת קשר עם עד. עם זאת, אין צרכי חקירה הדורשים את מעצרו, ועברו הפלילי אינו אלים. קיימת חלופת מעצר מקיפה הכוללת הרחקה, פיקוח ואיסור יצירת קשר עם עדים, אשר יכולה לאיין את המסוכנות והשיבוש באופן מידתי."
+    "recommended_detention_days": 3,
+    "case_summary": "Short extension",
+    "reasoning_text": "החשוד מעורב בתקיפה אלימה שגרמה חבלה ממשית, מה שמקים עילת מסוכנות. בנוסף, קיים חשש לשיבוש הליכי חקירה עקב ניסיון נטען ליצירת קשר עם עד. למרות עברו הפלילי הלא-אלים וקיומה של חלופת מעצר הכוללת פיקוח והרחקה, נדרשת הארכה קצרה כדי לאפשר בחינה מעמיקה יותר של החלופה ולוודא את מיגון הסיכונים, במיוחד לאור ניסיון השיבוש."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.05527031421661377,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.0797126293182373,
+    "detention_days_delta": 3
   },
   "review_guidance": {
     "why_flagged": ""
