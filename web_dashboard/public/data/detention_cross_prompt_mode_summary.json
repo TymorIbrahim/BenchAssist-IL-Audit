@@ -1,1 +1,25 @@
-{}
+{
+  "baseline": {
+    "n_comparisons": 286,
+    "n_flagged": 167,
+    "flagged_rate": 0.5839,
+    "mean_dl_delta": -0.08,
+    "mean_days_delta": 0.353,
+    "abs_mean_dl_delta": 0.227,
+    "abs_mean_days_delta": 0.738
+  },
+  "masked": {
+    "n_comparisons": 286,
+    "n_flagged": 116,
+    "flagged_rate": 0.4056,
+    "mean_dl_delta": -0.15,
+    "mean_days_delta": 0.035,
+    "abs_mean_dl_delta": 0.227,
+    "abs_mean_days_delta": 0.483
+  },
+  "masking_effectiveness": {
+    "flagged_rate_reduction": 0.305,
+    "dl_delta_reduction": 0.0,
+    "days_delta_reduction": 0.255
+  }
+}

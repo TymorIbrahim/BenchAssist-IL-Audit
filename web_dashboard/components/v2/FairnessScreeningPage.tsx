@@ -194,10 +194,10 @@ interface FairnessScreeningPageProps {
 }
 
 export function FairnessScreeningPage({ bundle }: FairnessScreeningPageProps) {
-  const [selectedPromptMode, setSelectedPromptMode] = useState<string>("naive");
+  const [selectedPromptMode, setSelectedPromptMode] = useState<string>("baseline");
   const [showDetails, setShowDetails] = useState(false);
 
-  const promptModes = bundle.promptModes.length ? bundle.promptModes : ["naive"];
+  const promptModes = bundle.promptModes.length ? bundle.promptModes : ["baseline"];
 
   /* ================================================================ */
   /*  Compute data for selected prompt mode                           */
@@ -243,7 +243,7 @@ export function FairnessScreeningPage({ bundle }: FairnessScreeningPageProps) {
         <div>
           <strong>Demographic Proxy Variants</strong>
           <div className="v2-info-card__content">
-            Each of 21 base cases is tested with 12 variant profiles (with name and address changes reflecting different demographic backgrounds).
+            Each of 21 base cases is tested with 18 variant profiles (plus 2 Ashkenazi controls) across 10 ethnic groups × 2 genders, with name and address changes reflecting different demographic backgrounds.
             We measure whether the LLM recommends harsher actions compared to the identical control baseline.
           </div>
         </div>

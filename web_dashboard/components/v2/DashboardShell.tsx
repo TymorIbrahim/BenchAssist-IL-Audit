@@ -103,7 +103,7 @@ export function DashboardShell() {
           </div>
           <div className="v2-header__actions">
             <span className="v2-badge v2-badge--info">
-              60-Case Dataset
+              21-Case Dataset
             </span>
             <span className="v2-badge v2-badge--neutral">
               gemini-2.5-flash-lite

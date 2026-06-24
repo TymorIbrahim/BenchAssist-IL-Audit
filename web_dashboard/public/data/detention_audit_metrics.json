@@ -1,176 +1,164 @@
 {
-  "generated_at": "2026-06-24T13:17:46.281786+00:00",
-  "n_total_comparisons": 504,
+  "generated_at": "2026-06-24T17:05:42.401871+00:00",
+  "n_total_comparisons": 572,
   "ccr": {
-    "overall": 0.9781746031746031,
-    "n_total": 504,
-    "n_consistent": 493,
+    "overall": 0.7902097902097902,
+    "n_total": 572,
+    "n_consistent": 452,
     "by_variant_type": {
-      "Profile_10": {
-        "ccr": 1.0,
-        "n_comparisons": 42,
-        "n_consistent": 42,
-        "n_changed": 0
+      "Arab_F": {
+        "ccr": 0.7884615384615384,
+        "n_comparisons": 52,
+        "n_consistent": 41,
+        "n_changed": 11
       },
-      "Profile_2": {
-        "ccr": 0.9523809523809523,
-        "n_comparisons": 42,
+      "Arab_M": {
+        "ccr": 0.8076923076923077,
+        "n_comparisons": 52,
+        "n_consistent": 42,
+        "n_changed": 10
+      },
+      "AsylumSeeker_M": {
+        "ccr": 0.8269230769230769,
+        "n_comparisons": 52,
+        "n_consistent": 43,
+        "n_changed": 9
+      },
+      "Bedouin_M": {
+        "ccr": 0.7692307692307693,
+        "n_comparisons": 52,
         "n_consistent": 40,
-        "n_changed": 2
+        "n_changed": 12
       },
-      "Profile_2B": {
-        "ccr": 1.0,
-        "n_comparisons": 42,
-        "n_consistent": 42,
-        "n_changed": 0
-      },
-      "Profile_3": {
-        "ccr": 0.9761904761904762,
-        "n_comparisons": 42,
+      "Druze_M": {
+        "ccr": 0.7884615384615384,
+        "n_comparisons": 52,
         "n_consistent": 41,
-        "n_changed": 1
+        "n_changed": 11
       },
-      "Profile_4": {
-        "ccr": 0.9761904761904762,
-        "n_comparisons": 42,
-        "n_consistent": 41,
-        "n_changed": 1
-      },
-      "Profile_5": {
-        "ccr": 0.9761904761904762,
-        "n_comparisons": 42,
-        "n_consistent": 41,
-        "n_changed": 1
-      },
-      "Profile_5B": {
-        "ccr": 1.0,
-        "n_comparisons": 42,
-        "n_consistent": 42,
-        "n_changed": 0
-      },
-      "Profile_6": {
-        "ccr": 1.0,
-        "n_comparisons": 42,
-        "n_consistent": 42,
-        "n_changed": 0
-      },
-      "Profile_7": {
-        "ccr": 0.9761904761904762,
-        "n_comparisons": 42,
-        "n_consistent": 41,
-        "n_changed": 1
-      },
-      "Profile_8": {
-        "ccr": 0.9761904761904762,
-        "n_comparisons": 42,
-        "n_consistent": 41,
-        "n_changed": 1
-      },
-      "Profile_9": {
-        "ccr": 0.9523809523809523,
-        "n_comparisons": 42,
+      "Ethiopian_F": {
+        "ccr": 0.7692307692307693,
+        "n_comparisons": 52,
         "n_consistent": 40,
-        "n_changed": 2
+        "n_changed": 12
       },
-      "Profile_9B": {
-        "ccr": 0.9523809523809523,
-        "n_comparisons": 42,
-        "n_consistent": 40,
-        "n_changed": 2
+      "Ethiopian_M": {
+        "ccr": 0.7884615384615384,
+        "n_comparisons": 52,
+        "n_consistent": 41,
+        "n_changed": 11
+      },
+      "Haredi_M": {
+        "ccr": 0.7884615384615384,
+        "n_comparisons": 52,
+        "n_consistent": 41,
+        "n_changed": 11
+      },
+      "Palestinian_M": {
+        "ccr": 0.7884615384615384,
+        "n_comparisons": 52,
+        "n_consistent": 41,
+        "n_changed": 11
+      },
+      "Russian_F": {
+        "ccr": 0.8846153846153846,
+        "n_comparisons": 52,
+        "n_consistent": 46,
+        "n_changed": 6
+      },
+      "Russian_M": {
+        "ccr": 0.6923076923076923,
+        "n_comparisons": 52,
+        "n_consistent": 36,
+        "n_changed": 16
       }
     },
     "by_prompt_mode": {
-      "masked": {
-        "ccr": 1.0,
-        "n_comparisons": 252,
-        "n_consistent": 252,
-        "n_changed": 0
+      "baseline": {
+        "ccr": 0.7902097902097902,
+        "n_comparisons": 286,
+        "n_consistent": 226,
+        "n_changed": 60
       },
-      "naive": {
-        "ccr": 0.9563492063492064,
-        "n_comparisons": 252,
-        "n_consistent": 241,
-        "n_changed": 11
+      "masked": {
+        "ccr": 0.7902097902097902,
+        "n_comparisons": 286,
+        "n_consistent": 226,
+        "n_changed": 60
       }
     }
   },
   "dir": {
-    "overall": 0.8481620718462825,
-    "p_marginalized": 0.1915204678362573,
-    "p_privileged": 0.22580645161290322,
-    "n_marginalized": 684,
-    "n_privileged": 62,
+    "overall": 0.9672131147540984,
+    "p_marginalized": 0.16120218579234974,
+    "p_privileged": 0.16666666666666666,
+    "n_marginalized": 732,
+    "n_privileged": 144,
     "by_variant_type": {
-      "Profile_10": {
-        "dir": 0.7857142857142858,
-        "adverse_rate": 0.1774193548387097,
-        "n_total": 62,
-        "n_adverse": 11
-      },
-      "Profile_2": {
-        "dir": 0.7857142857142858,
-        "adverse_rate": 0.1774193548387097,
-        "n_total": 62,
-        "n_adverse": 11
-      },
-      "Profile_2B": {
-        "dir": 1.054421768707483,
-        "adverse_rate": 0.23809523809523808,
-        "n_total": 42,
-        "n_adverse": 10
-      },
-      "Profile_3": {
-        "dir": 0.7857142857142858,
-        "adverse_rate": 0.1774193548387097,
-        "n_total": 62,
-        "n_adverse": 11
-      },
-      "Profile_4": {
-        "dir": 0.8571428571428571,
-        "adverse_rate": 0.1935483870967742,
-        "n_total": 62,
+      "Arab_F": {
+        "dir": 1.0,
+        "adverse_rate": 0.16666666666666666,
+        "n_total": 72,
         "n_adverse": 12
       },
-      "Profile_5": {
-        "dir": 0.7142857142857143,
-        "adverse_rate": 0.16129032258064516,
-        "n_total": 62,
-        "n_adverse": 10
+      "Arab_M": {
+        "dir": 1.0384615384615385,
+        "adverse_rate": 0.17307692307692307,
+        "n_total": 52,
+        "n_adverse": 9
       },
-      "Profile_5B": {
-        "dir": 1.054421768707483,
-        "adverse_rate": 0.23809523809523808,
-        "n_total": 42,
-        "n_adverse": 10
-      },
-      "Profile_6": {
-        "dir": 0.7857142857142858,
-        "adverse_rate": 0.1774193548387097,
-        "n_total": 62,
+      "AsylumSeeker_M": {
+        "dir": 0.9166666666666667,
+        "adverse_rate": 0.1527777777777778,
+        "n_total": 72,
         "n_adverse": 11
       },
-      "Profile_7": {
-        "dir": 0.8571428571428571,
-        "adverse_rate": 0.1935483870967742,
-        "n_total": 62,
-        "n_adverse": 12
-      },
-      "Profile_8": {
-        "dir": 0.7142857142857143,
-        "adverse_rate": 0.16129032258064516,
-        "n_total": 62,
+      "Bedouin_M": {
+        "dir": 0.8333333333333334,
+        "adverse_rate": 0.1388888888888889,
+        "n_total": 72,
         "n_adverse": 10
       },
-      "Profile_9": {
-        "dir": 0.8571428571428571,
-        "adverse_rate": 0.1935483870967742,
-        "n_total": 62,
+      "Druze_M": {
+        "dir": 0.9166666666666667,
+        "adverse_rate": 0.1527777777777778,
+        "n_total": 72,
+        "n_adverse": 11
+      },
+      "Ethiopian_F": {
+        "dir": 1.3846153846153848,
+        "adverse_rate": 0.23076923076923078,
+        "n_total": 52,
         "n_adverse": 12
       },
-      "Profile_9B": {
-        "dir": 1.1598639455782314,
-        "adverse_rate": 0.2619047619047619,
-        "n_total": 42,
+      "Ethiopian_M": {
+        "dir": 0.9166666666666667,
+        "adverse_rate": 0.1527777777777778,
+        "n_total": 72,
+        "n_adverse": 11
+      },
+      "Haredi_M": {
+        "dir": 0.9166666666666667,
+        "adverse_rate": 0.1527777777777778,
+        "n_total": 72,
+        "n_adverse": 11
+      },
+      "Palestinian_M": {
+        "dir": 0.9166666666666667,
+        "adverse_rate": 0.1527777777777778,
+        "n_total": 72,
+        "n_adverse": 11
+      },
+      "Russian_F": {
+        "dir": 0.75,
+        "adverse_rate": 0.125,
+        "n_total": 72,
+        "n_adverse": 9
+      },
+      "Russian_M": {
+        "dir": 1.2692307692307694,
+        "adverse_rate": 0.21153846153846154,
+        "n_total": 52,
         "n_adverse": 11
       }
     }
@@ -178,185 +166,173 @@
   "masking_efficiency": {
     "by_mode": {
       "baseline": {
-        "dir": null,
-        "p_marginalized": null,
-        "p_privileged": null,
-        "n_marginalized": 0,
-        "n_privileged": 0
+        "dir": 1.022950819672131,
+        "p_marginalized": 0.14207650273224043,
+        "p_privileged": 0.1388888888888889,
+        "n_marginalized": 366,
+        "n_privileged": 72
       },
       "masked": {
-        "dir": 0.8837719298245614,
-        "p_marginalized": 0.22807017543859648,
-        "p_privileged": 0.25806451612903225,
-        "n_marginalized": 342,
-        "n_privileged": 31
+        "dir": 0.927400468384075,
+        "p_marginalized": 0.18032786885245902,
+        "p_privileged": 0.19444444444444445,
+        "n_marginalized": 366,
+        "n_privileged": 72
       }
     },
     "deltas": {
       "masked": {
-        "delta": null,
-        "baseline_dir": null,
-        "masked_dir": 0.8837719298245614,
-        "interpretation": "insufficient_data"
+        "delta": 0.09555035128805611,
+        "baseline_dir": 1.022950819672131,
+        "masked_dir": 0.927400468384075,
+        "interpretation": "effective_reduction"
       }
     }
   },
   "semantic_divergence": {
     "available": true,
-    "overall_mean": 0.1986160473091436,
-    "overall_max": 0.520270437002182,
-    "n_pairs": 504,
+    "overall_mean": 0.1794210717306957,
+    "overall_max": 0.48069649934768677,
+    "n_pairs": 572,
     "by_variant_type": {
-      "Profile_10": {
-        "mean_divergence": 0.19373686669627807,
-        "max_divergence": 0.5031379761182047,
-        "n_pairs": 42
+      "Arab_F": {
+        "mean_divergence": 0.186463323253289,
+        "max_divergence": 0.4165825322195148,
+        "n_pairs": 52
       },
-      "Profile_2": {
-        "mean_divergence": 0.22104768307631908,
-        "max_divergence": 0.40363582394336495,
-        "n_pairs": 42
+      "Arab_M": {
+        "mean_divergence": 0.18478883200849003,
+        "max_divergence": 0.48069649934768677,
+        "n_pairs": 52
       },
-      "Profile_2B": {
-        "mean_divergence": 0.18881516248368582,
-        "max_divergence": 0.4533196687698364,
-        "n_pairs": 42
+      "AsylumSeeker_M": {
+        "mean_divergence": 0.1677696720478446,
+        "max_divergence": 0.42421936988830566,
+        "n_pairs": 52
       },
-      "Profile_3": {
-        "mean_divergence": 0.1903535259341235,
-        "max_divergence": 0.38635313984928543,
-        "n_pairs": 42
-      },
-      "Profile_4": {
-        "mean_divergence": 0.1902957471193609,
-        "max_divergence": 0.46551549434661865,
-        "n_pairs": 42
-      },
-      "Profile_5": {
-        "mean_divergence": 0.19540947900837338,
-        "max_divergence": 0.3797061073604875,
-        "n_pairs": 42
-      },
-      "Profile_5B": {
-        "mean_divergence": 0.19612319069193543,
-        "max_divergence": 0.520270437002182,
-        "n_pairs": 42
-      },
-      "Profile_6": {
-        "mean_divergence": 0.20312205119520804,
-        "max_divergence": 0.3809468561693087,
-        "n_pairs": 42
-      },
-      "Profile_7": {
-        "mean_divergence": 0.213483354274225,
-        "max_divergence": 0.4782395362854004,
-        "n_pairs": 42
-      },
-      "Profile_8": {
-        "mean_divergence": 0.1770710803691641,
+      "Bedouin_M": {
+        "mean_divergence": 0.16846798648339556,
         "max_divergence": 0.3264665798226929,
-        "n_pairs": 42
+        "n_pairs": 52
       },
-      "Profile_9": {
-        "mean_divergence": 0.19561316527653924,
-        "max_divergence": 0.47816428411986045,
-        "n_pairs": 42
+      "Druze_M": {
+        "mean_divergence": 0.1804629259828664,
+        "max_divergence": 0.4035688042640686,
+        "n_pairs": 52
       },
-      "Profile_9B": {
-        "mean_divergence": 0.21832126158451076,
-        "max_divergence": 0.4164302349090576,
-        "n_pairs": 42
+      "Ethiopian_F": {
+        "mean_divergence": 0.19697558527409867,
+        "max_divergence": 0.4731784462928772,
+        "n_pairs": 52
+      },
+      "Ethiopian_M": {
+        "mean_divergence": 0.17560488182900275,
+        "max_divergence": 0.3627664014379455,
+        "n_pairs": 52
+      },
+      "Haredi_M": {
+        "mean_divergence": 0.17570813428316207,
+        "max_divergence": 0.4011015535057506,
+        "n_pairs": 52
+      },
+      "Palestinian_M": {
+        "mean_divergence": 0.17727758093557647,
+        "max_divergence": 0.4552265405654907,
+        "n_pairs": 52
+      },
+      "Russian_F": {
+        "mean_divergence": 0.1787894723188273,
+        "max_divergence": 0.47268593311309814,
+        "n_pairs": 52
+      },
+      "Russian_M": {
+        "mean_divergence": 0.18132339462110014,
+        "max_divergence": 0.4225534200668335,
+        "n_pairs": 52
       }
     }
   },
   "reasoning_flaws": {
     "identity_leakage_rate_overall": 0.0,
     "hallucination_rate_overall": 0.0,
-    "n_total": 504,
+    "n_total": 572,
     "n_leakage_overall": 0,
     "n_hallucination_overall": 0,
     "by_variant_type": {
-      "Profile_10": {
+      "Arab_F": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.0,
-        "n_total": 42,
+        "n_total": 52,
         "n_leakage": 0,
         "n_hallucination": 0
       },
-      "Profile_2": {
+      "Arab_M": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.0,
-        "n_total": 42,
+        "n_total": 52,
         "n_leakage": 0,
         "n_hallucination": 0
       },
-      "Profile_2B": {
+      "AsylumSeeker_M": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.0,
-        "n_total": 42,
+        "n_total": 52,
         "n_leakage": 0,
         "n_hallucination": 0
       },
-      "Profile_3": {
+      "Bedouin_M": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.0,
-        "n_total": 42,
+        "n_total": 52,
         "n_leakage": 0,
         "n_hallucination": 0
       },
-      "Profile_4": {
+      "Druze_M": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.0,
-        "n_total": 42,
+        "n_total": 52,
         "n_leakage": 0,
         "n_hallucination": 0
       },
-      "Profile_5": {
+      "Ethiopian_F": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.0,
-        "n_total": 42,
+        "n_total": 52,
         "n_leakage": 0,
         "n_hallucination": 0
       },
-      "Profile_5B": {
+      "Ethiopian_M": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.0,
-        "n_total": 42,
+        "n_total": 52,
         "n_leakage": 0,
         "n_hallucination": 0
       },
-      "Profile_6": {
+      "Haredi_M": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.0,
-        "n_total": 42,
+        "n_total": 52,
         "n_leakage": 0,
         "n_hallucination": 0
       },
-      "Profile_7": {
+      "Palestinian_M": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.0,
-        "n_total": 42,
+        "n_total": 52,
         "n_leakage": 0,
         "n_hallucination": 0
       },
-      "Profile_8": {
+      "Russian_F": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.0,
-        "n_total": 42,
+        "n_total": 52,
         "n_leakage": 0,
         "n_hallucination": 0
       },
-      "Profile_9": {
+      "Russian_M": {
         "identity_leakage_rate": 0.0,
         "hallucination_rate": 0.0,
-        "n_total": 42,
-        "n_leakage": 0,
-        "n_hallucination": 0
-      },
-      "Profile_9B": {
-        "identity_leakage_rate": 0.0,
-        "hallucination_rate": 0.0,
-        "n_total": 42,
+        "n_total": 52,
         "n_leakage": 0,
         "n_hallucination": 0
       }

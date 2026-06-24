@@ -1,1 +1,168 @@
-[]
+{
+  "ethnicity_analysis": {
+    "baseline": [],
+    "masked": []
+  },
+  "gender_analysis": {
+    "baseline": {
+      "male": {
+        "n": 0,
+        "mean_dangerousness": 0,
+        "ci_95_dl": null,
+        "mean_detention_days": 0
+      },
+      "female": {
+        "n": 0,
+        "mean_dangerousness": 0,
+        "ci_95_dl": null,
+        "mean_detention_days": 0
+      },
+      "delta_dangerousness": 0,
+      "delta_detention_days": 0,
+      "dangerousness_p_value": NaN,
+      "detention_days_p_value": NaN,
+      "dangerousness_cohens_d": 0.0,
+      "dangerousness_significant": false,
+      "detention_days_significant": false
+    },
+    "masked": {
+      "male": {
+        "n": 0,
+        "mean_dangerousness": 0,
+        "ci_95_dl": null,
+        "mean_detention_days": 0
+      },
+      "female": {
+        "n": 0,
+        "mean_dangerousness": 0,
+        "ci_95_dl": null,
+        "mean_detention_days": 0
+      },
+      "delta_dangerousness": 0,
+      "delta_detention_days": 0,
+      "dangerousness_p_value": NaN,
+      "detention_days_p_value": NaN,
+      "dangerousness_cohens_d": 0.0,
+      "dangerousness_significant": false,
+      "detention_days_significant": false
+    }
+  },
+  "control_stability": {
+    "control_male": {
+      "n": 0,
+      "mean_dl": null,
+      "std_dl": null,
+      "mean_days": null
+    },
+    "control_female": {
+      "n": 0,
+      "mean_dl": null,
+      "std_dl": null,
+      "mean_days": null
+    }
+  },
+  "kruskal_wallis": {
+    "applicable": false
+  },
+  "case_severity": {
+    "nan": {
+      "n": 88,
+      "mean_dl_delta": 0.057,
+      "mean_days_delta": 0.193,
+      "flagged_rate": 0.602,
+      "abs_mean_dl_delta": 0.148
+    },
+    "בינוני": {
+      "n": 22,
+      "mean_dl_delta": -0.273,
+      "mean_days_delta": 0.455,
+      "flagged_rate": 0.955,
+      "abs_mean_dl_delta": 0.273
+    },
+    "בינוני-גבוה": {
+      "n": 11,
+      "mean_dl_delta": -0.455,
+      "mean_days_delta": -0.182,
+      "flagged_rate": 0.636,
+      "abs_mean_dl_delta": 0.455
+    },
+    "בינוני-גבוה גבולי": {
+      "n": 22,
+      "mean_dl_delta": 0.136,
+      "mean_days_delta": 2.045,
+      "flagged_rate": 0.818,
+      "abs_mean_dl_delta": 0.227
+    },
+    "בינוני-גבולי": {
+      "n": 66,
+      "mean_dl_delta": -0.136,
+      "mean_days_delta": 0.621,
+      "flagged_rate": 0.636,
+      "abs_mean_dl_delta": 0.318
+    },
+    "בינוני-נמוך": {
+      "n": 33,
+      "mean_dl_delta": -0.273,
+      "mean_days_delta": -0.121,
+      "flagged_rate": 0.606,
+      "abs_mean_dl_delta": 0.394
+    },
+    "גבוה": {
+      "n": 22,
+      "mean_dl_delta": 0.0,
+      "mean_days_delta": -0.182,
+      "flagged_rate": 0.182,
+      "abs_mean_dl_delta": 0.0
+    },
+    "גבוה-גבולי": {
+      "n": 22,
+      "mean_dl_delta": -0.091,
+      "mean_days_delta": -0.091,
+      "flagged_rate": 0.091,
+      "abs_mean_dl_delta": 0.091
+    }
+  },
+  "translator_analysis": {
+    "masked": {
+      "with_translator": {
+        "n": 182,
+        "mean_dl_delta": -0.137,
+        "flagged": 77,
+        "flagged_rate": 0.423
+      },
+      "without_translator": {
+        "n": 104,
+        "mean_dl_delta": -0.173,
+        "flagged": 39,
+        "flagged_rate": 0.375
+      },
+      "p_value": 0.5545,
+      "significant": false
+    },
+    "baseline": {
+      "with_translator": {
+        "n": 182,
+        "mean_dl_delta": -0.06,
+        "flagged": 108,
+        "flagged_rate": 0.593
+      },
+      "without_translator": {
+        "n": 104,
+        "mean_dl_delta": -0.115,
+        "flagged": 59,
+        "flagged_rate": 0.567
+      },
+      "p_value": 0.4505,
+      "significant": false
+    }
+  },
+  "run_metadata": {
+    "n_results": 876,
+    "n_comparisons": 572,
+    "model": "gemini-2.5-flash-lite",
+    "temperature": 0,
+    "n_profiles": 20,
+    "n_base_cases": 21,
+    "system_under_audit": "masked mode"
+  }
+}

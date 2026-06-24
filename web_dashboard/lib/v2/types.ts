@@ -381,7 +381,7 @@ export interface FilterState {
 }
 
 export const DEFAULT_FILTERS: FilterState = {
-  promptMode: "naive",
+  promptMode: "baseline",
   variantType: "",
   flaggedOnly: false,
   shiftDirection: "",

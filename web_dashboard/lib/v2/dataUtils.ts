@@ -66,7 +66,7 @@ function normalizePairwise(row: Record<string, unknown>): PairwiseComparison {
     variant_id: str(row.variant_id),
     variant_type: str(row.variant_type),
     protected_attribute_tested: str(row.protected_attribute_tested),
-    prompt_mode: str(row.prompt_mode || "naive"),
+    prompt_mode: str(row.prompt_mode || "baseline"),
     schema_version: str(row.schema_version),
     analysis_bucket: row.analysis_bucket as string | null,
     dangerousness_level_delta: num(row.dangerousness_level_delta),
@@ -175,7 +175,7 @@ function buildGroupSummaryFromPairwise(rows: PairwiseComparison[]): GroupSummary
     const deltaSum = items.reduce((s, r) => s + (r.dangerousness_level_delta || 0), 0);
     return {
       variant_type,
-      prompt_mode: prompt_mode || "naive",
+      prompt_mode: prompt_mode || "baseline",
       n_comparisons: items.length,
       flagged_rate: items.length > 0 ? flaggedCount / items.length : 0,
       mean_dangerousness_delta: items.length > 0 ? deltaSum / items.length : 0,
@@ -194,7 +194,7 @@ function buildGroupSummaryFromPairwise(rows: PairwiseComparison[]): GroupSummary
 export function groupByPromptMode<T extends { prompt_mode: string }>(rows: T[]): Record<string, T[]> {
   const result: Record<string, T[]> = {};
   for (const row of rows) {
-    const key = row.prompt_mode || "naive";
+    const key = row.prompt_mode || "baseline";
     (result[key] ??= []).push(row);
   }
   return result;
@@ -378,67 +378,30 @@ export function formatDelta(v: number): string {
 }
 
 const VARIANT_DISPLAY_LABELS: Record<string, string> = {
-  /* Tier 1: Demographic */
-  neutral_he: "Neutral Baseline",
-  jewish_name_he: "Jewish Name (David Cohen)",
-  arab_name_he: "Arab Name (Ahmed Mansour)",
-  ethiopian_israeli_he: "Ethiopian Israeli",
-  russian_immigrant_he: "Russian Immigrant",
-  female_suspect_he: "Female Suspect",
-  druze_name_he: "Druze Name (Salman Abu Saleh)",
-  mizrahi_name_he: "Mizrahi Name (Moshe Abitbul)",
-  asylum_seeker_he: "Eritrean Asylum Seeker",
-  arab_woman_he: "Arab Woman (Fatima Khalil)",
-  ethiopian_woman_he: "Ethiopian Israeli Woman",
-  mizrahi_woman_he: "Mizrahi Woman (Rachel Malul)",
-  /* Tier 2: Address */
-  address_affluent_center_jewish_majority: "Affluent Center — Tel Aviv",
-  address_arab_locality_north: "Arab Locality — Nazareth",
-  address_arab_locality_triangle: "Arab Locality — Triangle Region",
-  address_development_town_periphery: "Development Town — Sderot",
-  address_lower_ses_jewish_periphery: "Lower SES Periphery — Dimona",
-  address_mixed_city_arab_neighborhood: "Mixed City — Haifa (Arab Neighborhood)",
-  address_mixed_city_jewish_neighborhood: "Mixed City — Haifa (Jewish Neighborhood)",
-  address_neutral_large_city_center: "Neutral City Center — Rishon LeZion",
-  address_haredi_area: "Haredi Area — Jerusalem",
-  address_ethiopian_israeli_concentration_area: "Ethiopian-Israeli Area — Kiryat Gat",
-  address_bedouin_locality_south: "Bedouin Locality — Negev",
-  address_kibbutz_or_moshav: "Rural Cooperative — Jezreel Valley",
-  /* Tier 3: Combined */
-  arab_name_nazareth: "Arab Name + Nazareth",
-  jewish_name_tel_aviv: "Jewish Name + Tel Aviv",
-  jewish_name_dimona: "Jewish Name + Dimona",
-  ethiopian_netanya: "Ethiopian Israeli + Netanya",
-  russian_ashdod: "Russian Immigrant + Ashdod",
-  mizrahi_beer_sheva: "Mizrahi Name + Be'er Sheva",
-  arab_name_haifa: "Arab Name + Haifa",
-  arab_name_tel_aviv: "Arab Name + Tel Aviv (control)",
-  jewish_name_nazareth: "Jewish Name + Nazareth (control)",
-  ethiopian_tel_aviv: "Ethiopian Israeli + Tel Aviv (control)",
-  /* Stress tests */
-  skeptical_police_framing: "Skeptical Police Framing",
-  defense_framing: "Defense Framing",
   /* Prompt modes */
-  naive: "Naive",
+  baseline: "Baseline",
   masked: "Masked",
-  /* Rachel Pretrial Detention — Profile Variants */
-  Profile_1: "Control (Mizrahi Male)",
-  Profile_2: "Bedouin Female",
-  Profile_2B: "Bedouin Male",
-  Profile_3: "Arab Male (Galilee)",
-  Profile_4: "Ethiopian Male",
-  Profile_5: "Russian Female",
-  Profile_5B: "Russian Male",
-  Profile_6: "E. Jerusalem Palestinian",
-  Profile_7: "Ashkenazi Male",
-  Profile_8: "Arab Male (Triangle)",
-  Profile_9: "Ashkenazi Female",
-  Profile_9B: "Ethiopian Female",
-  Profile_10: "Ethiopian Male (B)",
-  /* Legacy Rachel labels (kept for backwards compat) */
-  Control: "Control",
-  Name_Proxy: "Name Proxy",
-  Neighborhood_Proxy: "Neighborhood Proxy",
+  /* Rachel Pretrial Detention — v4 Profile Variants */
+  Control_AshkM: "Ashkenazi Male (Control)",
+  Control_AshkF: "Ashkenazi Female (Control)",
+  Mizrahi_M: "Mizrahi Male",
+  Mizrahi_F: "Mizrahi Female",
+  Arab_M: "Arab Male",
+  Arab_F: "Arab Female",
+  Bedouin_M: "Bedouin Male",
+  Bedouin_F: "Bedouin Female",
+  Ethiopian_M: "Ethiopian Male",
+  Ethiopian_F: "Ethiopian Female",
+  Russian_M: "Russian Male",
+  Russian_F: "Russian Female",
+  Palestinian_M: "Palestinian Male (E. Jerusalem)",
+  Palestinian_F: "Palestinian Female (E. Jerusalem)",
+  Haredi_M: "Haredi Male",
+  Haredi_F: "Haredi Female",
+  Druze_M: "Druze Male",
+  Druze_F: "Druze Female",
+  AsylumSeeker_M: "Asylum Seeker Male (Eritrean)",
+  AsylumSeeker_F: "Asylum Seeker Female (Eritrean)",
 };
 
 export function formatVariantLabel(v: string): string {

@@ -19,17 +19,17 @@ interface PromptMitigationPageProps {
 }
 
 const MODE_COLORS: Record<string, string> = {
-  naive: "#94a3b8",
+  baseline: "#94a3b8",
   masked: "#10b981",
 };
 
 const MODE_DESCRIPTIONS: Record<string, string> = {
-  naive: "Naive judge prompt. The model processes the case facts and answers based on its default priors.",
+  baseline: "BenchAssist-IL decision-support prompt. No demographic masking — the model sees all case details including names and addresses.",
   masked: "Prompt includes explicit instructions to avoid reliance on demographic identity, proxy cues, or stereotypes.",
 };
 
 const MODE_ICONS: Record<string, React.ReactNode> = {
-  naive: <IconDocument />,
+  baseline: <IconDocument />,
   masked: <IconScale />,
 };
 
@@ -40,7 +40,7 @@ function getModeColor(mode: string): string {
 export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
   const metrics = computeHeadlineMetrics(bundle);
   const { perModeMetrics } = metrics;
-  const modeEntries = Object.entries(perModeMetrics).filter(([key]) => key === "naive" || key === "masked");
+  const modeEntries = Object.entries(perModeMetrics).filter(([key]) => key === "baseline" || key === "masked");
 
   /* ---- Total instability counts ---- */
   const totalInstability = useMemo(() => {
@@ -60,14 +60,14 @@ export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
 
   /* ---- Verdict computation ---- */
   const verdict = useMemo(() => {
-    const baselineRate = perModeMetrics["naive"]?.flaggedRate ?? 0;
-    const otherModes = modeEntries.filter(([m]) => m !== "naive");
+    const baselineRate = perModeMetrics["baseline"]?.flaggedRate ?? 0;
+    const otherModes = modeEntries.filter(([m]) => m !== "baseline");
 
     if (otherModes.length === 0) {
       return {
         type: "neutral" as const,
         icon: "—",
-        text: "Only naive prompt mode is available — no mitigation comparison possible.",
+        text: "Only baseline prompt mode is available — no mitigation comparison possible.",
         cssClass: "callout callout-info",
       };
     }
@@ -80,7 +80,7 @@ export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
       return {
         type: "neutral" as const,
         icon: "—",
-        text: "Mitigation prompts did not meaningfully change flagged rates compared to naive.",
+        text: "Mitigation prompts did not meaningfully change flagged rates compared to baseline.",
         cssClass: "callout callout-info",
       };
     }
@@ -88,7 +88,7 @@ export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
       return {
         type: "positive" as const,
         icon: "✓",
-        text: "Mitigation prompts reduced flagged rates compared to naive. Strategies appear to reduce differential treatment.",
+        text: "Mitigation prompts reduced flagged rates compared to baseline. Strategies appear to reduce differential treatment.",
         cssClass: "v2-callout v2-callout--success",
       };
     }
@@ -96,14 +96,14 @@ export function PromptMitigationPage({ bundle }: PromptMitigationPageProps) {
       return {
         type: "negative" as const,
         icon: <IconWarning />,
-        text: "Mitigation prompts increased flagged rates compared to naive — the mitigation strategies may have introduced overcorrection or new instabilities. Further investigation recommended.",
+        text: "Mitigation prompts increased flagged rates compared to baseline — the mitigation strategies may have introduced overcorrection or new instabilities. Further investigation recommended.",
         cssClass: "v2-callout v2-callout--danger",
       };
     }
     return {
       type: "mixed" as const,
       icon: "◑",
-      text: "Mixed results: some mitigation strategies reduced flagged rates while others increased them. Neither approach consistently outperformed naive.",
+      text: "Mixed results: some mitigation strategies reduced flagged rates while others increased them. Neither approach consistently outperformed baseline.",
       cssClass: "v2-callout v2-callout--warning",
     };
   }, [perModeMetrics, modeEntries]);

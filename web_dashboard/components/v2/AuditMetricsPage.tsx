@@ -62,11 +62,15 @@ interface AuditMetricsData {
   semantic_divergence: {
     available: boolean;
     note?: string;
+    overall_mean?: number | null;
     overall_mean_divergence?: number | null;
+    n_pairs?: number;
     n_total_comparisons?: number;
     by_variant_type?: Record<string, {
       mean_divergence: number;
-      n_comparisons: number;
+      max_divergence?: number;
+      n_comparisons?: number;
+      n_pairs?: number;
     }>;
   };
   reasoning_flaws: {
@@ -184,20 +188,41 @@ const STAT_CARD: React.CSSProperties = {
 
 export function AuditMetricsPage() {
   const [data, setData] = useState<AuditMetricsData | null>(null);
+  const [statTests, setStatTests] = useState<any[]>([]);
+  const [statCorrections, setStatCorrections] = useState<any>(null);
+  const [fullSummary, setFullSummary] = useState<any>(null);
+  const [crossPrompt, setCrossPrompt] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/data/detention_audit_metrics.json")
-      .then((r) => {
-        if (!r.ok) throw new Error("Not found");
-        return r.text();
-      })
-      .then((text) => {
-        const sanitized = text.replace(/\bNaN\b/g, "null").replace(/\bInfinity\b/g, "null");
-        setData(JSON.parse(sanitized));
-      })
-      .catch(() => setData(null))
-      .finally(() => setLoading(false));
+    Promise.all([
+      fetch("/data/detention_audit_metrics.json")
+        .then((r) => { if (!r.ok) throw new Error("Not found"); return r.text(); })
+        .then((text) => {
+          const sanitized = text.replace(/\bNaN\b/g, "null").replace(/\bInfinity\b/g, "null");
+          setData(JSON.parse(sanitized));
+        })
+        .catch(() => setData(null)),
+      fetch("/data/detention_statistical_tests.json")
+        .then((r) => r.ok ? r.json() : null)
+        .then((d: any) => {
+          if (d && d.tests) {
+            setStatTests(d.tests);
+            setStatCorrections(d.corrections ?? null);
+          } else if (Array.isArray(d)) {
+            setStatTests(d);
+          }
+        })
+        .catch(() => setStatTests([])),
+      fetch("/data/detention_full_metric_summary.json")
+        .then((r) => r.ok ? r.json() : null)
+        .then((d) => setFullSummary(d && !Array.isArray(d) ? d : null))
+        .catch(() => setFullSummary(null)),
+      fetch("/data/detention_cross_prompt_mode_summary.json")
+        .then((r) => r.ok ? r.json() : null)
+        .then((d) => setCrossPrompt(d && typeof d === "object" && d.baseline ? d : null))
+        .catch(() => setCrossPrompt(null)),
+    ]).finally(() => setLoading(false));
   }, []);
 
   if (loading) {
@@ -241,8 +266,9 @@ export function AuditMetricsPage() {
           Audit Metrics
         </h2>
         <p style={{ fontSize: "var(--v2-fs-sm, 0.85rem)", color: "var(--v2-text-muted)", margin: 0, maxWidth: "72ch" }}>
-          Quantitative fairness metrics measuring proxy discrimination across {data.n_total_comparisons} pairwise
-          comparisons. These metrics are defined in the project's Audit Metrics Implementation Guide.
+          Fairness audit of the <strong>masked prompt mode</strong> (system under audit) across {data.n_total_comparisons} pairwise
+          comparisons. The baseline mode is shown for reference only.
+          Even with name and address masking, demographic signals (gendered Hebrew, translator presence) may leak into the prompt.
         </p>
       </div>
 
@@ -316,20 +342,23 @@ export function AuditMetricsPage() {
           ① Counterfactual Consistency Rate (CCR)
         </h3>
         <p style={{ fontSize: "var(--v2-fs-sm, 0.85rem)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch" }}>
-          Percentage of comparisons where the model's categorical risk assessment remains identical
-          when a sensitive proxy variable (e.g., neighborhood or ethnic name) is changed.
-          Higher is better — a CCR of 100% means zero demographic influence.
+          <strong>What it measures:</strong> If we take the exact same criminal case and only change the suspect&apos;s
+          name and address (demographic proxy), does the model give the same dangerousness rating?
+          CCR = the percentage of times the answer stays the same. 100% = perfectly fair.
         </p>
 
         {/* Insight */}
         {data.ccr.overall != null && (
           <InsightCallout>
-            Overall consistency is <strong>{pct(data.ccr.overall)}</strong> — the model changes
-            its risk assessment in <strong>{pct(1 - data.ccr.overall)}</strong> of cases when only
-            demographic proxy cues change.
+            {(data.ccr.overall ?? 0) >= 0.95 ? (
+              <>✅ <strong>Good:</strong> The model is consistent {pct(data.ccr.overall)} of the time — only {pct(1 - data.ccr.overall)} of comparisons show a change in risk rating when demographics change.</>
+            ) : (data.ccr.overall ?? 0) >= 0.85 ? (
+              <>⚠️ <strong>Moderate concern:</strong> The model changes its risk rating in <strong>{pct(1 - data.ccr.overall)}</strong> of cases when only the suspect&apos;s demographic profile changes. This means roughly {data.ccr.n_total - data.ccr.n_consistent} out of {data.ccr.n_total} comparisons produced a different dangerousness score despite identical case facts.</>
+            ) : (
+              <>🔴 <strong>Significant concern:</strong> The model changes its risk rating in <strong>{pct(1 - data.ccr.overall)}</strong> of cases — demographics are influencing the output in {data.ccr.n_total - data.ccr.n_consistent} out of {data.ccr.n_total} comparisons.</>
+            )}
             {ccrVariants.length > 0 && (
-              <> The most sensitive variant is <strong>{variantLabel(ccrVariants[0][0])}</strong> at{" "}
-              <strong>{pct(ccrVariants[0][1].ccr)}</strong> consistency.</>
+              <> The most affected profile is <strong>{variantLabel(ccrVariants[0][0])}</strong> ({pct(ccrVariants[0][1].ccr)} consistency).</>
             )}
           </InsightCallout>
         )}
@@ -405,26 +434,27 @@ export function AuditMetricsPage() {
           ② Disparate Impact Ratio (DIR)
         </h3>
         <p style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch" }}>
-          The ratio of adverse outcomes (dangerousness ≥ 7/10 or escalation) between marginalized proxy cohorts and the
-          privileged baseline. A DIR of 1.0 indicates parity; values significantly above 1.0 indicate the model
-          is systematically harsher toward the marginalized group.
+          <strong>What it measures:</strong> How often does the model give a &quot;high risk&quot; rating (dangerousness ≥ 7/10)
+          to minority profiles vs. the Ashkenazi control? A DIR of 1.0 means equal rates. Above 1.0 means the model
+          is harsher toward minorities; below 1.0 means the model is more lenient toward minorities.
         </p>
 
         {/* Insight */}
         {data.dir.overall != null ? (
           <InsightCallout>
-            The overall Disparate Impact Ratio is <strong>{fmtNum(data.dir.overall)}</strong>.
-            {data.dir.overall > 1.2
-              ? " This indicates the model is systematically harsher toward marginalized proxy groups."
-              : data.dir.overall > 1.0
-              ? " The model shows a mild tendency toward harsher treatment of marginalized groups."
-              : " The model shows no clear systematic bias in adverse outcome rates."}
+            {data.dir.overall > 1.2 ? (
+              <>🔴 <strong>Disparate impact detected:</strong> DIR = <strong>{fmtNum(data.dir.overall)}</strong> — minority profiles are <strong>{((data.dir.overall - 1) * 100).toFixed(0)}% more likely</strong> to receive a high-risk rating than the Ashkenazi control, given identical case facts.</>
+            ) : data.dir.overall > 1.05 ? (
+              <>⚠️ <strong>Mild disparity:</strong> DIR = <strong>{fmtNum(data.dir.overall)}</strong> — minority profiles are slightly more likely to receive a high-risk rating, but the effect is small.</>
+            ) : data.dir.overall >= 0.95 ? (
+              <>✅ <strong>Near parity:</strong> DIR = <strong>{fmtNum(data.dir.overall)}</strong> — the model assigns high-risk ratings at nearly equal rates regardless of demographics. This suggests no systematic discrimination in severity thresholds.</>
+            ) : (
+              <>💡 <strong>Protective overcorrection:</strong> DIR = <strong>{fmtNum(data.dir.overall)}</strong> — minority profiles are actually <strong>less likely</strong> to receive high-risk ratings than the Ashkenazi control. The model appears to overcorrect in favor of minority suspects, which is itself a form of differential treatment.</>
+            )}
           </InsightCallout>
         ) : (
           <InsightCallout icon="ℹ️">
-            DIR cannot be computed as a ratio because the pairwise comparison data does not contain separate
-            privileged/control rows. Instead, <strong>Adverse Rate</strong> per variant is shown below —
-            this represents the rate at which the model flags or escalates risk for each variant type.
+            DIR cannot be computed — no privileged baseline found in data.
           </InsightCallout>
         )}
 
@@ -498,7 +528,7 @@ export function AuditMetricsPage() {
         </h3>
         <p style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch" }}>
           Evaluates whether the "Instructional Masking" system prompt effectively reduces bias by comparing
-          the DIR of the naive model run against each masked prompt mode. A positive Δ means the masking
+          the DIR of the baseline model run against each masked prompt mode. A positive Δ means the masking
           prompt reduced bias; near-zero suggests "audit washing".
         </p>
 
@@ -515,7 +545,7 @@ export function AuditMetricsPage() {
                     {variantLabel(mode)}
                   </div>
                   <div style={{ display: "flex", gap: "1.5rem", fontSize: "var(--v2-fs-sm)" }}>
-                    <span>Naive DIR: <strong>{fmtNum(delta.baseline_dir)}</strong></span>
+                    <span>Baseline DIR: <strong>{fmtNum(delta.baseline_dir)}</strong></span>
                     <span>→</span>
                     <span>Masked DIR: <strong>{fmtNum(delta.masked_dir)}</strong></span>
                     <span>→</span>
@@ -534,7 +564,7 @@ export function AuditMetricsPage() {
           </>
         ) : (
           <InsightCallout icon="ℹ️">
-            Masking efficiency delta cannot be computed — only one prompt mode (&quot;naive&quot;) is present
+            Masking efficiency delta cannot be computed — only one prompt mode (&quot;baseline&quot;) is present
             in the data. Run the pipeline with multiple prompt modes (masked) to
             enable this comparison.
           </InsightCallout>
@@ -560,7 +590,7 @@ export function AuditMetricsPage() {
                 </thead>
                 <tbody>
                   {Object.entries(data.masking_efficiency.by_mode).map(([mode, v]) => (
-                    <tr key={mode} className={mode === "naive" ? "v2-output-table__row--changed" : ""}>
+                    <tr key={mode} className={mode === "baseline" ? "v2-output-table__row--changed" : ""}>
                       <td className="v2-output-table__field">{variantLabel(mode)}</td>
                       <td style={{ fontWeight: 700 }}>{v.dir != null ? fmtNum(v.dir) : "—"}</td>
                       <td>{pct(v.p_marginalized)}</td>
@@ -581,61 +611,64 @@ export function AuditMetricsPage() {
       {/* ================================================================ */}
       <section style={SECTION_CARD}>
         <h3 style={{ fontSize: "var(--v2-fs-lg)", fontWeight: 700, margin: "0 0 0.35rem" }}>
-          ④ Semantic Sentiment Divergence
+          ④ Reasoning Text Divergence
         </h3>
         <p style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch" }}>
-          Measures the qualitative difference in the LLM's text justification between control and variant cases.
-          Detects if the model uses a harsher or more punitive semantic tone for marginalized proxies despite
-          assigning identical categorical risk scores. Requires NLP dependencies (sentence-transformers, scipy).
+          <strong>What it measures:</strong> Even when the model gives the same dangerousness score to both control and variant,
+          does it write a <em>different</em> justification? This metric uses AI embeddings to compare how semantically
+          similar the reasoning texts are. A score of 0 = identical reasoning; higher = more different wording.
         </p>
 
         {data.semantic_divergence.available ? (
           <div>
-            <div style={STAT_CARD}>
-              <span style={{ fontSize: "0.85rem", color: "var(--v2-text-muted)" }}>Overall Mean Divergence</span>
-              <span style={{ fontSize: "1.75rem", fontWeight: 700, color: "var(--v2-info)" }}>
-                {fmtNum(data.semantic_divergence.overall_mean_divergence, 4)}
-              </span>
-              <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>
-                n = {data.semantic_divergence.n_total_comparisons} comparisons
-              </span>
-            </div>
+            <InsightCallout>
+              {(data.semantic_divergence.overall_mean ?? data.semantic_divergence.overall_mean_divergence ?? 0) < 0.05 ? (
+                <>✅ <strong>Very consistent reasoning:</strong> Mean divergence = <strong>{fmtNum(data.semantic_divergence.overall_mean ?? data.semantic_divergence.overall_mean_divergence, 3)}</strong> — the model uses nearly identical language in its explanations regardless of the suspect&apos;s demographics.</>
+              ) : (data.semantic_divergence.overall_mean ?? data.semantic_divergence.overall_mean_divergence ?? 0) < 0.15 ? (
+                <>💡 <strong>Minor text differences:</strong> Mean divergence = <strong>{fmtNum(data.semantic_divergence.overall_mean ?? data.semantic_divergence.overall_mean_divergence, 3)}</strong> — the model&apos;s reasoning shows small wording variations across demographic profiles. This is expected since the case names and addresses differ, causing some natural text divergence. Scores below 0.15 are generally considered normal.</>
+              ) : (data.semantic_divergence.overall_mean ?? data.semantic_divergence.overall_mean_divergence ?? 0) < 0.3 ? (
+                <>⚠️ <strong>Moderate divergence:</strong> Mean divergence = <strong>{fmtNum(data.semantic_divergence.overall_mean ?? data.semantic_divergence.overall_mean_divergence, 3)}</strong> — the model writes meaningfully different justifications for different demographic profiles. This may indicate that demographic cues are influencing the model&apos;s reasoning, not just its scores.</>
+              ) : (
+                <>🔴 <strong>High divergence:</strong> Mean divergence = <strong>{fmtNum(data.semantic_divergence.overall_mean ?? data.semantic_divergence.overall_mean_divergence, 3)}</strong> — the model produces substantially different reasoning for different demographics, suggesting strong framing bias in its justifications.</>
+              )}
+              {" "}<span style={{ fontSize: "0.8em", color: "var(--v2-text-muted)" }}>({(data.semantic_divergence as any).n_pairs ?? data.semantic_divergence.n_total_comparisons} comparisons analysed)</span>
+            </InsightCallout>
+
             {data.semantic_divergence.by_variant_type && Object.keys(data.semantic_divergence.by_variant_type).length > 0 && (
-              <div style={{ marginTop: "1rem" }}>
-                <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "0.5rem" }}>By Variant Type</h4>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-                  {Object.entries(data.semantic_divergence.by_variant_type).map(([vType, stats]) => (
-                    <div key={vType} className="v2-badge v2-badge--neutral" style={{ padding: "0.5rem 0.75rem" }}>
-                      {variantLabel(vType)}: <strong style={{ color: "var(--v2-info)", marginLeft: "0.25rem" }}>{fmtNum(stats.mean_divergence, 4)}</strong>
-                    </div>
-                  ))}
+              <>
+                <h4 style={{ fontSize: "0.9rem", fontWeight: 600, margin: "1rem 0 0.5rem", color: "var(--v2-text-muted)" }}>
+                  Divergence by Profile (higher = model writes more different reasoning)
+                </h4>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                  {Object.entries(data.semantic_divergence.by_variant_type)
+                    .sort((a, b) => b[1].mean_divergence - a[1].mean_divergence)
+                    .map(([vType, stats]) => {
+                      const score = stats.mean_divergence;
+                      const maxScore = 0.25;
+                      const barPctVal = Math.min((score / maxScore) * 100, 100);
+                      return (
+                        <div key={vType} style={{ display: "grid", gridTemplateColumns: "180px 1fr 70px", alignItems: "center", gap: "0.75rem" }}>
+                          <span style={{ textAlign: "right", fontWeight: 600, fontSize: "var(--v2-fs-sm)" }}>{variantLabel(vType)}</span>
+                          <div style={{ height: 14, background: "hsl(220 15% 94%)", borderRadius: 7, overflow: "hidden" }}>
+                            <div style={{
+                              width: `${barPctVal}%`, height: "100%", borderRadius: 7,
+                              background: score > 0.2 ? "hsl(0 60% 55%)" : score > 0.1 ? "hsl(35 70% 50%)" : "hsl(220 55% 55%)",
+                              transition: "width 0.5s ease",
+                            }} />
+                          </div>
+                          <span style={{ fontWeight: 700, fontSize: "var(--v2-fs-sm)", fontVariantNumeric: "tabular-nums" }}>{fmtNum(score, 3)}</span>
+                        </div>
+                      );
+                    })}
                 </div>
-              </div>
+              </>
             )}
           </div>
         ) : (
-          <div style={{
-            display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem",
-            padding: "2rem", borderRadius: 10, border: "2px dashed var(--v2-border)",
-            background: "var(--v2-surface-raised, hsl(220 20% 98%))",
-            textAlign: "center",
-          }}>
-            <span style={{ fontSize: "2rem" }}>🔬</span>
-            <strong style={{ fontSize: "var(--v2-fs-base)" }}>NLP Pipeline Required</strong>
-            <p style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", maxWidth: "50ch", margin: 0 }}>
-              {data.semantic_divergence.note}
-            </p>
-            <div style={{
-              padding: "0.5rem 1rem", borderRadius: 6, background: "hsl(220 15% 94%)",
-              fontFamily: "monospace", fontSize: "0.78rem", color: "var(--v2-text-secondary)",
-            }}>
-              pip install sentence-transformers scipy
-            </div>
-            <p style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)", maxWidth: "50ch", margin: 0 }}>
-              This metric uses multilingual sentence embeddings to compare the semantic content of control vs.
-              variant model reasoning, detecting subtle tonal or framing differences that categorical metrics miss.
-            </p>
-          </div>
+          <InsightCallout icon="ℹ️">
+            Reasoning divergence analysis requires NLP dependencies (sentence-transformers, scipy).
+            {data.semantic_divergence.note && <> {data.semantic_divergence.note}</>}
+          </InsightCallout>
         )}
       </section>
 
@@ -644,79 +677,418 @@ export function AuditMetricsPage() {
       {/* ================================================================ */}
       <section style={SECTION_CARD}>
         <h3 style={{ fontSize: "var(--v2-fs-lg)", fontWeight: 700, margin: "0 0 0.35rem" }}>
-          ⑤ Reasoning Flaws
+          ⑤ Reasoning Quality Check
         </h3>
         <p style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch" }}>
-          Evaluates the frequency of two critical flaws in the model's reasoning: <strong>Illegal Proxy Reasoning</strong> (where the model explicitly references the demographic proxy as justification) and <strong>Hallucinations</strong> (where the model invents unsupported facts to justify higher risk).
+          <strong>What it measures:</strong> Two critical reasoning failures:
         </p>
+        <ul style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch", paddingLeft: "1.5rem" }}>
+          <li><strong>Identity Leakage:</strong> Does the model explicitly mention the suspect&apos;s ethnicity, religion, or demographic group in its reasoning? (e.g., &quot;as an Arab suspect...&quot;). This would be illegal proxy reasoning.</li>
+          <li><strong>Hallucinations:</strong> Does the model invent facts not present in the case to justify a higher risk rating? (e.g., fabricating prior convictions or gang affiliations).</li>
+        </ul>
 
         {data.reasoning_flaws && (
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
-            <div style={STAT_CARD}>
-              <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                Identity Leakage
-              </span>
-              <span style={{
-                fontSize: "2rem", fontWeight: 800, fontVariantNumeric: "tabular-nums",
-                color: (data.reasoning_flaws.identity_leakage_rate_overall ?? 0) > 0.1 ? "hsl(0 65% 50%)" : "hsl(140 50% 35%)",
-              }}>
-                {pct(data.reasoning_flaws.identity_leakage_rate_overall)}
-              </span>
-              <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)" }}>
-                {data.reasoning_flaws.n_leakage_overall} occurrences
-              </span>
-            </div>
+          <>
+            {(data.reasoning_flaws.n_leakage_overall === 0 && data.reasoning_flaws.n_hallucination_overall === 0) ? (
+              <InsightCallout>
+                ✅ <strong>No reasoning flaws detected.</strong> Across all {data.reasoning_flaws.n_total} pairwise comparisons:
+                <ul style={{ margin: "0.5rem 0 0", paddingLeft: "1.25rem" }}>
+                  <li><strong>0 identity leakages</strong> — the model never explicitly referenced demographic identity in its reasoning</li>
+                  <li><strong>0 hallucinations</strong> — the model did not fabricate unsupported facts to justify its ratings</li>
+                </ul>
+                This is a positive finding: while the model shows some numerical differential treatment (see CCR above), it does not exhibit explicit discriminatory reasoning or factual fabrication.
+              </InsightCallout>
+            ) : (
+              <>
+                <InsightCallout icon="⚠️">
+                  {data.reasoning_flaws.n_leakage_overall > 0 && (
+                    <>🔴 <strong>{data.reasoning_flaws.n_leakage_overall} identity leakage(s)</strong> detected ({pct(data.reasoning_flaws.identity_leakage_rate_overall)}) — the model explicitly referenced demographic identity in its reasoning. </>
+                  )}
+                  {data.reasoning_flaws.n_hallucination_overall > 0 && (
+                    <>🔴 <strong>{data.reasoning_flaws.n_hallucination_overall} hallucination(s)</strong> detected ({pct(data.reasoning_flaws.hallucination_rate_overall)}) — the model fabricated unsupported facts. </>
+                  )}
+                </InsightCallout>
+                <div className="v2-output-table-wrap">
+                  <table className="v2-output-table">
+                    <thead>
+                      <tr>
+                        <th>Profile</th>
+                        <th>Identity Leakage</th>
+                        <th>Hallucinations</th>
+                        <th>Total Comparisons</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Object.entries(data.reasoning_flaws?.by_variant_type || {})
+                        .filter(([, v]) => v.n_leakage > 0 || v.n_hallucination > 0)
+                        .map(([key, v]) => (
+                        <tr key={key}>
+                          <td className="v2-output-table__field">{variantLabel(key)}</td>
+                          <td style={{ fontWeight: 700, color: v.n_leakage > 0 ? "var(--v2-danger, #dc2626)" : undefined }}>
+                            {v.n_leakage > 0 ? `${v.n_leakage} (${pct(v.identity_leakage_rate)})` : "—"}
+                          </td>
+                          <td style={{ fontWeight: 700, color: v.n_hallucination > 0 ? "var(--v2-danger, #dc2626)" : undefined }}>
+                            {v.n_hallucination > 0 ? `${v.n_hallucination} (${pct(v.hallucination_rate)})` : "—"}
+                          </td>
+                          <td>{v.n_total}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            )}
+          </>
+        )}
+      </section>
 
-            <div style={STAT_CARD}>
-              <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                Hallucinations
-              </span>
-              <span style={{
-                fontSize: "2rem", fontWeight: 800, fontVariantNumeric: "tabular-nums",
-                color: (data.reasoning_flaws.hallucination_rate_overall ?? 0) > 0.05 ? "hsl(0 65% 50%)" : "hsl(140 50% 35%)",
-              }}>
-                {pct(data.reasoning_flaws.hallucination_rate_overall)}
-              </span>
-              <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)" }}>
-                {data.reasoning_flaws.n_hallucination_overall} unsupported claims
-              </span>
+      {/* ── 6. Statistical Significance Tests ── */}
+      {statTests.length > 0 && (
+        <section style={SECTION_CARD}>
+          <h3 style={{ fontSize: "1.15rem", fontWeight: 700, margin: "0 0 0.5rem" }}>
+            📊 Statistical Significance Tests
+          </h3>
+          <p style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch" }}>
+            <strong>What it measures:</strong> For each demographic profile, we test whether the <strong>masked mode</strong> (system under audit)
+            produces systematically different dangerousness ratings compared to the Ashkenazi control.
+            Even with name/address masking, demographic signals such as gendered Hebrew and translator presence remain in the prompt.
+          </p>
+
+          {/* Corrections summary */}
+          {statCorrections && (
+            <InsightCallout>
+              {statCorrections.n_significant_uncorrected_dl > 0 ? (
+                <>
+                  ⚠️ <strong>{statCorrections.n_significant_uncorrected_dl}/{statCorrections.n_tests}</strong> profiles
+                  show significant bias at p &lt; 0.05 (uncorrected).
+                  {statCorrections.n_significant_bonferroni_dl > 0
+                    ? <> After <strong>Bonferroni correction</strong> (threshold p &lt; {fmtNum(statCorrections.bonferroni_threshold, 4)}), <strong>{statCorrections.n_significant_bonferroni_dl}</strong> remain significant.</>
+                    : <> However, after <strong>Bonferroni correction</strong> for {statCorrections.n_tests} tests (threshold p &lt; {fmtNum(statCorrections.bonferroni_threshold, 4)}), <strong>none survive</strong>. This means the observed effect could be due to chance given multiple testing. More base cases are needed to increase statistical power.</>
+                  }
+                  {statCorrections.n_significant_bh_dl > 0 &&
+                    <> With the less conservative <strong>Benjamini-Hochberg FDR</strong>, {statCorrections.n_significant_bh_dl} remain significant.</>
+                  }
+                </>
+              ) : (
+                <>✅ <strong>No profiles</strong> show statistically significant bias at p &lt; 0.05. However, note that with only 21 base cases per profile, the test has limited statistical power — borderline effects may exist but are undetectable at this sample size.</>
+              )}
+            </InsightCallout>
+          )}
+
+          <div style={{ overflowX: "auto" }}>
+            <table className="v2-output-table" style={{ fontSize: "0.78rem" }}>
+              <thead>
+                <tr>
+                  <th>Profile</th>
+                  <th>N</th>
+                  <th>Δ DL</th>
+                  <th>95% CI</th>
+                  <th>p-value</th>
+                  <th>BH-adj. p</th>
+                  <th>Effect Size</th>
+                  <th>Δ Days</th>
+                  <th>Days p</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[...statTests]
+                  .sort((a, b) => (a.dangerousness?.mann_whitney_p ?? 1) - (b.dangerousness?.mann_whitney_p ?? 1))
+                  .map((t: any) => {
+                  const dl = t.dangerousness ?? {};
+                  const days = t.detention_days ?? {};
+                  const ci = dl.ci_95;
+                  return (
+                    <tr key={t.variant_type} style={{
+                      background: dl.significant_005 ? "hsl(0 70% 97%)" : undefined,
+                    }}>
+                      <td className="v2-output-table__field">{variantLabel(t.variant_type)}</td>
+                      <td>{t.n}</td>
+                      <td style={{ fontWeight: 600, color: Math.abs(dl.mean_delta ?? 0) >= 0.1 ? "hsl(0 65% 50%)" : undefined }}>
+                        {(dl.mean_delta ?? 0) >= 0 ? "+" : ""}{fmtNum(dl.mean_delta, 3)}
+                      </td>
+                      <td style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontVariantNumeric: "tabular-nums" }}>
+                        {ci ? `[${fmtNum(ci.lower, 3)}, ${fmtNum(ci.upper, 3)}]` : "—"}
+                      </td>
+                      <td style={{ fontWeight: dl.significant_005 ? 700 : 400, color: dl.significant_005 ? "hsl(0 70% 45%)" : undefined }}>
+                        {fmtNum(dl.mann_whitney_p, 4)}
+                        {dl.significant_005 && " *"}
+                      </td>
+                      <td style={{ fontSize: "0.72rem", color: dl.bh_significant ? "hsl(0 70% 45%)" : "var(--v2-text-muted)" }}>
+                        {dl.bh_adjusted_p != null ? fmtNum(dl.bh_adjusted_p, 4) : "—"}
+                      </td>
+                      <td><span style={{ fontSize: "0.7rem", padding: "2px 6px", borderRadius: 4, background: dl.effect_size === "negligible" ? "hsl(140 30% 92%)" : dl.effect_size === "small" ? "hsl(45 60% 90%)" : dl.effect_size === "medium" ? "hsl(25 70% 90%)" : "hsl(0 50% 92%)" }}>
+                        {dl.effect_size} (d={fmtNum(dl.cohens_d, 2)})
+                      </span></td>
+                      <td style={{ fontWeight: 600, color: Math.abs(days.mean_delta ?? 0) >= 0.1 ? "hsl(0 65% 50%)" : undefined }}>
+                        {(days.mean_delta ?? 0) >= 0 ? "+" : ""}{fmtNum(days.mean_delta, 2)}
+                      </td>
+                      <td style={{ color: days.significant_005 ? "hsl(0 70% 45%)" : undefined }}>
+                        {fmtNum(days.mann_whitney_p, 4)}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", marginTop: "0.5rem" }}>
+            * = p &lt; 0.05 (uncorrected). Sorted by DL p-value. 95% CI = bootstrap confidence interval (5,000 iterations).
+            BH-adj. p = Benjamini-Hochberg adjusted p-value.
+          </p>
+        </section>
+      )}
+
+      {/* ── 6b. Control Stability ── */}
+      {fullSummary?.control_stability && (
+        <section style={SECTION_CARD}>
+          <h3 style={{ fontSize: "1.15rem", fontWeight: 700, margin: "0 0 0.5rem" }}>
+            🎯 Control Stability Verification
+          </h3>
+          <p style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch" }}>
+            <strong>What it measures:</strong> Do the two Ashkenazi controls (male and female) produce consistent outputs?
+            If they don&apos;t, gender effects within the control group become a confounding variable.
+          </p>
+          {(() => {
+            const cs = fullSummary.control_stability;
+            const dlSig = cs.dl_comparison?.significant;
+            const daysSig = cs.days_comparison?.significant;
+            return (
+              <>
+                <InsightCallout>
+                  {!dlSig && !daysSig ? (
+                    <>✅ <strong>Controls are stable.</strong> No significant difference between male and female Ashkenazi controls
+                    (DL: p={fmtNum(cs.dl_comparison?.mann_whitney_p, 4)}, Days: p={fmtNum(cs.days_comparison?.mann_whitney_p, 4)}).
+                    The control baseline is reliable.</>
+                  ) : (
+                    <>⚠️ <strong>Control instability detected.</strong> The male and female Ashkenazi controls produce significantly
+                    different outputs. This means gender effects within the control group may confound ethnicity comparisons.</>
+                  )}
+                </InsightCallout>
+                <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+                  <div style={{ ...STAT_CARD, flex: 1, minWidth: 180 }}>
+                    <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Control (Male)</span>
+                    <span style={{ fontSize: "1.3rem", fontWeight: 700 }}>
+                      DL {fmtNum(cs.control_male?.mean_dl)} · {fmtNum(cs.control_male?.mean_days)} days
+                    </span>
+                    <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>N={cs.control_male?.n}</span>
+                  </div>
+                  <div style={{ ...STAT_CARD, flex: 1, minWidth: 180 }}>
+                    <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Control (Female)</span>
+                    <span style={{ fontSize: "1.3rem", fontWeight: 700 }}>
+                      DL {fmtNum(cs.control_female?.mean_dl)} · {fmtNum(cs.control_female?.mean_days)} days
+                    </span>
+                    <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>N={cs.control_female?.n}</span>
+                  </div>
+                </div>
+              </>
+            );
+          })()}
+        </section>
+      )}
+
+      {/* ── 6c. Case Severity Stratification ── */}
+      {fullSummary?.case_severity && Object.keys(fullSummary.case_severity).length > 0 && (
+        <section style={SECTION_CARD}>
+          <h3 style={{ fontSize: "1.15rem", fontWeight: 700, margin: "0 0 0.5rem" }}>
+            ⚖️ Bias by Case Severity
+          </h3>
+          <p style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch" }}>
+            <strong>What it measures:</strong> Is the model more biased on certain types of cases?
+            Borderline cases (where the decision is ambiguous) are more likely to show differential treatment.
+          </p>
+          <div style={{ overflowX: "auto" }}>
+            <table className="v2-output-table" style={{ fontSize: "0.8rem" }}>
+              <thead>
+                <tr><th>Severity Level</th><th>N</th><th>Mean Δ DL</th><th>|Δ DL|</th><th>Flagged Rate</th></tr>
+              </thead>
+              <tbody>
+                {Object.entries(fullSummary.case_severity)
+                  .filter(([k]) => k !== "nan")
+                  .sort((a: any, b: any) => (b[1].flagged_rate ?? 0) - (a[1].flagged_rate ?? 0))
+                  .map(([sev, d]: [string, any]) => (
+                  <tr key={sev} style={{
+                    background: d.flagged_rate > 0.3 ? "hsl(0 70% 97%)" : undefined,
+                  }}>
+                    <td className="v2-output-table__field" style={{ direction: "rtl" }}>{sev}</td>
+                    <td>{d.n}</td>
+                    <td style={{ fontWeight: 600 }}>{d.mean_dl_delta >= 0 ? "+" : ""}{fmtNum(d.mean_dl_delta, 3)}</td>
+                    <td style={{ fontWeight: 600, color: d.abs_mean_dl_delta > 0.2 ? "hsl(0 65% 50%)" : undefined }}>{fmtNum(d.abs_mean_dl_delta, 3)}</td>
+                    <td style={{ fontWeight: 700, color: d.flagged_rate > 0.3 ? "hsl(0 65% 50%)" : d.flagged_rate > 0.15 ? "hsl(35 70% 45%)" : "hsl(140 50% 35%)" }}>
+                      {pct(d.flagged_rate)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
+      {/* ── 6d. Translator Signal Analysis ── */}
+      {fullSummary?.translator_analysis && (
+        <section style={SECTION_CARD}>
+          <h3 style={{ fontSize: "1.15rem", fontWeight: 700, margin: "0 0 0.5rem" }}>
+            🗣️ Translator Signal Analysis
+          </h3>
+          <p style={{ fontSize: "var(--v2-fs-sm)", color: "var(--v2-text-muted)", marginBottom: "1rem", maxWidth: "70ch" }}>
+            <strong>What it measures:</strong> Some demographic profiles require a translator (Arabic or Amharic),
+            and this fact remains in the prompt even in masked mode. This is a <strong>demographic signal that survives masking</strong>.
+            We test whether profiles with translators receive different treatment than profiles without.
+          </p>
+          {(() => {
+            const m = fullSummary.translator_analysis.masked;
+            const b = fullSummary.translator_analysis.baseline;
+            return (
+              <>
+                <InsightCallout>
+                  {m.with_translator.flagged_rate > m.without_translator.flagged_rate ? (
+                    <>⚠️ <strong>Translator signal detected in masked mode:</strong> Profiles with a translator are flagged at <strong>{pct(m.with_translator.flagged_rate)}</strong> vs. <strong>{pct(m.without_translator.flagged_rate)}</strong> without
+                    — a <strong>{((m.with_translator.flagged_rate - m.without_translator.flagged_rate) * 100).toFixed(1)} percentage point gap</strong>.
+                    {m.significant
+                      ? " This difference is statistically significant (p=" + fmtNum(m.p_value, 4) + ")."
+                      : " While not statistically significant at p<0.05 (p=" + fmtNum(m.p_value, 4) + "), the trend suggests translator presence leaks demographic information through masking."
+                    }
+                    </>
+                  ) : (
+                    <>✅ <strong>No translator signal in masked mode.</strong> Flagging rates are similar regardless of translator presence ({pct(m.with_translator.flagged_rate)} vs. {pct(m.without_translator.flagged_rate)}).</>
+                  )}
+                </InsightCallout>
+
+                <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "1rem" }}>
+                  {[
+                    { label: "MASKED — With Translator", data: m.with_translator, mode: "masked" },
+                    { label: "MASKED — Without Translator", data: m.without_translator, mode: "masked" },
+                    { label: "BASELINE — With Translator", data: b?.with_translator, mode: "baseline" },
+                    { label: "BASELINE — Without Translator", data: b?.without_translator, mode: "baseline" },
+                  ].map((item) => item.data && (
+                    <div key={item.label} style={{ ...STAT_CARD, flex: 1, minWidth: 200 }}>
+                      <span style={{ fontSize: "0.65rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>{item.label}</span>
+                      <span style={{
+                        fontSize: "1.3rem", fontWeight: 700,
+                        color: item.data.flagged_rate > 0.15 ? "hsl(0 65% 50%)" : item.data.flagged_rate > 0.08 ? "hsl(35 70% 45%)" : "hsl(140 50% 35%)",
+                      }}>
+                        {pct(item.data.flagged_rate)} flagged
+                      </span>
+                      <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>
+                        {item.data.flagged}/{item.data.n} comparisons
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            );
+          })()}
+        </section>
+      )}
+
+      {/* ── 7. Ethnicity & Gender Analysis ── */}
+      {fullSummary && (
+        <section style={SECTION_CARD}>
+          <h3 style={{ fontSize: "1.15rem", fontWeight: 700, margin: "0 0 0.5rem" }}>
+            🌍 Ethnicity &amp; Gender Analysis
+          </h3>
+          <InsightCallout icon="📐">
+            Scores averaged across genders per ethnic group and across ethnicities per gender.
+            Deltas are relative to the Ashkenazi control baseline.
+          </InsightCallout>
+
+          {fullSummary.ethnicity_analysis?.baseline && (
+            <>
+              <h4 style={{ fontSize: "0.9rem", fontWeight: 600, margin: "1rem 0 0.5rem", color: "var(--v2-text-muted)" }}>
+                Ethnicity Analysis — Baseline Mode
+              </h4>
+              <div style={{ overflowX: "auto" }}>
+                <table className="v2-output-table" style={{ fontSize: "0.8rem" }}>
+                  <thead>
+                    <tr><th>Ethnicity</th><th>N</th><th>Mean DL</th><th>Δ DL</th><th>Mean Days</th><th>Δ Days</th></tr>
+                  </thead>
+                  <tbody>
+                    {fullSummary.ethnicity_analysis.baseline.map((e: any) => (
+                      <tr key={e.ethnicity} style={{
+                        background: e.ethnicity === "Ashkenazi" ? "hsl(220 40% 96%)" : undefined,
+                        fontWeight: e.ethnicity === "Ashkenazi" ? 600 : 400,
+                      }}>
+                        <td className="v2-output-table__field">{e.ethnicity}</td>
+                        <td>{e.n}</td>
+                        <td>{fmtNum(e.mean_dangerousness)}</td>
+                        <td style={{ color: Math.abs(e.delta_dangerousness) >= 0.15 ? "hsl(0 65% 50%)" : undefined, fontWeight: 600 }}>
+                          {e.delta_dangerousness >= 0 ? "+" : ""}{fmtNum(e.delta_dangerousness)}
+                        </td>
+                        <td>{fmtNum(e.mean_detention_days)}</td>
+                        <td style={{ color: Math.abs(e.delta_detention_days) >= 0.2 ? "hsl(0 65% 50%)" : undefined, fontWeight: 600 }}>
+                          {e.delta_detention_days >= 0 ? "+" : ""}{fmtNum(e.delta_detention_days)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+
+          {fullSummary.gender_analysis?.baseline && (
+            <>
+              <h4 style={{ fontSize: "0.9rem", fontWeight: 600, margin: "1.25rem 0 0.5rem", color: "var(--v2-text-muted)" }}>
+                Gender Analysis — Baseline Mode
+              </h4>
+              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+                <div style={{ ...STAT_CARD, flex: 1, minWidth: 180 }}>
+                  <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Male</span>
+                  <span style={{ fontSize: "1.3rem", fontWeight: 700 }}>
+                    DL {fmtNum(fullSummary.gender_analysis.baseline.male?.mean_dangerousness)} · {fmtNum(fullSummary.gender_analysis.baseline.male?.mean_detention_days)} days
+                  </span>
+                  <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>N={fullSummary.gender_analysis.baseline.male?.n}</span>
+                </div>
+                <div style={{ ...STAT_CARD, flex: 1, minWidth: 180 }}>
+                  <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Female</span>
+                  <span style={{ fontSize: "1.3rem", fontWeight: 700 }}>
+                    DL {fmtNum(fullSummary.gender_analysis.baseline.female?.mean_dangerousness)} · {fmtNum(fullSummary.gender_analysis.baseline.female?.mean_detention_days)} days
+                  </span>
+                  <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>N={fullSummary.gender_analysis.baseline.female?.n}</span>
+                </div>
+                <div style={{ ...STAT_CARD, flex: 1, minWidth: 200 }}>
+                  <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Gender Gap (F − M)</span>
+                  <span style={{ fontSize: "1.3rem", fontWeight: 700 }}>
+                    Δ DL {fullSummary.gender_analysis.baseline.delta_dangerousness >= 0 ? "+" : ""}{fmtNum(fullSummary.gender_analysis.baseline.delta_dangerousness, 3)} · Δ Days {fullSummary.gender_analysis.baseline.delta_detention_days >= 0 ? "+" : ""}{fmtNum(fullSummary.gender_analysis.baseline.delta_detention_days, 2)}
+                  </span>
+                  <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>
+                    DL p={fmtNum(fullSummary.gender_analysis.baseline.dangerousness_p_value, 4)} · Days p={fmtNum(fullSummary.gender_analysis.baseline.detention_days_p_value, 4)}
+                  </span>
+                </div>
+              </div>
+            </>
+          )}
+        </section>
+      )}
+
+      {/* ── 8. Cross-Prompt Mode Comparison ── */}
+      {crossPrompt && (
+        <section style={SECTION_CARD}>
+          <h3 style={{ fontSize: "1.15rem", fontWeight: 700, margin: "0 0 0.5rem" }}>
+            🔀 Cross-Prompt Mode Comparison
+          </h3>
+          <InsightCallout icon="🛡️">
+            Masking effectiveness: how much does the masked prompt reduce differential treatment compared to baseline?
+          </InsightCallout>
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <div style={{ ...STAT_CARD, flex: 1, minWidth: 200 }}>
+              <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Baseline Flagged</span>
+              <span style={{ fontSize: "1.6rem", fontWeight: 800, color: "hsl(0 60% 50%)" }}>{pct(crossPrompt.baseline?.flagged_rate)}</span>
+              <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>{crossPrompt.baseline?.n_flagged} / {crossPrompt.baseline?.n_comparisons}</span>
+            </div>
+            <div style={{ ...STAT_CARD, flex: 1, minWidth: 200 }}>
+              <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Masked Flagged</span>
+              <span style={{ fontSize: "1.6rem", fontWeight: 800, color: "hsl(140 50% 40%)" }}>{pct(crossPrompt.masked?.flagged_rate)}</span>
+              <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>{crossPrompt.masked?.n_flagged} / {crossPrompt.masked?.n_comparisons}</span>
+            </div>
+            <div style={{ ...STAT_CARD, flex: 1, minWidth: 200 }}>
+              <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Masking Reduction</span>
+              <span style={{ fontSize: "1.6rem", fontWeight: 800, color: "hsl(220 65% 50%)" }}>{pct(crossPrompt.masking_effectiveness?.flagged_rate_reduction)}</span>
+              <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>fewer flags with masking</span>
             </div>
           </div>
-        )}
-
-        <div className="v2-output-table-wrap">
-          <table className="v2-output-table">
-            <thead>
-              <tr>
-                <th>Variant Type</th>
-                <th>Identity Leakage Rate</th>
-                <th>Hallucination Rate</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(data.reasoning_flaws?.by_variant_type || {}).map(([key, v]) => (
-                <tr key={key}>
-                  <td className="v2-output-table__field">{variantLabel(key)}</td>
-                  <td style={{
-                    fontWeight: 700,
-                    color: (v.identity_leakage_rate ?? 0) > 0.1 ? "var(--v2-danger, #dc2626)" : undefined,
-                  }}>
-                    {pct(v.identity_leakage_rate)} <span style={{ fontSize: "0.75rem", fontWeight: "normal", color: "var(--v2-text-muted)" }}>({v.n_leakage})</span>
-                  </td>
-                  <td style={{
-                    fontWeight: 700,
-                    color: (v.hallucination_rate ?? 0) > 0.05 ? "var(--v2-danger, #dc2626)" : undefined,
-                  }}>
-                    {pct(v.hallucination_rate)} <span style={{ fontSize: "0.75rem", fontWeight: "normal", color: "var(--v2-text-muted)" }}>({v.n_hallucination})</span>
-                  </td>
-                  <td>{v.n_total}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── Methodology note ── */}
       <div style={{
@@ -725,7 +1097,8 @@ export function AuditMetricsPage() {
       }}>
         <strong>Methodology Note:</strong> CCR uses <code>detention_framing_bias_flag</code> as the consistency
         indicator. DIR uses <code>dangerousness_escalation_flag</code> and <code>detention_framing_bias_flag</code> to
-        determine adverse outcomes. Masking efficiency compares DIR across prompt modes. All metrics are computed
+        determine adverse outcomes. Masking efficiency compares DIR across prompt modes. Statistical tests use
+        Mann-Whitney U (non-parametric) with Cohen&apos;s d effect sizes. All metrics are computed
         from {data.n_total_comparisons} pairwise comparisons generated at {new Date(data.generated_at).toLocaleString()}.
       </div>
     </div>

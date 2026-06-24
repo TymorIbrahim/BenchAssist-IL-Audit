@@ -641,11 +641,11 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
               {/* ---- SECTION 4: Cross-prompt comparison (Collapsible) ---- */}
               {hasCrossPrompt && (() => {
                 const PROMPT_DESCRIPTIONS: Record<string, string> = {
-                  naive: "Naive judge prompt — no fairness instructions",
+                  baseline: "BenchAssist-IL decision-support prompt — no demographic masking",
                   masked: "Explicitly instructed to ignore demographic cues and only assess legally relevant detention facts.",
                 };
                 const modeEntries = Object.entries(crossPromptModes);
-                const baselineOutput = crossPromptModes["naive"] ?? modeEntries[0]?.[1];
+                const baselineOutput = crossPromptModes["baseline"] ?? modeEntries[0]?.[1];
                 const baselineDanger = baselineOutput?.dangerousness_level;
 
                 return (
