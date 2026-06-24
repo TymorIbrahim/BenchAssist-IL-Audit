@@ -24,7 +24,7 @@ import pandas as pd
 logger = logging.getLogger(__name__)
 
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-_DEFAULT_EXCEL = _PROJECT_ROOT / "rachel_data" / "benchassist_audit_dataset_400.xlsx"
+_DEFAULT_EXCEL = _PROJECT_ROOT / "rachel_data" / "benchassist_audit_dataset_expanded.xlsx"
 _DEFAULT_OUTPUT = _PROJECT_ROOT / "rachel_data" / "llm_outputs.json"
 
 

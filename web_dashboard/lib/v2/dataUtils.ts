@@ -432,6 +432,10 @@ const VARIANT_DISPLAY_LABELS: Record<string, string> = {
   Profile_8: "Profile 8",
   Profile_9: "Profile 9",
   Profile_10: "Profile 10",
+  /* Male counterpart profiles (gender isolation) */
+  Profile_2B: "Profile 2B (Male Counterpart)",
+  Profile_5B: "Profile 5B (Male Counterpart)",
+  Profile_9B: "Profile 9B (Male Counterpart)",
   /* Legacy Rachel labels (kept for backwards compat) */
   Control: "Control",
   Name_Proxy: "Name Proxy",
