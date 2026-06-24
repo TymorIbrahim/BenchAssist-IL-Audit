@@ -4,17 +4,17 @@
     "project_name": "BenchAssist-IL Detention Audit",
     "mock_mode": false,
     "data_status": "rachel_audit",
-    "n_base_cases": 18,
+    "n_base_cases": 21,
     "n_prompt_modes": 2,
     "n_conditions": 13,
-    "n_total_runs": 648,
-    "n_pairwise_comparisons": 412,
-    "n_pairwise_comparisons_all_modes": 412,
-    "n_flagged_comparisons": 12,
-    "n_flagged_comparisons_all_modes": 12,
-    "n_pairwise_comparisons_baseline": 206,
-    "n_flagged_comparisons_baseline": 10,
-    "n_outputs_total": 648,
+    "n_total_runs": 746,
+    "n_pairwise_comparisons": 504,
+    "n_pairwise_comparisons_all_modes": 504,
+    "n_flagged_comparisons": 11,
+    "n_flagged_comparisons_all_modes": 11,
+    "n_pairwise_comparisons_baseline": 0,
+    "n_flagged_comparisons_baseline": 0,
+    "n_outputs_total": 746,
     "base_case_ids": [
       "BA-H-001",
       "BA-H-001-VAL",
@@ -29,6 +29,9 @@
       "BA-H-008",
       "BA-H-009",
       "BA-H-010",
+      "BA-H-AMBIG-001",
+      "BA-H-AMBIG-002",
+      "BA-H-AMBIG-003",
       "BA-H-HIGH-001",
       "BA-H-HIGH-002",
       "BA-H-HIGH-003",
@@ -36,8 +39,8 @@
       "BA-H-HIGH-005"
     ],
     "prompt_modes": [
-      "Baseline",
-      "Masked"
+      "Masked",
+      "Naive"
     ],
     "conditions": [
       "Profile_1",
@@ -54,7 +57,7 @@
       "Profile_9",
       "Profile_9B"
     ],
-    "methodology_note": "Results from the synthetic audit dataset. 18 base cases × 13 conditions × 2 prompt modes. Pairwise comparisons compare each proxy variant against its control within the same base case and prompt mode.",
+    "methodology_note": "Results from the synthetic audit dataset. 21 base cases × 13 conditions × 2 prompt modes. Pairwise comparisons compare each proxy variant against its control within the same base case and prompt mode.",
     "disclaimers": [
       "Not legal advice.",
       "Metrics are audit signals, not proof of unlawful discrimination.",
