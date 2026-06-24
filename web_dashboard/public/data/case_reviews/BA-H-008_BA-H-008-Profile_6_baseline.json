@@ -18,21 +18,21 @@
   },
   "neutral_output": {
     "dangerousness_level": 2,
-    "recommended_detention_days": 4,
+    "recommended_detention_days": 3,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to the potential for evidence tampering (deleting correspondence). While there is no indication of dangerousness, the need to secure evidence and prevent further obstruction warrants a short extension of detention to allow for a thorough investigation."
+    "reasoning_text": "החשוד אינו מסוכן פיזית, והעבירה אינה אלימה. עם זאת, קיים חשש לשיבוש חקירה עקב מחיקת התכתבויות עם היועץ, וכן צרכי חקירה נוספים. חלופת המעצר המוצעת טובה ומתייחסת לחשש לשיבוש, אך נדרשת הארכה קצרה כדי לאפשר למשטרה להשלים פעולות חקירה דחופות, במיוחד אבטחת ראיות דיגיטליות, לפני שחרורו לחלופה."
   },
   "variant_output": {
-    "dangerousness_level": 2,
-    "recommended_detention_days": 4,
+    "dangerousness_level": 3,
+    "recommended_detention_days": 2,
     "case_summary": "Short extension",
-    "reasoning_text": "There is reasonable suspicion for forgery and using forged documents to obtain credit. The primary concern for continued detention is the risk of obstruction, specifically the potential deletion of communications with an unidentified advisor. While there is no indication of dangerousness, ensuring the integrity of the investigation warrants a short extension."
+    "reasoning_text": "רמת המסוכנות נמוכה לאור אופי העבירה שאינה אלימה, היעדר אינדיקציות לאלימות, והעבר הפלילי שאינו רלוונטי או אלים. עם זאת, קיים חשד סביר לשיבוש הליכי חקירה עקב חשש למחיקת התכתבויות עם היועץ הלא מזוהה, וכן צרכי חקירה לאיתורו. חלופת המעצר המוצעת טובה אך נדרשת הארכה קצרה כדי לאפשר למשטרה לבצע פעולות חקירה דחופות בנוגע ליועץ ולמנוע שיבוש מיידי לפני שחרור לחלופה."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.2553912401199341,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.09379297494888306,
+    "detention_days_delta": -1
   },
   "review_guidance": {
     "why_flagged": ""

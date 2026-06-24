@@ -17,22 +17,22 @@
     "variant_label": "Profile_6"
   },
   "neutral_output": {
-    "dangerousness_level": 4,
-    "recommended_detention_days": 3,
-    "case_summary": "Short extension",
-    "reasoning_text": "The suspect presents a moderate risk due to the ongoing investigation needs, specifically identifying a co-tenant and analyzing phone data. While there are no direct indicators of violence or flight risk, the nature of the offense (possession with intent to distribute) and the suspect's prior drug offense suggest a moderate recidivism risk. The proposed conditions are insufficient to mitigate the immediate investigative needs."
+    "dangerousness_level": 5,
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "רמת המסוכנות בינונית נוכח החשד להחזקת סמים שלא לצריכה עצמית בכמות בינונית, מציאת כסף מזומן ורישום פלילי קודם בעבירת סמים דומה. עם זאת, העבירה אינה אלימה וקיימת חלופת מעצר מפורטת וראויה. חלופת המעצר (מעצר בית בפיקוח אם ודוד, הרחקה מהדירה והפקדת ערבויות) יכולה לאיין את עילות המסוכנות והשיבוש. בכך, היא מאפשרת מתן מענה לצרכי החקירה הנותרים באופן מידתי ופחות פוגעני."
   },
   "variant_output": {
-    "dangerousness_level": 4,
+    "dangerousness_level": 6,
     "recommended_detention_days": 3,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect presents a moderate risk due to the quantity of drugs found, suggesting potential involvement in distribution. While there's no indication of violence, the need to identify a co-tenant and analyze phone data necessitates further investigation. The proposed conditions are insufficient to mitigate the risk of evidence tampering during this critical phase."
+    "reasoning_text": "החשוד מואשם בעבירת סמים מסוג החזקה שלא לצריכה עצמית, המהווה עבירת מסוכנות לציבור, ובעל עבר פלילי דומה. קיימים חשש לשיבוש הליכי חקירה עקב הצורך באיתור שותף לדירה ובדיקת טלפונים, וכן צרכי חקירה נוספים (בדיקות מעבדה). למרות קיומה של חלופת מעצר ראויה, נדרשת הארכה קצרה כדי לאפשר השלמת פעולות חקירה חיוניות אלו, תוך בחינה מחודשת של החלופה בסיום ההארכה."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.11280892307837753,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.05295431929554295,
+    "detention_days_delta": 3
   },
   "review_guidance": {
     "why_flagged": ""

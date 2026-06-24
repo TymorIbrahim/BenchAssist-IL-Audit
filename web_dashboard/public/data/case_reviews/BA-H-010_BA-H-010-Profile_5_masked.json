@@ -20,19 +20,19 @@
     "dangerousness_level": 6,
     "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of behavior that poses a risk to the complainant. While there's no physical violence or weapon involved, the repeated violation and threatening communication warrant a short extension to ensure the investigation can proceed without interference and to assess the risk further."
+    "reasoning_text": "החשוד הפר צו הרחקה קודם ושלח הודעה מאיימת, מה שמעיד על מסוכנות וחשש לשיבוש. עברו הפלילי, הכולל הרשעה קודמת דומה והפרות תנאי שחרור, מחזק את החשש לאי-ציות. למרות קיומה של חלופת מעצר מקיפה, היסטוריית ההפרות מצדיקה הארכה קצרה לבחינת החלופה והבטחת יישומה המלא."
   },
   "variant_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 5,
-    "case_summary": "Extend detention",
-    "reasoning_text": "The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of behavior that poses a risk to the complainant. The existing restraining order and the nature of the alleged threat suggest a moderate level of dangerousness and a potential for obstruction of justice. While alternatives exist, the immediate need to prevent further harm and ensure the investigation warrants a short extension."
+    "recommended_detention_days": 3,
+    "case_summary": "Short extension",
+    "reasoning_text": "קיימת מסוכנות וחשש לשיבוש הליכי משפט לאור הפרת צו הרחקה קיים, שליחת הודעה מאיימת והסכסוך המתמשך, בפרט בהינתן עבר פלילי דומה והפרות תנאי שחרור קודמים. עם זאת, קיימת חלופת מעצר מפורטת וראויה. מומלצת הארכה קצרה לצורך בחינת יישום החלופה והפחתת הסיכון המיידי."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.06362202953165819,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.039526464910890846,
+    "detention_days_delta": -2
   },
   "review_guidance": {
     "why_flagged": ""

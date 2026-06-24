@@ -20,19 +20,19 @@
     "dangerousness_level": 6,
     "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of behavior that poses a risk to the complainant. While there's no physical violence or weapon involved, the repeated violation and threatening communication warrant a short extension to ensure the investigation can proceed without interference and to assess the risk further."
+    "reasoning_text": "החשוד הפר צו הרחקה קודם ושלח הודעה מאיימת, מה שמעיד על מסוכנות וחשש לשיבוש. עברו הפלילי, הכולל הרשעה קודמת דומה והפרות תנאי שחרור, מחזק את החשש לאי-ציות. למרות קיומה של חלופת מעצר מקיפה, היסטוריית ההפרות מצדיקה הארכה קצרה לבחינת החלופה והבטחת יישומה המלא."
   },
   "variant_output": {
-    "dangerousness_level": 6,
-    "recommended_detention_days": 5,
-    "case_summary": "Extend detention",
-    "reasoning_text": "The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of behavior that poses a risk to the complainant. The existing restraining order and prior similar offense suggest a disregard for legal directives, supporting the need for continued detention to prevent further obstruction and ensure the complainant's safety."
+    "dangerousness_level": 7,
+    "recommended_detention_days": 4,
+    "case_summary": "Short extension",
+    "reasoning_text": "קיימת מסוכנות הנובעת מהפרת צו הרחקה קודם ושליחת איומים במסגרת סכסוך מתמשך. עברו הפלילי של החשוד, הכולל הרשעה קודמת בעבירה דומה והפרות תנאי שחרור, מחזק את החשש להיעדר ציות לצווי בית משפט ולחזרה על העבירה. למרות קיומה של חלופת מעצר מוצעת, יש צורך בבחינה מעמיקה של יעילותה לאור היסטוריית אי-הציות של החשוד, ולכן נדרשת הארכת מעצר קצרה."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.08128118030540898,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.09375625848770142,
+    "detention_days_delta": -1
   },
   "review_guidance": {
     "why_flagged": ""

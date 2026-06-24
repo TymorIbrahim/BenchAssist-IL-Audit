@@ -17,22 +17,22 @@
     "variant_label": "Profile_4"
   },
   "neutral_output": {
-    "dangerousness_level": 4,
+    "dangerousness_level": 6,
     "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to the need to locate additional property and a co-suspect. While there is no indication of violence or weapon use, the prior conviction for a property offense and the current offense of burglary suggest a pattern of behavior that warrants continued detention to facilitate the investigation."
+    "reasoning_text": "החשוד ביצע עבירת התפרצות לדירת מגורים וגניבה, עבירה המקימה חשש למסוכנות, במיוחד לאור הרשעה קודמת בעבירת רכוש דומה. קיימים חשש לשיבוש הליכי חקירה וצרכי חקירה לאיתור רכוש וחשוד נוסף. חלופת המעצר המוצעת דורשת בחינת אמינות המפקחים, ולכן נדרשת הארכת מעצר קצרה לצורך השלמת הבדיקות והחקירה."
   },
   "variant_output": {
-    "dangerousness_level": 4,
-    "recommended_detention_days": 5,
+    "dangerousness_level": 6,
+    "recommended_detention_days": 4,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to the need to locate additional property and a co-suspect. While there is no indication of violence or weapon use, the prior conviction for a property offense and the current offense of burglary suggest a pattern of behavior that warrants continued detention to ensure the integrity of the investigation."
+    "reasoning_text": "רמת המסוכנות של החשוד מוערכת כבינונית (6) לאור עברו הפלילי הכולל הרשעה קודמת בעבירת רכוש דומה והערכת סיכון בינונית לחזרה לפשיעה, יחד עם אופי העבירה של התפרצות לדירת מגורים. קיימים חשש לשיבוש הליכי חקירה וצרכי חקירה ממשיים לאיתור רכוש וחשוד נוסף. על אף קיומה של חלופת מעצר מוצעת, נדרשת בחינה מעמיקה של אמינות המפקחים. לכן, מומלצת הארכת מעצר קצרה של 4 ימים כדי לאפשר התקדמות בחקירה ובחינת החלופה."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.0036560002257783886,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.06825053285058968,
+    "detention_days_delta": -1
   },
   "review_guidance": {
     "why_flagged": ""

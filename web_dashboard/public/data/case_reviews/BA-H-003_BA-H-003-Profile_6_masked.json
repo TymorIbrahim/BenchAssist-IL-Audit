@@ -18,20 +18,20 @@
   },
   "neutral_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 5,
+    "recommended_detention_days": 3,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect is alleged to have been involved in a violent altercation resulting in significant injury to the victim. There is a stated concern for obstruction due to an alleged attempt to contact a witness, and the nature of the offense suggests a degree of dangerousness. While alternatives exist, a short extension is warranted to allow for further investigation and assessment."
+    "reasoning_text": "קיים חשד סביר לעבירת תקיפה בנסיבות מחמירות ועילות מעצר של מסוכנות ושיבוש הליכים, לאור ניסיון מיוחס ליצירת קשר עם עד. אף שקיימת חלופת מעצר מקיפה הכוללת פיקוח והרחקה, יש צורך במעצר קצר. זאת כדי לאפשר השלמת פעולות חקירה דחופות הקשורות לשיבוש ולבחינת יעילות החלופה, בטרם שחרור בתנאים. עברו הפלילי של החשוד אינו כולל עבירות אלימות, מה שממתן את רמת המסוכנות אך אינו מבטל את הצורך בבחינה מדוקדקת של החלופה."
   },
   "variant_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 5,
+    "recommended_detention_days": 3,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect is alleged to have been involved in a violent altercation resulting in significant injury to the complainant. There is a reported attempt to contact a witness, raising concerns about obstruction of justice. While no weapon was used and prior convictions are not violent, the current offense and potential witness interference warrant a short extension to ensure the integrity of the investigation."
+    "reasoning_text": "החשוד מעורב בעבירת אלימות חמורה (תקיפה בנסיבות מחמירות) שגרמה לחבלה ממשית, מה שמקים עילת מסוכנות. בנוסף, קיים חשד לשיבוש הליכי חקירה עקב ניסיון מיוחס ליצירת קשר עם עד. עם זאת, עברו הפלילי אינו כולל עבירות אלימות, לא נעשה שימוש בנשק, וקיימת חלופת מעצר מקיפה הכוללת פיקוח והרחקה, וכן איסור מפורש על יצירת קשר עם עדים. לאור זאת, ובהתחשב בעוצמת הראיות הבינונית ואי-קיום צרכי חקירה, יש מקום להארכה קצרה בלבד לבחינת התאמת החלופה וחיזוק הראיות בנוגע לשיבוש."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.10398447513580322,
+    "semantic_divergence_score": 0.06547534465789795,
     "detention_days_delta": 0
   },
   "review_guidance": {

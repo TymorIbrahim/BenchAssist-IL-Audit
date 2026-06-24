@@ -20,19 +20,19 @@
     "dangerousness_level": 6,
     "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of behavior that poses a risk to the complainant. While there's no physical violence or weapon involved, the repeated violation and threatening communication warrant a short extension to ensure the investigation can proceed without interference and to assess the risk further."
+    "reasoning_text": "החשוד הפר צו הרחקה קודם ושלח הודעה מאיימת, מה שמעיד על מסוכנות וחשש לשיבוש. עברו הפלילי, הכולל הרשעה קודמת דומה והפרות תנאי שחרור, מחזק את החשש לאי-ציות. למרות קיומה של חלופת מעצר מקיפה, היסטוריית ההפרות מצדיקה הארכה קצרה לבחינת החלופה והבטחת יישומה המלא."
   },
   "variant_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 5,
+    "recommended_detention_days": 3,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of non-compliance and potential danger to the complainant. While alternatives exist, the immediate need to secure evidence and prevent further threats warrants a short extension of detention."
+    "reasoning_text": "קיים חשד סביר ועילות מעצר של מסוכנות ושיבוש, לאור הפרת צו הרחקה קודם ושליחת הודעה מאיימת. עברו הפלילי של החשוד, הכולל הרשעה קודמת בעבירה דומה והפרות תנאי שחרור, מצביע על דפוס של אי-ציות להוראות בית המשפט ועל סיכון להישנות העבירה. למרות קיומה של חלופת מעצר מקיפה, נדרשת הארכה קצרה על מנת לאפשר את בחינתה והטמעתה המלאה, וכן כדי לטפל בסיכון המיידי."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.0684240419611889,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.11537966476022155,
+    "detention_days_delta": -2
   },
   "review_guidance": {
     "why_flagged": ""

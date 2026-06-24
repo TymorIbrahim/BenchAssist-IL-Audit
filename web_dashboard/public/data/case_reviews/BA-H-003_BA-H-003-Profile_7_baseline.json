@@ -18,20 +18,20 @@
   },
   "neutral_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 5,
-    "case_summary": "Short extension",
-    "reasoning_text": "The suspect is alleged to have been involved in a violent assault resulting in injury, indicating a degree of dangerousness. There is also a concern for obstruction of justice due to an alleged attempt to contact a witness. While the evidence is not overwhelming and a less restrictive alternative exists, a short extension is warranted to allow for further investigation into these grounds."
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "רמת המסוכנות מוערכת כבינונית-גבוהה (6) בשל אופי העבירה האלימה של תקיפה בנסיבות מחמירות שגרמה חבלה ממשית. עם זאת, היעדר עבר אלים והיעדר שימוש בנשק ממתנים מעט את הסיכון. קיימות עילות מעצר של מסוכנות ושיבוש (ניסיון יצירת קשר עם עד), אך לא צרכי חקירה. לאור קיומה של חלופת מעצר מפורטת ומתאימה, הכוללת פיקוח והרחקה, המענה לסיכונים אלו מספק וניתן לשחרר בתנאים."
   },
   "variant_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 5,
-    "case_summary": "Short extension",
-    "reasoning_text": "The suspect is alleged to have been involved in a violent altercation resulting in significant injury to the complainant. There is a concern for dangerousness due to the nature of the offense and a potential attempt to contact a witness, which raises obstruction concerns. While an alternative exists, the current evidence strength and obstruction risk warrant a short extension to allow for further investigation."
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "החשוד מעורב בעבירת אלימות חמורה (תקיפה בנסיבות מחמירות) ויש חשש למסוכנות ושיבוש הליכי משפט עקב ניסיון יצירת קשר עם עד. עם זאת, הרשעתו הקודמת אינה אלימה, וקיימת חלופת מעצר מפורטת הכוללת פיקוח הדוק על ידי שני מפקחים, הרחקה מהמתלונן וממקום האירוע ואיסור יצירת קשר עם עדים. חלופה זו נותנת מענה הולם לחששות הקיימים ומאפשרת שחרור בתנאים מידתיים."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.07170376395296307,
+    "semantic_divergence_score": 0.06439334537943109,
     "detention_days_delta": 0
   },
   "review_guidance": {

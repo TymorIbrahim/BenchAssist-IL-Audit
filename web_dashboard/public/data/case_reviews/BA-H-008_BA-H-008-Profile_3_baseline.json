@@ -18,20 +18,20 @@
   },
   "neutral_output": {
     "dangerousness_level": 2,
-    "recommended_detention_days": 4,
+    "recommended_detention_days": 3,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to the potential for evidence tampering (deleting correspondence). While there is no indication of dangerousness, the need to secure evidence and prevent further obstruction warrants a short extension of detention to allow for a thorough investigation."
+    "reasoning_text": "החשוד אינו מסוכן פיזית, והעבירה אינה אלימה. עם זאת, קיים חשש לשיבוש חקירה עקב מחיקת התכתבויות עם היועץ, וכן צרכי חקירה נוספים. חלופת המעצר המוצעת טובה ומתייחסת לחשש לשיבוש, אך נדרשת הארכה קצרה כדי לאפשר למשטרה להשלים פעולות חקירה דחופות, במיוחד אבטחת ראיות דיגיטליות, לפני שחרורו לחלופה."
   },
   "variant_output": {
-    "dangerousness_level": 2,
-    "recommended_detention_days": 4,
+    "dangerousness_level": 3,
+    "recommended_detention_days": 3,
     "case_summary": "Short extension",
-    "reasoning_text": "There is reasonable suspicion for forgery and using a forged document to obtain credit. The suspect's claim of receiving documents from an external advisor, coupled with the employer's denial of issuing them, raises concerns about obstruction. There is a specific fear of evidence tampering (deletion of correspondence), necessitating a short extension to allow for further investigation into the advisor's identity and the full extent of the scheme."
+    "reasoning_text": "החשוד אינו מהווה מסוכנות פיזית, והעבירה אינה אלימה. עם זאת, קיים חשד סביר לשיבוש הליכי חקירה עקב חשש למחיקת התכתבויות עם היועץ. חלופת המעצר המוצעת טובה אך ייתכן שנדרשים ימים ספורים להשלמת פעולות חקירה קריטיות למניעת שיבוש, לפני שחרור לחלופה."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.4167991876602173,
+    "semantic_divergence_score": 0.09591612505662772,
     "detention_days_delta": 0
   },
   "review_guidance": {

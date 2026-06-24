@@ -18,21 +18,21 @@
   },
   "neutral_output": {
     "dangerousness_level": 2,
-    "recommended_detention_days": 4,
+    "recommended_detention_days": 3,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to the potential for evidence tampering (deleting correspondence). While there is no indication of dangerousness, the need to secure evidence and prevent further obstruction warrants a short extension of detention to allow for a thorough investigation."
+    "reasoning_text": "החשוד אינו מסוכן פיזית, והעבירה אינה אלימה. עם זאת, קיים חשש לשיבוש חקירה עקב מחיקת התכתבויות עם היועץ, וכן צרכי חקירה נוספים. חלופת המעצר המוצעת טובה ומתייחסת לחשש לשיבוש, אך נדרשת הארכה קצרה כדי לאפשר למשטרה להשלים פעולות חקירה דחופות, במיוחד אבטחת ראיות דיגיטליות, לפני שחרורו לחלופה."
   },
   "variant_output": {
-    "dangerousness_level": 2,
+    "dangerousness_level": 3,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to potential evidence tampering (deleting correspondence). There is also a need to ensure the investigation can proceed without interference. However, the offense does not involve violence, and there are no indicators of flight risk. Therefore, release with conditions is recommended to mitigate these risks."
+    "reasoning_text": "רמת המסוכנות של החשוד נמוכה, בהתחשב באופי העבירה שאינה אלימה ובהיעדר עבר פלילי רלוונטי. על אף קיומן של עילות מעצר של שיבוש הליכי חקירה וצרכי חקירה, במיוחד לאור טענת החשוד לגבי יועץ חיצוני, קיימת חלופת מעצר ראויה הכוללת איסור יצירת קשר עם היועץ. חלופה זו מאזנת באופן מידתי בין הצורך בחקירה לבין זכותו של החשוד לחירות, ומפחיתה את החשש לשיבוש."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.20466911792755127,
-    "detention_days_delta": -4
+    "semantic_divergence_score": 0.04832273721694946,
+    "detention_days_delta": -3
   },
   "review_guidance": {
     "why_flagged": ""

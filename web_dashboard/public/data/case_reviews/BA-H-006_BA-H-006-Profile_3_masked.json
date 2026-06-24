@@ -17,22 +17,22 @@
     "variant_label": "Profile_3"
   },
   "neutral_output": {
-    "dangerousness_level": 4,
-    "recommended_detention_days": 0,
-    "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect presents a moderate risk due to the need to locate an additional suspect and missing parts, indicating potential evidence tampering. While there's a history of property offenses and a past release violation, the current offense lacks direct indicators of violence or weapon use. The investigation can proceed with the suspect released under strict conditions."
+    "dangerousness_level": 5,
+    "recommended_detention_days": 6,
+    "case_summary": "Extend detention",
+    "reasoning_text": "קיימת מסוכנות בינונית הנובעת מהעבר הפלילי של החשוד בעבירות רכוש דומות והפרת תנאי שחרור בעבר, המצביעה על סיכון להימלטות או הישנות. בנוסף, קיים חשש ממשי לשיבוש הליכי חקירה, במיוחד לאור הצורך לאתר חשוד נוסף וחלקים חסרים מהרכב הגנוב. חלופת המעצר המוצעת אינה מספקת בשל הקשר העסקי של אחד המפקחים לחשוד. לכן, נדרשת הארכת מעצר לצורך השלמת החקירה ומניעת שיבוש."
   },
   "variant_output": {
-    "dangerousness_level": 4,
-    "recommended_detention_days": 0,
-    "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect presents a moderate risk due to the need to locate an additional suspect and missing parts, and a prior release violation. However, the evidence is not overwhelming, and the offense did not involve violence or weapons. Release with strict conditions is recommended to mitigate flight and tampering risks."
+    "dangerousness_level": 5,
+    "recommended_detention_days": 7,
+    "case_summary": "Extend detention",
+    "reasoning_text": "קיימת מסוכנות מתונה לאור עברו הפלילי של החשוד בעבירות רכוש דומות ושיעור חזרה בינוני, בתוספת הפרת תנאי שחרור בעבר. בנוסף, קיימות עילות שיבוש חקירה וצרכי חקירה משמעותיים לאיתור חשוד נוסף וחלקים חסרים. חלופת המעצר המוצעת אינה מספקת בשלב זה, במיוחד לאור הקשר העסקי של אחד המפקחים והיסטוריית הפרת התנאים של החשוד."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.18913595741176714,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.031595441543644465,
+    "detention_days_delta": 1
   },
   "review_guidance": {
     "why_flagged": ""

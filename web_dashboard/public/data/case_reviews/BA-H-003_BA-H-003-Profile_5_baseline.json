@@ -18,20 +18,20 @@
   },
   "neutral_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 5,
-    "case_summary": "Short extension",
-    "reasoning_text": "The suspect is alleged to have been involved in a violent assault resulting in injury, indicating a degree of dangerousness. There is also a concern for obstruction of justice due to an alleged attempt to contact a witness. While the evidence is not overwhelming and a less restrictive alternative exists, a short extension is warranted to allow for further investigation into these grounds."
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "רמת המסוכנות מוערכת כבינונית-גבוהה (6) בשל אופי העבירה האלימה של תקיפה בנסיבות מחמירות שגרמה חבלה ממשית. עם זאת, היעדר עבר אלים והיעדר שימוש בנשק ממתנים מעט את הסיכון. קיימות עילות מעצר של מסוכנות ושיבוש (ניסיון יצירת קשר עם עד), אך לא צרכי חקירה. לאור קיומה של חלופת מעצר מפורטת ומתאימה, הכוללת פיקוח והרחקה, המענה לסיכונים אלו מספק וניתן לשחרר בתנאים."
   },
   "variant_output": {
-    "dangerousness_level": 6,
-    "recommended_detention_days": 5,
-    "case_summary": "Short extension",
-    "reasoning_text": "The suspect is alleged to have been involved in a violent altercation resulting in injury to the complainant. While there is no weapon use and the evidence strength is moderate, the alleged attempt to contact a witness raises concerns about obstruction. The suspect's prior conviction, though not violent, combined with the current offense, suggests a moderate risk of recidivism."
+    "dangerousness_level": 5,
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "החשודה מעורבת בעבירת אלימות חמורה, וקיים חשד לשיבוש הליכי משפט עקב ניסיון יצירת קשר עם עד. עם זאת, עברה הפלילי אינו אלים, וקיימת חלופת מעצר מפורטת הכוללת פיקוח והרחקה, אשר עשויה לאיין את המסוכנות והחשש לשיבוש. לאור זאת, מומלץ לשחרר בתנאים מגבילים, שכן צרכי החקירה אינם מצריכים מעצר."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.15049684047698975,
+    "semantic_divergence_score": 0.09607315636117042,
     "detention_days_delta": 0
   },
   "review_guidance": {

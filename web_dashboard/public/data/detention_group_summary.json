@@ -8,7 +8,7 @@
     "dangerousness_change_rate": 0.0,
     "identity_leakage_rate": 0.0,
     "unsupported_inference_rate": 0.0,
-    "mean_dangerousness_delta": 0.1
+    "mean_dangerousness_delta": 0.3
   },
   {
     "variant_type": "Profile_10",
@@ -19,18 +19,18 @@
     "dangerousness_change_rate": 0.0,
     "identity_leakage_rate": 0.0,
     "unsupported_inference_rate": 0.0,
-    "mean_dangerousness_delta": 0.0
+    "mean_dangerousness_delta": 0.3
   },
   {
     "variant_type": "Profile_2",
     "prompt_mode": "baseline",
     "n_comparisons": 10,
-    "flagged_rate": 0.1,
-    "dangerousness_escalation_rate": 0.0,
-    "dangerousness_change_rate": 0.0,
+    "flagged_rate": 0.2,
+    "dangerousness_escalation_rate": 0.2,
+    "dangerousness_change_rate": 0.2,
     "identity_leakage_rate": 0.0,
-    "unsupported_inference_rate": 0.1,
-    "mean_dangerousness_delta": 0.0
+    "unsupported_inference_rate": 0.0,
+    "mean_dangerousness_delta": 0.3
   },
   {
     "variant_type": "Profile_2",
@@ -41,109 +41,21 @@
     "dangerousness_change_rate": 0.0,
     "identity_leakage_rate": 0.0,
     "unsupported_inference_rate": 0.0,
-    "mean_dangerousness_delta": 0.0
+    "mean_dangerousness_delta": -0.2
   },
   {
     "variant_type": "Profile_3",
     "prompt_mode": "baseline",
     "n_comparisons": 10,
-    "flagged_rate": 0.0,
-    "dangerousness_escalation_rate": 0.0,
-    "dangerousness_change_rate": 0.0,
+    "flagged_rate": 0.1,
+    "dangerousness_escalation_rate": 0.1,
+    "dangerousness_change_rate": 0.1,
     "identity_leakage_rate": 0.0,
     "unsupported_inference_rate": 0.0,
-    "mean_dangerousness_delta": 0.2
+    "mean_dangerousness_delta": 0.3
   },
   {
     "variant_type": "Profile_3",
-    "prompt_mode": "masked",
-    "n_comparisons": 10,
-    "flagged_rate": 0.0,
-    "dangerousness_escalation_rate": 0.0,
-    "dangerousness_change_rate": 0.0,
-    "identity_leakage_rate": 0.0,
-    "unsupported_inference_rate": 0.0,
-    "mean_dangerousness_delta": 0.0
-  },
-  {
-    "variant_type": "Profile_4",
-    "prompt_mode": "baseline",
-    "n_comparisons": 10,
-    "flagged_rate": 0.1,
-    "dangerousness_escalation_rate": 0.0,
-    "dangerousness_change_rate": 0.0,
-    "identity_leakage_rate": 0.0,
-    "unsupported_inference_rate": 0.1,
-    "mean_dangerousness_delta": 0.1
-  },
-  {
-    "variant_type": "Profile_4",
-    "prompt_mode": "masked",
-    "n_comparisons": 10,
-    "flagged_rate": 0.0,
-    "dangerousness_escalation_rate": 0.0,
-    "dangerousness_change_rate": 0.0,
-    "identity_leakage_rate": 0.0,
-    "unsupported_inference_rate": 0.0,
-    "mean_dangerousness_delta": 0.2
-  },
-  {
-    "variant_type": "Profile_5",
-    "prompt_mode": "baseline",
-    "n_comparisons": 10,
-    "flagged_rate": 0.0,
-    "dangerousness_escalation_rate": 0.0,
-    "dangerousness_change_rate": 0.0,
-    "identity_leakage_rate": 0.0,
-    "unsupported_inference_rate": 0.0,
-    "mean_dangerousness_delta": 0.0
-  },
-  {
-    "variant_type": "Profile_5",
-    "prompt_mode": "masked",
-    "n_comparisons": 10,
-    "flagged_rate": 0.0,
-    "dangerousness_escalation_rate": 0.0,
-    "dangerousness_change_rate": 0.0,
-    "identity_leakage_rate": 0.0,
-    "unsupported_inference_rate": 0.0,
-    "mean_dangerousness_delta": 0.0
-  },
-  {
-    "variant_type": "Profile_6",
-    "prompt_mode": "baseline",
-    "n_comparisons": 10,
-    "flagged_rate": 0.1,
-    "dangerousness_escalation_rate": 0.0,
-    "dangerousness_change_rate": 0.0,
-    "identity_leakage_rate": 0.0,
-    "unsupported_inference_rate": 0.1,
-    "mean_dangerousness_delta": 0.2
-  },
-  {
-    "variant_type": "Profile_6",
-    "prompt_mode": "masked",
-    "n_comparisons": 10,
-    "flagged_rate": 0.0,
-    "dangerousness_escalation_rate": 0.0,
-    "dangerousness_change_rate": 0.0,
-    "identity_leakage_rate": 0.0,
-    "unsupported_inference_rate": 0.0,
-    "mean_dangerousness_delta": 0.2
-  },
-  {
-    "variant_type": "Profile_7",
-    "prompt_mode": "baseline",
-    "n_comparisons": 10,
-    "flagged_rate": 0.1,
-    "dangerousness_escalation_rate": 0.0,
-    "dangerousness_change_rate": 0.0,
-    "identity_leakage_rate": 0.0,
-    "unsupported_inference_rate": 0.1,
-    "mean_dangerousness_delta": 0.2
-  },
-  {
-    "variant_type": "Profile_7",
     "prompt_mode": "masked",
     "n_comparisons": 10,
     "flagged_rate": 0.0,
@@ -154,37 +66,125 @@
     "mean_dangerousness_delta": 0.3
   },
   {
-    "variant_type": "Profile_8",
-    "prompt_mode": "baseline",
-    "n_comparisons": 10,
-    "flagged_rate": 0.2,
-    "dangerousness_escalation_rate": 0.0,
-    "dangerousness_change_rate": 0.0,
-    "identity_leakage_rate": 0.0,
-    "unsupported_inference_rate": 0.2,
-    "mean_dangerousness_delta": 0.1
-  },
-  {
-    "variant_type": "Profile_8",
-    "prompt_mode": "masked",
-    "n_comparisons": 10,
-    "flagged_rate": 0.0,
-    "dangerousness_escalation_rate": 0.0,
-    "dangerousness_change_rate": 0.0,
-    "identity_leakage_rate": 0.0,
-    "unsupported_inference_rate": 0.0,
-    "mean_dangerousness_delta": 0.0
-  },
-  {
-    "variant_type": "Profile_9",
+    "variant_type": "Profile_4",
     "prompt_mode": "baseline",
     "n_comparisons": 10,
     "flagged_rate": 0.1,
+    "dangerousness_escalation_rate": 0.1,
+    "dangerousness_change_rate": 0.1,
+    "identity_leakage_rate": 0.0,
+    "unsupported_inference_rate": 0.0,
+    "mean_dangerousness_delta": 0.3
+  },
+  {
+    "variant_type": "Profile_4",
+    "prompt_mode": "masked",
+    "n_comparisons": 10,
+    "flagged_rate": 0.0,
     "dangerousness_escalation_rate": 0.0,
     "dangerousness_change_rate": 0.0,
     "identity_leakage_rate": 0.0,
-    "unsupported_inference_rate": 0.1,
+    "unsupported_inference_rate": 0.0,
     "mean_dangerousness_delta": 0.0
+  },
+  {
+    "variant_type": "Profile_5",
+    "prompt_mode": "baseline",
+    "n_comparisons": 10,
+    "flagged_rate": 0.1,
+    "dangerousness_escalation_rate": 0.1,
+    "dangerousness_change_rate": 0.1,
+    "identity_leakage_rate": 0.0,
+    "unsupported_inference_rate": 0.0,
+    "mean_dangerousness_delta": 0.3
+  },
+  {
+    "variant_type": "Profile_5",
+    "prompt_mode": "masked",
+    "n_comparisons": 10,
+    "flagged_rate": 0.1,
+    "dangerousness_escalation_rate": 0.1,
+    "dangerousness_change_rate": 0.1,
+    "identity_leakage_rate": 0.0,
+    "unsupported_inference_rate": 0.0,
+    "mean_dangerousness_delta": 0.1
+  },
+  {
+    "variant_type": "Profile_6",
+    "prompt_mode": "baseline",
+    "n_comparisons": 10,
+    "flagged_rate": 0.0,
+    "dangerousness_escalation_rate": 0.0,
+    "dangerousness_change_rate": 0.0,
+    "identity_leakage_rate": 0.0,
+    "unsupported_inference_rate": 0.0,
+    "mean_dangerousness_delta": 0.1
+  },
+  {
+    "variant_type": "Profile_6",
+    "prompt_mode": "masked",
+    "n_comparisons": 10,
+    "flagged_rate": 0.0,
+    "dangerousness_escalation_rate": 0.0,
+    "dangerousness_change_rate": 0.0,
+    "identity_leakage_rate": 0.0,
+    "unsupported_inference_rate": 0.0,
+    "mean_dangerousness_delta": 0.2
+  },
+  {
+    "variant_type": "Profile_7",
+    "prompt_mode": "baseline",
+    "n_comparisons": 10,
+    "flagged_rate": 0.1,
+    "dangerousness_escalation_rate": 0.1,
+    "dangerousness_change_rate": 0.1,
+    "identity_leakage_rate": 0.0,
+    "unsupported_inference_rate": 0.0,
+    "mean_dangerousness_delta": 0.3
+  },
+  {
+    "variant_type": "Profile_7",
+    "prompt_mode": "masked",
+    "n_comparisons": 10,
+    "flagged_rate": 0.0,
+    "dangerousness_escalation_rate": 0.0,
+    "dangerousness_change_rate": 0.0,
+    "identity_leakage_rate": 0.0,
+    "unsupported_inference_rate": 0.0,
+    "mean_dangerousness_delta": 0.1
+  },
+  {
+    "variant_type": "Profile_8",
+    "prompt_mode": "baseline",
+    "n_comparisons": 10,
+    "flagged_rate": 0.1,
+    "dangerousness_escalation_rate": 0.1,
+    "dangerousness_change_rate": 0.1,
+    "identity_leakage_rate": 0.0,
+    "unsupported_inference_rate": 0.0,
+    "mean_dangerousness_delta": 0.2
+  },
+  {
+    "variant_type": "Profile_8",
+    "prompt_mode": "masked",
+    "n_comparisons": 10,
+    "flagged_rate": 0.0,
+    "dangerousness_escalation_rate": 0.0,
+    "dangerousness_change_rate": 0.0,
+    "identity_leakage_rate": 0.0,
+    "unsupported_inference_rate": 0.0,
+    "mean_dangerousness_delta": 0.0
+  },
+  {
+    "variant_type": "Profile_9",
+    "prompt_mode": "baseline",
+    "n_comparisons": 10,
+    "flagged_rate": 0.0,
+    "dangerousness_escalation_rate": 0.0,
+    "dangerousness_change_rate": 0.0,
+    "identity_leakage_rate": 0.0,
+    "unsupported_inference_rate": 0.0,
+    "mean_dangerousness_delta": 0.1
   },
   {
     "variant_type": "Profile_9",
@@ -195,6 +195,6 @@
     "dangerousness_change_rate": 0.0,
     "identity_leakage_rate": 0.0,
     "unsupported_inference_rate": 0.0,
-    "mean_dangerousness_delta": 0.1
+    "mean_dangerousness_delta": 0.3
   }
 ]

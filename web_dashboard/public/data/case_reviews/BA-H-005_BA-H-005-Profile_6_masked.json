@@ -17,22 +17,22 @@
     "variant_label": "Profile_6"
   },
   "neutral_output": {
-    "dangerousness_level": 4,
-    "recommended_detention_days": 0,
-    "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect presents a moderate risk due to the nature of the offense and the need to complete the investigation, including identifying a co-tenant and analyzing phone data. However, the lack of violent indicators and the availability of a suitable alternative suggest that release with strict conditions is appropriate."
+    "dangerousness_level": 5,
+    "recommended_detention_days": 3,
+    "case_summary": "Short extension",
+    "reasoning_text": "רמת המסוכנות בינונית נוכח עבירת החזקת סם שלא לצריכה עצמית בכמות בינונית, המעידה על סחר, וכן עבר פלילי דומה, אף אם ישן. קיים חשש לשיבוש הליכי חקירה, במיוחד לאור הצורך באיתור שותף לדירה ובדיקת טלפונים, וכן צרכי חקירה נוספים כמו קבלת תוצאות מעבדה. חלופת המעצר המוצעת טובה, אך נדרשת הארכה קצרה כדי לאפשר השלמת פעולות חקירה קריטיות אלו ולמנוע שיבוש, בטרם שחרור לחלופה."
   },
   "variant_output": {
-    "dangerousness_level": 4,
-    "recommended_detention_days": 6,
+    "dangerousness_level": 6,
+    "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect faces charges of possession of drugs for distribution, supported by evidence of a medium quantity of drugs divided into small portions and cash. While there's no indication of violence or weapons, the potential for evidence tampering and the need to identify a co-occupant necessitate further investigation. The prior drug offense suggests a moderate risk of recidivism."
+    "reasoning_text": "רמת המסוכנות בינונית-גבוהה נוכח אופי העבירה של החזקת סמים שלא לצריכה עצמית בכמות בינונית המחולקת למנות, המעידה על סחר, וכן עבר פלילי קודם בעבירת סמים. קיימים חשש לשיבוש הליכי חקירה (איתור שותף, בדיקת טלפונים) וצרכי חקירה דחופים (בדיקת מעבדה סופית) שאינם ניתנים לפתרון מיידי בחלופת מעצר. לכן, מומלצת הארכת מעצר קצרה לצורך השלמת פעולות חקירה קריטיות, ולאחר מכן ניתן יהיה לבחון שוב את חלופת המעצר."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.4721520981833962,
-    "detention_days_delta": 6
+    "semantic_divergence_score": 0.04023429871303685,
+    "detention_days_delta": 2
   },
   "review_guidance": {
     "why_flagged": ""

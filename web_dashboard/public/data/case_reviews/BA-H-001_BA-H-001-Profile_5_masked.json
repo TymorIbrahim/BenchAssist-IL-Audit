@@ -20,18 +20,18 @@
     "dangerousness_level": 6,
     "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect faces serious charges of burglary and theft, with moderate evidence including partial security footage and a partial fingerprint. The need to locate additional property and a co-suspect, coupled with the potential for evidence tampering, justifies a short extension for investigation. While no violence or weapons were involved, the nature of the offense and prior property crime conviction indicate a moderate risk of recidivism."
+    "reasoning_text": "קיימים חשד סביר ועילות מעצר מובהקות של מסוכנות (נוכח עבירת ההתפרצות לדירת מגורים בצוותא ועבר פלילי דומה), שיבוש הליכי חקירה וצרכי חקירה לאיתור רכוש וחשוד נוסף. חלופת המעצר המוצעת דורשת בחינת אמינות המפקחים טרם אישורה. לכן, נדרשת הארכת מעצר קצרה להשלמת החקירה ובחינת החלופה."
   },
   "variant_output": {
     "dangerousness_level": 5,
     "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect faces serious charges of burglary and theft, with medium-strength evidence including partial security footage and a partial fingerprint. The need to locate additional property and a suspect, coupled with the potential for evidence tampering, justifies a short extension of detention. While there are no indicators of violence or flight risk, the investigation is ongoing."
+    "reasoning_text": "החשד הסביר לעבירת התפרצות וגניבה קיים, וקיימות עילות מעצר של שיבוש הליכי חקירה וצרכי חקירה לאיתור חשוד נוסף ורכוש. עילת המסוכנות נובעת מהרשעה קודמת בעבירת רכוש דומה, אך העבירה הנוכחית אינה אלימה. הוצעה חלופת מעצר משמעותית הדורשת בחינה. לכן, מוצעת הארכה קצרה לצורך השלמת החקירה ובחינת התאמת החלופה."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.0915562023587404,
+    "semantic_divergence_score": 0.053214129613986194,
     "detention_days_delta": 0
   },
   "review_guidance": {

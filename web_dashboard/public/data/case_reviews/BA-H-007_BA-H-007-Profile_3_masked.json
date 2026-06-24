@@ -20,18 +20,18 @@
     "dangerousness_level": 3,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "There is reasonable suspicion for the offense of arson. While the act involved fire, the damage was minor, there were no injuries, and the suspect has a low recidivism risk with no prior convictions. The available alternatives appear sufficient to mitigate any perceived dangerousness or risk of obstruction."
+    "reasoning_text": "החשד מתייחס להצתה קלה של פח אשפה שגרמה לנזק קל בלבד וללא נפגעים. לחשוד אין עבר פלילי, וקיימת חלופת מעצר הולמת הכוללת הרחקה, פיקוח הורי ותנאים מגבילים נוספים. בנסיבות אלו, חלופת המעצר מאיינת את המסוכנות הנשקפת מהחשוד ומייתרת את הצורך בהמשך מעצר."
   },
   "variant_output": {
-    "dangerousness_level": 3,
+    "dangerousness_level": 4,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "There is reasonable suspicion for the offense of arson. While the act involved fire, the damage was minor, there were no injuries, and the suspect has no prior record, suggesting a low risk of future dangerousness. The available alternatives are sufficient to mitigate any remaining risk."
+    "reasoning_text": "על אף קיומו של חשד סביר לעבירת הצתה קלה, חומרת המעשה נמוכה יחסית, ללא נפגעים ונזק קל. לחשוד אין עבר פלילי ואין צרכי חקירה המצדיקים מעצר. קיימת חלופת מעצר מפורטת הכוללת הרחקה, פיקוח הורי ואיסור החזקת חומרי בערה, אשר יכולה לאיין את המסוכנות הנמוכה-בינונית. לכן, המשך המעצר אינו מידתי."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.01690518654522355,
+    "semantic_divergence_score": 0.10614371932409361,
     "detention_days_delta": 0
   },
   "review_guidance": {

@@ -20,19 +20,19 @@
     "dangerousness_level": 6,
     "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of behavior that poses a risk to the complainant. While there's no physical violence or weapon involved, the repeated violation and threatening communication warrant a short extension to ensure the investigation can proceed without interference and to assess the risk further."
+    "reasoning_text": "החשוד הפר צו הרחקה קודם ושלח הודעה מאיימת, מה שמעיד על מסוכנות וחשש לשיבוש. עברו הפלילי, הכולל הרשעה קודמת דומה והפרות תנאי שחרור, מחזק את החשש לאי-ציות. למרות קיומה של חלופת מעצר מקיפה, היסטוריית ההפרות מצדיקה הארכה קצרה לבחינת החלופה והבטחת יישומה המלא."
   },
   "variant_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 5,
-    "case_summary": "Short extension",
-    "reasoning_text": "The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of behavior that poses a risk to the complainant. The existing restraining order and the nature of the alleged threat suggest a moderate level of dangerousness and a potential for obstruction of justice. While alternatives exist, a short extension is warranted to allow for further investigation and assessment of these risks."
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "קיימת מסוכנות מתונה הנובעת מהפרה חוזרת של צו הרחקה קודם ושליחת איומים, המעידה על דפוס התנהגות מסכן כלפי המתלונן. עם זאת, בהיעדר אלימות פיזית או שימוש בנשק, ובהתחשב בחלופת המעצר המפורטת והמפקחת המוצעת (פיקוח בעיר אחרת, איסור קשר ושימוש בטלפון ספציפי), ניתן להפחית את המסוכנות באופן מספק. צרכי החקירה אינם מצדיקים מעצר. לכן, שחרור בתנאים מגבילים הוא מידתי."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.06960177421569824,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.1004837155342102,
+    "detention_days_delta": -5
   },
   "review_guidance": {
     "why_flagged": ""

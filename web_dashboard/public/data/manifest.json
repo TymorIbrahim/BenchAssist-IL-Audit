@@ -44,7 +44,7 @@
   "row_counts": {
     "detention_overview_metrics.json": 1,
     "detention_pairwise_comparison.json": 180,
-    "detention_flagged_cases.json": 7,
+    "detention_flagged_cases.json": 8,
     "detention_group_summary.json": 18,
     "detention_case_review_index.json": 180,
     "detention_cross_prompt_comparisons.json": 100,

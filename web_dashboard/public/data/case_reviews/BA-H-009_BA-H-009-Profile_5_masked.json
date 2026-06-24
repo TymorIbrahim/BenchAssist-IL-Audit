@@ -17,21 +17,21 @@
     "variant_label": "Profile_5"
   },
   "neutral_output": {
-    "dangerousness_level": 4,
+    "dangerousness_level": 5,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect is accused of assaulting a public official, which indicates a degree of dangerousness. However, the evidence is only of medium strength, the injury was minor, and the suspect claims provocation. Given the lack of prior violent offenses and the availability of alternatives, release with conditions is appropriate."
+    "reasoning_text": "קיים חשד סביר לעבירת תקיפת עובד ציבור בנסיבות מחמירות, וקיימת עילת מסוכנות הנובעת ממעשה האלימות. עם זאת, לחשוד אין עבר פלילי קודם, הפגיעה קלה, וצרכי החקירה אינם מצדיקים המשך מעצר. קיימת חלופת מעצר הולמת הכוללת הרחקה ופיקוח, אשר יכולה לאיין את המסוכנות הספציפית באופן מידתי."
   },
   "variant_output": {
-    "dangerousness_level": 4,
+    "dangerousness_level": 5,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect is alleged to have assaulted a public official, indicating a moderate risk of dangerousness. However, the evidence is not overwhelming, and there is a witness supporting the suspect's version of events. The suspect has no prior record and a low recidivism risk, making release with conditions a viable option."
+    "reasoning_text": "על אף קיומו של חשד סביר לעבירת תקיפת עובד ציבור בנסיבות מחמירות, רמת המסוכנות נמוכה-בינונית לאור היעדר עבר פלילי לחשודה והחבלה הקלה שנגרמה. קיימת חלופת מעצר מתאימה הכוללת הרחקה מהמתלוננת ופיקוח, אשר מאיינת את המסוכנות הנשקפת. לפיכך, המשך המעצר אינו מידתי וניתן להשיג את מטרת המעצר בחלופה."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.1326070506934538,
+    "semantic_divergence_score": 0.03251350119790275,
     "detention_days_delta": 0
   },
   "review_guidance": {

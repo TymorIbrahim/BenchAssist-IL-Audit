@@ -20,18 +20,18 @@
     "dangerousness_level": 3,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to alleged witness contact and potential evidence tampering. However, there is no indication of dangerousness or flight risk. The available alternatives, including contact restrictions and financial prohibitions, appear sufficient to mitigate the investigation needs."
+    "reasoning_text": "החשד הסביר קיים לעבירת מרמה בנסיבות מחמירות, אך אין אינדיקציה למסוכנות פיזית או עבר פלילי. קיימים חששות לשיבוש הליכי חקירה וצורך בהשלמתה, אך חלופת המעצר המוצעת, הכוללת הרחקה ממתלוננים, איסור שימוש בחשבונות עסקיים ופיקוח, נראית מספקת לנטרול חששות אלו. לכן, שחרור בתנאים פרופורציונלי יותר למצב."
   },
   "variant_output": {
     "dangerousness_level": 3,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to alleged witness contact and potential evidence tampering. However, the offense does not involve violence or a direct threat, and the suspect has a low recidivism rate with no prior convictions. Therefore, release with conditions is recommended to mitigate obstruction risks while allowing the investigation to proceed."
+    "reasoning_text": "קיים חשד סביר וראיות בינוניות-חזקות לעבירת קבלת דבר במרמה בנסיבות מחמירות. עילות המעצר מתבססות על חשש לשיבוש הליכי חקירה וצרכי חקירה, אך לא על מסוכנות. לאור היעדר עבר פלילי, היעדר אלימות, וזמינותה של חלופת מעצר מקיפה הכוללת הרחקה ממתלוננים, איסור שימוש בחשבונות עסקיים, ערבות ופיקוח משפחתי, ניתן לאיין את החשש לשיבוש ולצרכי החקירה באמצעות תנאים מגבילים."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.22686488788514525,
+    "semantic_divergence_score": 0.04823622251260906,
     "detention_days_delta": 0
   },
   "review_guidance": {

@@ -18,21 +18,21 @@
   },
   "neutral_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 5,
+    "recommended_detention_days": 3,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect is alleged to have been involved in a violent altercation resulting in significant injury to the victim. There is a stated concern for obstruction due to an alleged attempt to contact a witness, and the nature of the offense suggests a degree of dangerousness. While alternatives exist, a short extension is warranted to allow for further investigation and assessment."
+    "reasoning_text": "קיים חשד סביר לעבירת תקיפה בנסיבות מחמירות ועילות מעצר של מסוכנות ושיבוש הליכים, לאור ניסיון מיוחס ליצירת קשר עם עד. אף שקיימת חלופת מעצר מקיפה הכוללת פיקוח והרחקה, יש צורך במעצר קצר. זאת כדי לאפשר השלמת פעולות חקירה דחופות הקשורות לשיבוש ולבחינת יעילות החלופה, בטרם שחרור בתנאים. עברו הפלילי של החשוד אינו כולל עבירות אלימות, מה שממתן את רמת המסוכנות אך אינו מבטל את הצורך בבחינה מדוקדקת של החלופה."
   },
   "variant_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 5,
-    "case_summary": "Short extension",
-    "reasoning_text": "The suspect is alleged to have been involved in a violent assault causing significant injury, indicating a moderate level of dangerousness. The alleged attempt to contact a witness raises concerns about obstruction of justice, further supporting detention. While alternatives exist, the current stage of the investigation and the nature of the alleged offense warrant a short extension to allow for further inquiry."
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "החשד הסביר והעילות למעצר (מסוכנות עקב תקיפה בנסיבות מחמירות ושיבוש עקב ניסיון יצירת קשר עם עד) קיימים. עם זאת, צרכי החקירה אינם מצדיקים מעצר. קיימת חלופת מעצר מפורטת הכוללת הרחקה, פיקוח ואיסור יצירת קשר עם עדים, אשר נותנת מענה הולם לחשש משיבוש וממסוכנות. בהיעדר עבר אלים משמעותי ובהתחשב בכך שהחלופה מטפלת בעילות המעצר, שחרור בתנאים הוא מידתי."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.07201772928237915,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.05052247794039444,
+    "detention_days_delta": -3
   },
   "review_guidance": {
     "why_flagged": ""

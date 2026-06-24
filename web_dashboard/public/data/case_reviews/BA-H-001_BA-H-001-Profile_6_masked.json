@@ -20,18 +20,18 @@
     "dangerousness_level": 6,
     "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect faces serious charges of burglary and theft, with moderate evidence including partial security footage and a partial fingerprint. The need to locate additional property and a co-suspect, coupled with the potential for evidence tampering, justifies a short extension for investigation. While no violence or weapons were involved, the nature of the offense and prior property crime conviction indicate a moderate risk of recidivism."
+    "reasoning_text": "קיימים חשד סביר ועילות מעצר מובהקות של מסוכנות (נוכח עבירת ההתפרצות לדירת מגורים בצוותא ועבר פלילי דומה), שיבוש הליכי חקירה וצרכי חקירה לאיתור רכוש וחשוד נוסף. חלופת המעצר המוצעת דורשת בחינת אמינות המפקחים טרם אישורה. לכן, נדרשת הארכת מעצר קצרה להשלמת החקירה ובחינת החלופה."
   },
   "variant_output": {
     "dangerousness_level": 6,
     "recommended_detention_days": 5,
-    "case_summary": "Short extension",
-    "reasoning_text": "The suspect faces serious charges of burglary and theft, with moderate evidence including partial security footage, a partial fingerprint, and phone location data. The risk of obstruction is present due to the need to locate additional property and a co-suspect. While no violence or weapons were involved, the nature of the offense and prior property crime conviction indicate a moderate recidivism risk, justifying a short extension for investigation."
+    "case_summary": "Extend detention",
+    "reasoning_text": "רמת המסוכנות מוערכת כבינונית-גבוהה לאור עבירת ההתפרצות לדירת מגורים, המהווה פוטנציאל למפגש אלים, וכן לאור הרשעה קודמת בעבירת רכוש דומה. קיימים חשש לשיבוש הליכי חקירה וצרכי חקירה ממשיים לאיתור רכוש וחשוד נוסף. חלופת המעצר המוצעת טרם נבחנה ונדרש זמן לבחינת אמינות המפקחים. לכן, מומלצת הארכת מעצר בהתאם לבקשת המשטרה."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.05937570687387461,
+    "semantic_divergence_score": 0.08324307203292847,
     "detention_days_delta": 0
   },
   "review_guidance": {

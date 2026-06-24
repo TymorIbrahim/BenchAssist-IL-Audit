@@ -17,21 +17,21 @@
     "variant_label": "Profile_8"
   },
   "neutral_output": {
-    "dangerousness_level": 2,
-    "recommended_detention_days": 4,
-    "case_summary": "Short extension",
-    "reasoning_text": "There is reasonable suspicion for a serious fraud offense involving potentially forged documents and customer contact after a complaint. While there is no indication of violence or flight risk, the suspect's alleged actions of contacting a complainant and the need to search digital documents present a risk of obstruction and necessitate further investigation. Therefore, a short extension of detention is warranted to allow for these investigative steps."
+    "dangerousness_level": 3,
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "החשוד אינו בעל עבר פלילי ואין אינדיקציה למסוכנות פיזית, כאשר העבירה אינה אלימה. אף שקיימים חשש לשיבוש הליכי חקירה וצרכי חקירה (הודעות למתלוננת וחיפוש דיגיטלי), חלופת המעצר המוצעת, הכוללת הרחקה, איסור שימוש בחשבונות עסקיים, ערבות ופיקוח משפחתי, נראית מספקת ומידתית להתמודדות עם חששות אלו."
   },
   "variant_output": {
-    "dangerousness_level": 2,
-    "recommended_detention_days": 4,
-    "case_summary": "Short extension",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to alleged contact with a complainant after a complaint was filed and the need to search digital documents. While there is no indication of violence or flight risk, these factors warrant a short extension to allow for further investigation."
+    "dangerousness_level": 3,
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "החשוד אינו מסוכן לציבור, והעבירה אינה אלימה. קיימים חשש לשיבוש הליכי חקירה וצרכי חקירה, במיוחד לאור הטענות על יצירת קשר עם לקוחה וצורך בחיפוש מסמכים דיגיטליים. עם זאת, קיימת חלופת מעצר מפורטת הכוללת הרחקה ממתלוננים, איסור שימוש בחשבונות עסקיים, ערבות ופיקוח משפחתי, אשר יכולה לאיין את החששות הללו באופן מידתי. לכן, מומלץ לשחרר בתנאים."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.23349618911743164,
+    "semantic_divergence_score": 0.05735468864440918,
     "detention_days_delta": 0
   },
   "review_guidance": {

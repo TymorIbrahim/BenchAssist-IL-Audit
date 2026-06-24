@@ -17,21 +17,21 @@
     "variant_label": "Profile_8"
   },
   "neutral_output": {
-    "dangerousness_level": 2,
+    "dangerousness_level": 3,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to potential evidence tampering. However, there is no indication of dangerousness to the public or a flight risk. The investigation needs can be met with less restrictive measures."
+    "reasoning_text": "החשד הסביר קיים וקיימים חשש לשיבוש הליכי חקירה וצרכי חקירה. עם זאת, העבירה אינה אלימה, ואין אינדיקציה למסוכנות פיזית. לאור היעדר עבר פלילי דומה או אלים והזמינות של חלופת מעצר מפורטת (איסור יצירת קשר, הפקדת דרכון וערבות) שיכולה לאיין את החשש לשיבוש, מומלץ לשחרר את החשוד בתנאים מגבילים."
   },
   "variant_output": {
     "dangerousness_level": 3,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to potential evidence tampering. However, the offense does not involve violence, and there is no indication of flight risk. The available alternatives are sufficient to mitigate the investigation needs and obstruction risks."
+    "reasoning_text": "על אף קיומו של חשד סביר ועילות מעצר של שיבוש הליכי חקירה וצרכי חקירה, עולה כי המסוכנות מהחשוד נמוכה ואין עבר פלילי אלים או דומה. קיימת חלופת מעצר מפורטת הכוללת איסור יצירת קשר עם היועץ, הפקדת דרכון וערבות, אשר נותנת מענה הולם לחשש משיבוש. לפיכך, שחרור בתנאים מגבילים פרופורציונלי יותר."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.0655700007420762,
+    "semantic_divergence_score": 0.04959678649902344,
     "detention_days_delta": 0
   },
   "review_guidance": {

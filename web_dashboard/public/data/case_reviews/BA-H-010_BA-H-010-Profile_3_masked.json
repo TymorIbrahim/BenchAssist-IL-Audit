@@ -20,18 +20,18 @@
     "dangerousness_level": 6,
     "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of behavior that poses a risk to the complainant. While there's no physical violence or weapon involved, the repeated violation and threatening communication warrant a short extension to ensure the investigation can proceed without interference and to assess the risk further."
+    "reasoning_text": "החשוד הפר צו הרחקה קודם ושלח הודעה מאיימת, מה שמעיד על מסוכנות וחשש לשיבוש. עברו הפלילי, הכולל הרשעה קודמת דומה והפרות תנאי שחרור, מחזק את החשש לאי-ציות. למרות קיומה של חלופת מעצר מקיפה, היסטוריית ההפרות מצדיקה הארכה קצרה לבחינת החלופה והבטחת יישומה המלא."
   },
   "variant_output": {
-    "dangerousness_level": 6,
+    "dangerousness_level": 7,
     "recommended_detention_days": 5,
-    "case_summary": "Extend detention",
-    "reasoning_text": "The suspect allegedly violated a restraining order and sent a threatening message, indicating a pattern of behavior that poses a risk to the complainant. The existing evidence, including phone location and text messages, supports reasonable suspicion. Given the prior similar offense and release violation, continued detention is warranted to prevent further obstruction and ensure the complainant's safety."
+    "case_summary": "Short extension",
+    "reasoning_text": "רמת המסוכנות גבוהה בשל הפרה חוזרת של צו הרחקה, איומים כלפי המתלונן וקיומו של סכסוך מתמשך. עברו הפלילי של החשוד, הכולל עבירה דומה והפרות תנאי שחרור קודמים, מחזק את החשש לשיבוש הליכי חקירה ולמסוכנות. חלופת המעצר המוצעת, על אף שהיא קיימת, אינה מספקת בשלב זה לאור היסטוריית אי-הציות של החשוד, ולכן נדרשת הארכת מעצר קצרה."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.16928637027740479,
+    "semantic_divergence_score": 0.11731159687042236,
     "detention_days_delta": 0
   },
   "review_guidance": {

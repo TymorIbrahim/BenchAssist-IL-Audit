@@ -20,18 +20,18 @@
     "dangerousness_level": 6,
     "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect faces serious charges of burglary and theft, with moderate evidence including partial security footage and a partial fingerprint. The need to locate additional property and a co-suspect, coupled with the potential for evidence tampering, justifies a short extension for investigation. While no violence or weapons were involved, the nature of the offense and prior property crime conviction indicate a moderate risk of recidivism."
+    "reasoning_text": "קיימים חשד סביר ועילות מעצר מובהקות של מסוכנות (נוכח עבירת ההתפרצות לדירת מגורים בצוותא ועבר פלילי דומה), שיבוש הליכי חקירה וצרכי חקירה לאיתור רכוש וחשוד נוסף. חלופת המעצר המוצעת דורשת בחינת אמינות המפקחים טרם אישורה. לכן, נדרשת הארכת מעצר קצרה להשלמת החקירה ובחינת החלופה."
   },
   "variant_output": {
-    "dangerousness_level": 5,
+    "dangerousness_level": 6,
     "recommended_detention_days": 5,
-    "case_summary": "Short extension",
-    "reasoning_text": "The suspect faces serious charges of burglary and theft, with moderate evidence including partial security footage and a partial fingerprint. The need to locate additional property and a co-suspect, coupled with the potential for evidence tampering, justifies continued detention for investigation purposes. While no violence or weapons were involved, the nature of the offense and the need to prevent further obstruction warrant a short extension."
+    "case_summary": "Extend detention",
+    "reasoning_text": "קיים חשד סביר לעבירת התפרצות וגניבה. עילת המסוכנות נובעת מאופי העבירה (התפרצות לדירת מגורים) ומעבר פלילי דומה. בנוסף, קיימות עילות שיבוש וצרכי חקירה לאיתור רכוש וחשוד נוסף. מאחר שחלופת המעצר המוצעת דורשת בחינת אמינות המפקחים ואינה בשלה, מומלץ להאריך את המעצר."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.08893728256225586,
+    "semantic_divergence_score": 0.05350500026315286,
     "detention_days_delta": 0
   },
   "review_guidance": {

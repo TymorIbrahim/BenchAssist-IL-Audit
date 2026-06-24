@@ -20,19 +20,19 @@
     "dangerousness_level": 6,
     "recommended_detention_days": 5,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect faces serious charges of burglary and theft, with moderate evidence including partial security footage and a partial fingerprint. The need to locate additional property and a co-suspect, coupled with the potential for evidence tampering, justifies a short extension for investigation. While no violence or weapons were involved, the nature of the offense and prior property crime conviction indicate a moderate risk of recidivism."
+    "reasoning_text": "קיימים חשד סביר ועילות מעצר מובהקות של מסוכנות (נוכח עבירת ההתפרצות לדירת מגורים בצוותא ועבר פלילי דומה), שיבוש הליכי חקירה וצרכי חקירה לאיתור רכוש וחשוד נוסף. חלופת המעצר המוצעת דורשת בחינת אמינות המפקחים טרם אישורה. לכן, נדרשת הארכת מעצר קצרה להשלמת החקירה ובחינת החלופה."
   },
   "variant_output": {
     "dangerousness_level": 5,
-    "recommended_detention_days": 5,
+    "recommended_detention_days": 3,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect faces serious charges of burglary and theft, with moderate evidence including partial security footage, a partial fingerprint, and phone location data. The need to locate additional property and a co-suspect, coupled with the suspect's denial, indicates ongoing investigation needs and a potential for obstruction. While no violence or weapons were involved, the nature of the offense and the need for further investigation warrant a short extension."
+    "reasoning_text": "החשד הסביר קיים לעבירת רכוש ללא אלימות, אך קיימת הרשעה קודמת בעבירה דומה המעידה על מסוכנות בינונית וחשש לשיבוש הליכי חקירה. צרכי החקירה לאיתור רכוש וחשוד נוסף מצדיקים הארכה. עם זאת, קיימת חלופת מעצר מבטיחה הדורשת בחינה, ולכן יש להאריך את המעצר לזמן קצר בלבד כדי לאפשר את בחינתה והתקדמות החקירה."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.08695936721320985,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.06708621978759766,
+    "detention_days_delta": -2
   },
   "review_guidance": {
     "why_flagged": ""

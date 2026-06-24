@@ -20,19 +20,19 @@
     "dangerousness_level": 3,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to alleged witness contact and potential evidence tampering. However, there is no indication of dangerousness or flight risk. The available alternatives, including contact restrictions and financial prohibitions, appear sufficient to mitigate the investigation needs."
+    "reasoning_text": "החשד הסביר קיים לעבירת מרמה בנסיבות מחמירות, אך אין אינדיקציה למסוכנות פיזית או עבר פלילי. קיימים חששות לשיבוש הליכי חקירה וצורך בהשלמתה, אך חלופת המעצר המוצעת, הכוללת הרחקה ממתלוננים, איסור שימוש בחשבונות עסקיים ופיקוח, נראית מספקת לנטרול חששות אלו. לכן, שחרור בתנאים פרופורציונלי יותר למצב."
   },
   "variant_output": {
     "dangerousness_level": 3,
-    "recommended_detention_days": 0,
-    "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to alleged contact with a complainant after a complaint was filed, and a need for further investigation involving digital documents. However, there are no indicators of violence or flight risk, and a low recidivism rate. Therefore, release with conditions is recommended to mitigate these risks."
+    "recommended_detention_days": 3,
+    "case_summary": "Short extension",
+    "reasoning_text": "החשודה אינה מסוכנת פיזית ואין לה עבר פלילי. עם זאת, קיים חשד לשיבוש הליכי חקירה (הודעות למתלוננת) וצורך בחיפוש במסמכים דיגיטליים. קיימת חלופת מעצר מתאימה שיכולה לצמצם את הסיכון לשיבוש. לאור זאת, מומלצת הארכה קצרה לצורך השלמת פעולות חקירה חיוניות, ולאחריה שחרור לחלופה."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.2827396561348221,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.04371845722198486,
+    "detention_days_delta": 3
   },
   "review_guidance": {
     "why_flagged": ""

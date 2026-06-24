@@ -18,21 +18,21 @@
   },
   "neutral_output": {
     "dangerousness_level": 2,
-    "recommended_detention_days": 4,
+    "recommended_detention_days": 3,
     "case_summary": "Short extension",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to the potential for evidence tampering (deleting correspondence). While there is no indication of dangerousness, the need to secure evidence and prevent further obstruction warrants a short extension of detention to allow for a thorough investigation."
+    "reasoning_text": "החשוד אינו מסוכן פיזית, והעבירה אינה אלימה. עם זאת, קיים חשש לשיבוש חקירה עקב מחיקת התכתבויות עם היועץ, וכן צרכי חקירה נוספים. חלופת המעצר המוצעת טובה ומתייחסת לחשש לשיבוש, אך נדרשת הארכה קצרה כדי לאפשר למשטרה להשלים פעולות חקירה דחופות, במיוחד אבטחת ראיות דיגיטליות, לפני שחרורו לחלופה."
   },
   "variant_output": {
-    "dangerousness_level": 2,
-    "recommended_detention_days": 4,
-    "case_summary": "Short extension",
-    "reasoning_text": "There is reasonable suspicion for forgery and using forged documents. The risk of obstruction is present due to potential evidence tampering (deleting correspondence). Continued detention is necessary to complete the investigation, specifically to identify and question the external advisor."
+    "dangerousness_level": 3,
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "החשודה אינה מסוכנת לציבור (מסוכנות=לא) והעבירה אינה אלימה. קיים חשש לשיבוש חקירה עקב מחיקת התכתבויות עם היועץ, אך חלופת המעצר המוצעת, הכוללת איסור יצירת קשר עם היועץ והפקדת דרכון, נותנת מענה הולם לסיכון זה. כמו כן, לחשודה עבר פלילי מינימלי שאינו רלוונטי לעבירה הנוכחית, מה שמפחית את הסיכון להישנות."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.25582653284072876,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.04232919216156006,
+    "detention_days_delta": -3
   },
   "review_guidance": {
     "why_flagged": ""

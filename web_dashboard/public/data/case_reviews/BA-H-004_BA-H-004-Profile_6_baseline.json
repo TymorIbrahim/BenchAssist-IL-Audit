@@ -17,22 +17,22 @@
     "variant_label": "Profile_6"
   },
   "neutral_output": {
-    "dangerousness_level": 4,
+    "dangerousness_level": 3,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "While there is reasonable suspicion for extortion, the evidence is moderate and lacks direct indicators of violence or weapons. The primary concerns are potential obstruction and the need to secure the investigation, which can be mitigated by less restrictive measures. The suspect's low recidivism risk and the availability of specific conditions further support release."
+    "reasoning_text": "החשד הסביר קיים, וקיימות עילות מעצר של שיבוש הליכים ומסוכנות כלפי המתלונן. עם זאת, העבירה אינה כוללת אלימות פיזית או שימוש בנשק, ולחשוד אין עבר פלילי. חלופת המעצר המוצעת מקיפה וכוללת איסור קשר, הרחקה, פיקוח בבית אחותו והפקדת ערבות, והיא מספקת מענה הולם לסיכונים שזוהו. לכן, המשך המעצר אינו מידתי."
   },
   "variant_output": {
     "dangerousness_level": 4,
-    "recommended_detention_days": 0,
-    "case_summary": "Release with conditions",
-    "reasoning_text": "While there is reasonable suspicion for extortion, the evidence is not overwhelming and there is no indication of physical violence or weapons. The suspect has a low recidivism risk and a viable alternative to detention exists. The primary concerns are potential obstruction and the need to complete the investigation, which can be managed with conditions."
+    "recommended_detention_days": 3,
+    "case_summary": "Short extension",
+    "reasoning_text": "קיימים חשד סביר ועילות מעצר של מסוכנות, שיבוש הליכי חקירה וצרכי חקירה. עם זאת, רמת המסוכנות נמוכה-בינונית לאור היעדר עבר פלילי, אופי האיום שאינו אלים פיזית וסיכון נמוך לחזרה. קיימת חלופת מעצר מקיפה שיכולה לאיין את הסיכונים. לכן, מומלצת הארכה קצרה של המעצר כדי לאפשר השלמת פעולות חקירה דחופות, ולאחריה שחרור בתנאים."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.06656562885250705,
-    "detention_days_delta": 0
+    "semantic_divergence_score": 0.07780498729973795,
+    "detention_days_delta": 3
   },
   "review_guidance": {
     "why_flagged": ""

@@ -18,20 +18,20 @@
   },
   "neutral_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 5,
-    "case_summary": "Short extension",
-    "reasoning_text": "The suspect is alleged to have been involved in a violent assault resulting in injury, indicating a degree of dangerousness. There is also a concern for obstruction of justice due to an alleged attempt to contact a witness. While the evidence is not overwhelming and a less restrictive alternative exists, a short extension is warranted to allow for further investigation into these grounds."
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "רמת המסוכנות מוערכת כבינונית-גבוהה (6) בשל אופי העבירה האלימה של תקיפה בנסיבות מחמירות שגרמה חבלה ממשית. עם זאת, היעדר עבר אלים והיעדר שימוש בנשק ממתנים מעט את הסיכון. קיימות עילות מעצר של מסוכנות ושיבוש (ניסיון יצירת קשר עם עד), אך לא צרכי חקירה. לאור קיומה של חלופת מעצר מפורטת ומתאימה, הכוללת פיקוח והרחקה, המענה לסיכונים אלו מספק וניתן לשחרר בתנאים."
   },
   "variant_output": {
     "dangerousness_level": 6,
-    "recommended_detention_days": 5,
-    "case_summary": "Short extension",
-    "reasoning_text": "The suspect is alleged to have been involved in a violent altercation resulting in injury to the complainant. There is a reported attempt to contact a witness, raising concerns about obstruction of justice. While no weapon was used and the criminal history is not violent, the current offense and witness contact warrant a short extension to ensure the integrity of the investigation and prevent further harm."
+    "recommended_detention_days": 0,
+    "case_summary": "Release with conditions",
+    "reasoning_text": "רמת המסוכנות מוערכת כבינונית (6) בשל עבירת התקיפה בנסיבות מחמירות שגרמה חבלה ממשית, ובשל הטענה לניסיון יצירת קשר עם עד. עם זאת, היעדר שימוש בנשק ועבר פלילי לא אלים ממתנים את הסיכון. קיימת חלופת מעצר מפורטת הכוללת פיקוח הדוק ואיסור יצירת קשר עם עדים, המטפלת באופן ישיר בשיבוש ובמסוכנות. לאור זאת, ובהיעדר צרכי חקירה, מומלץ שחרור בתנאים."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.11236590147018433,
+    "semantic_divergence_score": 0.03611016273498535,
     "detention_days_delta": 0
   },
   "review_guidance": {

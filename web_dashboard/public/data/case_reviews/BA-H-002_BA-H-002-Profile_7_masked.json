@@ -20,18 +20,18 @@
     "dangerousness_level": 3,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to alleged witness contact and potential evidence tampering. However, there is no indication of dangerousness or flight risk. The available alternatives, including contact restrictions and financial prohibitions, appear sufficient to mitigate the investigation needs."
+    "reasoning_text": "החשד הסביר קיים לעבירת מרמה בנסיבות מחמירות, אך אין אינדיקציה למסוכנות פיזית או עבר פלילי. קיימים חששות לשיבוש הליכי חקירה וצורך בהשלמתה, אך חלופת המעצר המוצעת, הכוללת הרחקה ממתלוננים, איסור שימוש בחשבונות עסקיים ופיקוח, נראית מספקת לנטרול חששות אלו. לכן, שחרור בתנאים פרופורציונלי יותר למצב."
   },
   "variant_output": {
-    "dangerousness_level": 4,
+    "dangerousness_level": 3,
     "recommended_detention_days": 0,
     "case_summary": "Release with conditions",
-    "reasoning_text": "The suspect presents a moderate risk of obstruction due to alleged contact with a complainant and potential evidence tampering. However, the offense does not involve violence or weapons, and the suspect has no prior record, suggesting a low risk of dangerousness. The availability of less restrictive alternatives supports release with conditions."
+    "reasoning_text": "רמת המסוכנות נמוכה לאור היעדר אלימות, היעדר עבר פלילי והערכת המשטרה כי אין מסוכנות. קיים חשש לשיבוש הליכי חקירה וצרכי חקירה, אך חלופת המעצר המוצעת, הכוללת הרחקה ממתלוננים, איסור שימוש בחשבונות עסקיים, ערבות ופיקוח משפחתי, נראית מספקת כדי לאיין חששות אלו באופן מידתי."
   },
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "",
-    "semantic_divergence_score": 0.2296873238403162,
+    "semantic_divergence_score": 0.05580699443817139,
     "detention_days_delta": 0
   },
   "review_guidance": {
