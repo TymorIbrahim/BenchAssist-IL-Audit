@@ -160,9 +160,9 @@
     "n_results": 876,
     "n_comparisons": 572,
     "model": "gemini-2.5-flash-lite",
-    "temperature": 0,
-    "n_profiles": 20,
-    "n_base_cases": 21,
+    "temperature": 0.3,
+    "n_profiles": 11,
+    "n_base_cases": 26,
     "system_under_audit": "masked mode"
   }
 }

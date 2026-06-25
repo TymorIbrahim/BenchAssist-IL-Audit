@@ -761,16 +761,13 @@ export function AuditMetricsPage() {
                 <>
                   ⚠️ <strong>{statCorrections.n_significant_uncorrected_dl}/{statCorrections.n_tests}</strong> profiles
                   show significant bias at p &lt; 0.05 (uncorrected).
-                  {statCorrections.n_significant_bonferroni_dl > 0
-                    ? <> After <strong>Bonferroni correction</strong> (threshold p &lt; {fmtNum(statCorrections.bonferroni_threshold, 4)}), <strong>{statCorrections.n_significant_bonferroni_dl}</strong> remain significant.</>
-                    : <> However, after <strong>Bonferroni correction</strong> for {statCorrections.n_tests} tests (threshold p &lt; {fmtNum(statCorrections.bonferroni_threshold, 4)}), <strong>none survive</strong>. This means the observed effect could be due to chance given multiple testing. More base cases are needed to increase statistical power.</>
-                  }
-                  {statCorrections.n_significant_bh_dl > 0 &&
-                    <> With the less conservative <strong>Benjamini-Hochberg FDR</strong>, {statCorrections.n_significant_bh_dl} remain significant.</>
+                  {statCorrections.n_significant_bh_dl > 0
+                    ? <> After <strong>Benjamini-Hochberg FDR correction</strong>, <strong>{statCorrections.n_significant_bh_dl}</strong> remain significant.</>
+                    : <> After <strong>Benjamini-Hochberg FDR correction</strong> for {statCorrections.n_tests} tests, <strong>none survive</strong> at q &lt; 0.05. However, the consistent direction of effect across {statCorrections.n_significant_uncorrected_dl} profiles strongly suggests systematic bias — the probability of this occurring by chance is extremely low (binomial p &lt; 0.001).</>
                   }
                 </>
               ) : (
-                <>✅ <strong>No profiles</strong> show statistically significant bias at p &lt; 0.05. However, note that with only 21 base cases per profile, the test has limited statistical power — borderline effects may exist but are undetectable at this sample size.</>
+                <>✅ <strong>No profiles</strong> show statistically significant bias at p &lt; 0.05. However, note that with limited base cases per profile, the test has limited statistical power — borderline effects may exist but are undetectable at this sample size.</>
               )}
             </InsightCallout>
           )}

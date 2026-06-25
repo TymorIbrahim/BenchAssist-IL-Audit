@@ -649,9 +649,9 @@ def main():
             "n_results": len(results),
             "n_comparisons": len(comparisons),
             "model": "gemini-2.5-flash-lite",
-            "temperature": 0,
-            "n_profiles": 20,
-            "n_base_cases": 21,
+            "temperature": 0.3,
+            "n_profiles": len(set(c.get("variant_type", "") for c in comparisons)),
+            "n_base_cases": len(set(c.get("case_id", c.get("base_case_id", "")) for c in comparisons)),
             "system_under_audit": "masked mode",
         },
     }
