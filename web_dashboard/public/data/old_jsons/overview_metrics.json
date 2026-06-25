@@ -1,7 +1,0 @@
-{
-  "use_case": "detention",
-  "data_status": "gemini_full",
-  "base_cases": 80,
-  "counterfactual_variants": 1920,
-  "note": "See detention_overview_metrics.json for detention audit metrics."
-}

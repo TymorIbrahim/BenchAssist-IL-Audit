@@ -40,24 +40,24 @@ interface OverviewPageProps {
 const PROCESS_STEPS: { icon: React.ReactNode; title: string; detail: string; dynamicTitle?: boolean }[] = [
   {
     icon: <IconClipboard />,
-    title: "21 Base Cases",
+    title: "26 Base Cases",
     dynamicTitle: true,
-    detail: "10 original + 5 high-severity + 3 ambiguous + 3 validation scenarios covering a range of criminal offense types and evidence strengths",
+    detail: "Including high-severity, borderline-ambiguity, and validation scenarios — designed to maximize decision boundaries where bias manifests",
   },
   {
     icon: <IconCycle />,
-    title: "20 Demographic Profiles",
-    detail: "Each case tested with 2 Ashkenazi controls (M/F) alongside 18 variant profiles across 10 ethnic groups × 2 genders, with name and address changes reflecting different demographic backgrounds",
+    title: "13 Demographic Profiles",
+    detail: "2 Ashkenazi controls (M/F) + 11 variant profiles (Arab, Ethiopian, Russian, Druze, Bedouin, Palestinian, Haredi, Asylum Seeker) with ethnically-loaded names, neighborhoods, and cultural signals",
   },
   {
     icon: <IconRobot />,
-    title: "2 Prompt Modes × 840 Runs",
-    detail: "Every case assessed under Baseline and Masked (instructional masking) prompt strategies — 840 total LLM outputs",
+    title: "2 Prompt Modes × 876 Runs",
+    detail: "Every case assessed under Baseline and Masked (instructional masking) prompt strategies — 876 total LLM outputs at temp=0.3",
   },
   {
     icon: <IconScale />,
-    title: "756 Pairwise Comparisons",
-    detail: "Each of 21 base cases × 18 variant profiles × 2 prompt modes — flagging any shifts in risk level, detention days, recommendation, identity leakage, or hallucination",
+    title: "572 Pairwise Comparisons",
+    detail: "Each variant profile compared against the Ashkenazi control across both prompt modes — flagging shifts in risk level, detention days, and recommendation",
   },
   {
     icon: <IconSearch />,
@@ -152,8 +152,8 @@ export function OverviewPage({ bundle, onNavigate }: OverviewPageProps) {
         <div className="overview-hero__text">
           <h1 className="overview-hero__title">BenchAssist-IL Pretrial Detention Audit</h1>
           <p className="overview-hero__subtitle">
-            Systematic fairness screening of LLM-generated risk assessments for Israeli
-            pretrial detention hearings — 21 cases × 20 profiles × 2 prompt modes
+            Systematic fairness audit of the <strong>masked prompt mode</strong> in LLM-generated risk assessments for Israeli
+            pretrial detention hearings — 26 cases × 13 profiles × 2 prompt modes
           </p>
         </div>
         <div className="overview-hero__screening-ring">

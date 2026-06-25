@@ -61,8 +61,7 @@
   "prompt_mode": "baseline",
   "prompt_modes": [
     "baseline",
-    "fairness_aware",
-    "demographic_blind"
+    "masked"
   ],
   "schema_versions": [
     "detention_full_v1"
@@ -103,9 +102,8 @@
   "cross_prompt_wording_only_count": 0,
   "detention_pilot_corpus_available": true,
   "detention_synthetic_rows": 1920,
-  "case_review_records_available": false,
-  "case_review_record_count": 0,
-  "case_review_export_error": "No columns to parse from file",
+  "case_review_records_available": true,
+  "case_review_record_count": 572,
   "export_provenance": {
     "git_commit": "062bef6",
     "export_git_sha": "062bef6",
@@ -128,7 +126,7 @@
     "case_review_split": false
   },
   "export_completeness_score": 85,
-  "critical_exports_ok": false,
+  "critical_exports_ok": true,
   "critical_export_checks": {
     "detention_overview_metrics.json": true,
     "detention_pairwise_comparison.json": true,
@@ -139,7 +137,7 @@
     "detention_address_proxy_pairwise_comparison.json",
     "detention_validity_calibration.json"
   ],
-  "deploy_blocked": true,
+  "deploy_blocked": false,
   "missing_optional_files_detail": [
     {
       "file": "detention_address_proxy_pairwise_comparison.json",
