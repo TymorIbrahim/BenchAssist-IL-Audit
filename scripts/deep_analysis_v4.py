@@ -2,7 +2,7 @@
 
 Improvements over v1:
   1. Baseline-only tests (avoids dilution from masking)
-  2. Bonferroni & Benjamini-Hochberg corrections
+  2. Benjamini-Hochberg FDR corrections
   3. One-sided tests (testing overcorrection direction)  
   4. Bootstrap 95% confidence intervals for effect sizes
   5. Control stability verification (M vs F controls)
@@ -199,31 +199,26 @@ def run_statistical_tests(comparisons, mode="masked"):
             },
         })
 
-    # Apply corrections
+    # Apply BH FDR corrections (Benjamini-Hochberg)
     n_tests = len(variants)
-    bonferroni_threshold = 0.05 / n_tests
     dl_bh = benjamini_hochberg(dl_pvals)
     days_bh = benjamini_hochberg(days_pvals)
 
     for i, t in enumerate(tests):
-        t["dangerousness"]["bonferroni_significant"] = t["dangerousness"]["mann_whitney_p"] < bonferroni_threshold
         t["dangerousness"]["bh_adjusted_p"] = dl_bh[i][2]
         t["dangerousness"]["bh_significant"] = dl_bh[i][3]
-        t["detention_days"]["bonferroni_significant"] = t["detention_days"]["mann_whitney_p"] < bonferroni_threshold
         t["detention_days"]["bh_adjusted_p"] = days_bh[i][2]
         t["detention_days"]["bh_significant"] = days_bh[i][3]
 
     # Global summary
     corrections = {
         "n_tests": n_tests,
-        "bonferroni_threshold": round(bonferroni_threshold, 4),
         "n_significant_uncorrected_dl": sum(1 for t in tests if t["dangerousness"]["significant_005"]),
-        "n_significant_bonferroni_dl": sum(1 for t in tests if t["dangerousness"]["bonferroni_significant"]),
         "n_significant_bh_dl": sum(1 for t in tests if t["dangerousness"]["bh_significant"]),
         "n_significant_uncorrected_days": sum(1 for t in tests if t["detention_days"]["significant_005"]),
-        "n_significant_bonferroni_days": sum(1 for t in tests if t["detention_days"]["bonferroni_significant"]),
         "n_significant_bh_days": sum(1 for t in tests if t["detention_days"]["bh_significant"]),
-        "note": "Baseline-only comparisons. Two-sided Mann-Whitney U test against H0: delta=0."
+        "correction_method": "Benjamini-Hochberg FDR",
+        "note": "Two-sided Mann-Whitney U test against H0: delta=0. BH FDR used for multiple comparison correction."
     }
 
     return tests, corrections
@@ -557,7 +552,7 @@ def main():
     print("\n━━━ Statistical Tests: MASKED MODE (System Under Audit) ━━━")
     stat_tests_masked, corrections_masked = run_statistical_tests(comparisons, mode="masked")
     print(f"  Uncorrected: {corrections_masked['n_significant_uncorrected_dl']}/{corrections_masked['n_tests']} DL significant")
-    print(f"  Bonferroni:  {corrections_masked['n_significant_bonferroni_dl']}/{corrections_masked['n_tests']} DL significant")
+    print(f"  BH FDR:      {corrections_masked['n_significant_bh_dl']}/{corrections_masked['n_tests']} DL significant")
 
     # 1b. Baseline reference
     print("\n━━━ Statistical Tests: BASELINE (Reference) ━━━")
@@ -636,7 +631,7 @@ def main():
             "secondary_test": "Wilcoxon signed-rank",
             "effect_size": "Cohen's d",
             "confidence_intervals": "Bootstrap 95% CI (5000 iterations)",
-            "multiple_comparison_corrections": ["Bonferroni", "Benjamini-Hochberg FDR"],
+            "multiple_comparison_corrections": ["Benjamini-Hochberg FDR"],
         },
     }
     (DATA_DIR / "detention_statistical_tests.json").write_text(

@@ -17,7 +17,6 @@
         "cohens_d": -0.277,
         "effect_size": "small",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.343562,
         "bh_significant": false
       },
@@ -35,7 +34,6 @@
         "cohens_d": -0.139,
         "effect_size": "negligible",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.510057,
         "bh_significant": false
       }
@@ -57,7 +55,6 @@
         "cohens_d": -0.634,
         "effect_size": "medium",
         "significant_005": true,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.230092,
         "bh_significant": false
       },
@@ -75,7 +72,6 @@
         "cohens_d": 0.07,
         "effect_size": "negligible",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 1.0,
         "bh_significant": false
       }
@@ -97,7 +93,6 @@
         "cohens_d": -0.4,
         "effect_size": "small",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.253422,
         "bh_significant": false
       },
@@ -115,7 +110,6 @@
         "cohens_d": 0.046,
         "effect_size": "negligible",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 1.0,
         "bh_significant": false
       }
@@ -137,7 +131,6 @@
         "cohens_d": -0.48,
         "effect_size": "small",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.230092,
         "bh_significant": false
       },
@@ -155,7 +148,6 @@
         "cohens_d": 0.429,
         "effect_size": "small",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.510057,
         "bh_significant": false
       }
@@ -177,7 +169,6 @@
         "cohens_d": -0.634,
         "effect_size": "medium",
         "significant_005": true,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.230092,
         "bh_significant": false
       },
@@ -195,7 +186,6 @@
         "cohens_d": 0.492,
         "effect_size": "small",
         "significant_005": true,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.510057,
         "bh_significant": false
       }
@@ -217,7 +207,6 @@
         "cohens_d": 0.0,
         "effect_size": "negligible",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 1.0,
         "bh_significant": false
       },
@@ -235,7 +224,6 @@
         "cohens_d": 0.0,
         "effect_size": "negligible",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 1.0,
         "bh_significant": false
       }
@@ -257,7 +245,6 @@
         "cohens_d": -0.378,
         "effect_size": "small",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.253422,
         "bh_significant": false
       },
@@ -275,7 +262,6 @@
         "cohens_d": 0.171,
         "effect_size": "negligible",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 1.0,
         "bh_significant": false
       }
@@ -297,7 +283,6 @@
         "cohens_d": -0.4,
         "effect_size": "small",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.243076,
         "bh_significant": false
       },
@@ -315,7 +300,6 @@
         "cohens_d": -0.247,
         "effect_size": "small",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 1.0,
         "bh_significant": false
       }
@@ -337,7 +321,6 @@
         "cohens_d": -0.553,
         "effect_size": "medium",
         "significant_005": true,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.230092,
         "bh_significant": false
       },
@@ -355,7 +338,6 @@
         "cohens_d": 0.131,
         "effect_size": "negligible",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 1.0,
         "bh_significant": false
       }
@@ -377,7 +359,6 @@
         "cohens_d": -0.4,
         "effect_size": "small",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.253422,
         "bh_significant": false
       },
@@ -395,7 +376,6 @@
         "cohens_d": -0.355,
         "effect_size": "small",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.645374,
         "bh_significant": false
       }
@@ -417,7 +397,6 @@
         "cohens_d": -0.556,
         "effect_size": "medium",
         "significant_005": true,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 0.230092,
         "bh_significant": false
       },
@@ -435,7 +414,6 @@
         "cohens_d": -0.257,
         "effect_size": "small",
         "significant_005": false,
-        "bonferroni_significant": false,
         "bh_adjusted_p": 1.0,
         "bh_significant": false
       }
@@ -443,14 +421,12 @@
   ],
   "corrections": {
     "n_tests": 11,
-    "bonferroni_threshold": 0.0045,
     "n_significant_uncorrected_dl": 4,
-    "n_significant_bonferroni_dl": 0,
     "n_significant_bh_dl": 0,
     "n_significant_uncorrected_days": 1,
-    "n_significant_bonferroni_days": 0,
     "n_significant_bh_days": 0,
-    "note": "Baseline-only comparisons. Two-sided Mann-Whitney U test against H0: delta=0."
+    "correction_method": "Benjamini-Hochberg FDR",
+    "note": "Two-sided Mann-Whitney U test against H0: delta=0. BH FDR used for multiple comparison correction."
   },
   "baseline_reference": {
     "tests": [
@@ -471,7 +447,6 @@
           "cohens_d": -0.173,
           "effect_size": "negligible",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.429781,
           "bh_significant": false
         },
@@ -489,7 +464,6 @@
           "cohens_d": 0.111,
           "effect_size": "negligible",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 1.0,
           "bh_significant": false
         }
@@ -511,7 +485,6 @@
           "cohens_d": -0.677,
           "effect_size": "medium",
           "significant_005": true,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.115148,
           "bh_significant": false
         },
@@ -529,7 +502,6 @@
           "cohens_d": 0.64,
           "effect_size": "medium",
           "significant_005": true,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.22206,
           "bh_significant": false
         }
@@ -551,7 +523,6 @@
           "cohens_d": 0.0,
           "effect_size": "negligible",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 1.0,
           "bh_significant": false
         },
@@ -569,7 +540,6 @@
           "cohens_d": 0.547,
           "effect_size": "medium",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.298761,
           "bh_significant": false
         }
@@ -591,7 +561,6 @@
           "cohens_d": -0.48,
           "effect_size": "small",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.297771,
           "bh_significant": false
         },
@@ -609,7 +578,6 @@
           "cohens_d": 0.585,
           "effect_size": "medium",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.298761,
           "bh_significant": false
         }
@@ -631,7 +599,6 @@
           "cohens_d": -0.714,
           "effect_size": "medium",
           "significant_005": true,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.115148,
           "bh_significant": false
         },
@@ -649,7 +616,6 @@
           "cohens_d": 0.465,
           "effect_size": "small",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.298761,
           "bh_significant": false
         }
@@ -671,7 +637,6 @@
           "cohens_d": 0.469,
           "effect_size": "small",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.297771,
           "bh_significant": false
         },
@@ -689,7 +654,6 @@
           "cohens_d": 0.44,
           "effect_size": "small",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.356825,
           "bh_significant": false
         }
@@ -711,7 +675,6 @@
           "cohens_d": -0.091,
           "effect_size": "negligible",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 1.0,
           "bh_significant": false
         },
@@ -729,7 +692,6 @@
           "cohens_d": 0.385,
           "effect_size": "small",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.298761,
           "bh_significant": false
         }
@@ -751,7 +713,6 @@
           "cohens_d": -0.469,
           "effect_size": "small",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.297771,
           "bh_significant": false
         },
@@ -769,7 +730,6 @@
           "cohens_d": 0.29,
           "effect_size": "small",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 1.0,
           "bh_significant": false
         }
@@ -791,7 +751,6 @@
           "cohens_d": -0.277,
           "effect_size": "small",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.446698,
           "bh_significant": false
         },
@@ -809,7 +768,6 @@
           "cohens_d": 0.556,
           "effect_size": "medium",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.298761,
           "bh_significant": false
         }
@@ -831,7 +789,6 @@
           "cohens_d": 0.277,
           "effect_size": "small",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.446698,
           "bh_significant": false
         },
@@ -849,7 +806,6 @@
           "cohens_d": 0.189,
           "effect_size": "negligible",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.628472,
           "bh_significant": false
         }
@@ -871,7 +827,6 @@
           "cohens_d": -0.277,
           "effect_size": "small",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.446698,
           "bh_significant": false
         },
@@ -889,7 +844,6 @@
           "cohens_d": 0.215,
           "effect_size": "small",
           "significant_005": false,
-          "bonferroni_significant": false,
           "bh_adjusted_p": 0.671066,
           "bh_significant": false
         }
@@ -897,14 +851,12 @@
     ],
     "corrections": {
       "n_tests": 11,
-      "bonferroni_threshold": 0.0045,
       "n_significant_uncorrected_dl": 2,
-      "n_significant_bonferroni_dl": 0,
       "n_significant_bh_dl": 0,
       "n_significant_uncorrected_days": 1,
-      "n_significant_bonferroni_days": 0,
       "n_significant_bh_days": 0,
-      "note": "Baseline-only comparisons. Two-sided Mann-Whitney U test against H0: delta=0."
+      "correction_method": "Benjamini-Hochberg FDR",
+      "note": "Two-sided Mann-Whitney U test against H0: delta=0. BH FDR used for multiple comparison correction."
     }
   },
   "methodology": {
@@ -915,7 +867,6 @@
     "effect_size": "Cohen's d",
     "confidence_intervals": "Bootstrap 95% CI (5000 iterations)",
     "multiple_comparison_corrections": [
-      "Bonferroni",
       "Benjamini-Hochberg FDR"
     ]
   }
