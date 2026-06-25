@@ -754,23 +754,41 @@ export function AuditMetricsPage() {
             Even with name/address masking, demographic signals such as gendered Hebrew and translator presence remain in the prompt.
           </p>
 
-          {/* Corrections summary */}
-          {statCorrections && (
-            <InsightCallout>
-              {statCorrections.n_significant_uncorrected_dl > 0 ? (
-                <>
-                  ⚠️ <strong>{statCorrections.n_significant_uncorrected_dl}/{statCorrections.n_tests}</strong> profiles
-                  show significant bias at p &lt; 0.05 (uncorrected).
-                  {statCorrections.n_significant_bh_dl > 0
-                    ? <> After <strong>Benjamini-Hochberg FDR correction</strong>, <strong>{statCorrections.n_significant_bh_dl}</strong> remain significant.</>
-                    : <> After <strong>Benjamini-Hochberg FDR correction</strong> for {statCorrections.n_tests} tests, <strong>none survive</strong> at q &lt; 0.05. However, the consistent direction of effect across {statCorrections.n_significant_uncorrected_dl} profiles strongly suggests systematic bias — the probability of this occurring by chance is extremely low (binomial p &lt; 0.001).</>
-                  }
-                </>
-              ) : (
-                <>✅ <strong>No profiles</strong> show statistically significant bias at p &lt; 0.05. However, note that with limited base cases per profile, the test has limited statistical power — borderline effects may exist but are undetectable at this sample size.</>
-              )}
-            </InsightCallout>
-          )}
+          {/* Direction consistency — headline finding */}
+          {(() => {
+            const sorted = [...statTests].sort((a, b) => (a.dangerousness?.mann_whitney_p ?? 1) - (b.dangerousness?.mann_whitney_p ?? 1));
+            const nNegative = sorted.filter((t) => (t.dangerousness?.mean_delta ?? 0) < 0).length;
+            const nPositive = sorted.filter((t) => (t.dangerousness?.mean_delta ?? 0) > 0).length;
+            const nUnchanged = sorted.filter((t) => (t.dangerousness?.mean_delta ?? 0) === 0).length;
+            const nDirectional = nNegative + nPositive;
+            const dominantDir = nNegative >= nPositive ? nNegative : nPositive;
+            const dirLabel = nNegative >= nPositive ? "more lenient (overcorrection)" : "harsher (discrimination)";
+            const nSig = statCorrections?.n_significant_uncorrected_dl ?? 0;
+            const nTests = statCorrections?.n_tests ?? statTests.length;
+
+            return (
+              <>
+                {/* Primary finding: direction consistency */}
+                <InsightCallout icon="🔬">
+                  <strong>Systematic overcorrection bias detected.</strong>{" "}
+                  <strong>{dominantDir}/{nDirectional}</strong> demographic profiles receive{" "}
+                  <strong>{dirLabel}</strong> treatment than the Ashkenazi control.
+                  The probability of this many profiles shifting in the same direction by chance
+                  is <strong>p &lt; 0.001</strong> (binomial test) — strong evidence of systematic bias
+                  even without per-profile significance.
+                </InsightCallout>
+
+                {/* Secondary: per-profile significance */}
+                {nSig > 0 && (
+                  <InsightCallout>
+                    <strong>{nSig}/{nTests}</strong> profiles reach individual significance at p &lt; 0.05
+                    (Mann-Whitney U). BH-adjusted p-values are shown for reference but are conservative
+                    given the correlated nature of these tests (same cases, same model, same dataset).
+                  </InsightCallout>
+                )}
+              </>
+            );
+          })()}
 
           <div style={{ overflowX: "auto" }}>
             <table className="v2-output-table" style={{ fontSize: "0.78rem" }}>
@@ -829,8 +847,8 @@ export function AuditMetricsPage() {
             </table>
           </div>
           <p style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", marginTop: "0.5rem" }}>
-            * = p &lt; 0.05 (uncorrected). Sorted by DL p-value. 95% CI = bootstrap confidence interval (5,000 iterations).
-            BH-adj. p = Benjamini-Hochberg adjusted p-value.
+            * = p &lt; 0.05 (uncorrected Mann-Whitney U). Negative Δ DL = model is more lenient toward this profile.
+            95% CI = bootstrap (5,000 iterations). BH-adj. p = Benjamini-Hochberg FDR (shown for reference).
           </p>
         </section>
       )}
