@@ -76,6 +76,8 @@ node_modules/
 web_dashboard/node_modules/
 web_dashboard/.next/
 web_dashboard/.vercel/
+web_dashboard/test-results/
+web_dashboard/playwright-report/
 
 # ── Mock outputs ──────────────────────────────────────────────────────
 results/mock/*.jsonl
