@@ -605,7 +605,7 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
                       <p className="muted" style={{ margin: 0, fontSize: "var(--v2-fs-sm)" }}>
                         The model&apos;s legal-style reasoning for each version. Compare how the justification changes when demographic details differ.
                       </p>
-                      {loadedRecord.diff?.semantic_divergence_score !== undefined && (
+                      {typeof loadedRecord.diff?.semantic_divergence_score === "number" && (
                         <div style={{ fontSize: "var(--v2-fs-sm)", background: "var(--v2-bg-surface)", padding: "0.2rem 0.5rem", borderRadius: "4px", border: "1px solid var(--v2-border-subtle)", display: "flex", gap: "0.4rem", alignItems: "center" }}>
                           <span style={{ color: "var(--v2-text-secondary)" }}>Semantic Divergence:</span>
                           <span style={{ fontWeight: 600, color: loadedRecord.diff.semantic_divergence_score > 0.1 ? "var(--v2-danger)" : "var(--v2-text)" }}>
