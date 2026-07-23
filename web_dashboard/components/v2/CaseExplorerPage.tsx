@@ -570,10 +570,6 @@ export function CaseExplorerPage({ bundle }: CaseExplorerPageProps) {
                                 return String(x).replace(/_/g, " ");
                               } },
                               { label: "Recommendation", key: "case_summary" },
-                              { label: "Detention Days", key: "recommended_detention_days", format: (x) => {
-                                if (x == null) return "N/A";
-                                return `${x} days`;
-                              } },
                             ];
                             return fields.map(({ label, key, format }) => {
                               const nVal = (n as Record<string, unknown>)[key];

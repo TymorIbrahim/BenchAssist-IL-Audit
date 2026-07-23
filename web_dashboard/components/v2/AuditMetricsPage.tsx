@@ -801,8 +801,6 @@ export function AuditMetricsPage() {
                   <th>p-value</th>
                   <th>BH-adj. p</th>
                   <th>Effect Size</th>
-                  <th>Δ Days</th>
-                  <th>Days p</th>
                 </tr>
               </thead>
               <tbody>
@@ -810,7 +808,6 @@ export function AuditMetricsPage() {
                   .sort((a, b) => (a.dangerousness?.mann_whitney_p ?? 1) - (b.dangerousness?.mann_whitney_p ?? 1))
                   .map((t: any) => {
                   const dl = t.dangerousness ?? {};
-                  const days = t.detention_days ?? {};
                   const ci = dl.ci_95;
                   return (
                     <tr key={t.variant_type} style={{
@@ -834,12 +831,6 @@ export function AuditMetricsPage() {
                       <td><span style={{ fontSize: "0.7rem", padding: "2px 6px", borderRadius: 4, background: dl.effect_size === "negligible" ? "hsl(140 30% 92%)" : dl.effect_size === "small" ? "hsl(45 60% 90%)" : dl.effect_size === "medium" ? "hsl(25 70% 90%)" : "hsl(0 50% 92%)" }}>
                         {dl.effect_size} (d={fmtNum(dl.cohens_d, 2)})
                       </span></td>
-                      <td style={{ fontWeight: 600, color: Math.abs(days.mean_delta ?? 0) >= 0.1 ? "hsl(0 65% 50%)" : undefined }}>
-                        {(days.mean_delta ?? 0) >= 0 ? "+" : ""}{fmtNum(days.mean_delta, 2)}
-                      </td>
-                      <td style={{ color: days.significant_005 ? "hsl(0 70% 45%)" : undefined }}>
-                        {fmtNum(days.mann_whitney_p, 4)}
-                      </td>
                     </tr>
                   );
                 })}
@@ -866,13 +857,12 @@ export function AuditMetricsPage() {
           {(() => {
             const cs = fullSummary.control_stability;
             const dlSig = cs.dl_comparison?.significant;
-            const daysSig = cs.days_comparison?.significant;
             return (
               <>
                 <InsightCallout>
-                  {!dlSig && !daysSig ? (
+                  {!dlSig ? (
                     <>✅ <strong>Controls are stable.</strong> No significant difference between male and female Ashkenazi controls
-                    (DL: p={fmtNum(cs.dl_comparison?.mann_whitney_p, 4)}, Days: p={fmtNum(cs.days_comparison?.mann_whitney_p, 4)}).
+                    (DL: p={fmtNum(cs.dl_comparison?.mann_whitney_p, 4)}).
                     The control baseline is reliable.</>
                   ) : (
                     <>⚠️ <strong>Control instability detected.</strong> The male and female Ashkenazi controls produce significantly
@@ -883,14 +873,14 @@ export function AuditMetricsPage() {
                   <div style={{ ...STAT_CARD, flex: 1, minWidth: 180 }}>
                     <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Control (Male)</span>
                     <span style={{ fontSize: "1.3rem", fontWeight: 700 }}>
-                      DL {fmtNum(cs.control_male?.mean_dl)} · {fmtNum(cs.control_male?.mean_days)} days
+                      DL {fmtNum(cs.control_male?.mean_dl)}
                     </span>
                     <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>N={cs.control_male?.n}</span>
                   </div>
                   <div style={{ ...STAT_CARD, flex: 1, minWidth: 180 }}>
                     <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Control (Female)</span>
                     <span style={{ fontSize: "1.3rem", fontWeight: 700 }}>
-                      DL {fmtNum(cs.control_female?.mean_dl)} · {fmtNum(cs.control_female?.mean_days)} days
+                      DL {fmtNum(cs.control_female?.mean_dl)}
                     </span>
                     <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>N={cs.control_female?.n}</span>
                   </div>
@@ -1015,7 +1005,7 @@ export function AuditMetricsPage() {
               <div style={{ overflowX: "auto" }}>
                 <table className="v2-output-table" style={{ fontSize: "0.8rem" }}>
                   <thead>
-                    <tr><th>Ethnicity</th><th>N</th><th>Mean DL</th><th>Δ DL</th><th>Mean Days</th><th>Δ Days</th></tr>
+                    <tr><th>Ethnicity</th><th>N</th><th>Mean DL</th><th>Δ DL</th></tr>
                   </thead>
                   <tbody>
                     {fullSummary.ethnicity_analysis.baseline.map((e: any) => (
@@ -1028,10 +1018,6 @@ export function AuditMetricsPage() {
                         <td>{fmtNum(e.mean_dangerousness)}</td>
                         <td style={{ color: Math.abs(e.delta_dangerousness) >= 0.15 ? "hsl(0 65% 50%)" : undefined, fontWeight: 600 }}>
                           {e.delta_dangerousness >= 0 ? "+" : ""}{fmtNum(e.delta_dangerousness)}
-                        </td>
-                        <td>{fmtNum(e.mean_detention_days)}</td>
-                        <td style={{ color: Math.abs(e.delta_detention_days) >= 0.2 ? "hsl(0 65% 50%)" : undefined, fontWeight: 600 }}>
-                          {e.delta_detention_days >= 0 ? "+" : ""}{fmtNum(e.delta_detention_days)}
                         </td>
                       </tr>
                     ))}
@@ -1050,24 +1036,24 @@ export function AuditMetricsPage() {
                 <div style={{ ...STAT_CARD, flex: 1, minWidth: 180 }}>
                   <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Male</span>
                   <span style={{ fontSize: "1.3rem", fontWeight: 700 }}>
-                    DL {fmtNum(fullSummary.gender_analysis.baseline.male?.mean_dangerousness)} · {fmtNum(fullSummary.gender_analysis.baseline.male?.mean_detention_days)} days
+                    DL {fmtNum(fullSummary.gender_analysis.baseline.male?.mean_dangerousness)}
                   </span>
                   <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>N={fullSummary.gender_analysis.baseline.male?.n}</span>
                 </div>
                 <div style={{ ...STAT_CARD, flex: 1, minWidth: 180 }}>
                   <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Female</span>
                   <span style={{ fontSize: "1.3rem", fontWeight: 700 }}>
-                    DL {fmtNum(fullSummary.gender_analysis.baseline.female?.mean_dangerousness)} · {fmtNum(fullSummary.gender_analysis.baseline.female?.mean_detention_days)} days
+                    DL {fmtNum(fullSummary.gender_analysis.baseline.female?.mean_dangerousness)}
                   </span>
                   <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>N={fullSummary.gender_analysis.baseline.female?.n}</span>
                 </div>
                 <div style={{ ...STAT_CARD, flex: 1, minWidth: 200 }}>
                   <span style={{ fontSize: "0.72rem", color: "var(--v2-text-muted)", fontWeight: 600, textTransform: "uppercase" }}>Gender Gap (F − M)</span>
                   <span style={{ fontSize: "1.3rem", fontWeight: 700 }}>
-                    Δ DL {fullSummary.gender_analysis.baseline.delta_dangerousness >= 0 ? "+" : ""}{fmtNum(fullSummary.gender_analysis.baseline.delta_dangerousness, 3)} · Δ Days {fullSummary.gender_analysis.baseline.delta_detention_days >= 0 ? "+" : ""}{fmtNum(fullSummary.gender_analysis.baseline.delta_detention_days, 2)}
+                    Δ DL {fullSummary.gender_analysis.baseline.delta_dangerousness >= 0 ? "+" : ""}{fmtNum(fullSummary.gender_analysis.baseline.delta_dangerousness, 3)}
                   </span>
                   <span style={{ fontSize: "0.75rem", color: "var(--v2-text-muted)" }}>
-                    DL p={fmtNum(fullSummary.gender_analysis.baseline.dangerousness_p_value, 4)} · Days p={fmtNum(fullSummary.gender_analysis.baseline.detention_days_p_value, 4)}
+                    DL p={fmtNum(fullSummary.gender_analysis.baseline.dangerousness_p_value, 4)}
                   </span>
                 </div>
               </div>

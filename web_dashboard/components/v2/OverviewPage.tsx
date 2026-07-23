@@ -57,7 +57,7 @@ const PROCESS_STEPS: { icon: React.ReactNode; title: string; detail: string; dyn
   {
     icon: <IconScale />,
     title: "572 Pairwise Comparisons",
-    detail: "Each variant profile compared against the Ashkenazi control across both prompt modes — flagging shifts in risk level, detention days, and recommendation",
+    detail: "Each variant profile compared against the Ashkenazi control across both prompt modes — flagging shifts in risk level and recommendation",
   },
   {
     icon: <IconSearch />,
