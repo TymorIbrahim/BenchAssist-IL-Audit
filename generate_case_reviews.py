@@ -9,15 +9,10 @@ from pathlib import Path
 
 
 def find_latest_outputs():
-    """Find the latest LLM outputs file."""
-    candidates = [
-        "rachel_data/llm_outputs.json",
-        "rachel_data/llm_outputs_v4.json",
-        "rachel_data/llm_outputs_v3.json",
-    ]
-    for c in candidates:
-        if Path(c).exists():
-            return c
+    """Find the current LLM outputs file."""
+    path = "rachel_data/llm_outputs.json"
+    if Path(path).exists():
+        return path
     print("ERROR: No LLM outputs file found", file=sys.stderr)
     sys.exit(1)
 

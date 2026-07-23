@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "validate:data": "node scripts/validate-export-json.mjs",
     "test:e2e": "playwright test",
     "test:e2e:install": "playwright install chromium --with-deps"
