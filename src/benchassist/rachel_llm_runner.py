@@ -103,6 +103,17 @@ def _get_prompt_config(prompt_mode: str) -> tuple:
 # ---------------------------------------------------------------------------
 
 
+def _resolve_gemini_api_key() -> str | None:
+    """Return a Gemini API key from GEMINI_API_KEY or GOOGLE_API_KEY (loads .env if present)."""
+    import os
+    try:
+        from dotenv import load_dotenv
+        load_dotenv()
+    except ImportError:
+        pass
+    return os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+
+
 def load_cases(excel_path: Path) -> list[dict[str, Any]]:
     """Load all cases from the Audit Dataset sheet."""
     df = pd.read_excel(excel_path, sheet_name="Audit Dataset", header=2)
@@ -329,8 +340,7 @@ async def run_all_parallel(
 
     # Resolve API key
     if not api_key:
-        from benchassist.config import resolve_gemini_api_key
-        api_key = resolve_gemini_api_key()
+        api_key = _resolve_gemini_api_key()
     if not api_key:
         raise ValueError(
             "No Gemini API key found. Set GEMINI_API_KEY or GOOGLE_API_KEY "
@@ -480,8 +490,7 @@ def run_all(
 
     # Resolve API key
     if not api_key:
-        from benchassist.config import resolve_gemini_api_key
-        api_key = resolve_gemini_api_key()
+        api_key = _resolve_gemini_api_key()
     if not api_key:
         raise ValueError(
             "No Gemini API key found. Set GEMINI_API_KEY or GOOGLE_API_KEY "

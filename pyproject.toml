@@ -57,8 +57,5 @@ nlp = [
     "scipy>=1.10",
 ]
 
-[project.scripts]
-benchassist = "benchassist.run_batch:app"
-
 [tool.setuptools.packages.find]
 where = ["src"]

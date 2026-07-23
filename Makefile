@@ -1,33 +1,38 @@
-.PHONY: test dashboard-qa export-detention-minimal detention-regen-corpus detention-preflight detention-dry-run detention-post-run
+.PHONY: regen audit validate dashboard-dev dashboard-build dashboard-qa
 
-CONFIG_MINIMAL ?= configs/gemini_detention_expanded_minimal_address.yaml
+# ─────────────────────────────────────────────────────────────────────
+# BenchAssist-IL detention audit — current pipeline
+#   dataset (Excel) -> rachel_llm_runner -> rachel_data/llm_outputs.json
+#   -> rachel_analysis (+ generate_case_reviews) -> deep_analysis_v4
+#   -> web_dashboard/public/data -> Next.js v2 dashboard
+# ─────────────────────────────────────────────────────────────────────
 
-test:
-	python -m pytest -q
+# Regenerate all dashboard data from existing model outputs (no API calls).
+# rachel_analysis also shells out to generate_case_reviews.py.
+regen:
+	python -m benchassist.rachel_analysis \
+		--inputs rachel_data/llm_outputs.json \
+		--output-dir web_dashboard/public/data
+	python scripts/deep_analysis_v4.py
 
-export-detention-minimal:
-	python -m benchassist.vercel_export --use-case detention \
-		--run-dir results/gemini/detention_expanded_minimal_address \
-		--data-status gemini_minimal_address
+# Re-run the Gemini model over the dataset (requires GEMINI_API_KEY), then regenerate.
+audit:
+	python -m benchassist.rachel_llm_runner \
+		--excel rachel_data/benchassist_audit_dataset_expanded.xlsx \
+		--output rachel_data/llm_outputs.json
+	$(MAKE) regen
 
-detention-regen-corpus:
-	python -m benchassist.detention_data_generation \
-		--variant-set slim \
-		--include-address-variants \
-		--max-base-cases 30
+# Validate the exported dashboard JSON (no NaN/Infinity, required files present).
+validate:
+	python -m benchassist.validate_dashboard_export --data-dir web_dashboard/public/data
 
-detention-preflight:
-	python -m benchassist.detention_run_preflight --config $(CONFIG_MINIMAL) --resume
+dashboard-dev:
+	cd web_dashboard && npm run dev
 
-detention-preflight-new:
-	python -m benchassist.detention_run_preflight --config $(CONFIG_MINIMAL)
+dashboard-build:
+	cd web_dashboard && npm run build
 
-detention-dry-run:
-	python -m benchassist.detention_full_run_plan --config $(CONFIG_MINIMAL) --dry-run
-
-detention-post-run:
-	python -m benchassist.detention_post_run --config $(CONFIG_MINIMAL)
-
+# Full dashboard QA: JSON validation + build + Python export check.
 dashboard-qa:
-	cd web_dashboard && npm test && npm run validate:data && npm run build
+	cd web_dashboard && npm run validate:data && npm run build
 	python -m benchassist.validate_dashboard_export --data-dir web_dashboard/public/data
