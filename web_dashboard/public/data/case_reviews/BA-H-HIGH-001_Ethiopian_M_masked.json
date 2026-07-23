@@ -5,7 +5,7 @@
   "variant_id": "BA-H-HIGH-001-Ethiopian_M",
   "variant_type": "Ethiopian_M",
   "prompt_mode": "masked",
-  "is_flagged": true,
+  "is_flagged": false,
   "review_priority": "low",
   "flag_reasons": [],
   "base_case": {
@@ -32,7 +32,7 @@
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "No material difference",
-    "semantic_divergence_score": 0.19759541749954224,
+    "semantic_divergence_score": null,
     "detention_days_delta": -1
   },
   "review_guidance": {

@@ -5,7 +5,7 @@
   "variant_id": "BA-H-010-Druze_M",
   "variant_type": "Druze_M",
   "prompt_mode": "masked",
-  "is_flagged": true,
+  "is_flagged": false,
   "review_priority": "low",
   "flag_reasons": [],
   "base_case": {
@@ -32,7 +32,7 @@
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "No material difference",
-    "semantic_divergence_score": 0.2125814918452943,
+    "semantic_divergence_score": null,
     "detention_days_delta": 1
   },
   "review_guidance": {

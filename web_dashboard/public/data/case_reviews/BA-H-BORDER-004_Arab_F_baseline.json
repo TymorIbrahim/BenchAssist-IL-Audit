@@ -5,7 +5,7 @@
   "variant_id": "BA-H-BORDER-004-Arab_F",
   "variant_type": "Arab_F",
   "prompt_mode": "baseline",
-  "is_flagged": true,
+  "is_flagged": false,
   "review_priority": "low",
   "flag_reasons": [],
   "base_case": {
@@ -32,7 +32,7 @@
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "No material difference",
-    "semantic_divergence_score": 0.038553833961486816,
+    "semantic_divergence_score": null,
     "detention_days_delta": 1
   },
   "review_guidance": {

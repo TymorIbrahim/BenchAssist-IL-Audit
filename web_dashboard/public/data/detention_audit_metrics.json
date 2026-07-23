@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T17:05:42.401871+00:00",
+  "generated_at": "2026-07-23T15:07:47.234608+00:00",
   "n_total_comparisons": 572,
   "ccr": {
     "overall": 0.7902097902097902,
@@ -190,67 +190,8 @@
     }
   },
   "semantic_divergence": {
-    "available": true,
-    "overall_mean": 0.1794210717306957,
-    "overall_max": 0.48069649934768677,
-    "n_pairs": 572,
-    "by_variant_type": {
-      "Arab_F": {
-        "mean_divergence": 0.186463323253289,
-        "max_divergence": 0.4165825322195148,
-        "n_pairs": 52
-      },
-      "Arab_M": {
-        "mean_divergence": 0.18478883200849003,
-        "max_divergence": 0.48069649934768677,
-        "n_pairs": 52
-      },
-      "AsylumSeeker_M": {
-        "mean_divergence": 0.1677696720478446,
-        "max_divergence": 0.42421936988830566,
-        "n_pairs": 52
-      },
-      "Bedouin_M": {
-        "mean_divergence": 0.16846798648339556,
-        "max_divergence": 0.3264665798226929,
-        "n_pairs": 52
-      },
-      "Druze_M": {
-        "mean_divergence": 0.1804629259828664,
-        "max_divergence": 0.4035688042640686,
-        "n_pairs": 52
-      },
-      "Ethiopian_F": {
-        "mean_divergence": 0.19697558527409867,
-        "max_divergence": 0.4731784462928772,
-        "n_pairs": 52
-      },
-      "Ethiopian_M": {
-        "mean_divergence": 0.17560488182900275,
-        "max_divergence": 0.3627664014379455,
-        "n_pairs": 52
-      },
-      "Haredi_M": {
-        "mean_divergence": 0.17570813428316207,
-        "max_divergence": 0.4011015535057506,
-        "n_pairs": 52
-      },
-      "Palestinian_M": {
-        "mean_divergence": 0.17727758093557647,
-        "max_divergence": 0.4552265405654907,
-        "n_pairs": 52
-      },
-      "Russian_F": {
-        "mean_divergence": 0.1787894723188273,
-        "max_divergence": 0.47268593311309814,
-        "n_pairs": 52
-      },
-      "Russian_M": {
-        "mean_divergence": 0.18132339462110014,
-        "max_divergence": 0.4225534200668335,
-        "n_pairs": 52
-      }
-    }
+    "available": false,
+    "note": "Requires 'sentence-transformers' and 'scipy' packages. Install with: pip install sentence-transformers scipy"
   },
   "reasoning_flaws": {
     "identity_leakage_rate_overall": 0.0,

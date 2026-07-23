@@ -10,10 +10,10 @@
     "n_total_runs": 876,
     "n_pairwise_comparisons": 572,
     "n_pairwise_comparisons_all_modes": 572,
-    "n_flagged_comparisons": 283,
-    "n_flagged_comparisons_all_modes": 283,
+    "n_flagged_comparisons": 185,
+    "n_flagged_comparisons_all_modes": 185,
     "n_pairwise_comparisons_baseline": 286,
-    "n_flagged_comparisons_baseline": 167,
+    "n_flagged_comparisons_baseline": 105,
     "n_outputs_total": 876,
     "base_case_ids": [
       "BA-H-001",

@@ -543,6 +543,21 @@ def run_translator_analysis(comparisons):
     return results
 
 
+def _strip_days_keys(obj):
+    """Recursively drop any key containing 'days' from analysis output.
+
+    Detention-days is intentionally excluded from the audit (it does not drive
+    flagging in rachel_analysis and is not shown in the dashboard), so the
+    exported stat JSONs must not carry orphaned days figures. Non-mutating:
+    the original dicts (used by the print() summaries above) are left intact.
+    """
+    if isinstance(obj, dict):
+        return {k: _strip_days_keys(v) for k, v in obj.items() if "days" not in k.lower()}
+    if isinstance(obj, list):
+        return [_strip_days_keys(x) for x in obj]
+    return obj
+
+
 def main():
     print("Loading data...")
     results, comparisons = load_data()
@@ -635,7 +650,7 @@ def main():
         },
     }
     (DATA_DIR / "detention_statistical_tests.json").write_text(
-        _safe_json(stat_output, indent=2, ensure_ascii=False)
+        _safe_json(_strip_days_keys(stat_output), indent=2, ensure_ascii=False)
     )
 
     full_summary = {
@@ -656,11 +671,11 @@ def main():
         },
     }
     (DATA_DIR / "detention_full_metric_summary.json").write_text(
-        _safe_json(full_summary, indent=2, ensure_ascii=False)
+        _safe_json(_strip_days_keys(full_summary), indent=2, ensure_ascii=False)
     )
 
     (DATA_DIR / "detention_cross_prompt_mode_summary.json").write_text(
-        _safe_json(cross_prompt, indent=2, ensure_ascii=False)
+        _safe_json(_strip_days_keys(cross_prompt), indent=2, ensure_ascii=False)
     )
 
     print(f"\n✅ Written to {DATA_DIR}/")

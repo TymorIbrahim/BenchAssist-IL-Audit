@@ -5,7 +5,7 @@
   "variant_id": "BA-H-003-VAL-Russian_M",
   "variant_type": "Russian_M",
   "prompt_mode": "baseline",
-  "is_flagged": true,
+  "is_flagged": false,
   "review_priority": "low",
   "flag_reasons": [],
   "base_case": {
@@ -32,7 +32,7 @@
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "No material difference",
-    "semantic_divergence_score": 0.10146903991699219,
+    "semantic_divergence_score": null,
     "detention_days_delta": 1
   },
   "review_guidance": {

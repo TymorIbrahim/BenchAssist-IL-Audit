@@ -8,57 +8,45 @@
       "male": {
         "n": 0,
         "mean_dangerousness": 0,
-        "ci_95_dl": null,
-        "mean_detention_days": 0
+        "ci_95_dl": null
       },
       "female": {
         "n": 0,
         "mean_dangerousness": 0,
-        "ci_95_dl": null,
-        "mean_detention_days": 0
+        "ci_95_dl": null
       },
       "delta_dangerousness": 0,
-      "delta_detention_days": 0,
       "dangerousness_p_value": null,
-      "detention_days_p_value": null,
       "dangerousness_cohens_d": 0.0,
-      "dangerousness_significant": false,
-      "detention_days_significant": false
+      "dangerousness_significant": false
     },
     "masked": {
       "male": {
         "n": 0,
         "mean_dangerousness": 0,
-        "ci_95_dl": null,
-        "mean_detention_days": 0
+        "ci_95_dl": null
       },
       "female": {
         "n": 0,
         "mean_dangerousness": 0,
-        "ci_95_dl": null,
-        "mean_detention_days": 0
+        "ci_95_dl": null
       },
       "delta_dangerousness": 0,
-      "delta_detention_days": 0,
       "dangerousness_p_value": null,
-      "detention_days_p_value": null,
       "dangerousness_cohens_d": 0.0,
-      "dangerousness_significant": false,
-      "detention_days_significant": false
+      "dangerousness_significant": false
     }
   },
   "control_stability": {
     "control_male": {
       "n": 0,
       "mean_dl": null,
-      "std_dl": null,
-      "mean_days": null
+      "std_dl": null
     },
     "control_female": {
       "n": 0,
       "mean_dl": null,
-      "std_dl": null,
-      "mean_days": null
+      "std_dl": null
     }
   },
   "kruskal_wallis": {
@@ -68,56 +56,48 @@
     "nan": {
       "n": 88,
       "mean_dl_delta": 0.057,
-      "mean_days_delta": 0.193,
-      "flagged_rate": 0.602,
+      "flagged_rate": 0.341,
       "abs_mean_dl_delta": 0.148
     },
     "בינוני": {
       "n": 22,
       "mean_dl_delta": -0.273,
-      "mean_days_delta": 0.455,
-      "flagged_rate": 0.955,
+      "flagged_rate": 0.545,
       "abs_mean_dl_delta": 0.273
     },
     "בינוני-גבוה": {
       "n": 11,
       "mean_dl_delta": -0.455,
-      "mean_days_delta": -0.182,
-      "flagged_rate": 0.636,
+      "flagged_rate": 0.455,
       "abs_mean_dl_delta": 0.455
     },
     "בינוני-גבוה גבולי": {
       "n": 22,
       "mean_dl_delta": 0.136,
-      "mean_days_delta": 2.045,
-      "flagged_rate": 0.818,
+      "flagged_rate": 0.682,
       "abs_mean_dl_delta": 0.227
     },
     "בינוני-גבולי": {
       "n": 66,
       "mean_dl_delta": -0.136,
-      "mean_days_delta": 0.621,
-      "flagged_rate": 0.636,
+      "flagged_rate": 0.47,
       "abs_mean_dl_delta": 0.318
     },
     "בינוני-נמוך": {
       "n": 33,
       "mean_dl_delta": -0.273,
-      "mean_days_delta": -0.121,
-      "flagged_rate": 0.606,
+      "flagged_rate": 0.303,
       "abs_mean_dl_delta": 0.394
     },
     "גבוה": {
       "n": 22,
       "mean_dl_delta": 0.0,
-      "mean_days_delta": -0.182,
-      "flagged_rate": 0.182,
+      "flagged_rate": 0.0,
       "abs_mean_dl_delta": 0.0
     },
     "גבוה-גבולי": {
       "n": 22,
       "mean_dl_delta": -0.091,
-      "mean_days_delta": -0.091,
       "flagged_rate": 0.091,
       "abs_mean_dl_delta": 0.091
     }
@@ -127,14 +107,14 @@
       "with_translator": {
         "n": 182,
         "mean_dl_delta": -0.137,
-        "flagged": 77,
-        "flagged_rate": 0.423
+        "flagged": 56,
+        "flagged_rate": 0.308
       },
       "without_translator": {
         "n": 104,
         "mean_dl_delta": -0.173,
-        "flagged": 39,
-        "flagged_rate": 0.375
+        "flagged": 24,
+        "flagged_rate": 0.231
       },
       "p_value": 0.5545,
       "significant": false
@@ -143,14 +123,14 @@
       "with_translator": {
         "n": 182,
         "mean_dl_delta": -0.06,
-        "flagged": 108,
-        "flagged_rate": 0.593
+        "flagged": 69,
+        "flagged_rate": 0.379
       },
       "without_translator": {
         "n": 104,
         "mean_dl_delta": -0.115,
-        "flagged": 59,
-        "flagged_rate": 0.567
+        "flagged": 36,
+        "flagged_rate": 0.346
       },
       "p_value": 0.4505,
       "significant": false

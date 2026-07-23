@@ -32,7 +32,7 @@
   "diff": {
     "dangerousness_shift": "unchanged",
     "diff_summary": "No material difference",
-    "semantic_divergence_score": 0.3039788007736206,
+    "semantic_divergence_score": null,
     "detention_days_delta": 0
   },
   "review_guidance": {

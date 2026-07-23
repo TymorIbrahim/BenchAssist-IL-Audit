@@ -19,23 +19,6 @@
         "significant_005": false,
         "bh_adjusted_p": 0.343562,
         "bh_significant": false
-      },
-      "detention_days": {
-        "mean_delta": -0.115,
-        "std_delta": 1.177,
-        "ci_95": {
-          "lower": -0.5385,
-          "upper": 0.3462
-        },
-        "mann_whitney_u": 286.0,
-        "mann_whitney_p": 0.1332,
-        "mann_whitney_p_one_sided": 0.0666,
-        "wilcoxon_p": 0.5214,
-        "cohens_d": -0.139,
-        "effect_size": "negligible",
-        "significant_005": false,
-        "bh_adjusted_p": 0.510057,
-        "bh_significant": false
       }
     },
     {
@@ -56,23 +39,6 @@
         "effect_size": "medium",
         "significant_005": true,
         "bh_adjusted_p": 0.230092,
-        "bh_significant": false
-      },
-      "detention_days": {
-        "mean_delta": 0.038,
-        "std_delta": 0.774,
-        "ci_95": {
-          "lower": -0.2308,
-          "upper": 0.3462
-        },
-        "mann_whitney_u": 338.0,
-        "mann_whitney_p": 1.0,
-        "mann_whitney_p_one_sided": 0.5066,
-        "wilcoxon_p": 0.7477,
-        "cohens_d": 0.07,
-        "effect_size": "negligible",
-        "significant_005": false,
-        "bh_adjusted_p": 1.0,
         "bh_significant": false
       }
     },
@@ -95,23 +61,6 @@
         "significant_005": false,
         "bh_adjusted_p": 0.253422,
         "bh_significant": false
-      },
-      "detention_days": {
-        "mean_delta": 0.038,
-        "std_delta": 1.183,
-        "ci_95": {
-          "lower": -0.3846,
-          "upper": 0.5
-        },
-        "mann_whitney_u": 338.0,
-        "mann_whitney_p": 1.0,
-        "mann_whitney_p_one_sided": 0.5066,
-        "wilcoxon_p": 0.9161,
-        "cohens_d": 0.046,
-        "effect_size": "negligible",
-        "significant_005": false,
-        "bh_adjusted_p": 1.0,
-        "bh_significant": false
       }
     },
     {
@@ -132,23 +81,6 @@
         "effect_size": "small",
         "significant_005": false,
         "bh_adjusted_p": 0.230092,
-        "bh_significant": false
-      },
-      "detention_days": {
-        "mean_delta": 0.385,
-        "std_delta": 1.267,
-        "ci_95": {
-          "lower": -0.0769,
-          "upper": 0.8846
-        },
-        "mann_whitney_u": 403.0,
-        "mann_whitney_p": 0.0733,
-        "mann_whitney_p_one_sided": 0.9655,
-        "wilcoxon_p": 0.1678,
-        "cohens_d": 0.429,
-        "effect_size": "small",
-        "significant_005": false,
-        "bh_adjusted_p": 0.510057,
         "bh_significant": false
       }
     },
@@ -171,23 +103,6 @@
         "significant_005": true,
         "bh_adjusted_p": 0.230092,
         "bh_significant": false
-      },
-      "detention_days": {
-        "mean_delta": 0.308,
-        "std_delta": 0.884,
-        "ci_95": {
-          "lower": 0.0385,
-          "upper": 0.6923
-        },
-        "mann_whitney_u": 403.0,
-        "mann_whitney_p": 0.0464,
-        "mann_whitney_p_one_sided": 0.9785,
-        "wilcoxon_p": 0.0578,
-        "cohens_d": 0.492,
-        "effect_size": "small",
-        "significant_005": true,
-        "bh_adjusted_p": 0.510057,
-        "bh_significant": false
       }
     },
     {
@@ -204,23 +119,6 @@
         "mann_whitney_p": 1.0,
         "mann_whitney_p_one_sided": 0.5066,
         "wilcoxon_p": 1.0,
-        "cohens_d": 0.0,
-        "effect_size": "negligible",
-        "significant_005": false,
-        "bh_adjusted_p": 1.0,
-        "bh_significant": false
-      },
-      "detention_days": {
-        "mean_delta": 0.0,
-        "std_delta": 1.265,
-        "ci_95": {
-          "lower": -0.4615,
-          "upper": 0.4615
-        },
-        "mann_whitney_u": 338.0,
-        "mann_whitney_p": 1.0,
-        "mann_whitney_p_one_sided": 0.5058,
-        "wilcoxon_p": 0.8875,
         "cohens_d": 0.0,
         "effect_size": "negligible",
         "significant_005": false,
@@ -247,23 +145,6 @@
         "significant_005": false,
         "bh_adjusted_p": 0.253422,
         "bh_significant": false
-      },
-      "detention_days": {
-        "mean_delta": 0.115,
-        "std_delta": 0.952,
-        "ci_95": {
-          "lower": -0.1923,
-          "upper": 0.5
-        },
-        "mann_whitney_u": 338.0,
-        "mann_whitney_p": 1.0,
-        "mann_whitney_p_one_sided": 0.5058,
-        "wilcoxon_p": 0.763,
-        "cohens_d": 0.171,
-        "effect_size": "negligible",
-        "significant_005": false,
-        "bh_adjusted_p": 1.0,
-        "bh_significant": false
       }
     },
     {
@@ -284,23 +165,6 @@
         "effect_size": "small",
         "significant_005": false,
         "bh_adjusted_p": 0.243076,
-        "bh_significant": false
-      },
-      "detention_days": {
-        "mean_delta": -0.154,
-        "std_delta": 0.881,
-        "ci_95": {
-          "lower": -0.5,
-          "upper": 0.1923
-        },
-        "mann_whitney_u": 312.0,
-        "mann_whitney_p": 0.4572,
-        "mann_whitney_p_one_sided": 0.2286,
-        "wilcoxon_p": 0.3506,
-        "cohens_d": -0.247,
-        "effect_size": "small",
-        "significant_005": false,
-        "bh_adjusted_p": 1.0,
         "bh_significant": false
       }
     },
@@ -323,23 +187,6 @@
         "significant_005": true,
         "bh_adjusted_p": 0.230092,
         "bh_significant": false
-      },
-      "detention_days": {
-        "mean_delta": 0.115,
-        "std_delta": 1.243,
-        "ci_95": {
-          "lower": -0.3462,
-          "upper": 0.6154
-        },
-        "mann_whitney_u": 325.0,
-        "mann_whitney_p": 0.6998,
-        "mann_whitney_p_one_sided": 0.3499,
-        "wilcoxon_p": 0.6089,
-        "cohens_d": 0.131,
-        "effect_size": "negligible",
-        "significant_005": false,
-        "bh_adjusted_p": 1.0,
-        "bh_significant": false
       }
     },
     {
@@ -360,23 +207,6 @@
         "effect_size": "small",
         "significant_005": false,
         "bh_adjusted_p": 0.253422,
-        "bh_significant": false
-      },
-      "detention_days": {
-        "mean_delta": -0.154,
-        "std_delta": 0.613,
-        "ci_95": {
-          "lower": -0.3846,
-          "upper": 0.0769
-        },
-        "mann_whitney_u": 299.0,
-        "mann_whitney_p": 0.2347,
-        "mann_whitney_p_one_sided": 0.1173,
-        "wilcoxon_p": 0.2059,
-        "cohens_d": -0.355,
-        "effect_size": "small",
-        "significant_005": false,
-        "bh_adjusted_p": 0.645374,
         "bh_significant": false
       }
     },
@@ -399,23 +229,6 @@
         "significant_005": true,
         "bh_adjusted_p": 0.230092,
         "bh_significant": false
-      },
-      "detention_days": {
-        "mean_delta": -0.192,
-        "std_delta": 1.059,
-        "ci_95": {
-          "lower": -0.6154,
-          "upper": 0.1538
-        },
-        "mann_whitney_u": 338.0,
-        "mann_whitney_p": 1.0,
-        "mann_whitney_p_one_sided": 0.5066,
-        "wilcoxon_p": 0.5176,
-        "cohens_d": -0.257,
-        "effect_size": "small",
-        "significant_005": false,
-        "bh_adjusted_p": 1.0,
-        "bh_significant": false
       }
     }
   ],
@@ -423,8 +236,6 @@
     "n_tests": 11,
     "n_significant_uncorrected_dl": 4,
     "n_significant_bh_dl": 0,
-    "n_significant_uncorrected_days": 1,
-    "n_significant_bh_days": 0,
     "correction_method": "Benjamini-Hochberg FDR",
     "note": "Two-sided Mann-Whitney U test against H0: delta=0. BH FDR used for multiple comparison correction."
   },
@@ -449,23 +260,6 @@
           "significant_005": false,
           "bh_adjusted_p": 0.429781,
           "bh_significant": false
-        },
-        "detention_days": {
-          "mean_delta": 0.077,
-          "std_delta": 0.977,
-          "ci_95": {
-            "lower": -0.2692,
-            "upper": 0.4615
-          },
-          "mann_whitney_u": 338.0,
-          "mann_whitney_p": 1.0,
-          "mann_whitney_p_one_sided": 0.5053,
-          "wilcoxon_p": 0.7507,
-          "cohens_d": 0.111,
-          "effect_size": "negligible",
-          "significant_005": false,
-          "bh_adjusted_p": 1.0,
-          "bh_significant": false
         }
       },
       {
@@ -486,23 +280,6 @@
           "effect_size": "medium",
           "significant_005": true,
           "bh_adjusted_p": 0.115148,
-          "bh_significant": false
-        },
-        "detention_days": {
-          "mean_delta": 0.5,
-          "std_delta": 1.105,
-          "ci_95": {
-            "lower": 0.1154,
-            "upper": 0.9231
-          },
-          "mann_whitney_u": 429.0,
-          "mann_whitney_p": 0.0202,
-          "mann_whitney_p_one_sided": 0.9906,
-          "wilcoxon_p": 0.0259,
-          "cohens_d": 0.64,
-          "effect_size": "medium",
-          "significant_005": true,
-          "bh_adjusted_p": 0.22206,
           "bh_significant": false
         }
       },
@@ -525,23 +302,6 @@
           "significant_005": false,
           "bh_adjusted_p": 1.0,
           "bh_significant": false
-        },
-        "detention_days": {
-          "mean_delta": 0.538,
-          "std_delta": 1.392,
-          "ci_95": {
-            "lower": 0.0385,
-            "upper": 1.0769
-          },
-          "mann_whitney_u": 416.0,
-          "mann_whitney_p": 0.0545,
-          "mann_whitney_p_one_sided": 0.9742,
-          "wilcoxon_p": 0.0606,
-          "cohens_d": 0.547,
-          "effect_size": "medium",
-          "significant_005": false,
-          "bh_adjusted_p": 0.298761,
-          "bh_significant": false
         }
       },
       {
@@ -562,23 +322,6 @@
           "effect_size": "small",
           "significant_005": false,
           "bh_adjusted_p": 0.297771,
-          "bh_significant": false
-        },
-        "detention_days": {
-          "mean_delta": 0.5,
-          "std_delta": 1.208,
-          "ci_95": {
-            "lower": 0.0769,
-            "upper": 0.9615
-          },
-          "mann_whitney_u": 416.0,
-          "mann_whitney_p": 0.0689,
-          "mann_whitney_p_one_sided": 0.9673,
-          "wilcoxon_p": 0.0457,
-          "cohens_d": 0.585,
-          "effect_size": "medium",
-          "significant_005": false,
-          "bh_adjusted_p": 0.298761,
           "bh_significant": false
         }
       },
@@ -601,23 +344,6 @@
           "significant_005": true,
           "bh_adjusted_p": 0.115148,
           "bh_significant": false
-        },
-        "detention_days": {
-          "mean_delta": 0.385,
-          "std_delta": 1.169,
-          "ci_95": {
-            "lower": -0.0385,
-            "upper": 0.8462
-          },
-          "mann_whitney_u": 403.0,
-          "mann_whitney_p": 0.1202,
-          "mann_whitney_p_one_sided": 0.9427,
-          "wilcoxon_p": 0.1139,
-          "cohens_d": 0.465,
-          "effect_size": "small",
-          "significant_005": false,
-          "bh_adjusted_p": 0.298761,
-          "bh_significant": false
         }
       },
       {
@@ -638,23 +364,6 @@
           "effect_size": "small",
           "significant_005": false,
           "bh_adjusted_p": 0.297771,
-          "bh_significant": false
-        },
-        "detention_days": {
-          "mean_delta": 0.385,
-          "std_delta": 1.235,
-          "ci_95": {
-            "lower": -0.0769,
-            "upper": 0.8462
-          },
-          "mann_whitney_u": 390.0,
-          "mann_whitney_p": 0.2271,
-          "mann_whitney_p_one_sided": 0.8909,
-          "wilcoxon_p": 0.1228,
-          "cohens_d": 0.44,
-          "effect_size": "small",
-          "significant_005": false,
-          "bh_adjusted_p": 0.356825,
           "bh_significant": false
         }
       },
@@ -677,23 +386,6 @@
           "significant_005": false,
           "bh_adjusted_p": 1.0,
           "bh_significant": false
-        },
-        "detention_days": {
-          "mean_delta": 0.423,
-          "std_delta": 1.554,
-          "ci_95": {
-            "lower": -0.1538,
-            "upper": 1.0
-          },
-          "mann_whitney_u": 416.0,
-          "mann_whitney_p": 0.069,
-          "mann_whitney_p_one_sided": 0.9672,
-          "wilcoxon_p": 0.0947,
-          "cohens_d": 0.385,
-          "effect_size": "small",
-          "significant_005": false,
-          "bh_adjusted_p": 0.298761,
-          "bh_significant": false
         }
       },
       {
@@ -714,23 +406,6 @@
           "effect_size": "small",
           "significant_005": false,
           "bh_adjusted_p": 0.297771,
-          "bh_significant": false
-        },
-        "detention_days": {
-          "mean_delta": 0.269,
-          "std_delta": 1.313,
-          "ci_95": {
-            "lower": -0.1923,
-            "upper": 0.8077
-          },
-          "mann_whitney_u": 338.0,
-          "mann_whitney_p": 1.0,
-          "mann_whitney_p_one_sided": 0.5047,
-          "wilcoxon_p": 0.485,
-          "cohens_d": 0.29,
-          "effect_size": "small",
-          "significant_005": false,
-          "bh_adjusted_p": 1.0,
           "bh_significant": false
         }
       },
@@ -753,23 +428,6 @@
           "significant_005": false,
           "bh_adjusted_p": 0.446698,
           "bh_significant": false
-        },
-        "detention_days": {
-          "mean_delta": 0.5,
-          "std_delta": 1.273,
-          "ci_95": {
-            "lower": 0.0769,
-            "upper": 1.0385
-          },
-          "mann_whitney_u": 416.0,
-          "mann_whitney_p": 0.0543,
-          "mann_whitney_p_one_sided": 0.9744,
-          "wilcoxon_p": 0.0481,
-          "cohens_d": 0.556,
-          "effect_size": "medium",
-          "significant_005": false,
-          "bh_adjusted_p": 0.298761,
-          "bh_significant": false
         }
       },
       {
@@ -790,23 +448,6 @@
           "effect_size": "small",
           "significant_005": false,
           "bh_adjusted_p": 0.446698,
-          "bh_significant": false
-        },
-        "detention_days": {
-          "mean_delta": 0.115,
-          "std_delta": 0.864,
-          "ci_95": {
-            "lower": -0.1923,
-            "upper": 0.4615
-          },
-          "mann_whitney_u": 364.0,
-          "mann_whitney_p": 0.4571,
-          "mann_whitney_p_one_sided": 0.7802,
-          "wilcoxon_p": 0.558,
-          "cohens_d": 0.189,
-          "effect_size": "negligible",
-          "significant_005": false,
-          "bh_adjusted_p": 0.628472,
           "bh_significant": false
         }
       },
@@ -829,23 +470,6 @@
           "significant_005": false,
           "bh_adjusted_p": 0.446698,
           "bh_significant": false
-        },
-        "detention_days": {
-          "mean_delta": 0.192,
-          "std_delta": 1.266,
-          "ci_95": {
-            "lower": -0.2308,
-            "upper": 0.6923
-          },
-          "mann_whitney_u": 364.0,
-          "mann_whitney_p": 0.5491,
-          "mann_whitney_p_one_sided": 0.7333,
-          "wilcoxon_p": 0.6354,
-          "cohens_d": 0.215,
-          "effect_size": "small",
-          "significant_005": false,
-          "bh_adjusted_p": 0.671066,
-          "bh_significant": false
         }
       }
     ],
@@ -853,8 +477,6 @@
       "n_tests": 11,
       "n_significant_uncorrected_dl": 2,
       "n_significant_bh_dl": 0,
-      "n_significant_uncorrected_days": 1,
-      "n_significant_bh_days": 0,
       "correction_method": "Benjamini-Hochberg FDR",
       "note": "Two-sided Mann-Whitney U test against H0: delta=0. BH FDR used for multiple comparison correction."
     }

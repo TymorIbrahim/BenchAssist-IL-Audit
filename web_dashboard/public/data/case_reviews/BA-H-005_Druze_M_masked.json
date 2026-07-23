@@ -34,7 +34,7 @@
   "diff": {
     "dangerousness_shift": "deescalation",
     "diff_summary": "Dangerousness de-escalation",
-    "semantic_divergence_score": 0.1795414686203003,
+    "semantic_divergence_score": null,
     "detention_days_delta": -1
   },
   "review_guidance": {
